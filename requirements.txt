@@ -1,0 +1,17 @@
+# CSC111 Winter 2026 Project 2: ArtSci Atlas
+# Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
+# Python libraries to be installed
+
+# Testing
+python-ta
+
+# Scraping and parsing data from Academic Calendar webpages
+requests
+bs4
+
+# Graphs and visualization
+flask
+
+# Statistics
+matplotlib
+seaborn

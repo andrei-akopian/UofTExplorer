@@ -1,0 +1,15 @@
+{
+    "Total number of courses": 5344,
+    "Total number of requisites": 2122,
+    "Total number of courses eligible for CR/NCR": 4319,
+    "Total number of courses not eligible for CR/NCR": 1025,
+    "Total number of courses in breadth 1": 1387,
+    "Total number of courses in breadth 2": 667,
+    "Total number of courses in breadth 3": 1632,
+    "Total number of courses in breadth 4": 454,
+    "Total number of courses in breadth 5": 506,
+    "Average number of direct prerequisites": 0.93,
+    "Average number of total prerequisites": 3.56,
+    "Number of programs": 384,
+    "Number of departments": 235
+}

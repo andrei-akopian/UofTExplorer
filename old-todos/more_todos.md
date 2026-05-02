@@ -1,0 +1,3 @@
+- [ ] rought dimensions of tree (max height / depth)
+- [ ] Longest corequisite chain
+- [ ] Dangling nodes with no pre or post requisites

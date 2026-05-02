@@ -1,0 +1,310 @@
+<!-- /*
+CSC111 Winter 2026 Project 2: ArtSci Atlas
+
+GLOBAL STATISTICS HTML
+This HTML file is used to render the Global Statistics page.
+
+Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
+This file was written with the help of ChatGPT codex GPT-5.4.
+*/ -->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Global Statistics | ArtSci Atlas</title>
+    <link rel="stylesheet" href="https://latex.vercel.app/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='latex.css') }}"> <!-- fallback -->
+    <style>
+        figure {
+            margin: 1.5rem auto;
+            text-align: center;
+        }
+
+        figure img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        figure figcaption {
+            text-align: center;
+        }
+
+        .stats-table {
+            margin: 1rem 0 1.75rem;
+            width: 100%;
+            border-collapse: collapse;
+            border-top: 1px solid #d7d7d7;
+            border-bottom: 1px solid #d7d7d7;
+        }
+
+        .stats-table th,
+        .stats-table td {
+            padding: 0.55rem 0.7rem;
+            border-bottom: 1px solid #e8e8e8;
+            text-align: left;
+        }
+
+        .stats-table thead th {
+            font-weight: 700;
+            color: #222;
+            background: #f7f7f7;
+        }
+
+        .stats-table tbody tr:nth-child(even) {
+            background: #fcfcfc;
+        }
+
+        .stats-table td:last-child {
+            width: 16%;
+            white-space: nowrap;
+            font-variant-numeric: tabular-nums;
+        }
+    </style>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+</head>
+
+<body>
+    <article>
+        <div style="text-align: center; font-size: 1.25rem; margin-bottom: 1.5em;">
+            <a href="/">Home</a> | <a href="/2dgraph">2D Graph</a> | <a href="/3dforcegraph">3D Graph</a> | <a
+                href="/pathexplorer">Path Explorer</a>
+        </div>
+
+        <h1 style="text-align: center;">Executive Report on the Global Statistics</h1>
+
+        <div class="author">Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng <br>March 30, 2026</div>
+
+        <div class="abstract">We explored the relationships between courses, programs, and departments at the Faculty of
+            Arts & Science at the University of Toronto. This report summarizes the global statistics computed on our
+            entire
+            constructed graph. All data was pulled from the <a href="https://artsci.calendar.utoronto.ca/"
+                target="_blank">Arts & Science Academic Calendar</a>.</div>
+
+        <h2>Statistics</h2>
+
+        <div>We computed many statistical measures, with the following being done on the entire constructed graph.</div>
+
+        <div class="table" style="margin-top: 1em;">
+            <caption><span style="font-weight: bold;">Table 1. </span>Statistics computed on the entire graph.</caption>
+            <table class="stats-table">
+                <thead>
+                    <tr>
+                        <th>Statistic</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for label, value in statistics.items() %}
+                    <tr>
+                        <td>{{ label }}</td>
+                        <td>{{ value }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="indent-pars">
+            <p>
+                We can see that the Faculty of Arts & Science has a significant number of courses. Note that the number
+                of requisites is the total number of Requisite objects stored by the complete CourseGraph, which
+                undercounts the real number of prerequisites required by all courses due to our memory optimization of
+                only keeping one copy of each unique Requisite object.
+            </p>
+            <p>
+                The majority of courses are eligible for CR/NCR, but around one-fifth of the courses are not eligible.
+            </p>
+            <p>
+                The distribution of courses across Breadth Requirement categories is less uniform than we expected. It
+                is interesting that Breadth 1 and Breadth 3 each have roughly double the amount of courses compared to
+                Breadth 2, Breadth 4, and Breadth 5.
+            </p>
+            <p>
+                Direct prerequisites are defined as the number of CourseNode or Requisite objects located directly in
+                the prerequisites of a course. The average number of direct prerequisites being below 1 indicates that
+                the majority of courses do not have any prerequisites.
+            </p>
+            <p>
+                Total prerequisites are defined as any course that is located in the Requisite tree downstream from the
+                prerequisites of a CourseNode. Thus, higher-year courses with long chains of prerequisites will have a
+                higher number of total prerequisites. While many courses do not have any prerequisites, there are enough
+                courses with large numbers of prerequisites to bring the average up to 3.
+            </p>
+            <p>
+                Finally, the Faculty of Arts & Science has a large number of programs and departments that span a
+                variety of subject areas. It seems unlikely, though, that the number of programs is less than double the
+                number of departments. The cause of this is likely that the glossary of departments that we scraped
+                included some departments from other faculties at UofT, inflating the total number of departments.
+            </p>
+        </div>
+
+        <figure>
+            <div style="display:flex">
+                <img width="50%" src="/images/course_length_pie_chart.svg">
+                <img width="50%" src="/images/course_levels_pie.svg">
+            </div>
+            <figcaption>Distribution of Course Length and Courses per Levels</figcaption>
+        </figure>
+
+        <div class="indent-pars">
+            <p>
+                There are significantly more half-year than full-year courses in the Faculty of Arts & Science.
+            </p>
+            <p>
+                For the course levels, we separated them according to the first digit of the numerical part of their
+                course code. There are surprisingly few 100-level courses, but it does make sense that there are lot of
+                higher-level courses, as generally, first-year courses allow much larger student enrollment numbers.
+                On the other hand, higher-level courses are more specialized, thus there are more of them to cover the
+                variety of subjects that students can choose from.
+            </p>
+        </div>
+
+        <figure>
+            <img src="/images/departments_by_hour_type.svg">
+            <figcaption>Average Hours per Course by Department</figcaption>
+        </figure>
+
+        <div class="indent-pars">
+            <p>
+                This graph shows the average number of hours per course for each department, sorted in descending order.
+                For the top 11 departments, the time is split fairly evenly between lecture and practical hours.
+                However, it is clear that the majority of class time is still spent in lecture or seminar sections.
+            </p>
+        </div>
+
+        <figure>
+            <img src="/images/departments_by_course_level.svg">
+            <figcaption>Number of Courses by Department</figcaption>
+        </figure>
+
+        <div class="indent-pars">
+            <p>
+                The top 5 departments with the most courses are History (HIS), Religion (RLG), East Asian Studies (EAS),
+                Philosophy (PHL), and Political Science (POL). There are only 13 departments with over 100 courses.
+                For most of these departments, the majority of their courses are at the 300 and 400 level.
+            </p>
+        </div>
+
+        <figure>
+            <img src="/images/number_of_direct_prereqs.svg">
+            <figcaption>Distribution of Number of Direct Prerequisites per Course</figcaption>
+        </figure>
+
+        <div class="indent-pars">
+            <p>
+                There are 2993 courses with no direct prerequisites, and over 800 courses with 1 direct prerequisite and
+                2 direct prerequisites respectively. Then, it falls dramatically, with less than 400 having 3 direct
+                prerequisites and less than 200 with 4 direct prerequisites.
+            </p>
+            <p>
+                This is likely due to the way that course prerequisites are generally written on the Academic Calendar.
+                Many courses are part of a simple sequence of courses (i.e. Course A → Course B → Course C), thus only
+                requiring 1 or 2 direct prerequisites.
+            </p>
+        </div>
+
+        <figure>
+            <img src="/images/number_of_total_prereqs.svg">
+            <figcaption>Distribution of Number of Total Prerequisites per Course</figcaption>
+        </figure>
+
+        <div class="indent-pars">
+            <p>
+                Interestingly, when considering total prerequisites (counting any course that is part of the
+                prerequisite tree), the vast majority of courses still only have 1 or 2 total prerequisites, meaning
+                students have the ability to take a wide variety of courses.
+            </p>
+        </div>
+
+        <figure>
+            <img src="/images/distribution_of_programs_by_breadth_category.svg">
+            <figcaption>Distribution of Programs by Breadth Category</figcaption>
+        </figure>
+
+        <div class="indent-pars">
+            <p>
+                Although Breadth 1 has the second highest number of courses, it has the lowest number of programs.
+                The other four Breadth categories have kept their relative orderings between number of courses and
+                number of programs.
+            </p>
+        </div>
+
+        <figure>
+            <img src="/images/distribution_of_programs_by_breadth_span.svg">
+            <figcaption>Distribution of Programs by Breadth Span</figcaption>
+        </figure>
+
+        <div class="indent-pars">
+            <p>
+                We iterated over the programs and computed how many breadth categories are spanned by their courses.
+                The courses that are not in any breadth category are special courses, for example ROP courses.
+            </p>
+        </div>
+
+        <figure>
+            <img src="/images/distribution_of_departments_by_breadth_category.svg">
+            <figcaption>Distribution of Departments by Breadth Category</figcaption>
+        </figure>
+
+        <div class="indent-pars">
+            <p>
+                For this graph, we went through each department and added 1 to each breadth category that the department
+                has at least 1 course in, which is why the sum of the bars in the graph is higher than the total number
+                of departments.
+            </p>
+            <p>
+                Breadth 3 courses appear in a lot of departments, while Breadth 4 has comparatively a lot lower number
+                of departments.
+            </p>
+        </div>
+
+        <figure>
+            <img src="/images/distribution_of_departments_by_breadth_span.svg">
+            <figcaption>Distribution of Departments by Breadth Span</figcaption>
+        </figure>
+
+        <div class="indent-pars">
+            <p>
+                As expected, the vast majority of departments only contain courses that span 1 breadth category.
+                However, there is a significant number of departments that span 2 and 3 breadth categories.
+            </p>
+        </div>
+
+        <figure>
+            <img src="/images/distribution_of_sat_lengths.svg">
+            <figcaption>Distribution of Satisfying Requisite Path Lengths</figcaption>
+        </figure>
+
+        <div class="indent-pars">
+            <p>
+                For this, we used the Reverse SAT algorithm to compute the shortest prerequisite path length for each
+                course. In order to reduce the computation time to a few minutes, any courses with over 20 fundamentals
+                were skipped.
+            </p>
+            <p>
+                Again, since a lot of courses have zero or one prerequisites, over 800 courses have a shortest path
+                length of 1. Overall, the quick decay in shortest path length shows that courses in the Faculty of Arts
+                & Science generally do not require many prerequisites.
+            </p>
+        </div>
+
+        <h2>Discussion</h2>
+
+        <div class="theorem">Kimchi.</div>
+
+        <div class="proof">Trivial. (See <a href="#figure-kimchi">Figure 11</a> for evidence.)</div>
+
+        <figure id="figure-kimchi">
+            <img src="/images/kimchi.jpg" />
+            <figcaption>Kimchi the cat. Source: Jasmine Chen's camera roll.</figcaption>
+        </figure>
+    </article>
+
+</body>
+
+</html>
