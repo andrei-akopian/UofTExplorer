@@ -94,16 +94,4 @@ def full_scrape() -> None:
 
 
 if __name__ == "__main__":
-    import python_ta
-    python_ta.check_all(config={
-        'allow-local-imports': True,
-        'extra-imports': ['requests', 'time', 'os'],
-        'allowed-io': ['scrape_page', 'full_scrape'],
-        'max-line-length': 120,
-        'max-nested-blocks': 5,
-        'max-locals': 20,
-        'max-branches': 15,
-        'max-args': 7
-    })
-
     full_scrape()

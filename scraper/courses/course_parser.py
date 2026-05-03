@@ -30,7 +30,7 @@ import logging
 import bs4
 
 
-SCRAPE_FOLDER = "../scraper/raw_output/"
+SCRAPE_FOLDER = "./raw_output/"
 PARSING_TARGETS: dict[str, dict] = {
     "UTM": {
         "filepattern": "page_PAGENUMBER_utm.html",
@@ -45,7 +45,7 @@ PARSING_TARGETS: dict[str, dict] = {
         "page_range": range(0, 72 + 1)
     },
 }
-SAVE_FOLDER: str = "../data/"
+SAVE_FOLDER: str = "../../data/"
 SAVE_FILENAME: str = "courses.json"
 SAVE_PATH = SAVE_FOLDER + SAVE_FILENAME
 PARSER_LOGS = "./parser_logs"
@@ -595,7 +595,6 @@ class CourseParser:
         Return the dictionary and a string "accept" or "discard"
         to the caller function about whether to accept the output.
         """
-        # handle courses with empty body
 
         has_fields = []
         # course name
@@ -792,7 +791,7 @@ class CourseParser:
                     courses_json.append(parsed_child)
         return courses_json
 
-    def save_to_json(self, courses: list[dict], filepath: str = "../data/courses.json") -> None:
+    def save_to_json(self, courses: list[dict], filepath: str = SAVE_PATH) -> None:
         """Save a list containing dictionaries of course objects into a json file."""
         # create data folder if it doesn't exist already
         if not os.path.isdir(SAVE_FOLDER):
@@ -913,20 +912,5 @@ class CourseParser:
 
 
 if __name__ == "__main__":
-    import python_ta
-
-    python_ta.check_all(config={
-        'allow-local-imports': True,
-        'extra-imports': ['requests', 're', 'time', 'os', "logging", "typing", "contextvars", "json", "bs4"],
-        'allowed-io': ['CourseParser.save_to_json', 'CourseParser.full_scrape_parse', "CourseParser.page_to_json",
-                       "CourseParser.target_selection_ui"],
-        'max-line-length': 120,
-        'max-nested-blocks': 5,
-        'max-statements': 100,
-        'max-locals': 40,
-        'max-branches': 35,
-        'max-args': 7
-    })
-
     course_parser = CourseParser()
     course_parser.full_parse()
