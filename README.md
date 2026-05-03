@@ -3,6 +3,10 @@
 Ideas
 - [ ] scrape ttb and user for filtering and class sizes
 - [ ] make better 2d graph untanglement algorithm
+- [ ] better graph positioning (andrei)
+- [ ] Cpyhton sat solver (jack and andrei)
+- [ ] check course impleications, for example whether mat137 implies mat157 on all prereqs
+- [ ] filter out dead courses (andrei)
 
 ---
 
