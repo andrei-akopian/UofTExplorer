@@ -1,5 +1,7 @@
 # Artsci Atlas
 
+A graph visualizer tool for courses and their requisites at the University of Toronto. Originally completed as a project for [CSC111 — Foundations of Computer Science II](https://artsci.calendar.utoronto.ca/course/csc111h1) by Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng. Currently a work in progress for further improvements and deployment.
+
 ## Links
 
 - [Academic Calendar - Search Courses](https://artsci.calendar.utoronto.ca/search-courses)
@@ -12,10 +14,18 @@
 ### Ideas
 - [ ] scrape ttb and user for filtering and class sizes
 - [ ] make better 2d graph untanglement algorithm
-- [ ] better graph positioning (andrei)
+- [ ] improve graph positioning (andrei)
 - [ ] cpython sat solver (jack and andrei)
 - [ ] check course implications, for example whether mat137 implies mat157 on all prereqs
 - [ ] filter out dead courses (andrei)
+- [ ] improve UI
+- [ ] finish data analysis (seen in section below)
+- [ ] rewrite Executive Report
+- [ ] add more types of colour coding
+- [ ] improve searching capabilities (mostly replacing filtering)
+- [ ] add feature of saving queries locally in browser
+- [ ] implement server / cloud-hosting for deployment (Docker container?)
+- [ ] basic vs. advanced mode
 
 ### Data Analysis
 
