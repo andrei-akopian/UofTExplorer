@@ -11,6 +11,13 @@ A graph visualizer tool for courses and their requisites at the University of To
 
 ## To-Do
 
+### Languages/Frameworks
+- [ ] React
+- [ ] TypeScript
+- [ ] Tailwind CSS
+- [ ] CPython
+- [ ] WebAssembly
+
 ### Ideas
 - [ ] scrape ttb and user for filtering and class sizes
 - [ ] make better 2d graph untanglement algorithm
