@@ -1,4 +1,4 @@
-# Artsci Atlas
+# UofT Explorer
 
 A graph visualizer tool for courses and their requisites at the University of Toronto. Originally completed as a project for [CSC111 — Foundations of Computer Science II](https://artsci.calendar.utoronto.ca/course/csc111h1) by Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng. Currently a work in progress for further improvements and deployment.
 
