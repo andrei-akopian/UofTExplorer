@@ -1,0 +1,168 @@
+/*
+ArtSci Atlas - Global Statistics Page CSS
+Migrated from /server/templates/globalstats.html and /server/static/latex.css
+*/
+
+@import url('https://latex.vercel.app/style.css');
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.globalstats-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+article {
+    line-height: 1.6;
+    color: #333;
+}
+
+a {
+    color: #0f5fa8;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 140ms ease, border-color 140ms ease;
+}
+
+a:hover,
+a:focus-visible {
+    color: #0a4477;
+    border-color: currentColor;
+}
+
+a:focus-visible {
+    outline: 2px solid rgba(15, 95, 168, 0.55);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+h3 {
+    font-size: 1.4rem;
+}
+
+.author {
+    text-align: center;
+    font-style: italic;
+    margin: 1.5rem 0;
+    color: #666;
+}
+
+.abstract {
+    font-style: italic;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-left: 3px solid #0f5fa8;
+    border-radius: 4px;
+}
+
+figure {
+    margin: 1.5rem auto;
+    text-align: center;
+}
+
+figure img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+figure figcaption {
+    text-align: center;
+    font-style: italic;
+    margin-top: 0.5rem;
+    color: #666;
+}
+
+.stats-table {
+    margin: 1rem 0 1.75rem;
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 1px solid #d7d7d7;
+    border-bottom: 1px solid #d7d7d7;
+}
+
+.stats-table th,
+.stats-table td {
+    padding: 0.55rem 0.7rem;
+    border-bottom: 1px solid #e8e8e8;
+    text-align: left;
+}
+
+.stats-table thead th {
+    font-weight: 700;
+    color: #222;
+    background: #f7f7f7;
+}
+
+.stats-table tbody tr:nth-child(even) {
+    background: #fcfcfc;
+}
+
+.stats-table td:last-child {
+    width: 16%;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.indent-pars {
+    margin: 1.5rem 0;
+}
+
+.indent-pars p {
+    margin: 1rem 0;
+    text-align: justify;
+    line-height: 1.7;
+}
+
+.table {
+    margin: 1rem 0;
+}
+
+.table caption {
+    text-align: left;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .globalstats-container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    figure {
+        margin: 1rem auto;
+    }
+
+    figure img {
+        max-width: 100%;
+    }
+}

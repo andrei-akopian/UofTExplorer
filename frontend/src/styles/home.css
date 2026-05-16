@@ -1,0 +1,92 @@
+/*
+ArtSci Atlas - Home Page CSS
+Migrated from /server/static/index.css
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Notable&display=swap');
+
+:root {
+  --bg: #fcfcfa;
+  --surface: #ffffff;
+  --text: #1f2933;
+  --muted: #5f6c76;
+  --border: #dfe3e8;
+  --link: #0f5fa8;
+  --link-hover: #0a4477;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.home-container {
+  margin: 0;
+  min-height: 100vh;
+  padding: 2.5rem 1.25rem;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Montserrat', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.4;
+  gap: 0.75rem;
+}
+
+.home-container > * {
+  width: min(100%, 44rem);
+}
+
+.home-container h1 {
+  margin: 0 0 0.75rem;
+  padding: 0;
+  font-family: 'Notable', 'Montserrat', sans-serif;
+  font-size: 3em;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-align: center;
+  width: min(100%, 44rem);
+}
+
+.intro-text {
+  width: min(100%, 44rem);
+}
+
+.section-block {
+  width: min(100%, 44rem);
+}
+
+.home-container h2 {
+  margin: 1.5rem 0 0.5rem;
+  padding: 0;
+  font-size: 1.4em;
+  font-weight: 500;
+}
+
+.home-container a {
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 140ms ease, border-color 140ms ease;
+}
+
+.home-container a:hover,
+.home-container a:focus-visible {
+  color: var(--link-hover);
+  border-color: currentColor;
+}
+
+.home-container a:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--link) 55%, white);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (max-width: 640px) {
+  .home-container {
+    padding: 1.25rem 1rem;
+  }
+
+  .home-container h1 {
+    padding: 0;
+  }
+}

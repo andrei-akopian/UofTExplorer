@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  color: #1f2933;
+}
+
+a {
+  color: #0f5fa8;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0a4477;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}

@@ -1,0 +1,352 @@
+import { useState, useEffect, useRef } from 'react'
+import { useSearchParams, Link } from 'react-router-dom'
+import '../styles/graph2d.css'
+
+interface Node {
+  id: string
+  label: string
+  code?: string
+  depth?: number
+  x?: number
+  y?: number
+  targetRadius?: number
+  size: number
+  color: string
+  font?: { size: number }
+}
+
+interface Edge {
+  from: string
+  to: string
+}
+
+interface GraphData {
+  nodes: Node[]
+  edges: Edge[]
+  search?: string
+  curr_query?: { type: string; code: string; name: string }
+  should_open_course_panel?: boolean
+}
+
+const PHYSICS_DAMPING = 0.40
+const PHYSICS_SPRING_CONST = 0.1
+const DEPTH_PULL_STRENGTH = 0.02
+const PHYSICS_GRAV_CONSTANT = -4000
+const PHYSICS_SPRING_LENGTH = 300
+const GRAVITY_BIAS = 0.0
+
+export default function Graph2D() {
+  const [searchParams, setSearchParams] = useSearchParams()
+  const containerRef = useRef<HTMLDivElement>(null)
+  const networkRef = useRef<any>(null)
+  const [message, setMessage] = useState('')
+  const [messageType, setMessageType] = useState<'info' | 'success' | 'error'>('info')
+  const [query, setQuery] = useState('')
+  const [currentQuery, setCurrentQuery] = useState<{ type: string; code: string; name: string }>({
+    type: '',
+    code: '',
+    name: ''
+  })
+  const [useShellLayout, setUseShellLayout] = useState(true)
+  const [searchResults, setSearchResults] = useState<Array<{id: string; label: string; code?: string}>>([])
+  const [showSearchResults, setShowSearchResults] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [departments, setDepartments] = useState<string[]>([])
+  const [breadthCategories, setBreadthCategories] = useState<string[]>([])
+  const [activeNodes, setActiveNodes] = useState<Node[]>([])
+
+  // Initialize vis-network on mount
+  useEffect(() => {
+    const initNetwork = async () => {
+      try {
+        const { Network } = await import('vis-network/standalone/esm/vis-network.min.js')
+        
+        if (!containerRef.current) return
+
+        const options = {
+          layout: { hierarchical: { enabled: false } },
+          nodes: {
+            shape: 'circle',
+            size: 26,
+            font: { size: 14, face: 'system-ui', color: '#000000' },
+            borderWidth: 1,
+            color: '#A0B9DB'
+          },
+          edges: {
+            arrows: { to: { enabled: true, scaleFactor: 0.8 } },
+            width: 2,
+            smooth: { type: 'cubicBezier', forceDirection: 'horizontal' }
+          },
+          physics: {
+            enabled: true,
+            solver: 'barnesHut',
+            barnesHut: {
+              gravitationalConstant: PHYSICS_GRAV_CONSTANT,
+              centralGravity: 0.05,
+              springLength: PHYSICS_SPRING_LENGTH,
+              springConstant: PHYSICS_SPRING_CONST,
+              damping: PHYSICS_DAMPING,
+              avoidOverlap: 0.8
+            },
+            maxVelocity: 140,
+            timestep: 0.35,
+            adaptiveTimestep: true,
+            stabilization: { enabled: true, iterations: 150, fit: false }
+          },
+          interaction: { dragNodes: true, dragView: true, zoomView: true, selectable: true, hover: true }
+        }
+
+        const network = new Network(containerRef.current, { nodes: [], edges: [] }, options)
+        networkRef.current = network
+
+        // Load initial data if search param exists
+        const searchQuery = searchParams.get('search')
+        if (searchQuery) {
+          await fetchGraph(searchQuery)
+        }
+      } catch (err) {
+        console.error('Failed to initialize network:', err)
+      }
+    }
+
+    initNetwork()
+  }, [])
+
+  const fetchGraph = async (graphQuery: string) => {
+    if (!graphQuery.trim()) return
+
+    setLoading(true)
+    setMessage('Loading graph...')
+    setMessageType('info')
+
+    try {
+      const payload = { query: graphQuery }
+      const res = await fetch('/api/fetch_graph', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+
+      if (!res.ok) {
+        throw new Error(`Server error (${res.status})`)
+      }
+
+      const data: GraphData = await res.json()
+      
+      if (!data?.nodes || !data?.edges) {
+        throw new Error('Invalid graph data format')
+      }
+
+      // Process and display data
+      const prepared = prepareData(data.nodes, data.edges)
+      setActiveNodes(prepared.nodes)
+      
+      if (networkRef.current) {
+        networkRef.current.setData({ nodes: prepared.nodes, edges: prepared.edges })
+        networkRef.current.startSimulation()
+        // Note: centerCamera would be called here in original
+      }
+
+      setCurrentQuery(data.curr_query || { type: '', code: '', name: '' })
+      setMessage(`Graph loaded (${data.nodes.length} nodes)`, )
+      setMessageType('success')
+      setQuery('')
+      
+      if (data.search) {
+        setSearchParams({ search: data.search })
+      }
+    } catch (err) {
+      setMessage(`Error: ${err instanceof Error ? err.message : 'Unknown error'}`)
+      setMessageType('error')
+      console.error(err)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const prepareData = (nodes: Node[], edges: Edge[]) => {
+    if (!nodes.length) return { nodes: [], edges }
+
+    const levels: Record<number, Node[]> = {}
+    const MIN_RADIUS_STEP = 300
+    const NODE_GIRTH = 120
+
+    if (useShellLayout) {
+      nodes.forEach(n => {
+        const depth = (n.depth !== null && n.depth !== undefined) ? parseInt(String(n.depth)) : null
+        if (depth !== null) {
+          if (!levels[depth]) levels[depth] = []
+          levels[depth].push(n)
+        }
+      })
+    }
+
+    const levelRadii: Record<number, number> = {}
+    let currentRadius = 0
+    const sortedDepths = Object.keys(levels).map(Number).sort((a, b) => a - b)
+
+    sortedDepths.forEach(depth => {
+      const nodeCount = levels[depth].length
+      const requiredRadius = (nodeCount * NODE_GIRTH) / (2 * Math.PI)
+      currentRadius += Math.max(MIN_RADIUS_STEP, requiredRadius)
+      levelRadii[depth] = currentRadius
+    })
+
+    let sumX = 0
+    let sumY = 0
+
+    const processedNodes = nodes.map(n => {
+      const depth = (n.depth !== null && n.depth !== undefined) ? parseInt(String(n.depth)) : null
+      const processedNode = { ...n, depth }
+
+      if (useShellLayout && depth !== null && levelRadii[depth]) {
+        const radius = levelRadii[depth]
+        const angle = (Math.PI / 2) + (Math.random() - 0.5) * 2
+        processedNode.x = Math.cos(angle) * radius
+        processedNode.y = Math.sin(angle) * radius
+        processedNode.targetRadius = radius
+      } else {
+        processedNode.x = (Math.random() - 0.5) * 200
+        processedNode.y = (Math.random() - 0.5) * 200
+        processedNode.targetRadius = null
+      }
+
+      sumX += processedNode.x || 0
+      sumY += processedNode.y || 0
+
+      return processedNode
+    })
+
+    return {
+      nodes: processedNodes,
+      edges,
+      avgX: sumX / (nodes.length || 1),
+      avgY: sumY / (nodes.length || 1)
+    }
+  }
+
+  const handleFetchClick = () => {
+    if (query.trim()) {
+      fetchGraph(query)
+    }
+  }
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleFetchClick()
+    }
+  }
+
+  return (
+    <div className="graph2d-container">
+      <div ref={containerRef} id="mynetwork"></div>
+      
+      <a href="/" className="homelink" title="Back to home">
+        <svg width="2rem" height="2rem" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 6V15H6V11C6 9.89543 6.89543 9 8 9C9.10457 9 10 9.89543 10 11V15H15V6L8 0L1 6Z" fill="#000000" />
+        </svg>
+      </a>
+
+      <details className="settings close-on-outclick">
+        <summary>
+          <svg width="2.5rem" height="2.5rem" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <g id="out" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+              <path d="M18.1125649,13.0304195 C18.1454626,12.7672379 18.1701359,12.5040563 18.1701359,12.2244258 C18.1701359,11.9447953 18.1454626,11.6816137 18.1125649,11.4184321 L19.8479188,10.0614018 C20.0041828,9.93803541 20.045305,9.71597592 19.9466119,9.53503855 L18.3017267,6.68938723 C18.2030336,6.50844986 17.9809741,6.44265446 17.8000367,6.50844986 L15.7521547,7.33089244 C15.3244846,7.00191541 14.8639167,6.73050936 14.3622268,6.52489871 L14.0496986,4.34542588 C14.0250253,4.14803966 13.8523124,4 13.6467017,4 L10.3569314,4 C10.1513208,4 9.97860782,4.14803966 9.95393455,4.34542588 L9.64140637,6.52489871 C9.13971639,6.73050936 8.67914855,7.01013984 8.25147841,7.33089244 L6.20359639,6.50844986 C6.0144346,6.43443003 5.80059953,6.50844986 5.70190642,6.68938723 L4.05702126,9.53503855 C3.95010373,9.71597592 3.99945028,9.93803541 4.15571437,10.0614018 L5.89106821,11.4184321 C5.85817051,11.6816137 5.83349723,11.9530197 5.83349723,12.2244258 C5.83349723,12.4958318 5.85817051,12.7672379 5.89106821,13.0304195 L4.15571437,14.3874498 C3.99945028,14.5108161 3.95832815,14.7328756 4.05702126,14.913813 L5.70190642,17.7594643 C5.80059953,17.9404017 6.02265902,18.0061971 6.20359639,17.9404017 L8.25147841,17.1179591 C8.67914855,17.4469361 9.13971639,17.7183422 9.64140637,17.9239528 L9.95393455,20.1034257 C9.97860782,20.3008119 10.1513208,20.4488516 10.3569314,20.4488516 L13.6467017,20.4488516 C13.8523124,20.4488516 14.0250253,20.3008119 14.0496986,20.1034257 L14.3622268,17.9239528 C14.8639167,17.7183422 15.3244846,17.4387117 15.7521547,17.1179591 L17.8000367,17.9404017 C17.9891985,18.0144215 18.2030336,17.9404017 18.3017267,17.7594643 L19.9466119,14.913813 C20.045305,14.7328756 20.0041828,14.5108161 19.8479188,14.3874498 L18.1125649,13.0304195 Z M12.0018166,15.1029748 C10.4145024,15.1029748 9.12326754,13.81174 9.12326754,12.2244258 C9.12326754,10.6371116 10.4145024,9.34587676 12.0018166,9.34587676 C13.5891307,9.34587676 14.8803656,10.6371116 14.8803656,12.2244258 C14.8803656,13.81174 13.5891307,15.1029748 12.0018166,15.1029748 Z" fill="#000000" />
+            </g>
+          </svg>
+        </summary>
+        <div className="filter-options settings-options">
+          <label className="filter-option">
+            <input type="checkbox" checked={useShellLayout} onChange={(e) => setUseShellLayout(e.target.checked)} />
+            <span>Use shell layout</span>
+          </label>
+        </div>
+      </details>
+
+      <div className="corner-switch">
+        <Link to="/3dforcegraph" className="view-switch-button corner-switch-button" title="Switch to 3D view">
+          3D→
+        </Link>
+      </div>
+
+      <div id="controls">
+        <div style={{ position: 'relative' }}>
+          <input
+            type="text"
+            id="queryInput"
+            placeholder="Search for course, program, department, or 'all'"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyPress={handleKeyPress}
+            autoComplete="off"
+          />
+          {showSearchResults && (
+            <div id="searchResults" className={showSearchResults ? 'show' : ''}>
+              {searchResults.length > 0 ? (
+                searchResults.map((result) => (
+                  <div key={result.id} className="result-item" onClick={() => {
+                    setQuery(result.code || result.label)
+                    setShowSearchResults(false)
+                  }}>
+                    {result.label} {result.code ? `(${result.code})` : ''}
+                  </div>
+                ))
+              ) : (
+                <div className="no-results">No results found</div>
+              )}
+            </div>
+          )}
+        </div>
+        
+        <details className="filter-dropdown close-on-outclick">
+          <summary>CR / NCR</summary>
+          <div id="crNcrFilterOptions" className="filter-options">
+            <label className="filter-option">
+              <input type="checkbox" />
+              <span>Eligible</span>
+            </label>
+            <label className="filter-option">
+              <input type="checkbox" />
+              <span>Ineligible</span>
+            </label>
+          </div>
+        </details>
+
+        <details className="filter-dropdown close-on-outclick">
+          <summary>Departments</summary>
+          <div id="departmentFilterOptions" className="filter-options">
+            {departments.map((dept) => (
+              <label key={dept} className="filter-option">
+                <input type="checkbox" value={dept} />
+                <span>{dept}</span>
+              </label>
+            ))}
+          </div>
+        </details>
+
+        <details className="filter-dropdown close-on-outclick">
+          <summary>Breadth Requirements</summary>
+          <div id="breadthFilterOptions" className="filter-options">
+            {breadthCategories.map((breadth) => (
+              <label key={breadth} className="filter-option">
+                <input type="checkbox" value={breadth} />
+                <span>{breadth}</span>
+              </label>
+            ))}
+          </div>
+        </details>
+
+        <button id="fetchButton" onClick={handleFetchClick} disabled={loading}>
+          Load Graph
+        </button>
+
+        <div className="status-stack">
+          <div className="curr-query-display">
+            {currentQuery.code && `Currently displaying: ${currentQuery.code} — ${currentQuery.name}`}
+          </div>
+          <div id="message" className={messageType}>{message}</div>
+        </div>
+      </div>
+    </div>
+  )
+}
