@@ -3,11 +3,11 @@ ArtSci Atlas - 3D Graph Page CSS
 Migrated from /server/static/3dforcegraph.css
 */
 
-body {
+/* body {
     font-family: system-ui, -apple-system, sans-serif;
     margin: 0;
     padding: 0;
-}
+} */
 
 .graph3d-container {
     width: 100%;

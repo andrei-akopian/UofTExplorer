@@ -3,14 +3,14 @@ ArtSci Atlas - Path Explorer CSS
 Migrated from /server/static/pathexplorer.css
 */
 
-body {
+/* body {
     margin: 0;
     font-family: system-ui, -apple-system, sans-serif;
     color: #172033;
-    overflow: hidden;
+    overflow: scroll;
     display: flex;
     height: 100vh;
-}
+} */
 
 .pathexplorerContainer {
     display: flex;

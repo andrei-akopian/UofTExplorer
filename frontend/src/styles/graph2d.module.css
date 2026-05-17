@@ -3,11 +3,11 @@ ArtSci Atlas - 2D Graph Page CSS
 Migrated from /server/static/2dgraph.css
 */
 
-body {
+/* body {
     font-family: system-ui, -apple-system, sans-serif;
     margin: 0;
     padding: 0;
-}
+} */
 
 .graph2dContainer {
     width: 100%;

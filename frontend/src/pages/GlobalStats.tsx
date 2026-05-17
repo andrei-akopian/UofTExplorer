@@ -1,6 +1,19 @@
 import { Link } from 'react-router-dom'
 import styles from '../styles/globalstats.module.css'
 
+import course_length_pie_chart from '../assets/globalstats/course_length_pie_chart.svg'
+import course_levels_pie from '../assets/globalstats/course_levels_pie.svg'
+import departments_by_course_level from '../assets/globalstats/departments_by_course_level.svg'
+import departments_by_hour_type from '../assets/globalstats/departments_by_hour_type.svg'
+import distribution_of_departments_by_breadth_category from '../assets/globalstats/distribution_of_departments_by_breadth_category.svg'
+import distribution_of_departments_by_breadth_span from '../assets/globalstats/distribution_of_departments_by_breadth_span.svg'
+import distribution_of_programs_by_breadth_category from '../assets/globalstats/distribution_of_programs_by_breadth_category.svg'
+import distribution_of_programs_by_breadth_span from '../assets/globalstats/distribution_of_programs_by_breadth_span.svg'
+import distribution_of_sat_lengths from '../assets/globalstats/distribution_of_sat_lengths.svg'
+import hours_per_course_histogram from '../assets/globalstats/hours_per_course_histogram.svg'
+import number_of_direct_prereqs from '../assets/globalstats/number_of_direct_prereqs.svg'
+import number_of_total_prereqs from '../assets/globalstats/number_of_total_prereqs.svg'
+
 export default function GlobalStats() {
   return (
     <div className={styles.globalstatsContainer}>
@@ -83,8 +96,8 @@ export default function GlobalStats() {
 
         <figure>
           <div style={{ display: 'flex' }}>
-            <img width="50%" src="/images/course_length_pie_chart.svg" alt="Course Length Distribution" />
-            <img width="50%" src="/images/course_levels_pie.svg" alt="Courses per Levels" />
+            <img width="50%" src={course_length_pie_chart} alt="Course Length Distribution" />
+            <img width="50%" src={course_levels_pie} alt="Courses per Levels" />
           </div>
           <figcaption>Distribution of Course Length and Courses per Levels</figcaption>
         </figure>
@@ -101,7 +114,7 @@ export default function GlobalStats() {
         </div>
 
         <figure>
-          <img src="/images/departments_by_hour_type.svg" alt="Average Hours per Course by Department" />
+          <img src={departments_by_hour_type} alt="Average Hours per Course by Department" />
           <figcaption>Average Hours per Course by Department</figcaption>
         </figure>
 
@@ -114,7 +127,7 @@ export default function GlobalStats() {
         </div>
 
         <figure>
-          <img src="/images/departments_by_course_level.svg" alt="Number of Courses by Department" />
+          <img src={departments_by_course_level} alt="Number of Courses by Department" />
           <figcaption>Number of Courses by Department</figcaption>
         </figure>
 
@@ -127,7 +140,7 @@ export default function GlobalStats() {
         </div>
 
         <figure>
-          <img src="/images/number_of_direct_prereqs.svg" alt="Distribution of Direct Prerequisites per Course" />
+          <img src={number_of_direct_prereqs} alt="Distribution of Direct Prerequisites per Course" />
           <figcaption>Distribution of Number of Direct Prerequisites per Course</figcaption>
         </figure>
 

@@ -5,11 +5,11 @@ Migrated from /server/templates/globalstats.html and /server/static/latex.css
 
 @import url('https://latex.vercel.app/style.css');
 
-body {
+/* body {
     font-family: system-ui, -apple-system, sans-serif;
     margin: 0;
     padding: 0;
-}
+} */
 
 .globalstatsContainer {
     max-width: 1200px;
