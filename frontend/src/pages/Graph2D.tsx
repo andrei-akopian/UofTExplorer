@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
-import '../styles/graph2d.css'
+import styles from '../styles/graph2d.module.css'
 
 interface Node {
   id: string
@@ -55,7 +55,6 @@ export default function Graph2D() {
   const [breadthCategories, setBreadthCategories] = useState<string[]>([])
   const [activeNodes, setActiveNodes] = useState<Node[]>([])
 
-  // Initialize vis-network on mount
   useEffect(() => {
     const initNetwork = async () => {
       try {
@@ -99,7 +98,6 @@ export default function Graph2D() {
         const network = new Network(containerRef.current, { nodes: [], edges: [] }, options)
         networkRef.current = network
 
-        // Load initial data if search param exists
         const searchQuery = searchParams.get('search')
         if (searchQuery) {
           await fetchGraph(searchQuery)
@@ -137,14 +135,12 @@ export default function Graph2D() {
         throw new Error('Invalid graph data format')
       }
 
-      // Process and display data
       const prepared = prepareData(data.nodes, data.edges)
       setActiveNodes(prepared.nodes)
       
       if (networkRef.current) {
         networkRef.current.setData({ nodes: prepared.nodes, edges: prepared.edges })
         networkRef.current.startSimulation()
-        // Note: centerCamera would be called here in original
       }
 
       setCurrentQuery(data.curr_query || { type: '', code: '', name: '' })
@@ -238,16 +234,16 @@ export default function Graph2D() {
   }
 
   return (
-    <div className="graph2d-container">
+    <div className={styles.graph2dContainer}>
       <div ref={containerRef} id="mynetwork"></div>
       
-      <a href="/" className="homelink" title="Back to home">
+      <a href="/" className={styles.homelink} title="Back to home">
         <svg width="2rem" height="2rem" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M1 6V15H6V11C6 9.89543 6.89543 9 8 9C9.10457 9 10 9.89543 10 11V15H15V6L8 0L1 6Z" fill="#000000" />
         </svg>
       </a>
 
-      <details className="settings close-on-outclick">
+      <details className={`${styles.settings} close-on-outclick`}>
         <summary>
           <svg width="2.5rem" height="2.5rem" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <g id="out" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
@@ -255,16 +251,16 @@ export default function Graph2D() {
             </g>
           </svg>
         </summary>
-        <div className="filter-options settings-options">
-          <label className="filter-option">
+        <div className={`${styles.filterOptions} ${styles.settingsOptions}`}>
+          <label className={styles.filterOption}>
             <input type="checkbox" checked={useShellLayout} onChange={(e) => setUseShellLayout(e.target.checked)} />
             <span>Use shell layout</span>
           </label>
         </div>
       </details>
 
-      <div className="corner-switch">
-        <Link to="/3dforcegraph" className="view-switch-button corner-switch-button" title="Switch to 3D view">
+      <div className={styles.cornerSwitch}>
+        <Link to="/3dforcegraph" className={`${styles.viewSwitchButton} ${styles.cornerSwitchButton}`} title="Switch to 3D view">
           3D→
         </Link>
       </div>
@@ -281,10 +277,10 @@ export default function Graph2D() {
             autoComplete="off"
           />
           {showSearchResults && (
-            <div id="searchResults" className={showSearchResults ? 'show' : ''}>
+            <div id="searchResults" className={showSearchResults ? styles.show : ''}>
               {searchResults.length > 0 ? (
                 searchResults.map((result) => (
-                  <div key={result.id} className="result-item" onClick={() => {
+                  <div key={result.id} className={styles.resultItem} onClick={() => {
                     setQuery(result.code || result.label)
                     setShowSearchResults(false)
                   }}>
@@ -292,31 +288,31 @@ export default function Graph2D() {
                   </div>
                 ))
               ) : (
-                <div className="no-results">No results found</div>
+                <div className={styles.noResults}>No results found</div>
               )}
             </div>
           )}
         </div>
         
-        <details className="filter-dropdown close-on-outclick">
+        <details className={`${styles.filterDropdown} close-on-outclick`}>
           <summary>CR / NCR</summary>
-          <div id="crNcrFilterOptions" className="filter-options">
-            <label className="filter-option">
+          <div id="crNcrFilterOptions" className={styles.filterOptions}>
+            <label className={styles.filterOption}>
               <input type="checkbox" />
               <span>Eligible</span>
             </label>
-            <label className="filter-option">
+            <label className={styles.filterOption}>
               <input type="checkbox" />
               <span>Ineligible</span>
             </label>
           </div>
         </details>
 
-        <details className="filter-dropdown close-on-outclick">
+        <details className={`${styles.filterDropdown} close-on-outclick`}>
           <summary>Departments</summary>
-          <div id="departmentFilterOptions" className="filter-options">
+          <div id="departmentFilterOptions" className={styles.filterOptions}>
             {departments.map((dept) => (
-              <label key={dept} className="filter-option">
+              <label key={dept} className={styles.filterOption}>
                 <input type="checkbox" value={dept} />
                 <span>{dept}</span>
               </label>
@@ -324,11 +320,11 @@ export default function Graph2D() {
           </div>
         </details>
 
-        <details className="filter-dropdown close-on-outclick">
+        <details className={`${styles.filterDropdown} close-on-outclick`}>
           <summary>Breadth Requirements</summary>
-          <div id="breadthFilterOptions" className="filter-options">
+          <div id="breadthFilterOptions" className={styles.filterOptions}>
             {breadthCategories.map((breadth) => (
-              <label key={breadth} className="filter-option">
+              <label key={breadth} className={styles.filterOption}>
                 <input type="checkbox" value={breadth} />
                 <span>{breadth}</span>
               </label>
@@ -340,11 +336,11 @@ export default function Graph2D() {
           Load Graph
         </button>
 
-        <div className="status-stack">
-          <div className="curr-query-display">
+        <div className={styles.statusStack}>
+          <div className={styles.currQueryDisplay}>
             {currentQuery.code && `Currently displaying: ${currentQuery.code} — ${currentQuery.name}`}
           </div>
-          <div id="message" className={messageType}>{message}</div>
+          <div id="message" className={styles.messageType}>{message}</div>
         </div>
       </div>
     </div>

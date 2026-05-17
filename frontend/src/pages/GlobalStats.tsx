@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import '../styles/globalstats.css'
+import styles from '../styles/globalstats.module.css'
 
 export default function GlobalStats() {
   return (
-    <div className="globalstats-container">
+    <div className={styles.globalstatsContainer}>
       <article>
         <div style={{ textAlign: 'center', fontSize: '1.25rem', marginBottom: '1.5em' }}>
           <Link to="/">Home</Link> | <Link to="/2dgraph">2D Graph</Link> | <Link to="/3dforcegraph">3D Graph</Link> | <Link to="/pathexplorer">Path Explorer</Link>
@@ -11,9 +11,9 @@ export default function GlobalStats() {
 
         <h1 style={{ textAlign: 'center' }}>Executive Report on the Global Statistics</h1>
 
-        <div className="author">Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng <br />March 30, 2026</div>
+        <div className={styles.author}>Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng <br />March 30, 2026</div>
 
-        <div className="abstract">
+        <div className={styles.abstract}>
           We explored the relationships between courses, programs, and departments at the Faculty of Arts & Science at
           the University of Toronto. This report summarizes the global statistics computed on our entire constructed graph.
           All data was pulled from the{' '}
@@ -27,11 +27,11 @@ export default function GlobalStats() {
 
         <div>We computed many statistical measures, with the following being done on the entire constructed graph.</div>
 
-        <div className="table" style={{ marginTop: '1em' }}>
+        <div className={styles.table} style={{ marginTop: '1em' }}>
           <caption>
             <span style={{ fontWeight: 'bold' }}>Table 1. </span>Statistics computed on the entire graph.
           </caption>
-          <table className="stats-table">
+          <table className={styles.statsTable}>
             <thead>
               <tr>
                 <th>Statistic</th>
@@ -47,7 +47,7 @@ export default function GlobalStats() {
           </table>
         </div>
 
-        <div className="indent-pars">
+        <div className={styles.indentPars}>
           <p>
             We can see that the Faculty of Arts & Science has a significant number of courses. Note that the number of
             requisites is the total number of Requisite objects stored by the complete CourseGraph, which undercounts the
@@ -89,7 +89,7 @@ export default function GlobalStats() {
           <figcaption>Distribution of Course Length and Courses per Levels</figcaption>
         </figure>
 
-        <div className="indent-pars">
+        <div className={styles.indentPars}>
           <p>There are significantly more half-year than full-year courses in the Faculty of Arts & Science.</p>
           <p>
             For the course levels, we separated them according to the first digit of the numerical part of their course
@@ -105,7 +105,7 @@ export default function GlobalStats() {
           <figcaption>Average Hours per Course by Department</figcaption>
         </figure>
 
-        <div className="indent-pars">
+        <div className={styles.indentPars}>
           <p>
             This graph shows the average number of hours per course for each department, sorted in descending order. For
             the top 11 departments, the time is split fairly evenly between lecture and practical hours. However, it is
@@ -118,7 +118,7 @@ export default function GlobalStats() {
           <figcaption>Number of Courses by Department</figcaption>
         </figure>
 
-        <div className="indent-pars">
+        <div className={styles.indentPars}>
           <p>
             The top 5 departments with the most courses are History (HIS), Religion (RLG), East Asian Studies (EAS),
             Philosophy (PHL), and Political Science (POL). There are only 13 departments with over 100 courses. For most of
@@ -131,7 +131,7 @@ export default function GlobalStats() {
           <figcaption>Distribution of Number of Direct Prerequisites per Course</figcaption>
         </figure>
 
-        <div className="indent-pars">
+        <div className={styles.indentPars}>
           <p>
             There are 2993 courses with no direct prerequisites, and over 800 courses with 1 direct prerequisite and
             beyond. The maximum number of direct prerequisites any course has is 10 (PHY221H1).

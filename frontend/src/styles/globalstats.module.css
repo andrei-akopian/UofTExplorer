@@ -11,7 +11,7 @@ body {
     padding: 0;
 }
 
-.globalstats-container {
+.globalstatsContainer {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
@@ -94,7 +94,7 @@ figure figcaption {
     color: #666;
 }
 
-.stats-table {
+.statsTable {
     margin: 1rem 0 1.75rem;
     width: 100%;
     border-collapse: collapse;
@@ -102,34 +102,34 @@ figure figcaption {
     border-bottom: 1px solid #d7d7d7;
 }
 
-.stats-table th,
-.stats-table td {
+.statsTable th,
+.statsTable td {
     padding: 0.55rem 0.7rem;
     border-bottom: 1px solid #e8e8e8;
     text-align: left;
 }
 
-.stats-table thead th {
+.statsTable thead th {
     font-weight: 700;
     color: #222;
     background: #f7f7f7;
 }
 
-.stats-table tbody tr:nth-child(even) {
+.statsTable tbody tr:nth-child(even) {
     background: #fcfcfc;
 }
 
-.stats-table td:last-child {
+.statsTable td:last-child {
     width: 16%;
     white-space: nowrap;
     font-variant-numeric: tabular-nums;
 }
 
-.indent-pars {
+.indentPars {
     margin: 1.5rem 0;
 }
 
-.indent-pars p {
+.indentPars p {
     margin: 1rem 0;
     text-align: justify;
     line-height: 1.7;

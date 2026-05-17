@@ -19,7 +19,7 @@ Migrated from /server/static/index.css
   box-sizing: border-box;
 }
 
-.home-container {
+.homeContainer {
   margin: 0;
   min-height: 100vh;
   padding: 2.5rem 1.25rem;
@@ -32,11 +32,11 @@ Migrated from /server/static/index.css
   gap: 0.75rem;
 }
 
-.home-container > * {
+.homeContainer > * {
   width: min(100%, 44rem);
 }
 
-.home-container h1 {
+.homeContainer h1 {
   margin: 0 0 0.75rem;
   padding: 0;
   font-family: 'Notable', 'Montserrat', sans-serif;
@@ -47,30 +47,30 @@ Migrated from /server/static/index.css
   width: min(100%, 44rem);
 }
 
-.intro-text {
+.introText {
   width: min(100%, 44rem);
 }
 
-.section-block {
+.sectionBlock {
   width: min(100%, 44rem);
 }
 
-.home-container h2 {
+.homeContainer h2 {
   margin: 1.5rem 0 0.5rem;
   padding: 0;
   font-size: 1.4em;
   font-weight: 500;
 }
 
-.home-container a {
+.homeContainer a {
   color: var(--link);
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: color 140ms ease, border-color 140ms ease;
 }
 
-.home-container a:hover,
-.home-container a:focus-visible {
+.homeContainer a:hover,
+.homeContainer a:focus-visible {
   color: var(--link-hover);
   border-color: currentColor;
 }

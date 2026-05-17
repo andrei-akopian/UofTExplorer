@@ -1,18 +1,18 @@
 import { Link } from 'react-router-dom'
-import '../styles/graph3d.css'
+import styles from '../styles/graph3d.module.css'
 
 export default function Graph3D() {
   return (
-    <div className="graph3d-container">
+    <div className={styles.graph3dContainer}>
       <div id="graph"></div>
       
-      <a href="/" className="homelink" title="Back to home">
+      <a href="/" className={styles.homelink} title="Back to home">
         <svg width="2rem" height="2rem" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M1 6V15H6V11C6 9.89543 6.89543 9 8 9C9.10457 9 10 9.89543 10 11V15H15V6L8 0L1 6Z" fill="#000000" />
         </svg>
       </a>
 
-      <details className="settings close-on-outclick">
+      <details className={`${styles.settings} close-on-outclick`}>
         <summary>
           <svg width="2.5rem" height="2.5rem" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <g id="out" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
@@ -20,16 +20,16 @@ export default function Graph3D() {
             </g>
           </svg>
         </summary>
-        <div className="filter-options settings-options">
-          <label className="filter-option">
+        <div className={`${styles.filterOptions} ${styles.settingsOptions}`}>
+          <label className={styles.filterOption}>
             <input type="checkbox" defaultChecked />
             <span>Use shell layout</span>
           </label>
         </div>
       </details>
 
-      <div className="corner-switch">
-        <Link to="/2dgraph" className="view-switch-button corner-switch-button" title="Switch to 2D view">
+      <div className={styles.cornerSwitch}>
+        <Link to="/2dgraph" className={`${styles.viewSwitchButton} ${styles.cornerSwitchButton}`} title="Switch to 2D view">
           2D→
         </Link>
       </div>
@@ -45,25 +45,25 @@ export default function Graph3D() {
           <div id="searchResults"></div>
         </div>
         
-        <details className="filter-dropdown close-on-outclick">
+        <details className={`${styles.filterDropdown} close-on-outclick`}>
           <summary>CR / NCR</summary>
-          <div id="crNcrFilterOptions" className="filter-options"></div>
+          <div id="crNcrFilterOptions" className={styles.filterOptions}></div>
         </details>
 
-        <details className="filter-dropdown close-on-outclick">
+        <details className={`${styles.filterDropdown} close-on-outclick`}>
           <summary>Departments</summary>
-          <div id="departmentFilterOptions" className="filter-options"></div>
+          <div id="departmentFilterOptions" className={styles.filterOptions}></div>
         </details>
 
-        <details className="filter-dropdown close-on-outclick">
+        <details className={`${styles.filterDropdown} close-on-outclick`}>
           <summary>Breadth Requirements</summary>
-          <div id="breadthFilterOptions" className="filter-options"></div>
+          <div id="breadthFilterOptions" className={styles.filterOptions}></div>
         </details>
 
         <button id="fetchButton">Fetch New Graph</button>
 
-        <div className="status-stack">
-          <div id="currQueryDisplay" className="curr-query-display"></div>
+        <div className={styles.statusStack}>
+          <div id="currQueryDisplay" className={styles.currQueryDisplay}></div>
           <div id="message"></div>
         </div>
       </div>

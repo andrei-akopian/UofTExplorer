@@ -47,14 +47,14 @@ body {
     background: #fafafa;
 }
 
-.status-stack {
+.statusStack {
     display: flex;
     flex-direction: column;
     gap: 4px;
     min-width: 20rem;
 }
 
-.curr-query-display {
+.currQueryDisplay {
     color: #24324a;
     font-size: 0.84rem;
     font-weight: 600;
@@ -154,7 +154,7 @@ body {
     cursor: not-allowed;
 }
 
-.view-switch-button {
+.viewSwitchButton {
     margin-left: 0;
     padding: 10px 16px;
     font-size: 14px;
@@ -169,13 +169,13 @@ body {
     display: inline-block;
 }
 
-.view-switch-button:hover {
+.viewSwitchButton:hover {
     background: #dfeeff;
     border-color: #8fb8e8;
     color: #004f9e;
 }
 
-.corner-switch {
+.cornerSwitch {
     position: absolute;
     top: 0;
     right: 0;
@@ -187,7 +187,7 @@ body {
     justify-content: center;
 }
 
-.corner-switch-button {
+.cornerSwitchButton {
     margin-left: 0;
     padding: 0;
     font-size: 0.95rem;
@@ -205,16 +205,11 @@ body {
     color: #000000;
 }
 
-.status-stack {
-    flex: 1 1 20rem;
-    min-width: 16rem;
-}
-
-.filter-dropdown {
+.filterDropdown {
     position: relative;
 }
 
-.filter-dropdown summary {
+.filterDropdown summary {
     list-style: none;
     cursor: pointer;
     padding: 10px 12px;
@@ -225,11 +220,11 @@ body {
     user-select: none;
 }
 
-.filter-dropdown summary::-webkit-details-marker {
+.filterDropdown summary::-webkit-details-marker {
     display: none;
 }
 
-.filter-options {
+.filterOptions {
     position: absolute;
     top: calc(100% + 6px);
     left: 0;
@@ -247,14 +242,14 @@ body {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
 }
 
-.settings-options {
+.settingsOptions {
     width: max-content;
     min-width: 5em;
     max-height: none;
     overflow: visible;
 }
 
-.filter-option {
+.filterOption {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -298,7 +293,7 @@ body {
     display: block;
 }
 
-.side-panel {
+.sidePanel {
     position: fixed;
     top: 64px;
     right: 0;
@@ -321,24 +316,24 @@ body {
     color: #222;
 }
 
-.side-panel.open {
+.sidePanel.open {
     transform: translateX(0);
 }
 
-.side-panel header,
-.side-panel .side-panel-header {
+.sidePanel header,
+.sidePanel .sidePanelHeader {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.side-panel h3 {
+.sidePanel h3 {
     margin: 0;
     font-size: 16px;
     font-weight: 600;
 }
 
-.side-panel .close-btn {
+.sidePanel .closeBtn {
     border: none;
     background: transparent;
     cursor: pointer;
@@ -346,34 +341,34 @@ body {
     line-height: 1;
 }
 
-.side-panel .side-panel-content {
+.sidePanel .sidePanelContent {
     flex: 1 1 auto;
     font-size: 14px;
     color: #222;
     padding-bottom: 3em;
 }
 
-.side-panel .panel-state {
+.sidePanel .panelState {
     font-size: 13px;
     color: #666;
 }
 
-.side-panel .info-list {
+.sidePanel .infoList {
     margin: 0;
 }
 
-.side-panel .info-list dt {
+.sidePanel .infoList dt {
     margin-top: 12px;
     font-weight: 600;
 }
 
-.side-panel .info-list dd {
+.sidePanel .infoList dd {
     margin: 4px 0 0;
     color: #333;
 }
 
 @media (max-width: 720px) {
-    .side-panel {
+    .sidePanel {
         width: 92%;
         max-width: 92%;
     }
