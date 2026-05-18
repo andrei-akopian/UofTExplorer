@@ -3,7 +3,7 @@ ArtSci Atlas - Global Statistics Page CSS
 Migrated from /server/templates/globalstats.html and /server/static/latex.css
 */
 
-@import url('https://latex.vercel.app/style.css');
+/* @import url('https://latex.vercel.app/style.css'); */
 
 /* body {
     font-family: system-ui, -apple-system, sans-serif;
