@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom'
 
-import styless from '../styles/globalstats.module.css'
-
 import course_length_pie_chart from '../assets/globalstats/course_length_pie_chart.svg'
 import course_levels_pie from '../assets/globalstats/course_levels_pie.svg'
 import departments_by_course_level from '../assets/globalstats/departments_by_course_level.svg'
