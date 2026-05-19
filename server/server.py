@@ -475,6 +475,20 @@ def images(filename: str) -> Response | None:
     return None
 
 
+@app.route("/api/departments", methods=["GET"])
+def get_departments() -> ResponseReturnValue:
+    """
+    Respond to a request to fetch all departments.
+    Return a json structure of the departments.
+    """
+    try:
+        departments = COURSE_GRAPH_CONTAINER.departments
+        return jsonify(departments), 200
+    except Exception as e:
+        app.logger.warning(e)
+        return jsonify({"error": "Internal error"}), 500
+
+
 def find_port() -> int:
     """
     Find an open port for the Flask server to use.
