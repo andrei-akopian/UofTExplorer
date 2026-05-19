@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
+import SearchQueryBar from '../components/SearchQueryBar'
 import styles from '../styles/graph2d.module.css'
 
 interface Node {
@@ -118,7 +119,12 @@ export default function Graph2D() {
     setMessageType('info')
 
     try {
-      const payload = { query: graphQuery }
+      const payload = {
+        query: graphQuery,
+        cr_ncr: [],
+        departments: departments,
+        breadth_requirements: breadthCategories
+      }
       const res = await fetch('/api/fetch_graph', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -243,7 +249,7 @@ export default function Graph2D() {
         </svg>
       </a>
 
-      <details className={`${styles.settings} close-on-outclick`}>
+      <details className={`${styles.settings} close-on-outclick`}  style={{display: 'flex'}}>
         <summary>
           <svg width="2.5rem" height="2.5rem" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <g id="out" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
@@ -265,7 +271,7 @@ export default function Graph2D() {
         </Link>
       </div>
 
-      <div id="controls">
+      <div id="controls" style={{display: 'flex'}}>
         <div style={{ position: 'relative' }}>
           <input
             type="text"
@@ -343,6 +349,7 @@ export default function Graph2D() {
           <div id="message" className={styles.messageType}>{message}</div>
         </div>
       </div>
+      <SearchQueryBar query={query} setQuery={setQuery} />
     </div>
   )
 }
