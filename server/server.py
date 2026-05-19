@@ -297,7 +297,7 @@ def pathexplorer_progress(job_id: str) -> ResponseReturnValue:
     return jsonify(response), 200
 
 
-@app.route("/get_immediate_postreqs", methods=["POST"])
+@app.route("/api/get_immediate_postreqs", methods=["POST"])
 def get_immediate_postreqs() -> ResponseReturnValue:
     """
     Return a deconstructed graph showing immediate post-requisites for completed courses.
@@ -340,7 +340,7 @@ def get_immediate_postreqs() -> ResponseReturnValue:
         return jsonify({"error": str(e)}), 500
 
 
-@app.route("/suggest", methods=["POST"])
+@app.route("/api/suggest", methods=["POST"])
 def suggest() -> ResponseReturnValue:
     """
     Return search suggestions for the current query, including departments, programs, and courses.
@@ -357,10 +357,10 @@ def suggest() -> ResponseReturnValue:
         return jsonify({"results": matches})
 
     except Exception as e:
-        return jsonify({"results": [], "error": "Internal error"}), 500
+        return jsonify({"results": [], "error": "Internal error", "exception": str(e)}), 500
 
 
-@app.route("/suggest_courses", methods=["POST"])
+@app.route("/api/suggest_courses", methods=["POST"])
 def suggest_courses() -> ResponseReturnValue:
     """
     Return search suggestions for the current query, including only courses.
@@ -380,7 +380,7 @@ def suggest_courses() -> ResponseReturnValue:
         return jsonify({"results": [], "error": "Internal error"}), 500
 
 
-@app.route("/courseinformation", methods=["POST"])
+@app.route("/api/courseinformation", methods=["POST"])
 def courseinformation() -> ResponseReturnValue:
     """
     Return all information about a course, to be displayed in the sidebar.
@@ -402,7 +402,7 @@ def courseinformation() -> ResponseReturnValue:
         return jsonify({"results": [], "error": "Internal error"}), 500
 
 
-@app.route('/fetch_graph', methods=['POST'])
+@app.route('/api/fetch_graph', methods=['POST'])
 def fetch_graph() -> ResponseReturnValue:
     """
     Respond to a request to fetch a new graph.

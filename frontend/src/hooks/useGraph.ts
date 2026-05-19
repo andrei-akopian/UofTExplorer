@@ -4,7 +4,7 @@
 
 import { useState, useCallback } from 'react'
 import type { GraphData, FilterOptions } from '../types'
-import { fetchGraphData, searchCourses } from '../lib/api'
+import { fetchGraphData, searchAll } from '../lib/api'
 
 interface UseFetchGraphReturn {
   data: GraphData | null
@@ -73,7 +73,7 @@ export function useSearch(debounceDelay = 300): UseSearchReturn {
         setError(null)
 
         try {
-          const data = await searchCourses(query)
+          const data = await searchAll(query)
           setResults(data)
         } catch (err) {
           const message = err instanceof Error ? err.message : 'Search failed'

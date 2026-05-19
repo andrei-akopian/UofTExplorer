@@ -15,13 +15,19 @@ import type {
 const API_BASE_URL = '/api'
 
 class ApiError extends Error {
+  public status: number
+  public data?: any
   constructor(
-    public status: number,
+    status: number,
     message: string,
-    public data?: any
+    data?: any
   ) {
     super(message)
     this.name = 'ApiError'
+    this.status = status
+    if (data) {
+      this.data = data
+    }
   }
 }
 
@@ -56,19 +62,19 @@ export async function fetchGraphData(
 /**
  * Search for courses, programs, or departments
  */
-export async function searchCourses(query: string, limit = 50): Promise<SearchResult[]> {
-  const params = new URLSearchParams({ q: query, limit: String(limit) })
-
-  const response = await fetch(`${API_BASE_URL}/search?${params}`, {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' }
+export async function searchAll(query: string, limit = 50): Promise<SearchResult[]> {
+  const response = await fetch(`${API_BASE_URL}/suggest?`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ q: query, limit })
   })
 
   if (!response.ok) {
     throw new ApiError(response.status, 'Search failed')
   }
 
-  return response.json()
+  const data = await response.json()
+  return data.results
 }
 
 /**
@@ -127,6 +133,7 @@ export async function getCourseDetails(courseCode: string): Promise<any> {
   return response.json()
 }
 
+
 /**
  * Get departments list
  */
@@ -143,28 +150,12 @@ export async function getDepartments(): Promise<string[]> {
   return response.json()
 }
 
-/**
- * Get breadth categories
- */
-export async function getBreadthCategories(): Promise<string[]> {
-  const response = await fetch(`${API_BASE_URL}/breadth_categories`, {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' }
-  })
-
-  if (!response.ok) {
-    throw new ApiError(response.status, 'Failed to fetch breadth categories')
-  }
-
-  return response.json()
-}
 
 export default {
   fetchGraphData,
-  searchCourses,
+  searchAll,
   fetchGlobalStats,
   solvePath,
   getCourseDetails,
-  getDepartments,
-  getBreadthCategories
+  getDepartments
 }
