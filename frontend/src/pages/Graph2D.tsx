@@ -3,6 +3,8 @@ import { useSearchParams, Link } from 'react-router-dom'
 import GraphQuery from '../components/GraphQuery'
 import styles from '../styles/graph2d.module.css'
 
+import type { GraphNode, GraphEdge, GraphData } from '../types'
+
 interface Node {
   id: string
   label: string
@@ -16,17 +18,49 @@ interface Node {
   font?: { size: number }
 }
 
+const convertGenericNode = (node: GraphNode): Node => {
+  return {
+    id: node.id,
+    label: node.label,
+    code: node.code,
+    depth: node.depth,
+    x: node.x,
+    y: node.y,
+    targetRadius: node.targetRadius,
+    size: node.size,
+    color: node.color,
+    font: node.font
+  }
+}
+
 interface Edge {
   from: string
   to: string
 }
 
-interface GraphData {
+const convertGenericEdge = (edge: GraphEdge): Edge => {
+  return {
+    from: edge.from,
+    to: edge.to
+  }
+}
+
+interface Graph2DData {
   nodes: Node[]
   edges: Edge[]
   search?: string
   curr_query?: { type: string; code: string; name: string }
   should_open_course_panel?: boolean
+}
+
+const convertGenericGraph = (data: GraphData): Graph2DData => {
+  return {
+    nodes: data.nodes.map(convertGenericNode),
+    edges: data.edges.map(convertGenericEdge),
+    search: data.search,
+    curr_query: data.curr_query,
+    should_open_course_panel: data.should_open_course_panel
+   }
 }
 
 const PHYSICS_DAMPING = 0.40
@@ -56,7 +90,7 @@ export default function Graph2D() {
   const [breadthCategories, setBreadthCategories] = useState<string[]>([])
   const [activeNodes, setActiveNodes] = useState<Node[]>([])
 
-  const [data, setData] = useState<GraphData>({ nodes: [], edges: [] })
+  const [graphData, setGraphData] = useState<GraphData>({ nodes: [], edges: [] })
 
   useEffect(() => {
     const initNetwork = async () => {
@@ -137,8 +171,8 @@ export default function Graph2D() {
         throw new Error(`Server error (${res.status})`)
       }
 
-      const data: GraphData = await res.json()
-      
+      const data: Graph2DData = await res.json()
+    
       if (!data?.nodes || !data?.edges) {
         throw new Error('Invalid graph data format')
       }
@@ -351,7 +385,7 @@ export default function Graph2D() {
           <div id="message" className={styles.messageType}>{message}</div>
         </div>
       </div>
-      <GraphQuery data={data} setData={setData} isLoading={loading} setIsLoading={setLoading} />
+      <GraphQuery data={graphData} setData={setGraphData} isLoading={loading} setIsLoading={setLoading} />
     </div>
   )
 }
