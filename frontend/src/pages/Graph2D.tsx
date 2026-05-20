@@ -147,6 +147,35 @@ export default function Graph2D() {
     initNetwork()
   }, [])
 
+  /* Graph Updating */
+  useEffect(() => {
+    console.log('Graph data updated:', graphData);
+    const data2D = convertGenericGraph(graphData)
+    const prepared = prepareData(data2D.nodes, data2D.edges)
+    setActiveNodes(prepared.nodes)
+
+    if (networkRef.current) {
+        networkRef.current.setData({ nodes: prepared.nodes, edges: prepared.edges })
+        networkRef.current.startSimulation()
+    }
+
+    setCurrentQuery(data2D.curr_query || { type: '', code: '', name: '' })
+    setMessage(`Graph loaded (${data2D.nodes.length} nodes)`, )
+    setMessageType('success')
+
+    if (data2D.search) {
+      setSearchParams({ search: data2D.search })
+    }
+
+  }, [graphData]);
+
+  useEffect(() => {
+    if (loading){
+      setMessage('Loading graph...');
+      setMessageType('info');
+    }
+  }, [loading]);
+
   const fetchGraph = async (graphQuery: string) => {
     if (!graphQuery.trim()) return
 
