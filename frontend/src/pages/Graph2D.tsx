@@ -4,6 +4,7 @@ import GraphQuery from '../components/GraphQuery'
 import styles from '../styles/graph2d.module.css'
 
 import type { GraphNode, GraphEdge, GraphData } from '../types'
+import { fetchGraphData } from '../lib/api'
 
 interface Node {
   id: string
@@ -137,7 +138,7 @@ export default function Graph2D() {
 
         const searchQuery = searchParams.get('search')
         if (searchQuery) {
-          await fetchGraph(searchQuery)
+          await manualFetchGraph(searchQuery)
         }
       } catch (err) {
         console.error('Failed to initialize network:', err)
@@ -176,58 +177,17 @@ export default function Graph2D() {
     }
   }, [loading]);
 
-  const fetchGraph = async (graphQuery: string) => {
+  const manualFetchGraph = async (graphQuery: string) => {
     if (!graphQuery.trim()) return
 
-    setLoading(true)
-    setMessage('Loading graph...')
-    setMessageType('info')
-
     try {
-      const payload = {
-        query: graphQuery,
-        cr_ncr: [],
-        departments: departments,
-        breadth_requirements: breadthCategories
-      }
-      const res = await fetch('/api/fetch_graph', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      })
-
-      if (!res.ok) {
-        throw new Error(`Server error (${res.status})`)
-      }
-
-      const data: Graph2DData = await res.json()
-    
-      if (!data?.nodes || !data?.edges) {
-        throw new Error('Invalid graph data format')
-      }
-
-      const prepared = prepareData(data.nodes, data.edges)
-      setActiveNodes(prepared.nodes)
-      
-      if (networkRef.current) {
-        networkRef.current.setData({ nodes: prepared.nodes, edges: prepared.edges })
-        networkRef.current.startSimulation()
-      }
-
-      setCurrentQuery(data.curr_query || { type: '', code: '', name: '' })
-      setMessage(`Graph loaded (${data.nodes.length} nodes)`, )
-      setMessageType('success')
-      setQuery('')
-      
-      if (data.search) {
-        setSearchParams({ search: data.search })
-      }
+      const fetchedData = await fetchGraphData(graphQuery);
+      setGraphData(fetchedData);
+      setQuery('');
     } catch (err) {
       setMessage(`Error: ${err instanceof Error ? err.message : 'Unknown error'}`)
       setMessageType('error')
       console.error(err)
-    } finally {
-      setLoading(false)
     }
   }
 
@@ -292,18 +252,6 @@ export default function Graph2D() {
     }
   }
 
-  const handleFetchClick = () => {
-    if (query.trim()) {
-      fetchGraph(query)
-    }
-  }
-
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      handleFetchClick()
-    }
-  }
-
   return (
     <div className={styles.graph2dContainer}>
       <div ref={containerRef} id="mynetwork"></div>
@@ -336,84 +284,12 @@ export default function Graph2D() {
         </Link>
       </div>
 
-      <div id="controls" style={{display: 'flex'}}>
-        <div style={{ position: 'relative' }}>
-          <input
-            type="text"
-            id="queryInput"
-            placeholder="Search for course, program, department, or 'all'"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            onKeyPress={handleKeyPress}
-            autoComplete="off"
-          />
-          {showSearchResults && (
-            <div id="searchResults" className={showSearchResults ? styles.show : ''}>
-              {searchResults.length > 0 ? (
-                searchResults.map((result) => (
-                  <div key={result.id} className={styles.resultItem} onClick={() => {
-                    setQuery(result.code || result.label)
-                    setShowSearchResults(false)
-                  }}>
-                    {result.label} {result.code ? `(${result.code})` : ''}
-                  </div>
-                ))
-              ) : (
-                <div className={styles.noResults}>No results found</div>
-              )}
-            </div>
-          )}
-        </div>
-        
-        <details className={`${styles.filterDropdown} close-on-outclick`}>
-          <summary>CR / NCR</summary>
-          <div id="crNcrFilterOptions" className={styles.filterOptions}>
-            <label className={styles.filterOption}>
-              <input type="checkbox" />
-              <span>Eligible</span>
-            </label>
-            <label className={styles.filterOption}>
-              <input type="checkbox" />
-              <span>Ineligible</span>
-            </label>
-          </div>
-        </details>
-
-        <details className={`${styles.filterDropdown} close-on-outclick`}>
-          <summary>Departments</summary>
-          <div id="departmentFilterOptions" className={styles.filterOptions}>
-            {departments.map((dept) => (
-              <label key={dept} className={styles.filterOption}>
-                <input type="checkbox" value={dept} />
-                <span>{dept}</span>
-              </label>
-            ))}
-          </div>
-        </details>
-
-        <details className={`${styles.filterDropdown} close-on-outclick`}>
-          <summary>Breadth Requirements</summary>
-          <div id="breadthFilterOptions" className={styles.filterOptions}>
-            {breadthCategories.map((breadth) => (
-              <label key={breadth} className={styles.filterOption}>
-                <input type="checkbox" value={breadth} />
-                <span>{breadth}</span>
-              </label>
-            ))}
-          </div>
-        </details>
-
-        <button id="fetchButton" onClick={handleFetchClick} disabled={loading}>
-          Load Graph
-        </button>
-
-        <div className={styles.statusStack}>
+      <div className={styles.statusStack}>
           <div className={styles.currQueryDisplay}>
             {currentQuery.code && `Currently displaying: ${currentQuery.code} — ${currentQuery.name}`}
           </div>
           <div id="message" className={styles.messageType}>{message}</div>
         </div>
-      </div>
       <GraphQuery data={graphData} setData={setGraphData} isLoading={loading} setIsLoading={setLoading} />
     </div>
   )
