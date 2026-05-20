@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
-import SearchBar from '../components/SearchBar'
+import GraphQuery from '../components/GraphQuery'
 import styles from '../styles/graph2d.module.css'
 
 interface Node {
@@ -56,7 +56,7 @@ export default function Graph2D() {
   const [breadthCategories, setBreadthCategories] = useState<string[]>([])
   const [activeNodes, setActiveNodes] = useState<Node[]>([])
 
-  const [filters, setFilters] = useState<Object>({})
+  const [data, setData] = useState<GraphData>({ nodes: [], edges: [] })
 
   useEffect(() => {
     const initNetwork = async () => {
@@ -351,7 +351,7 @@ export default function Graph2D() {
           <div id="message" className={styles.messageType}>{message}</div>
         </div>
       </div>
-      <SearchBar query={query} setQuery={setQuery} filtersHook={filters} setFiltersHook={setFilters} />
+      <GraphQuery data={data} setData={setData} isLoading={loading} setIsLoading={setLoading} />
     </div>
   )
 }
