@@ -1,7 +1,17 @@
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import type { GraphData } from '../types'
+import GraphQuery from '../components/GraphQuery'
 import styles from '../styles/graph3d.module.css'
 
 export default function Graph3D() {
+  const [graphData, setGraphData] = useState<GraphData>({ nodes: [], edges: [] });
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    console.log('Graph data updated:', graphData);
+  }, [graphData]);
+
   return (
     <div className={styles.graph3dContainer}>
       <div id="graph"></div>
@@ -34,39 +44,12 @@ export default function Graph3D() {
         </Link>
       </div>
 
-      <div id="controls">
-        <div style={{ position: 'relative' }}>
-          <input
-            type="text"
-            id="queryInput"
-            placeholder="Search for course, program, department, or 'all'"
-            autoComplete="off"
-          />
-          <div id="searchResults"></div>
-        </div>
-        
-        <details className={`${styles.filterDropdown} close-on-outclick`}>
-          <summary>CR / NCR</summary>
-          <div id="crNcrFilterOptions" className={styles.filterOptions}></div>
-        </details>
+      <GraphQuery data={graphData} setData={setGraphData} isLoading={isLoading} setIsLoading={setIsLoading} />
 
-        <details className={`${styles.filterDropdown} close-on-outclick`}>
-          <summary>Departments</summary>
-          <div id="departmentFilterOptions" className={styles.filterOptions}></div>
-        </details>
-
-        <details className={`${styles.filterDropdown} close-on-outclick`}>
-          <summary>Breadth Requirements</summary>
-          <div id="breadthFilterOptions" className={styles.filterOptions}></div>
-        </details>
-
-        <button id="fetchButton">Fetch New Graph</button>
-
-        <div className={styles.statusStack}>
+      <div className={styles.statusStack}>
           <div id="currQueryDisplay" className={styles.currQueryDisplay}></div>
           <div id="message"></div>
         </div>
-      </div>
     </div>
   )
 }
