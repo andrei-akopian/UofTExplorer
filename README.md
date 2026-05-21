@@ -61,6 +61,11 @@ A graph visualizer tool for courses and their requisites at the University of To
 - [ ] Test on a variety of browsers; try our best to break it
 - [ ] Share!
 
+## Usability Checks
+- [ ] add `<noscript>` and `@media (scripting: none)` for when clientside js is disabled
+- [ ] add warning if user is on mobile
+- [ ] check accessibility etc. via https://pagespeed.web.dev/
+
 ## Similar Projects
 
 ### Courseography
