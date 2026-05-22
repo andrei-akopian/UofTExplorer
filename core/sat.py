@@ -15,6 +15,7 @@ from typing import Generator
 import core.algorithms as algorithms
 from core.core import CourseGraph, CourseNode, Requisite
 
+from core.sat_solvers import z3wrapper
 
 def solve_sat(graph: CourseGraph, targets: list[str], taken: list[str], avoids: list[str],
               progress_callback=None) -> Generator[int | list[CourseNode]]:
@@ -207,6 +208,13 @@ def _verify(curr: CourseNode | Requisite, taken: set[str], planned: set[str], vi
 
     print("UNKNOWN curr TYPE in sat._brute_helper")
     return False
+
+
+def solve_satz3(graph: CourseGraph, targets: list[str], taken: list[str], avoids: list[str],
+              progress_callback=None) -> Generator[int | list[CourseNode]]:
+    satisfiable, full_dict, courses = z3wrapper()
+    yield len(courses)
+    yield courses
 
 
 if __name__ == '__main__':
