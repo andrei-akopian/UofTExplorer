@@ -9,24 +9,20 @@ import type {
   GlobalStats,
   PathFinderRequest,
   PathFinderResponse,
-  FilterOptions
-} from '../types'
+  FilterOptions,
+} from "../types";
 
-const API_BASE_URL = '/api'
+const API_BASE_URL = "/api";
 
 class ApiError extends Error {
-  public status: number
-  public data?: any
-  constructor(
-    status: number,
-    message: string,
-    data?: any
-  ) {
-    super(message)
-    this.name = 'ApiError'
-    this.status = status
+  public status: number;
+  public data?: any;
+  constructor(status: number, message: string, data?: any) {
+    super(message);
+    this.name = "ApiError";
+    this.status = status;
     if (data) {
-      this.data = data
+      this.data = data;
     }
   }
 }
@@ -36,45 +32,52 @@ class ApiError extends Error {
  */
 export async function fetchGraphData(
   query: string,
-  filters?: Partial<FilterOptions>
+  filters?: Partial<FilterOptions>,
 ): Promise<GraphData> {
   const payload = {
     query,
     cr_ncr: filters?.crNcr || [],
     departments: filters?.departments || [],
-    breadth_requirements: filters?.breadthRequirements || []
-  }
+    breadth_requirements: filters?.breadthRequirements || [],
+  };
 
   const response = await fetch(`${API_BASE_URL}/fetch_graph`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  })
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
 
   if (!response.ok) {
-    const error = await response.json().catch(() => ({}))
-    throw new ApiError(response.status, error.error || 'Failed to fetch graph', error)
+    const error = await response.json().catch(() => ({}));
+    throw new ApiError(
+      response.status,
+      error.error || "Failed to fetch graph",
+      error,
+    );
   }
 
-  return response.json()
+  return response.json();
 }
 
 /**
  * Search for courses, programs, or departments
  */
-export async function searchAll(query: string, limit = 50): Promise<SearchResult[]> {
+export async function searchAll(
+  query: string,
+  limit = 50,
+): Promise<SearchResult[]> {
   const response = await fetch(`${API_BASE_URL}/suggest?`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ q: query, limit })
-  })
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ q: query, limit }),
+  });
 
   if (!response.ok) {
-    throw new ApiError(response.status, 'Search failed')
+    throw new ApiError(response.status, "Search failed");
   }
 
-  const data = await response.json()
-  return data.results
+  const data = await response.json();
+  return data.results;
 }
 
 /**
@@ -82,39 +85,45 @@ export async function searchAll(query: string, limit = 50): Promise<SearchResult
  */
 export async function fetchGlobalStats(): Promise<GlobalStats> {
   const response = await fetch(`${API_BASE_URL}/stats`, {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' }
-  })
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
 
   if (!response.ok) {
-    throw new ApiError(response.status, 'Failed to fetch statistics')
+    throw new ApiError(response.status, "Failed to fetch statistics");
   }
 
-  return response.json()
+  return response.json();
 }
 
 /**
  * Solve path explorer - find shortest path between courses
  */
-export async function solvePath(request: PathFinderRequest): Promise<PathFinderResponse> {
+export async function solvePath(
+  request: PathFinderRequest,
+): Promise<PathFinderResponse> {
   const payload = {
     completed: request.completed,
     desired: request.desired,
-    avoided: request.avoided || []
-  }
+    avoided: request.avoided || [],
+  };
 
   const response = await fetch(`${API_BASE_URL}/solve_path`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  })
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
 
   if (!response.ok) {
-    const error = await response.json().catch(() => ({}))
-    throw new ApiError(response.status, error.error || 'Path solving failed', error)
+    const error = await response.json().catch(() => ({}));
+    throw new ApiError(
+      response.status,
+      error.error || "Path solving failed",
+      error,
+    );
   }
 
-  return response.json()
+  return response.json();
 }
 
 /**
@@ -122,34 +131,32 @@ export async function solvePath(request: PathFinderRequest): Promise<PathFinderR
  */
 export async function getCourseDetails(courseCode: string): Promise<any> {
   const response = await fetch(`${API_BASE_URL}/course/${courseCode}`, {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' }
-  })
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
 
   if (!response.ok) {
-    throw new ApiError(response.status, 'Failed to fetch course details')
+    throw new ApiError(response.status, "Failed to fetch course details");
   }
 
-  return response.json()
+  return response.json();
 }
-
 
 /**
  * Get departments list
  */
 export async function getDepartments(): Promise<string[]> {
   const response = await fetch(`${API_BASE_URL}/departments`, {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' }
-  })
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
 
   if (!response.ok) {
-    throw new ApiError(response.status, 'Failed to fetch departments')
+    throw new ApiError(response.status, "Failed to fetch departments");
   }
 
-  return response.json()
+  return response.json();
 }
-
 
 export default {
   fetchGraphData,
@@ -157,5 +164,5 @@ export default {
   fetchGlobalStats,
   solvePath,
   getCourseDetails,
-  getDepartments
-}
+  getDepartments,
+};

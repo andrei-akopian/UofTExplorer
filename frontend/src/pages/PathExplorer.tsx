@@ -1,14 +1,23 @@
-import { Link } from 'react-router-dom'
-import styles from '../styles/pathexplorer.module.css'
+import { Link } from "react-router-dom";
+import styles from "../styles/pathexplorer.module.css";
 
 export default function PathExplorer() {
   return (
     <div className={styles.pathexplorerContainer}>
       <div id="mynetwork"></div>
-      
+
       <a href="/" className={styles.homelink} title="Back to home">
-        <svg width="2rem" height="2rem" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1 6V15H6V11C6 9.89543 6.89543 9 8 9C9.10457 9 10 9.89543 10 11V15H15V6L8 0L1 6Z" fill="#000000" />
+        <svg
+          width="2rem"
+          height="2rem"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1 6V15H6V11C6 9.89543 6.89543 9 8 9C9.10457 9 10 9.89543 10 11V15H15V6L8 0L1 6Z"
+            fill="#000000"
+          />
         </svg>
       </a>
 
@@ -77,17 +86,35 @@ export default function PathExplorer() {
           <div className={styles.titleBlock}>
             <h3 id="title">Find the shortest path to your academic desires</h3>
           </div>
-          <button id="demoSendButton" type="button" className={styles.demoButton}>
+          <button
+            id="demoSendButton"
+            type="button"
+            className={styles.demoButton}
+          >
             Run Path Explorer
           </button>
-          <div id="progressContainer" className={styles.progressContainer} style={{ display: 'none' }}>
+          <div
+            id="progressContainer"
+            className={styles.progressContainer}
+            style={{ display: "none" }}
+          >
             <p id="fundamentalsInfo" className={styles.progressInfo}></p>
-            <p id="progressStatus" className={styles.progressStatus}>Starting...</p>
-            <button id="cancelSolverButton" type="button" className={styles.cancelButton}>
+            <p id="progressStatus" className={styles.progressStatus}>
+              Starting...
+            </p>
+            <button
+              id="cancelSolverButton"
+              type="button"
+              className={styles.cancelButton}
+            >
               Cancel
             </button>
           </div>
-          <div id="warningContainer" className={styles.warningContainer} style={{ display: 'none' }}>
+          <div
+            id="warningContainer"
+            className={styles.warningContainer}
+            style={{ display: "none" }}
+          >
             <div className={styles.warningMessage}>
               <span className={styles.warningIcon}>⚠️</span>
               <span id="warningText"></span>
@@ -96,7 +123,11 @@ export default function PathExplorer() {
         </div>
       </div>
 
-      <p id="requestStatus" className={styles.requestStatus} aria-live="polite"></p>
+      <p
+        id="requestStatus"
+        className={styles.requestStatus}
+        aria-live="polite"
+      ></p>
     </div>
-  )
+  );
 }

@@ -1,10 +1,10 @@
-import './App.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import Graph2D from './pages/Graph2D'
-import Graph3D from './pages/Graph3D'
-import PathExplorer from './pages/PathExplorer'
-import GlobalStats from './pages/GlobalStats'
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Graph2D from "./pages/Graph2D";
+import Graph3D from "./pages/Graph3D";
+import PathExplorer from "./pages/PathExplorer";
+import GlobalStats from "./pages/GlobalStats";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         <Route path="/globalstats" element={<GlobalStats />} />
       </Routes>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,22 +1,22 @@
-import { useState, useEffect, useRef } from 'react'
-import { useSearchParams, Link } from 'react-router-dom'
-import GraphQuery from '../components/GraphQuery'
-import styles from '../styles/graph2d.module.css'
+import { useState, useEffect, useRef } from "react";
+import { useSearchParams, Link } from "react-router-dom";
+import GraphQuery from "../components/GraphQuery";
+import styles from "../styles/graph2d.module.css";
 
-import type { GraphNode, GraphEdge, GraphData } from '../types'
-import { fetchGraphData } from '../lib/api'
+import type { GraphNode, GraphEdge, GraphData } from "../types";
+import { fetchGraphData } from "../lib/api";
 
 interface Node {
-  id: string
-  label: string
-  code?: string
-  depth?: number
-  x?: number
-  y?: number
-  targetRadius?: number
-  size: number
-  color: string
-  font?: { size: number }
+  id: string;
+  label: string;
+  code?: string;
+  depth?: number;
+  x?: number;
+  y?: number;
+  targetRadius?: number;
+  size: number;
+  color: string;
+  font?: { size: number };
 }
 
 const convertGenericNode = (node: GraphNode): Node => {
@@ -30,28 +30,28 @@ const convertGenericNode = (node: GraphNode): Node => {
     targetRadius: node.targetRadius,
     size: node.size,
     color: node.color,
-    font: node.font
-  }
-}
+    font: node.font,
+  };
+};
 
 interface Edge {
-  from: string
-  to: string
+  from: string;
+  to: string;
 }
 
 const convertGenericEdge = (edge: GraphEdge): Edge => {
   return {
     from: edge.from,
-    to: edge.to
-  }
-}
+    to: edge.to,
+  };
+};
 
 interface Graph2DData {
-  nodes: Node[]
-  edges: Edge[]
-  search?: string
-  curr_query?: { type: string; code: string; name: string }
-  should_open_course_panel?: boolean
+  nodes: Node[];
+  edges: Edge[];
+  search?: string;
+  curr_query?: { type: string; code: string; name: string };
+  should_open_course_panel?: boolean;
 }
 
 const convertGenericGraph = (data: GraphData): Graph2DData => {
@@ -60,237 +60,314 @@ const convertGenericGraph = (data: GraphData): Graph2DData => {
     edges: data.edges.map(convertGenericEdge),
     search: data.search,
     curr_query: data.curr_query,
-    should_open_course_panel: data.should_open_course_panel
-   }
-}
+    should_open_course_panel: data.should_open_course_panel,
+  };
+};
 
-const PHYSICS_DAMPING = 0.40
-const PHYSICS_SPRING_CONST = 0.1
-const DEPTH_PULL_STRENGTH = 0.02
-const PHYSICS_GRAV_CONSTANT = -4000
-const PHYSICS_SPRING_LENGTH = 300
-const GRAVITY_BIAS = 0.0
+const PHYSICS_DAMPING = 0.4;
+const PHYSICS_SPRING_CONST = 0.1;
+const DEPTH_PULL_STRENGTH = 0.02;
+const PHYSICS_GRAV_CONSTANT = -4000;
+const PHYSICS_SPRING_LENGTH = 300;
+const GRAVITY_BIAS = 0.0;
 
 export default function Graph2D() {
-  const [searchParams, setSearchParams] = useSearchParams()
-  const containerRef = useRef<HTMLDivElement>(null)
-  const networkRef = useRef<any>(null)
-  const [message, setMessage] = useState('')
-  const [messageType, setMessageType] = useState<'info' | 'success' | 'error'>('info')
-  const [query, setQuery] = useState('')
-  const [currentQuery, setCurrentQuery] = useState<{ type: string; code: string; name: string }>({
-    type: '',
-    code: '',
-    name: ''
-  })
-  const [useShellLayout, setUseShellLayout] = useState(true)
-  const [searchResults, setSearchResults] = useState<Array<{id: string; label: string; code?: string}>>([])
-  const [showSearchResults, setShowSearchResults] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [departments, setDepartments] = useState<string[]>([])
-  const [breadthCategories, setBreadthCategories] = useState<string[]>([])
-  const [activeNodes, setActiveNodes] = useState<Node[]>([])
+  const [searchParams, setSearchParams] = useSearchParams();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const networkRef = useRef<any>(null);
+  const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState<"info" | "success" | "error">(
+    "info",
+  );
+  const [query, setQuery] = useState("");
+  const [currentQuery, setCurrentQuery] = useState<{
+    type: string;
+    code: string;
+    name: string;
+  }>({
+    type: "",
+    code: "",
+    name: "",
+  });
+  const [useShellLayout, setUseShellLayout] = useState(true);
+  const [searchResults, setSearchResults] = useState<
+    Array<{ id: string; label: string; code?: string }>
+  >([]);
+  const [showSearchResults, setShowSearchResults] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [departments, setDepartments] = useState<string[]>([]);
+  const [breadthCategories, setBreadthCategories] = useState<string[]>([]);
+  const [activeNodes, setActiveNodes] = useState<Node[]>([]);
 
-  const [graphData, setGraphData] = useState<GraphData>({ nodes: [], edges: [] })
+  const [graphData, setGraphData] = useState<GraphData>({
+    nodes: [],
+    edges: [],
+  });
 
   useEffect(() => {
     const initNetwork = async () => {
       try {
-        const { Network } = await import('vis-network/standalone/esm/vis-network.min.js')
-        
-        if (!containerRef.current) return
+        const { Network } =
+          await import("vis-network/standalone/esm/vis-network.min.js");
+
+        if (!containerRef.current) return;
 
         const options = {
           layout: { hierarchical: { enabled: false } },
           nodes: {
-            shape: 'circle',
+            shape: "circle",
             size: 26,
-            font: { size: 14, face: 'system-ui', color: '#000000' },
+            font: { size: 14, face: "system-ui", color: "#000000" },
             borderWidth: 1,
-            color: '#A0B9DB'
+            color: "#A0B9DB",
           },
           edges: {
             arrows: { to: { enabled: true, scaleFactor: 0.8 } },
             width: 2,
-            smooth: { type: 'cubicBezier', forceDirection: 'horizontal' }
+            smooth: { type: "cubicBezier", forceDirection: "horizontal" },
           },
           physics: {
             enabled: true,
-            solver: 'barnesHut',
+            solver: "barnesHut",
             barnesHut: {
               gravitationalConstant: PHYSICS_GRAV_CONSTANT,
               centralGravity: 0.05,
               springLength: PHYSICS_SPRING_LENGTH,
               springConstant: PHYSICS_SPRING_CONST,
               damping: PHYSICS_DAMPING,
-              avoidOverlap: 0.8
+              avoidOverlap: 0.8,
             },
             maxVelocity: 140,
             timestep: 0.35,
             adaptiveTimestep: true,
-            stabilization: { enabled: true, iterations: 150, fit: false }
+            stabilization: { enabled: true, iterations: 150, fit: false },
           },
-          interaction: { dragNodes: true, dragView: true, zoomView: true, selectable: true, hover: true }
-        }
+          interaction: {
+            dragNodes: true,
+            dragView: true,
+            zoomView: true,
+            selectable: true,
+            hover: true,
+          },
+        };
 
-        const network = new Network(containerRef.current, { nodes: [], edges: [] }, options)
-        networkRef.current = network
+        const network = new Network(
+          containerRef.current,
+          { nodes: [], edges: [] },
+          options,
+        );
+        networkRef.current = network;
 
-        const searchQuery = searchParams.get('search')
+        const searchQuery = searchParams.get("search");
         if (searchQuery) {
-          await manualFetchGraph(searchQuery)
+          await manualFetchGraph(searchQuery);
         }
       } catch (err) {
-        console.error('Failed to initialize network:', err)
+        console.error("Failed to initialize network:", err);
       }
-    }
+    };
 
-    initNetwork()
-  }, [])
+    initNetwork();
+  }, []);
 
   /* Graph Updating */
   useEffect(() => {
-    console.log('Graph data updated:', graphData);
-    const data2D = convertGenericGraph(graphData)
-    const prepared = prepareData(data2D.nodes, data2D.edges)
-    setActiveNodes(prepared.nodes)
+    console.log("Graph data updated:", graphData);
+    const data2D = convertGenericGraph(graphData);
+    const prepared = prepareData(data2D.nodes, data2D.edges);
+    setActiveNodes(prepared.nodes);
 
     if (networkRef.current) {
-        networkRef.current.setData({ nodes: prepared.nodes, edges: prepared.edges })
-        networkRef.current.startSimulation()
+      networkRef.current.setData({
+        nodes: prepared.nodes,
+        edges: prepared.edges,
+      });
+      networkRef.current.startSimulation();
     }
 
-    setCurrentQuery(data2D.curr_query || { type: '', code: '', name: '' })
-    setMessage(`Graph loaded (${data2D.nodes.length} nodes)`, )
-    setMessageType('success')
+    setCurrentQuery(data2D.curr_query || { type: "", code: "", name: "" });
+    setMessage(`Graph loaded (${data2D.nodes.length} nodes)`);
+    setMessageType("success");
 
     if (data2D.search) {
-      setSearchParams({ search: data2D.search })
+      setSearchParams({ search: data2D.search });
     }
-
   }, [graphData]);
 
   useEffect(() => {
-    if (loading){
-      setMessage('Loading graph...');
-      setMessageType('info');
+    if (loading) {
+      setMessage("Loading graph...");
+      setMessageType("info");
     }
   }, [loading]);
 
   const manualFetchGraph = async (graphQuery: string) => {
-    if (!graphQuery.trim()) return
+    if (!graphQuery.trim()) return;
 
     try {
       const fetchedData = await fetchGraphData(graphQuery);
       setGraphData(fetchedData);
-      setQuery('');
+      setQuery("");
     } catch (err) {
-      setMessage(`Error: ${err instanceof Error ? err.message : 'Unknown error'}`)
-      setMessageType('error')
-      console.error(err)
+      setMessage(
+        `Error: ${err instanceof Error ? err.message : "Unknown error"}`,
+      );
+      setMessageType("error");
+      console.error(err);
     }
-  }
+  };
 
   const prepareData = (nodes: Node[], edges: Edge[]) => {
-    if (!nodes.length) return { nodes: [], edges }
+    if (!nodes.length) return { nodes: [], edges };
 
-    const levels: Record<number, Node[]> = {}
-    const MIN_RADIUS_STEP = 300
-    const NODE_GIRTH = 120
+    const levels: Record<number, Node[]> = {};
+    const MIN_RADIUS_STEP = 300;
+    const NODE_GIRTH = 120;
 
     if (useShellLayout) {
-      nodes.forEach(n => {
-        const depth = (n.depth !== null && n.depth !== undefined) ? parseInt(String(n.depth)) : null
+      nodes.forEach((n) => {
+        const depth =
+          n.depth !== null && n.depth !== undefined
+            ? parseInt(String(n.depth))
+            : null;
         if (depth !== null) {
-          if (!levels[depth]) levels[depth] = []
-          levels[depth].push(n)
+          if (!levels[depth]) levels[depth] = [];
+          levels[depth].push(n);
         }
-      })
+      });
     }
 
-    const levelRadii: Record<number, number> = {}
-    let currentRadius = 0
-    const sortedDepths = Object.keys(levels).map(Number).sort((a, b) => a - b)
+    const levelRadii: Record<number, number> = {};
+    let currentRadius = 0;
+    const sortedDepths = Object.keys(levels)
+      .map(Number)
+      .sort((a, b) => a - b);
 
-    sortedDepths.forEach(depth => {
-      const nodeCount = levels[depth].length
-      const requiredRadius = (nodeCount * NODE_GIRTH) / (2 * Math.PI)
-      currentRadius += Math.max(MIN_RADIUS_STEP, requiredRadius)
-      levelRadii[depth] = currentRadius
-    })
+    sortedDepths.forEach((depth) => {
+      const nodeCount = levels[depth].length;
+      const requiredRadius = (nodeCount * NODE_GIRTH) / (2 * Math.PI);
+      currentRadius += Math.max(MIN_RADIUS_STEP, requiredRadius);
+      levelRadii[depth] = currentRadius;
+    });
 
-    let sumX = 0
-    let sumY = 0
+    let sumX = 0;
+    let sumY = 0;
 
-    const processedNodes = nodes.map(n => {
-      const depth = (n.depth !== null && n.depth !== undefined) ? parseInt(String(n.depth)) : null
-      const processedNode = { ...n, depth }
+    const processedNodes = nodes.map((n) => {
+      const depth =
+        n.depth !== null && n.depth !== undefined
+          ? parseInt(String(n.depth))
+          : null;
+      const processedNode = { ...n, depth };
 
       if (useShellLayout && depth !== null && levelRadii[depth]) {
-        const radius = levelRadii[depth]
-        const angle = (Math.PI / 2) + (Math.random() - 0.5) * 2
-        processedNode.x = Math.cos(angle) * radius
-        processedNode.y = Math.sin(angle) * radius
-        processedNode.targetRadius = radius
+        const radius = levelRadii[depth];
+        const angle = Math.PI / 2 + (Math.random() - 0.5) * 2;
+        processedNode.x = Math.cos(angle) * radius;
+        processedNode.y = Math.sin(angle) * radius;
+        processedNode.targetRadius = radius;
       } else {
-        processedNode.x = (Math.random() - 0.5) * 200
-        processedNode.y = (Math.random() - 0.5) * 200
-        processedNode.targetRadius = null
+        processedNode.x = (Math.random() - 0.5) * 200;
+        processedNode.y = (Math.random() - 0.5) * 200;
+        processedNode.targetRadius = null;
       }
 
-      sumX += processedNode.x || 0
-      sumY += processedNode.y || 0
+      sumX += processedNode.x || 0;
+      sumY += processedNode.y || 0;
 
-      return processedNode
-    })
+      return processedNode;
+    });
 
     return {
       nodes: processedNodes,
       edges,
       avgX: sumX / (nodes.length || 1),
-      avgY: sumY / (nodes.length || 1)
-    }
-  }
+      avgY: sumY / (nodes.length || 1),
+    };
+  };
 
   return (
     <div className={styles.graph2dContainer}>
       <div ref={containerRef} id="mynetwork"></div>
-      
+
       <a href="/" className={styles.homelink} title="Back to home">
-        <svg width="2rem" height="2rem" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1 6V15H6V11C6 9.89543 6.89543 9 8 9C9.10457 9 10 9.89543 10 11V15H15V6L8 0L1 6Z" fill="#000000" />
+        <svg
+          width="2rem"
+          height="2rem"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1 6V15H6V11C6 9.89543 6.89543 9 8 9C9.10457 9 10 9.89543 10 11V15H15V6L8 0L1 6Z"
+            fill="#000000"
+          />
         </svg>
       </a>
 
-      <details className={`${styles.settings} close-on-outclick`}  style={{display: 'flex'}}>
+      <details
+        className={`${styles.settings} close-on-outclick`}
+        style={{ display: "flex" }}
+      >
         <summary>
-          <svg width="2.5rem" height="2.5rem" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
-            <g id="out" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-              <path d="M18.1125649,13.0304195 C18.1454626,12.7672379 18.1701359,12.5040563 18.1701359,12.2244258 C18.1701359,11.9447953 18.1454626,11.6816137 18.1125649,11.4184321 L19.8479188,10.0614018 C20.0041828,9.93803541 20.045305,9.71597592 19.9466119,9.53503855 L18.3017267,6.68938723 C18.2030336,6.50844986 17.9809741,6.44265446 17.8000367,6.50844986 L15.7521547,7.33089244 C15.3244846,7.00191541 14.8639167,6.73050936 14.3622268,6.52489871 L14.0496986,4.34542588 C14.0250253,4.14803966 13.8523124,4 13.6467017,4 L10.3569314,4 C10.1513208,4 9.97860782,4.14803966 9.95393455,4.34542588 L9.64140637,6.52489871 C9.13971639,6.73050936 8.67914855,7.01013984 8.25147841,7.33089244 L6.20359639,6.50844986 C6.0144346,6.43443003 5.80059953,6.50844986 5.70190642,6.68938723 L4.05702126,9.53503855 C3.95010373,9.71597592 3.99945028,9.93803541 4.15571437,10.0614018 L5.89106821,11.4184321 C5.85817051,11.6816137 5.83349723,11.9530197 5.83349723,12.2244258 C5.83349723,12.4958318 5.85817051,12.7672379 5.89106821,13.0304195 L4.15571437,14.3874498 C3.99945028,14.5108161 3.95832815,14.7328756 4.05702126,14.913813 L5.70190642,17.7594643 C5.80059953,17.9404017 6.02265902,18.0061971 6.20359639,17.9404017 L8.25147841,17.1179591 C8.67914855,17.4469361 9.13971639,17.7183422 9.64140637,17.9239528 L9.95393455,20.1034257 C9.97860782,20.3008119 10.1513208,20.4488516 10.3569314,20.4488516 L13.6467017,20.4488516 C13.8523124,20.4488516 14.0250253,20.3008119 14.0496986,20.1034257 L14.3622268,17.9239528 C14.8639167,17.7183422 15.3244846,17.4387117 15.7521547,17.1179591 L17.8000367,17.9404017 C17.9891985,18.0144215 18.2030336,17.9404017 18.3017267,17.7594643 L19.9466119,14.913813 C20.045305,14.7328756 20.0041828,14.5108161 19.8479188,14.3874498 L18.1125649,13.0304195 Z M12.0018166,15.1029748 C10.4145024,15.1029748 9.12326754,13.81174 9.12326754,12.2244258 C9.12326754,10.6371116 10.4145024,9.34587676 12.0018166,9.34587676 C13.5891307,9.34587676 14.8803656,10.6371116 14.8803656,12.2244258 C14.8803656,13.81174 13.5891307,15.1029748 12.0018166,15.1029748 Z" fill="#000000" />
+          <svg
+            width="2.5rem"
+            height="2.5rem"
+            viewBox="0 0 24 24"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g
+              id="out"
+              stroke="none"
+              strokeWidth="1"
+              fill="none"
+              fillRule="evenodd"
+            >
+              <path
+                d="M18.1125649,13.0304195 C18.1454626,12.7672379 18.1701359,12.5040563 18.1701359,12.2244258 C18.1701359,11.9447953 18.1454626,11.6816137 18.1125649,11.4184321 L19.8479188,10.0614018 C20.0041828,9.93803541 20.045305,9.71597592 19.9466119,9.53503855 L18.3017267,6.68938723 C18.2030336,6.50844986 17.9809741,6.44265446 17.8000367,6.50844986 L15.7521547,7.33089244 C15.3244846,7.00191541 14.8639167,6.73050936 14.3622268,6.52489871 L14.0496986,4.34542588 C14.0250253,4.14803966 13.8523124,4 13.6467017,4 L10.3569314,4 C10.1513208,4 9.97860782,4.14803966 9.95393455,4.34542588 L9.64140637,6.52489871 C9.13971639,6.73050936 8.67914855,7.01013984 8.25147841,7.33089244 L6.20359639,6.50844986 C6.0144346,6.43443003 5.80059953,6.50844986 5.70190642,6.68938723 L4.05702126,9.53503855 C3.95010373,9.71597592 3.99945028,9.93803541 4.15571437,10.0614018 L5.89106821,11.4184321 C5.85817051,11.6816137 5.83349723,11.9530197 5.83349723,12.2244258 C5.83349723,12.4958318 5.85817051,12.7672379 5.89106821,13.0304195 L4.15571437,14.3874498 C3.99945028,14.5108161 3.95832815,14.7328756 4.05702126,14.913813 L5.70190642,17.7594643 C5.80059953,17.9404017 6.02265902,18.0061971 6.20359639,17.9404017 L8.25147841,17.1179591 C8.67914855,17.4469361 9.13971639,17.7183422 9.64140637,17.9239528 L9.95393455,20.1034257 C9.97860782,20.3008119 10.1513208,20.4488516 10.3569314,20.4488516 L13.6467017,20.4488516 C13.8523124,20.4488516 14.0250253,20.3008119 14.0496986,20.1034257 L14.3622268,17.9239528 C14.8639167,17.7183422 15.3244846,17.4387117 15.7521547,17.1179591 L17.8000367,17.9404017 C17.9891985,18.0144215 18.2030336,17.9404017 18.3017267,17.7594643 L19.9466119,14.913813 C20.045305,14.7328756 20.0041828,14.5108161 19.8479188,14.3874498 L18.1125649,13.0304195 Z M12.0018166,15.1029748 C10.4145024,15.1029748 9.12326754,13.81174 9.12326754,12.2244258 C9.12326754,10.6371116 10.4145024,9.34587676 12.0018166,9.34587676 C13.5891307,9.34587676 14.8803656,10.6371116 14.8803656,12.2244258 C14.8803656,13.81174 13.5891307,15.1029748 12.0018166,15.1029748 Z"
+                fill="#000000"
+              />
             </g>
           </svg>
         </summary>
         <div className={`${styles.filterOptions} ${styles.settingsOptions}`}>
           <label className={styles.filterOption}>
-            <input type="checkbox" checked={useShellLayout} onChange={(e) => setUseShellLayout(e.target.checked)} />
+            <input
+              type="checkbox"
+              checked={useShellLayout}
+              onChange={(e) => setUseShellLayout(e.target.checked)}
+            />
             <span>Use shell layout</span>
           </label>
         </div>
       </details>
 
       <div className={styles.cornerSwitch}>
-        <Link to="/3dforcegraph" className={`${styles.viewSwitchButton} ${styles.cornerSwitchButton}`} title="Switch to 3D view">
+        <Link
+          to="/3dforcegraph"
+          className={`${styles.viewSwitchButton} ${styles.cornerSwitchButton}`}
+          title="Switch to 3D view"
+        >
           3D→
         </Link>
       </div>
 
       <div className={styles.statusStack}>
-          <div className={styles.currQueryDisplay}>
-            {currentQuery.code && `Currently displaying: ${currentQuery.code} — ${currentQuery.name}`}
-          </div>
-          <div id="message" className={styles.messageType}>{message}</div>
+        <div className={styles.currQueryDisplay}>
+          {currentQuery.code &&
+            `Currently displaying: ${currentQuery.code} — ${currentQuery.name}`}
         </div>
-      <GraphQuery data={graphData} setData={setGraphData} isLoading={loading} setIsLoading={setLoading} />
+        <div id="message" className={styles.messageType}>
+          {message}
+        </div>
+      </div>
+      <GraphQuery
+        data={graphData}
+        setData={setGraphData}
+        isLoading={loading}
+        setIsLoading={setLoading}
+      />
     </div>
-  )
+  );
 }
