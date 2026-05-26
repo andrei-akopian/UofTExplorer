@@ -47,12 +47,15 @@ def solve_sat(
         if isinstance(t, CourseNode):
             b = Bool(t.code)
             courses[t.code] = b
+            processed.add(t.code)
         elif isinstance(t, Requisite):
             b = Bool(str(t))
             requisites[str(t)] = b
+            processed.add(str(t))
         else:
             raise Exception("unexpected data type.")
         formula.add(b)
+        formula.set_initial_value(b, True)
     stack: list[CourseNode | Requisite] = []
     for t in targets:
         t = _get_item_object(graph, t)

@@ -10,18 +10,18 @@ COURSE_GRAPH_CONTAINER = construct_container(f"{DATA_FOLDER}/courses.json",
                                              f"{DATA_FOLDER}/glossary.json",
                                              f"{DATA_FOLDER}/breadths.json")
 
-course = COURSE_GRAPH_CONTAINER.graph.courses["CSC466H1"]
-print(course)
 
-solver = sat.solve_sat(COURSE_GRAPH_CONTAINER.graph, ["CSC466H1"], [], [])
+QUERY = ["MAT357H1"]
+for q in QUERY:
+    print(COURSE_GRAPH_CONTAINER.graph.courses[q])
+
+solver = sat.solve_sat(COURSE_GRAPH_CONTAINER.graph, QUERY, ["MAT257Y1"], [])
 print("Solutions")
 for s in solver:
-    if isinstance(s, list):
-        for c in s:
-            print(c)
+    print(s)
 
 
 print("Z3")
-solver = z3wrapper.solve_sat(COURSE_GRAPH_CONTAINER.graph, ["CSC466H1"])
+solver = z3wrapper.solve_sat(COURSE_GRAPH_CONTAINER.graph, QUERY, taken=['MAT257Y1'])
 print(solver)
  
