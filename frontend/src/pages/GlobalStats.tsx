@@ -13,6 +13,8 @@ import hours_per_course_histogram from "../assets/globalstats/hours_per_course_h
 import number_of_direct_prereqs from "../assets/globalstats/number_of_direct_prereqs.svg";
 import number_of_total_prereqs from "../assets/globalstats/number_of_total_prereqs.svg";
 
+import GlobalStatsTable from "../components/GlobalStatsTable";
+
 const styleIndentPars =
   "my-6 mx-0 [&_p]:my-4 [&_p]:text-justify [&_p]:leading-relaxed";
 
@@ -107,34 +109,7 @@ export default function GlobalStats() {
             on the entire constructed graph.
           </div>
 
-          <div className="mt-4 mb-6 overflow-x-auto">
-            <caption className="mb-2 block text-left text-sm text-slate-700">
-              <span className="font-semibold">Table 1. </span>Statistics
-              computed on the entire graph.
-            </caption>
-            <table className="min-w-full border-separate border-spacing-0 border-t border-b border-slate-300">
-              <thead>
-                <tr>
-                  <th className="bg-slate-50 px-3 py-2 text-left font-semibold text-slate-900">
-                    Statistic
-                  </th>
-                  <th className="bg-slate-50 px-3 py-2 text-left font-semibold text-slate-900">
-                    Value
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="odd:bg-white even:bg-slate-50">
-                  <td className="border-b border-slate-200 px-3 py-2">
-                    Total Courses
-                  </td>
-                  <td className="border-b border-slate-200 px-3 py-2">
-                    Loading...
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <GlobalStatsTable/>
 
           <div className={styleIndentPars}>
             <p>

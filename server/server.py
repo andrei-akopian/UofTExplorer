@@ -489,6 +489,19 @@ def get_departments() -> ResponseReturnValue:
         return jsonify({"error": "Internal error"}), 500
 
 
+@app.route("/api/stats", methods=["GET"])
+def get_stats() -> ResponseReturnValue:
+    """
+    Respond to a request to fetch global stats.
+    Return a json structure of the departments.
+    """
+    try:
+        return jsonify(get_global_statistics_from_file()), 200
+    except Exception as e:
+        app.logger.warning(e)
+        return jsonify({"error": "Internal error"}), 500
+
+
 def find_port() -> int:
     """
     Find an open port for the Flask server to use.
