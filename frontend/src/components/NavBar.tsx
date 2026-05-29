@@ -13,7 +13,7 @@ const graphLinks = [
 ];
 
 const navLink = (active: boolean) =>
-  `px-6 h-full text-sm border-b-2 transition-colors duration-150 ${
+  `font-sans px-6 h-full text-sm border-b-2 transition-colors duration-150 ${
     active
       ? "text-gray-900 border-gray-900"
       : "text-gray-500 border-transparent hover:text-gray-800"
@@ -50,7 +50,10 @@ export default function Navbar() {
         ))}
 
         {/* Graph Explorer dropdown */}
-        <div className="relative flex h-full items-center" ref={dropdownRef}>
+        <div
+          className="relative flex h-full items-center font-sans"
+          ref={dropdownRef}
+        >
           <button
             onClick={() => setDropdownOpen((o) => !o)}
             className={`flex items-center gap-1.5 ${navLink(isGraphActive)}`}
@@ -80,7 +83,7 @@ export default function Navbar() {
                   key={href}
                   to={href}
                   onClick={() => setDropdownOpen(false)}
-                  className="block px-4 py-2.5 text-sm text-gray-600 transition-colors duration-100 hover:bg-gray-50 hover:text-gray-900"
+                  className="block px-4 py-2.5 font-sans text-sm text-gray-600 transition-colors duration-100 hover:bg-gray-50 hover:text-gray-900"
                 >
                   {label}
                 </Link>
