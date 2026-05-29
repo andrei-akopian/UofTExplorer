@@ -5,10 +5,12 @@ import Graph2D from "./pages/Graph2D";
 import Graph3D from "./pages/Graph3D";
 import PathExplorer from "./pages/PathExplorer";
 import GlobalStats from "./pages/GlobalStats";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
     <Router>
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/2dgraph" element={<Graph2D />} />
