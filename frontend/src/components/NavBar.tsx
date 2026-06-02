@@ -3,13 +3,13 @@ import { Link, useLocation } from "react-router-dom";
 
 const links = [
   { label: "Home", href: "/" },
-  { label: "Path Explorer", href: "/pathexplorer" },
-  { label: "Global Statistics", href: "/globalstats" },
+  { label: "Path Explorer", href: "/path-explorer" },
+  { label: "Global Statistics", href: "/global-stats" },
 ];
 
 const graphLinks = [
-  { label: "2D Graph", href: "/2dgraph" },
-  { label: "3D Graph", href: "/3dforcegraph" },
+  { label: "2D Graph", href: "/graph/2d" },
+  { label: "3D Graph", href: "/graph/3d" },
 ];
 
 const navLink = (active: boolean) =>
