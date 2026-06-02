@@ -1,5 +1,36 @@
 # Contributing Guide
 
+## Project structure
+
+```mermaid
+flowchart TD
+    subgraph DataSources
+      ttb[TTB]
+      artscical[ArtSci Calendar]
+    end
+    scrapers[Scrapers]
+    scraped_data[.html / .json scrapes]
+    parsers[Parsers]
+    refiner[Refinement and Sanity checks]
+    ttb --> scrapers
+    artscical --> scrapers
+    scrapers --> scraped_data
+    scraped_data --> parsers
+    parsers --> structured_data
+    structured_data --> refiner
+    core --> refiner
+    data_analysis <--> refiner
+    refiner --> database
+    data_analysis --> database
+    sat --> core
+    core --> backend
+    data_analysis --> backend
+    backend[Flask Backend]
+    database --> backend
+    frontend[React Frontend]
+    backend <--> frontend
+```
+
 ## Commit Messages
 
 ### Structure
