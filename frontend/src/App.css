@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 @theme {
   --font-sans: "Montserrat", sans-serif;
@@ -25,20 +24,4 @@ body {
     system-ui,
     -apple-system,
     sans-serif;
-  line-height: 1.5;
-  color: #1f2933;
-}
-
-a {
-  color: #0f5fa8;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #0a4477;
-}
-
-button {
-  font-family: inherit;
-  cursor: pointer;
 }
