@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSearch } from "../hooks/useGraph";
+import SuggestionEntry from "./SuggestionEntry";
 
 export default function SearchQueryBar({
   query,
@@ -31,18 +32,14 @@ export default function SearchQueryBar({
         <div className={showSearchResults ? "" : "hidden"}>
           {results.length > 0 ? (
             results.map((result) => (
-              <div
+              <SuggestionEntry
                 key={result.id}
-                onClick={() => {
+                onClickCallback={() => {
                   setQuery(result.code || result.label);
                   setShowSearchResults(false);
                 }}
-                onMouseDown={(e) => {
-                  e.preventDefault();
-                }}
-              >
-                {result.code}: {result.title} | {result.num_prereqs}
-              </div>
+                labelling={`${result.code}: ${result.title} | ${result.num_prereqs}`}
+              />
             ))
           ) : (
             <div>No results found</div>
