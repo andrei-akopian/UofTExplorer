@@ -4,19 +4,9 @@ import course_length_pie_chart from "../assets/globalstats/course_length_pie_cha
 import course_levels_pie from "../assets/globalstats/course_levels_pie.svg";
 import departments_by_course_level from "../assets/globalstats/departments_by_course_level.svg";
 import departments_by_hour_type from "../assets/globalstats/departments_by_hour_type.svg";
-import distribution_of_departments_by_breadth_category from "../assets/globalstats/distribution_of_departments_by_breadth_category.svg";
-import distribution_of_departments_by_breadth_span from "../assets/globalstats/distribution_of_departments_by_breadth_span.svg";
-import distribution_of_programs_by_breadth_category from "../assets/globalstats/distribution_of_programs_by_breadth_category.svg";
-import distribution_of_programs_by_breadth_span from "../assets/globalstats/distribution_of_programs_by_breadth_span.svg";
-import distribution_of_sat_lengths from "../assets/globalstats/distribution_of_sat_lengths.svg";
-import hours_per_course_histogram from "../assets/globalstats/hours_per_course_histogram.svg";
 import number_of_direct_prereqs from "../assets/globalstats/number_of_direct_prereqs.svg";
-import number_of_total_prereqs from "../assets/globalstats/number_of_total_prereqs.svg";
 
 import GlobalStatsTable from "../components/GlobalStatsTable";
-
-const styleIndentPars =
-  "my-6 mx-0 [&_p]:my-4 [&_p]:text-justify [&_p]:leading-relaxed";
 
 function genericFigure(src: string, caption: string) {
   return (
@@ -50,34 +40,13 @@ function doubleFigure(
 
 export default function GlobalStats() {
   return (
-    <div className="flex h-screen justify-center">
+    <div
+      className="flex min-h-screen justify-center overflow-y-auto"
+      style={{ fontFamily: '"Latin Modern Roman", serif' }}
+    >
       <div className="mx-auto max-w-[80ch] px-4 py-8">
-        <article className="text-slate-900">
-          <div className="mb-6 text-center text-lg">
-            <Link to="/" className="text-blue-700 hover:text-blue-900">
-              Home
-            </Link>{" "}
-            |{" "}
-            <Link to="/2dgraph" className="text-blue-700 hover:text-blue-900">
-              2D Graph
-            </Link>{" "}
-            |{" "}
-            <Link
-              to="/3dforcegraph"
-              className="text-blue-700 hover:text-blue-900"
-            >
-              3D Graph
-            </Link>{" "}
-            |{" "}
-            <Link
-              to="/pathexplorer"
-              className="text-blue-700 hover:text-blue-900"
-            >
-              Path Explorer
-            </Link>
-          </div>
-
-          <h1 className="text-center text-3xl font-semibold">
+        <article className="leading-7 text-slate-900">
+          <h1 className="mt-6 mb-2 text-center text-3xl font-semibold">
             Executive Report on the Global Statistics
           </h1>
 
@@ -102,16 +71,16 @@ export default function GlobalStats() {
             .
           </div>
 
-          <h2 className="text-2xl font-semibold">Statistics</h2>
+          <h2 className="mt-6 mb-2 text-2xl font-semibold">Statistics</h2>
 
           <div>
             We computed many statistical measures, with the following being done
             on the entire constructed graph.
           </div>
 
-          <GlobalStatsTable/>
+          <GlobalStatsTable />
 
-          <div className={styleIndentPars}>
+          <div className="mx-0 my-6 [&_p]:my-4 [&_p]:text-justify [&_p]:leading-relaxed">
             <p>
               We can see that the Faculty of Arts & Science has a significant
               number of courses. Note that the number of requisites is the total
@@ -164,7 +133,7 @@ export default function GlobalStats() {
             "Courses per Levels",
           )}
 
-          <div className={styleIndentPars}>
+          <div className="mx-0 my-6 [&_p]:my-4 [&_p]:text-justify [&_p]:leading-relaxed">
             <p>
               There are significantly more half-year than full-year courses in
               the Faculty of Arts & Science.
@@ -186,7 +155,7 @@ export default function GlobalStats() {
             "Average Hours per Course by Department",
           )}
 
-          <div className={styleIndentPars}>
+          <div className="mx-0 my-6 [&_p]:my-4 [&_p]:text-justify [&_p]:leading-relaxed">
             <p>
               This graph shows the average number of hours per course for each
               department, sorted in descending order. For the top 11
@@ -201,7 +170,7 @@ export default function GlobalStats() {
             "Number of Courses by Department",
           )}
 
-          <div className={styleIndentPars}>
+          <div className="mx-0 my-6 [&_p]:my-4 [&_p]:text-justify [&_p]:leading-relaxed">
             <p>
               The top 5 departments with the most courses are History (HIS),
               Religion (RLG), East Asian Studies (EAS), Philosophy (PHL), and
@@ -216,7 +185,7 @@ export default function GlobalStats() {
             "Distribution of Direct Prerequisites per Course",
           )}
 
-          <div className={styleIndentPars}>
+          <div className="mx-0 my-6 [&_p]:my-4 [&_p]:text-justify [&_p]:leading-relaxed">
             <p>
               There are 2993 courses with no direct prerequisites, and over 800
               courses with 1 direct prerequisite and beyond. The maximum number
