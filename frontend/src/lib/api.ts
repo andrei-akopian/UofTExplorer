@@ -80,6 +80,24 @@ export async function searchAll(
   return data.results;
 }
 
+export async function searchCourses(
+  query: string,
+  limit = 50,
+): Promise<SearchResult[]> {
+  const response = await fetch(`${API_BASE_URL}/suggest-courses?`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ q: query, limit }),
+  });
+
+  if (!response.ok) {
+    throw new ApiError(response.status, "Search failed");
+  }
+
+  const data = await response.json();
+  return data.results;
+}
+
 /**
  * Get global statistics
  */

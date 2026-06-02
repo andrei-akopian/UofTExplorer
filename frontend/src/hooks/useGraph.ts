@@ -4,7 +4,7 @@
 
 import { useState, useCallback } from "react";
 import type { GraphData, FilterOptions } from "../types";
-import { fetchGraphData, searchAll } from "../lib/api";
+import { fetchGraphData, searchAll, searchCourses } from "../lib/api";
 
 interface UseFetchGraphReturn {
   data: GraphData | null;
@@ -55,7 +55,10 @@ interface UseSearchReturn {
 /**
  * Hook for searching courses with debouncing
  */
-export function useSearch(debounceDelay = 300): UseSearchReturn {
+export function useSearch(
+  debounceDelay = 300,
+  coursesOnly = false,
+): UseSearchReturn {
   const [results, setResults] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -76,7 +79,9 @@ export function useSearch(debounceDelay = 300): UseSearchReturn {
         setError(null);
 
         try {
-          const data = await searchAll(query);
+          const data = await (coursesOnly
+            ? searchCourses(query)
+            : searchAll(query));
           setResults(data);
         } catch (err) {
           const message = err instanceof Error ? err.message : "Search failed";
