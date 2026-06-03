@@ -84,7 +84,7 @@ export async function searchCourses(
   query: string,
   limit = 50,
 ): Promise<SearchResult[]> {
-  const response = await fetch(`${API_BASE_URL}/suggest-courses?`, {
+  const response = await fetch(`${API_BASE_URL}/suggest_courses?`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ q: query, limit }),
