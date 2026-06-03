@@ -1,31 +1,71 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import type { GraphData } from "../types";
 import CourseSearchBar from "../components/search/CourseSearchBar";
+import GraphVis2D from "../components/graph/GraphVis2D";
+import { useImmediatePostreqs } from "../hooks/useGraph";
 
 export default function PathExplorer() {
   const [completedCourses, setCompletedCourses] = useState<string[]>([]);
   const [avoidedCourses, setAvoidedCourses] = useState<string[]>([]);
   const [desiredCourses, setDesiredCourses] = useState<string[]>([]);
+  const {
+    data: graphDataPostreqs,
+    loading,
+    error,
+    fetch: fetchImmediatePostreqs,
+  } = useImmediatePostreqs();
+
+  const [graphData, setGraphData] = useState<GraphData>({
+    nodes: [],
+    edges: [],
+  });
+
+  const handleGetImmediatePostreqs = async () => {
+    console.log("Completed courses:", completedCourses);
+    try {
+      await fetchImmediatePostreqs(completedCourses);
+    } catch (err) {
+      console.error("Error fetching immediate postreqs:", err);
+    }
+  };
+
+  useEffect(() => {
+    if (graphDataPostreqs) {
+      setGraphData(graphDataPostreqs);
+      console.log(
+        "Immediate postreqs graph data in PathExplorer.tsx:",
+        graphDataPostreqs,
+      );
+    }
+  }, [graphDataPostreqs]);
 
   return (
     <div className="relative flex h-screen w-full max-md:flex-col">
-      <div
-        id="mynetwork"
-        className="h-screen flex-1 bg-[radial-gradient(circle_at_top,rgba(188,214,255,0.45),transparent_32%),linear-gradient(180deg,#f7f9fc_0%,#eef3f7_100%)] max-md:h-[50vh] max-md:w-full"
-      ></div>
-
+      <div id="vis graph" className="relative h-full w-full max-md:h-[50vh]">
+        <GraphVis2D graphData={graphData} useShellLayout={true} />
+      </div>
       <div
         id="controls"
-        className="z-2 mr-4 flex h-screen w-104 flex-col gap-4 border-l border-l-[rgba(104,124,156,0.16)] bg-[rgba(255,255,255,0.85)] p-4 backdrop-blur-[10px] max-md:mr-0 max-md:h-[50vh] max-md:w-full max-md:border-t max-md:border-l-0 max-md:border-t-[rgba(104,124,156,0.16)]"
+        className="z-2 mr-4 flex h-screen w-124 flex-col gap-4 border-l border-l-[rgba(104,124,156,0.16)] bg-[rgba(255,255,255,0.85)] p-4 backdrop-blur-[10px] max-md:mr-0 max-md:h-[50vh] max-md:w-full max-md:border-t max-md:border-l-0 max-md:border-t-[rgba(104,124,156,0.16)]"
       >
         <div
           id="topSection"
-          className="flex min-h-0 flex-1 flex-col gap-[0.9rem] overflow-x-hidden overflow-y-auto"
+          className="flex min-h-0 flex-1 flex-col items-center gap-[0.9rem] overflow-x-hidden overflow-y-auto"
         >
           <CourseSearchBar
             searchResults={completedCourses}
             setSearchResults={setCompletedCourses}
             title="Courses you have completed"
           />
+
+          <button
+            id="postreqsButton"
+            type="button"
+            className="w-full cursor-pointer self-stretch rounded-[0.8rem] border-0 bg-linear-to-br from-[#3b67c7] to-[#274f9f] px-4 py-[0.8rem] text-[0.95rem] font-bold text-white hover:brightness-105 disabled:cursor-wait disabled:opacity-70"
+            onClick={handleGetImmediatePostreqs}
+          >
+            Courses Unlocked by Completed Courses
+          </button>
 
           <CourseSearchBar
             searchResults={avoidedCourses}
@@ -46,9 +86,10 @@ export default function PathExplorer() {
         >
           <div className="flex w-full justify-center py-2 text-center">
             <h3 id="title" className="m-0 text-[1.1rem] leading-[1.3]">
-              Find the shortest path to your academic desires
+              Fastest path to your academic desires
             </h3>
           </div>
+
           <button
             id="demoSendButton"
             type="button"
@@ -82,7 +123,7 @@ export default function PathExplorer() {
           <div
             id="warningContainer"
             className="w-full self-stretch"
-            style={{ display: "none" }}
+            style={{ display: "" }}
           >
             <div className="flex items-start gap-[0.6rem] rounded-[0.8rem] border border-[#fcd34d] bg-[#fef3c7] px-[0.8rem] py-[0.65rem] text-[0.85rem] leading-[1.4] text-[#92400e]">
               <span className="shrink-0 text-[1.1rem]">⚠️</span>

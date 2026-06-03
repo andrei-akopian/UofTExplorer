@@ -81,10 +81,7 @@ export function useImmediatePostreqs(): UseImmediatePostreqsReturn {
     }
   }, []);
 
-  return useMemo(
-    () => ({ data, loading, error, fetch }),
-    [data, loading, error, fetch],
-  );
+  return { data, loading, error, fetch };
 }
 
 /**

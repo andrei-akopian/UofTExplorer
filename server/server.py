@@ -312,7 +312,7 @@ def get_immediate_postreqs() -> ResponseReturnValue:
         app.logger.info("Processing immediate postreqs request for courses: %s", completed_courses)
 
         # Build origins set with completed courses
-        origins = {x['code']: COURSE_GRAPH_CONTAINER.graph.courses[x['code']] for x in completed_courses}
+        origins = {x: COURSE_GRAPH_CONTAINER.graph.courses[x] for x in completed_courses}
 
         # Construct subgraph with completed courses
         postreqs = COURSE_GRAPH_CONTAINER.graph.get_satisfied_courses(list(origins.values()))
