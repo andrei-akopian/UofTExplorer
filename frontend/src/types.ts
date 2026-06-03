@@ -66,7 +66,7 @@ export interface GlobalStats {
 export interface PathFinderRequest {
   completed: string[];
   desired: string[];
-  avoided?: string[];
+  avoided: string[];
 }
 
 export interface PathFinderResponse {

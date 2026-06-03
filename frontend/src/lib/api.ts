@@ -144,6 +144,27 @@ export async function solvePath(
   return response.json();
 }
 
+export async function getImmediatePostreqs(
+  courseCodes: string[],
+): Promise<GraphData> {
+  const response = await fetch(`${API_BASE_URL}/get_immediate_postreqs`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ completed_courses: courseCodes }),
+  });
+
+  if (!response.ok) {
+    const error = await response.json().catch(() => ({}));
+    throw new ApiError(
+      response.status,
+      error.error || "Failed to fetch immediate postrequisites",
+      error,
+    );
+  }
+
+  return response.json();
+}
+
 /**
  * Get course details
  */
@@ -183,4 +204,5 @@ export default {
   solvePath,
   getCourseDetails,
   getDepartments,
+  getImmediatePostreqs,
 };

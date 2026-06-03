@@ -2,9 +2,14 @@
  * React hooks for common graph operations
  */
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import type { GraphData, FilterOptions } from "../types";
-import { fetchGraphData, searchAll, searchCourses } from "../lib/api";
+import {
+  fetchGraphData,
+  searchAll,
+  searchCourses,
+  getImmediatePostreqs,
+} from "../lib/api";
 
 interface UseFetchGraphReturn {
   data: GraphData | null;
@@ -41,8 +46,50 @@ export function useFetchGraph(): UseFetchGraphReturn {
     [],
   );
 
-  return { data, loading, error, fetch };
+  return useMemo(
+    () => ({ data, loading, error, fetch }),
+    [data, loading, error, fetch],
+  );
 }
+
+interface UseImmediatePostreqsReturn {
+  data: GraphData | null;
+  loading: boolean;
+  error: string | null;
+  fetch: (courseCodes: string[]) => Promise<void>;
+}
+
+export function useImmediatePostreqs(): UseImmediatePostreqsReturn {
+  const [data, setData] = useState<GraphData | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetch = useCallback(async (courseCodes: string[]) => {
+    if (!courseCodes.length) return;
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const result = await getImmediatePostreqs(courseCodes);
+      setData(result);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Unknown error";
+      setError(message);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  return useMemo(
+    () => ({ data, loading, error, fetch }),
+    [data, loading, error, fetch],
+  );
+}
+
+/**
+ * Hook for searching courses with debouncing
+ */
 
 interface UseSearchReturn {
   results: any[];
@@ -52,9 +99,6 @@ interface UseSearchReturn {
   clear: () => void;
 }
 
-/**
- * Hook for searching courses with debouncing
- */
 export function useSearch(
   debounceDelay = 300,
   coursesOnly = false,
@@ -101,7 +145,10 @@ export function useSearch(
     setError(null);
   }, []);
 
-  return { results, loading, error, search, clear };
+  return useMemo(
+    () => ({ results, loading, error, search, clear }),
+    [results, loading, error, search, clear],
+  );
 }
 
 interface UseLocalStorageReturn<T> {
