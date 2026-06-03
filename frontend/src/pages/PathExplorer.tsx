@@ -1,4 +1,11 @@
+import { useState } from "react";
+import CourseSearchBar from "../components/CourseSearchBar";
+
 export default function PathExplorer() {
+  const [completedCourses, setCompletedCourses] = useState<string[]>([]);
+  const [avoidedCourses, setAvoidedCourses] = useState<string[]>([]);
+  const [desiredCourses, setDesiredCourses] = useState<string[]>([]);
+
   return (
     <div className="relative flex h-screen w-full max-md:flex-col">
       <div
@@ -14,78 +21,23 @@ export default function PathExplorer() {
           id="topSection"
           className="flex min-h-0 flex-1 flex-col gap-[0.9rem] overflow-x-hidden overflow-y-auto"
         >
-          <div className="relative w-full shrink-0 rounded-2xl border border-[rgba(104,124,156,0.16)] bg-[rgba(255,255,255,0.6)] px-[0.9rem] py-[0.85rem] pb-[0.95rem] shadow-[0_4px_12px_rgba(37,53,84,0.06)]">
-            <div className="flex items-center justify-between gap-2">
-              <label
-                className="mb-[0.45rem] flex items-center gap-[0.55rem] text-[0.88rem] font-semibold text-[#42516d]"
-                htmlFor="completedSearch"
-              >
-                Courses you already took
-                <span className="min-w-8 rounded-full bg-[#e7eefb] px-[0.6rem] py-[0.28rem] text-center font-bold text-[#35518a]">
-                  0
-                </span>
-              </label>
-              <button
-                id="immediatePostreqsButton"
-                type="button"
-                className="mr-8 cursor-pointer rounded-[0.6rem] border border-[#7f9ede] bg-linear-to-br from-[#d0deff] to-[#e0e8ff] px-[0.7rem] py-[0.35rem] text-[0.75rem] font-semibold whitespace-nowrap text-[#35518a] transition-colors duration-200 hover:border-[#537fcb] hover:from-[#bfd4ff] hover:to-[#d0deff] disabled:cursor-not-allowed disabled:opacity-50"
-                title="Get immediate post-requisites"
-              >
-                What Courses Can I Take Next?
-              </button>
-            </div>
-            <input
-              id="completedSearch"
-              type="text"
-              className="box-border w-[96%] rounded-[0.9rem] border border-[#c9d4e5] bg-[#fcfdff] px-[0.9rem] py-[0.78rem] text-[0.96rem] focus:border-[#7f9ede] focus:ring-2 focus:ring-[rgba(70,114,202,0.2)] focus:outline-none"
-              placeholder="Add a completed course"
-              autoComplete="off"
-            />
-            <div className="mt-[0.65rem] flex min-h-0 flex-wrap gap-[0.55rem]"></div>
-            <div className="absolute top-[calc(100%+0.35rem)] right-0 left-0 z-10 max-h-72 overflow-y-auto rounded-[0.95rem] border border-[#d2daea] bg-white shadow-[0_16px_30px_rgba(34,48,79,0.14)] [&.show]:block [&:not(.show)]:hidden"></div>
-          </div>
+          <CourseSearchBar
+            searchResults={completedCourses}
+            setSearchResults={setCompletedCourses}
+            title="Courses you have completed"
+          />
 
-          <div className="relative w-full shrink-0 rounded-2xl border border-[rgba(104,124,156,0.16)] bg-[rgba(255,255,255,0.6)] px-[0.9rem] py-[0.85rem] pb-[0.95rem] shadow-[0_4px_12px_rgba(37,53,84,0.06)]">
-            <label
-              className="mb-[0.45rem] flex items-center gap-[0.55rem] text-[0.88rem] font-semibold text-[#42516d]"
-              htmlFor="avoidedSearch"
-            >
-              Courses you want to avoid
-              <span className="min-w-8 rounded-full bg-[#e7eefb] px-[0.6rem] py-[0.28rem] text-center font-bold text-[#35518a]">
-                0
-              </span>
-            </label>
-            <input
-              id="avoidedSearch"
-              type="text"
-              className="box-border w-[96%] rounded-[0.9rem] border border-[#c9d4e5] bg-[#fcfdff] px-[0.9rem] py-[0.78rem] text-[0.96rem] focus:border-[#7f9ede] focus:ring-2 focus:ring-[rgba(70,114,202,0.2)] focus:outline-none"
-              placeholder="Add a course to avoid"
-              autoComplete="off"
-            />
-            <div className="mt-[0.65rem] flex min-h-0 flex-wrap gap-[0.55rem]"></div>
-            <div className="absolute top-[calc(100%+0.35rem)] right-0 left-0 z-10 max-h-72 overflow-y-auto rounded-[0.95rem] border border-[#d2daea] bg-white shadow-[0_16px_30px_rgba(34,48,79,0.14)] [&.show]:block [&:not(.show)]:hidden"></div>
-          </div>
+          <CourseSearchBar
+            searchResults={avoidedCourses}
+            setSearchResults={setAvoidedCourses}
+            title="Courses you want to avoid"
+          />
 
-          <div className="relative w-full shrink-0 rounded-2xl border border-[rgba(104,124,156,0.16)] bg-[rgba(255,255,255,0.6)] px-[0.9rem] py-[0.85rem] pb-[0.95rem] shadow-[0_4px_12px_rgba(37,53,84,0.06)]">
-            <label
-              className="mb-[0.45rem] flex items-center gap-[0.55rem] text-[0.88rem] font-semibold text-[#42516d]"
-              htmlFor="desiredSearch"
-            >
-              Courses you want to take
-              <span className="min-w-8 rounded-full bg-[#e7eefb] px-[0.6rem] py-[0.28rem] text-center font-bold text-[#35518a]">
-                0
-              </span>
-            </label>
-            <input
-              id="desiredSearch"
-              type="text"
-              className="box-border w-[96%] rounded-[0.9rem] border border-[#c9d4e5] bg-[#fcfdff] px-[0.9rem] py-[0.78rem] text-[0.96rem] focus:border-[#7f9ede] focus:ring-2 focus:ring-[rgba(70,114,202,0.2)] focus:outline-none"
-              placeholder="Add a target course"
-              autoComplete="off"
-            />
-            <div className="mt-[0.65rem] flex min-h-0 flex-wrap gap-[0.55rem]"></div>
-            <div className="absolute top-[calc(100%+0.35rem)] right-0 left-0 z-10 max-h-72 overflow-y-auto rounded-[0.95rem] border border-[#d2daea] bg-white shadow-[0_16px_30px_rgba(34,48,79,0.14)] [&.show]:block [&:not(.show)]:hidden"></div>
-          </div>
+          <CourseSearchBar
+            searchResults={desiredCourses}
+            setSearchResults={setDesiredCourses}
+            title="Courses you want to take"
+          />
         </div>
 
         <div
