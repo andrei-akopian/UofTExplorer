@@ -105,10 +105,10 @@ export default function Graph2D() {
 
   const messageTypeClass =
     messageType === "success"
-      ? "text-[#2e7d32]"
+      ? "ml-7 text-sm font-sans text-[#2e7d32]"
       : messageType === "error"
-        ? "text-[#d32f2f]"
-        : "text-[#0066cc]";
+        ? "ml-7 text-sm font-sans text-[#6969d6]"
+        : "ml-7 text-sm font-sans text-[#0066cc]";
 
   useEffect(() => {
     const initNetwork = async () => {

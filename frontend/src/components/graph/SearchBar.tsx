@@ -50,11 +50,26 @@ function FilterBar({
   }
 
   return (
-    <details className="close-on-outclick relative">
-      <summary className="cursor-pointer list-none rounded-md border border-gray-300 bg-white px-3 py-2.5 text-sm select-none [&::-webkit-details-marker]:hidden">
+    <details className="group close-on-outclick relative">
+      <summary className="flex cursor-pointer list-none items-center gap-2 rounded-md border border-gray-300 bg-white px-5 py-2.5 text-sm select-none [&::-webkit-details-marker]:hidden">
         {title}
+        <svg
+          width="12"
+          height="12"
+          viewBox="0 0 12 12"
+          fill="none"
+          className="opacity-60 transition-transform duration-120 group-open:rotate-180"
+        >
+          <path
+            d="M2 4l4 4 4-4"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
       </summary>
-      <div className="absolute top-[calc(100%+6px)] left-0 z-50 flex max-h-[20em] w-[20em] flex-col gap-1.5 overflow-y-scroll rounded-md border border-gray-300 bg-white p-2.5 shadow-[0_6px_16px_rgba(0,0,0,0.16)]">
+      <div className="absolute top-[calc(100%+6px)] left-0 z-50 flex max-h-[20em] w-max flex-col gap-1.5 overflow-y-scroll rounded-md border border-gray-300 bg-white p-2.5 shadow-[0_6px_16px_rgba(0,0,0,0.16)]">
         {options.map((option) => (
           <label
             key={keyFormat(option)}
@@ -106,7 +121,7 @@ export default function SearchBar({
   }, []);
 
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-2 font-sans">
       <SearchQueryBar query={query} setQuery={setQuery} />
       <FilterBar
         title="CR / NCR"

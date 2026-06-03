@@ -70,7 +70,7 @@ export default function GraphQuery({
   };
 
   return (
-    <div className="absolute top-0 left-20 flex w-[calc(100vw-12rem)] flex-wrap content-start items-center justify-start gap-2.5 p-4">
+    <div className="absolute top-3 left-3 flex w-[calc(100vw-12rem)] flex-wrap content-start items-center justify-start gap-2.5 p-4">
       <SearchBar
         query={query}
         setQuery={setQuery}
@@ -80,11 +80,11 @@ export default function GraphQuery({
       <button
         onClick={handleFetchClick}
         disabled={isLoading}
-        className="cursor-pointer rounded-md border-0 bg-[#0066cc] px-5 py-2.5 text-base text-white transition-colors duration-200 hover:bg-[#005bb8] disabled:cursor-not-allowed disabled:opacity-60"
+        className="cursor-pointer rounded-md border-0 bg-[#6969d6] px-5 py-2 font-sans text-base text-white transition-colors duration-200 hover:bg-[#33338f] disabled:cursor-not-allowed disabled:opacity-60"
       >
         Load Graph
       </button>
-      {error && <div className="text-sm text-red-700">{error}</div>}
+      {error && <div className="font-sans text-sm text-red-700">{error}</div>}
     </div>
   );
 }
