@@ -1,10 +1,18 @@
 import { useCallback, useState } from "react";
 import SearchBar from "./SearchBar";
 
-import { fetchGraphData } from "../lib/api";
-import type { GraphData, FilterOptions } from "../types";
+import { fetchGraphData } from "../../lib/api";
+import type { GraphData, FilterOptions } from "../../types";
 
-const convertFiltersToApiFormat = (filters: Object): Partial<FilterOptions> => {
+type QueryFilters = {
+  cr_ncr: string[];
+  departments: string[];
+  breadth_requirements: string[];
+};
+
+const convertFiltersToApiFormat = (
+  filters: QueryFilters,
+): Partial<FilterOptions> => {
   return {
     crNcr: filters["cr_ncr"] || [],
     departments: filters["departments"] || [],
@@ -23,8 +31,14 @@ export default function GraphQuery({
   isLoading: boolean;
   setIsLoading: (isLoading: boolean) => void;
 }) {
+  void data;
+
   const [query, setQuery] = useState<string>("");
-  const [filters, setFilters] = useState<Object>({});
+  const [filters, setFilters] = useState<QueryFilters>({
+    cr_ncr: [],
+    departments: [],
+    breadth_requirements: [],
+  });
   const [error, setError] = useState<string | null>(null);
 
   const fetch = useCallback(async () => {
@@ -56,21 +70,7 @@ export default function GraphQuery({
   };
 
   return (
-    <div
-      style={{
-        position: "absolute",
-        padding: "1em",
-        display: "flex",
-        flexWrap: "wrap",
-        gap: "10px",
-        alignItems: "center",
-        alignContent: "flex-start",
-        justifyContent: "flex-start",
-        top: "0px",
-        left: "5em",
-        width: "calc(100vw - 12rem)",
-      }}
-    >
+    <div className="absolute top-0 left-20 flex w-[calc(100vw-12rem)] flex-wrap content-start items-center justify-start gap-2.5 p-4">
       <SearchBar
         query={query}
         setQuery={setQuery}
@@ -80,19 +80,11 @@ export default function GraphQuery({
       <button
         onClick={handleFetchClick}
         disabled={isLoading}
-        style={{
-          padding: "10px 20px",
-          fontSize: "16px",
-          backgroundColor: "#0066cc",
-          color: "white",
-          border: "none",
-          borderRadius: "6px",
-          cursor: "pointer",
-          transition: "background 0.2s",
-        }}
+        className="cursor-pointer rounded-md border-0 bg-[#0066cc] px-5 py-2.5 text-base text-white transition-colors duration-200 hover:bg-[#005bb8] disabled:cursor-not-allowed disabled:opacity-60"
       >
         Load Graph
       </button>
+      {error && <div className="text-sm text-red-700">{error}</div>}
     </div>
   );
 }

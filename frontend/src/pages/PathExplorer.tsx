@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CourseSearchBar from "../components/CourseSearchBar";
+import CourseSearchBar from "../components/search/CourseSearchBar";
 
 export default function PathExplorer() {
   const [completedCourses, setCompletedCourses] = useState<string[]>([]);

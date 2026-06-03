@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSearch } from "../hooks/useGraph";
+import { useSearch } from "../../hooks/useGraph";
 import SuggestionEntry from "./SuggestionEntry";
 
 function CourseChip({

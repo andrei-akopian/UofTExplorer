@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useSearchParams, Link } from "react-router-dom";
-import GraphQuery from "../components/GraphQuery";
-import styles from "../styles/graph2d.module.css";
+import GraphQuery from "../components/graph/GraphQuery";
 
 import type { GraphNode, GraphEdge, GraphData } from "../types";
 import { fetchGraphData } from "../lib/api";
@@ -103,6 +102,13 @@ export default function Graph2D() {
     nodes: [],
     edges: [],
   });
+
+  const messageTypeClass =
+    messageType === "success"
+      ? "text-[#2e7d32]"
+      : messageType === "error"
+        ? "text-[#d32f2f]"
+        : "text-[#0066cc]";
 
   useEffect(() => {
     const initNetwork = async () => {
@@ -287,29 +293,11 @@ export default function Graph2D() {
   };
 
   return (
-    <div className={styles.graph2dContainer}>
-      <div ref={containerRef} id="mynetwork"></div>
+    <div className="relative h-screen w-screen">
+      <div ref={containerRef} id="mynetwork" className="overflow-hidden"></div>
 
-      <a href="/" className={styles.homelink} title="Back to home">
-        <svg
-          width="2rem"
-          height="2rem"
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M1 6V15H6V11C6 9.89543 6.89543 9 8 9C9.10457 9 10 9.89543 10 11V15H15V6L8 0L1 6Z"
-            fill="#000000"
-          />
-        </svg>
-      </a>
-
-      <details
-        className={`${styles.settings} close-on-outclick`}
-        style={{ display: "flex" }}
-      >
-        <summary>
+      <details className="close-on-outclick absolute top-0 right-0 z-2 h-[4.7rem] w-[4.7rem] bg-transparent">
+        <summary className="m-0 flex h-full w-full list-none items-center justify-center p-0 [&::-webkit-details-marker]:hidden">
           <svg
             width="2.5rem"
             height="2.5rem"
@@ -331,8 +319,8 @@ export default function Graph2D() {
             </g>
           </svg>
         </summary>
-        <div className={`${styles.filterOptions} ${styles.settingsOptions}`}>
-          <label className={styles.filterOption}>
+        <div className="absolute top-[calc(100%+6px)] right-0 left-auto z-1200 flex max-h-[20em] w-[20em] flex-col gap-1.5 overflow-y-scroll rounded-md border border-[#ccc] bg-white p-2.5 shadow-[0_6px_16px_rgba(0,0,0,0.16)]">
+          <label className="flex max-h-none w-max min-w-[5em] items-center gap-2 overflow-visible text-sm">
             <input
               type="checkbox"
               checked={useShellLayout}
@@ -343,22 +331,15 @@ export default function Graph2D() {
         </div>
       </details>
 
-      <div className={styles.cornerSwitch}>
-        <Link
-          to="/3dforcegraph"
-          className={`${styles.viewSwitchButton} ${styles.cornerSwitchButton}`}
-          title="Switch to 3D view"
-        >
-          3D→
-        </Link>
-      </div>
-
-      <div className={styles.statusStack}>
-        <div className={styles.currQueryDisplay}>
+      <div className="flex min-w-[20rem] flex-col gap-1">
+        <div className="overflow-hidden text-[0.84rem] leading-[1.3] font-semibold text-ellipsis whitespace-nowrap text-[#24324a]">
           {currentQuery.code &&
             `Currently displaying: ${currentQuery.code} — ${currentQuery.name}`}
         </div>
-        <div id="message" className={styles.messageType}>
+        <div
+          id="message"
+          className={`m-0 min-h-6 text-[0.84rem] font-medium ${messageTypeClass}`}
+        >
           {message}
         </div>
       </div>

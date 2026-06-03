@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getDepartments } from "../lib/api";
+import { getDepartments } from "../../lib/api";
 import SearchQueryBar from "./SearchQueryBar";
 
 const breadths = [
@@ -9,6 +9,12 @@ const breadths = [
   "Living Things and Their Environment (4)",
   "The Physical and Mathematical Universes (5)",
 ];
+
+type QueryFilters = {
+  cr_ncr: string[];
+  departments: string[];
+  breadth_requirements: string[];
+};
 
 function FilterBar({
   title,
@@ -20,9 +26,9 @@ function FilterBar({
 }: {
   title: string;
   options: string[];
-  filtersHook: Object;
-  setFiltersHook: (filtersHook: Object) => void;
-  filtersTitle: string;
+  filtersHook: QueryFilters;
+  setFiltersHook: (filtersHook: QueryFilters) => void;
+  filtersTitle: keyof QueryFilters;
   keyFormat: (option: string) => string;
 }) {
   function handleChange(e: React.ChangeEvent<HTMLInputElement>, key: string) {
@@ -45,48 +51,14 @@ function FilterBar({
 
   return (
     <details className="close-on-outclick relative">
-      <summary
-        style={{
-          listStyle: "none",
-          cursor: "pointer",
-          padding: "10px 12px",
-          fontSize: "14px",
-          border: "1px solid #ccc",
-          borderRadius: "6px",
-          background: "#fff",
-          userSelect: "none",
-        }}
-      >
+      <summary className="cursor-pointer list-none rounded-md border border-gray-300 bg-white px-3 py-2.5 text-sm select-none [&::-webkit-details-marker]:hidden">
         {title}
       </summary>
-      <div
-        style={{
-          position: "absolute",
-          top: "calc(100% + 6px)",
-          left: "0",
-          zIndex: "1200",
-          width: "20em",
-          maxHeight: "20em",
-          overflowY: "scroll",
-          display: "flex",
-          flexDirection: "column",
-          gap: "6px",
-          padding: "10px",
-          background: "white",
-          border: "1px solid #ccc",
-          borderRadius: "6px",
-          boxShadow: "0 6px 16px rgba(0, 0, 0, 0.16)",
-        }}
-      >
+      <div className="absolute top-[calc(100%+6px)] left-0 z-50 flex max-h-[20em] w-[20em] flex-col gap-1.5 overflow-y-scroll rounded-md border border-gray-300 bg-white p-2.5 shadow-[0_6px_16px_rgba(0,0,0,0.16)]">
         {options.map((option) => (
           <label
             key={keyFormat(option)}
-            style={{
-              width: "max-content",
-              minWidth: "5em",
-              maxHeight: "none",
-              overflow: "visible",
-            }}
+            className="flex max-h-none w-max min-w-[5em] items-center gap-2 overflow-visible text-sm"
           >
             <input
               type="checkbox"
@@ -103,8 +75,8 @@ function FilterBar({
 interface SearchBarProps {
   query: string;
   setQuery: (q: string) => void;
-  filtersHook: Object;
-  setFiltersHook: (filtersHook: Object) => void;
+  filtersHook: QueryFilters;
+  setFiltersHook: (filtersHook: QueryFilters) => void;
 }
 
 export default function SearchBar({
@@ -134,7 +106,7 @@ export default function SearchBar({
   }, []);
 
   return (
-    <div className="flex">
+    <div className="flex flex-wrap gap-2">
       <SearchQueryBar query={query} setQuery={setQuery} />
       <FilterBar
         title="CR / NCR"
@@ -158,7 +130,7 @@ export default function SearchBar({
         filtersHook={filtersHook}
         setFiltersHook={setFiltersHook}
         filtersTitle="breadth_requirements"
-        keyFormat={(option) => option.at(-2)}
+        keyFormat={(option) => option.at(-2) ?? ""}
       />
     </div>
   );

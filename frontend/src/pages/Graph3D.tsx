@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import type { GraphData } from "../types";
-import GraphQuery from "../components/GraphQuery";
-import styles from "../styles/graph3d.module.css";
+import GraphQuery from "../components/graph/GraphQuery";
 
 export default function Graph3D() {
   const [graphData, setGraphData] = useState<GraphData>({
@@ -16,26 +15,11 @@ export default function Graph3D() {
   }, [graphData]);
 
   return (
-    <div className={styles.graph3dContainer}>
-      <div id="graph"></div>
+    <div className="relative h-screen w-screen">
+      <div id="graph" className="overflow-hidden bg-[#fafafa]"></div>
 
-      <a href="/" className={styles.homelink} title="Back to home">
-        <svg
-          width="2rem"
-          height="2rem"
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M1 6V15H6V11C6 9.89543 6.89543 9 8 9C9.10457 9 10 9.89543 10 11V15H15V6L8 0L1 6Z"
-            fill="#000000"
-          />
-        </svg>
-      </a>
-
-      <details className={`${styles.settings} close-on-outclick`}>
-        <summary>
+      <details className="close-on-outclick absolute right-0 z-2 h-[4.7rem] w-[4.7rem] bg-transparent">
+        <summary className="m-0 flex h-full w-full list-none items-center justify-center p-0 [&::-webkit-details-marker]:hidden">
           <svg
             width="2.5rem"
             height="2.5rem"
@@ -57,23 +41,13 @@ export default function Graph3D() {
             </g>
           </svg>
         </summary>
-        <div className={`${styles.filterOptions} ${styles.settingsOptions}`}>
-          <label className={styles.filterOption}>
+        <div className="absolute top-[calc(100%+6px)] right-auto left-0 z-1200 flex max-h-[20em] w-[20em] flex-col gap-1.5 overflow-y-scroll rounded-md border border-[#ccc] bg-white p-2.5 shadow-[0_6px_16px_rgba(0,0,0,0.16)]">
+          <label className="flex max-h-none w-max min-w-[5em] items-center gap-2 overflow-visible text-sm">
             <input type="checkbox" defaultChecked />
             <span>Use shell layout</span>
           </label>
         </div>
       </details>
-
-      <div className={styles.cornerSwitch}>
-        <Link
-          to="/2dgraph"
-          className={`${styles.viewSwitchButton} ${styles.cornerSwitchButton}`}
-          title="Switch to 2D view"
-        >
-          2D→
-        </Link>
-      </div>
 
       <GraphQuery
         data={graphData}
@@ -82,9 +56,15 @@ export default function Graph3D() {
         setIsLoading={setIsLoading}
       />
 
-      <div className={styles.statusStack}>
-        <div id="currQueryDisplay" className={styles.currQueryDisplay}></div>
-        <div id="message"></div>
+      <div className="flex min-w-[20rem] flex-col gap-1">
+        <div
+          id="currQueryDisplay"
+          className="overflow-hidden text-[0.84rem] leading-[1.3] font-semibold text-ellipsis whitespace-nowrap text-[#24324a]"
+        ></div>
+        <div
+          id="message"
+          className="m-0 min-h-6 text-[0.84rem] font-medium"
+        ></div>
       </div>
     </div>
   );

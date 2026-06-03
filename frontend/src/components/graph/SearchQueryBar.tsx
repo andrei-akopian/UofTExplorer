@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useSearch } from "../hooks/useGraph";
-import SuggestionEntry from "./SuggestionEntry";
+import { useSearch } from "../../hooks/useGraph";
+import SuggestionEntry from "../search/SuggestionEntry";
 
 export default function SearchQueryBar({
   query,
@@ -9,7 +9,7 @@ export default function SearchQueryBar({
   query: string;
   setQuery: (q: string) => void;
 }) {
-  const { results, loading, error, search, clear } = useSearch(300);
+  const { results, search } = useSearch(300);
   const [showSearchResults, setShowSearchResults] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,7 +18,7 @@ export default function SearchQueryBar({
   };
 
   return (
-    <div style={{ position: "relative" }}>
+    <div className="relative">
       <input
         type="text"
         placeholder="Search for course, program, department, or 'all'"
@@ -27,9 +27,10 @@ export default function SearchQueryBar({
         autoComplete="off"
         onFocus={() => setShowSearchResults(true)}
         onBlur={() => setShowSearchResults(false)}
+        className="min-w-88 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none"
       />
       {showSearchResults && (
-        <div className={showSearchResults ? "" : "hidden"}>
+        <div className="absolute top-full left-0 z-50 mt-1 max-h-64 w-full overflow-y-auto rounded-md border border-gray-300 bg-white shadow-lg">
           {results.length > 0 ? (
             results.map((result) => (
               <SuggestionEntry
@@ -42,7 +43,9 @@ export default function SearchQueryBar({
               />
             ))
           ) : (
-            <div>No results found</div>
+            <div className="px-3 py-2 text-sm text-slate-600">
+              No results found
+            </div>
           )}
         </div>
       )}
