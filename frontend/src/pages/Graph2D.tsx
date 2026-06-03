@@ -4,76 +4,10 @@ import GraphQuery from "../components/graph/GraphQuery";
 
 import type { GraphNode, GraphEdge, GraphData } from "../types";
 import { fetchGraphData } from "../lib/api";
-
-interface Node {
-  id: string;
-  label: string;
-  code?: string;
-  depth?: number;
-  x?: number;
-  y?: number;
-  targetRadius?: number;
-  size: number;
-  color: string;
-  font?: { size: number };
-}
-
-const convertGenericNode = (node: GraphNode): Node => {
-  return {
-    id: node.id,
-    label: node.label,
-    code: node.code,
-    depth: node.depth,
-    x: node.x,
-    y: node.y,
-    targetRadius: node.targetRadius,
-    size: node.size,
-    color: node.color,
-    font: node.font,
-  };
-};
-
-interface Edge {
-  from: string;
-  to: string;
-}
-
-const convertGenericEdge = (edge: GraphEdge): Edge => {
-  return {
-    from: edge.from,
-    to: edge.to,
-  };
-};
-
-interface Graph2DData {
-  nodes: Node[];
-  edges: Edge[];
-  search?: string;
-  curr_query?: { type: string; code: string; name: string };
-  should_open_course_panel?: boolean;
-}
-
-const convertGenericGraph = (data: GraphData): Graph2DData => {
-  return {
-    nodes: data.nodes.map(convertGenericNode),
-    edges: data.edges.map(convertGenericEdge),
-    search: data.search,
-    curr_query: data.curr_query,
-    should_open_course_panel: data.should_open_course_panel,
-  };
-};
-
-const PHYSICS_DAMPING = 0.4;
-const PHYSICS_SPRING_CONST = 0.1;
-const DEPTH_PULL_STRENGTH = 0.02;
-const PHYSICS_GRAV_CONSTANT = -4000;
-const PHYSICS_SPRING_LENGTH = 300;
-const GRAVITY_BIAS = 0.0;
+import GraphVis2D from "../components/graph/GraphVis2D";
 
 export default function Graph2D() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const networkRef = useRef<any>(null);
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState<"info" | "success" | "error">(
     "info",
@@ -111,190 +45,23 @@ export default function Graph2D() {
         : "text-[#0066cc]";
 
   useEffect(() => {
-    const initNetwork = async () => {
-      try {
-        const { Network } =
-          await import("vis-network/standalone/esm/vis-network.min.js");
-
-        if (!containerRef.current) return;
-
-        const options = {
-          layout: { hierarchical: { enabled: false } },
-          nodes: {
-            shape: "circle",
-            size: 26,
-            font: { size: 14, face: "system-ui", color: "#000000" },
-            borderWidth: 1,
-            color: "#A0B9DB",
-          },
-          edges: {
-            arrows: { to: { enabled: true, scaleFactor: 0.8 } },
-            width: 2,
-            smooth: { type: "cubicBezier", forceDirection: "horizontal" },
-          },
-          physics: {
-            enabled: true,
-            solver: "barnesHut",
-            barnesHut: {
-              gravitationalConstant: PHYSICS_GRAV_CONSTANT,
-              centralGravity: 0.05,
-              springLength: PHYSICS_SPRING_LENGTH,
-              springConstant: PHYSICS_SPRING_CONST,
-              damping: PHYSICS_DAMPING,
-              avoidOverlap: 0.8,
-            },
-            maxVelocity: 140,
-            timestep: 0.35,
-            adaptiveTimestep: true,
-            stabilization: { enabled: true, iterations: 150, fit: false },
-          },
-          interaction: {
-            dragNodes: true,
-            dragView: true,
-            zoomView: true,
-            selectable: true,
-            hover: true,
-          },
-        };
-
-        const network = new Network(
-          containerRef.current,
-          { nodes: [], edges: [] },
-          options,
-        );
-        networkRef.current = network;
-
-        const searchQuery = searchParams.get("search");
-        if (searchQuery) {
-          await manualFetchGraph(searchQuery);
-        }
-      } catch (err) {
-        console.error("Failed to initialize network:", err);
-      }
-    };
-
-    initNetwork();
-  }, []);
-
-  /* Graph Updating */
-  useEffect(() => {
-    console.log("Graph data updated:", graphData);
-    const data2D = convertGenericGraph(graphData);
-    const prepared = prepareData(data2D.nodes, data2D.edges);
-    setActiveNodes(prepared.nodes);
-
-    if (networkRef.current) {
-      networkRef.current.setData({
-        nodes: prepared.nodes,
-        edges: prepared.edges,
-      });
-      networkRef.current.startSimulation();
-    }
-
-    setCurrentQuery(data2D.curr_query || { type: "", code: "", name: "" });
-    setMessage(`Graph loaded (${data2D.nodes.length} nodes)`);
-    setMessageType("success");
-
-    if (data2D.search) {
-      setSearchParams({ search: data2D.search });
-    }
-  }, [graphData]);
-
-  useEffect(() => {
     if (loading) {
       setMessage("Loading graph...");
       setMessageType("info");
+    } else {
+      setMessage("LOADED");
+      setMessageType("success");
     }
   }, [loading]);
 
-  const manualFetchGraph = async (graphQuery: string) => {
-    if (!graphQuery.trim()) return;
-
-    try {
-      const fetchedData = await fetchGraphData(graphQuery);
-      setGraphData(fetchedData);
-      setQuery("");
-    } catch (err) {
-      setMessage(
-        `Error: ${err instanceof Error ? err.message : "Unknown error"}`,
-      );
-      setMessageType("error");
-      console.error(err);
-    }
-  };
-
-  const prepareData = (nodes: Node[], edges: Edge[]) => {
-    if (!nodes.length) return { nodes: [], edges };
-
-    const levels: Record<number, Node[]> = {};
-    const MIN_RADIUS_STEP = 300;
-    const NODE_GIRTH = 120;
-
-    if (useShellLayout) {
-      nodes.forEach((n) => {
-        const depth =
-          n.depth !== null && n.depth !== undefined
-            ? parseInt(String(n.depth))
-            : null;
-        if (depth !== null) {
-          if (!levels[depth]) levels[depth] = [];
-          levels[depth].push(n);
-        }
-      });
-    }
-
-    const levelRadii: Record<number, number> = {};
-    let currentRadius = 0;
-    const sortedDepths = Object.keys(levels)
-      .map(Number)
-      .sort((a, b) => a - b);
-
-    sortedDepths.forEach((depth) => {
-      const nodeCount = levels[depth].length;
-      const requiredRadius = (nodeCount * NODE_GIRTH) / (2 * Math.PI);
-      currentRadius += Math.max(MIN_RADIUS_STEP, requiredRadius);
-      levelRadii[depth] = currentRadius;
-    });
-
-    let sumX = 0;
-    let sumY = 0;
-
-    const processedNodes = nodes.map((n) => {
-      const depth =
-        n.depth !== null && n.depth !== undefined
-          ? parseInt(String(n.depth))
-          : null;
-      const processedNode = { ...n, depth };
-
-      if (useShellLayout && depth !== null && levelRadii[depth]) {
-        const radius = levelRadii[depth];
-        const angle = Math.PI / 2 + (Math.random() - 0.5) * 2;
-        processedNode.x = Math.cos(angle) * radius;
-        processedNode.y = Math.sin(angle) * radius;
-        processedNode.targetRadius = radius;
-      } else {
-        processedNode.x = (Math.random() - 0.5) * 200;
-        processedNode.y = (Math.random() - 0.5) * 200;
-        processedNode.targetRadius = null;
-      }
-
-      sumX += processedNode.x || 0;
-      sumY += processedNode.y || 0;
-
-      return processedNode;
-    });
-
-    return {
-      nodes: processedNodes,
-      edges,
-      avgX: sumX / (nodes.length || 1),
-      avgY: sumY / (nodes.length || 1),
-    };
-  };
-
   return (
     <div className="relative h-screen w-screen">
-      <div ref={containerRef} id="mynetwork" className="overflow-hidden"></div>
+      <GraphVis2D
+        graphData={graphData}
+        loading={loading}
+        setLoading={setLoading}
+        useShellLayout={useShellLayout}
+      />
 
       <details className="close-on-outclick absolute top-0 right-0 z-2 h-[4.7rem] w-[4.7rem] bg-transparent">
         <summary className="m-0 flex h-full w-full list-none items-center justify-center p-0 [&::-webkit-details-marker]:hidden">
@@ -331,7 +98,7 @@ export default function Graph2D() {
         </div>
       </details>
 
-      <div className="flex min-w-[20rem] flex-col gap-1">
+      <div className="absolute bottom-10 left-5 flex min-w-[20rem] flex-col gap-1">
         <div className="overflow-hidden text-[0.84rem] leading-[1.3] font-semibold text-ellipsis whitespace-nowrap text-[#24324a]">
           {currentQuery.code &&
             `Currently displaying: ${currentQuery.code} — ${currentQuery.name}`}
