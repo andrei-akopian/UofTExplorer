@@ -59,7 +59,7 @@ function App() {
       <DropdownOutsideClickCloser />
       <div className="flex h-screen flex-col">
         <NavBar />
-        <main className="min-h-0 flex-1">
+        <main className="min-h-0 flex-1 overflow-y-auto">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/graph/2d" element={<Graph2D />} />

@@ -5,18 +5,18 @@ const pageLinkClassName =
 
 export default function Home() {
   return (
-    <div className="flex w-full flex-col items-center bg-[#fcfcfa] px-4 py-10 font-sans leading-relaxed text-[#1f2933] md:px-5">
-      <div className="grid w-full max-w-3xl gap-10">
-        <h1 className="font-display text-center text-5xl font-medium">
+    <div className="flex w-full flex-col items-center bg-[#fcfcfa] px-4 py-4 font-sans leading-relaxed text-[#1f2933] md:px-5">
+      <div className="grid w-full max-w-3xl gap-5 font-sans">
+        <h1 className="font-display m-4 text-center text-5xl font-medium">
           UofT Explorer
         </h1>
 
-        <p className="font-sans">
+        <p>
           Welcome! Explore how courses, programs, and departments are connected
           at the Faculty of Arts & Science at the University of Toronto.
         </p>
 
-        <p className="font-sans">
+        <p>
           All data is sourced from the{" "}
           <a
             className={pageLinkClassName}
@@ -29,14 +29,14 @@ export default function Home() {
           .
         </p>
 
-        <div className="font-sans">
-          <h2 className="mt-6 mb-2 text-[1.4em]">
+        <div>
+          <h2 className="mt-4 mb-2 text-[1.4em]">
             Graph Explorer:{" "}
-            <Link className={pageLinkClassName} to="/2dgraph">
+            <Link className={pageLinkClassName} to="/graph/2d">
               2D Graph
             </Link>{" "}
             |{" "}
-            <Link className={pageLinkClassName} to="/3dforcegraph">
+            <Link className={pageLinkClassName} to="/graph/3d">
               3D Graph
             </Link>
           </h2>
@@ -50,9 +50,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="font-sans">
-          <h2 className="mt-6 mb-2 text-[1.4em]">
-            <Link className={pageLinkClassName} to="/globalstats">
+        <div>
+          <h2 className="mt-4 mb-2 text-[1.4em]">
+            <Link className={pageLinkClassName} to="/global-stats">
               Global Statistics
             </Link>
           </h2>
@@ -62,9 +62,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="font-sans">
-          <h2 className="mt-6 mb-2 font-sans text-[1.4em]">
-            <Link className={pageLinkClassName} to="/pathexplorer">
+        <div>
+          <h2 className="mt-4 mb-2 font-sans text-[1.4em]">
+            <Link className={pageLinkClassName} to="/path-explorer">
               Path Explorer
             </Link>
           </h2>
