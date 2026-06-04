@@ -82,6 +82,10 @@ export default function PathExplorer() {
           id="topSection"
           className="flex min-h-0 flex-1 flex-col items-center gap-[0.9rem] overflow-x-hidden overflow-y-auto"
         >
+          <h1>
+            Discover courses you can take next based on courses you have
+            completed:
+          </h1>
           <CourseSearchBar
             searchResults={completedCourses}
             setSearchResults={setCompletedCourses}
@@ -95,8 +99,12 @@ export default function PathExplorer() {
             className="from-btn-gradient-from to-btn-gradient-to w-full cursor-pointer self-stretch rounded-[0.8rem] border-0 bg-linear-to-br px-4 py-[0.8rem] text-[0.95rem] text-white hover:brightness-105 disabled:cursor-wait disabled:opacity-70"
             onClick={handleGetImmediatePostreqs}
           >
-            Courses Unlocked by Completed Courses
+            Find out now
           </button>
+
+          <h1 className="mt-5">
+            Find the optimal path to courses you want to take:
+          </h1>
 
           <CourseSearchBar
             searchResults={avoidedCourses}
@@ -115,21 +123,15 @@ export default function PathExplorer() {
 
         <div
           id="bottomSection"
-          className="border-border-panel bg-panel-bg mb-6 flex shrink-0 flex-col items-center gap-3 rounded-2xl border p-[0.9rem] text-center shadow-[0_4px_12px_rgba(37,53,84,0.06)]"
+          className="mb-6 flex shrink-0 flex-col items-center gap-3"
         >
-          <div className="flex w-full justify-center py-2 text-center">
-            <h3 id="title" className="m-0 text-[1.1rem] leading-[1.3]">
-              Fastest path to your academic desires
-            </h3>
-          </div>
-
           <button
             id="demoSendButton"
             type="button"
             className="from-btn-gradient-from to-btn-gradient-to w-full cursor-pointer self-stretch rounded-[0.8rem] border-0 bg-linear-to-br px-4 py-[0.8rem] text-[0.95rem] text-white hover:brightness-105 disabled:cursor-wait disabled:opacity-70"
             onClick={handleRunPathFinder}
           >
-            Run Path Explorer
+            Find your path
           </button>
           <div
             id="progressContainer"

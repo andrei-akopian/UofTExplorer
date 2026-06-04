@@ -50,7 +50,7 @@ export default function CourseSearchBar({
   }, [searchResults]);
 
   return (
-    <div className="border-border-card bg-card-bg shadow-card relative w-full shrink-0 rounded-2xl border px-[0.9rem] py-[0.85rem] pb-[0.95rem]">
+    <div className="border-border-card bg-card-bg shadow-card relative w-full shrink-0 rounded-2xl border px-[0.9rem] py-[0.85rem] pb-[0.95rem] text-sm">
       <label
         className="text-text-muted mb-[0.45rem] flex items-center gap-[0.55rem] text-[0.88rem] font-semibold"
         htmlFor="avoidedSearch"
