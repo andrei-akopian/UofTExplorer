@@ -16,10 +16,10 @@ OUTPUT_DIR = "ttb_scrapes"
 
 def get_course_codes(path="../../data/courses.json"):
     # FIXME find some other source for course codes, this one is incomplete, some courses from ttb might not be comming up.
-    with open("../../data/courses.json", "r") as f:
+    with open(path, "r", encoding="utf-8") as f:
         course_data = json.load(f)
     course_codes = [c["course_code"] for c in course_data]
-    assert {len(c) for c in course_codes} == {8} # they should all be length 8, otherwise below code breaks
+    assert {len(c) for c in course_codes} == {8}  # they should all be length 8, otherwise below code breaks
     return course_codes
 
 # create a tree such that we use minimal requests to ttb
@@ -101,7 +101,7 @@ def getPageableCourses(query: str, divisions=["ARTSC"], page: int = 1, verbose=T
         print(f"Recieved response.")
     assert response.status_code == 200
     j = response.json()
-    assert list(j.keys()) == ["payload", "status"] # has two keys, status and payload
+    assert "payload" in j and "status" in j  # validate keys without depending on object key order
     payload = j["payload"]
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     with open(f"{OUTPUT_DIR}/{query}_{time.time_ns()}.json", "w") as f:
