@@ -22,7 +22,7 @@ def aggregate_mentioned_courses(filelist=None):
                 mentioned_courses.update([c["code"] for c in data["pageableCourse"]["courses"]])
     return mentioned_courses
 
-def getBasicCourseInfo(filelist=None) -> dict[str, int]:
+def getBasicCourseInfo(filelist=None) -> dict[str, dict]:
     """
     Return dict of courses and their total class sizes.
     """
