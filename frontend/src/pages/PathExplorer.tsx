@@ -70,13 +70,13 @@ export default function PathExplorer() {
   }, [graphDataPathfind]);
 
   return (
-    <div className="relative flex h-screen w-full max-md:flex-col">
+    <div className="relative flex h-full w-full max-md:flex-col">
       <div id="vis graph" className="relative h-full w-full max-md:h-[50vh]">
         <GraphVis2D graphData={graphData} useShellLayout={true} />
       </div>
       <div
         id="controls"
-        className="border-l-border-panel bg-panel-bg max-md:border-t-border-panel z-2 mr-4 flex h-screen w-124 flex-col gap-4 border-l p-4 backdrop-blur-[10px] max-md:mr-0 max-md:h-[50vh] max-md:w-full max-md:border-t max-md:border-l-0"
+        className="border-l-border-panel bg-panel-bg max-md:border-t-border-panel z-2 mr-4 flex h-full w-124 flex-col gap-4 border-l p-4 backdrop-blur-[10px] max-md:mr-0 max-md:h-[50vh] max-md:w-full max-md:border-t max-md:border-l-0"
       >
         <div
           id="topSection"
@@ -154,7 +154,7 @@ export default function PathExplorer() {
           <div
             id="warningContainer"
             className="w-full self-stretch"
-            style={{ display: "" }}
+            style={{ display: "none" }}
           >
             <div className="border-warning-border bg-warning-bg text-warning-text flex items-start gap-[0.6rem] rounded-[0.8rem] border px-[0.8rem] py-[0.65rem] text-[0.85rem] leading-[1.4]">
               <span className="shrink-0 text-[1.1rem]">⚠️</span>
