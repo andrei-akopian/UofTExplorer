@@ -15,10 +15,12 @@ export default function Graph3D() {
   }, [graphData]);
 
   return (
-    <div className="relative h-screen w-screen">
-      <div id="graph" className="overflow-hidden bg-[#fafafa]"></div>
+    <div className="relative flex h-full min-h-0 w-full overflow-hidden">
+      <div className="h-full min-w-0 flex-1">
+        <div id="graph" className="h-full w-full overflow-hidden"></div>
+      </div>
 
-      <details className="close-on-outclick absolute right-0 z-2 h-[4.7rem] w-[4.7rem] bg-transparent">
+      <details className="close-on-outclick relative z-2 mt-3 mr-2 h-[4.7rem] w-[4.7rem] shrink-0 self-start bg-transparent">
         <summary className="m-0 flex h-full w-full list-none items-center justify-center p-0 [&::-webkit-details-marker]:hidden">
           <svg
             width="2.5rem"
@@ -41,8 +43,8 @@ export default function Graph3D() {
             </g>
           </svg>
         </summary>
-        <div className="absolute top-[calc(100%+6px)] right-auto left-0 z-1200 flex max-h-[20em] w-[20em] flex-col gap-1.5 overflow-y-scroll rounded-md border border-[#ccc] bg-white p-2.5 shadow-[0_6px_16px_rgba(0,0,0,0.16)]">
-          <label className="flex max-h-none w-max min-w-[5em] items-center gap-2 overflow-visible text-sm">
+        <div className="absolute top-[calc(100%+6px)] right-0 left-auto z-1200 flex max-h-[20em] w-[20em] flex-col gap-1.5 overflow-y-auto rounded-md border border-[#ccc] bg-white p-2.5 shadow-[0_6px_16px_rgba(0,0,0,0.16)]">
+          <label className="flex max-h-none w-max min-w-[5em] items-center gap-2 overflow-visible font-sans text-sm">
             <input type="checkbox" defaultChecked />
             <span>Use shell layout</span>
           </label>
@@ -56,7 +58,7 @@ export default function Graph3D() {
         setIsLoading={setIsLoading}
       />
 
-      <div className="flex min-w-[20rem] flex-col gap-1">
+      <div className="fixed bottom-10 left-5 z-20 flex min-w-[20rem] flex-col gap-1">
         <div
           id="currQueryDisplay"
           className="overflow-hidden text-[0.84rem] leading-[1.3] font-semibold text-ellipsis whitespace-nowrap text-[#24324a]"

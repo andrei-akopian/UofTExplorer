@@ -28,18 +28,47 @@ function TitleManager() {
   return null;
 }
 
+function DropdownOutsideClickCloser() {
+  useEffect(() => {
+    const handlePointerDown = (event: PointerEvent) => {
+      const target = event.target as Node | null;
+      const dropdowns = document.querySelectorAll<HTMLDetailsElement>(
+        "details.close-on-outclick[open]",
+      );
+
+      dropdowns.forEach((dropdown) => {
+        if (!target || !dropdown.contains(target)) {
+          dropdown.removeAttribute("open");
+        }
+      });
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+    };
+  }, []);
+
+  return null;
+}
+
 function App() {
   return (
     <Router>
       <TitleManager />
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/graph/2d" element={<Graph2D />} />
-        <Route path="/graph/3d" element={<Graph3D />} />
-        <Route path="/path-explorer" element={<PathExplorer />} />
-        <Route path="/global-stats" element={<GlobalStats />} />
-      </Routes>
+      <DropdownOutsideClickCloser />
+      <div className="flex h-screen flex-col">
+        <NavBar />
+        <main className="min-h-0 flex-1">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/graph/2d" element={<Graph2D />} />
+            <Route path="/graph/3d" element={<Graph3D />} />
+            <Route path="/path-explorer" element={<PathExplorer />} />
+            <Route path="/global-stats" element={<GlobalStats />} />
+          </Routes>
+        </main>
+      </div>
     </Router>
   );
 }

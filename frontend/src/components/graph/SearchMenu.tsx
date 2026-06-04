@@ -69,7 +69,7 @@ function FilterBar({
           />
         </svg>
       </summary>
-      <div className="absolute top-[calc(100%+6px)] left-0 z-50 flex max-h-[20em] w-max flex-col gap-1.5 overflow-y-scroll rounded-md border border-gray-300 bg-white p-2.5 shadow-[0_6px_16px_rgba(0,0,0,0.16)]">
+      <div className="absolute top-[calc(100%+6px)] left-0 z-50 flex max-h-[20em] w-max flex-col gap-1.5 overflow-y-auto rounded-md border border-gray-300 bg-white p-2.5 shadow-[0_6px_16px_rgba(0,0,0,0.16)]">
         {options.map((option) => (
           <label
             key={keyFormat(option)}
