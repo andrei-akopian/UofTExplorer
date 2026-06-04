@@ -7,6 +7,7 @@ import json
 import time
 import logging 
 import os
+import math
 
 BASE_DOMAIN_NAME = "https://ttb.utoronto.ca/"
 GET_PAGEABLE_COURSES = "https://api.easi.utoronto.ca/ttb/getPageableCourses"
@@ -106,6 +107,21 @@ def getPageableCourses(query: str, divisions=["ARTSC"], page: int = 1, verbose=T
     with open(f"{OUTPUT_DIR}/{query}_{time.time_ns()}.json", "w") as f:
         json.dump(payload, f)
     return payload
+
+def get_num_pages():
+    payload = getPageableCourses("")
+    total = payload["pageableCourse"]['total']
+    pageSize = payload["pageableCourse"]['pageSize']
+    pages = math.ceil(total / pageSize)
+    return pages
+
+def scrape_everything(pages=None):
+    if pages is None:
+        pages = get_num_pages()
+    for page in range(0, pages):
+        payload = getPageableCourses("", page=page)
+        time.sleep(3)
+        print(page, len(payload["pageableCourse"]['courses']))
 
 if __name__ == "__main__":
     pass

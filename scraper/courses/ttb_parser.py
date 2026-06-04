@@ -8,9 +8,9 @@ if not os.path.isdir(SCRAPES_FOLDER):
 
 FILELIST = os.listdir('ttb_scrapes')
 
-def aggregate_mentioned_courses(filelist):
+def aggregate_mentioned_courses(filelist=FILELIST):
     mentioned_courses = set()
-    for i, file in enumerate(FILELIST):
+    for i, file in enumerate(filelist):
         # print(file, i)
         with open(f"ttb_scrapes/{file}", 'r') as f:
             content = f.read()
