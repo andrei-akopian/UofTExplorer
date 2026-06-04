@@ -32,16 +32,6 @@ export default function Graph2D() {
         ? "ml-7 text-sm font-sans text-(--color-primary)"
         : "ml-7 text-sm font-sans text-(--color-primary-info)";
 
-  useEffect(() => {
-    if (loading) {
-      setMessage("Loading graph...");
-      setMessageType("info");
-    } else {
-      setMessage("LOADED");
-      setMessageType("success");
-    }
-  }, [loading]);
-
   return (
     <div className="relative h-full w-full overflow-hidden">
       <div className="flex h-full w-full items-start">
@@ -108,6 +98,8 @@ export default function Graph2D() {
         setData={setGraphData}
         isLoading={loading}
         setIsLoading={setLoading}
+        setMessage={setMessage}
+        setMessageType={setMessageType}
       />
     </div>
   );

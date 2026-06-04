@@ -25,11 +25,15 @@ export default function GraphQuery({
   setData,
   isLoading,
   setIsLoading,
+  setMessage,
+  setMessageType,
 }: {
   data: GraphData;
   setData: (data: GraphData) => void;
   isLoading: boolean;
   setIsLoading: (isLoading: boolean) => void;
+  setMessage: (message: string) => void;
+  setMessageType: (type: "info" | "success" | "error") => void;
 }) {
   void data;
 
@@ -50,10 +54,16 @@ export default function GraphQuery({
         convertFiltersToApiFormat(filters),
       );
       setData(result);
+      setMessage(
+        `Currently Displaying: ${query} | Number of Nodes: ${result.nodes.length}`,
+      );
+      setMessageType("success");
     } catch (err) {
       const message = err instanceof Error ? err.message : "Unknown error";
       console.warn("Error fetching graph data:", message);
       setError(message);
+      setMessage(`Error: ${message}`);
+      setMessageType("error");
     } finally {
       setIsLoading(false);
     }
