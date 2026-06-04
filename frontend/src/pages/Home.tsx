@@ -11,7 +11,7 @@ export default function Home() {
           UofT Explorer
         </h1>
 
-        <p>
+        <p className="mt-8">
           Welcome! Explore how courses, programs, and departments are connected
           at the Faculty of Arts & Science at the University of Toronto.
         </p>
@@ -30,7 +30,7 @@ export default function Home() {
         </p>
 
         <div>
-          <h2 className="mt-4 mb-2 text-[1.4em]">
+          <h2 className="mt-8 mb-2 text-[1.4em]">
             Graph Explorer:{" "}
             <Link className={pageLinkClassName} to="/graph/2d">
               2D Graph
@@ -51,7 +51,7 @@ export default function Home() {
         </div>
 
         <div>
-          <h2 className="mt-4 mb-2 text-[1.4em]">
+          <h2 className="mt-8 mb-2 text-[1.4em]">
             <Link className={pageLinkClassName} to="/global-stats">
               Global Statistics
             </Link>
@@ -63,7 +63,7 @@ export default function Home() {
         </div>
 
         <div>
-          <h2 className="mt-4 mb-2 font-sans text-[1.4em]">
+          <h2 className="mt-8 mb-2 font-sans text-[1.4em]">
             <Link className={pageLinkClassName} to="/path-explorer">
               Path Explorer
             </Link>
