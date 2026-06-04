@@ -6,10 +6,12 @@ import requests
 import json
 import time
 import logging 
+import os
 
 BASE_DOMAIN_NAME = "https://ttb.utoronto.ca/"
 GET_PAGEABLE_COURSES = "https://api.easi.utoronto.ca/ttb/getPageableCourses"
 PAGE_SIZE = 20
+OUTPUT_DIR = "ttb_scrapes"
 
 def get_course_codes(path="../../data/courses.json"):
     # FIXME find some other source for course codes, this one is incomplete, some courses from ttb might not be comming up.
@@ -17,6 +19,7 @@ def get_course_codes(path="../../data/courses.json"):
         course_data = json.load(f)
     course_codes = [c["course_code"] for c in course_data]
     assert {len(c) for c in course_codes} == {8} # they should all be length 8, otherwise below code breaks
+    return course_codes
 
 # create a tree such that we use minimal requests to ttb
 counter = 0
@@ -48,6 +51,61 @@ def get_optimal_queries(tree, prefix="") -> list:
         elif isinstance(tree[key], dict):
             l.extend(get_optimal_queries(tree[key], prefix+key))
     return l
+
+def getPageableCourses(query: str, divisions=["ARTSC"], page: int = 1, verbose=True):
+    request_data = {
+        "courseCodeAndTitleProps":{
+            # "courseCode": f"{query}",
+            "courseCode": "",
+            "courseSectionCode": "",
+            "courseTitle": f"{query}",
+            "searchCourseDescription": True
+        },
+        "departmentProps":[],
+        "campuses":[],
+        # "sessions":["20265F","20265S","20265"],
+        # "sessions": [
+        #     "20265",
+        #     "20265S",
+        #     "20265F",
+        # ],
+        "sessions":["20265F","20265S","20265","20269","20271","20269-20271"], # 2026 summer + next fall
+        # "sessions": [f"202{y}{i}{f}" for y in ["5", "6", "7"] for i in range(0,10) for f in ["F", "S", ""]],
+        # "sessions":["20259","20261","20259-20261"],
+        "requirementProps":[],
+        "instructor":"",
+        "courseLevels":[],
+        "deliveryModes":[],
+        "dayPreferences":[],
+        "timePreferences":[],
+        # "divisions":["ARTSC","ERIN"],
+        "divisions": divisions,
+        "creditWeights":[],
+        "availableSpace": False,
+        "waitListable": False,
+        "page": page,
+        "pageSize":50,
+        "direction":"asc"
+    }
+    if verbose:
+        print(f"Sent POST request page={page}. Awaiting responds.")
+    response = requests.post(
+        url=f"{GET_PAGEABLE_COURSES}",
+        json=request_data,
+        headers={
+            "Accept": "application/json, text/plain, */*"
+        }
+    )
+    if verbose:
+        print(f"Recieved response.")
+    assert response.status_code == 200
+    j = response.json()
+    assert list(j.keys()) == ["payload", "status"] # has two keys, status and payload
+    payload = j["payload"]
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    with open(f"{OUTPUT_DIR}/{query}_{time.time_ns()}.json", "w") as f:
+        json.dump(payload, f)
+    return payload
 
 if __name__ == "__main__":
     pass
