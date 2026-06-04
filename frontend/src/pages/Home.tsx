@@ -5,9 +5,9 @@ const pageLinkClassName =
 
 export default function Home() {
   return (
-    <div className="flex w-full flex-col items-center bg-[#fcfcfa] px-4 py-10 font-['Montserrat',] leading-relaxed text-[#1f2933] md:px-5">
+    <div className="flex w-full flex-col items-center bg-[#fcfcfa] px-4 py-10 font-sans leading-relaxed text-[#1f2933] md:px-5">
       <div className="grid w-full max-w-3xl gap-10">
-        <h1 className="text-center font-['Notable',font-sans,sans-serif] text-5xl font-medium">
+        <h1 className="font-display text-center text-5xl font-medium">
           UofT Explorer
         </h1>
 

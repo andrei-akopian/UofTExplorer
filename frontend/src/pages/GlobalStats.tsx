@@ -62,10 +62,7 @@ function doubleFigure(
 
 export default function GlobalStats() {
   return (
-    <div
-      className="flex min-h-screen justify-center overflow-y-auto"
-      style={{ fontFamily: '"Latin Modern Roman", serif' }}
-    >
+    <div className="flex min-h-screen justify-center overflow-y-auto font-serif">
       <div className="mx-auto max-w-[80ch] px-4 py-8">
         <article className="leading-7 [counter-reset:theorem_figcaption_tablecaption]">
           <h1 className="mt-6 mb-2 text-center text-3xl font-semibold">
