@@ -28,10 +28,12 @@ export default function CourseSearchBar({
   searchResults,
   setSearchResults,
   title,
+  placeholder,
 }: {
   searchResults: string[];
   setSearchResults: (results: string[]) => void;
   title: string;
+  placeholder: string;
 }) {
   const { results, loading, error, search, clear } = useSearch(300, true);
   const [showSearchResults, setShowSearchResults] = useState(false);
@@ -61,7 +63,7 @@ export default function CourseSearchBar({
       <input
         type="text"
         className="border-border-card bg-input-bg focus:border-focus-border focus:ring-focus-ring box-border w-[96%] rounded-[0.9rem] border px-[0.9rem] py-[0.78rem] text-[0.96rem] focus:ring-2 focus:outline-none"
-        placeholder="Add a course to avoid"
+        placeholder={placeholder}
         autoComplete="off"
         value={query}
         onChange={handleChange}

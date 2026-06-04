@@ -86,6 +86,7 @@ export default function PathExplorer() {
             searchResults={completedCourses}
             setSearchResults={setCompletedCourses}
             title="Courses you have completed"
+            placeholder="Add a course you completed"
           />
 
           <button
@@ -101,12 +102,14 @@ export default function PathExplorer() {
             searchResults={avoidedCourses}
             setSearchResults={setAvoidedCourses}
             title="Courses you want to avoid"
+            placeholder="Add a course to avoid"
           />
 
           <CourseSearchBar
             searchResults={desiredCourses}
             setSearchResults={setDesiredCourses}
             title="Courses you want to take"
+            placeholder="Add a course to take"
           />
         </div>
 
