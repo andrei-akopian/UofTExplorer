@@ -53,20 +53,8 @@ function FilterBar({
     <details className="group close-on-outclick relative">
       <summary className="flex cursor-pointer list-none items-center gap-2 rounded-md border border-gray-300 bg-white px-5 py-2.5 text-sm select-none [&::-webkit-details-marker]:hidden">
         {title}
-        <svg
-          width="12"
-          height="12"
-          viewBox="0 0 12 12"
-          fill="none"
-          className="opacity-60 transition-transform duration-120 group-open:rotate-180"
-        >
-          <path
-            d="M2 4l4 4 4-4"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="m2 4 4 4 4-4" stroke="currentColor" />
         </svg>
       </summary>
       <div className="absolute top-[calc(100%+6px)] left-0 z-50 flex max-h-[20em] w-max flex-col gap-1.5 overflow-y-auto rounded-md border border-gray-300 bg-white p-2.5 shadow-[0_6px_16px_rgba(0,0,0,0.16)]">
