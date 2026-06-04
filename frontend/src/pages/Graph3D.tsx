@@ -33,7 +33,7 @@ export default function Graph3D() {
         />
       </div>
 
-      <details className="close-on-outclick relative z-2 mt-3 mr-2 h-[4.7rem] w-[4.7rem] shrink-0 self-start bg-transparent">
+      <details className="close-on-outclick absolute right-0 z-2 mt-3 mr-2 h-[4.7rem] w-[4.7rem] shrink-0 self-start bg-transparent">
         <summary className="m-0 flex h-full w-full list-none items-center justify-center p-0 [&::-webkit-details-marker]:hidden">
           <img src="/settings_gear.svg"></img>
         </summary>

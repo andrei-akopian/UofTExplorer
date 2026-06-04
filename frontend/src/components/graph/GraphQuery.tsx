@@ -80,7 +80,7 @@ export default function GraphQuery({
   };
 
   return (
-    <div className="absolute top-3 left-3 flex w-[calc(100vw-12rem)] flex-wrap content-start items-center justify-start gap-2.5 p-4">
+    <div className="absolute top-3 flex w-full flex-wrap content-start items-center justify-center gap-2.5 p-4">
       <SearchMenu
         query={query}
         setQuery={setQuery}
