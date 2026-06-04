@@ -5,8 +5,8 @@ const pageLinkClassName =
 
 export default function Home() {
   return (
-    <div className="bg-page-bg text-text-body flex w-full flex-col items-center px-4 py-4 font-sans leading-relaxed md:px-5">
-      <div className="grid w-full max-w-3xl gap-5 font-sans">
+    <div className="bg-page-bg text-text-body flex h-full w-full flex-col items-center px-4 py-4 font-sans leading-relaxed md:px-5">
+      <div className="h-full w-full max-w-3xl gap-5 font-sans">
         <h1 className="font-display m-4 text-center text-5xl font-medium">
           UofT Explorer
         </h1>
