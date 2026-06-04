@@ -502,7 +502,7 @@ class CourseData:
     hours: dict[str, int]
     breadth: dict[int, int]
     original_requisite_strings: dict[str, str]
-    class_size: int
+    class_size: Optional[int]
 
     def __init__(
         self, code_split: list[str], title: str, description: str, cr_ncr: bool, hours: dict, breadth: dict,
