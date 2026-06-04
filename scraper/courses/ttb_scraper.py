@@ -12,15 +12,7 @@ import math
 BASE_DOMAIN_NAME = "https://ttb.utoronto.ca/"
 GET_PAGEABLE_COURSES = "https://api.easi.utoronto.ca/ttb/getPageableCourses"
 PAGE_SIZE = 20
-OUTPUT_DIR = "ttb_scrapes"
-
-def get_course_codes(path="../../data/courses.json"):
-    # FIXME find some other source for course codes, this one is incomplete, some courses from ttb might not be comming up.
-    with open("../../data/courses.json", "r") as f:
-        course_data = json.load(f)
-    course_codes = [c["course_code"] for c in course_data]
-    assert {len(c) for c in course_codes} == {8} # they should all be length 8, otherwise below code breaks
-    return course_codes
+OUTPUT_DIR = "scraper/courses/ttb_scrapes"
 
 # create a tree such that we use minimal requests to ttb
 counter = 0

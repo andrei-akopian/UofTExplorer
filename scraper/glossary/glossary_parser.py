@@ -11,8 +11,8 @@ Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 import json
 import bs4
 
-LOADPATH = "./raw_output/glossary.html"
-SAVEPATH = "../../data/glossary.json"
+LOADPATH = "scraper/glossary/raw_output/glossary.html"
+SAVEPATH = "data/glossary.json"
 
 TEXT_SWAPS = {
     "\u00a0": " ",
@@ -70,18 +70,3 @@ def parse_glossary() -> dict[str, str]:
 
 if __name__ == "__main__":
     parse_glossary()
-
-    # import doctest
-    # doctest.testmod(verbose=True)
-
-    # import python_ta
-    # python_ta.check_all(config={
-    #     'allow-local-imports': True,
-    #     'extra-imports': ['json', 'bs4'],
-    #     'allowed-io': ['parse_glossary'],
-    #     'max-line-length': 120,
-    #     'max-nested-blocks': 5,
-    #     'max-locals': 20,
-    #     'max-branches': 15,
-    #     'max-args': 7
-    # })

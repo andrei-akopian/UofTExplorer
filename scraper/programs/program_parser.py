@@ -27,10 +27,11 @@ import logging
 import json
 import bs4
 
-SAVE_FOLDER: str = "../../data/"
+SAVE_FOLDER: str = "data"
 SAVE_FILENAME: str = "programs.json"
-SAVE_PATH = SAVE_FOLDER + SAVE_FILENAME
-SCRAPE_FOLDER = "./raw_output/"
+SAVE_PATH = f"{SAVE_FOLDER}/{SAVE_FILENAME}"
+SCRAPE_FOLDER = "scraper/programs/raw_output"
+LOG_FOLDER = "scraper/programs/parser_logs"
 PARSING_TARGETS: dict[str, dict] = {
     "UTM": {
         "filepattern": "programs_page_PAGENUMBER_utm.html",
@@ -83,7 +84,7 @@ class ProgramParser:
         self.logger = logging.getLogger(__name__)
         self.logger.addFilter(ContextFilter(self))
         if log_to_file:
-            handler: logging.Handler = logging.FileHandler("./parser_logs/program_parser.log", mode="w")
+            handler: logging.Handler = logging.FileHandler(f"{LOG_FOLDER}/program_parser.log", mode="w")
         else:
             handler: logging.Handler = logging.StreamHandler()
         handler.setFormatter(logging.Formatter("%(levelname)s %(current_program)s | %(message)s"))
@@ -199,11 +200,12 @@ class ProgramParser:
         """
         Take a program HTML and parse out all data from it into JSON format.
         """
-        scrape_filename = SCRAPE_FOLDER + PARSING_TARGETS[target_name]['filepattern'].replace("PAGENUMBER", str(page))
-        if not os.path.isfile(scrape_filename):
+        scrape_filename = PARSING_TARGETS[target_name]['filepattern'].replace("PAGENUMBER", str(page))
+        scrape_filepath = f"{SCRAPE_FOLDER}/{scrape_filename}"
+        if not os.path.isfile(scrape_filepath):
             self.logger.critical("%s does not exist", scrape_filename)
             return []
-        with open(scrape_filename, "r", encoding='utf-8') as f:
+        with open(scrape_filepath, "r", encoding='utf-8') as f:
             html_doc = f.read()
 
         soup = bs4.BeautifulSoup(html_doc, "html.parser")
@@ -278,19 +280,3 @@ class ProgramParser:
         end = time.clock_gettime(time.CLOCK_MONOTONIC)
         self.logger.info("parsing finished in: %ss", round(end - start, 4))
 
-
-if __name__ == "__main__":
-    program_parser = ProgramParser()
-    program_parser.full_scrape_parse()
-
-    # import python_ta
-    # python_ta.check_all(config={
-    #     'allow-local-imports': True,
-    #     'extra-imports': ["bs4", "json", "os", "time", "logging"],
-    #     'allowed-io': ['ProgramParser.save_to_json', "ProgramParser.target_selection_ui", "ProgramParser.page_to_json"],
-    #     'max-line-length': 120,
-    #     'max-nested-blocks': 5,
-    #     'max-locals': 30,
-    #     'max-branches': 15,
-    #     'max-args': 7
-    # })

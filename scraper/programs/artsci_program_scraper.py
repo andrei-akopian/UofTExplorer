@@ -28,7 +28,7 @@ SCRAPING_TARGETS: dict[str, dict] = {
     },
 }
 
-SAVE_PATH = "raw_output/"
+SAVE_PATH = "scraper/programs/raw_output"
 SCRAPE_DELAY = 3  # in seconds. wait before hitting the endpoint.
 
 
@@ -42,7 +42,7 @@ def scrape_page(base_domain_name: str, page: int = 0, target_name: str = "") -> 
     if r.status_code != 200:
         print(f"encountered unexpected HTTP response code: {r.status_code}. Exiting.")
         exit()
-    with open(SAVE_PATH + f"programs_page_{page}_{target_name}.html", 'w', encoding="utf-8") as f:
+    with open(f"{SAVE_PATH}/programs_page_{page}_{target_name}.html", 'w', encoding="utf-8") as f:
         f.write(r.text)
     return r.text
 
