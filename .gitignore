@@ -1,46 +1,36 @@
-scraper/raw_output
-/__pycache__
-/__marimo__
-.idea
-
-# profiler files for https://github.com/plasma-umass/scalene
-*/scalene-profile.*
-
-# latex
-docs/proposal/*.aux
-docs/proposal/*.bbl
-docs/proposal/*.bcf
-docs/proposal/*.blg
-docs/proposal/*.fdb_latexmk
-docs/proposal/*.fls
-docs/proposal/*.log
-docs/proposal/*.out
-docs/proposal/*.xml
-docs/proposal/*.gz
-
-docs/report/*.aux
-docs/report/*.bbl
-docs/report/*.bcf
-docs/report/*.blg
-docs/report/*.fdb_latexmk
-docs/report/*.fls
-docs/report/*.log
-docs/report/*.out
-docs/report/*.xml
-docs/report/*.gz
-
-# IDE
-.idea
-.lsp
-.mypy_cache
-__pycache__
-
-#lazygit is bild, so these are needed
-/.lsp/.cache
-/__pycache__
-/docs/report/images/.DS_Store
+# =========================
+# OS / Filesystem metadata
+# =========================
 .DS_Store
+/docs/report/images/.DS_Store
 
-#scrapes
-raw_output
-ttb_scrapes
+# ===========
+# IDE / Tools
+# ===========
+.idea/
+.lsp/
+/.lsp/.cache/
+
+# ==================
+# Python / Notebook
+# ==================
+__pycache__/
+.mypy_cache/
+/__marimo__/
+
+# ============
+# JavaScript
+# ============
+node_modules/
+
+# ====================
+# Scraper output files
+# ====================
+raw_output/
+scraper/raw_output/
+ttb_scrapes/
+
+# ================================================
+# Profiler files
+# ================================================
+*/scalene-profile.*
