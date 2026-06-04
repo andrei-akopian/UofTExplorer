@@ -63,10 +63,9 @@ export default function Graph3D() {
           id="currQueryDisplay"
           className="text-text-query overflow-hidden text-[0.84rem] leading-[1.3] font-semibold text-ellipsis whitespace-nowrap"
         ></div>
-        <div
-          id="message"
-          className="m-0 min-h-6 text-[0.84rem] font-medium"
-        ></div>
+        <div id="message" className="m-0 min-h-6 text-[0.84rem] font-medium">
+          {message}
+        </div>
       </div>
     </div>
   );

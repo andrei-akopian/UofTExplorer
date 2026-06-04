@@ -8,6 +8,7 @@ export default function PathExplorer() {
   const [completedCourses, setCompletedCourses] = useState<string[]>([]);
   const [avoidedCourses, setAvoidedCourses] = useState<string[]>([]);
   const [desiredCourses, setDesiredCourses] = useState<string[]>([]);
+  const [solutionDisplay, setSolutionDisplay] = useState<string[]>([]);
 
   const {
     data: graphDataPostreqs,
@@ -40,10 +41,15 @@ export default function PathExplorer() {
   useEffect(() => {
     if (graphDataPostreqs) {
       setGraphData(graphDataPostreqs);
+
       console.log(
         "Immediate postreqs graph data in PathExplorer.tsx:",
         graphDataPostreqs,
       );
+
+      if (graphDataPostreqs.solution_display) {
+        setSolutionDisplay(Object.keys(graphDataPostreqs.solution_display));
+      }
     }
   }, [graphDataPostreqs]);
 
@@ -66,6 +72,9 @@ export default function PathExplorer() {
         "Path finder solution graph data in PathExplorer.tsx:",
         graphDataPathfind,
       );
+      if (graphDataPathfind.solution) {
+        setSolutionDisplay(graphDataPathfind.solution);
+      }
     }
   }, [graphDataPathfind]);
 
@@ -174,6 +183,13 @@ export default function PathExplorer() {
         className="pointer-events-none absolute bottom-17.5 left-54 z-4 m-0 min-h-[1.3rem] w-96 -translate-x-1/2 text-left text-[0.9rem] wrap-break-word whitespace-pre-wrap text-(--color-text-subtle) max-md:left-1/2 max-md:w-[calc(100%-2rem)] [&.error]:text-(--color-error-hover) [&.success]:text-(--color-success-text)"
         aria-live="polite"
       ></p>
+      <div className="fixed bottom-10 left-5 z-20 flex min-w-[20rem] flex-col gap-1">
+        <div id="message" className="m-0 min-h-6 text-[0.84rem] font-medium">
+          {solutionDisplay.map((x) => (
+            <p>{x}</p>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
