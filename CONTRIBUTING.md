@@ -31,6 +31,14 @@ flowchart TD
     backend <--> frontend
 ```
 
+### Scraping
+
+Please be polite, scrape as rarely as possible, and keep the time delay of at least 3s. We don't want to overloaf their servers.
+
+on MacOS to prevent the scraper from being interrupted, use
+
+`cafeinate python3 <scraper.py>`
+
 ## Commit Messages
 
 ### Structure

@@ -43,4 +43,5 @@ __pycache__
 
 #scrapes
 raw_output
+parser_logs
 ttb_scrapes

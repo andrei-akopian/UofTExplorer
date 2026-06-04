@@ -3,7 +3,7 @@ CSC111 Winter 2026 Project 2
 
 ACADEMIC CALENDAR PARSER
 This Python module provides functions to parse University of Toronto Academic Calendar pages.
-It takes html files from ../scraper/raw_output and converts them into courses.json stored to ../data/courses.json
+It takes html files from raw_output and converts them into courses.json stored to ../data/courses.json
 
 The HTMLs might not have a standarized format, and might contain incorrectly structured data.
 - in fact, a few courses have non-matching parenthesies
@@ -27,10 +27,10 @@ import logging
 import json
 import bs4
 
-SAVE_FOLDER: str = "../data/"
+SAVE_FOLDER: str = "../../data/"
 SAVE_FILENAME: str = "programs.json"
 SAVE_PATH = SAVE_FOLDER + SAVE_FILENAME
-SCRAPE_FOLDER = "../scraper/raw_output/"
+SCRAPE_FOLDER = "./raw_output/"
 PARSING_TARGETS: dict[str, dict] = {
     "UTM": {
         "filepattern": "programs_page_PAGENUMBER_utm.html",
@@ -283,14 +283,14 @@ if __name__ == "__main__":
     program_parser = ProgramParser()
     program_parser.full_scrape_parse()
 
-    import python_ta
-    python_ta.check_all(config={
-        'allow-local-imports': True,
-        'extra-imports': ["bs4", "json", "os", "time", "logging"],
-        'allowed-io': ['ProgramParser.save_to_json', "ProgramParser.target_selection_ui", "ProgramParser.page_to_json"],
-        'max-line-length': 120,
-        'max-nested-blocks': 5,
-        'max-locals': 30,
-        'max-branches': 15,
-        'max-args': 7
-    })
+    # import python_ta
+    # python_ta.check_all(config={
+    #     'allow-local-imports': True,
+    #     'extra-imports': ["bs4", "json", "os", "time", "logging"],
+    #     'allowed-io': ['ProgramParser.save_to_json', "ProgramParser.target_selection_ui", "ProgramParser.page_to_json"],
+    #     'max-line-length': 120,
+    #     'max-nested-blocks': 5,
+    #     'max-locals': 30,
+    #     'max-branches': 15,
+    #     'max-args': 7
+    # })

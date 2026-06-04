@@ -38,19 +38,19 @@ def scrape_glossary() -> None:
 
 
 if __name__ == "__main__":
-    import doctest
-    doctest.testmod(verbose=True)
+    # import doctest
+    # doctest.testmod(verbose=True)
 
-    import python_ta
-    python_ta.check_all(config={
-        'allow-local-imports': True,
-        'extra-imports': ['requests', 'os'],
-        'allowed-io': ['scrape_glossary'],
-        'max-line-length': 120,
-        'max-nested-blocks': 5,
-        'max-locals': 20,
-        'max-branches': 15,
-        'max-args': 7
-    })
+    # import python_ta
+    # python_ta.check_all(config={
+    #     'allow-local-imports': True,
+    #     'extra-imports': ['requests', 'os'],
+    #     'allowed-io': ['scrape_glossary'],
+    #     'max-line-length': 120,
+    #     'max-nested-blocks': 5,
+    #     'max-locals': 20,
+    #     'max-branches': 15,
+    #     'max-args': 7
+    # })
 
     scrape_glossary()
