@@ -33,6 +33,7 @@ COURSE_GRAPH_CONTAINER = construct_container(f"{DATA_FOLDER}/courses.json",
 
 # Progress tracking for long-running requests
 PROGRESS_TRACKER = {}
+TICKETS: dict[str, dict[str, Any]] = {}
 
 MAX_RESULTS = {"departments": 20, "programs": 4, "courses": 36}
 
@@ -133,6 +134,82 @@ def globalstats() -> ResponseReturnValue:
     statistics = get_global_statistics_from_file()
     print(statistics)
     return render_template('globalstats.html', statistics=statistics)
+
+
+@app.route('/api/ticket/<ticket_id>', methods=["GET"])
+def get_ticket(ticket_id: str) -> ResponseReturnValue:
+    """
+    Endpoint to retrieve a specific ticket by its ID.
+    """
+    ticket = TICKETS.get(ticket_id)
+    if not ticket:
+        return jsonify({"error": "Ticket not found"}), 404
+    return jsonify(ticket)
+
+
+@app.route('/api/pathfind', methods=["POST"])
+def pathfind() -> ResponseReturnValue:
+    """
+    Endpoint for the path explorer page request payload.
+    Runs the Z3 SAT solver and returns the result.
+    """
+    try:
+        request_data = request.get_json(silent=True) or {}
+        completed_courses = request_data.get("completed", [])
+        desired_courses = request_data.get("desired", [])
+        avoided_courses = request_data.get("avoided", [])
+
+        app.logger.info(
+            "Received path explorer request: completed=%s desired=%s avoided=%s",
+            completed_courses,
+            desired_courses,
+            avoided_courses
+        )
+
+        solution = sat.solve_satz3(COURSE_GRAPH_CONTAINER.graph, desired_courses, completed_courses, avoided_courses)
+
+        solution_selection = {course: COURSE_GRAPH_CONTAINER.graph.courses[course] for course in solution if course not in desired_courses}
+        target_selection = {tar: COURSE_GRAPH_CONTAINER.graph.courses[tar] for tar in desired_courses}
+        origins = set(desired_courses)
+
+        subgraph = construct_subgraph(COURSE_GRAPH_CONTAINER.graph, list(origins),
+                                      traversers.Targets(True, True, False, False))
+        graph_data = deconstruct_course_graph(subgraph, solution_selection, target_selection)
+
+        return jsonify({"solution": solution, "graph_data": graph_data}), 200
+
+        # ticket_id = str(uuid.uuid4())
+
+        # TICKETS[ticket_id] = {
+        #     "cancelled": False,
+        #     "result": None,
+        #     "error": None
+        # }
+
+        # solver_thread = threading.Thread(
+        #     target=_pathfind,
+        #     args=(ticket_id, completed_courses, desired_courses, avoided_courses),
+        #     daemon=True
+        # )
+        # solver_thread.start()
+        # return jsonify({"ticket_id": ticket_id}), 202
+
+    except Exception as e:
+        app.logger.warning(e)
+        return jsonify({"error": str(e)}), 500
+
+
+def _pathfind(ticket_id: str, completed_courses: list[str], desired_courses: list[str], avoided_courses: list[str]) -> None:
+    """
+    Background worker function that runs the Z3 SAT solver and stores results in TICKETS.
+    """
+    try:
+        solver = sat.solve_satz3(COURSE_GRAPH_CONTAINER.graph, desired_courses, completed_courses, avoided_courses)
+        solution = next(solver)
+        TICKETS[ticket_id]["result"] = solution
+    except Exception as e:
+        app.logger.warning(e)
+        TICKETS[ticket_id]["error"] = str(e)
 
 
 @app.route('/pathexplorerplanning', methods=["POST"])
@@ -297,7 +374,7 @@ def pathexplorer_progress(job_id: str) -> ResponseReturnValue:
     return jsonify(response), 200
 
 
-@app.route("/get_immediate_postreqs", methods=["POST"])
+@app.route("/api/get_immediate_postreqs", methods=["POST"])
 def get_immediate_postreqs() -> ResponseReturnValue:
     """
     Return a deconstructed graph showing immediate post-requisites for completed courses.
@@ -312,7 +389,7 @@ def get_immediate_postreqs() -> ResponseReturnValue:
         app.logger.info("Processing immediate postreqs request for courses: %s", completed_courses)
 
         # Build origins set with completed courses
-        origins = {x['code']: COURSE_GRAPH_CONTAINER.graph.courses[x['code']] for x in completed_courses}
+        origins = {x: COURSE_GRAPH_CONTAINER.graph.courses[x] for x in completed_courses}
 
         # Construct subgraph with completed courses
         postreqs = COURSE_GRAPH_CONTAINER.graph.get_satisfied_courses(list(origins.values()))
@@ -340,7 +417,7 @@ def get_immediate_postreqs() -> ResponseReturnValue:
         return jsonify({"error": str(e)}), 500
 
 
-@app.route("/suggest", methods=["POST"])
+@app.route("/api/suggest", methods=["POST"])
 def suggest() -> ResponseReturnValue:
     """
     Return search suggestions for the current query, including departments, programs, and courses.
@@ -357,10 +434,10 @@ def suggest() -> ResponseReturnValue:
         return jsonify({"results": matches})
 
     except Exception as e:
-        return jsonify({"results": [], "error": "Internal error"}), 500
+        return jsonify({"results": [], "error": "Internal error", "exception": str(e)}), 500
 
 
-@app.route("/suggest_courses", methods=["POST"])
+@app.route("/api/suggest_courses", methods=["POST"])
 def suggest_courses() -> ResponseReturnValue:
     """
     Return search suggestions for the current query, including only courses.
@@ -380,7 +457,7 @@ def suggest_courses() -> ResponseReturnValue:
         return jsonify({"results": [], "error": "Internal error"}), 500
 
 
-@app.route("/courseinformation", methods=["POST"])
+@app.route("/api/courseinformation", methods=["POST"])
 def courseinformation() -> ResponseReturnValue:
     """
     Return all information about a course, to be displayed in the sidebar.
@@ -402,7 +479,7 @@ def courseinformation() -> ResponseReturnValue:
         return jsonify({"results": [], "error": "Internal error"}), 500
 
 
-@app.route('/fetch_graph', methods=['POST'])
+@app.route('/api/fetch_graph', methods=['POST'])
 def fetch_graph() -> ResponseReturnValue:
     """
     Respond to a request to fetch a new graph.
@@ -473,6 +550,33 @@ def images(filename: str) -> Response | None:
             return send_from_directory("../data_analysis/images", filename)
 
     return None
+
+
+@app.route("/api/departments", methods=["GET"])
+def get_departments() -> ResponseReturnValue:
+    """
+    Respond to a request to fetch all departments.
+    Return a json structure of the departments.
+    """
+    try:
+        departments = COURSE_GRAPH_CONTAINER.departments
+        return jsonify(departments), 200
+    except Exception as e:
+        app.logger.warning(e)
+        return jsonify({"error": "Internal error"}), 500
+
+
+@app.route("/api/stats", methods=["GET"])
+def get_stats() -> ResponseReturnValue:
+    """
+    Respond to a request to fetch global stats.
+    Return a json structure of the departments.
+    """
+    try:
+        return jsonify(get_global_statistics_from_file()), 200
+    except Exception as e:
+        app.logger.warning(e)
+        return jsonify({"error": "Internal error"}), 500
 
 
 def find_port() -> int:
