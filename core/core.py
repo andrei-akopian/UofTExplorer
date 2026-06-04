@@ -502,10 +502,11 @@ class CourseData:
     hours: dict[str, int]
     breadth: dict[int, int]
     original_requisite_strings: dict[str, str]
+    class_size: int
 
     def __init__(
         self, code_split: list[str], title: str, description: str, cr_ncr: bool, hours: dict, breadth: dict,
-        original_requisite_strings: dict[str, str]
+        original_requisite_strings: dict[str, str], class_size: Optional[int]
     ) -> None:
         """
         Initialize a new CourseData object.
@@ -517,6 +518,7 @@ class CourseData:
         self.hours = hours
         self.breadth = breadth
         self.original_requisite_strings = original_requisite_strings
+        self.class_size = class_size
 
     def to_dict(self) -> dict[str, str]:
         """

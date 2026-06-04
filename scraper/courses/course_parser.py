@@ -45,7 +45,7 @@ PARSING_TARGETS: dict[str, dict] = {
         "page_range": range(0, 72 + 1)
     },
 }
-SAVE_FOLDER: str = "../../data/"
+SAVE_FOLDER: str = "../data/"
 SAVE_FILENAME: str = "courses.json"
 SAVE_PATH = SAVE_FOLDER + SAVE_FILENAME
 PARSER_LOGS = "./parser_logs"
@@ -160,7 +160,10 @@ class CourseParser:
         self.general_logger.setLevel(logging.INFO)
 
         self.modifications_logger = logging.getLogger("modifications")
-        handler = logging.FileHandler(f"{PARSER_LOGS}/modifications.log", mode="w")
+        if log_to_file:
+            handler: logging.Handler = logging.FileHandler(f"{PARSER_LOGS}/modification.log", mode="w")
+        else:
+            handler: logging.Handler = logging.StreamHandler()
         handler.setFormatter(logging.Formatter("MODIFICATION: %(current_course)s | %(message)s"))
         self.modifications_logger.addHandler(handler)
         self.modifications_logger.addFilter(ContextFilter(self))
@@ -912,5 +915,5 @@ class CourseParser:
 
 
 if __name__ == "__main__":
-    course_parser = CourseParser()
+    course_parser = CourseParser(log_to_file=True)
     course_parser.full_parse()

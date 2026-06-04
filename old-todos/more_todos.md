@@ -1,3 +1,4 @@
 - [ ] rought dimensions of tree (max height / depth)
 - [ ] Longest corequisite chain
 - [ ] Dangling nodes with no pre or post requisites
+- [ ] grab the crowdsourced average dataset from reddit
