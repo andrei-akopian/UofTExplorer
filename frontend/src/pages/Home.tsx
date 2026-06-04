@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 
 const pageLinkClassName =
-  "text-[#0f5fa8] no-underline border-b border-transparent transition-colors duration-150 hover:text-[#0a4477] hover:border-current focus-visible:text-[#0a4477] focus-visible:border-current focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#8fb7d9] focus-visible:outline-offset-2 focus-visible:rounded-sm";
+  "text-link no-underline border-b border-transparent transition-colors duration-150 hover:text-link-hover hover:border-current focus-visible:text-link-hover focus-visible:border-current focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus-outline focus-visible:outline-offset-2 focus-visible:rounded-sm";
 
 export default function Home() {
   return (
-    <div className="flex w-full flex-col items-center bg-[#fcfcfa] px-4 py-4 font-sans leading-relaxed text-[#1f2933] md:px-5">
+    <div className="bg-page-bg text-text-body flex w-full flex-col items-center px-4 py-4 font-sans leading-relaxed md:px-5">
       <div className="grid w-full max-w-3xl gap-5 font-sans">
         <h1 className="font-display m-4 text-center text-5xl font-medium">
           UofT Explorer

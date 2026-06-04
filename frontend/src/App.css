@@ -6,6 +6,79 @@
   --font-mono: "Latin Modern Mono", monospace;
   --font-sans: "Montserrat", sans-serif;
   --font-serif: "Latin Modern Roman", serif;
+
+  /* Page backgrounds */
+  --color-page-bg: #fcfcfa;
+  --color-input-bg: #fcfdff;
+  --color-code-bg: #f5f7fa;
+
+  /* Body text */
+  --color-text-body: #1f2933;
+  --color-text-secondary: #1f2937;
+  --color-text-muted: #42516d;
+  --color-text-subtle: #4c5d79;
+  --color-text-code: #2c3e50;
+  --color-text-query: #24324a;
+
+  /* Links */
+  --color-link: #0f5fa8;
+  --color-link-hover: #0a4477;
+  --color-link-focus-ring: #8fb7d9;
+
+  /* Primary (blue/purple) actions */
+  --color-primary: #6969d6;
+  --color-primary-hover: #33338f;
+  --color-primary-info: #0066cc;
+
+  /* Gradient button */
+  --color-btn-gradient-from: #3b67c7;
+  --color-btn-gradient-to: #274f9f;
+
+  /* Input borders & focus */
+  --color-input-border: #c9d4e5;
+  --color-input-focus-border: #7f9ede;
+  --color-input-focus-ring: rgba(70, 114, 202, 0.2);
+
+  /* Card / panel borders */
+  --color-border-card: #d2daea;
+  --color-border-panel: rgba(104, 124, 156, 0.16);
+  --color-border-dropdown: #ccc;
+
+  /* Panel / card backgrounds */
+  --color-panel-bg: rgba(255, 255, 255, 0.85);
+  --color-card-bg: rgba(255, 255, 255, 0.6);
+
+  /* Badge */
+  --color-badge-bg: #e7eefb;
+  --color-badge-text: #35518a;
+
+  /* Graph node */
+  --color-graph-node: #a0b9db;
+
+  /* Shadows */
+  --shadow-card: 0 4px 12px rgba(37, 53, 84, 0.06);
+  --shadow-dropdown: 0 6px 16px rgba(0, 0, 0, 0.16);
+  --shadow-search: 0 16px 30px rgba(34, 48, 79, 0.14);
+
+  /* Status: success */
+  --color-success: #2e7d32;
+  --color-success-text: #1f7a3f;
+
+  /* Status: error */
+  --color-error: #dc2626;
+  --color-error-hover: #b42318;
+
+  /* Status: danger (delete) */
+  --color-danger: #ef4444;
+  --color-danger-hover: #dc2626;
+
+  /* Status: warning */
+  --color-warning-bg: #fef3c7;
+  --color-warning-border: #fcd34d;
+  --color-warning-text: #92400e;
+
+  /* Disabled */
+  --color-disabled: #d1d5db;
 }
 
 @font-face {

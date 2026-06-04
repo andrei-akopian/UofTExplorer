@@ -43,7 +43,7 @@ export default function Graph3D() {
             </g>
           </svg>
         </summary>
-        <div className="absolute top-[calc(100%+6px)] right-0 left-auto z-1200 flex max-h-[20em] w-[20em] flex-col gap-1.5 overflow-y-auto rounded-md border border-[#ccc] bg-white p-2.5 shadow-[0_6px_16px_rgba(0,0,0,0.16)]">
+        <div className="border-border-dropdown shadow-dropdown absolute top-[calc(100%+6px)] right-0 left-auto z-1200 flex max-h-[20em] w-[20em] flex-col gap-1.5 overflow-y-auto rounded-md border bg-white p-2.5">
           <label className="flex max-h-none w-max min-w-[5em] items-center gap-2 overflow-visible font-sans text-sm">
             <input type="checkbox" defaultChecked />
             <span>Use shell layout</span>
@@ -61,7 +61,7 @@ export default function Graph3D() {
       <div className="fixed bottom-10 left-5 z-20 flex min-w-[20rem] flex-col gap-1">
         <div
           id="currQueryDisplay"
-          className="overflow-hidden text-[0.84rem] leading-[1.3] font-semibold text-ellipsis whitespace-nowrap text-[#24324a]"
+          className="text-text-query overflow-hidden text-[0.84rem] leading-[1.3] font-semibold text-ellipsis whitespace-nowrap"
         ></div>
         <div
           id="message"

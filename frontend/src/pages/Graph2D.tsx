@@ -27,10 +27,10 @@ export default function Graph2D() {
 
   const messageTypeClass =
     messageType === "success"
-      ? "ml-7 text-sm font-sans text-[#2e7d32]"
+      ? "ml-7 text-sm font-sans text-(--color-success)"
       : messageType === "error"
-        ? "ml-7 text-sm font-sans text-[#6969d6]"
-        : "ml-7 text-sm font-sans text-[#0066cc]";
+        ? "ml-7 text-sm font-sans text-(--color-primary)"
+        : "ml-7 text-sm font-sans text-(--color-primary-info)";
 
   useEffect(() => {
     if (loading) {
@@ -77,7 +77,7 @@ export default function Graph2D() {
               </g>
             </svg>
           </summary>
-          <div className="absolute top-[calc(100%+6px)] right-0 left-auto z-1200 flex max-h-[20em] w-[20em] flex-col gap-1.5 overflow-y-auto rounded-md border border-[#ccc] bg-white p-2.5 shadow-[0_6px_16px_rgba(0,0,0,0.16)]">
+          <div className="border-border-dropdown shadow-dropdown absolute top-[calc(100%+6px)] right-0 left-auto z-1200 flex max-h-[20em] w-[20em] flex-col gap-1.5 overflow-y-auto rounded-md border bg-white p-2.5">
             <label className="flex max-h-none w-max min-w-[5em] items-center gap-2 overflow-visible font-sans text-sm">
               <input
                 type="checkbox"
@@ -91,7 +91,7 @@ export default function Graph2D() {
       </div>
 
       <div className="fixed bottom-10 left-5 z-20 flex min-w-[20rem] flex-col gap-1">
-        <div className="overflow-hidden text-[0.84rem] leading-[1.3] font-semibold text-ellipsis whitespace-nowrap text-[#24324a]">
+        <div className="overflow-hidden text-[0.84rem] leading-[1.3] font-semibold text-ellipsis whitespace-nowrap text-(--color-text-query)">
           {currentQuery.code &&
             `Currently displaying: ${currentQuery.code} - ${currentQuery.name}`}
         </div>

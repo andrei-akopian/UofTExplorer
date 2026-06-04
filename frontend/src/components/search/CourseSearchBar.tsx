@@ -10,12 +10,12 @@ function CourseChip({
   onRemove: () => void;
 }) {
   return (
-    <div className="flex items-center gap-[0.55rem] rounded-[0.95rem] border border-[#d2daea] bg-white px-[0.9rem] py-[0.78rem] text-[0.96rem] shadow-[0_4px_12px_rgba(37,53,84,0.06)]">
+    <div className="border-border-card flex items-center gap-[0.55rem] rounded-[0.95rem] border bg-white px-[0.9rem] py-[0.78rem] text-[0.96rem] shadow-[0_4px_12px_rgba(37,53,84,0.06)]">
       {course}
       <button
         key={`${course}-remove`}
         type="button"
-        className="text-[#dc2626] hover:text-[#b42318]"
+        className="text-error hover:text-error-hover"
         onClick={onRemove}
       >
         ×
@@ -48,19 +48,19 @@ export default function CourseSearchBar({
   }, [searchResults]);
 
   return (
-    <div className="relative w-full shrink-0 rounded-2xl border border-[rgba(104,124,156,0.16)] bg-[rgba(255,255,255,0.6)] px-[0.9rem] py-[0.85rem] pb-[0.95rem] shadow-[0_4px_12px_rgba(37,53,84,0.06)]">
+    <div className="border-border-card bg-card-bg shadow-card relative w-full shrink-0 rounded-2xl border px-[0.9rem] py-[0.85rem] pb-[0.95rem]">
       <label
-        className="mb-[0.45rem] flex items-center gap-[0.55rem] text-[0.88rem] font-semibold text-[#42516d]"
+        className="text-text-muted mb-[0.45rem] flex items-center gap-[0.55rem] text-[0.88rem] font-semibold"
         htmlFor="avoidedSearch"
       >
         {title}
-        <span className="min-w-8 rounded-full bg-[#e7eefb] px-[0.6rem] py-[0.28rem] text-center font-bold text-[#35518a]">
+        <span className="bg-badge text-badge-text min-w-8 rounded-full px-[0.6rem] py-[0.28rem] text-center font-bold">
           {numSelected}
         </span>
       </label>
       <input
         type="text"
-        className="box-border w-[96%] rounded-[0.9rem] border border-[#c9d4e5] bg-[#fcfdff] px-[0.9rem] py-[0.78rem] text-[0.96rem] focus:border-[#7f9ede] focus:ring-2 focus:ring-[rgba(70,114,202,0.2)] focus:outline-none"
+        className="border-border-card bg-input-bg focus:border-focus-border focus:ring-focus-ring box-border w-[96%] rounded-[0.9rem] border px-[0.9rem] py-[0.78rem] text-[0.96rem] focus:ring-2 focus:outline-none"
         placeholder="Add a course to avoid"
         autoComplete="off"
         value={query}
@@ -100,7 +100,7 @@ export default function CourseSearchBar({
           />
         ))}
       </div>
-      <div className="absolute top-[calc(100%+0.35rem)] right-0 left-0 z-10 max-h-72 overflow-y-auto rounded-[0.95rem] border border-[#d2daea] bg-white shadow-[0_16px_30px_rgba(34,48,79,0.14)] [&.show]:block [&:not(.show)]:hidden"></div>
+      <div className="border-border-card shadow-card absolute top-[calc(100%+0.35rem)] right-0 left-0 z-10 max-h-72 overflow-y-auto rounded-[0.95rem] border bg-white [&.show]:block [&:not(.show)]:hidden"></div>
     </div>
   );
 }
