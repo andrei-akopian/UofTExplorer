@@ -33,6 +33,7 @@ COURSE_GRAPH_CONTAINER = construct_container(f"{DATA_FOLDER}/courses.json",
 
 # Progress tracking for long-running requests
 PROGRESS_TRACKER = {}
+TICKETS: dict[str, dict[str, Any]] = {}
 
 MAX_RESULTS = {"departments": 20, "programs": 4, "courses": 36}
 
@@ -133,6 +134,82 @@ def globalstats() -> ResponseReturnValue:
     statistics = get_global_statistics_from_file()
     print(statistics)
     return render_template('globalstats.html', statistics=statistics)
+
+
+@app.route('/api/ticket/<ticket_id>', methods=["GET"])
+def get_ticket(ticket_id: str) -> ResponseReturnValue:
+    """
+    Endpoint to retrieve a specific ticket by its ID.
+    """
+    ticket = TICKETS.get(ticket_id)
+    if not ticket:
+        return jsonify({"error": "Ticket not found"}), 404
+    return jsonify(ticket)
+
+
+@app.route('/api/pathfind', methods=["POST"])
+def pathfind() -> ResponseReturnValue:
+    """
+    Endpoint for the path explorer page request payload.
+    Runs the Z3 SAT solver and returns the result.
+    """
+    try:
+        request_data = request.get_json(silent=True) or {}
+        completed_courses = request_data.get("completed", [])
+        desired_courses = request_data.get("desired", [])
+        avoided_courses = request_data.get("avoided", [])
+
+        app.logger.info(
+            "Received path explorer request: completed=%s desired=%s avoided=%s",
+            completed_courses,
+            desired_courses,
+            avoided_courses
+        )
+
+        solution = sat.solve_satz3(COURSE_GRAPH_CONTAINER.graph, desired_courses, completed_courses, avoided_courses)
+
+        solution_selection = {course: COURSE_GRAPH_CONTAINER.graph.courses[course] for course in solution if course not in desired_courses}
+        target_selection = {tar: COURSE_GRAPH_CONTAINER.graph.courses[tar] for tar in desired_courses}
+        origins = set(desired_courses)
+
+        subgraph = construct_subgraph(COURSE_GRAPH_CONTAINER.graph, list(origins),
+                                      traversers.Targets(True, True, False, False))
+        graph_data = deconstruct_course_graph(subgraph, solution_selection, target_selection)
+
+        return jsonify({"solution": solution, "graph_data": graph_data}), 200
+
+        # ticket_id = str(uuid.uuid4())
+
+        # TICKETS[ticket_id] = {
+        #     "cancelled": False,
+        #     "result": None,
+        #     "error": None
+        # }
+
+        # solver_thread = threading.Thread(
+        #     target=_pathfind,
+        #     args=(ticket_id, completed_courses, desired_courses, avoided_courses),
+        #     daemon=True
+        # )
+        # solver_thread.start()
+        # return jsonify({"ticket_id": ticket_id}), 202
+
+    except Exception as e:
+        app.logger.warning(e)
+        return jsonify({"error": str(e)}), 500
+
+
+def _pathfind(ticket_id: str, completed_courses: list[str], desired_courses: list[str], avoided_courses: list[str]) -> None:
+    """
+    Background worker function that runs the Z3 SAT solver and stores results in TICKETS.
+    """
+    try:
+        solver = sat.solve_satz3(COURSE_GRAPH_CONTAINER.graph, desired_courses, completed_courses, avoided_courses)
+        solution = next(solver)
+        TICKETS[ticket_id]["result"] = solution
+    except Exception as e:
+        app.logger.warning(e)
+        TICKETS[ticket_id]["error"] = str(e)
 
 
 @app.route('/pathexplorerplanning', methods=["POST"])

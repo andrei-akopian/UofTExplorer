@@ -70,10 +70,9 @@ export interface PathFinderRequest {
 }
 
 export interface PathFinderResponse {
-  path: string[];
-  length: number;
-  feasible: boolean;
-  message?: string;
+  graph_data: GraphData;
+  solution: string[];
+  [key: string]: any;
 }
 
 export interface FilterOptions {

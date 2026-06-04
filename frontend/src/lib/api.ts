@@ -165,6 +165,33 @@ export async function getImmediatePostreqs(
   return response.json();
 }
 
+export async function getPathExplorerSolution(
+  request: PathFinderRequest,
+): Promise<PathFinderResponse> {
+  const payload = {
+    completed: request.completed,
+    desired: request.desired,
+    avoided: request.avoided,
+  };
+
+  const response = await fetch(`${API_BASE_URL}/pathfind`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    const error = await response.json().catch(() => ({}));
+    throw new ApiError(
+      response.status,
+      error.error || "Path solving failed",
+      error,
+    );
+  }
+
+  return response.json();
+}
+
 /**
  * Get course details
  */
@@ -205,4 +232,5 @@ export default {
   getCourseDetails,
   getDepartments,
   getImmediatePostreqs,
+  getPathExplorerSolution,
 };

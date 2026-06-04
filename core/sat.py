@@ -211,10 +211,12 @@ def _verify(curr: CourseNode | Requisite, taken: set[str], planned: set[str], vi
 
 
 def solve_satz3(graph: CourseGraph, targets: list[str], taken: list[str], avoids: list[str],
-              progress_callback=None) -> Generator[int | list[CourseNode]]:
-    satisfiable, full_dict, courses = z3wrapper()
-    yield len(courses)
-    yield courses
+              progress_callback=None) -> list[str]:
+    z3_result = z3wrapper.solve_sat(graph, targets, taken, avoids)
+    is_sat, course_dict, true_courses = z3_result
+    if not is_sat:
+        return []
+    return true_courses
 
 
 if __name__ == '__main__':

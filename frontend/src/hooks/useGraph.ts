@@ -9,6 +9,7 @@ import {
   searchAll,
   searchCourses,
   getImmediatePostreqs,
+  getPathExplorerSolution,
 } from "../lib/api";
 
 interface UseFetchGraphReturn {
@@ -72,6 +73,29 @@ export function useImmediatePostreqs(): UseImmediatePostreqsReturn {
 
     try {
       const result = await getImmediatePostreqs(courseCodes);
+      setData(result);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Unknown error";
+      setError(message);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  return { data, loading, error, fetch };
+}
+
+export function usePathFinderSolution() {
+  const [data, setData] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetch = useCallback(async (request: any) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const result = await getPathExplorerSolution(request);
       setData(result);
     } catch (err) {
       const message = err instanceof Error ? err.message : "Unknown error";

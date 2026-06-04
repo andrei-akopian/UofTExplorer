@@ -2,18 +2,26 @@ import { useEffect, useState } from "react";
 import type { GraphData } from "../types";
 import CourseSearchBar from "../components/search/CourseSearchBar";
 import GraphVis2D from "../components/graph/GraphVis2D";
-import { useImmediatePostreqs } from "../hooks/useGraph";
+import { useImmediatePostreqs, usePathFinderSolution } from "../hooks/useGraph";
 
 export default function PathExplorer() {
   const [completedCourses, setCompletedCourses] = useState<string[]>([]);
   const [avoidedCourses, setAvoidedCourses] = useState<string[]>([]);
   const [desiredCourses, setDesiredCourses] = useState<string[]>([]);
+
   const {
     data: graphDataPostreqs,
     loading,
     error,
     fetch: fetchImmediatePostreqs,
   } = useImmediatePostreqs();
+
+  const {
+    data: graphDataPathfind,
+    loading: loadingPathfind,
+    error: errorPathfind,
+    fetch: fetchPathfindSolution,
+  } = usePathFinderSolution();
 
   const [graphData, setGraphData] = useState<GraphData>({
     nodes: [],
@@ -38,6 +46,28 @@ export default function PathExplorer() {
       );
     }
   }, [graphDataPostreqs]);
+
+  const handleRunPathFinder = async () => {
+    try {
+      await fetchPathfindSolution({
+        completed: completedCourses,
+        avoided: avoidedCourses,
+        desired: desiredCourses,
+      });
+    } catch (err) {
+      console.error("Error running path finder:", err);
+    }
+  };
+
+  useEffect(() => {
+    if (graphDataPathfind) {
+      setGraphData(graphDataPathfind?.graph_data);
+      console.log(
+        "Path finder solution graph data in PathExplorer.tsx:",
+        graphDataPathfind,
+      );
+    }
+  }, [graphDataPathfind]);
 
   return (
     <div className="relative flex h-screen w-full max-md:flex-col">
@@ -94,6 +124,7 @@ export default function PathExplorer() {
             id="demoSendButton"
             type="button"
             className="w-full cursor-pointer self-stretch rounded-[0.8rem] border-0 bg-linear-to-br from-[#3b67c7] to-[#274f9f] px-4 py-[0.8rem] text-[0.95rem] font-bold text-white hover:brightness-105 disabled:cursor-wait disabled:opacity-70"
+            onClick={handleRunPathFinder}
           >
             Run Path Explorer
           </button>
