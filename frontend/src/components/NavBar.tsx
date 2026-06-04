@@ -3,10 +3,10 @@ import { Link, useLocation } from "react-router-dom";
 
 const links = [
   { label: "Home", href: "/" },
-  { label: "Path Explorer", href: "/path-explorer" },
-  { label: "Global Statistics", href: "/global-stats" },
   { label: "2D Graph", href: "/graph/2d" },
   { label: "3D Graph", href: "/graph/3d" },
+  { label: "Path Explorer", href: "/path-explorer" },
+  { label: "Global Statistics", href: "/global-stats" },
 ];
 
 const navLink = (active: boolean) =>
