@@ -33,11 +33,11 @@ flowchart TD
 
 ### Scraping
 
-Please be polite, scrape as rarely as possible, and keep the time delay of at least 3s. We don't want to overloaf their servers.
+Please be polite, scrape as rarely as possible, and keep the time delay of at least 3s. We don't want to overload their servers.
 
-on MacOS to prevent the scraper from being interrupted, use
+On macOS, to prevent the scraper from being interrupted, use
 
-`cafeinate python3 <scraper.py>`
+`caffeinate python3 <scraper.py>`
 
 ## Commit Messages
 

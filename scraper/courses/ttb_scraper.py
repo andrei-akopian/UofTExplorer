@@ -93,7 +93,7 @@ def getPageableCourses(query: str, divisions=["ARTSC"], page: int = 1, verbose=T
         print(f"Recieved response.")
     assert response.status_code == 200
     j = response.json()
-    assert list(j.keys()) == ["payload", "status"] # has two keys, status and payload
+    assert "payload" in j and "status" in j  # validate keys without depending on object key order
     payload = j["payload"]
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     with open(f"{OUTPUT_DIR}/{query}_{time.time_ns()}.json", "w") as f:

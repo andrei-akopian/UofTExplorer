@@ -14,12 +14,12 @@ try:
     from core.core import CourseGraph, Program
     from core.constructor import construct_container
     from core.algorithms import separate_courses_by_department, get_prereq_course_set
-    from core.sat import solve_sat
+    from core.sat import solve_sat, solve_satz3
 except ImportError:
     from core import CourseGraph, Program
     from constructor import construct_container
     from algorithms import separate_courses_by_department, get_prereq_course_set
-    from sat import solve_sat
+    from sat import solve_sat, solve_satz3
 
 
 COURSES_FILE = "data/courses.json"
@@ -490,6 +490,46 @@ def distr_sat_length() -> None:
     )
 
 
+def distr_sat_lengthz3() -> None:
+    """
+    Make a bar plot of sat lengths using the z3 sat solver
+    """
+    lengths = []
+    progressed = 0
+    skipped = 0
+    zeros = 0
+    total = len(GRAPH.courses)
+    for course in GRAPH.courses:
+        print(f"{progressed} / {total} : {course}")
+        solver = solve_satz3(GRAPH, [course], [], [])
+        dim = next(solver)
+        sol = next(solver)
+        if len(sol) == 0:
+            zeros += 1
+        else:
+            lengths.append(len(sol))
+        progressed += 1
+
+    _, ax = plt.subplots(figsize=(10, 6))
+    plt.rcParams['font.size'] = 6
+
+    ax = sns.barplot(
+        x=list(range(1, max(lengths) + 1)),
+        y=[lengths.count(i) for i in range(1, max(lengths) + 1)],
+        ax=ax
+    )
+    ax.set_xlabel("Length of Shortest Prerequisite Path")
+    ax.set_ylabel("Count")
+    ax.set_title("Distribution of Lengths of Shortest Prerequisite Path to Each Course "
+                 f"(skipped {skipped} course queries with >20 fundamentals; hidden {zeros} courses with no paths)")
+    plt.savefig(
+        f"{SAVE_PATH}/distribution_of_sat_lengths.svg",
+        format="svg",
+        bbox_inches="tight",
+        transparent=True,
+    )
+
+
 def run_all() -> None:
     """
     Runs all the plots
@@ -507,5 +547,5 @@ def run_all() -> None:
 
 
 if __name__ == "__main__":
-    run_all()
+    distr_sat_lengthz3()
     pass
