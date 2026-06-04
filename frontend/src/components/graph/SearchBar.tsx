@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSearch } from "../../hooks/useGraph";
 import SuggestionEntry from "../search/SuggestionEntry";
 
-export default function SearchQueryBar({
+export default function SearchBar({
   query,
   setQuery,
 }: {

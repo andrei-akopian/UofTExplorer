@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getDepartments } from "../../lib/api";
-import SearchQueryBar from "./SearchQueryBar";
+import SearchBar from "./SearchBar";
 
 const breadths = [
   "Creative and Cultural Representations (1)",
@@ -87,19 +87,19 @@ function FilterBar({
   );
 }
 
-interface SearchBarProps {
+interface SearchMenuProps {
   query: string;
   setQuery: (q: string) => void;
   filtersHook: QueryFilters;
   setFiltersHook: (filtersHook: QueryFilters) => void;
 }
 
-export default function SearchBar({
+export default function SearchMenu({
   query,
   setQuery,
   filtersHook,
   setFiltersHook,
-}: SearchBarProps) {
+}: SearchMenuProps) {
   const [departments, setDepartments] = useState<string[]>([]);
 
   useEffect(() => {
@@ -122,7 +122,7 @@ export default function SearchBar({
 
   return (
     <div className="flex flex-wrap gap-2 font-sans">
-      <SearchQueryBar query={query} setQuery={setQuery} />
+      <SearchBar query={query} setQuery={setQuery} />
       <FilterBar
         title="CR / NCR"
         options={["Eligible", "Ineligible"]}

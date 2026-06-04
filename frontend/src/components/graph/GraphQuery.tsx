@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import SearchBar from "./SearchBar";
+import SearchMenu from "./SearchMenu";
 
 import { fetchGraphData } from "../../lib/api";
 import type { GraphData, FilterOptions } from "../../types";
@@ -71,7 +71,7 @@ export default function GraphQuery({
 
   return (
     <div className="absolute top-3 left-3 flex w-[calc(100vw-12rem)] flex-wrap content-start items-center justify-start gap-2.5 p-4">
-      <SearchBar
+      <SearchMenu
         query={query}
         setQuery={setQuery}
         filtersHook={filters}
