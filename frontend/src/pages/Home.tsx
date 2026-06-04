@@ -5,18 +5,18 @@ const pageLinkClassName =
 
 export default function Home() {
   return (
-    <div className="w-full place-items-center bg-[#fcfcfa] px-4 py-10 font-['Montserrat',] leading-relaxed text-[#1f2933] md:px-5">
+    <div className="flex w-full flex-col items-center bg-[#fcfcfa] px-4 py-10 font-['Montserrat',] leading-relaxed text-[#1f2933] md:px-5">
       <div className="grid w-full max-w-3xl gap-10">
-        <h1 className="text-center font-['Notable','Montserrat',sans-serif] text-5xl font-medium">
-          ArtSci Atlas
+        <h1 className="text-center font-['Notable',font-sans,sans-serif] text-5xl font-medium">
+          UofT Explorer
         </h1>
 
-        <p>
+        <p className="font-sans">
           Welcome! Explore how courses, programs, and departments are connected
           at the Faculty of Arts & Science at the University of Toronto.
         </p>
 
-        <p>
+        <p className="font-sans">
           All data is sourced from the{" "}
           <a
             className={pageLinkClassName}
@@ -29,8 +29,8 @@ export default function Home() {
           .
         </p>
 
-        <div>
-          <h2 className="mt-6 mb-2 text-[1.4em] font-medium">
+        <div className="font-sans">
+          <h2 className="mt-6 mb-2 text-[1.4em]">
             Graph Explorer:{" "}
             <Link className={pageLinkClassName} to="/2dgraph">
               2D Graph
@@ -50,8 +50,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div>
-          <h2 className="mt-6 mb-2 text-[1.4em] font-medium">
+        <div className="font-sans">
+          <h2 className="mt-6 mb-2 text-[1.4em]">
             <Link className={pageLinkClassName} to="/globalstats">
               Global Statistics
             </Link>
@@ -62,8 +62,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div>
-          <h2 className="mt-6 mb-2 text-[1.4em] font-medium">
+        <div className="font-sans">
+          <h2 className="mt-6 mb-2 font-sans text-[1.4em]">
             <Link className={pageLinkClassName} to="/pathexplorer">
               Path Explorer
             </Link>
