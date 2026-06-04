@@ -70,7 +70,7 @@ export default function PathExplorer() {
   }, [graphDataPathfind]);
 
   return (
-    <div className="relative flex h-full w-full max-md:flex-col">
+    <div className="relative flex h-full w-full font-sans max-md:flex-col">
       <div id="vis graph" className="relative h-full w-full max-md:h-[50vh]">
         <GraphVis2D graphData={graphData} useShellLayout={true} />
       </div>
@@ -91,7 +91,7 @@ export default function PathExplorer() {
           <button
             id="postreqsButton"
             type="button"
-            className="from-btn-gradient-from to-btn-gradient-to w-full cursor-pointer self-stretch rounded-[0.8rem] border-0 bg-linear-to-br px-4 py-[0.8rem] text-[0.95rem] font-bold text-white hover:brightness-105 disabled:cursor-wait disabled:opacity-70"
+            className="from-btn-gradient-from to-btn-gradient-to w-full cursor-pointer self-stretch rounded-[0.8rem] border-0 bg-linear-to-br px-4 py-[0.8rem] text-[0.95rem] text-white hover:brightness-105 disabled:cursor-wait disabled:opacity-70"
             onClick={handleGetImmediatePostreqs}
           >
             Courses Unlocked by Completed Courses
@@ -123,7 +123,7 @@ export default function PathExplorer() {
           <button
             id="demoSendButton"
             type="button"
-            className="from-btn-gradient-from to-btn-gradient-to w-full cursor-pointer self-stretch rounded-[0.8rem] border-0 bg-linear-to-br px-4 py-[0.8rem] text-[0.95rem] font-bold text-white hover:brightness-105 disabled:cursor-wait disabled:opacity-70"
+            className="from-btn-gradient-from to-btn-gradient-to w-full cursor-pointer self-stretch rounded-[0.8rem] border-0 bg-linear-to-br px-4 py-[0.8rem] text-[0.95rem] text-white hover:brightness-105 disabled:cursor-wait disabled:opacity-70"
             onClick={handleRunPathFinder}
           >
             Run Path Explorer
