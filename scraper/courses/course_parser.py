@@ -30,7 +30,7 @@ import logging
 import bs4
 
 
-SCRAPE_FOLDER = "./raw_output/"
+SCRAPE_FOLDER = "scraper/courses/raw_output"
 PARSING_TARGETS: dict[str, dict] = {
     "UTM": {
         "filepattern": "page_PAGENUMBER_utm.html",
@@ -45,10 +45,10 @@ PARSING_TARGETS: dict[str, dict] = {
         "page_range": range(0, 72 + 1)
     },
 }
-SAVE_FOLDER: str = "../../data/"
+SAVE_FOLDER: str = "scraper/data"
 SAVE_FILENAME: str = "courses.json"
-SAVE_PATH = SAVE_FOLDER + SAVE_FILENAME
-PARSER_LOGS = "./parser_logs"
+SAVE_PATH = f"{SAVE_FOLDER}/{SAVE_FILENAME}"
+PARSER_LOGS = "scraper/courses/parser_logs"
 GLOSSARY: None | dict[str, str] = None  # list of all known department codes
 BREADTH_STRINGS = [
     "Creative and Cultural Representations (1)",
@@ -160,7 +160,10 @@ class CourseParser:
         self.general_logger.setLevel(logging.INFO)
 
         self.modifications_logger = logging.getLogger("modifications")
-        handler = logging.FileHandler(f"{PARSER_LOGS}/modifications.log", mode="w")
+        if log_to_file:
+            handler: logging.Handler = logging.FileHandler(f"{PARSER_LOGS}/modification.log", mode="w")
+        else:
+            handler: logging.Handler = logging.StreamHandler()
         handler.setFormatter(logging.Formatter("MODIFICATION: %(current_course)s | %(message)s"))
         self.modifications_logger.addHandler(handler)
         self.modifications_logger.addFilter(ContextFilter(self))
@@ -763,11 +766,12 @@ class CourseParser:
         """
         Take an HTML page and parse all courses in it. Return the parsed courses, and their number.
         """
-        scrape_filename = SCRAPE_FOLDER + PARSING_TARGETS[target_name]['filepattern'].replace("PAGENUMBER", str(page))
-        if not os.path.isfile(scrape_filename):
-            self.general_logger.critical("%s does not exist", scrape_filename)
+        scrape_filename = PARSING_TARGETS[target_name]['filepattern'].replace("PAGENUMBER", str(page))
+        scrape_filepath = f"{SCRAPE_FOLDER}/{scrape_filename}"
+        if not os.path.isfile(scrape_filepath):
+            self.general_logger.critical("%s does not exist", scrape_filepath)
             return []
-        with open(scrape_filename, "r", encoding='utf-8') as f:
+        with open(scrape_filepath, "r", encoding='utf-8') as f:
             html_doc = f.read()
 
         soup = bs4.BeautifulSoup(html_doc, self.bs4_prefered_parser)
@@ -909,8 +913,3 @@ class CourseParser:
         self.save_to_json(self.courses)
         end = time.clock_gettime(time.CLOCK_MONOTONIC)
         self.general_logger.info("parsing finished in: %ss", round(end - start, 4))
-
-
-if __name__ == "__main__":
-    course_parser = CourseParser()
-    course_parser.full_parse()
