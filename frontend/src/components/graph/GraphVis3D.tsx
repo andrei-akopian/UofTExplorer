@@ -146,6 +146,7 @@ function focusNode(graph: any, node: any) {
 export default function GraphVis3D({
   graphData,
   useShellLayout,
+  setSettings
 }: {
   graphData: GraphData;
   loading: boolean;
@@ -153,6 +154,7 @@ export default function GraphVis3D({
   useShellLayout: boolean;
   setMessage: (message: string) => void;
   setMessageType: (messageType: "success" | "error" | "info") => void;
+  setSettings: (settings: React.ReactNode[]) => void;
 }) {
   const graphFrame = useRef<HTMLDivElement>(null);
   const graphRef = useRef<any>(null);

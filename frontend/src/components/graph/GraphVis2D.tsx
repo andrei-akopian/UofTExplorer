@@ -66,17 +66,16 @@ const PHYSICS_SPRING_LENGTH = 300;
 
 interface GraphVis2DProps {
   graphData: GraphData;
-  loading?: boolean;
   setLoading?: (loading: boolean) => void;
   onNodeClickCallback?: (node: GraphNode) => void;
   onEdgeClickCallback?: (edge: GraphEdge) => void;
-  useShellLayout?: boolean;
+  config: {[key: string]: any};
 }
 
 export default function GraphVis2D({
   graphData,
   setLoading,
-  useShellLayout,
+  config
 }: GraphVis2DProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const networkRef = useRef<any>(null);
@@ -94,7 +93,7 @@ export default function GraphVis2D({
           layout: { hierarchical: { enabled: false } },
           nodes: {
             shape: "circle",
-            size: 26,
+            size: config["size"],
             font: { size: 14, face: "system-ui", color: "#000000" },
             borderWidth: 1,
             color: "#A0B9DB",
@@ -156,7 +155,7 @@ export default function GraphVis2D({
     const MIN_RADIUS_STEP = 300;
     const NODE_GIRTH = 120;
 
-    if (useShellLayout) {
+    if (config["useShellLayout"]) {
       nodes.forEach((n) => {
         const depth =
           n.depth !== null && n.depth !== undefined
@@ -192,7 +191,7 @@ export default function GraphVis2D({
           : undefined;
       const processedNode = { ...n, depth };
 
-      if (useShellLayout && depth !== undefined && levelRadii[depth]) {
+      if (config["useShellLayout"] && depth !== undefined && levelRadii[depth]) {
         const radius = levelRadii[depth];
         const angle = Math.PI / 2 + (Math.random() - 0.5) * 2;
         processedNode.x = Math.cos(angle) * radius;
