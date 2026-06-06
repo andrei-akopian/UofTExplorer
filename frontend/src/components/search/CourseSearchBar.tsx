@@ -35,7 +35,7 @@ export default function CourseSearchBar({
   title: string;
   placeholder: string;
 }) {
-  const { results, loading, error, search, clear } = useSearch(300, true);
+  const { results, search } = useSearch(300, true);
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [numSelected, setNumSelected] = useState(0);
   const [query, setQuery] = useState("");

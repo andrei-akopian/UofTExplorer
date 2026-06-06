@@ -127,6 +127,7 @@ export function useSearch(
   const [results, setResults] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // @ts-expect-error: NodeJS.Timeout is not defined in the environment
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
 
   const search = useCallback(
