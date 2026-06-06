@@ -1,20 +1,8 @@
 import { useState, useEffect } from "react";
 import { getDepartments } from "../../lib/api";
 import SearchBar from "./SearchBar";
-
-const breadths = [
-  "Creative and Cultural Representations (1)",
-  "Thought, Belief, and Behaviour (2)",
-  "Society and its Institutions (3)",
-  "Living Things and Their Environment (4)",
-  "The Physical and Mathematical Universes (5)",
-];
-
-type QueryFilters = {
-  cr_ncr: string[];
-  departments: string[];
-  breadth_requirements: string[];
-};
+import { type QueryFilters } from "../../types";
+import { BreadthFilter } from "./BreadthFilter";
 
 function FilterBar({
   title,
@@ -127,9 +115,7 @@ export default function SearchMenu({
         filtersTitle="departments"
         keyFormat={(option) => option.slice(0, 3)}
       />
-      <FilterBar
-        title="Breadth Requirements"
-        options={breadths}
+      <BreadthFilter
         filtersHook={filtersHook}
         setFiltersHook={setFiltersHook}
         filtersTitle="breadth_requirements"
