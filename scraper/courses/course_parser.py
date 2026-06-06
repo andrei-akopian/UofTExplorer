@@ -32,17 +32,14 @@ import bs4
 
 SCRAPE_FOLDER = "scraper/courses/raw_output"
 PARSING_TARGETS: dict[str, dict] = {
-    "UTM": {
-        "filepattern": "page_PAGENUMBER_utm.html",
-        "page_range": range(0, 81 + 1)
-    },
+    "UTM": {"filepattern": "page_PAGENUMBER_utm.html", "page_range": range(0, 81 + 1)},
     "UTSG": {
         "filepattern": "page_PAGENUMBER_utsg.html",
-        "page_range": range(0, 178 + 1)
+        "page_range": range(0, 178 + 1),
     },
     "UTSC": {
         "filepattern": "page_PAGENUMBER_utsc.html",
-        "page_range": range(0, 72 + 1)
+        "page_range": range(0, 72 + 1),
     },
 }
 SAVE_FOLDER: str = "scraper/data"
@@ -71,14 +68,24 @@ CL_PARENTH = [")", "]"]
 PARENTHS = OP_PARENTH + CL_PARENTH
 SPECIAL_CHARS = ORS + ANDS + PARENTHS
 WHITESPACE = [" ", "\u200b", "\xa0", "\n"]
-SEPARATORS = ["•", "-", " ", "\u200b", "\xa0", "\n"]  # used by course_name_parser to split the name into code and title
+SEPARATORS = [
+    "•",
+    "-",
+    " ",
+    "\u200b",
+    "\xa0",
+    "\n",
+]  # used by course_name_parser to split the name into code and title
 
 # regex pattern for detecting notes about CR/NCR eligibility
-CR_NCR_REGEX_PATTERN = re.compile(r"Not (el(e|i)gible|available) for( the)? CR/NCR( option)?\.", re.IGNORECASE)
+CR_NCR_REGEX_PATTERN = re.compile(
+    r"Not (el(e|i)gible|available) for( the)? CR/NCR( option)?\.", re.IGNORECASE
+)
 
 
 class ContextFilter(logging.Filter):
     """Context filter for the logger. Makes current course available to the logger."""
+
     parent: CourseParser
 
     def __init__(self, parent: CourseParser) -> None:
@@ -96,28 +103,28 @@ class ContextFilter(logging.Filter):
 # List of fields a course DOM element might have (and examples of their occurences)
 # used for verification that nothing was missed
 UNEXPECTED_FIELDS_CATCHER = {  # Everything in UTSG ArtSci calendar, is accounted for.
-    'js-views-accordion-group-header': 'WRR414H1',  # unimportant
-    'views-row': 'WRR414H1',  # wrapper
-    'views-field': 'WRR414H1',   # description
-    'views-field-field-hours': 'WRR414H1',  # accounted for
-    'views-label': 'WRR414H1',  # wrapper
-    'views-label-field-hours': 'WRR414H1',  # accounted for
-    'field-content': 'WRR414H1',  # wrapper
-    'views-field-body': 'WRR414H1',  # description, accounted for
-    'views-field-field-breadth-requirements': 'WRR414H1',  # accounted for
-    'views-label-field-breadth-requirements': 'WRR414H1',  # accounted for
-    'views-field-field-previous-course-number': 'WRR414H1',  # accounted for
-    'views-label-field-previous-course-number': 'WRR414H1',  # accounted for
-    'views-field-field-exclusion': 'WRR407H1',  # accounted for
-    'views-label-field-exclusion': 'WRR407H1',  # accounted for
-    'views-field-field-prerequisite': 'WRR414H1',  # accounted for
-    'views-label-field-prerequisite': 'WRR414H1',  # accounted for
-    'views-field-field-recommended': 'WRR317H1',  # full title: recommended preparation, accounted for
-    'views-label-field-recommended': 'WRR317H1',  # accounted for
-    'views-field-field-course-experience': 'VIC396H0',  # accounted for
-    'views-label-field-course-experience': 'VIC396H0',  # accounted for
-    'views-field-field-corequisite': 'VIC493H1',  # accounted for
-    'views-label-field-corequisite': 'VIC493H1'  # accounted for
+    "js-views-accordion-group-header": "WRR414H1",  # unimportant
+    "views-row": "WRR414H1",  # wrapper
+    "views-field": "WRR414H1",  # description
+    "views-field-field-hours": "WRR414H1",  # accounted for
+    "views-label": "WRR414H1",  # wrapper
+    "views-label-field-hours": "WRR414H1",  # accounted for
+    "field-content": "WRR414H1",  # wrapper
+    "views-field-body": "WRR414H1",  # description, accounted for
+    "views-field-field-breadth-requirements": "WRR414H1",  # accounted for
+    "views-label-field-breadth-requirements": "WRR414H1",  # accounted for
+    "views-field-field-previous-course-number": "WRR414H1",  # accounted for
+    "views-label-field-previous-course-number": "WRR414H1",  # accounted for
+    "views-field-field-exclusion": "WRR407H1",  # accounted for
+    "views-label-field-exclusion": "WRR407H1",  # accounted for
+    "views-field-field-prerequisite": "WRR414H1",  # accounted for
+    "views-label-field-prerequisite": "WRR414H1",  # accounted for
+    "views-field-field-recommended": "WRR317H1",  # full title: recommended preparation, accounted for
+    "views-label-field-recommended": "WRR317H1",  # accounted for
+    "views-field-field-course-experience": "VIC396H0",  # accounted for
+    "views-label-field-course-experience": "VIC396H0",  # accounted for
+    "views-field-field-corequisite": "VIC493H1",  # accounted for
+    "views-label-field-corequisite": "VIC493H1",  # accounted for
 }
 
 
@@ -125,15 +132,18 @@ class CourseParser:
     """
     Object that contains everything necessary to parse the course HTMLs.
     """
+
     general_logger: logging.Logger  # logs general messages and events
-    modifications_logger: logging.Logger   # logs modifications made to the data.
+    modifications_logger: logging.Logger  # logs modifications made to the data.
     courses: list[dict]
     counters: dict[str, int] = {
         "courses_parsed": 0,
         "courses_accepted": 0,
-        "requisite_parsings": 0
+        "requisite_parsings": 0,
     }
-    current_course: str  # the program the program parser is currentluy parsing, used by the logger.
+    current_course: (
+        str  # the program the program parser is currentluy parsing, used by the logger.
+    )
     bs4_prefered_parser: str
 
     def __init__(self, log_to_file: bool = False) -> None:
@@ -141,7 +151,7 @@ class CourseParser:
         self.counters = {
             "courses_parsed": 0,
             "courses_accepted": 0,
-            "requisite_parsings": 0
+            "requisite_parsings": 0,
         }
         self.courses = []
 
@@ -152,19 +162,27 @@ class CourseParser:
         self.general_logger = logging.getLogger("general_logger")
         self.general_logger.addFilter(ContextFilter(self))
         if log_to_file:
-            handler: logging.Handler = logging.FileHandler(f"{PARSER_LOGS}/course_parser.log", mode="w")
+            handler: logging.Handler = logging.FileHandler(
+                f"{PARSER_LOGS}/course_parser.log", mode="w"
+            )
         else:
             handler: logging.Handler = logging.StreamHandler()
-        handler.setFormatter(logging.Formatter("%(levelname)s %(current_course)s | %(message)s"))
+        handler.setFormatter(
+            logging.Formatter("%(levelname)s %(current_course)s | %(message)s")
+        )
         self.general_logger.addHandler(handler)
         self.general_logger.setLevel(logging.INFO)
 
         self.modifications_logger = logging.getLogger("modifications")
         if log_to_file:
-            handler: logging.Handler = logging.FileHandler(f"{PARSER_LOGS}/modification.log", mode="w")
+            handler: logging.Handler = logging.FileHandler(
+                f"{PARSER_LOGS}/modification.log", mode="w"
+            )
         else:
             handler: logging.Handler = logging.StreamHandler()
-        handler.setFormatter(logging.Formatter("MODIFICATION: %(current_course)s | %(message)s"))
+        handler.setFormatter(
+            logging.Formatter("MODIFICATION: %(current_course)s | %(message)s")
+        )
         self.modifications_logger.addHandler(handler)
         self.modifications_logger.addFilter(ContextFilter(self))
         self.modifications_logger.propagate = False
@@ -240,9 +258,13 @@ class CourseParser:
         >>> cp.course_hours_extract_int("8.2S")
         8
         """
-        clean_string = "".join(char for char in hour_entry if char.isdigit() or char == ".")
+        clean_string = "".join(
+            char for char in hour_entry if char.isdigit() or char == "."
+        )
         if len(clean_string) == 0:  # we should never get an empty string
-            self.general_logger.critical("encountered empty part of hour entry", hour_entry)
+            self.general_logger.critical(
+                "encountered empty part of hour entry", hour_entry
+            )
             return 0
         else:
             output_raw = float(clean_string)
@@ -275,9 +297,11 @@ class CourseParser:
         split_temp = hours_string.split("/")
         for part in split_temp:
             if len(part) < 2:
-                self.general_logger.critical("issue splitting hour string \"%s\"",
-                                             self.current_course, hours_string
-                                             )
+                self.general_logger.critical(
+                    'issue splitting hour string "%s"',
+                    self.current_course,
+                    hours_string,
+                )
             if "T" == part[-1]:
                 template["tutorial"] = self.course_hours_extract_int(part)
             elif "L" == part[-1]:
@@ -288,9 +312,9 @@ class CourseParser:
                 template["seminar"] = self.course_hours_extract_int(part)
             else:
                 self.general_logger.critical(
-                    "%s unaccounted for hour type in \"%s\"",
+                    '%s unaccounted for hour type in "%s"',
                     self.current_course,
-                    hours_string
+                    hours_string,
                 )
 
         return template
@@ -309,11 +333,18 @@ class CourseParser:
         """
         if isinstance(reqisites_raw_list, str):
             assert len(reqisites_raw_list) != 0
-            assert any(header in reqisites_raw_list for header in ["Prerequisite:", "Exclusion:", "Corequisite:"])
-            req_string = reqisites_raw_list[reqisites_raw_list.find(":") + 1:]
+            assert any(
+                header in reqisites_raw_list
+                for header in ["Prerequisite:", "Exclusion:", "Corequisite:"]
+            )
+            req_string = reqisites_raw_list[reqisites_raw_list.find(":") + 1 :]
         elif isinstance(reqisites_raw_list, list):
             assert len(reqisites_raw_list) != 0
-            assert reqisites_raw_list[0].strip() in ["Prerequisite:", "Exclusion:", "Corequisite:"]
+            assert reqisites_raw_list[0].strip() in [
+                "Prerequisite:",
+                "Exclusion:",
+                "Corequisite:",
+            ]
             req_string = "".join(reqisites_raw_list[1:])  # drop "Requisites:" prefix
         else:
             raise TypeError("Requisites parser encountered wrong argument format.")
@@ -360,7 +391,9 @@ class CourseParser:
                 open_parenthesies_counter += 1
             elif token in CL_PARENTH:
                 if open_parenthesies_counter <= 0:
-                    self.modifications_logger.warning("unmatched closing parenthesies in requisites. Ignored.")
+                    self.modifications_logger.warning(
+                        "unmatched closing parenthesies in requisites. Ignored."
+                    )
                 else:
                     open_parenthesies_counter -= 1
                     contents = parenthesies_contents_stack.pop()
@@ -400,7 +433,9 @@ class CourseParser:
                     ops_list.append("/")
             elif self.course_code_parser(token) is not None:
                 if len(ops_list) > 0 and ops_list[-1] not in OP_PARENTH + ANDS + ORS:
-                    self.modifications_logger.warning("inserted an OR during interpretation")
+                    self.modifications_logger.warning(
+                        "inserted an OR during interpretation"
+                    )
                     ops_list.append("/")
                 ops_list.append(token)
                 parenthesies_contents_stack[-1] += 1
@@ -411,12 +446,16 @@ class CourseParser:
             ops_list.pop()
         # close open parenthesies, if any
         while open_parenthesies_counter > 0:
-            self.modifications_logger.warning("unclosed opening parenthesis. Auto closed at the end.")
+            self.modifications_logger.warning(
+                "unclosed opening parenthesis. Auto closed at the end."
+            )
             ops_list.append(")")
             open_parenthesies_counter -= 1
         return ops_list
 
-    def naive_requisites_parser(self, requisites_raw_list: list[str]) -> tuple[list[str], set[str]]:
+    def naive_requisites_parser(
+        self, requisites_raw_list: list[str]
+    ) -> tuple[list[str], set[str]]:
         """
         In case the requisite notation is confusing,
         one can naively extract everything that looks like a couse code, assume it is one
@@ -492,11 +531,17 @@ class CourseParser:
             i += 1
         if missing_ops_counter > 0:
             self.general_logger.critical(
-                "more operators=%s than available arguments: %s", missing_ops_counter, requisites_pn
+                "more operators=%s than available arguments: %s",
+                missing_ops_counter,
+                requisites_pn,
             )
 
         # remove outer wrappers if there are any.
-        while len(output_stack) == 1 and isinstance(output_stack, list) and isinstance(output_stack[0], list):
+        while (
+            len(output_stack) == 1
+            and isinstance(output_stack, list)
+            and isinstance(output_stack[0], list)
+        ):
             output_stack = output_stack[0]
         return output_stack
 
@@ -513,7 +558,9 @@ class CourseParser:
         if len(input_list) == 0:
             return []
         if len(input_list) == 1 and isinstance(input_list[0], list):
-            input_list = input_list[0]  # handle case where there is an extra outer wrapper
+            input_list = input_list[
+                0
+            ]  # handle case where there is an extra outer wrapper
             output = self.nested_lists_flattener(input_list)
             assert output[0] in ["AND", "OR"]
             return output
@@ -547,7 +594,9 @@ class CourseParser:
 
         return output
 
-    def previous_course_codes_parser(self, previous_course_codes_string: str) -> list[str]:
+    def previous_course_codes_parser(
+        self, previous_course_codes_string: str
+    ) -> list[str]:
         """
         Some courses had different course codes in the past.
         Extract previous course codes from previous course codes string.
@@ -609,20 +658,25 @@ class CourseParser:
 
         # This block must be below the title parsing, to make sure the course code is caught.
         # the course code will always be there. (I hope)
-        body = div.find(class_='views-row')
+        body = div.find(class_="views-row")
         if body.contents == ["\n"]:
-            self.modifications_logger.warning("discarded because it has no html body, thus no information")
+            self.modifications_logger.warning(
+                "discarded because it has no html body, thus no information"
+            )
             self.current_course = ""
             return {}, "discard"
 
         assert all(
-            all(c in UNEXPECTED_FIELDS_CATCHER for c in tag.attrs['class'])
-            for tag in div.find_all(True) if 'class' in tag.attrs
+            all(c in UNEXPECTED_FIELDS_CATCHER for c in tag.attrs["class"])
+            for tag in div.find_all(True)
+            if "class" in tag.attrs
         )
 
         # ==== Previous Course Codes ====
         previous_course_codes = []  # Example: WRR414H1
-        previous_course_codes_raw = div.find_all(class_="views-field-field-previous-course-number")
+        previous_course_codes_raw = div.find_all(
+            class_="views-field-field-previous-course-number"
+        )
         if len(previous_course_codes_raw) > 0:
             previous_course_codes = self.previous_course_codes_parser(
                 list(previous_course_codes_raw[0].strings)[1].strip()
@@ -631,7 +685,9 @@ class CourseParser:
             # assert course_code_parser(previous_course_code) is not None
             for pcc in previous_course_codes:
                 if self.course_code_parser(pcc) is None:
-                    self.general_logger.info("previous course code has strange format: %s", pcc.encode())
+                    self.general_logger.info(
+                        "previous course code has strange format: %s", pcc.encode()
+                    )
 
         # ==== Description ====
         description_raw = div.find_all(class_="views-field-body")
@@ -643,7 +699,9 @@ class CourseParser:
                 self.general_logger.warning("course has multiple descriptions")
         else:
             # Example of course with no description: HIS357Y0
-            self.modifications_logger.warning("course without description was discarded")
+            self.modifications_logger.warning(
+                "course without description was discarded"
+            )
             self.current_course = ""
             return {}, "discard"
 
@@ -670,7 +728,11 @@ class CourseParser:
             ]  # We can't split by comma, because one of the BRs has a comma
 
             # assertain we aren't missing anything severely.
-            assert len(requirement_string) - sum([len(br) for br in breadth_requirements_list]) < 30
+            assert (
+                len(requirement_string)
+                - sum([len(br) for br in breadth_requirements_list])
+                < 30
+            )
 
         experience_raw = div.find_all(class_="views-field-field-course-experience")
         experience = ""
@@ -685,9 +747,13 @@ class CourseParser:
         cr_ncr_eligible = True
         if re.search(CR_NCR_REGEX_PATTERN, description) is not None:
             cr_ncr_eligible = False
-        elif "For CR/NCR only." in description:  # Example: For CR/NCR only. (RSM489H1 is only such example)
+        elif (
+            "For CR/NCR only." in description
+        ):  # Example: For CR/NCR only. (RSM489H1 is only such example)
             # we will treat this as regular
-            self.modifications_logger.warning("a 'For CR/NCR only' course. Will be treated as regular.")
+            self.modifications_logger.warning(
+                "a 'For CR/NCR only' course. Will be treated as regular."
+            )
             cr_ncr_eligible = True
         elif "CR/NCR" in description and cr_ncr_eligible:
             self.general_logger.warning("CR/NCR undetected situation")
@@ -701,9 +767,7 @@ class CourseParser:
             if len(prerequisites_raw) > 1:
                 self.general_logger.warning("multiple prerequisite fields")
             prerequisite_original = "".join(prerequisites_raw[0].strings)
-            structure = self.requisites_parser(
-                prerequisite_original
-            )
+            structure = self.requisites_parser(prerequisite_original)
             prerequisites = structure
             has_fields.append("prerequisites")
 
@@ -713,9 +777,7 @@ class CourseParser:
             if len(corequisites_raw) > 1:
                 self.general_logger.warning("multiple corequisite fields")
             corequisites_original = "".join(corequisites_raw[0].strings)
-            structure = self.requisites_parser(
-                corequisites_original
-            )
+            structure = self.requisites_parser(corequisites_original)
             corequisites = structure
             has_fields.append("corequisites")
 
@@ -726,13 +788,11 @@ class CourseParser:
             if len(exclusions_raw) > 1:
                 self.general_logger.warning("multiple prerequisite fields")
             exclusions_original = "".join(exclusions_raw[0].strings)
-            structure = self.requisites_parser(
-                exclusions_original
-            )
+            structure = self.requisites_parser(exclusions_original)
             exclusions = structure
             has_fields.append("exclusions")
 
-        recommended_prep = []   # Example: WRR317H1
+        recommended_prep = []  # Example: WRR317H1
         recommended_prep_raw = div.find_all(class_="views-field-field-recommended")
         if len(recommended_prep_raw) > 0:
             has_fields.append("recommended_prep")
@@ -757,21 +817,22 @@ class CourseParser:
             "experience": experience,
             "recommended_prep": recommended_prep,
             "has_fields": has_fields,  # whether fields were there, but were
-                                       # interprted as emtpy, or did not exist in the records
+            # interprted as emtpy, or did not exist in the records
         }
         return course_information, "accept"
 
-    def page_to_json(self, page: int = 0, target_name: str = "") \
-            -> list[dict]:
+    def page_to_json(self, page: int = 0, target_name: str = "") -> list[dict]:
         """
         Take an HTML page and parse all courses in it. Return the parsed courses, and their number.
         """
-        scrape_filename = PARSING_TARGETS[target_name]['filepattern'].replace("PAGENUMBER", str(page))
+        scrape_filename = PARSING_TARGETS[target_name]["filepattern"].replace(
+            "PAGENUMBER", str(page)
+        )
         scrape_filepath = f"{SCRAPE_FOLDER}/{scrape_filename}"
         if not os.path.isfile(scrape_filepath):
             self.general_logger.critical("%s does not exist", scrape_filepath)
             return []
-        with open(scrape_filepath, "r", encoding='utf-8') as f:
+        with open(scrape_filepath, "r", encoding="utf-8") as f:
             html_doc = f.read()
 
         soup = bs4.BeautifulSoup(html_doc, self.bs4_prefered_parser)
@@ -788,10 +849,10 @@ class CourseParser:
         courses_json = []
         for child in courses_html:
             if child != "\n":
-                self.counters['courses_parsed'] += 1
+                self.counters["courses_parsed"] += 1
                 parsed_child, instruction = self.course_bs4_to_dict(child)
                 if instruction == "accept":
-                    self.counters['courses_accepted'] += 1
+                    self.counters["courses_accepted"] += 1
                     courses_json.append(parsed_child)
         return courses_json
 
@@ -803,7 +864,9 @@ class CourseParser:
         with open(filepath, "w", encoding="utf-8") as f:
             json.dump(courses, f, indent=2)
         self.general_logger.info("courses saved to %s", filepath)
-        self.general_logger.info("Final file size: %sKiB", os.path.getsize(filepath) // 1024)
+        self.general_logger.info(
+            "Final file size: %sKiB", os.path.getsize(filepath) // 1024
+        )
 
     def target_selection_ui(self) -> str:
         """
@@ -824,7 +887,9 @@ class CourseParser:
             print("selection interpreted as default.")
         return target
 
-    def simplify_requisite(self, requisites: list, valid_course_codes: set[str], depth: int = 0) -> list | str:
+    def simplify_requisite(
+        self, requisites: list, valid_course_codes: set[str], depth: int = 0
+    ) -> list | str:
         """
         Mutates requisite in place to remove all unnencessary courses. (eg. UTM courses)
         Assumes the requisites have already been processed by list flattener etc.
@@ -872,11 +937,17 @@ class CourseParser:
             self_invalid = valid_course_codes - {course["course_code"]}
             # 14 courses or so, refer to themselves in their requisites eg. CSC240. We want to avoid picking that up.
             if len(course["prerequisites"]) > 0:
-                course["prerequisites"] = self.simplify_requisite(course["prerequisites"], self_invalid)
+                course["prerequisites"] = self.simplify_requisite(
+                    course["prerequisites"], self_invalid
+                )
             if len(course["corequisites"]) > 0:
-                course["corequisites"] = self.simplify_requisite(course["corequisites"], self_invalid)
+                course["corequisites"] = self.simplify_requisite(
+                    course["corequisites"], self_invalid
+                )
             if len(course["exclusions"]) > 0:
-                course["exclusions"] = self.simplify_requisite(course["exclusions"], self_invalid)
+                course["exclusions"] = self.simplify_requisite(
+                    course["exclusions"], self_invalid
+                )
             self.current_course = ""
 
     def full_parse(self, target: str = "UTSG", interactive: bool = True) -> None:
@@ -895,18 +966,23 @@ class CourseParser:
         self.counters = {
             "courses_parsed": 0,
             "courses_accepted": 0,
-            "requisite_parsings": 0
+            "requisite_parsings": 0,
         }
         self.courses = []
         assert target in PARSING_TARGETS
-        target_page_range = PARSING_TARGETS[target]['page_range']
+        target_page_range = PARSING_TARGETS[target]["page_range"]
         for p in target_page_range:
             if (p % (len(target_page_range) // 10)) == 0:
-                self.general_logger.info("%s%% Done", round(p / len(target_page_range) * 100, 1))
+                self.general_logger.info(
+                    "%s%% Done", round(p / len(target_page_range) * 100, 1)
+                )
             page_courses = self.page_to_json(p, target)
             self.courses.extend(page_courses)
-        self.general_logger.info("parsed %s courses of which %s accepted", self.counters['courses_parsed'],
-                                 self.counters['courses_accepted'])
+        self.general_logger.info(
+            "parsed %s courses of which %s accepted",
+            self.counters["courses_parsed"],
+            self.counters["courses_accepted"],
+        )
         self.general_logger.info("Starting to remove unknown courses from requisites.")
         self.clean_requisites()
         self.general_logger.info("Finished removing unknown courses from requisites.")

@@ -15,19 +15,19 @@ import requests
 SCRAPING_TARGETS: dict[str, dict] = {
     "UTM": {
         "base_domain_name": "https://utm.calendar.utoronto.ca/course-search?page=PAGE_NUMBER",
-        "page_range": range(0, 81 + 1)
+        "page_range": range(0, 81 + 1),
     },
     "UTSG": {
         "base_domain_name": "https://artsci.calendar.utoronto.ca/search-courses?page=PAGE_NUMBER",
-        "page_range": range(0, 178 + 1)
+        "page_range": range(0, 178 + 1),
     },
     "Engineering": {  # Warning: we do not have parsers for this
         "base_domain_name": "https://engineering.calendar.utoronto.ca/search-courses?page=PAGE_NUMBER",
-        "page_range": range(0, 18 + 1)
+        "page_range": range(0, 18 + 1),
     },
     "UTSC": {
         "base_domain_name": "https://utsc.calendar.utoronto.ca/search-courses?page=PAGE_NUMBER",
-        "page_range": range(0, 72 + 1)
+        "page_range": range(0, 72 + 1),
     },
 }
 
@@ -45,7 +45,9 @@ def scrape_page(base_domain_name: str, page: int = 0, target_name: str = "") -> 
     if r.status_code != 200:
         print(f"encountered unexpected HTTP response code: {r.status_code}. Exiting.")
         exit()
-    with open(SAVE_PATH + f"page_{page}_{target_name}.html", 'w', encoding="utf-8") as f:
+    with open(
+        SAVE_PATH + f"page_{page}_{target_name}.html", "w", encoding="utf-8"
+    ) as f:
         f.write(r.text)
     return r.text
 
@@ -89,7 +91,9 @@ def full_scrape() -> None:
         time.sleep(SCRAPE_DELAY)
 
     # confirm that all interesting pages have been scrapped
-    assert "<h3>Your search yielded no results.</h3>" in scrape_page(base_domain_name, len(page_range))
+    assert "<h3>Your search yielded no results.</h3>" in scrape_page(
+        base_domain_name, len(page_range)
+    )
     print(f"All pages scraped successfully. Results are in {SAVE_PATH} folder.")
 
 

@@ -10,12 +10,20 @@ Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 import os
 import json
 from typing import Any, Optional
-from core.core import CourseGraphContainer, CourseGraph, CourseNode, CourseData, Requisite, Program
+from core.core import (
+    CourseGraphContainer,
+    CourseGraph,
+    CourseNode,
+    CourseData,
+    Requisite,
+    Program,
+)
 import core.traversers as traversers
 
 
-def construct_container(course_file: str, program_file: str, department_file: str, breadth_file: str)\
-        -> CourseGraphContainer:
+def construct_container(
+    course_file: str, program_file: str, department_file: str, breadth_file: str
+) -> CourseGraphContainer:
     """
     Return a CourseGraphContainer containing the constructed CourseGraph, programs, departments, and breadths,
     using the given file names.
@@ -84,8 +92,8 @@ def construct_course_graph(filename: str) -> CourseGraph:
     for course in data:  # Iterate over each course from the json file
         # Get data for course hours
         hours = {}
-        for key in course['hours']:
-            hours[key] = course['hours'][key]
+        for key in course["hours"]:
+            hours[key] = course["hours"][key]
 
         # Get data for breadth
         breadth = {}
@@ -95,10 +103,10 @@ def construct_course_graph(filename: str) -> CourseGraph:
         # Get data for credit value
         credit_value = 1 if split_course_code[3] == "H" else 2
         breadth_value = 0
-        breadth_count = len(course['breadth_requirements_list'])
+        breadth_count = len(course["breadth_requirements_list"])
         if breadth_count > 0:
             breadth_value = credit_value // breadth_count
-        for br in course['breadth_requirements_list']:
+        for br in course["breadth_requirements_list"]:
             breadth[br[-2]] = breadth_value
 
         # Create course data object
@@ -114,7 +122,7 @@ def construct_course_graph(filename: str) -> CourseGraph:
                 "corequisites": course["corequisites_original"],
                 "exclusions": course["exclusions_original"],
             },
-            class_size=course["class_size"]
+            class_size=course["class_size"],
         )
 
         # Add to the course dictionary
@@ -246,7 +254,9 @@ def construct_requisites_helper(
         # Otherwise, it needs to be parsed into a Requisite object
         else:
             # Recursively call this function
-            sub_requisites_obj = construct_requisites_helper(requisite, courses_dict, requisites_dict)
+            sub_requisites_obj = construct_requisites_helper(
+                requisite, courses_dict, requisites_dict
+            )
 
             # Add this sub-requisite to the current Requisite object
             requisites_obj.add_requisite(sub_requisites_obj)
@@ -264,7 +274,9 @@ def construct_requisites_helper(
     return requisites_obj
 
 
-def construct_programs(total_graph: CourseGraph, programs_file: str) -> dict[str, Program]:
+def construct_programs(
+    total_graph: CourseGraph, programs_file: str
+) -> dict[str, Program]:
     """
     Constructs all the programs in programs_file, in the domain of total_graph.
     Each Program object is effectively a subgraph of total_graph.
@@ -273,28 +285,35 @@ def construct_programs(total_graph: CourseGraph, programs_file: str) -> dict[str
     """
     programs = {}
 
-    with open(programs_file, 'r') as f:
+    with open(programs_file, "r") as f:
         data = json.load(f)
         for entry in data:
-            code = "".join(entry['program_code'])
-            title = entry['title']
-            mentions = entry['courses_mentioned']
+            code = "".join(entry["program_code"])
+            title = entry["title"]
+            mentions = entry["courses_mentioned"]
             program = construct_program(total_graph, mentions, code, title)
             programs[code] = program
 
     return programs
 
 
-def construct_program(total_graph: CourseGraph, courses: list[str], code: str, title: str) -> Program:
+def construct_program(
+    total_graph: CourseGraph, courses: list[str], code: str, title: str
+) -> Program:
     """
     Return a Program object that contains the given courses, including the courses' prerequisites and corequisites.
     """
-    subgraph = construct_subgraph(total_graph, courses, traversers.Targets(True, True, False, False))
+    subgraph = construct_subgraph(
+        total_graph, courses, traversers.Targets(True, True, False, False)
+    )
     return Program(code=code, title=title, graph=subgraph)
 
 
-def construct_subgraph(total_graph: CourseGraph, courses: list[str], directions: Optional[traversers.Targets] = None) \
-        -> CourseGraph:
+def construct_subgraph(
+    total_graph: CourseGraph,
+    courses: list[str],
+    directions: Optional[traversers.Targets] = None,
+) -> CourseGraph:
     """
     Return a subgraph of all related nodes of courses in the courses list.
 
@@ -309,14 +328,15 @@ def construct_subgraph(total_graph: CourseGraph, courses: list[str], directions:
     v_reqs = {}
 
     # Traverse through graph nodes
-    bfs = traversers.bfs_generator(graph=total_graph, origins=courses, representation='node',
-                                   targets=directions)
+    bfs = traversers.bfs_generator(
+        graph=total_graph, origins=courses, representation="node", targets=directions
+    )
     curr, curr_t, _ = next(bfs)
 
     while curr:
-        if curr_t == 'course':
+        if curr_t == "course":
             v_courses[str(curr)] = curr
-        elif curr_t == 'requisite':
+        elif curr_t == "requisite":
             v_reqs[str(curr)] = curr
         else:
             print("INVALID TRAVERSAL RETURN TYPE")
@@ -361,26 +381,36 @@ def bind_programs(programs: dict[str, Program]) -> None:
             program.graph.courses[course].program_backlinks[program_code] = program
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod(verbose=True)
 
     import python_ta
-    python_ta.check_all(config={
-        'allow-local-imports': True,
-        'extra-imports': ['json', 'os'],
-        'allowed-io': ['construct_course_graph', 'construct_programs', 'construct_program',
-                       'construct_requisites_helper', 'construct_container', 'construct_subgraph',
-                       'construct_departments'],
-        'max-line-length': 120,
-        'max-nested-blocks': 5,
-        'max-locals': 20,
-        'max-branches': 15,
-        'max-args': 7
-    })
+
+    python_ta.check_all(
+        config={
+            "allow-local-imports": True,
+            "extra-imports": ["json", "os"],
+            "allowed-io": [
+                "construct_course_graph",
+                "construct_programs",
+                "construct_program",
+                "construct_requisites_helper",
+                "construct_container",
+                "construct_subgraph",
+                "construct_departments",
+            ],
+            "max-line-length": 120,
+            "max-nested-blocks": 5,
+            "max-locals": 20,
+            "max-branches": 15,
+            "max-args": 7,
+        }
+    )
 
     # TODO: remove these
-    X = construct_course_graph('data/courses.json')
-    Y = construct_programs(X, 'data/programs.json')
+    X = construct_course_graph("data/courses.json")
+    Y = construct_programs(X, "data/programs.json")
     bind_postreqs(X)
     bind_programs(Y)

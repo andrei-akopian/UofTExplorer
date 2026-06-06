@@ -4,13 +4,17 @@ from scraper.courses.course_scraper import full_scrape
 from scraper.courses.ttb_scraper import scrape_everything  # TODO rename everything here
 from scraper.courses.ttb_parser import full_parse
 from scraper.programs.program_parser import ProgramParser
-from scraper.programs.artsci_program_scraper import full_scrape as full_scrape_artsci_programs
+from scraper.programs.artsci_program_scraper import (
+    full_scrape as full_scrape_artsci_programs,
+)
 from scraper.glossary.glossary_parser import parse_glossary
 from scraper.glossary.glossary_scraper import scrape_glossary
 import sys
 
+
 def getYorN(text) -> bool:
     return input(text)[0].lower() == "y"
+
 
 def main():
     argv = sys.argv
@@ -56,6 +60,7 @@ def main():
         synthesizer.full_sync()
     else:
         pass
+
 
 if __name__ == "__main__":
     main()

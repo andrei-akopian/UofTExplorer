@@ -35,21 +35,22 @@ LOG_FOLDER = "scraper/programs/parser_logs"
 PARSING_TARGETS: dict[str, dict] = {
     "UTM": {
         "filepattern": "programs_page_PAGENUMBER_utm.html",
-        "page_range": range(0, 5 + 1)
+        "page_range": range(0, 5 + 1),
     },
     "UTSG": {
         "filepattern": "programs_page_PAGENUMBER_utsg.html",
-        "page_range": range(0, 12 + 1)
+        "page_range": range(0, 12 + 1),
     },
     "UTSC": {
         "filepattern": "programs_page_PAGENUMBER_utsc.html",
-        "page_range": range(0, 7 + 1)
+        "page_range": range(0, 7 + 1),
     },
 }
 
 
 class ContextFilter(logging.Filter):
     """Context filter for the logger."""
+
     parent: ProgramParser
 
     def __init__(self, parent: ProgramParser) -> None:
@@ -73,6 +74,7 @@ class ProgramParser:
         - programs_accepted: programs the parser parsed and kept
         - current_program: the title of the program the parser is currently processing. Needed for logger.
     """
+
     logger: logging.Logger
     programs: list[dict]
     programs_parsed: int
@@ -84,10 +86,14 @@ class ProgramParser:
         self.logger = logging.getLogger(__name__)
         self.logger.addFilter(ContextFilter(self))
         if log_to_file:
-            handler: logging.Handler = logging.FileHandler(f"{LOG_FOLDER}/program_parser.log", mode="w")
+            handler: logging.Handler = logging.FileHandler(
+                f"{LOG_FOLDER}/program_parser.log", mode="w"
+            )
         else:
             handler: logging.Handler = logging.StreamHandler()
-        handler.setFormatter(logging.Formatter("%(levelname)s %(current_program)s | %(message)s"))
+        handler.setFormatter(
+            logging.Formatter("%(levelname)s %(current_program)s | %(message)s")
+        )
         self.logger.addHandler(handler)
         self.logger.setLevel(logging.INFO)
 
@@ -110,13 +116,19 @@ class ProgramParser:
         """
         artsci = program_code[0:2]
         if artsci != "AS":
-            self.logger.critical("Program title does not start with artsci. %s", program_code)
+            self.logger.critical(
+                "Program title does not start with artsci. %s", program_code
+            )
         program_type = program_code[2:5]  # major / minor / spec / focus / cert
         if program_type not in ["MAJ", "MIN", "SPE", "FOC", "CER"]:
-            self.logger.critical("Program does not have major specification. %s", program_code)
+            self.logger.critical(
+                "Program does not have major specification. %s", program_code
+            )
         program_number = program_code[5:9]  # 4 digit number
         if not program_number.isdigit():
-            self.logger.critical("Program number has strange number format. %s", program_code)
+            self.logger.critical(
+                "Program number has strange number format. %s", program_code
+            )
         suffix = program_code[9:]  # they ran out of numbers, this is the fix :\
         if not (len(suffix) == 0 or suffix.isalpha()):
             self.logger.critical("Unexpected program sufix. %s", program_code)
@@ -200,12 +212,14 @@ class ProgramParser:
         """
         Take a program HTML and parse out all data from it into JSON format.
         """
-        scrape_filename = PARSING_TARGETS[target_name]['filepattern'].replace("PAGENUMBER", str(page))
+        scrape_filename = PARSING_TARGETS[target_name]["filepattern"].replace(
+            "PAGENUMBER", str(page)
+        )
         scrape_filepath = f"{SCRAPE_FOLDER}/{scrape_filename}"
         if not os.path.isfile(scrape_filepath):
             self.logger.critical("%s does not exist", scrape_filename)
             return []
-        with open(scrape_filepath, "r", encoding='utf-8') as f:
+        with open(scrape_filepath, "r", encoding="utf-8") as f:
             html_doc = f.read()
 
         soup = bs4.BeautifulSoup(html_doc, "html.parser")
@@ -268,15 +282,18 @@ class ProgramParser:
         self.programs = []
         self.programs_accepted = 0
         self.programs_parsed = 0
-        target_page_range = PARSING_TARGETS[target]['page_range']
+        target_page_range = PARSING_TARGETS[target]["page_range"]
         for p in target_page_range:
             if (p % (len(target_page_range) // 10)) == 0:
-                self.logger.info("%s %% Done", round(p / len(target_page_range) * 100, 1))
+                self.logger.info(
+                    "%s %% Done", round(p / len(target_page_range) * 100, 1)
+                )
             self.page_to_json(p, target)
-        self.logger.info("parsed %s programs of which %s were kept",
-                         self.programs_parsed, self.programs_accepted
-                         )
+        self.logger.info(
+            "parsed %s programs of which %s were kept",
+            self.programs_parsed,
+            self.programs_accepted,
+        )
         self.save_to_json(self.programs)
         end = time.clock_gettime(time.CLOCK_MONOTONIC)
         self.logger.info("parsing finished in: %ss", round(end - start, 4))
-

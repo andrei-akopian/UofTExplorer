@@ -14,7 +14,9 @@ except ImportError:
     from core import *
 
 
-def cycle_checker(graph: CourseGraph, origin: str | CourseNode, targets: Targets) -> bool:
+def cycle_checker(
+    graph: CourseGraph, origin: str | CourseNode, targets: Targets
+) -> bool:
     """
     A generator function that traverses along all connections in breadth-first order, starting from the origins.
     Optional Arguments:
@@ -22,7 +24,7 @@ def cycle_checker(graph: CourseGraph, origin: str | CourseNode, targets: Targets
         - depth: the max depth to explore from origin. Negative values for no depth limit.
     """
 
-    visited: set[str] = {'None'}
+    visited: set[str] = {"None"}
     queue = collections.deque()
 
     # populate visited and queue by the initial origins of BFS
@@ -71,7 +73,7 @@ def cycle_checker(graph: CourseGraph, origin: str | CourseNode, targets: Targets
                         queue.append(req_obj)
 
         else:
-            print(f'UNRESOLVED TRAVERSAL NODE: {curr} {type(curr)}')
+            print(f"UNRESOLVED TRAVERSAL NODE: {curr} {type(curr)}")
             break
 
     return True

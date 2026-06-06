@@ -12,8 +12,11 @@ from core.constructor import construct_course_graph
 from core.core import CourseGraph, CourseNode, Requisite
 
 
-def deconstruct_course_graph(course_graph: CourseGraph, filtered_courses: dict[str, CourseNode] = None,
-                             special_courses: dict[str, CourseNode] = None) -> dict[str, list[dict]]:
+def deconstruct_course_graph(
+    course_graph: CourseGraph,
+    filtered_courses: dict[str, CourseNode] = None,
+    special_courses: dict[str, CourseNode] = None,
+) -> dict[str, list[dict]]:
     """
     Return a dictionary of course nodes, logic gate AND/OR nodes, and graph edges to be passed into a json file and
     used for visualized course graphs, as well as their layout, labels, and colours.
@@ -47,7 +50,7 @@ def deconstruct_course_graph(course_graph: CourseGraph, filtered_courses: dict[s
             "id": course_code,
             "label": course_code,
             "title": course.data.title,
-            "depth": depth
+            "depth": depth,
         }
 
         # Set the colour of the course
@@ -67,7 +70,10 @@ def deconstruct_course_graph(course_graph: CourseGraph, filtered_courses: dict[s
         if prereqs is None:
             continue
         # No AND/OR nodes when course has only 1 prerequisite
-        elif all(isinstance(prereq, CourseNode) for prereq in prereqs.reqs) and len(prereqs.reqs) == 1:
+        elif (
+            all(isinstance(prereq, CourseNode) for prereq in prereqs.reqs)
+            and len(prereqs.reqs) == 1
+        ):
             continue
         # Create dicionaries representing the AND/OR nodes belonging to a course
         else:
@@ -79,13 +85,22 @@ def deconstruct_course_graph(course_graph: CourseGraph, filtered_courses: dict[s
 
     # Create dictionaries representing graph edges
     for course in course_graph.courses:
-        if course_graph.courses[course].prereqs is not None:  # Edges exist when course has prerequisites
-            deconstruct_prerequisites(course, course_graph.courses[course].prereqs, logic_gate_dict, json_edges)
+        if (
+            course_graph.courses[course].prereqs is not None
+        ):  # Edges exist when course has prerequisites
+            deconstruct_prerequisites(
+                course,
+                course_graph.courses[course].prereqs,
+                logic_gate_dict,
+                json_edges,
+            )
 
     return {"nodes": json_courses, "edges": json_edges}
 
 
-def create_logic_gate_nodes(prereqs: Requisite, logic_gate_dict: dict[str, dict]) -> None:
+def create_logic_gate_nodes(
+    prereqs: Requisite, logic_gate_dict: dict[str, dict]
+) -> None:
     """
     Recursively create dictionaries representing AND/OR nodes for the course graph.
     """
@@ -93,9 +108,23 @@ def create_logic_gate_nodes(prereqs: Requisite, logic_gate_dict: dict[str, dict]
     # Ensure no duplicate AND/OR nodes for a specific subgraph of prerequisites is created
     if req_id not in logic_gate_dict:
         if len(prereqs.reqs) == prereqs.degree:
-            node = {"id": req_id, "label": "AND", "title": "", "depth": None, "shape": "box", "color": "#BBBBBB"}
+            node = {
+                "id": req_id,
+                "label": "AND",
+                "title": "",
+                "depth": None,
+                "shape": "box",
+                "color": "#BBBBBB",
+            }
         else:
-            node = {"id": req_id, "label": "OR", "title": "", "depth": None, "shape": "box", "color": "#BBBBBB"}
+            node = {
+                "id": req_id,
+                "label": "OR",
+                "title": "",
+                "depth": None,
+                "shape": "box",
+                "color": "#BBBBBB",
+            }
         logic_gate_dict[req_id] = node
 
     # Recursively create more AND/OR node(s)
@@ -105,8 +134,12 @@ def create_logic_gate_nodes(prereqs: Requisite, logic_gate_dict: dict[str, dict]
                 create_logic_gate_nodes(prereq, logic_gate_dict)
 
 
-def deconstruct_prerequisites(node: str, prereqs: Requisite, logic_gate_dict: dict[str, dict],
-                              json_edges: list[dict]) -> None:
+def deconstruct_prerequisites(
+    node: str,
+    prereqs: Requisite,
+    logic_gate_dict: dict[str, dict],
+    json_edges: list[dict],
+) -> None:
     """
     Recursively creates dictionaries representing graph edges. Edges can exist between 2 course nodes, between 2
     AND/OR nodes, and between a course node and an AND/OR node.
@@ -132,29 +165,38 @@ def deconstruct_prerequisites(node: str, prereqs: Requisite, logic_gate_dict: di
         # and the grandchildren of the current course node
         for prereq in prereqs.reqs:
             if isinstance(prereq, CourseNode):
-                json_edge = {"from": prereq.code, "to": logic_gate_node_id, "color": "#CCCCCC"}
+                json_edge = {
+                    "from": prereq.code,
+                    "to": logic_gate_node_id,
+                    "color": "#CCCCCC",
+                }
                 json_edges.append(json_edge)
             # Recurse to construct an edge between the current AND/OR node and it's child AND/OR node
             else:
-                deconstruct_prerequisites(logic_gate_node_id, prereq, logic_gate_dict,
-                                          json_edges)
+                deconstruct_prerequisites(
+                    logic_gate_node_id, prereq, logic_gate_dict, json_edges
+                )
 
         return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # pass
     import doctest
+
     doctest.testmod(verbose=True)
 
     import python_ta
-    python_ta.check_all(config={
-        'allow-local-imports': True,
-        'extra-imports': [],
-        'allowed-io': [],
-        'max-line-length': 120,
-        'max-nested-blocks': 5,
-        'max-locals': 20,
-        'max-branches': 15,
-        'max-args': 7
-    })
+
+    python_ta.check_all(
+        config={
+            "allow-local-imports": True,
+            "extra-imports": [],
+            "allowed-io": [],
+            "max-line-length": 120,
+            "max-nested-blocks": 5,
+            "max-locals": 20,
+            "max-branches": 15,
+            "max-args": 7,
+        }
+    )

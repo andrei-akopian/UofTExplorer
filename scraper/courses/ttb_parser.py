@@ -5,22 +5,26 @@ SCRAPES_FOLDER = "scraper/courses/ttb_scrapes"
 SAVE_FILEPATH = "scraper/data/ttb_courses.json"
 INSTRUCT_TYPES = ["LEC", "TUT", "PRA"]
 
+
 def aggregate_mentioned_courses(filelist=None):
     if not os.path.isdir(SCRAPES_FOLDER):
         raise FileNotFoundError(f"Folder SCRAPES_FOLDER={SCRAPES_FOLDER} not found!")
     if filelist is None:
-        filelist = os.listdir(SCRAPES_FOLDER )
+        filelist = os.listdir(SCRAPES_FOLDER)
     mentioned_courses = set()
     for i, file in enumerate(filelist):
         # print(file, i)
-        with open(f"ttb_scrapes/{file}", 'r') as f:
+        with open(f"ttb_scrapes/{file}", "r") as f:
             content = f.read()
             if len(content) == 0:
                 print("Warning")
             else:
                 data = json.loads(content)
-                mentioned_courses.update([c["code"] for c in data["pageableCourse"]["courses"]])
+                mentioned_courses.update(
+                    [c["code"] for c in data["pageableCourse"]["courses"]]
+                )
     return mentioned_courses
+
 
 def getBasicCourseInfo(filelist=None) -> dict[str, dict]:
     """
@@ -33,7 +37,7 @@ def getBasicCourseInfo(filelist=None) -> dict[str, dict]:
     courses = dict()
     for i, file in enumerate(filelist):
         # print(file, i)
-        with open(f"{SCRAPES_FOLDER}/{file}", 'r') as f:
+        with open(f"{SCRAPES_FOLDER}/{file}", "r") as f:
             content = f.read()
             if len(content) == 0:
                 print("Warning, empty page encountered.")

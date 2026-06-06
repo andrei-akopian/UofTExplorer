@@ -11,12 +11,13 @@ from z3 import *
 from core import algorithms
 from core.core import CourseGraph, CourseNode, Requisite
 
+
 def solve_sat(
-        graph: CourseGraph, 
-        targets: list[str | CourseNode | Requisite], 
-        taken: list[str | CourseNode | Requisite] = [], 
-        avoids: list[str | CourseNode | Requisite] = []
-    ) -> tuple[bool, dict[str, bool], list[str]]:
+    graph: CourseGraph,
+    targets: list[str | CourseNode | Requisite],
+    taken: list[str | CourseNode | Requisite] = [],
+    avoids: list[str | CourseNode | Requisite] = [],
+) -> tuple[bool, dict[str, bool], list[str]]:
     """
     Satisfy the target courses using the z3 sat solving package.
     Return:
@@ -33,7 +34,9 @@ def solve_sat(
         t = _get_item_object(graph, t)
         b = None
         if isinstance(t, CourseNode):
-            b = Bool(t.code)  # TODO facter out this structure into a separate mutating function
+            b = Bool(
+                t.code
+            )  # TODO facter out this structure into a separate mutating function
             courses[t.code] = b
         elif isinstance(t, Requisite):
             b = Bool(str(t))
@@ -137,7 +140,9 @@ def solve_sat(
                 elif t.degree == len(l):
                     formula.add(Implies(requisites[str(t)], And(*l)))
                 else:
-                    raise Exception("degree != number of requisites. Conditionals other than AND and OR are not impelmented.")
+                    raise Exception(
+                        "degree != number of requisites. Conditionals other than AND and OR are not impelmented."
+                    )
             processed.add(str(t))
         else:
             raise Exception("unexpected data type.")

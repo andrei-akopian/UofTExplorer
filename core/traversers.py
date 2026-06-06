@@ -15,9 +15,13 @@ from dataclasses import dataclass
 from core.core import CourseGraph, CourseNode, Requisite
 
 
-def bfs_generator(graph: CourseGraph, origins: list[str | CourseNode | Requisite], targets: Targets,
-                  representation: str = 'string', max_depth: int = -10)\
-        -> Generator[tuple[CourseNode | Requisite | str, str, int], Any, Any]:
+def bfs_generator(
+    graph: CourseGraph,
+    origins: list[str | CourseNode | Requisite],
+    targets: Targets,
+    representation: str = "string",
+    max_depth: int = -10,
+) -> Generator[tuple[CourseNode | Requisite | str, str, int], Any, Any]:
     """
     A generator function that traverses along all directions (targets) in breadth-first order,
     starting from the origins.
@@ -33,12 +37,14 @@ def bfs_generator(graph: CourseGraph, origins: list[str | CourseNode | Requisite
     """
 
     # breadth-first-search utilities
-    visited: set[str] = {'None'}
+    visited: set[str] = {"None"}
     queue = collections.deque()
 
     # populate visited and queue by the initial origins of BFS
     for origin in origins:
-        origin_obj = _catch_name_code(graph, origin)  # turn possible str input into node object
+        origin_obj = _catch_name_code(
+            graph, origin
+        )  # turn possible str input into node object
         if origin_obj:
             visited.add(str(origin_obj))
             queue.append(origin_obj)
@@ -71,10 +77,10 @@ def bfs_generator(graph: CourseGraph, origins: list[str | CourseNode | Requisite
                 _update_queue(queue, visited, list(curr.postreqs.values()))
 
             # yields in the requested type
-            if representation == 'node':
-                yield curr, 'course', curr_depth
+            if representation == "node":
+                yield curr, "course", curr_depth
             else:
-                yield str(curr), 'course', curr_depth
+                yield str(curr), "course", curr_depth
 
         elif isinstance(curr, Requisite):
 
@@ -98,13 +104,13 @@ def bfs_generator(graph: CourseGraph, origins: list[str | CourseNode | Requisite
                         queue.append(req_obj)
 
             # yields in the requested type
-            if representation == 'node':
-                yield curr, 'requisite', curr_depth
+            if representation == "node":
+                yield curr, "requisite", curr_depth
             else:
-                yield str(curr), 'requisite', curr_depth
+                yield str(curr), "requisite", curr_depth
 
         else:
-            print(f'UNRESOLVED TRAVERSAL NODE: {curr} {type(curr)}')
+            print(f"UNRESOLVED TRAVERSAL NODE: {curr} {type(curr)}")
             break
 
     yield "", "", -1  # end of traversal
@@ -123,13 +129,16 @@ class Targets:
         - excl: whether the traverser will visit exclusions
         - postreq: whether the traverser will visit post-requisites
     """
+
     prereq: bool
     coreq: bool
     excl: bool
     postreq: bool
 
 
-def _catch_name_code(graph: CourseGraph, name: str | CourseNode | Requisite) -> CourseNode | Requisite | None:
+def _catch_name_code(
+    graph: CourseGraph, name: str | CourseNode | Requisite
+) -> CourseNode | Requisite | None:
     """
     A helper function that returns the input, name, if it is already a node object.
     Otherwise, return the node object associated with the name in graph.
@@ -163,18 +172,21 @@ def _update_queue(queue: collections.deque, visited: set[str], nodes: list) -> N
             queue.append(node)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # import doctest
     # doctest.testmod(verbose=True)
 
     import python_ta
-    python_ta.check_all(config={
-        'allow-local-imports': True,
-        'extra-imports': ['collections', 'typing'],
-        'allowed-io': ['bfs_prereq', 'bfs_all', 'bfs_generator'],
-        'max-line-length': 120,
-        'max-nested-blocks': 5,
-        'max-locals': 20,
-        'max-branches': 15,
-        'max-args': 7
-    })
+
+    python_ta.check_all(
+        config={
+            "allow-local-imports": True,
+            "extra-imports": ["collections", "typing"],
+            "allowed-io": ["bfs_prereq", "bfs_all", "bfs_generator"],
+            "max-line-length": 120,
+            "max-nested-blocks": 5,
+            "max-locals": 20,
+            "max-branches": 15,
+            "max-args": 7,
+        }
+    )
