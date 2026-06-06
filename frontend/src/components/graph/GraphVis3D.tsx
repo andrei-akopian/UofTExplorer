@@ -1,4 +1,3 @@
-import * as THREE from "three";
 import SpriteText from "three-spritetext";
 import ForceGraph3D from "3d-force-graph";
 import type { GraphData } from "../../types";
@@ -146,11 +145,7 @@ function focusNode(graph: any, node: any) {
 
 export default function GraphVis3D({
   graphData,
-  loading,
-  setLoading,
   useShellLayout,
-  setMessage,
-  setMessageType,
 }: {
   graphData: GraphData;
   loading: boolean;
@@ -167,7 +162,7 @@ export default function GraphVis3D({
 
     const processedData = processGraphData(graphData, useShellLayout);
     if (!graphRef.current) {
-      graphRef.current = ForceGraph3D()(graphFrame.current)
+      graphRef.current = new ForceGraph3D(graphFrame.current)
         .graphData(processedData)
         .nodeLabel((n: any) => `${n.label}: ${n.title}`)
         .nodeVal((node: any) => (node.depth === 0 ? 10 : 5))
@@ -180,6 +175,7 @@ export default function GraphVis3D({
           sprite.strokeWidth = 1;
           sprite.strokeColor = "#ffffff";
           sprite.textHeight = 8;
+          // @ts-expect-error: position is not typed on SpriteText, but it exists at runtime
           sprite.position.y = -10;
           return sprite;
         })

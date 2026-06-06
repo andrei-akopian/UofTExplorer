@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import type { GraphData } from "../types";
 import GraphQuery from "../components/graph/GraphQuery";
@@ -11,7 +10,7 @@ export default function Graph3D() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const [messageType, setMessageType] = useState<"info" | "success" | "error">(
+  const [_messageType, setMessageType] = useState<"info" | "success" | "error">(
     "info",
   );
   const [useShellLayout, setUseShellLayout] = useState(true);
