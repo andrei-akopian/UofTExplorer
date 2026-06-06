@@ -80,9 +80,3 @@ export interface FilterOptions {
   departments: string[];
   breadthRequirements: string[];
 }
-
-export interface QueryFilters {
-  cr_ncr: string[];
-  departments: string[];
-  breadth_requirements: string[];
-}

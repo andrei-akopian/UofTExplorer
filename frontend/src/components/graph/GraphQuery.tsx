@@ -80,7 +80,7 @@ export default function GraphQuery({
   };
 
   return (
-    <div className="items-flex-start absolute top-3 flex w-full flex-wrap content-start justify-center gap-2.5 p-4">
+    <div className="absolute top-3 flex w-full flex-wrap content-start items-center justify-center gap-2.5 p-4">
       <SearchMenu
         query={query}
         setQuery={setQuery}
@@ -90,7 +90,7 @@ export default function GraphQuery({
       <button
         onClick={handleFetchClick}
         disabled={isLoading}
-        className="bg-primary hover:bg-primary-hover h-min cursor-pointer rounded-md border-0 px-5 py-2 font-sans text-base text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60"
+        className="bg-primary hover:bg-primary-hover cursor-pointer rounded-md border-0 px-5 py-2 font-sans text-base text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60"
       >
         Load Graph
       </button>
