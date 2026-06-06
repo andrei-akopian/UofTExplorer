@@ -10,19 +10,11 @@ export default function PathExplorer() {
   const [desiredCourses, setDesiredCourses] = useState<string[]>([]);
   const [solutionDisplay, setSolutionDisplay] = useState<string[]>([]);
 
-  const {
-    data: graphDataPostreqs,
-    loading,
-    error,
-    fetch: fetchImmediatePostreqs,
-  } = useImmediatePostreqs();
+  const { data: graphDataPostreqs, fetch: fetchImmediatePostreqs } =
+    useImmediatePostreqs();
 
-  const {
-    data: graphDataPathfind,
-    loading: loadingPathfind,
-    error: errorPathfind,
-    fetch: fetchPathfindSolution,
-  } = usePathFinderSolution();
+  const { data: graphDataPathfind, fetch: fetchPathfindSolution } =
+    usePathFinderSolution();
 
   const [graphData, setGraphData] = useState<GraphData>({
     nodes: [],
