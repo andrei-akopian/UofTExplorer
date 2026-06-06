@@ -13,6 +13,11 @@ Originally completed as a project for [CSC111 — Foundations of Computer Scienc
 
 ## Features
 
+- **Graph Querying**: Generate graph visualizations of courses by searching for courses and programs, and filtering by CR/NCR, breadth requirements, and department.
+- **2D and 3D Graph Visualizations**: Explore colour-coded graph visualizations of courses and their relationships in 2D and 3D.
+- **Path Explorer - Find Eligible Courses**: Discover what courses you become eligible to take based on the courses you have already completed.
+- **Path Explorer - Course Planning Recommendations**: Find the optimal course combination to take in order to become eligible for a desired course.
+
 ## Related Projects
 
 - [Courseography](https://courseography.cdf.toronto.edu/graph)
