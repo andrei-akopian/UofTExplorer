@@ -11,8 +11,10 @@ Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 import os
 import requests
 
-GOLSSARY_URL = ("https://www.sgs.utoronto.ca/policies-guidelines/"
-                + "glossary-of-course-codes-primary-and-joint-course-codes/")
+GOLSSARY_URL = (
+    "https://www.sgs.utoronto.ca/policies-guidelines/"
+    + "glossary-of-course-codes-primary-and-joint-course-codes/"
+)
 SAVE_PATH = "raw_output/"
 
 
@@ -32,7 +34,7 @@ def scrape_glossary() -> None:
         print(f"scraping request returned with unexpected HTTP code: {r.status_code}")
         exit()
     filepath = SAVE_PATH + "glossary.html"
-    with open(filepath, 'w', encoding="utf-8") as f:
+    with open(filepath, "w", encoding="utf-8") as f:
         f.write(r.text)
     print("glossary scrape saved to", filepath)
 

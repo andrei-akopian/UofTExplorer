@@ -8,18 +8,14 @@ The HTML is read from LOADPATH constant, and the final json lookup table is save
 
 Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 """
+
 import json
 import bs4
 
 LOADPATH = "scraper/glossary/raw_output/glossary.html"
 SAVEPATH = "data/glossary.json"
 
-TEXT_SWAPS = {
-    "\u00a0": " ",
-    "\u2014": "-",
-    "\u200b": " ",
-    "\u2019": "'"
-}
+TEXT_SWAPS = {"\u00a0": " ", "\u2014": "-", "\u200b": " ", "\u2019": "'"}
 
 
 def clean_unicodes(text) -> str:
@@ -37,7 +33,7 @@ def parse_table(table: bs4.Tag | bs4.PageElement) -> dict[str, str]:
     The HTML table contains codes on the first column, and department names in the second.
     """
     course_codes: dict[str, str] = {}
-    for entry in table.tbody.find_all('tr'):
+    for entry in table.tbody.find_all("tr"):
         course_code = clean_unicodes(entry.contents[0].string)
         department = clean_unicodes(entry.contents[1].string)
         course_codes[course_code] = department
@@ -48,12 +44,12 @@ def parse_glossary() -> dict[str, str]:
     """
     Parse the HTML glossary page, and store the output.
     """
-    with open(LOADPATH, 'r') as f:
+    with open(LOADPATH, "r") as f:
         html_doc = f.read()
 
-    soup = bs4.BeautifulSoup(html_doc, 'html.parser')
+    soup = bs4.BeautifulSoup(html_doc, "html.parser")
 
-    tables = soup.find_all('table')
+    tables = soup.find_all("table")
 
     primary_course_codes_table = tables[0]
     join_course_codes_table = tables[1]
@@ -62,7 +58,7 @@ def parse_glossary() -> dict[str, str]:
     course_codes.update(parse_table(primary_course_codes_table))
     course_codes.update(parse_table(join_course_codes_table))
 
-    with open(SAVEPATH, 'w') as f:
+    with open(SAVEPATH, "w") as f:
         json.dump(course_codes, f)
 
     return course_codes

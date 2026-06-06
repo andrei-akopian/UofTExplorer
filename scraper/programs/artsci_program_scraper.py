@@ -15,16 +15,16 @@ import requests
 SCRAPING_TARGETS: dict[str, dict] = {
     "UTM": {
         "base_domain_name": "https://utm.calendar.utoronto.ca/program-search?page=PAGE_NUMBER",
-        "page_range": range(0, 5 + 1)
+        "page_range": range(0, 5 + 1),
     },
     "UTSG": {
         "base_domain_name": "https://artsci.calendar.utoronto.ca/search-programs?page=PAGE_NUMBER",
-        "page_range": range(0, 12 + 1)
+        "page_range": range(0, 12 + 1),
     },
     # UTSG Engineering doesn't have easily scrapable programs.
     "UTSC": {
         "base_domain_name": "https://utsc.calendar.utoronto.ca/search-programs?page=PAGE_NUMBER",
-        "page_range": range(0, 7 + 1)
+        "page_range": range(0, 7 + 1),
     },
 }
 
@@ -42,7 +42,9 @@ def scrape_page(base_domain_name: str, page: int = 0, target_name: str = "") -> 
     if r.status_code != 200:
         print(f"encountered unexpected HTTP response code: {r.status_code}. Exiting.")
         exit()
-    with open(f"{SAVE_PATH}/programs_page_{page}_{target_name}.html", 'w', encoding="utf-8") as f:
+    with open(
+        f"{SAVE_PATH}/programs_page_{page}_{target_name}.html", "w", encoding="utf-8"
+    ) as f:
         f.write(r.text)
     return r.text
 
@@ -58,10 +60,12 @@ def full_scrape() -> None:
         os.mkdir(SAVE_PATH)
 
     target = "UTSG"
-    print("""Select Scrapping Target:
+    print(
+        """Select Scrapping Target:
     (1) UTSG ArtSci - default
     (2) UTSC
-    (3) UTM""")
+    (3) UTM"""
+    )
     selection = input("Enter>").strip()
     if selection.isdigit() and 1 <= int(selection) <= 3:
         target = ["UTSG", "UTSC", "UTM"][int(selection) - 1]

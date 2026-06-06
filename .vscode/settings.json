@@ -5,6 +5,12 @@
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
 
+  // Set black as the default formatter for Python
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+
   // Set Prettier as the default formatter for web development languages
   "[javascript]": {
     "editor.tabSize": 2,

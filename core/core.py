@@ -44,8 +44,13 @@ class CourseGraphContainer:
     departments: dict[str, str]
     breadths: dict[str, str]
 
-    def __init__(self, graph: CourseGraph, programs: dict[str, Program],
-                 departments: dict[str, str], breadths: dict[str, str]) -> None:
+    def __init__(
+        self,
+        graph: CourseGraph,
+        programs: dict[str, Program],
+        departments: dict[str, str],
+        breadths: dict[str, str],
+    ) -> None:
         """
         Initialize a new CourseGraphContainer.
         """
@@ -111,7 +116,7 @@ class CourseGraph:
     def __init__(
         self,
         courses: dict[str, CourseNode] = None,
-        requisites: dict[str, Requisite] = None
+        requisites: dict[str, Requisite] = None,
     ) -> None:
         """
         Initialize a new course graph.
@@ -153,8 +158,9 @@ class CourseGraph:
 
         return round(sum(num_direct_reqs) / len(num_direct_reqs), 2)
 
-    def get_filtered_courses(self, conditions: list[Callable], condition_keys: list[Hashable] = None)\
-            -> list[dict[str, CourseNode]] | dict[Hashable, dict[str, CourseNode]]:
+    def get_filtered_courses(
+        self, conditions: list[Callable], condition_keys: list[Hashable] = None
+    ) -> list[dict[str, CourseNode]] | dict[Hashable, dict[str, CourseNode]]:
         """
         Return either a list or dictionary containing filtered courses based on the given Callable conditions.
 
@@ -220,7 +226,9 @@ class CourseGraph:
                 for i in range(len(conditions)):
                     # If condition is fulfilled, add this course to the corresponding filtered dictionary
                     if conditions[i](self.courses[course]):
-                        filtered_course_dict[condition_keys[i]][course] = self.courses[course]
+                        filtered_course_dict[condition_keys[i]][course] = self.courses[
+                            course
+                        ]
 
             return filtered_course_dict
 
@@ -237,8 +245,9 @@ class CourseGraph:
         # Iterate over all courses
         for course in self.courses:
             # Check that course has not been taken and that it is satisfied
-            if (self.courses[course] not in courses_taken
-                    and self.courses[course].is_satisfied(courses_taken, False)):
+            if self.courses[course] not in courses_taken and self.courses[
+                course
+            ].is_satisfied(courses_taken, False):
 
                 # Add it to the list of possible courses if it is not taken
                 possible_courses[course] = self.courses[course]
@@ -280,7 +289,7 @@ class CourseNode:
         coreqs: Requisite = None,
         postreqs: dict[str, Requisite] = None,
         exclusions: Requisite = None,
-        program_backlinks: dict[str, Program] = None
+        program_backlinks: dict[str, Program] = None,
     ) -> None:
         """
         Initialize a new course node.
@@ -395,7 +404,7 @@ class CourseNode:
         Preconditions:
             - eligible_cr_ncr in {'eligible', 'ineligible'}
         """
-        if eligible_cr_ncr == 'eligible':
+        if eligible_cr_ncr == "eligible":
             return self.data.cr_ncr is True
         else:
             return self.data.cr_ncr is False
@@ -436,7 +445,9 @@ class CourseNode:
             return True
         return False
 
-    def is_satisfied(self, courses: list[CourseNode], satisfied_if_no_prereqs: bool = True) -> bool:
+    def is_satisfied(
+        self, courses: list[CourseNode], satisfied_if_no_prereqs: bool = True
+    ) -> bool:
         """
         Return whether the conditions of this course's prerequisites, corequisites, and exclusions are satisfied,
         given a list of courses.
@@ -460,8 +471,14 @@ class CourseNode:
 
             # Check whether this course's corequisites and exclusions are satisfied
             if satisfied_if_no_prereqs:
-                return (self.coreqs is None or self.coreqs.is_satisfied(courses)
-                        and (self.exclusions is None or not self.exclusions.is_satisfied(courses)))
+                return (
+                    self.coreqs is None
+                    or self.coreqs.is_satisfied(courses)
+                    and (
+                        self.exclusions is None
+                        or not self.exclusions.is_satisfied(courses)
+                    )
+                )
 
             # Otherwise, return False without checking whether this course's corequisites and exclusions are satisfied
             else:
@@ -470,9 +487,13 @@ class CourseNode:
         # Otherwise, self has prerequisites
         # Return whether corequisites and exclusions are satisfied
         else:
-            return (self.prereqs.is_satisfied(courses)
-                    and (self.coreqs is None or self.coreqs.is_satisfied(courses))
-                    and (self.exclusions is None or not self.exclusions.is_satisfied(courses)))
+            return (
+                self.prereqs.is_satisfied(courses)
+                and (self.coreqs is None or self.coreqs.is_satisfied(courses))
+                and (
+                    self.exclusions is None or not self.exclusions.is_satisfied(courses)
+                )
+            )
 
 
 @dataclass
@@ -505,8 +526,15 @@ class CourseData:
     class_size: Optional[int]
 
     def __init__(
-        self, code_split: list[str], title: str, description: str, cr_ncr: bool, hours: dict, breadth: dict,
-        original_requisite_strings: dict[str, str], class_size: Optional[int]
+        self,
+        code_split: list[str],
+        title: str,
+        description: str,
+        cr_ncr: bool,
+        hours: dict,
+        breadth: dict,
+        original_requisite_strings: dict[str, str],
+        class_size: Optional[int],
     ) -> None:
         """
         Initialize a new CourseData object.
@@ -531,12 +559,17 @@ class CourseData:
         }
 
         # Add information about hours
-        hours_str = " | ".join(f"{hour_type.capitalize()}: {self.hours[hour_type]}"
-                               for hour_type in self.hours if self.hours[hour_type] != 0)
+        hours_str = " | ".join(
+            f"{hour_type.capitalize()}: {self.hours[hour_type]}"
+            for hour_type in self.hours
+            if self.hours[hour_type] != 0
+        )
         information["Hours"] = hours_str
 
         # Add information about breadths
-        breadth_str = ", ".join(str(br_type) for br_type in self.breadth if self.breadth[br_type] != 0)
+        breadth_str = ", ".join(
+            str(br_type) for br_type in self.breadth if self.breadth[br_type] != 0
+        )
         information["Breadth Categories"] = breadth_str
 
         # Add information about requisites
@@ -591,15 +624,22 @@ class Requisite:
     #             Example: "5,(2,APM102,CAT999),(1,CSC110,CSC111),APM101,MAT137,ZZZ135"
     _string: str
 
-    def __init__(self, reqs: list[CourseNode | Requisite] = None, degree: int = 0, num_backlinks: int = 0,
-                 postreqs: dict[str, CourseNode | Requisite] = None) -> None:
+    def __init__(
+        self,
+        reqs: list[CourseNode | Requisite] = None,
+        degree: int = 0,
+        num_backlinks: int = 0,
+        postreqs: dict[str, CourseNode | Requisite] = None,
+    ) -> None:
         """
         Initialize a new Requisite object.
         """
         if reqs is None:
             self.reqs = []
         else:
-            self.reqs = sorted(reqs)  # Ensure self.reqs is sorted to maintain representation invariant
+            self.reqs = sorted(
+                reqs
+            )  # Ensure self.reqs is sorted to maintain representation invariant
         self.degree = degree
 
         self.num_backlinks = num_backlinks
@@ -709,7 +749,7 @@ class Requisite:
         return {
             "title": title,
             "description": self.simple_hash,
-            "backlinks": self.num_backlinks
+            "backlinks": self.num_backlinks,
         }
 
     def increment_num_backlinks(self) -> None:
@@ -812,19 +852,23 @@ class Program:
         return False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # pass
     import doctest
+
     doctest.testmod(verbose=True)
 
     import python_ta
-    python_ta.check_all(config={
-        'allow-local-imports': True,
-        'extra-imports': ['annotations', 'dataclass', 'functools', 'typing'],
-        'allowed-io': [],
-        'max-line-length': 120,
-        'max-nested-blocks': 5,
-        'max-locals': 20,
-        'max-branches': 15,
-        'max-args': 8
-    })
+
+    python_ta.check_all(
+        config={
+            "allow-local-imports": True,
+            "extra-imports": ["annotations", "dataclass", "functools", "typing"],
+            "allowed-io": [],
+            "max-line-length": 120,
+            "max-nested-blocks": 5,
+            "max-locals": 20,
+            "max-branches": 15,
+            "max-args": 8,
+        }
+    )

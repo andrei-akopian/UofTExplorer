@@ -8,6 +8,7 @@ Flask is used to connect the Python functions to JavaScript.
 Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 This file was written with the help of ChatGPT codex GPT-5.4.
 """
+
 import os
 import socket
 import json
@@ -15,21 +16,35 @@ import time
 import uuid
 import threading
 from typing import Any
-from flask import Flask, Response, request, jsonify, render_template, send_from_directory
+from flask import (
+    Flask,
+    Response,
+    request,
+    jsonify,
+    render_template,
+    send_from_directory,
+)
 from flask.typing import ResponseReturnValue
 
 from core import sat
 from core.constructor import construct_container, construct_subgraph
-from core.algorithms import (get_course_suggestions, get_filtered_graph, get_search_suggestions, traversers)
+from core.algorithms import (
+    get_course_suggestions,
+    get_filtered_graph,
+    get_search_suggestions,
+    traversers,
+)
 from core.deconstructor import deconstruct_course_graph
 
 app = Flask(__name__, template_folder="./templates")
 
 DATA_FOLDER = "./data"
-COURSE_GRAPH_CONTAINER = construct_container(f"{DATA_FOLDER}/courses.json",
-                                             f"{DATA_FOLDER}/programs.json",
-                                             f"{DATA_FOLDER}/glossary.json",
-                                             f"{DATA_FOLDER}/breadths.json")
+COURSE_GRAPH_CONTAINER = construct_container(
+    f"{DATA_FOLDER}/courses.json",
+    f"{DATA_FOLDER}/programs.json",
+    f"{DATA_FOLDER}/glossary.json",
+    f"{DATA_FOLDER}/breadths.json",
+)
 
 # Progress tracking for long-running requests
 PROGRESS_TRACKER = {}
@@ -43,9 +58,7 @@ DEFAULT_QUERY_SNAPSHOT = {"type": "", "code": "", "name": ""}
 # code is the actual code
 # name is
 
-IMAGE_PATHS = [
-    "data_analysis/images"
-]
+IMAGE_PATHS = ["data_analysis/images"]
 
 
 def get_global_statistics_from_file() -> dict[str, int | float]:
@@ -58,7 +71,7 @@ def get_global_statistics_from_file() -> dict[str, int | float]:
         return json.load(file)
 
 
-@app.route('/')
+@app.route("/")
 def index() -> ResponseReturnValue:
     """
     Return the data to be used to render the home page.
@@ -66,15 +79,15 @@ def index() -> ResponseReturnValue:
     app.logger.info("Processed request for homepage (/) and sent response.")
 
     # Get global statistics from precomputed JSON file
-    return render_template('index.html')
+    return render_template("index.html")
 
 
-@app.route('/2dgraph')
+@app.route("/2dgraph")
 def graph2d() -> ResponseReturnValue:
     """
     Return the data to be used to render the 2d graph.
     """
-    search = request.args.get('search')
+    search = request.args.get("search")
     app.logger.info("Processing Request for / root (index.html - 2d graph)")
 
     if search != "" and search is not None:
@@ -84,20 +97,20 @@ def graph2d() -> ResponseReturnValue:
     app.logger.info("... and sending response.")
 
     return render_template(
-        '2dgraph.html',
+        "2dgraph.html",
         data=graph_data,
         departments=COURSE_GRAPH_CONTAINER.departments,
         breadth=COURSE_GRAPH_CONTAINER.breadths,
-        current_query=DEFAULT_QUERY_SNAPSHOT
+        current_query=DEFAULT_QUERY_SNAPSHOT,
     )
 
 
-@app.route('/3dforcegraph')
+@app.route("/3dforcegraph")
 def forcegraph3d() -> ResponseReturnValue:
     """
     Return the data to be used to render the 3d graph.
     """
-    search = request.args.get('search')
+    search = request.args.get("search")
     app.logger.info("Processing Request for /3dforcegraph")
 
     if search != "" and search is not None:
@@ -107,25 +120,23 @@ def forcegraph3d() -> ResponseReturnValue:
     app.logger.info("... and sending response.")
 
     return render_template(
-        '3dforcegraph.html',
+        "3dforcegraph.html",
         data=graph_data,
         departments=COURSE_GRAPH_CONTAINER.departments,
         breadth=COURSE_GRAPH_CONTAINER.breadths,
-        current_query=DEFAULT_QUERY_SNAPSHOT
+        current_query=DEFAULT_QUERY_SNAPSHOT,
     )
 
 
-@app.route('/pathexplorer')
+@app.route("/pathexplorer")
 def path_explorer() -> ResponseReturnValue:
     """
     Return the data to be used to render the Path Explorer page.
     """
-    return render_template(
-        "pathexplorer.html"
-    )
+    return render_template("pathexplorer.html")
 
 
-@app.route('/globalstats')
+@app.route("/globalstats")
 def globalstats() -> ResponseReturnValue:
     """
     Return the data to be used to render the Global Statistics page.
@@ -133,10 +144,10 @@ def globalstats() -> ResponseReturnValue:
     app.logger.info("Processed request for /globalstats and sent response.")
     statistics = get_global_statistics_from_file()
     print(statistics)
-    return render_template('globalstats.html', statistics=statistics)
+    return render_template("globalstats.html", statistics=statistics)
 
 
-@app.route('/api/ticket/<ticket_id>', methods=["GET"])
+@app.route("/api/ticket/<ticket_id>", methods=["GET"])
 def get_ticket(ticket_id: str) -> ResponseReturnValue:
     """
     Endpoint to retrieve a specific ticket by its ID.
@@ -147,7 +158,7 @@ def get_ticket(ticket_id: str) -> ResponseReturnValue:
     return jsonify(ticket)
 
 
-@app.route('/api/pathfind', methods=["POST"])
+@app.route("/api/pathfind", methods=["POST"])
 def pathfind() -> ResponseReturnValue:
     """
     Endpoint for the path explorer page request payload.
@@ -163,18 +174,34 @@ def pathfind() -> ResponseReturnValue:
             "Received path explorer request: completed=%s desired=%s avoided=%s",
             completed_courses,
             desired_courses,
-            avoided_courses
+            avoided_courses,
         )
 
-        solution = sat.solve_satz3(COURSE_GRAPH_CONTAINER.graph, desired_courses, completed_courses, avoided_courses)
+        solution = sat.solve_satz3(
+            COURSE_GRAPH_CONTAINER.graph,
+            desired_courses,
+            completed_courses,
+            avoided_courses,
+        )
 
-        solution_selection = {course: COURSE_GRAPH_CONTAINER.graph.courses[course] for course in solution if course not in desired_courses}
-        target_selection = {tar: COURSE_GRAPH_CONTAINER.graph.courses[tar] for tar in desired_courses}
+        solution_selection = {
+            course: COURSE_GRAPH_CONTAINER.graph.courses[course]
+            for course in solution
+            if course not in desired_courses
+        }
+        target_selection = {
+            tar: COURSE_GRAPH_CONTAINER.graph.courses[tar] for tar in desired_courses
+        }
         origins = set(desired_courses)
 
-        subgraph = construct_subgraph(COURSE_GRAPH_CONTAINER.graph, list(origins),
-                                      traversers.Targets(True, True, False, False))
-        graph_data = deconstruct_course_graph(subgraph, solution_selection, target_selection)
+        subgraph = construct_subgraph(
+            COURSE_GRAPH_CONTAINER.graph,
+            list(origins),
+            traversers.Targets(True, True, False, False),
+        )
+        graph_data = deconstruct_course_graph(
+            subgraph, solution_selection, target_selection
+        )
 
         return jsonify({"solution": solution, "graph_data": graph_data}), 200
 
@@ -199,12 +226,22 @@ def pathfind() -> ResponseReturnValue:
         return jsonify({"error": str(e)}), 500
 
 
-def _pathfind(ticket_id: str, completed_courses: list[str], desired_courses: list[str], avoided_courses: list[str]) -> None:
+def _pathfind(
+    ticket_id: str,
+    completed_courses: list[str],
+    desired_courses: list[str],
+    avoided_courses: list[str],
+) -> None:
     """
     Background worker function that runs the Z3 SAT solver and stores results in TICKETS.
     """
     try:
-        solver = sat.solve_satz3(COURSE_GRAPH_CONTAINER.graph, desired_courses, completed_courses, avoided_courses)
+        solver = sat.solve_satz3(
+            COURSE_GRAPH_CONTAINER.graph,
+            desired_courses,
+            completed_courses,
+            avoided_courses,
+        )
         solution = next(solver)
         TICKETS[ticket_id]["result"] = solution
     except Exception as e:
@@ -212,7 +249,7 @@ def _pathfind(ticket_id: str, completed_courses: list[str], desired_courses: lis
         TICKETS[ticket_id]["error"] = str(e)
 
 
-@app.route('/pathexplorerplanning', methods=["POST"])
+@app.route("/pathexplorerplanning", methods=["POST"])
 def pathexplorerplanning() -> ResponseReturnValue:
     """
     Endpoint for the path explorer page request payload.
@@ -230,7 +267,7 @@ def pathexplorerplanning() -> ResponseReturnValue:
             job_id,
             completed_courses,
             desired_courses,
-            avoided_courses
+            avoided_courses,
         )
 
         # Initialize progress tracking
@@ -240,14 +277,14 @@ def pathexplorerplanning() -> ResponseReturnValue:
             "dimension": 0,
             "warning": None,
             "cancelled": False,
-            "start_time": time.time()
+            "start_time": time.time(),
         }
 
         # Start solver in background thread
         solver_thread = threading.Thread(
             target=_solve_in_background,
             args=(job_id, completed_courses, desired_courses, avoided_courses),
-            daemon=True
+            daemon=True,
         )
         solver_thread.start()
 
@@ -259,8 +296,12 @@ def pathexplorerplanning() -> ResponseReturnValue:
         return jsonify({"error": "Internal error"}), 500
 
 
-def _solve_in_background(job_id: str, completed_courses: list[str], desired_courses: list[str],
-                         avoided_courses: list[str]) -> None:
+def _solve_in_background(
+    job_id: str,
+    completed_courses: list[str],
+    desired_courses: list[str],
+    avoided_courses: list[str],
+) -> None:
     """
     Background worker function that runs the SAT solver and stores results in PROGRESS_TRACKER.
     """
@@ -281,8 +322,13 @@ def _solve_in_background(job_id: str, completed_courses: list[str], desired_cour
                 PROGRESS_TRACKER[job_id]["case_bits"] = case_bits
                 PROGRESS_TRACKER[job_id]["dimension"] = dimension
 
-        solver = sat.solve_sat(COURSE_GRAPH_CONTAINER.graph, desired_courses, completed_courses,
-                               avoided_courses, progress_callback=update_bruteforce_progress)
+        solver = sat.solve_sat(
+            COURSE_GRAPH_CONTAINER.graph,
+            desired_courses,
+            completed_courses,
+            avoided_courses,
+            progress_callback=update_bruteforce_progress,
+        )
 
         num_fundamentals = next(solver)
         # Set dimension immediately after computing fundamentals
@@ -297,14 +343,21 @@ def _solve_in_background(job_id: str, completed_courses: list[str], desired_cour
 
         solution = next(solver)
         solution_selection = {str(course): course for course in solution}
-        target_selection = {tar: COURSE_GRAPH_CONTAINER.graph.courses[tar] for tar in desired_courses}
+        target_selection = {
+            tar: COURSE_GRAPH_CONTAINER.graph.courses[tar] for tar in desired_courses
+        }
         origins = {str(course) for course in solution_selection}
         for tar in target_selection:
             origins.add(tar)
 
-        subgraph = construct_subgraph(COURSE_GRAPH_CONTAINER.graph, list(origins),
-                                      traversers.Targets(True, True, False, False))
-        graph_data = deconstruct_course_graph(subgraph, solution_selection, target_selection)
+        subgraph = construct_subgraph(
+            COURSE_GRAPH_CONTAINER.graph,
+            list(origins),
+            traversers.Targets(True, True, False, False),
+        )
+        graph_data = deconstruct_course_graph(
+            subgraph, solution_selection, target_selection
+        )
 
         # Add display text for target courses (desired courses)
         solution_display = {
@@ -333,7 +386,7 @@ def _solve_in_background(job_id: str, completed_courses: list[str], desired_cour
         app.logger.warning(e)
 
 
-@app.route('/pathexplorer_cancel/<job_id>', methods=["POST"])
+@app.route("/pathexplorer_cancel/<job_id>", methods=["POST"])
 def pathexplorer_cancel(job_id: str) -> ResponseReturnValue:
     """
     Endpoint to cancel a path explorer planning request.
@@ -345,7 +398,7 @@ def pathexplorer_cancel(job_id: str) -> ResponseReturnValue:
     return jsonify({"status": "cancel_requested"}), 200
 
 
-@app.route('/pathexplorer_progress/<job_id>', methods=["GET"])
+@app.route("/pathexplorer_progress/<job_id>", methods=["GET"])
 def pathexplorer_progress(job_id: str) -> ResponseReturnValue:
     """
     Endpoint to check progress of a path explorer planning request.
@@ -361,15 +414,17 @@ def pathexplorer_progress(job_id: str) -> ResponseReturnValue:
         "case_bits": progress_data.get("case_bits", ""),
         "dimension": progress_data.get("dimension", 0),
         "warning": progress_data.get("warning"),
-        "error": progress_data.get("error")
+        "error": progress_data.get("error"),
     }
 
     # Include graph data and metadata when complete
     if progress_data.get("status") == "complete":
-        response.update({
-            **progress_data.get("graph_data", {}),
-            "num_fundamentals": progress_data.get("num_fundamentals", 0)
-        })
+        response.update(
+            {
+                **progress_data.get("graph_data", {}),
+                "num_fundamentals": progress_data.get("num_fundamentals", 0),
+            }
+        )
 
     return jsonify(response), 200
 
@@ -386,22 +441,33 @@ def get_immediate_postreqs() -> ResponseReturnValue:
         if not completed_courses:
             return jsonify({"error": "No completed courses provided"}), 400
 
-        app.logger.info("Processing immediate postreqs request for courses: %s", completed_courses)
+        app.logger.info(
+            "Processing immediate postreqs request for courses: %s", completed_courses
+        )
 
         # Build origins set with completed courses
-        origins = {x: COURSE_GRAPH_CONTAINER.graph.courses[x] for x in completed_courses}
+        origins = {
+            x: COURSE_GRAPH_CONTAINER.graph.courses[x] for x in completed_courses
+        }
 
         # Construct subgraph with completed courses
-        postreqs = COURSE_GRAPH_CONTAINER.graph.get_satisfied_courses(list(origins.values()))
-        subgraph = construct_subgraph(COURSE_GRAPH_CONTAINER.graph, list(postreqs.keys()),
-                                      traversers.Targets(True, True, False, False))
+        postreqs = COURSE_GRAPH_CONTAINER.graph.get_satisfied_courses(
+            list(origins.values())
+        )
+        subgraph = construct_subgraph(
+            COURSE_GRAPH_CONTAINER.graph,
+            list(postreqs.keys()),
+            traversers.Targets(True, True, False, False),
+        )
 
         # Create selections for deconstruction
         solution_selection = postreqs.copy()
         target_selection = origins.copy()
 
         # Deconstruct the graph
-        graph_data = deconstruct_course_graph(subgraph, solution_selection, target_selection)
+        graph_data = deconstruct_course_graph(
+            subgraph, solution_selection, target_selection
+        )
 
         # Add display text for target courses (completed courses)
         solution_display = {
@@ -434,7 +500,10 @@ def suggest() -> ResponseReturnValue:
         return jsonify({"results": matches})
 
     except Exception as e:
-        return jsonify({"results": [], "error": "Internal error", "exception": str(e)}), 500
+        return (
+            jsonify({"results": [], "error": "Internal error", "exception": str(e)}),
+            500,
+        )
 
 
 @app.route("/api/suggest_courses", methods=["POST"])
@@ -449,7 +518,9 @@ def suggest_courses() -> ResponseReturnValue:
         if not query or len(query) < 2:
             return jsonify({"results": []})
 
-        matches = get_course_suggestions(COURSE_GRAPH_CONTAINER, query)[:MAX_RESULTS["courses"]]
+        matches = get_course_suggestions(COURSE_GRAPH_CONTAINER, query)[
+            : MAX_RESULTS["courses"]
+        ]
 
         return jsonify({"results": matches})
 
@@ -479,7 +550,7 @@ def courseinformation() -> ResponseReturnValue:
         return jsonify({"results": [], "error": "Internal error"}), 500
 
 
-@app.route('/api/fetch_graph', methods=['POST'])
+@app.route("/api/fetch_graph", methods=["POST"])
 def fetch_graph() -> ResponseReturnValue:
     """
     Respond to a request to fetch a new graph.
@@ -491,27 +562,40 @@ def fetch_graph() -> ResponseReturnValue:
         # Courtesy of Grok.com
 
         # === BAD INPUT HANDLING ===
-        if not request_data or 'query' not in request_data:
-            return jsonify({"error": "Bad request: 'query' field is required in the JSON body."}), 400
+        if not request_data or "query" not in request_data:
+            return (
+                jsonify(
+                    {
+                        "error": "Bad request: 'query' field is required in the JSON body."
+                    }
+                ),
+                400,
+            )
 
         # Get the search query
-        query: str = str(request_data['query']).strip()
+        query: str = str(request_data["query"]).strip()
 
         # Get the chosen filters
-        filters = {'cr_ncr': request_data['cr_ncr'],
-                   'departments': request_data['departments'],
-                   'breadth': request_data['breadth_requirements']}
-        print(f"Processing Query for {query}, {filters['cr_ncr']}, {filters['departments']}, {filters['breadth']}")
+        filters = {
+            "cr_ncr": request_data["cr_ncr"],
+            "departments": request_data["departments"],
+            "breadth": request_data["breadth_requirements"],
+        }
+        print(
+            f"Processing Query for {query}, {filters['cr_ncr']}, {filters['departments']}, {filters['breadth']}"
+        )
 
         if not query:
             return jsonify({"error": "Query cannot be empty."}), 400
 
         graph_data = graph_for_query(query, filters)
         should_open_course_panel = graph_data["curr_query"]["type"] == "course"
-        return jsonify({
-            **graph_data,
-            "should_open_course_panel": should_open_course_panel
-        }), 200
+        return (
+            jsonify(
+                {**graph_data, "should_open_course_panel": should_open_course_panel}
+            ),
+            200,
+        )
 
     except Exception as e:
         # Generic server error
@@ -519,7 +603,9 @@ def fetch_graph() -> ResponseReturnValue:
         return jsonify({"error": f"Internal server error: {str(e)}"}), 500
 
 
-def graph_for_query(query: str, filters: dict[str, Any] = None) -> dict[str, list | str]:
+def graph_for_query(
+    query: str, filters: dict[str, Any] = None
+) -> dict[str, list | str]:
     """
     Get graph data corresponding to a specific query, case-insensitive, given filters.
     Graph data already contains curr_query and search fields.
@@ -529,9 +615,7 @@ def graph_for_query(query: str, filters: dict[str, Any] = None) -> dict[str, lis
     """
     print(COURSE_GRAPH_CONTAINER)
     if filters is None:
-        filters = {'cr_ncr': [],
-                   'departments': [],
-                   'breadth': []}
+        filters = {"cr_ncr": [], "departments": [], "breadth": []}
 
     filtered_graph = get_filtered_graph(COURSE_GRAPH_CONTAINER, query, filters)
 
@@ -545,7 +629,12 @@ def images(filename: str) -> Response | None:
     Return None if the image is not in the folders.
     """
     for path in IMAGE_PATHS:
-        print(os.listdir(path), filename in os.listdir(path), f"./{path}/{filename}", os.path.exists(f"./{path}/{filename}"))
+        print(
+            os.listdir(path),
+            filename in os.listdir(path),
+            f"./{path}/{filename}",
+            os.path.exists(f"./{path}/{filename}"),
+        )
         if os.path.exists(f"./{path}/{filename}"):
             return send_from_directory("../data_analysis/images", filename)
 
@@ -602,5 +691,5 @@ def start_server() -> None:
     app.run(debug=True, port=port)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     start_server()

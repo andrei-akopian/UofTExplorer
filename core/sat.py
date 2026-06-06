@@ -17,8 +17,14 @@ from core.core import CourseGraph, CourseNode, Requisite
 
 from core.sat_solvers import z3wrapper
 
-def solve_sat(graph: CourseGraph, targets: list[str], taken: list[str], avoids: list[str],
-              progress_callback=None) -> Generator[int | list[CourseNode]]:
+
+def solve_sat(
+    graph: CourseGraph,
+    targets: list[str],
+    taken: list[str],
+    avoids: list[str],
+    progress_callback=None,
+) -> Generator[int | list[CourseNode]]:
     """
     The primary public interface for solving the SAT via brute-forcing.
     Takes in the complete Course Graph, the target courses to take, courses taken, and courses to avoid taking.
@@ -38,7 +44,9 @@ def solve_sat(graph: CourseGraph, targets: list[str], taken: list[str], avoids: 
 
     curr = next(solver)  # a satisfying list of courses
     while curr:
-        if shortest_so_far == -1:  # first solution, always accept to replace default null solution
+        if (
+            shortest_so_far == -1
+        ):  # first solution, always accept to replace default null solution
             solution = curr
             shortest_so_far = len(curr)
             curr = next(solver)
@@ -55,8 +63,13 @@ def solve_sat(graph: CourseGraph, targets: list[str], taken: list[str], avoids: 
     return
 
 
-def _solve_sat(graph: CourseGraph, targets: list[str], taken: set[str], avoids: list[str],
-               progress_callback=None) -> Generator[int | list[CourseNode]]:
+def _solve_sat(
+    graph: CourseGraph,
+    targets: list[str],
+    taken: set[str],
+    avoids: list[str],
+    progress_callback=None,
+) -> Generator[int | list[CourseNode]]:
     """
     Private helper function to solving the SAT.
     Yields the number of fundamentals first.
@@ -85,7 +98,10 @@ def _solve_sat(graph: CourseGraph, targets: list[str], taken: set[str], avoids: 
 
         # START OF CODE WRITTEN BY Claude Haiku 4.5
         # call progress callback if provided (debounced)
-        if progress_callback and (cases_evaluated - last_callback_case) >= callback_debounce:
+        if (
+            progress_callback
+            and (cases_evaluated - last_callback_case) >= callback_debounce
+        ):
             progress_callback(curr.copy(), dimension)
             last_callback_case = cases_evaluated
         # END OF CODE WRITTEN BY Claude Haiku 4.5
@@ -106,7 +122,9 @@ def _solve_sat(graph: CourseGraph, targets: list[str], taken: set[str], avoids: 
                 break
 
         if is_sat:  # satisfying case
-            yield [graph.courses[fundamentals[i]] for i in range(dimension) if curr[i] == 1]
+            yield [
+                graph.courses[fundamentals[i]] for i in range(dimension) if curr[i] == 1
+            ]
 
         try:
             curr = case_generator.send(is_sat)
@@ -137,7 +155,9 @@ def _sat_case_generator(case: list[int], pivot: int) -> Generator[list[int], boo
     return
 
 
-def get_fundamentals(graph: CourseGraph, targets: list[str], taken: list[str], avoids: list[str]) -> list[str]:
+def get_fundamentals(
+    graph: CourseGraph, targets: list[str], taken: list[str], avoids: list[str]
+) -> list[str]:
     """
     Returns a list of all prereq/coreq courses of targets, removing courses taken and courses to avoid.
     Does not contain the target courses.
@@ -154,8 +174,13 @@ def get_fundamentals(graph: CourseGraph, targets: list[str], taken: list[str], a
     return list(fundamental_set)
 
 
-def _verify(curr: CourseNode | Requisite, taken: set[str], planned: set[str], visited: set[str],
-            memo: dict[str, bool]) -> bool:
+def _verify(
+    curr: CourseNode | Requisite,
+    taken: set[str],
+    planned: set[str],
+    visited: set[str],
+    memo: dict[str, bool],
+) -> bool:
     """
     Return whether curr is satisfied: taken, or planned & ready to take.
     Memo is a memoization dictionary that tracks the satisfiability already calculated.
@@ -170,10 +195,14 @@ def _verify(curr: CourseNode | Requisite, taken: set[str], planned: set[str], vi
         if str(curr) in taken:
             memo[str(curr)] = True
             return True
-        if str(curr) not in planned:  # if this course is not taken and not planned, then it is unsatisfied regardless
+        if (
+            str(curr) not in planned
+        ):  # if this course is not taken and not planned, then it is unsatisfied regardless
             memo[str(curr)] = False
             return False
-        if str(curr) in visited:  # this course is a circular coreq, which should be set to satisfied
+        if (
+            str(curr) in visited
+        ):  # this course is a circular coreq, which should be set to satisfied
             memo[str(curr)] = True
             return True
 
@@ -210,8 +239,13 @@ def _verify(curr: CourseNode | Requisite, taken: set[str], planned: set[str], vi
     return False
 
 
-def solve_satz3(graph: CourseGraph, targets: list[str], taken: list[str], avoids: list[str],
-              progress_callback=None) -> list[str]:
+def solve_satz3(
+    graph: CourseGraph,
+    targets: list[str],
+    taken: list[str],
+    avoids: list[str],
+    progress_callback=None,
+) -> list[str]:
     z3_result = z3wrapper.solve_sat(graph, targets, taken, avoids)
     is_sat, course_dict, true_courses = z3_result
     if not is_sat:
@@ -219,18 +253,22 @@ def solve_satz3(graph: CourseGraph, targets: list[str], taken: list[str], avoids
     return true_courses
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod(verbose=True)
 
     import python_ta
-    python_ta.check_all(config={
-        'allow-local-imports': True,
-        'extra-imports': ['annotations', 'dataclass', 'functools', 'typing'],
-        'allowed-io': ['_verify'],
-        'max-line-length': 120,
-        'max-nested-blocks': 5,
-        'max-locals': 20,
-        'max-branches': 15,
-        'max-args': 7
-    })
+
+    python_ta.check_all(
+        config={
+            "allow-local-imports": True,
+            "extra-imports": ["annotations", "dataclass", "functools", "typing"],
+            "allowed-io": ["_verify"],
+            "max-line-length": 120,
+            "max-nested-blocks": 5,
+            "max-locals": 20,
+            "max-branches": 15,
+            "max-args": 7,
+        }
+    )

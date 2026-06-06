@@ -23,19 +23,28 @@ except ImportError:
 
 
 COURSES_FILE = "data/courses.json"
-BREADTH_NICKNAMES = ["Culture (1)", "Belief (2)", "Society (3)", "LifeSci (4)", "STEM (5)"]
+BREADTH_NICKNAMES = [
+    "Culture (1)",
+    "Belief (2)",
+    "Society (3)",
+    "LifeSci (4)",
+    "STEM (5)",
+]
 SAVE_PATH = "data_analysis/images"
 
 with open("data/glossary.json", "r") as f:
     GLOSSARY = json.load(f)
 
 
-def initialize(course_file: str, program_file: str, department_file: str, breadth_file: str) -> tuple[
-        CourseGraph, dict[str, Program]]:
+def initialize(
+    course_file: str, program_file: str, department_file: str, breadth_file: str
+) -> tuple[CourseGraph, dict[str, Program]]:
     """
     Create a full graph and programs.
     """
-    container = construct_container(course_file, program_file, department_file, breadth_file)
+    container = construct_container(
+        course_file, program_file, department_file, breadth_file
+    )
     return container.graph, container.programs
 
 
@@ -43,7 +52,7 @@ GRAPH, PROGRAMS = initialize(
     "data/courses.json",
     "data/programs.json",
     "data/glossary.json",
-    "data/breadths.json"
+    "data/breadths.json",
 )
 
 
@@ -53,7 +62,9 @@ def plot_req_counts() -> None:
     """
     req_counts = sorted([GRAPH.requisites[k].num_backlinks for k in GRAPH.requisites])
     plt.hist(req_counts[:-1], bins=50)
-    plt.title("number of backlinks in requisites. (excluded backlinks=1 which is ~1750)")
+    plt.title(
+        "number of backlinks in requisites. (excluded backlinks=1 which is ~1750)"
+    )
 
 
 def hours_per_course() -> None:
@@ -90,7 +101,11 @@ def course_level_pie() -> None:
         i = min(course_number // 100, 5)
         collector[i] += 1
     plt.title("Distribution of Courses per Levels")
-    plt.pie(collector[1:-1], labels=["<100", "1**", "2**", "3**", "4**", "500+"][1:-1], autopct='%1.1f%%')
+    plt.pie(
+        collector[1:-1],
+        labels=["<100", "1**", "2**", "3**", "4**", "500+"][1:-1],
+        autopct="%1.1f%%",
+    )
     plt.savefig(
         f"{SAVE_PATH}/course_levels_pie.svg",
         format="svg",
@@ -104,14 +119,20 @@ def levels_in_departments() -> None:
     Make bar chart, showing ditribution of different leveled courses between departments.
     """
     filetered_by_dep = separate_courses_by_department(GRAPH, departments=GLOSSARY)
-    departments_with_courses = [(key, value) for key, value in filetered_by_dep.items() if len(value) != 0]
+    departments_with_courses = [
+        (key, value) for key, value in filetered_by_dep.items() if len(value) != 0
+    ]
 
     departments_with_courses.sort(key=lambda x: len(x[1]), reverse=True)
     limit = 40
 
     levels_distribution_matrix = [
         [
-            sum(1 for course in courses if GRAPH.courses[course].data.code_split[1] // 100 == k)
+            sum(
+                1
+                for course in courses
+                if GRAPH.courses[course].data.code_split[1] // 100 == k
+            )
             for _, courses in departments_with_courses
         ]
         for k in range(1, 4 + 1)
@@ -119,8 +140,8 @@ def levels_in_departments() -> None:
 
     # plot the top [limit] departments and how many courses they have.
     _, ax = plt.subplots(figsize=(10, 3))
-    plt.rcParams['font.size'] = 8
-    ax.legend(loc='best', fontsize=5)
+    plt.rcParams["font.size"] = 8
+    ax.legend(loc="best", fontsize=5)
 
     running_summer = [0] * len(departments_with_courses)
     for level in range(1, 4 + 1):
@@ -129,16 +150,20 @@ def levels_in_departments() -> None:
             x=range(limit),
             tick_label=[entry[0] for entry in departments_with_courses][:limit],
             label=f"{level}** courses",
-            bottom=running_summer[:limit]
+            bottom=running_summer[:limit],
         )
-        running_summer = [running_summer[i] + levels_distribution_matrix[level - 1][i] for i in
-                          range(len(running_summer))]
+        running_summer = [
+            running_summer[i] + levels_distribution_matrix[level - 1][i]
+            for i in range(len(running_summer))
+        ]
 
     ax.set_xlabel("Department")
     ax.set_ylabel("Courses")
-    ax.set_title(f"Departments with most ArtSci courses ({limit}/{len(departments_with_courses)} shown)")
-    ax.legend(loc='best')
-    ax.tick_params(axis='both', labelsize=7, labelrotation=45)
+    ax.set_title(
+        f"Departments with most ArtSci courses ({limit}/{len(departments_with_courses)} shown)"
+    )
+    ax.legend(loc="best")
+    ax.tick_params(axis="both", labelsize=7, labelrotation=45)
     plt.savefig(
         f"{SAVE_PATH}/departments_by_course_level.svg",
         format="svg",
@@ -163,8 +188,10 @@ def hour_type_departments():
     """
     filetered_by_dep = separate_courses_by_department(GRAPH, departments=GLOSSARY)
     departments_with_courses = [
-        (key, value) for key, value in filetered_by_dep.items()
-        if len(value) != 0 and key != "JPM"  # exclude high outliar TODO should we really do this?
+        (key, value)
+        for key, value in filetered_by_dep.items()
+        if len(value) != 0
+        and key != "JPM"  # exclude high outliar TODO should we really do this?
     ]
     print(f"{len(departments_with_courses)} departments have courses at artsci")
 
@@ -175,7 +202,8 @@ def hour_type_departments():
 
     type_distribution_matrix = [
         [
-            sum(GRAPH.courses[course].data.hours[t] for course in courses) / len(courses)
+            sum(GRAPH.courses[course].data.hours[t] for course in courses)
+            / len(courses)
             for _, courses in departments_with_courses
         ]
         for t in labels
@@ -183,8 +211,8 @@ def hour_type_departments():
 
     # plot the top [limit] departments and how many courses they have.
     _, ax = plt.subplots(figsize=(10, 3))
-    plt.rcParams['font.size'] = 8
-    ax.legend(loc='best', fontsize=5)
+    plt.rcParams["font.size"] = 8
+    ax.legend(loc="best", fontsize=5)
 
     running_summer = [0] * len(departments_with_courses)
     for level in range(1, 4 + 1):
@@ -193,16 +221,20 @@ def hour_type_departments():
             x=range(limit),
             tick_label=[entry[0] for entry in departments_with_courses][:limit],
             label=labels[level - 1],
-            bottom=running_summer[:limit]
+            bottom=running_summer[:limit],
         )
-        running_summer = [running_summer[i] + type_distribution_matrix[level - 1][i] for i in
-                          range(len(running_summer))]
+        running_summer = [
+            running_summer[i] + type_distribution_matrix[level - 1][i]
+            for i in range(len(running_summer))
+        ]
 
     ax.set_xlabel("Department")
     ax.set_ylabel("Hours")
-    ax.set_title(f"Departments with hours ({limit}/{len(departments_with_courses)} shown)")
-    ax.legend(loc='best')
-    ax.tick_params(axis='both', labelsize=7, labelrotation=45)
+    ax.set_title(
+        f"Departments with hours ({limit}/{len(departments_with_courses)} shown)"
+    )
+    ax.legend(loc="best")
+    ax.tick_params(axis="both", labelsize=7, labelrotation=45)
     plt.savefig(
         f"{SAVE_PATH}/departments_by_hour_type.svg",
         format="svg",
@@ -216,20 +248,26 @@ def courses_per_department() -> None:
     Make bar chart of the different leveld courses in different departments.
     """
     filetered_by_dep = separate_courses_by_department(GRAPH, departments=GLOSSARY)
-    departments_with_courses = [(key, value) for key, value in filetered_by_dep.items() if len(value) != 0]
+    departments_with_courses = [
+        (key, value) for key, value in filetered_by_dep.items() if len(value) != 0
+    ]
 
     departments_with_courses.sort(key=lambda x: len(x[1]), reverse=True)
     limit = 40
 
     # plot the top [limit] departments and how many courses they have.
     _, ax = plt.subplots(figsize=(10, 3))
-    plt.rcParams['font.size'] = 8
-    ax.legend(loc='best', fontsize=5)
-    ax.bar([entry[0] for entry in departments_with_courses][:limit],
-           [len(entry[1]) for entry in departments_with_courses][:limit])
+    plt.rcParams["font.size"] = 8
+    ax.legend(loc="best", fontsize=5)
+    ax.bar(
+        [entry[0] for entry in departments_with_courses][:limit],
+        [len(entry[1]) for entry in departments_with_courses][:limit],
+    )
     ax.set_xlabel("Department")
     ax.set_ylabel("Courses")
-    ax.set_title(f"Departments with most ArtSci courses ({limit}/{len(departments_with_courses)} shown)")
+    ax.set_title(
+        f"Departments with most ArtSci courses ({limit}/{len(departments_with_courses)} shown)"
+    )
     plt.savefig(
         f"{SAVE_PATH}/departments_most_courses_bar_chart.svg",
         format="svg",
@@ -251,7 +289,9 @@ def course_length_pie_chart() -> None:
         if _course_code[-2] == "H":
             half_year += 1
 
-    plt.pie([full_year, half_year], labels=["Full Year", "Half year"], autopct='%1.1f%%')
+    plt.pie(
+        [full_year, half_year], labels=["Full Year", "Half year"], autopct="%1.1f%%"
+    )
     plt.title("Percentage Half and Full year courses at UTSG")
     plt.savefig(
         f"{SAVE_PATH}/course_length_pie_chart.svg",
@@ -263,26 +303,28 @@ def course_length_pie_chart() -> None:
 
 # %%
 def distr_direct_prereqs() -> None:
-    """
-
-    """
-    num_direct_prereqs = [len(course_node.prereqs.reqs) if course_node.prereqs is not None else 0 for course_node in
-                          GRAPH.courses.values()]
+    """ """
+    num_direct_prereqs = [
+        len(course_node.prereqs.reqs) if course_node.prereqs is not None else 0
+        for course_node in GRAPH.courses.values()
+    ]
     maximum = max(num_direct_prereqs)
     # print('courses with no direct prerequisites:', num_direct_prereqs.count(0))
 
     _, ax = plt.subplots(figsize=(5, 5))
-    plt.rcParams['font.size'] = 6
+    plt.rcParams["font.size"] = 6
 
     ax = sns.barplot(
         x=list(range(1, maximum + 1)),
         y=[num_direct_prereqs.count(i) for i in range(1, maximum + 1)],
         ax=ax,
-        width=0.2
+        width=0.2,
     )
     ax.set_xlabel("Number of Direct Prerequisites")
     ax.set_ylabel("Count")
-    ax.set_title("Distribution of Direct Prerequisites (excluding 2993 courses with no prerequisites)")
+    ax.set_title(
+        "Distribution of Direct Prerequisites (excluding 2993 courses with no prerequisites)"
+    )
     plt.savefig(
         f"{SAVE_PATH}/number_of_direct_prereqs.svg",
         format="svg",
@@ -293,24 +335,27 @@ def distr_direct_prereqs() -> None:
 
 # %%
 def distr_total_prereqs() -> None:
-    """
-
-    """
-    num_total_prereqs = [len(get_prereq_course_set(GRAPH, course_code)) - 1 for course_code in GRAPH.courses]
+    """ """
+    num_total_prereqs = [
+        len(get_prereq_course_set(GRAPH, course_code)) - 1
+        for course_code in GRAPH.courses
+    ]
     maximum = max(num_total_prereqs)
     # print('courses with no prerequisites:', num_total_prereqs.count(0))
 
     _, ax = plt.subplots(figsize=(10, 5))
-    plt.rcParams['font.size'] = 6
+    plt.rcParams["font.size"] = 6
 
     ax = sns.barplot(
         x=range(1, maximum + 1),
         y=[num_total_prereqs.count(i) for i in range(1, maximum + 1)],
-        ax=ax
+        ax=ax,
     )
     ax.set_xlabel("Number of Total Prerequisites")
     ax.set_ylabel("Count")
-    ax.set_title("Distribution of Total Prerequisites (excluding 2993 courses with no prerequisites)")
+    ax.set_title(
+        "Distribution of Total Prerequisites (excluding 2993 courses with no prerequisites)"
+    )
     plt.savefig(
         f"{SAVE_PATH}/number_of_total_prereqs.svg",
         format="svg",
@@ -325,17 +370,21 @@ def breadth_count_by_program() -> None:
     """
     breadth_counts: dict[str, dict[str, int]] = {}
     for program in PROGRAMS.values():
-        breadth_counts[program.code] = {'0': 0, '1': 0, '2': 0, '3': 0, '4': 0, '5': 0}
+        breadth_counts[program.code] = {"0": 0, "1": 0, "2": 0, "3": 0, "4": 0, "5": 0}
         for course_code in program.graph.courses:
             course_node = program.graph.courses[course_code]
             for breadth in course_node.data.breadth:
                 breadth_counts[program.code][str(breadth)] += 1
 
     _, ax = plt.subplots(figsize=(4, 3))
-    plt.rcParams['font.size'] = 6
+    plt.rcParams["font.size"] = 6
 
-    breadth_span: dict[str, int] = {code: len([category for category in breadth_counts[code].values() if category > 0])
-                                    for code in breadth_counts}
+    breadth_span: dict[str, int] = {
+        code: len(
+            [category for category in breadth_counts[code].values() if category > 0]
+        )
+        for code in breadth_counts
+    }
     # print(breadth_span)
 
     ax = sns.barplot(
@@ -344,7 +393,7 @@ def breadth_count_by_program() -> None:
             len([code for code in breadth_span if breadth_span[code] == i])
             for i in range(6)
         ],
-        ax=ax
+        ax=ax,
     )
     ax.set_xlabel("Number of Breadths")
     ax.set_ylabel("Count")
@@ -352,12 +401,12 @@ def breadth_count_by_program() -> None:
     plt.savefig(
         f"{SAVE_PATH}/distribution_of_programs_by_breadth_span.svg",
         format="svg",
-        bbox_inches ="tight",
-        transparent = True,
+        bbox_inches="tight",
+        transparent=True,
     )
 
     _, ax = plt.subplots(figsize=(4, 3))
-    plt.rcParams['font.size'] = 6
+    plt.rcParams["font.size"] = 6
 
     breadth_counter = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
     for program in breadth_counts:
@@ -384,28 +433,40 @@ def breadth_count_by_program() -> None:
 
 # %%
 def breadth_count_by_department() -> None:
-    """
-
-    """
+    """ """
     breadth_counts: dict[str, dict[str, int]] = {}
     for course_node in GRAPH.courses.values():
         department = course_node.data.code_split[0]
         if department not in breadth_counts:
-            breadth_counts[department] = {'0': 0, '1': 0, '2': 0, '3': 0, '4': 0, '5': 0}
+            breadth_counts[department] = {
+                "0": 0,
+                "1": 0,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+            }
         for breadth in course_node.data.breadth:
             breadth_counts[department][str(breadth)] += 1
 
     _, ax = plt.subplots(figsize=(4, 3))
-    plt.rcParams['font.size'] = 6
+    plt.rcParams["font.size"] = 6
 
-    breadth_span: dict[str, int] = {code: len([category for category in breadth_counts[code].values() if category > 0])
-                                    for code in breadth_counts}
+    breadth_span: dict[str, int] = {
+        code: len(
+            [category for category in breadth_counts[code].values() if category > 0]
+        )
+        for code in breadth_counts
+    }
     # print(breadth_span)
 
     ax = sns.barplot(
         x=list(range(6)),
-        y=[len([code for code in breadth_span if breadth_span[code] == i]) for i in range(6)],
-        ax=ax
+        y=[
+            len([code for code in breadth_span if breadth_span[code] == i])
+            for i in range(6)
+        ],
+        ax=ax,
     )
     ax.set_xlabel("Number of Breadths")
     ax.set_ylabel("Count")
@@ -414,12 +475,12 @@ def breadth_count_by_department() -> None:
     plt.savefig(
         f"{SAVE_PATH}/distribution_of_departments_by_breadth_span.svg",
         format="svg",
-        bbox_inches ="tight",
-        transparent = True,
+        bbox_inches="tight",
+        transparent=True,
     )
 
     _, ax = plt.subplots(figsize=(3, 3))
-    plt.rcParams['font.size'] = 6
+    plt.rcParams["font.size"] = 6
 
     breadth_counter = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
     for department in breadth_counts:
@@ -471,17 +532,19 @@ def distr_sat_length() -> None:
     # print(f'zero-length paths: {zeros}')
 
     _, ax = plt.subplots(figsize=(10, 6))
-    plt.rcParams['font.size'] = 6
+    plt.rcParams["font.size"] = 6
 
     ax = sns.barplot(
         x=list(range(1, max(lengths) + 1)),
         y=[lengths.count(i) for i in range(1, max(lengths) + 1)],
-        ax=ax
+        ax=ax,
     )
     ax.set_xlabel("Length of Shortest Prerequisite Path")
     ax.set_ylabel("Count")
-    ax.set_title("Distribution of Lengths of Shortest Prerequisite Path to Each Course "
-                 f"(skipped {skipped} course queries with >20 fundamentals; hidden {zeros} courses with no paths)")
+    ax.set_title(
+        "Distribution of Lengths of Shortest Prerequisite Path to Each Course "
+        f"(skipped {skipped} course queries with >20 fundamentals; hidden {zeros} courses with no paths)"
+    )
     plt.savefig(
         f"{SAVE_PATH}/distribution_of_sat_lengths.svg",
         format="svg",
@@ -511,17 +574,19 @@ def distr_sat_lengthz3() -> None:
         progressed += 1
 
     _, ax = plt.subplots(figsize=(10, 6))
-    plt.rcParams['font.size'] = 6
+    plt.rcParams["font.size"] = 6
 
     ax = sns.barplot(
         x=list(range(1, max(lengths) + 1)),
         y=[lengths.count(i) for i in range(1, max(lengths) + 1)],
-        ax=ax
+        ax=ax,
     )
     ax.set_xlabel("Length of Shortest Prerequisite Path")
     ax.set_ylabel("Count")
-    ax.set_title("Distribution of Lengths of Shortest Prerequisite Path to Each Course "
-                 f"(skipped {skipped} course queries with >20 fundamentals; hidden {zeros} courses with no paths)")
+    ax.set_title(
+        "Distribution of Lengths of Shortest Prerequisite Path to Each Course "
+        f"(skipped {skipped} course queries with >20 fundamentals; hidden {zeros} courses with no paths)"
+    )
     plt.savefig(
         f"{SAVE_PATH}/distribution_of_sat_lengths.svg",
         format="svg",

@@ -3,10 +3,7 @@ import os
 import logging
 from scraper.courses.course_parser import CourseParser
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(levelname)s: %(message)s"
-)
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)
 
 SAVE_FOLDER = "data"
@@ -15,6 +12,7 @@ SAVE_PATH = f"{SAVE_FOLDER}/{FILENAME}"
 
 LOAD_FOLDER = "scraper/data"
 
+
 def venn_diagram(ttb_courses: set[str], calendar_courses: set[str]):
     assert isinstance(ttb_courses, set)
     assert isinstance(calendar_courses, set)
@@ -22,9 +20,12 @@ def venn_diagram(ttb_courses: set[str], calendar_courses: set[str]):
     print("\tcalendar total:", len(calendar_courses))
     print("\tttb total:", len(ttb_courses))
     print("\tcalendar exclusive:", len(calendar_courses - ttb_courses))
-    print("\tttb exclusive:", len(ttb_courses- calendar_courses))
-    print("\tcalendar INTERSECTION ttb", len(ttb_courses.intersection(calendar_courses)))
+    print("\tttb exclusive:", len(ttb_courses - calendar_courses))
+    print(
+        "\tcalendar INTERSECTION ttb", len(ttb_courses.intersection(calendar_courses))
+    )
     print("\tcalendar UNION ttb", len(ttb_courses.union(calendar_courses)))
+
 
 def full_sync():
     os.makedirs(SAVE_FOLDER, exist_ok=True)
@@ -44,7 +45,9 @@ def full_sync():
         if cc not in ttb_courses:
             delete_stack.append(i)
         else:
-            course["class_size"] = max(ttb_courses[cc]["capacityByInstructType"].values())
+            course["class_size"] = max(
+                ttb_courses[cc]["capacityByInstructType"].values()
+            )
             course_codes.append(cc)
 
     venn_diagram(set(ttb_courses.keys()), set(course_codes))
