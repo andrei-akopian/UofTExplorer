@@ -61,10 +61,8 @@ const convertGenericGraph = (data: GraphData): Graph2DData => {
 
 const PHYSICS_DAMPING = 0.4;
 const PHYSICS_SPRING_CONST = 0.1;
-const DEPTH_PULL_STRENGTH = 0.02;
 const PHYSICS_GRAV_CONSTANT = -4000;
 const PHYSICS_SPRING_LENGTH = 300;
-const GRAVITY_BIAS = 0.0;
 
 interface GraphVis2DProps {
   graphData: GraphData;
@@ -77,15 +75,12 @@ interface GraphVis2DProps {
 
 export default function GraphVis2D({
   graphData,
-  loading,
   setLoading,
-  onNodeClickCallback,
-  onEdgeClickCallback,
   useShellLayout,
 }: GraphVis2DProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const networkRef = useRef<any>(null);
-  const [activeNodes, setActiveNodes] = useState<Node[]>([]);
+  const [_activeNodes, setActiveNodes] = useState<Node[]>([]);
 
   useEffect(() => {
     const initNetwork = async () => {
@@ -107,7 +102,12 @@ export default function GraphVis2D({
           edges: {
             arrows: { to: { enabled: true, scaleFactor: 0.8 } },
             width: 2,
-            smooth: { type: "cubicBezier", forceDirection: "horizontal" },
+            smooth: {
+              type: "cubicBezier",
+              forceDirection: "horizontal",
+              enabled: false,
+              roundness: 0.4,
+            },
           },
           physics: {
             enabled: true,
@@ -149,7 +149,7 @@ export default function GraphVis2D({
     console.log("GraphVis2D mounted");
   }, []);
 
-  const prepareData = (nodes: Node[], edges: Edge[]) => {
+  const prepareData = (nodes: Node[], edges: Edge[]): Graph2DData => {
     if (!nodes.length) return { nodes: [], edges };
 
     const levels: Record<number, Node[]> = {};
@@ -189,10 +189,10 @@ export default function GraphVis2D({
       const depth =
         n.depth !== null && n.depth !== undefined
           ? parseInt(String(n.depth))
-          : null;
+          : undefined;
       const processedNode = { ...n, depth };
 
-      if (useShellLayout && depth !== null && levelRadii[depth]) {
+      if (useShellLayout && depth !== undefined && levelRadii[depth]) {
         const radius = levelRadii[depth];
         const angle = Math.PI / 2 + (Math.random() - 0.5) * 2;
         processedNode.x = Math.cos(angle) * radius;
@@ -201,7 +201,7 @@ export default function GraphVis2D({
       } else {
         processedNode.x = (Math.random() - 0.5) * 200;
         processedNode.y = (Math.random() - 0.5) * 200;
-        processedNode.targetRadius = null;
+        processedNode.targetRadius = undefined;
       }
 
       sumX += processedNode.x || 0;
