@@ -2,6 +2,7 @@ import { useState } from "react";
 import GraphQuery from "../components/graph/GraphQuery";
 import type { GraphData } from "../types";
 import GraphVis2D from "../components/graph/GraphVis2D";
+import GraphStatsPanel from "../components/graph/GraphStatsPanel";
 
 export default function Graph2D() {
   const [message, setMessage] = useState("");
@@ -82,6 +83,10 @@ export default function Graph2D() {
         setMessage={setMessage}
         setMessageType={setMessageType}
       />
+
+      <div className="fixed right-10 bottom-10 flex h-120 w-80">
+        <GraphStatsPanel data={graphData}></GraphStatsPanel>
+      </div>
     </div>
   );
 }
