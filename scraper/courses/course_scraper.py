@@ -13,22 +13,22 @@ import requests
 
 
 SCRAPING_TARGETS: dict[str, dict] = {
-    "UTM": {
-        "base_domain_name": "https://utm.calendar.utoronto.ca/course-search?page=PAGE_NUMBER",
-        "page_range": range(0, 81 + 1),
-    },
     "UTSG": {
         "base_domain_name": "https://artsci.calendar.utoronto.ca/search-courses?page=PAGE_NUMBER",
         "page_range": range(0, 178 + 1),
     },
-    "Engineering": {  # Warning: we do not have parsers for this
-        "base_domain_name": "https://engineering.calendar.utoronto.ca/search-courses?page=PAGE_NUMBER",
-        "page_range": range(0, 18 + 1),
-    },
-    "UTSC": {
-        "base_domain_name": "https://utsc.calendar.utoronto.ca/search-courses?page=PAGE_NUMBER",
-        "page_range": range(0, 72 + 1),
-    },
+    # "UTM": {
+    #     "base_domain_name": "https://utm.calendar.utoronto.ca/course-search?page=PAGE_NUMBER",
+    #     "page_range": range(0, 81 + 1),
+    # },
+    # "Engineering": {  # Warning: we do not have parsers for this
+    #     "base_domain_name": "https://engineering.calendar.utoronto.ca/search-courses?page=PAGE_NUMBER",
+    #     "page_range": range(0, 18 + 1),
+    # },
+    # "UTSC": {
+    #     "base_domain_name": "https://utsc.calendar.utoronto.ca/search-courses?page=PAGE_NUMBER",
+    #     "page_range": range(0, 72 + 1),
+    # },
 }
 
 SAVE_PATH: str = "raw_output/"
@@ -52,6 +52,27 @@ def scrape_page(base_domain_name: str, page: int = 0, target_name: str = "") -> 
     return r.text
 
 
+def target_selection_ui() -> str:
+    """
+    Creates a simple dialogue to help user select scraping target.
+    Returns the selected scraping target, default target is UTSG.
+    """
+    target = "UTSG"
+    keys = SCRAPING_TARGETS.keys()
+    if len(keys) > 1:
+        print("Select Scraping target:")
+        for i, k in enumerate(keys):
+            print(f"({i}) {k}")
+        selection = input("Enter>").strip()
+        if selection.isdigit() and 1 <= int(selection) <= 3:
+            target = keys[int(selection) - 1]
+        else:
+            print("selection interpreted as default.")
+    else:
+        print("scraping {target}")
+    return target
+
+
 def full_scrape() -> None:
     """
     Aid the user in selecting a scraping target, and scrape all pages from its course search.
@@ -62,18 +83,7 @@ def full_scrape() -> None:
     if not os.path.isdir(SAVE_PATH):
         os.mkdir(SAVE_PATH)
 
-    target = "UTSG"
-    print(
-        """Select Scrapping Target:
-        (1) UTSG ArtSci - default
-        (2) UTSC
-        (3) UTM"""
-    )
-    selection = input("Enter>").strip()
-    if selection.isdigit() and 1 <= int(selection) <= 3:
-        target = ["UTSG", "UTSC", "UTM"][int(selection) - 1]
-    else:
-        print("selection interpreted as default.")
+    target = target_selection_ui()
 
     base_domain_name = SCRAPING_TARGETS[target]["base_domain_name"]
     page_range = SCRAPING_TARGETS[target]["page_range"]

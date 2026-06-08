@@ -32,15 +32,15 @@ import bs4
 
 SCRAPE_FOLDER = "scraper/courses/raw_output"
 PARSING_TARGETS: dict[str, dict] = {
-    "UTM": {"filepattern": "page_PAGENUMBER_utm.html", "page_range": range(0, 81 + 1)},
     "UTSG": {
         "filepattern": "page_PAGENUMBER_utsg.html",
         "page_range": range(0, 178 + 1),
     },
-    "UTSC": {
-        "filepattern": "page_PAGENUMBER_utsc.html",
-        "page_range": range(0, 72 + 1),
-    },
+    # "UTM": {"filepattern": "page_PAGENUMBER_utm.html", "page_range": range(0, 81 + 1)},
+    # "UTSC": {
+    #     "filepattern": "page_PAGENUMBER_utsc.html",
+    #     "page_range": range(0, 72 + 1),
+    # },
 }
 SAVE_FOLDER: str = "scraper/data"
 SAVE_FILENAME: str = "courses.json"
@@ -803,7 +803,7 @@ class CourseParser:
             "title": title,
             "course_code": course_code,
             "split_course_code": split_course_code,
-            "previous_course_code": previous_course_codes,
+            "previous_course_codes": previous_course_codes,
             "description": description,
             "cr_ncr_eligible": cr_ncr_eligible,
             "breadth_requirements_list": breadth_requirements_list,
@@ -874,17 +874,18 @@ class CourseParser:
         Returns the selected parsing target, default target is UTSG.
         """
         target = "UTSG"
-        print(
-            """Select Scrapping Target:
-            (1) UTSG ArtSci - defaults
-            (2) UTSC
-            (3) UTM"""
-        )
-        selection = input("Enter>").strip()
-        if selection.isdigit() and 1 <= int(selection) <= 3:
-            target = ["UTSG", "UTSC", "UTM"][int(selection) - 1]
+        keys = PARSING_TARGETS.keys()
+        if len(keys) > 1:
+            print("Select Parsing target:")
+            for i, k in enumerate(keys):
+                print(f"({i}) {k}")
+            selection = input("Enter>").strip()
+            if selection.isdigit() and 1 <= int(selection) <= 3:
+                target = keys[int(selection) - 1]
+            else:
+                print("selection interpreted as default.")
         else:
-            print("selection interpreted as default.")
+            print("parsing {target}")
         return target
 
     def simplify_requisite(
