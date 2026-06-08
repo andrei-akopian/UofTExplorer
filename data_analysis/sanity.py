@@ -5,11 +5,9 @@ Data Check for special conditions in the graph
 import collections
 
 try:
-    import core.constructor as constructor
     from core.traversers import Targets, _catch_name_code, _update_queue
     from core.core import *
 except ImportError:
-    import constructor
     from traversers import Targets, _catch_name_code, _update_queue
     from core import *
 
@@ -18,10 +16,7 @@ def cycle_checker(
     graph: CourseGraph, origin: str | CourseNode, targets: Targets
 ) -> bool:
     """
-    A generator function that traverses along all connections in breadth-first order, starting from the origins.
-    Optional Arguments:
-        - representation: either 'string' or 'node' for the type of data the function yields.
-        - depth: the max depth to explore from origin. Negative values for no depth limit.
+    Check whether it contains a cycle.
     """
 
     visited: set[str] = {"None"}
