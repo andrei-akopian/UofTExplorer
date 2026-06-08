@@ -60,3 +60,7 @@ flowchart TD
 <a href="https://github.com/andrei-akopian/UofTExplorer/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=andrei-akopian/UofTExplorer" />
 </a>
+
+## Development Setup & Contributing
+
+See [SETUP.md](./SETUP.md) and [CONTRIBUTING.md](./CONTRIBUTING.md) for local development setup and contribution guidelines.
