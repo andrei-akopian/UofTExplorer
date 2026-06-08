@@ -165,7 +165,9 @@ export default function GraphVis3D({
       graphRef.current = new ForceGraph3D(graphFrame.current)
         .graphData(processedData)
         .nodeLabel((n: any) => `${n.label}: ${n.title}`)
-        .nodeVal((node: any) => (node.depth === 0 ? 10 : 5))
+        .nodeVal((node: any) =>
+          node["class_size"] ? node["class_size"] / 10 : 5,
+        )
         .linkDirectionalArrowLength(4)
         .linkDirectionalArrowRelPos(0.5)
         .nodeThreeObjectExtend(true)

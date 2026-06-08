@@ -1041,7 +1041,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Stochastic Methods for Finance",
@@ -1226,7 +1226,7 @@
     "has_fields": [
       "breadth_requirements_list"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Readings in Actuarial Science",
@@ -1260,7 +1260,7 @@
     "has_fields": [
       "breadth_requirements_list"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Readings in Actuarial Science",
@@ -1294,7 +1294,7 @@
     "has_fields": [
       "breadth_requirements_list"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Readings in Actuarial Science",
@@ -1328,7 +1328,7 @@
     "has_fields": [
       "breadth_requirements_list"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Africa: A Critical Introduction",
@@ -1949,7 +1949,7 @@
       "exclusions",
       "recommended_prep"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "African Studies Honours Research Seminar",
@@ -2146,7 +2146,7 @@
       "exclusions",
       "recommended_prep"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Advanced Topics in African Studies",
@@ -2408,7 +2408,7 @@
       "previous_course_codes",
       "exclusions"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Human Visceral Anatomy",
@@ -2645,7 +2645,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Introduction to Anthropology",
@@ -3963,7 +3963,7 @@
       "hours",
       "recommended_prep"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Excursions",
@@ -3993,7 +3993,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Excursions",
@@ -4023,7 +4023,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Lithic Analysis",
@@ -5021,7 +5021,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Internship in Anthropology",
@@ -5057,7 +5057,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Independent Research",
@@ -5089,7 +5089,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 59994
+    "class_size": 180
   },
   {
     "title": "Independent Research",
@@ -5121,7 +5121,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 49995
+    "class_size": 150
   },
   {
     "title": "Independent Research",
@@ -5153,7 +5153,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Applications of Linear Programming",
@@ -5728,7 +5728,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Introduction to Archaeology",
@@ -5972,7 +5972,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Field Archaeology",
@@ -6004,7 +6004,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 49995
+    "class_size": 150
   },
   {
     "title": "Special Topics in Archaeology",
@@ -6077,7 +6077,7 @@
       "exclusions",
       "recommended_prep"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "The Sun and Its Neighbours",
@@ -6441,7 +6441,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Research Opportunity Program",
@@ -6471,7 +6471,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Observational Astronomy",
@@ -6716,7 +6716,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Introduction to Astrophysical Research",
@@ -6853,7 +6853,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Advanced Study in Astronomy & Astrophysics",
@@ -6888,7 +6888,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Supervised Study in Astronomy & Astrophysics",
@@ -6923,7 +6923,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Special Project in Bioinformatics and Computational Biology",
@@ -6958,7 +6958,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Applied Bioinformatics",
@@ -7083,7 +7083,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Biochemistry I: Proteins, Lipids and Metabolism",
@@ -7213,7 +7213,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Biochemistry II: Nucleic Acids and Biological Information Flow",
@@ -7377,7 +7377,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Research Project in Biochemistry",
@@ -7498,7 +7498,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Membrane Proteins: Structure, and Function",
@@ -7923,7 +7923,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Advanced Research Project in Biochemistry",
@@ -9053,7 +9053,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Advertising and Media",
@@ -9340,7 +9340,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Independent Study in Book and Media Studies",
@@ -9379,7 +9379,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Advanced Topics in Book & Media Cultures",
@@ -9827,7 +9827,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Independent Study in Book and Media Studies",
@@ -9863,7 +9863,7 @@
       "prerequisites",
       "corequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Buddhism and Psychology",
@@ -10679,7 +10679,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Caribbean Studies Independent Study Course",
@@ -10713,7 +10713,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Caribbean Studies Independent Study Course",
@@ -10747,7 +10747,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "The Rise of Global China: Aspirations and Challenges to Existing World Order",
@@ -11831,7 +11831,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "The University in Canada",
@@ -11901,7 +11901,7 @@
       "hours",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Independent Research in Canadian Studies",
@@ -11933,7 +11933,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Afrofuturisms: Black Canadian Perspectives",
@@ -12649,7 +12649,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Independent Studies in Christianity and Culture",
@@ -12688,7 +12688,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Advanced Topics in Christianity and Culture I",
@@ -12764,7 +12764,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Independent Studies in Christianity and Culture",
@@ -12803,7 +12803,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Indian Christianity",
@@ -12879,7 +12879,7 @@
       "previous_course_codes",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Chemistry: Physical Principles",
@@ -14012,7 +14012,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Opportunity Program",
@@ -14042,7 +14042,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 99990
+    "class_size": 300
   },
   {
     "title": "Environmental Fate and Toxicity of Organic Contaminants",
@@ -14685,7 +14685,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 10029
+    "class_size": 60
   },
   {
     "title": "Analytical Environmental Chemistry",
@@ -16452,7 +16452,7 @@
     "has_fields": [
       "breadth_requirements_list"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Special Topics in History and Nation II",
@@ -16971,7 +16971,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Independent Studies in Cinema",
@@ -17011,7 +17011,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Independent Studies in Cinema",
@@ -17051,7 +17051,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Cellular and Molecular Neurobiology of the Synapse",
@@ -17530,7 +17530,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Advanced Topics in Jewish Studies",
@@ -17599,7 +17599,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Independent Study",
@@ -17635,7 +17635,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Introduction to Classical Studies",
@@ -18187,7 +18187,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Opportunity Program",
@@ -18217,7 +18217,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Theories of Myth",
@@ -18941,7 +18941,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Opportunity Program",
@@ -18971,7 +18971,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Independent Studies",
@@ -19008,7 +19008,7 @@
       "exclusions",
       "recommended_prep"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Independent Studies",
@@ -19041,7 +19041,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Advanced Seminar in Greek Civilization",
@@ -19745,7 +19745,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Independent Study in Celtic Studies",
@@ -19784,7 +19784,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Advanced Topics in Celtic Studies I",
@@ -19895,7 +19895,7 @@
       "previous_course_codes",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Introduction to Cognitive Science",
@@ -20500,7 +20500,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Independent Study",
@@ -20532,7 +20532,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Individual Study in Cognitive Science",
@@ -20564,7 +20564,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Introduction to Creativity and Society",
@@ -22198,7 +22198,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Topics in Criminology and Sociolegal Studies",
@@ -22321,7 +22321,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Research Participation",
@@ -22358,7 +22358,7 @@
       "exclusions",
       "recommended_prep"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Current Issues in Criminal Law",
@@ -22988,7 +22988,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Opportunity Program",
@@ -23018,7 +23018,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 49995
+    "class_size": 150
   },
   {
     "title": "Endocrine Physiology",
@@ -23839,7 +23839,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Opportunity Program",
@@ -23869,7 +23869,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Cytoskeletal Networks of the Cell",
@@ -24860,7 +24860,7 @@
     "has_fields": [
       "breadth_requirements_list"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Independent Research in Cell and Systems Biology I",
@@ -24894,7 +24894,7 @@
     "has_fields": [
       "breadth_requirements_list"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Independent Research in Cell and Systems Biology II",
@@ -24933,7 +24933,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Introduction to Computer Programming",
@@ -25677,7 +25677,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Opportunity Program",
@@ -25707,7 +25707,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Computers and Society",
@@ -26822,7 +26822,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Computer Science Project",
@@ -26861,7 +26861,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Designing Systems for Real World Problems",
@@ -26897,7 +26897,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Opportunity Program",
@@ -26929,7 +26929,7 @@
     "has_fields": [
       "exclusions"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Natural Language Computing",
@@ -27962,7 +27962,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Computer Science Project",
@@ -27998,7 +27998,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Computer Science Project",
@@ -28037,7 +28037,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Introduction to Critical Equity and Solidarity Studies",
@@ -29024,7 +29024,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Topic",
@@ -29059,7 +29059,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Introduction to Digital Humanities",
@@ -29346,7 +29346,7 @@
       "breadth_requirements_list",
       "experience"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Advanced Topics in Digital Humanities",
@@ -31195,7 +31195,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Independent Study",
@@ -31230,7 +31230,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Research Excursions",
@@ -31260,7 +31260,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Advanced Topics in Diaspora and Transnationalism",
@@ -33486,7 +33486,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Special Topics in East Asian Studies",
@@ -33871,7 +33871,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Independent Studies",
@@ -33906,7 +33906,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Independent Studies",
@@ -33941,7 +33941,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 30002
+    "class_size": 95
   },
   {
     "title": "The Global Bildungsroman: Narratives of Development, Time, and Colonialism",
@@ -35189,7 +35189,7 @@
       "breadth_requirements_list",
       "corequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Research Opportunity Program",
@@ -35219,7 +35219,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Empirical Industrial Organization",
@@ -36997,7 +36997,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Research Opportunity Program",
@@ -37027,7 +37027,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Topics in Development Economics and Policy",
@@ -37596,7 +37596,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "The Economics of Modern China",
@@ -39395,7 +39395,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Opportunity Program",
@@ -39425,7 +39425,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Quantitative Methods in R for Biology",
@@ -40183,7 +40183,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Research Excursion",
@@ -40217,7 +40217,7 @@
     "has_fields": [
       "breadth_requirements_list"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Research Opportunity Program",
@@ -40247,7 +40247,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Opportunity Program",
@@ -40277,7 +40277,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 69993
+    "class_size": 210
   },
   {
     "title": "Tropical Field Biology",
@@ -40824,7 +40824,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Advanced Research Project in Ecology and Evolutionary Biology",
@@ -40860,7 +40860,7 @@
       "prerequisites",
       "corequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Advanced Research Project in Ecology and Evolutionary Biology II",
@@ -40898,7 +40898,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Human Evolutionary Genomics",
@@ -42068,7 +42068,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Topics in English Literature",
@@ -42100,7 +42100,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Chaucer",
@@ -43662,7 +43662,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Individual Studies",
@@ -43698,7 +43698,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Creative Writing: Special Topics",
@@ -44841,7 +44841,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Critically Thinking about Climate Solutions",
@@ -45575,7 +45575,7 @@
       "breadth_requirements_list",
       "recommended_prep"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Opportunity Program",
@@ -45605,7 +45605,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Sustainability Thinking",
@@ -46208,7 +46208,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Independent Studies Project",
@@ -46244,7 +46244,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Independent Studies Project",
@@ -46280,7 +46280,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Geology in Public Issues",
@@ -46795,7 +46795,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Aqueous Geochemistry",
@@ -47050,7 +47050,7 @@
       "exclusions",
       "recommended_prep"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Sedimentation and Stratigraphy",
@@ -47214,7 +47214,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Directed Studies",
@@ -47247,7 +47247,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Research Excursions",
@@ -47277,7 +47277,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Field Techniques in Environmental Geosciences",
@@ -47719,7 +47719,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Undergraduate Thesis Project",
@@ -47755,7 +47755,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Elementary Estonian I",
@@ -48062,7 +48062,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Independent Study",
@@ -48094,7 +48094,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Seminar in Ethics",
@@ -48286,7 +48286,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Special Topics in European Affairs: European Union",
@@ -49973,7 +49973,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Studies Abroad in Renaissance and Baroque Art and Architecture",
@@ -50009,7 +50009,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Studies Abroad in Modern and Contemporary Art and Architecture",
@@ -50045,7 +50045,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Palaces of Minoan Crete",
@@ -50506,7 +50506,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Independent Studies",
@@ -50541,7 +50541,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "French Culture and Civilization: From Charlemagne to Voltaire",
@@ -50761,7 +50761,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Special Topics in French Cultural Studies II",
@@ -51050,7 +51050,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Independent Study",
@@ -51080,7 +51080,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Trees in Architecture and Urban Design",
@@ -51526,7 +51526,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Directed Readings",
@@ -51568,7 +51568,7 @@
       "hours",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Arboriculture",
@@ -51991,7 +51991,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Contemporary French Women's Prose Fiction",
@@ -52637,7 +52637,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Independent Study",
@@ -52669,7 +52669,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Independent Study",
@@ -52701,7 +52701,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Elementary French I",
@@ -52933,7 +52933,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Intermediate French I",
@@ -53214,7 +53214,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Intermediate French III",
@@ -53738,7 +53738,7 @@
       "experience",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Intermediate German 1",
@@ -54128,7 +54128,7 @@
       "experience",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Intermediate German 2",
@@ -54402,7 +54402,7 @@
       "experience",
       "recommended_prep"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Intermediate Yiddish",
@@ -54594,7 +54594,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Advanced German 1",
@@ -54785,7 +54785,7 @@
       "hours",
       "prerequisites"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Individual Studies",
@@ -54818,7 +54818,7 @@
       "hours",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Histories of Environmental Change",
@@ -57262,7 +57262,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Senior Practicum",
@@ -57292,7 +57292,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Senior Practicum",
@@ -57322,7 +57322,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Geography Professional Experience",
@@ -57386,7 +57386,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Independent Research",
@@ -57418,7 +57418,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Independent Research",
@@ -57450,7 +57450,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Independent Research",
@@ -57482,7 +57482,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Introductory Ancient Greek I",
@@ -57832,7 +57832,7 @@
       "exclusions",
       "recommended_prep"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Independent Studies",
@@ -57868,7 +57868,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Greek Prose Authors II",
@@ -62149,7 +62149,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Independent Studies",
@@ -62181,7 +62181,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Introduction to Neuroscience",
@@ -62533,7 +62533,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Neurobiology of Behaviour",
@@ -63465,7 +63465,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Summer Abroad Topics in Human Biology",
@@ -63501,7 +63501,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "International Research Project in Human Biology",
@@ -63533,7 +63533,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Research Opportunity Program",
@@ -63563,7 +63563,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Opportunity Program",
@@ -63593,7 +63593,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Biomedical Advances & Technologies",
@@ -66455,7 +66455,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Individual Studies in HPS",
@@ -66488,7 +66488,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Individual Studies",
@@ -66520,7 +66520,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Elementary Hungarian",
@@ -66956,7 +66956,7 @@
       "prerequisites",
       "corequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Molecular Immunology",
@@ -67312,7 +67312,7 @@
       "hours",
       "breadth_requirements_list"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "The City Where Movies Are Made",
@@ -68502,7 +68502,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Independent Experiential Studies",
@@ -68538,7 +68538,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Independent Research",
@@ -68574,7 +68574,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Independent Research",
@@ -68610,7 +68610,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Independent Research",
@@ -68646,7 +68646,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Independent Research",
@@ -68682,7 +68682,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Arts & Science Internship Program Professional Work Term",
@@ -68717,7 +68717,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Arts & Science Internship Program Professional Work Term",
@@ -68756,7 +68756,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Arts & Science Internship Program Professional Work Term",
@@ -68796,7 +68796,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Arts & Science Internship Program Professional Work Term",
@@ -68835,7 +68835,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Arts & Science Internship Program Professional Work Term",
@@ -68874,7 +68874,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Arts & Science Internship Program Professional Work Term",
@@ -68913,7 +68913,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Arts & Science Internship Program Professional Work Term",
@@ -68952,7 +68952,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Arts & Science Internship Program Professional Work Term",
@@ -68991,7 +68991,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Arts & Science Internship Program Professional Work Term",
@@ -69030,7 +69030,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Why We Work: Understanding Work Through the Prism of Art & Culture",
@@ -69216,7 +69216,7 @@
     "has_fields": [
       "breadth_requirements_list"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Labour Markets and Public Policy",
@@ -73817,7 +73817,7 @@
       "exclusions",
       "recommended_prep"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Independent Studies",
@@ -73853,7 +73853,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Latin Orators II",
@@ -74546,7 +74546,7 @@
       "previous_course_codes",
       "prerequisites"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "LCT Senior Research Paper",
@@ -74581,7 +74581,7 @@
       "previous_course_codes",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Introduction to Linguistics: Sound Structure",
@@ -75357,7 +75357,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Opportunity Program",
@@ -75387,7 +75387,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Central American Indigenous Languages",
@@ -75825,7 +75825,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Linguistic Typology and Constructed Languages",
@@ -76150,7 +76150,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Individual Project",
@@ -76187,7 +76187,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Individual Project",
@@ -76224,7 +76224,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Individual Project",
@@ -76261,7 +76261,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Individual Project",
@@ -76298,7 +76298,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Pathobiology of the Cell",
@@ -76376,7 +76376,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Introduction to the Biochemistry of Human Disease",
@@ -76624,7 +76624,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Project in Pathobiology",
@@ -76670,7 +76670,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Pathobiology of Neurodegenerative Disease",
@@ -78144,7 +78144,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Independent Reading in Mathematics",
@@ -78179,7 +78179,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Groups and Symmetries",
@@ -79348,7 +79348,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 49995
+    "class_size": 150
   },
   {
     "title": "Independent Reading in Mathematics",
@@ -79383,7 +79383,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 59994
+    "class_size": 180
   },
   {
     "title": "Research Project in Mathematics",
@@ -79418,7 +79418,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Polynomial Equations and Fields",
@@ -80224,7 +80224,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 49995
+    "class_size": 150
   },
   {
     "title": "Independent Reading in Mathematics",
@@ -80259,7 +80259,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 49995
+    "class_size": 150
   },
   {
     "title": "Research Project in Mathematics",
@@ -80294,7 +80294,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Readings in Mathematics",
@@ -80329,7 +80329,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Signs, Meanings, and Culture",
@@ -81114,7 +81114,7 @@
     "has_fields": [
       "hours"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Special Topics",
@@ -81146,7 +81146,7 @@
     "has_fields": [
       "hours"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "An Introduction to Molecular Genetics and Microbiology",
@@ -81336,7 +81336,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 79992
+    "class_size": 240
   },
   {
     "title": "Molecular Biology",
@@ -81900,7 +81900,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Regulation of Gene Expression",
@@ -83054,7 +83054,7 @@
       "previous_course_codes",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Senior Essay in Medieval Studies",
@@ -83094,7 +83094,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Global Innovation",
@@ -84169,7 +84169,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Public Policy Capstone",
@@ -85479,7 +85479,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "New College Independent Studies",
@@ -85511,7 +85511,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "New College Independent Studies",
@@ -85543,7 +85543,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "New College Independent Studies",
@@ -85575,7 +85575,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Community Engaged Learning: Critical and Creative Perspectives on the Non Profit Sector",
@@ -85932,7 +85932,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Functional Foods and Nutraceuticals in Human Nutrition",
@@ -86381,7 +86381,7 @@
       "hours",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Land of the Pharaohs",
@@ -89951,7 +89951,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Research Experience in Pharmacology & Toxicology II",
@@ -89990,7 +89990,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Research Opportunity Program",
@@ -90020,7 +90020,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Pharmacodynamic Principles",
@@ -90417,7 +90417,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Abroad in Pharmacology and Toxicology",
@@ -90454,7 +90454,7 @@
       "experience",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Opportunity Program",
@@ -90484,7 +90484,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Pharmacology and Toxicology in Drug Development",
@@ -90678,7 +90678,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 10039
+    "class_size": 70
   },
   {
     "title": "Project in Toxicology",
@@ -90732,7 +90732,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 10014
+    "class_size": 45
   },
   {
     "title": "Neuropsychopharmacology 1",
@@ -90991,7 +90991,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Advanced Research in Pharmacology or Biomedical Toxicology",
@@ -91040,7 +91040,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Arts & Science Internship Program Maximizing Your Experience",
@@ -95809,7 +95809,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Individual Studies",
@@ -95839,7 +95839,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 59994
+    "class_size": 180
   },
   {
     "title": "Individual Studies",
@@ -95869,7 +95869,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Individual Studies",
@@ -95899,7 +95899,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Individual Studies",
@@ -95929,7 +95929,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Individual Studies",
@@ -95959,7 +95959,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Introduction to Public Health",
@@ -96861,7 +96861,7 @@
       "exclusions",
       "recommended_prep"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "The Nature of Global Health",
@@ -96945,7 +96945,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "The Magic of Physics",
@@ -98045,7 +98045,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 49995
+    "class_size": 150
   },
   {
     "title": "Practical Physics II",
@@ -98533,7 +98533,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Supervised Study in Physics",
@@ -98568,7 +98568,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 49995
+    "class_size": 150
   },
   {
     "title": "Undergraduate Research Project",
@@ -98603,7 +98603,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 49995
+    "class_size": 150
   },
   {
     "title": "Undergraduate Research Project",
@@ -98638,7 +98638,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Introductory Optics",
@@ -98778,7 +98778,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Exchange Research Project Abroad",
@@ -98813,7 +98813,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Excursions",
@@ -98843,7 +98843,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Opportunity Program",
@@ -98873,7 +98873,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Electronics Lab",
@@ -99443,7 +99443,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Supervised Study in Physics",
@@ -99478,7 +99478,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 49995
+    "class_size": 150
   },
   {
     "title": "Undergraduate Research Project",
@@ -99513,7 +99513,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 49995
+    "class_size": 150
   },
   {
     "title": "Undergraduate Research Project",
@@ -99548,7 +99548,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Relativity Theory I",
@@ -100599,7 +100599,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Topics in Comparative Politics",
@@ -100635,7 +100635,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Colonial Legacies and Post Independence African Politics",
@@ -102551,7 +102551,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Participation",
@@ -102587,7 +102587,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Opportunity Program",
@@ -102617,7 +102617,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "The Military Instrument of Foreign Policy: Concepts and Approaches",
@@ -103884,7 +103884,7 @@
     "has_fields": [
       "exclusions"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Independent Studies",
@@ -103916,7 +103916,7 @@
     "has_fields": [
       "exclusions"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Senior Thesis and Thesis Seminar",
@@ -104597,7 +104597,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 109989
+    "class_size": 330
   },
   {
     "title": "Human Physiology I",
@@ -105048,7 +105048,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 109989
+    "class_size": 330
   },
   {
     "title": "Regenerative Medicine",
@@ -105663,7 +105663,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Project in Physiology",
@@ -105708,7 +105708,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Introductory Psychology",
@@ -106309,7 +106309,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Opportunity Program",
@@ -106339,7 +106339,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 249975
+    "class_size": 750
   },
   {
     "title": "Group Research Project",
@@ -106493,7 +106493,7 @@
       "hours",
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Specialization: Practicum",
@@ -108139,7 +108139,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 109989
+    "class_size": 330
   },
   {
     "title": "Research Specialization: Thesis",
@@ -108220,7 +108220,7 @@
     "has_fields": [
       "hours"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Psychology Seminar",
@@ -108252,7 +108252,7 @@
     "has_fields": [
       "hours"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Psychology Seminar",
@@ -108284,7 +108284,7 @@
     "has_fields": [
       "hours"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Individual Projects",
@@ -108326,7 +108326,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Individual Projects",
@@ -108368,7 +108368,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Individual Projects",
@@ -108410,7 +108410,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Individual Projects",
@@ -108452,7 +108452,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Research Specialization: Theoretical Foundations",
@@ -109858,7 +109858,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Renaissance Studies Independent Study",
@@ -109894,7 +109894,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "The Renaissance Book",
@@ -109971,7 +109971,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Renaissance Studies Independent Study",
@@ -110007,7 +110007,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "World Religions",
@@ -112566,7 +112566,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Religion Capstone Practical",
@@ -112925,7 +112925,7 @@
     "has_fields": [
       "hours"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Independent Studies",
@@ -112957,7 +112957,7 @@
     "has_fields": [
       "hours"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Independent Studies",
@@ -112989,7 +112989,7 @@
     "has_fields": [
       "hours"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Independent Studies",
@@ -113021,7 +113021,7 @@
     "has_fields": [
       "hours"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Independent Studies",
@@ -113053,7 +113053,7 @@
     "has_fields": [
       "hours"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Introduction to Management",
@@ -117858,7 +117858,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Advanced Research in Sexual Diversity Studies",
@@ -120013,7 +120013,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Independent Studies",
@@ -120045,7 +120045,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "SMC One: The Donovan Seminar: Visual Art and Meaning",
@@ -120408,7 +120408,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "St. Michael's College Independent Studies",
@@ -120444,7 +120444,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Directed Research",
@@ -120477,7 +120477,7 @@
       "hours",
       "prerequisites"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "St. Michael's College Independent Studies",
@@ -120513,7 +120513,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "St. Michael's College Independent Studies",
@@ -120549,7 +120549,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Introduction to Sociology I: Sociological Perspectives",
@@ -122807,7 +122807,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Independent Research",
@@ -122842,7 +122842,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Independent Research",
@@ -122877,7 +122877,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "New Topics in Sociology",
@@ -123253,7 +123253,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Independent Research",
@@ -123288,7 +123288,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Independent Research",
@@ -123323,7 +123323,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "New Topics in Sociology",
@@ -125458,7 +125458,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 49995
+    "class_size": 150
   },
   {
     "title": "Methods of Data Analysis I",
@@ -126027,7 +126027,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Statistical Computation",
@@ -126738,7 +126738,7 @@
       "exclusions",
       "recommended_prep"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Contemporary Issues in Health Science",
@@ -127676,7 +127676,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Trinity Independent Studies",
@@ -127706,7 +127706,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Trinity Independent Studies",
@@ -127736,7 +127736,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Trinity Independent Studies",
@@ -127766,7 +127766,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Ethics and Society",
@@ -128032,7 +128032,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Opportunity Program",
@@ -128062,7 +128062,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Trinity Independent Studies",
@@ -128092,7 +128092,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Trinity Independent Studies",
@@ -128122,7 +128122,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Trinity Independent Studies",
@@ -128152,7 +128152,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Community Research Partnerships in Ethics",
@@ -128188,7 +128188,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "Community Research Partnerships in Ethics",
@@ -128414,7 +128414,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Citizenship in the Canadian City",
@@ -128703,7 +128703,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "University College Independent Studies",
@@ -128735,7 +128735,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "University College Independent Studies",
@@ -128767,7 +128767,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 19998
+    "class_size": 60
   },
   {
     "title": "University College Independent Studies",
@@ -128799,7 +128799,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Cities in Popular Culture",
@@ -129241,7 +129241,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 10000
+    "class_size": 31
   },
   {
     "title": "Independent Research in Urban Studies",
@@ -129281,7 +129281,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Urban Experiential Learning in Toronto & the GTA",
@@ -131057,7 +131057,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Internship Opportunity",
@@ -131089,7 +131089,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Research Opportunity Program",
@@ -131119,7 +131119,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Special Topics Seminar",
@@ -131184,7 +131184,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Victoria College Independent Studies",
@@ -131216,7 +131216,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Victoria College Independent Studies",
@@ -131248,7 +131248,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Victoria College Independent Studies",
@@ -131280,7 +131280,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "International Internship Opportunity",
@@ -131314,7 +131314,7 @@
       "experience",
       "prerequisites"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Research Opportunity Program",
@@ -131344,7 +131344,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Capstone: Learning Communities and Higher Education",
@@ -131412,7 +131412,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Victoria College Independent Studies",
@@ -131444,7 +131444,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Victoria College Independent Studies",
@@ -131476,7 +131476,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 39996
+    "class_size": 120
   },
   {
     "title": "Victoria College Independent Studies",
@@ -131508,7 +131508,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 9999
+    "class_size": 30
   },
   {
     "title": "Vic Capstone Research Colloquium",
@@ -132787,7 +132787,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 59994
+    "class_size": 180
   },
   {
     "title": "Independent Study in Women and Gender Studies",
@@ -132824,7 +132824,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 29997
+    "class_size": 90
   },
   {
     "title": "Honours Seminar",
