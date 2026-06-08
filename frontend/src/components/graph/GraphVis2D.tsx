@@ -75,6 +75,7 @@ interface GraphVis2DProps {
 
 export default function GraphVis2D({
   graphData,
+  loading,
   setLoading,
   useShellLayout,
 }: GraphVis2DProps) {
@@ -237,10 +238,20 @@ export default function GraphVis2D({
   }, [graphData]);
 
   return (
-    <div
-      ref={containerRef}
-      id="mynetwork"
-      className="relative h-full w-full overflow-hidden"
-    ></div>
+    <>
+      <div
+        ref={containerRef}
+        id="mynetwork"
+        className="relative h-full w-full overflow-hidden"
+      ></div>
+      <div className={loading ? "" : "hidden"}>
+        <div className="absolute top-0 flex h-full w-full">
+          <div className="m-auto flex h-60 w-60 animate-spin items-center justify-center rounded-[50%] border-8 border-blue-100 border-t-blue-500"></div>
+        </div>
+        <div className="absolute top-0 flex h-full w-full">
+          <div className="m-auto text-center text-5xl">Loading</div>
+        </div>
+      </div>
+    </>
   );
 }
