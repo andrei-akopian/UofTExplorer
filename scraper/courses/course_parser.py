@@ -885,7 +885,7 @@ class CourseParser:
             else:
                 print("selection interpreted as default.")
         else:
-            print("parsing {target}")
+            print(f"parsing {target}")
         return target
 
     def simplify_requisite(

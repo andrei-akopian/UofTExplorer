@@ -66,7 +66,7 @@ def target_selection_ui() -> str:
         else:
             print("selection interpreted as default.")
     else:
-        print("scraping {target}")
+        print(f"scraping {target}")
     return target
 
 

@@ -269,7 +269,7 @@ class ProgramParser:
             else:
                 print("selection interpreted as default.")
         else:
-            print("parsing {target}")
+            print(f"parsing {target}")
         return target
 
     def full_scrape_parse(self, target: str = "UTSG", interactive: bool = True) -> None:
