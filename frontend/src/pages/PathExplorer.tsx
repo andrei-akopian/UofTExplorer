@@ -40,7 +40,11 @@ export default function PathExplorer() {
       );
 
       if (graphDataPostreqs.solution_display) {
-        setSolutionDisplay(Object.keys(graphDataPostreqs.solution_display));
+        const filtered = Object.keys(graphDataPostreqs.solution_display).filter(
+          (ele: string) =>
+            !(completedCourses.includes(ele) || desiredCourses.includes(ele)),
+        );
+        setSolutionDisplay(filtered);
       }
     }
   }, [graphDataPostreqs]);
@@ -65,7 +69,11 @@ export default function PathExplorer() {
         graphDataPathfind,
       );
       if (graphDataPathfind.solution) {
-        setSolutionDisplay(graphDataPathfind.solution);
+        const filtered = graphDataPathfind.solution.filter(
+          (ele: string) =>
+            !(completedCourses.includes(ele) || desiredCourses.includes(ele)),
+        );
+        setSolutionDisplay(filtered);
       }
     }
   }, [graphDataPathfind]);
