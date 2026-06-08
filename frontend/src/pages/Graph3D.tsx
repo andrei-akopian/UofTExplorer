@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import type { GraphData } from "../types";
 import GraphQuery from "../components/graph/GraphQuery";
 import GraphVis3D from "../components/graph/GraphVis3D";
+import { useSearchParams } from "react-router-dom";
 
 export default function Graph3D() {
   const [graphData, setGraphData] = useState<GraphData>({
@@ -14,6 +15,15 @@ export default function Graph3D() {
     "info",
   );
   const [useShellLayout, setUseShellLayout] = useState(true);
+
+  const [searchParams] = useSearchParams();
+  const [manualFetch, setManualFetch] = useState<string>("");
+
+  useEffect(() => {
+    if (searchParams.has("search")) {
+      setManualFetch(searchParams.get("search") ?? "");
+    }
+  }, []);
 
   useEffect(() => {
     console.log("Graph data updated:", graphData);
@@ -55,6 +65,7 @@ export default function Graph3D() {
         setIsLoading={setIsLoading}
         setMessage={setMessage}
         setMessageType={setMessageType}
+        manualFetch={manualFetch}
       />
 
       <div className="fixed bottom-10 left-5 z-20 flex min-w-[20rem] flex-col gap-1">

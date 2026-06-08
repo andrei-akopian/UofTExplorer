@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GraphQuery from "../components/graph/GraphQuery";
 import type { GraphData } from "../types";
 import GraphVis2D from "../components/graph/GraphVis2D";
+import { useSearchParams } from "react-router-dom";
 
 export default function Graph2D() {
   const [message, setMessage] = useState("");
@@ -19,6 +20,7 @@ export default function Graph2D() {
   });
   const [useShellLayout, setUseShellLayout] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [manualFetch, setManualFetch] = useState<string>("");
 
   const [graphData, setGraphData] = useState<GraphData>({
     nodes: [],
@@ -31,6 +33,14 @@ export default function Graph2D() {
       : messageType === "error"
         ? "ml-7 text-sm font-sans text-(--color-primary)"
         : "ml-7 text-sm font-sans text-(--color-primary-info)";
+
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.has("search")) {
+      setManualFetch(searchParams.get("search") ?? "");
+    }
+  }, []);
 
   return (
     <div className="relative h-full w-full overflow-hidden">
@@ -81,6 +91,7 @@ export default function Graph2D() {
         setIsLoading={setLoading}
         setMessage={setMessage}
         setMessageType={setMessageType}
+        manualFetch={manualFetch}
       />
     </div>
   );
