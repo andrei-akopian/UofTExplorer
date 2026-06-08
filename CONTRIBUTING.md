@@ -1,43 +1,8 @@
 # Contributing Guide
 
-## Project structure
+## Installation & Setup
 
-```mermaid
-flowchart TD
-    subgraph DataSources
-      ttb[TTB]
-      artscical[ArtSci Calendar]
-    end
-    scrapers[Scrapers]
-    scraped_data[.html / .json scrapes]
-    parsers[Parsers]
-    refiner[Refinement and Sanity checks]
-    ttb --> scrapers
-    artscical --> scrapers
-    scrapers --> scraped_data
-    scraped_data --> parsers
-    parsers --> structured_data
-    structured_data --> refiner
-    core --> refiner
-    data_analysis <--> refiner
-    refiner --> database
-    data_analysis --> database
-    sat --> core
-    core --> backend
-    data_analysis --> backend
-    backend[Flask Backend]
-    database --> backend
-    frontend[React Frontend]
-    backend <--> frontend
-```
-
-### Scraping
-
-Please be polite, scrape as rarely as possible, and keep the time delay of at least 3s. We don't want to overload their servers.
-
-On macOS, to prevent the scraper from being interrupted, use
-
-`caffeinate python3 <scraper.py>`
+Refer to the [Setup Guide](./SETUP.md).
 
 ## Commit Messages
 
@@ -60,6 +25,7 @@ Follow the [Conventional Commits](https://blog.marcnuri.com/conventional-commits
 Loosely based on [Conventional Commits](https://blog.marcnuri.com/conventional-commits) format.
 
 - `build` — Changes to build system or external dependencies
+- `chore` — Regular changes to static assets or data
 - `docs` — Documentation-only changes
 - `feat` — New feature
 - `fix` — Bug fix
@@ -96,48 +62,75 @@ Follow [Git branch naming conventions](https://medium.com/@jaychu259/git-branch-
 **Format:** `<type>/<description>`
 
 **Types:**
+
+Any of the commit types can be used for branches as well. Here are some examples:
+
 - `docs/` — Documentation updates
 - `feat/` — New features
 - `fix/` — Bug fixes
 - `refactor/` — Code refactoring (no behavior change)
 
 **Rules:**
-- Use lowercase with hyphens (`feature/add-search-filter`)
+
+- Use lowercase with hyphens (`feat/branch-name-here`)
 - Keep descriptions short but descriptive (3-5 words max)
 - Avoid special characters, spaces, and ambiguous names
-- For *extremely simple* diffs (e.g. updating external dependencies), you can commit straight to `develop`
+- For _extremely simple_ diffs (e.g. updating external dependencies), you can commit straight to `develop`
 
 ### Workflow
 
 1. Create your branch from `develop`:
-  ```bash
-  git switch develop
-  git pull origin develop
-  git switch -c <branch-name>
-  ```
+
+```bash
+git switch develop
+git pull origin develop
+git switch -c <branch-name>
+```
 
 2. Keep your branch updated with `develop` as you are working:
-  ```bash
-  git fetch origin
-  git rebase origin/develop  # This rewrites the shared commit history in chronological order
 
-  # When ready to commit to origin:
-  git push origin <branch-name> --force-with-lease  # This updates the remote branch to match your local branch with rebased history
-  ```
+```bash
+git fetch origin
+git rebase origin/develop  # This rewrites the shared commit history in chronological order
+
+# When ready to commit to origin:
+git push origin <branch-name> --force-with-lease  # This updates the remote branch to match your local branch with rebased history
+```
 
 3. Before merging into `develop`, ensure:
-  - Your branch is up to date with `develop` (i.e. follow Step 2)
-  - All tests pass
-  - Code is reviewed (by you and/or others)
+
+- Your branch is up to date with `develop` (i.e. follow Step 2)
+- All tests pass
+- Code is reviewed (by you and/or others)
 
 4. Merge your branch into `develop`:
-  ```bash
-  git switch develop
-  git pull origin develop
-  git merge <branch-name>
-  git push origin develop
-  ```
+
+```bash
+git switch develop
+git pull origin develop
+git merge <branch-name>
+git push origin develop
+```
 
 5. Open a pull request on GitHub to merge to `main`:
-  - The pull request step can be skipped if the diff is very small
-  - `main` always contains a stable, working version
+
+- `main` always contains a stable, working version
+
+## Pull Requests
+
+- Title the PR using the same format as commit messages (ideally under 50 characters)
+- In the description, provide details about changes in a bulleted list
+- Request a review from Copilot
+- Address all review comments before merging
+
+## Miscellaneous
+
+### Scraping
+
+Please be polite, scrape as rarely as possible, and keep the time delay of at least 3s. We don't want to overload their servers.
+
+On macOS, to prevent the scraper from being interrupted, use:
+
+```bash
+caffeinate python3 <scraper.py>
+```
