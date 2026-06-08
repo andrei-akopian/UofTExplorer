@@ -9,12 +9,16 @@ export default function PathExplorer() {
   const [avoidedCourses, setAvoidedCourses] = useState<string[]>([]);
   const [desiredCourses, setDesiredCourses] = useState<string[]>([]);
   const [solutionDisplay, setSolutionDisplay] = useState<string[]>([]);
+  const [placeholderText, setPlaceholderText] = useState<string>("");
 
   const { data: graphDataPostreqs, fetch: fetchImmediatePostreqs } =
     useImmediatePostreqs();
 
-  const { data: graphDataPathfind, fetch: fetchPathfindSolution } =
-    usePathFinderSolution();
+  const {
+    data: graphDataPathfind,
+    fetch: fetchPathfindSolution,
+    error: pathfindError,
+  } = usePathFinderSolution();
 
   const [graphData, setGraphData] = useState<GraphData>({
     nodes: [],
@@ -45,6 +49,13 @@ export default function PathExplorer() {
             !(completedCourses.includes(ele) || desiredCourses.includes(ele)),
         );
         setSolutionDisplay(filtered);
+        if (filtered.length == 0) {
+          setPlaceholderText(
+            "There are no courses which is immediately unlocked by your completed courses.",
+          );
+        } else {
+          setPlaceholderText("");
+        }
       }
     }
   }, [graphDataPostreqs]);
@@ -63,6 +74,7 @@ export default function PathExplorer() {
 
   useEffect(() => {
     if (graphDataPathfind) {
+      setPlaceholderText("");
       setGraphData(graphDataPathfind?.graph_data);
       console.log(
         "Path finder solution graph data in PathExplorer.tsx:",
@@ -77,6 +89,12 @@ export default function PathExplorer() {
       }
     }
   }, [graphDataPathfind]);
+
+  useEffect(() => {
+    if (pathfindError !== null) {
+      setPlaceholderText("No path found.");
+    }
+  }, [[pathfindError]]);
 
   return (
     <div className="relative flex h-full w-full font-sans max-md:flex-col">
@@ -189,6 +207,10 @@ export default function PathExplorer() {
             <p>{x}</p>
           ))}
         </div>
+      </div>
+
+      <div className="fixed top-20 left-10 w-200 text-4xl text-red-500">
+        {placeholderText}
       </div>
     </div>
   );
