@@ -11,6 +11,7 @@ This file was written with the help of ChatGPT codex GPT-5.4.
 
 import socket
 import json
+import os
 from typing import Any
 from flask import (
     Flask,
@@ -32,7 +33,7 @@ from core.algorithms import (
 )
 from core.deconstructor import deconstruct_course_graph
 
-app = Flask(__name__, template_folder="./templates")
+app = Flask(__name__, template_folder="./templates", static_folder="../frontend/dist")
 
 DATA_FOLDER = "./data"
 COURSE_GRAPH_CONTAINER = construct_container(
@@ -59,15 +60,17 @@ def get_global_statistics_from_file() -> dict[str, int | float]:
         return json.load(file)
 
 
-@app.route("/")
-def index() -> ResponseReturnValue:
-    """
-    Return the data to be used to render the home page.
-    """
-    app.logger.info("Processed request for homepage (/) and sent response.")
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def serve(path):
+    app.logger.info("Serving React Content")
 
-    # Get global statistics from precomputed JSON file
-    return render_template("index.html")
+    # If the user requests an actual file inside the static folder, serve it
+    if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
+        return send_from_directory(app.static_folder, path)
+
+    # Otherwise, return index.html to let React Router handle client-side routing
+    return send_from_directory(app.static_folder, "index.html")
 
 
 @app.route("/api/ticket/<ticket_id>", methods=["GET"])
