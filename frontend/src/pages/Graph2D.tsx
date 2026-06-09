@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import GraphQuery from "../components/graph/GraphQuery";
 import type { GraphData, GraphNode } from "../types";
 import GraphVis2D from "../components/graph/GraphVis2D";
+import GraphStatsPanel from "../components/graph/GraphStatsPanel";
 import GraphInfoPanel from "../components/graph/GraphInfoPanel";
 import MobileWarning from "../components/MobileWarning";
 import { useSearchParams } from "react-router-dom";
@@ -105,6 +106,10 @@ export default function Graph2D() {
         selectedNode={selectedNode}
         onNodeSelect={setSelectedNode}
       />
+
+      <div className="fixed right-10 bottom-10 flex h-120 w-80">
+        <GraphStatsPanel data={graphData}></GraphStatsPanel>
+      </div>
     </div>
   );
 }

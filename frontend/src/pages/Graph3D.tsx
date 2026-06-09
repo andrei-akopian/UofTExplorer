@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { GraphData, GraphNode } from "../types";
 import GraphQuery from "../components/graph/GraphQuery";
 import GraphVis3D from "../components/graph/GraphVis3D";
+import GraphStatsPanel from "../components/graph/GraphStatsPanel";
 import GraphInfoPanel from "../components/graph/GraphInfoPanel";
 import MobileWarning from "../components/MobileWarning";
 import { useSearchParams } from "react-router-dom";
@@ -87,6 +88,10 @@ export default function Graph3D() {
         <div id="message" className="m-0 min-h-6 text-[0.84rem] font-medium">
           {message}
         </div>
+      </div>
+
+      <div className="fixed right-10 bottom-10 flex h-120 w-80">
+        <GraphStatsPanel data={graphData}></GraphStatsPanel>
       </div>
     </div>
   );
