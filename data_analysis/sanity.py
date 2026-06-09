@@ -16,7 +16,7 @@ def cycle_checker(
     graph: CourseGraph, origin: str | CourseNode, targets: Targets
 ) -> bool:
     """
-    Check whether it contains a cycle.
+    Check whether it contains a cycle. adapted from standard bfs traverser.
     """
 
     visited: set[str] = {"None"}
