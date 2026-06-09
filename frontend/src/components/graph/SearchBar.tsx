@@ -39,7 +39,7 @@ export default function SearchBar({
                   setQuery(result.code || result.label);
                   setShowSearchResults(false);
                 }}
-                labelling={`${result.code}: ${result.title} | ${result.num_prereqs}`}
+                labelling={`${result.code}: ${result.title}${result.num_prereqs ? ` | ${result.num_prereqs}` : ""}`}
               />
             ))
           ) : (

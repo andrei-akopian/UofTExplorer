@@ -1,6 +1,6 @@
 import SpriteText from "three-spritetext";
 import ForceGraph3D from "3d-force-graph";
-import type { GraphData } from "../../types";
+import type { GraphData, GraphNode } from "../../types";
 import { useRef, useEffect } from "react";
 
 // ───────────────────────────────────────────────
@@ -177,6 +177,7 @@ export default function GraphVis3D({
   graphData,
   useShellLayout,
   loading,
+  onNodeClickCallback,
 }: {
   graphData: GraphData;
   loading: boolean;
@@ -184,9 +185,14 @@ export default function GraphVis3D({
   useShellLayout: boolean;
   setMessage: (message: string) => void;
   setMessageType: (messageType: "success" | "error" | "info") => void;
+  onNodeClickCallback?: (node: GraphNode) => void;
 }) {
   const graphFrame = useRef<HTMLDivElement>(null);
   const graphRef = useRef<any>(null);
+  const onNodeClickRef = useRef(onNodeClickCallback);
+  useEffect(() => {
+    onNodeClickRef.current = onNodeClickCallback;
+  }, [onNodeClickCallback]);
 
   useEffect(() => {
     const applyThemeStyles = () => {
@@ -228,6 +234,9 @@ export default function GraphVis3D({
         .nodeThreeObject(createNodeLabelSprite)
         .onNodeClick((node: any) => {
           focusNode(graphRef.current, node);
+          if (onNodeClickRef.current) {
+            onNodeClickRef.current(node as GraphNode);
+          }
         })
         .linkHoverPrecision(10)
         .linkColor(() => "#999999")

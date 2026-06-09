@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import GraphQuery from "../components/graph/GraphQuery";
-import type { GraphData } from "../types";
+import type { GraphData, GraphNode } from "../types";
 import GraphVis2D from "../components/graph/GraphVis2D";
+import GraphInfoPanel from "../components/graph/GraphInfoPanel";
 import MobileWarning from "../components/MobileWarning";
 import { useSearchParams } from "react-router-dom";
 
@@ -27,6 +28,7 @@ export default function Graph2D() {
     nodes: [],
     edges: [],
   });
+  const [selectedNode, setSelectedNode] = useState<GraphNode | null>(null);
 
   const messageTypeClass =
     messageType === "success"
@@ -54,6 +56,7 @@ export default function Graph2D() {
             loading={loading}
             setLoading={setLoading}
             useShellLayout={useShellLayout}
+            onNodeClickCallback={setSelectedNode}
           />
         </div>
 
@@ -95,6 +98,12 @@ export default function Graph2D() {
         setMessage={setMessage}
         setMessageType={setMessageType}
         manualFetch={manualFetch}
+      />
+
+      <GraphInfoPanel
+        graphData={graphData}
+        selectedNode={selectedNode}
+        onNodeSelect={setSelectedNode}
       />
     </div>
   );
