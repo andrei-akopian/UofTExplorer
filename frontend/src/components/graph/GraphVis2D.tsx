@@ -1,5 +1,12 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import type { GraphData, GraphEdge, GraphNode, QueryInfo } from "../../types";
+import type {
+  GraphData,
+  GraphEdge,
+  GraphNode,
+  QueryInfo,
+  DirectionNode,
+} from "../../types";
+import { useCreateDirectedGraph } from "../../hooks/useGraph";
 
 interface Node extends GraphNode {
   id: string;
@@ -84,11 +91,11 @@ export default function GraphVis2D({
   graphData,
   loading,
   setLoading,
-  useShellLayout,
   onNodeClickCallback,
 }: GraphVis2DProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const networkRef = useRef<any>(null);
+  const directedGraph = useCreateDirectedGraph(graphData, true);
   const [activeNodes, setActiveNodes] = useState<Node[]>([]);
   const activeNodesRef = useRef<Node[]>([]);
   const onNodeClickRef = useRef(onNodeClickCallback);
@@ -241,6 +248,10 @@ export default function GraphVis2D({
 
     setLoading && setLoading(false);
   }, [graphData]);
+
+  useEffect(() => {
+    console.log(directedGraph);
+  }, [directedGraph]);
 
   return (
     <>

@@ -31,6 +31,11 @@ export interface GraphData {
   [key: string]: any;
 }
 
+export interface DirectionNode {
+  id: string;
+  targets: DirectionNode[];
+}
+
 export interface QueryInfo {
   type: "course" | "program" | "department" | "all" | "";
   code: string;

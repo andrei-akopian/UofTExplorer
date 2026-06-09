@@ -2,8 +2,13 @@
  * React hooks for common graph operations
  */
 
-import { useState, useCallback, useMemo } from "react";
-import type { GraphData, FilterOptions } from "../types";
+import { useState, useCallback, useMemo, useEffect } from "react";
+import type {
+  GraphData,
+  GraphEdge,
+  FilterOptions,
+  DirectionNode,
+} from "../types";
 import {
   fetchGraphData,
   searchAll,
@@ -171,6 +176,45 @@ export function useSearch(
     () => ({ results, loading, error, search, clear }),
     [results, loading, error, search, clear],
   );
+}
+
+/**
+ * Hook for Directional Graph
+ */
+
+export function useCreateDirectedGraph(
+  data: GraphData,
+  reverse: boolean = false,
+): Map<string, DirectionNode> {
+  const [directedGraph, setDirectedGraph] = useState<
+    Map<string, DirectionNode>
+  >(new Map());
+
+  useEffect(() => {
+    let dict: Map<string, DirectionNode> = new Map();
+    for (const edge of data.edges) {
+      let edgeFrom = edge.from;
+      let edgeTo = edge.to;
+      if (reverse) {
+        edgeFrom = edge.to;
+        edgeTo = edge.from;
+      }
+      if (!dict.has(edgeTo)) {
+        let newNode: DirectionNode = { id: edgeTo, targets: [] };
+        dict.set(edgeTo, newNode);
+      }
+      if (!dict.has(edgeFrom)) {
+        let newNode: DirectionNode = { id: edgeFrom, targets: [] };
+        dict.set(edgeFrom, newNode);
+      }
+      const toNode = dict.get(edgeTo);
+      if (toNode) {
+        dict.get(edgeFrom)?.targets.push(toNode);
+      }
+    }
+    setDirectedGraph(dict);
+  }, [data]);
+  return directedGraph;
 }
 
 interface UseLocalStorageReturn<T> {
