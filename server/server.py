@@ -9,12 +9,8 @@ Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 This file was written with the help of ChatGPT codex GPT-5.4.
 """
 
-import os
 import socket
 import json
-import time
-import uuid
-import threading
 from typing import Any
 from flask import (
     Flask,
@@ -52,14 +48,6 @@ TICKETS: dict[str, dict[str, Any]] = {}
 
 MAX_RESULTS = {"departments": 20, "programs": 4, "courses": 36}
 
-DEFAULT_QUERY = "MAT332H1"
-DEFAULT_QUERY_SNAPSHOT = {"type": "", "code": "", "name": ""}
-# type can be {"course", "program", "department", "all", ""}
-# code is the actual code
-# name is
-
-IMAGE_PATHS = ["data_analysis/images"]
-
 
 def get_global_statistics_from_file() -> dict[str, int | float]:
     """
@@ -80,71 +68,6 @@ def index() -> ResponseReturnValue:
 
     # Get global statistics from precomputed JSON file
     return render_template("index.html")
-
-
-@app.route("/2dgraph")
-def graph2d() -> ResponseReturnValue:
-    """
-    Return the data to be used to render the 2d graph.
-    """
-    search = request.args.get("search")
-    app.logger.info("Processing Request for / root (index.html - 2d graph)")
-
-    if search != "" and search is not None:
-        graph_data = graph_for_query(search)
-    else:
-        graph_data = graph_for_query(DEFAULT_QUERY)
-    app.logger.info("... and sending response.")
-
-    return render_template(
-        "2dgraph.html",
-        data=graph_data,
-        departments=COURSE_GRAPH_CONTAINER.departments,
-        breadth=COURSE_GRAPH_CONTAINER.breadths,
-        current_query=DEFAULT_QUERY_SNAPSHOT,
-    )
-
-
-@app.route("/3dforcegraph")
-def forcegraph3d() -> ResponseReturnValue:
-    """
-    Return the data to be used to render the 3d graph.
-    """
-    search = request.args.get("search")
-    app.logger.info("Processing Request for /3dforcegraph")
-
-    if search != "" and search is not None:
-        graph_data = graph_for_query(search)
-    else:
-        graph_data = graph_for_query(DEFAULT_QUERY)
-    app.logger.info("... and sending response.")
-
-    return render_template(
-        "3dforcegraph.html",
-        data=graph_data,
-        departments=COURSE_GRAPH_CONTAINER.departments,
-        breadth=COURSE_GRAPH_CONTAINER.breadths,
-        current_query=DEFAULT_QUERY_SNAPSHOT,
-    )
-
-
-@app.route("/pathexplorer")
-def path_explorer() -> ResponseReturnValue:
-    """
-    Return the data to be used to render the Path Explorer page.
-    """
-    return render_template("pathexplorer.html")
-
-
-@app.route("/globalstats")
-def globalstats() -> ResponseReturnValue:
-    """
-    Return the data to be used to render the Global Statistics page.
-    """
-    app.logger.info("Processed request for /globalstats and sent response.")
-    statistics = get_global_statistics_from_file()
-    print(statistics)
-    return render_template("globalstats.html", statistics=statistics)
 
 
 @app.route("/api/ticket/<ticket_id>", methods=["GET"])
@@ -247,186 +170,6 @@ def _pathfind(
     except Exception as e:
         app.logger.warning(e)
         TICKETS[ticket_id]["error"] = str(e)
-
-
-@app.route("/pathexplorerplanning", methods=["POST"])
-def pathexplorerplanning() -> ResponseReturnValue:
-    """
-    Endpoint for the path explorer page request payload.
-    Returns job_id immediately, runs solver in background thread.
-    """
-    try:
-        request_data = request.get_json(silent=True) or {}
-        completed_courses = request_data.get("completed_courses", [])
-        desired_courses = request_data.get("desired_courses", [])
-        avoided_courses = request_data.get("avoided_courses", [])
-        job_id = request_data.get("job_id", str(uuid.uuid4()))
-
-        app.logger.info(
-            "Received path explorer request: job_id=%s completed=%s desired=%s avoided=%s",
-            job_id,
-            completed_courses,
-            desired_courses,
-            avoided_courses,
-        )
-
-        # Initialize progress tracking
-        PROGRESS_TRACKER[job_id] = {
-            "status": "starting",
-            "case_bits": "",
-            "dimension": 0,
-            "warning": None,
-            "cancelled": False,
-            "start_time": time.time(),
-        }
-
-        # Start solver in background thread
-        solver_thread = threading.Thread(
-            target=_solve_in_background,
-            args=(job_id, completed_courses, desired_courses, avoided_courses),
-            daemon=True,
-        )
-        solver_thread.start()
-
-        # Return immediately with job_id
-        return jsonify({"job_id": job_id}), 202
-
-    except Exception as e:
-        app.logger.warning(e)
-        return jsonify({"error": "Internal error"}), 500
-
-
-def _solve_in_background(
-    job_id: str,
-    completed_courses: list[str],
-    desired_courses: list[str],
-    avoided_courses: list[str],
-) -> None:
-    """
-    Background worker function that runs the SAT solver and stores results in PROGRESS_TRACKER.
-    """
-    try:
-        # Update progress: computing fundamentals
-        PROGRESS_TRACKER[job_id]["status"] = "computing_fundamentals"
-
-        # Define progress callback for brute-force solver
-        def update_bruteforce_progress(curr: list[int], dimension: int) -> None:
-            """Callback to update progress during brute-force solving with pruning"""
-            if job_id in PROGRESS_TRACKER:
-                # Check if user cancelled
-                if PROGRESS_TRACKER[job_id].get("cancelled", False):
-                    raise RuntimeError("Solving cancelled by user")
-                # Convert case array to binary string for display (e.g., "10110101")
-                case_bits = "".join(map(str, curr))
-                PROGRESS_TRACKER[job_id]["status"] = "solving"
-                PROGRESS_TRACKER[job_id]["case_bits"] = case_bits
-                PROGRESS_TRACKER[job_id]["dimension"] = dimension
-
-        solver = sat.solve_sat(
-            COURSE_GRAPH_CONTAINER.graph,
-            desired_courses,
-            completed_courses,
-            avoided_courses,
-            progress_callback=update_bruteforce_progress,
-        )
-
-        num_fundamentals = next(solver)
-        # Set dimension immediately after computing fundamentals
-        PROGRESS_TRACKER[job_id]["dimension"] = num_fundamentals
-        PROGRESS_TRACKER[job_id]["status"] = "solving"
-
-        # Check for warning and set it immediately (before solving)
-        warning = None
-        if num_fundamentals > 20:
-            warning = "This evaluation requires testing more than 20 courses, which may take a long time to complete."
-            PROGRESS_TRACKER[job_id]["warning"] = warning
-
-        solution = next(solver)
-        solution_selection = {str(course): course for course in solution}
-        target_selection = {
-            tar: COURSE_GRAPH_CONTAINER.graph.courses[tar] for tar in desired_courses
-        }
-        origins = {str(course) for course in solution_selection}
-        for tar in target_selection:
-            origins.add(tar)
-
-        subgraph = construct_subgraph(
-            COURSE_GRAPH_CONTAINER.graph,
-            list(origins),
-            traversers.Targets(True, True, False, False),
-        )
-        graph_data = deconstruct_course_graph(
-            subgraph, solution_selection, target_selection
-        )
-
-        # Add display text for target courses (desired courses)
-        solution_display = {
-            code: f"{code}: {course.data.title}"
-            for code, course in solution_selection.items()
-        }
-        graph_data["solution_display"] = solution_display
-
-        # Store results in progress tracker
-        PROGRESS_TRACKER[job_id]["status"] = "complete"
-        PROGRESS_TRACKER[job_id]["graph_data"] = graph_data
-        PROGRESS_TRACKER[job_id]["warning"] = warning
-        PROGRESS_TRACKER[job_id]["num_fundamentals"] = num_fundamentals
-
-        app.logger.warning("%s", solution_selection)
-
-    except RuntimeError as e:
-        if "cancelled" in str(e).lower():
-            PROGRESS_TRACKER[job_id]["status"] = "cancelled"
-        else:
-            PROGRESS_TRACKER[job_id]["status"] = "error"
-            PROGRESS_TRACKER[job_id]["error"] = str(e)
-    except Exception as e:
-        PROGRESS_TRACKER[job_id]["status"] = "error"
-        PROGRESS_TRACKER[job_id]["error"] = str(e)
-        app.logger.warning(e)
-
-
-@app.route("/pathexplorer_cancel/<job_id>", methods=["POST"])
-def pathexplorer_cancel(job_id: str) -> ResponseReturnValue:
-    """
-    Endpoint to cancel a path explorer planning request.
-    """
-    if job_id not in PROGRESS_TRACKER:
-        return jsonify({"error": "Job not found"}), 404
-
-    PROGRESS_TRACKER[job_id]["cancelled"] = True
-    return jsonify({"status": "cancel_requested"}), 200
-
-
-@app.route("/pathexplorer_progress/<job_id>", methods=["GET"])
-def pathexplorer_progress(job_id: str) -> ResponseReturnValue:
-    """
-    Endpoint to check progress of a path explorer planning request.
-    Returns case bits during solving, and full graph data when complete.
-    """
-    if job_id not in PROGRESS_TRACKER:
-        return jsonify({"error": "Job not found"}), 404
-
-    progress_data = PROGRESS_TRACKER[job_id]
-    response = {
-        "job_id": job_id,
-        "status": progress_data.get("status", "unknown"),
-        "case_bits": progress_data.get("case_bits", ""),
-        "dimension": progress_data.get("dimension", 0),
-        "warning": progress_data.get("warning"),
-        "error": progress_data.get("error"),
-    }
-
-    # Include graph data and metadata when complete
-    if progress_data.get("status") == "complete":
-        response.update(
-            {
-                **progress_data.get("graph_data", {}),
-                "num_fundamentals": progress_data.get("num_fundamentals", 0),
-            }
-        )
-
-    return jsonify(response), 200
 
 
 @app.route("/api/get_immediate_postreqs", methods=["POST"])
@@ -620,25 +363,6 @@ def graph_for_query(
     filtered_graph = get_filtered_graph(COURSE_GRAPH_CONTAINER, query, filters)
 
     return filtered_graph
-
-
-@app.route("/images/<path:filename>")
-def images(filename: str) -> Response | None:
-    """
-    Scan the folders in IMAGE_PATHS for the requested image, and return the requested image.
-    Return None if the image is not in the folders.
-    """
-    for path in IMAGE_PATHS:
-        print(
-            os.listdir(path),
-            filename in os.listdir(path),
-            f"./{path}/{filename}",
-            os.path.exists(f"./{path}/{filename}"),
-        )
-        if os.path.exists(f"./{path}/{filename}"):
-            return send_from_directory("../data_analysis/images", filename)
-
-    return None
 
 
 @app.route("/api/departments", methods=["GET"])
