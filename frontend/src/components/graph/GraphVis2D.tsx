@@ -9,7 +9,7 @@ interface Node extends GraphNode {
   x?: number;
   y?: number;
   targetRadius?: number;
-  size: number;
+  mass: number;
   color: string;
   font?: { size: number };
 }
@@ -19,8 +19,21 @@ const convertGenericNode = (node: GraphNode): Node => {
     ...node,
     id: node.id,
     label: node.label,
+    code: node.code,
+    depth: node.depth,
     size: node.size,
+    shape: node.shape ? node.shape : "circle",
+    x: node.x,
+    y: node.y,
+    targetRadius: node.targetRadius,
     color: node.color,
+    mass: 10,
+    font: {
+      size:
+        20 + node["class_size"]
+          ? Math.log(node["class_size"]) / Math.log(1.3)
+          : 0,
+    },
   };
 };
 
@@ -54,10 +67,10 @@ const convertGenericGraph = (data: GraphData): Graph2DData => {
   };
 };
 
-const PHYSICS_DAMPING = 0.4;
+const PHYSICS_DAMPING = 0.9;
 const PHYSICS_SPRING_CONST = 0.1;
 const PHYSICS_GRAV_CONSTANT = -4000;
-const PHYSICS_SPRING_LENGTH = 300;
+const PHYSICS_SPRING_LENGTH = 50;
 
 interface GraphVis2DProps {
   graphData: GraphData;
@@ -65,7 +78,6 @@ interface GraphVis2DProps {
   setLoading?: (loading: boolean) => void;
   onNodeClickCallback?: (node: GraphNode) => void;
   onEdgeClickCallback?: (edge: GraphEdge) => void;
-  useShellLayout?: boolean;
 }
 
 export default function GraphVis2D({
@@ -116,12 +128,13 @@ export default function GraphVis2D({
             solver: "barnesHut",
             barnesHut: {
               gravitationalConstant: PHYSICS_GRAV_CONSTANT,
-              centralGravity: 0.05,
+              centralGravity: 0.2,
               springLength: PHYSICS_SPRING_LENGTH,
               springConstant: PHYSICS_SPRING_CONST,
               damping: PHYSICS_DAMPING,
               avoidOverlap: 0.8,
             },
+            minVelocity: 5,
             maxVelocity: 140,
             timestep: 0.35,
             adaptiveTimestep: true,
@@ -170,19 +183,6 @@ export default function GraphVis2D({
     const MIN_RADIUS_STEP = 300;
     const NODE_GIRTH = 120;
 
-    if (useShellLayout) {
-      nodes.forEach((n) => {
-        const depth =
-          n.depth !== null && n.depth !== undefined
-            ? parseInt(String(n.depth))
-            : null;
-        if (depth !== null) {
-          if (!levels[depth]) levels[depth] = [];
-          levels[depth].push(n);
-        }
-      });
-    }
-
     const levelRadii: Record<number, number> = {};
     let currentRadius = 0;
     const sortedDepths = Object.keys(levels)
@@ -206,17 +206,9 @@ export default function GraphVis2D({
           : undefined;
       const processedNode = { ...n, depth };
 
-      if (useShellLayout && depth !== undefined && levelRadii[depth]) {
-        const radius = levelRadii[depth];
-        const angle = Math.PI / 2 + (Math.random() - 0.5) * 2;
-        processedNode.x = Math.cos(angle) * radius;
-        processedNode.y = Math.sin(angle) * radius;
-        processedNode.targetRadius = radius;
-      } else {
-        processedNode.x = (Math.random() - 0.5) * 200;
-        processedNode.y = (Math.random() - 0.5) * 200;
-        processedNode.targetRadius = undefined;
-      }
+      processedNode.x = (Math.random() - 0.5) * 200;
+      processedNode.y = (Math.random() - 0.5) * 200;
+      processedNode.targetRadius = undefined;
 
       sumX += processedNode.x || 0;
       sumY += processedNode.y || 0;
@@ -234,7 +226,6 @@ export default function GraphVis2D({
 
   /* Graph Updating */
   useEffect(() => {
-    console.log("Graph data updated:", graphData);
     const data2D = convertGenericGraph(graphData);
     const prepared = prepareData(data2D.nodes, data2D.edges);
     setActiveNodes(prepared.nodes);

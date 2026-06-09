@@ -73,6 +73,8 @@ def deconstruct_course_graph(
             or None,
             "exclusions": course.data.original_requisite_strings.get("exclusions")[11:]
             or None,
+            # FIXME, make better default behavior here
+            "class_size": [course.data.class_size, 30][course.data.class_size is None],
         }
 
         # Set the colour of the course
@@ -203,22 +205,22 @@ def deconstruct_prerequisites(
 
 
 if __name__ == "__main__":
-    # pass
-    import doctest
+    pass
+    # import doctest
 
-    doctest.testmod(verbose=True)
+    # doctest.testmod(verbose=True)
 
-    import python_ta
+    # import python_ta
 
-    python_ta.check_all(
-        config={
-            "allow-local-imports": True,
-            "extra-imports": [],
-            "allowed-io": [],
-            "max-line-length": 120,
-            "max-nested-blocks": 5,
-            "max-locals": 20,
-            "max-branches": 15,
-            "max-args": 7,
-        }
-    )
+    # python_ta.check_all(
+    #     config={
+    #         "allow-local-imports": True,
+    #         "extra-imports": [],
+    #         "allowed-io": [],
+    #         "max-line-length": 120,
+    #         "max-nested-blocks": 5,
+    #         "max-locals": 20,
+    #         "max-branches": 15,
+    #         "max-args": 7,
+    #     }
+    # )

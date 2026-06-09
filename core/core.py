@@ -517,6 +517,7 @@ class CourseData:
     """
 
     code_split: list[str | int]
+    previous_course_codes: list[str]
     title: str
     description: str
     cr_ncr: bool
@@ -528,6 +529,7 @@ class CourseData:
     def __init__(
         self,
         code_split: list[str],
+        previous_course_codes: list[str],
         title: str,
         description: str,
         cr_ncr: bool,
@@ -540,6 +542,7 @@ class CourseData:
         Initialize a new CourseData object.
         """
         self.code_split = code_split
+        self.previous_course_codes = previous_course_codes
         self.title = title
         self.description = description
         self.cr_ncr = cr_ncr

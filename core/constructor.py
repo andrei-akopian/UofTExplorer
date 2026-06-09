@@ -112,6 +112,7 @@ def construct_course_graph(filename: str) -> CourseGraph:
         # Create course data object
         course_data = CourseData(
             code_split=split_course_code,
+            previous_course_codes=course["previous_course_codes"],
             title=course["title"],
             description=course["description"],
             cr_ncr=course["cr_ncr_eligible"],

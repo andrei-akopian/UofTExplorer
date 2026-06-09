@@ -102,7 +102,7 @@ export default function PathExplorer() {
       <MobileWarning />
 
       <div id="vis graph" className="relative h-full w-full max-md:h-[50vh]">
-        <GraphVis2D graphData={graphData} useShellLayout={true} />
+        <GraphVis2D graphData={graphData}/>
       </div>
       <div
         id="controls"
