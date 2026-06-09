@@ -337,7 +337,9 @@ def get_filtered_graph(
 
     # Deconstruct the subgraph
     graph_data.update(
-        deconstruct_course_graph(subgraph, filtered_courses, special_courses)
+        deconstruct_course_graph(
+            subgraph, filtered_courses, special_courses, container.breadths
+        )
     )
 
     live_stats = compute_live_statistics(subgraph, container)

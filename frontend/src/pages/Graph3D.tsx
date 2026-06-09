@@ -1,7 +1,8 @@
 import { use, useEffect, useState } from "react";
-import type { GraphData } from "../types";
+import type { GraphData, GraphNode } from "../types";
 import GraphQuery from "../components/graph/GraphQuery";
 import GraphVis3D from "../components/graph/GraphVis3D";
+import GraphInfoPanel from "../components/graph/GraphInfoPanel";
 import { useSearchParams } from "react-router-dom";
 
 export default function Graph3D() {
@@ -9,6 +10,7 @@ export default function Graph3D() {
     nodes: [],
     edges: [],
   });
+  const [selectedNode, setSelectedNode] = useState<GraphNode | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [_messageType, setMessageType] = useState<"info" | "success" | "error">(
@@ -39,6 +41,7 @@ export default function Graph3D() {
           useShellLayout={useShellLayout}
           setMessage={setMessage}
           setMessageType={setMessageType}
+          onNodeClickCallback={setSelectedNode}
         />
       </div>
 
@@ -68,6 +71,11 @@ export default function Graph3D() {
         manualFetch={manualFetch}
       />
 
+      <GraphInfoPanel
+        graphData={graphData}
+        selectedNode={selectedNode}
+        onNodeSelect={setSelectedNode}
+      />
       <div className="fixed bottom-10 left-5 z-20 flex min-w-[20rem] flex-col gap-1">
         <div
           id="currQueryDisplay"

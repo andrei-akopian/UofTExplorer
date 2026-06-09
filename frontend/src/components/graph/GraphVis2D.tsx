@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import type { GraphData, GraphEdge, GraphNode, QueryInfo } from "../../types";
 
 interface Node extends GraphNode {
@@ -16,16 +16,11 @@ interface Node extends GraphNode {
 
 const convertGenericNode = (node: GraphNode): Node => {
   return {
+    ...node,
     id: node.id,
     label: node.label,
-    code: node.code,
-    depth: node.depth,
-    x: node.x,
-    y: node.y,
-    targetRadius: node.targetRadius,
     size: node.size,
     color: node.color,
-    font: node.font,
   };
 };
 
@@ -78,10 +73,16 @@ export default function GraphVis2D({
   loading,
   setLoading,
   useShellLayout,
+  onNodeClickCallback,
 }: GraphVis2DProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const networkRef = useRef<any>(null);
-  const [_activeNodes, setActiveNodes] = useState<Node[]>([]);
+  const [activeNodes, setActiveNodes] = useState<Node[]>([]);
+  const activeNodesRef = useRef<Node[]>([]);
+  const onNodeClickRef = useRef(onNodeClickCallback);
+  useEffect(() => {
+    onNodeClickRef.current = onNodeClickCallback;
+  }, [onNodeClickCallback]);
 
   useEffect(() => {
     const initNetwork = async () => {
@@ -140,6 +141,18 @@ export default function GraphVis2D({
           { nodes: [], edges: [] },
           options,
         );
+        network.on("click", (params: any) => {
+          if (params.nodes?.length > 0) {
+            const nodeId = String(params.nodes[0]);
+            const node = activeNodesRef.current.find(
+              (n) => String(n.id) === nodeId,
+            );
+            if (node && onNodeClickRef.current) {
+              onNodeClickRef.current(node);
+            }
+          }
+        });
+
         networkRef.current = network;
       } catch (err) {
         console.error("Failed to initialize network:", err);
@@ -225,6 +238,7 @@ export default function GraphVis2D({
     const data2D = convertGenericGraph(graphData);
     const prepared = prepareData(data2D.nodes, data2D.edges);
     setActiveNodes(prepared.nodes);
+    activeNodesRef.current = prepared.nodes;
 
     if (networkRef.current) {
       networkRef.current.setData({

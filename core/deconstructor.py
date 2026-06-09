@@ -16,6 +16,7 @@ def deconstruct_course_graph(
     course_graph: CourseGraph,
     filtered_courses: dict[str, CourseNode] = None,
     special_courses: dict[str, CourseNode] = None,
+    breadths: dict[str, str] = None,
 ) -> dict[str, list[dict]]:
     """
     Return a dictionary of course nodes, logic gate AND/OR nodes, and graph edges to be passed into a json file and
@@ -36,6 +37,8 @@ def deconstruct_course_graph(
         filtered_courses = {}
     if special_courses is None:
         special_courses = {}
+    if breadths is None:
+        breadths = {}
 
     # Maybe should be renamed b/c logic-gate nodes also are added to this dictionary?
     json_courses = []  # List of dictionaries for each course and each AND/OR node
@@ -49,8 +52,27 @@ def deconstruct_course_graph(
         json_course = {
             "id": course_code,
             "label": course_code,
+            "code": course_code,
             "title": course.data.title,
             "depth": depth,
+            "description": course.data.description,
+            "crNcr": course.data.cr_ncr,
+            "breadth": ", ".join(
+                f"{breadths[str(br)]}" if str(br) in breadths else str(br)
+                for br in course.data.breadth
+                if course.data.breadth[br] != 0
+            )
+            or None,
+            "prerequisites": course.data.original_requisite_strings.get(
+                "prerequisites"
+            )[14:]
+            or None,
+            "corequisites": course.data.original_requisite_strings.get("corequisites")[
+                13:
+            ]
+            or None,
+            "exclusions": course.data.original_requisite_strings.get("exclusions")[11:]
+            or None,
         }
 
         # Set the colour of the course
