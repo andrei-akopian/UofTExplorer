@@ -641,6 +641,30 @@ class CourseParser:
             self.general_logger.critical("course has no title")
         return course_code, title
 
+    def original_req_strings_preformatter(self, strings: list[str]) -> str:
+        """
+        Original strings have a really annoying format like:
+        Prerequisite: MAT257Y1/ [ MAT223H1/ MATA23H3/ MAT223H5/ MAT240H1/ MAT240H5, ( MAT235H1, MAT236H1)/ MAT235Y1 / MAT235Y5/ ( MAT232H5, MAT236H5)/ ( MATB41H3, MATB42H3/ MATB43H3)/ MAT237Y1/ MAT237Y5, MAT246H1/ (MAT1581, MAT159H1)/ MAT157Y1/ ( MAT157H5, MAT159H5)/ MAT157Y5/ CSC236H1/ CSC240H1]
+        This function cleans up these formatting problems.
+
+        Input is a list of bs4 strings (.strings attribute output)
+        """
+        output_chars = []
+        space_del = False
+        for s in strings:
+            for c in s:
+                if c in WHITESPACE and not space_del:
+                    output_chars.append(c)
+                    continue
+                elif c in WHITESPACE and space_del:
+                    continue
+                if c not in WHITESPACE and space_del:
+                    space_del = False
+                if c in "([/":
+                    space_del = True
+                output_chars.append(c)
+        return "".join(output_chars)
+
     def course_bs4_to_dict(self, div: bs4.PageElement | bs4.Tag) -> tuple[dict, str]:
         """
         Convert a Beautifulsoup object corresponding to the HTML element containing a course, into a dictionary.
@@ -766,7 +790,9 @@ class CourseParser:
         if len(prerequisites_raw) > 0:
             if len(prerequisites_raw) > 1:
                 self.general_logger.warning("multiple prerequisite fields")
-            prerequisite_original = "".join(prerequisites_raw[0].strings)
+            prerequisite_original = self.original_req_strings_preformatter(
+                prerequisites_raw[0].strings
+            )
             structure = self.requisites_parser(prerequisite_original)
             prerequisites = structure
             has_fields.append("prerequisites")
@@ -776,7 +802,9 @@ class CourseParser:
         if len(corequisites_raw) > 0:
             if len(corequisites_raw) > 1:
                 self.general_logger.warning("multiple corequisite fields")
-            corequisites_original = "".join(corequisites_raw[0].strings)
+            corequisites_original = self.original_req_strings_preformatter(
+                corequisites_raw[0].strings
+            )
             structure = self.requisites_parser(corequisites_original)
             corequisites = structure
             has_fields.append("corequisites")
@@ -787,7 +815,9 @@ class CourseParser:
         if len(exclusions_raw) > 0:
             if len(exclusions_raw) > 1:
                 self.general_logger.warning("multiple prerequisite fields")
-            exclusions_original = "".join(exclusions_raw[0].strings)
+            exclusions_original = self.original_req_strings_preformatter(
+                exclusions_raw[0].strings
+            )
             structure = self.requisites_parser(exclusions_original)
             exclusions = structure
             has_fields.append("exclusions")
