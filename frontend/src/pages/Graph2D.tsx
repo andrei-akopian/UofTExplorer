@@ -40,7 +40,6 @@ export default function Graph2D() {
             graphData={graphData}
             loading={loading}
             setLoading={setLoading}
-            useShellLayout={useShellLayout}
           />
         </div>
 

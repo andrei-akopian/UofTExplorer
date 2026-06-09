@@ -73,7 +73,7 @@ export default function PathExplorer() {
   return (
     <div className="relative flex h-full w-full font-sans max-md:flex-col">
       <div id="vis graph" className="relative h-full w-full max-md:h-[50vh]">
-        <GraphVis2D graphData={graphData} useShellLayout={true} />
+        <GraphVis2D graphData={graphData}/>
       </div>
       <div
         id="controls"
