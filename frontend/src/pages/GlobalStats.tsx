@@ -33,7 +33,11 @@ function Theorem({ children, className = "" }: TheoremProps) {
 function genericFigure(src: string, caption: string) {
   return (
     <figure className="mx-auto my-6 text-center [counter-increment:figcaption]">
-      <img className="mx-auto h-auto w-full" src={src} alt={caption} />
+      <img
+        className="bg-page-bg-light mx-auto h-auto w-full"
+        src={src}
+        alt={caption}
+      />
       <figcaption className="mt-2 ml-0 w-full px-1 pt-1 text-center italic before:font-bold before:not-italic before:[content:'Figure_'counter(figcaption)'._']">
         {caption}
       </figcaption>
@@ -49,7 +53,7 @@ function doubleFigure(
 ) {
   return (
     <figure className="mx-auto my-6 text-center [counter-increment:figcaption]">
-      <div className="flex flex-col gap-4 md:flex-row md:gap-6">
+      <div className="bg-page-bg-light flex flex-col gap-4 md:flex-row md:gap-6">
         <img className="mx-auto h-auto" width="50%" src={src1} alt={caption1} />
         <img className="mx-auto h-auto" width="50%" src={src2} alt={caption2} />
       </div>
