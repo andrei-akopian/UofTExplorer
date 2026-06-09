@@ -346,6 +346,28 @@ def construct_subgraph(
     return subgraph
 
 
+def construct_disjoint_subgraphs(
+    graph: CourseGraph, directions: Optional[traversers.Targets] = None
+):
+    """
+    Construct a list of disjoint subgraphs of a graph.
+
+    Postcondition:
+    - all graphs in subgraphs are connected graphs.
+    """
+    subgraphs = []
+    if directions is None:
+        directions = traversers.Targets(True, False, False, True)
+    assert directions.prereq and directions.postreq  # makes no sense otherwise
+    all_courses = set(graph.courses.keys())
+    while len(all_courses) > 0:
+        some_course = next(iter(all_courses))
+        subgraph = construct_subgraph(graph, [some_course], directions=directions)
+        subgraphs.append(subgraph)
+        all_courses -= set(subgraph.courses.keys())
+    return subgraphs
+
+
 def construct_departments(department_file: str) -> dict[str, str]:
     """
     Return a dictionary mapping department codes to department names.
