@@ -27,7 +27,10 @@ const convertGenericNode = (node: GraphNode): Node => {
     color: node.color,
     mass: 10,
     font: {
-      size: node["class_size"] ? Math.sqrt(node["class_size"]) : 10,
+      size:
+        20 + node["class_size"]
+          ? Math.log(node["class_size"]) / Math.log(1.3)
+          : 0,
     },
   };
 };
@@ -62,7 +65,7 @@ const convertGenericGraph = (data: GraphData): Graph2DData => {
   };
 };
 
-const PHYSICS_DAMPING = 0.8;
+const PHYSICS_DAMPING = 0.9;
 const PHYSICS_SPRING_CONST = 0.1;
 const PHYSICS_GRAV_CONSTANT = -4000;
 const PHYSICS_SPRING_LENGTH = 50;
@@ -73,14 +76,9 @@ interface GraphVis2DProps {
   setLoading?: (loading: boolean) => void;
   onNodeClickCallback?: (node: GraphNode) => void;
   onEdgeClickCallback?: (edge: GraphEdge) => void;
-  useShellLayout?: boolean;
 }
 
-export default function GraphVis2D({
-  graphData,
-  setLoading,
-  useShellLayout,
-}: GraphVis2DProps) {
+export default function GraphVis2D({ graphData, setLoading }: GraphVis2DProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const networkRef = useRef<any>(null);
   const [_activeNodes, setActiveNodes] = useState<Node[]>([]);
@@ -117,7 +115,7 @@ export default function GraphVis2D({
             solver: "barnesHut",
             barnesHut: {
               gravitationalConstant: PHYSICS_GRAV_CONSTANT,
-              centralGravity: 0.05,
+              centralGravity: 0.2,
               springLength: PHYSICS_SPRING_LENGTH,
               springConstant: PHYSICS_SPRING_CONST,
               damping: PHYSICS_DAMPING,
