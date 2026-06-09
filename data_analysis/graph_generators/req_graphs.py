@@ -1,92 +1,53 @@
-from core.sat import solve_sat, solve_satz3
+def distr_direct_prereqs(GRAPH) -> None:
+    """ """
+    num_direct_prereqs = [
+        len(course_node.prereqs.reqs) if course_node.prereqs is not None else 0
+        for course_node in GRAPH.courses.values()
+    ]
+    maximum = max(num_direct_prereqs)
+    # print('courses with no direct prerequisites:', num_direct_prereqs.count(0))
 
-
-def distr_sat_lengthz3(GRAPH) -> None:
-    """
-    Make a bar plot of sat lengths using the z3 sat solver
-    """
-    lengths = []
-    progressed = 0
-    skipped = 0
-    zeros = 0
-    total = len(GRAPH.courses)
-    for course in GRAPH.courses:
-        print(f"{progressed} / {total} : {course}")
-        true_courses = solve_satz3(GRAPH, [course], [], [])
-        sol = len(true_courses)
-        if sol == 0:
-            zeros += 1
-        else:
-            lengths.append(sol)
-        progressed += 1
-
-    _, ax = plt.subplots(figsize=(10, 6))
+    _, ax = plt.subplots(figsize=(5, 5))
     plt.rcParams["font.size"] = 6
 
     ax.bar(
-        x=list(range(1, max(lengths) + 1)),
-        y=[lengths.count(i) for i in range(1, max(lengths) + 1)],
-        ax=ax,
+        x=list(range(0, maximum + 1)),
+        height=[num_direct_prereqs.count(i) for i in range(0, maximum + 1)],
     )
-    ax.set_xlabel("Length of Shortest Prerequisite Path")
+    ax.set_xlabel("Number of Direct Prerequisites")
     ax.set_yscale("log")
     ax.set_ylabel("Count")
-    ax.set_title(
-        "Distribution of Lengths of Shortest Prerequisite Path to Each Course."
-    )
+    ax.set_title("Distribution of Direct Prerequisites")
     plt.savefig(
-        f"{SAVE_PATH}/distribution_of_sat_lengths.svg",
+        f"{SAVE_PATH}/number_of_direct_prereqs.svg",
         format="svg",
         bbox_inches="tight",
         transparent=True,
     )
 
 
-def distr_sat_length(GRAPH) -> None:
-    """
-    Make a bar plot of sat lengths.
-    """
-    lengths = []
-    progressed = 0
-    skipped = 0
-    zeros = 0
-    total = len(GRAPH.courses)
-    for course in GRAPH.courses:
-        print(f"{progressed} / {total} : {course}")
-        solver = solve_sat(GRAPH, [course], [], [])
-        dim = next(solver)
-        if dim > 20:
-            # print('skipped: too many fundamentals')
-            progressed += 1
-            skipped += 1
-            continue
-        # print('fundamental dimension: ', dim)
-        sol = next(solver)
-        if len(sol) == 0:
-            zeros += 1
-        else:
-            lengths.append(len(sol))
-        progressed += 1
+def distr_total_prereqs(GRAPH) -> None:
+    """ """
+    num_total_prereqs = [
+        len(get_prereq_course_set(GRAPH, course_code)) - 1
+        for course_code in GRAPH.courses
+    ]
+    maximum = max(num_total_prereqs)
+    # print('courses with no prerequisites:', num_total_prereqs.count(0))
 
-    # print(f'skipped {skipped} / {total} courses due to too many fundamentals')
-    # print(f'found solutions for {progressed - skipped} / {total} courses')
-    # print(f'zero-length paths: {zeros}')
-
-    _, ax = plt.subplots(figsize=(10, 6))
+    _, ax = plt.subplots(figsize=(10, 5))
     plt.rcParams["font.size"] = 6
 
     ax.bar(
-        x=list(range(1, max(lengths) + 1)),
-        y=[lengths.count(i) for i in range(1, max(lengths) + 1)],
+        x=range(0, maximum + 1),
+        height=[num_total_prereqs.count(i) for i in range(0, maximum + 1)],
     )
-    ax.set_xlabel("Length of Shortest Prerequisite Path")
+    ax.set_xlabel("Number of Total Prerequisites")
+    ax.set_yscale("log")
     ax.set_ylabel("Count")
-    ax.set_title(
-        "Distribution of Lengths of Shortest Prerequisite Path to Each Course "
-        f"(skipped {skipped} course queries with >20 fundamentals; hidden {zeros} courses with no paths)"
-    )
+    ax.set_title("Distribution of Total Prerequisites")
     plt.savefig(
-        f"{SAVE_PATH}/distribution_of_sat_lengths.svg",
+        f"{SAVE_PATH}/number_of_total_prereqs.svg",
         format="svg",
         bbox_inches="tight",
         transparent=True,

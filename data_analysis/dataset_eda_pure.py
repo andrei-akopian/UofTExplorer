@@ -15,6 +15,7 @@ from core.algorithms import separate_courses_by_department, get_prereq_course_se
 from core.sat import solve_sat, solve_satz3
 
 from data_analysis.graph_generators import sat_graphs
+from data_analysis.graph_generators import req_graphs
 
 
 COURSES_FILE = "data/courses.json"
@@ -293,61 +294,6 @@ def course_length_pie_chart() -> None:
 
 
 # %%
-def distr_direct_prereqs() -> None:
-    """ """
-    num_direct_prereqs = [
-        len(course_node.prereqs.reqs) if course_node.prereqs is not None else 0
-        for course_node in GRAPH.courses.values()
-    ]
-    maximum = max(num_direct_prereqs)
-    # print('courses with no direct prerequisites:', num_direct_prereqs.count(0))
-
-    _, ax = plt.subplots(figsize=(5, 5))
-    plt.rcParams["font.size"] = 6
-
-    ax.bar(
-        x=list(range(0, maximum + 1)),
-        height=[num_direct_prereqs.count(i) for i in range(0, maximum + 1)],
-    )
-    ax.set_xlabel("Number of Direct Prerequisites")
-    ax.set_yscale("log")
-    ax.set_ylabel("Count")
-    ax.set_title("Distribution of Direct Prerequisites")
-    plt.savefig(
-        f"{SAVE_PATH}/number_of_direct_prereqs.svg",
-        format="svg",
-        bbox_inches="tight",
-        transparent=True,
-    )
-
-
-# %%
-def distr_total_prereqs() -> None:
-    """ """
-    num_total_prereqs = [
-        len(get_prereq_course_set(GRAPH, course_code)) - 1
-        for course_code in GRAPH.courses
-    ]
-    maximum = max(num_total_prereqs)
-    # print('courses with no prerequisites:', num_total_prereqs.count(0))
-
-    _, ax = plt.subplots(figsize=(10, 5))
-    plt.rcParams["font.size"] = 6
-
-    ax.bar(
-        x=range(0, maximum + 1),
-        height=[num_total_prereqs.count(i) for i in range(0, maximum + 1)],
-    )
-    ax.set_xlabel("Number of Total Prerequisites")
-    ax.set_yscale("log")
-    ax.set_ylabel("Count")
-    ax.set_title("Distribution of Total Prerequisites")
-    plt.savefig(
-        f"{SAVE_PATH}/number_of_total_prereqs.svg",
-        format="svg",
-        bbox_inches="tight",
-        transparent=True,
-    )
 
 
 def breadth_count_by_program() -> None:
@@ -496,8 +442,8 @@ def run_all() -> None:
     hours_per_course()
     breadth_count_by_department()
     breadth_count_by_program()
-    distr_total_prereqs()
-    distr_direct_prereqs()
+    req_graphs.distr_total_prereqs()
+    req_graphs.distr_direct_prereqs()
     # sat_graphs.distr_sat_lengthz3(GRAPH)
 
 
