@@ -12,6 +12,36 @@ const DEPTH_STRENGTH = 0.12;
 const PENDULUM_BIAS = 0.0;
 const DOWN_VECTOR_FORCE = 5.0;
 
+function getGraphBackgroundColor(): string {
+  const cssColor = getComputedStyle(document.documentElement)
+    .getPropertyValue("--color-page-bg")
+    .trim();
+  return cssColor || "#f5f5f5";
+}
+
+function isDarkThemeEnabled(): boolean {
+  const explicitTheme = document.documentElement.getAttribute("data-theme");
+  if (explicitTheme === "dark") {
+    return true;
+  }
+  if (explicitTheme === "light") {
+    return false;
+  }
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
+
+function createNodeLabelSprite(node: any): SpriteText {
+  const sprite = new SpriteText(node.code || node.label || node.id);
+  const darkMode = isDarkThemeEnabled();
+  sprite.color = darkMode ? "#ffffff" : "#1a1a1a";
+  sprite.strokeWidth = 1;
+  sprite.strokeColor = darkMode ? "#000000" : "#ffffff";
+  sprite.textHeight = 8;
+  // @ts-expect-error: position is not typed on SpriteText, but it exists at runtime
+  sprite.position.y = -10;
+  return sprite;
+}
+
 interface ProcessedGraphData {
   nodes: Array<any>;
   links: Array<{ source: string; target: string }>;
@@ -159,6 +189,31 @@ export default function GraphVis3D({
   const graphRef = useRef<any>(null);
 
   useEffect(() => {
+    const applyThemeStyles = () => {
+      if (graphRef.current) {
+        graphRef.current.backgroundColor(getGraphBackgroundColor());
+        graphRef.current.nodeThreeObject(createNodeLabelSprite);
+        if (typeof graphRef.current.refresh === "function") {
+          graphRef.current.refresh();
+        }
+      }
+    };
+
+    applyThemeStyles();
+
+    const observer = new MutationObserver(() => {
+      applyThemeStyles();
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme", "class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
     if (!graphFrame.current || !graphData?.nodes?.length) return;
 
     const processedData = processGraphData(graphData, useShellLayout);
@@ -170,22 +225,13 @@ export default function GraphVis3D({
         .linkDirectionalArrowLength(4)
         .linkDirectionalArrowRelPos(0.5)
         .nodeThreeObjectExtend(true)
-        .nodeThreeObject((node: any) => {
-          const sprite = new SpriteText(node.code || node.label || node.id);
-          sprite.color = "#1a1a1a";
-          sprite.strokeWidth = 1;
-          sprite.strokeColor = "#ffffff";
-          sprite.textHeight = 8;
-          // @ts-expect-error: position is not typed on SpriteText, but it exists at runtime
-          sprite.position.y = -10;
-          return sprite;
-        })
+        .nodeThreeObject(createNodeLabelSprite)
         .onNodeClick((node: any) => {
           focusNode(graphRef.current, node);
         })
         .linkHoverPrecision(10)
         .linkColor(() => "#999999")
-        .backgroundColor("#f5f5f5");
+        .backgroundColor(getGraphBackgroundColor());
 
       graphRef.current.d3Force("radial", radialPendulumForce(useShellLayout));
       graphRef.current.d3Force("charge").strength(-150);

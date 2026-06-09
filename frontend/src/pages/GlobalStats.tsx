@@ -62,7 +62,7 @@ function doubleFigure(
 
 export default function GlobalStats() {
   return (
-    <div className="flex min-h-screen justify-center overflow-y-auto font-serif">
+    <div className="bg-page-bg text-text-body flex min-h-screen justify-center overflow-y-auto font-serif">
       <div className="mx-auto max-w-[80ch] px-4 py-8">
         <article className="leading-7 [counter-reset:theorem_figcaption_tablecaption]">
           <h1 className="mt-6 mb-2 text-center text-3xl font-semibold">
@@ -74,7 +74,7 @@ export default function GlobalStats() {
             March 30, 2026
           </div>
 
-          <div className="my-6 rounded-md border-l-4 border-blue-700 bg-slate-100 p-4 text-slate-800 italic">
+          <div className="border-primary bg-card-bg text-text-secondary my-6 rounded-md border-l-4 p-4 italic">
             We explored the relationships between courses, programs, and
             departments at the Faculty of Arts & Science at the University of
             Toronto. This report summarizes the global statistics computed on
@@ -83,7 +83,7 @@ export default function GlobalStats() {
               href="https://artsci.calendar.utoronto.ca/"
               target="_blank"
               rel="noreferrer"
-              className="text-blue-700 hover:text-blue-900"
+              className="text-link hover:text-link-hover"
             >
               Arts & Science Academic Calendar
             </a>

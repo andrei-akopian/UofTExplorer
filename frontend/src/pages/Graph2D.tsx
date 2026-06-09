@@ -58,7 +58,7 @@ export default function Graph2D() {
           <summary className="m-0 flex h-full w-full list-none items-center justify-center p-0 [&::-webkit-details-marker]:hidden">
             <img src="/settings_gear.svg"></img>
           </summary>
-          <div className="border-border-dropdown shadow-dropdown absolute top-[calc(100%+6px)] right-0 left-auto z-1200 flex max-h-[20em] w-[20em] flex-col gap-1.5 overflow-y-auto rounded-md border bg-white p-2.5">
+          <div className="border-border-dropdown bg-panel-bg text-text-body shadow-dropdown absolute top-[calc(100%+6px)] right-0 left-auto z-1200 flex max-h-[20em] w-[20em] flex-col gap-1.5 overflow-y-auto rounded-md border p-2.5">
             <label className="flex max-h-none w-max min-w-[5em] items-center gap-2 overflow-visible font-sans text-sm">
               <input
                 type="checkbox"
@@ -72,7 +72,7 @@ export default function Graph2D() {
       </div>
 
       <div className="fixed bottom-10 left-5 z-20 flex min-w-[20rem] flex-col gap-1">
-        <div className="overflow-hidden text-[0.84rem] leading-[1.3] font-semibold text-ellipsis whitespace-nowrap text-(--color-text-query)">
+        <div className="text-text-query overflow-hidden text-[0.84rem] leading-[1.3] font-semibold text-ellipsis whitespace-nowrap">
           {currentQuery.code &&
             `Currently displaying: ${currentQuery.code} - ${currentQuery.name}`}
         </div>
