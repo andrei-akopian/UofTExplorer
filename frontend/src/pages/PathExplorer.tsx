@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { GraphData } from "../types";
 import CourseSearchBar from "../components/search/CourseSearchBar";
 import GraphVis2D from "../components/graph/GraphVis2D";
+import MobileWarning from "../components/MobileWarning";
 import { useImmediatePostreqs, usePathFinderSolution } from "../hooks/useGraph";
 
 export default function PathExplorer() {
@@ -98,6 +99,8 @@ export default function PathExplorer() {
 
   return (
     <div className="relative flex h-full w-full font-sans max-md:flex-col">
+      <MobileWarning />
+
       <div id="vis graph" className="relative h-full w-full max-md:h-[50vh]">
         <GraphVis2D graphData={graphData} useShellLayout={true} />
       </div>
@@ -198,7 +201,7 @@ export default function PathExplorer() {
 
       <p
         id="requestStatus"
-        className="pointer-events-none absolute bottom-17.5 left-54 z-4 m-0 min-h-[1.3rem] w-96 -translate-x-1/2 text-left text-[0.9rem] wrap-break-word whitespace-pre-wrap text-(--color-text-subtle) max-md:left-1/2 max-md:w-[calc(100%-2rem)] [&.error]:text-(--color-error-hover) [&.success]:text-(--color-success-text)"
+        className="text-text-subtle [&.error]:text-error-hover [&.success]:text-success-text pointer-events-none absolute bottom-17.5 left-54 z-4 m-0 min-h-[1.3rem] w-96 -translate-x-1/2 text-left text-[0.9rem] wrap-break-word whitespace-pre-wrap max-md:left-1/2 max-md:w-[calc(100%-2rem)]"
         aria-live="polite"
       ></p>
       <div className="fixed bottom-10 left-5 z-20 flex min-w-[20rem] flex-col gap-1">

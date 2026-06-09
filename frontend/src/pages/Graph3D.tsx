@@ -1,7 +1,8 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import type { GraphData } from "../types";
 import GraphQuery from "../components/graph/GraphQuery";
 import GraphVis3D from "../components/graph/GraphVis3D";
+import MobileWarning from "../components/MobileWarning";
 import { useSearchParams } from "react-router-dom";
 
 export default function Graph3D() {
@@ -31,6 +32,8 @@ export default function Graph3D() {
 
   return (
     <div className="relative flex h-full min-h-0 w-full overflow-hidden">
+      <MobileWarning />
+
       <div className="h-full min-w-0 flex-1">
         <GraphVis3D
           graphData={graphData}

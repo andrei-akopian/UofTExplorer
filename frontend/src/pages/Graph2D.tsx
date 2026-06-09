@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import GraphQuery from "../components/graph/GraphQuery";
 import type { GraphData } from "../types";
 import GraphVis2D from "../components/graph/GraphVis2D";
+import MobileWarning from "../components/MobileWarning";
 import { useSearchParams } from "react-router-dom";
 
 export default function Graph2D() {
@@ -44,6 +45,8 @@ export default function Graph2D() {
 
   return (
     <div className="relative h-full w-full overflow-hidden">
+      <MobileWarning />
+
       <div className="flex h-full w-full items-start">
         <div className="h-full min-w-0 flex-1">
           <GraphVis2D
@@ -72,7 +75,7 @@ export default function Graph2D() {
       </div>
 
       <div className="fixed bottom-10 left-5 z-20 flex min-w-[20rem] flex-col gap-1">
-        <div className="overflow-hidden text-[0.84rem] leading-[1.3] font-semibold text-ellipsis whitespace-nowrap text-(--color-text-query)">
+        <div className="text-text-query overflow-hidden text-[0.84rem] leading-[1.3] font-semibold text-ellipsis whitespace-nowrap">
           {currentQuery.code &&
             `Currently displaying: ${currentQuery.code} - ${currentQuery.name}`}
         </div>
