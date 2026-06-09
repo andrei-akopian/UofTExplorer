@@ -10,7 +10,7 @@ function CourseChip({
   onRemove: () => void;
 }) {
   return (
-    <div className="border-border-card flex items-center gap-[0.55rem] rounded-[0.95rem] border bg-white px-[0.9rem] py-[0.78rem] text-[0.96rem] shadow-[0_4px_12px_rgba(37,53,84,0.06)]">
+    <div className="border-border-card bg-panel-bg shadow-card flex items-center gap-[0.55rem] rounded-[0.95rem] border px-[0.9rem] py-[0.78rem] text-[0.96rem]">
       {course}
       <button
         key={`${course}-remove`}
@@ -102,7 +102,7 @@ export default function CourseSearchBar({
           />
         ))}
       </div>
-      <div className="border-border-card shadow-card absolute top-[calc(100%+0.35rem)] right-0 left-0 z-10 max-h-72 overflow-y-auto rounded-[0.95rem] border bg-white [&.show]:block [&:not(.show)]:hidden"></div>
+      <div className="border-border-card bg-panel-bg shadow-card absolute top-[calc(100%+0.35rem)] right-0 left-0 z-10 max-h-72 overflow-y-auto rounded-[0.95rem] border [&.show]:block [&:not(.show)]:hidden"></div>
     </div>
   );
 }
