@@ -13,7 +13,7 @@ export default function Home() {
 
         <p className="mt-10">
           Welcome! Explore how courses, programs, and departments are connected
-          at the Faculty of Arts and Sciences at the University of Toronto.
+          at the Faculty of Arts & Science at the University of Toronto.
         </p>
 
         <p>
@@ -94,6 +94,19 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        <p className="mt-10 text-center text-sm italic">
+          This project is open source. Visit the repository{" "}
+          <a
+            className={pageLinkClassName}
+            href="https://github.com/andrei-akopian/UofTExplorer/tree/main"
+            target="_blank"
+            rel="noreferrer"
+          >
+            here
+          </a>
+          .
+        </p>
       </div>
     </div>
   );
