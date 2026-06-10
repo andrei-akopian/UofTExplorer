@@ -102,7 +102,7 @@ export default function PathExplorer() {
       <MobileWarning />
 
       <div id="vis graph" className="relative h-full w-full max-md:h-[50vh]">
-        <GraphVis2D graphData={graphData}/>
+        <GraphVis2D graphData={graphData} />
       </div>
       <div
         id="controls"
@@ -133,21 +133,22 @@ export default function PathExplorer() {
           </button>
 
           <h1 className="mt-5">
-            Find the optimal path to courses you want to take:
+            Find the optimal path to courses you want to take: (considers
+            completed courses)
           </h1>
-
-          <CourseSearchBar
-            searchResults={avoidedCourses}
-            setSearchResults={setAvoidedCourses}
-            title="Courses you want to avoid"
-            placeholder="Add a course to avoid"
-          />
 
           <CourseSearchBar
             searchResults={desiredCourses}
             setSearchResults={setDesiredCourses}
             title="Courses you want to take"
             placeholder="Add a course to take"
+          />
+
+          <CourseSearchBar
+            searchResults={avoidedCourses}
+            setSearchResults={setAvoidedCourses}
+            title="Courses you want to avoid"
+            placeholder="Add a course to avoid"
           />
         </div>
 
