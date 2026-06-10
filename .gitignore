@@ -4,6 +4,7 @@
 .idea/
 .lsp/
 /.lsp/.cache/
+.worktrees
 
 # ==================
 # Python / Notebook
