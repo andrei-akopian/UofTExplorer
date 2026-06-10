@@ -32,15 +32,15 @@ import bs4
 
 SCRAPE_FOLDER = "scraper/courses/raw_output"
 PARSING_TARGETS: dict[str, dict] = {
-    "UTM": {"filepattern": "page_PAGENUMBER_utm.html", "page_range": range(0, 81 + 1)},
     "UTSG": {
         "filepattern": "page_PAGENUMBER_utsg.html",
         "page_range": range(0, 178 + 1),
     },
-    "UTSC": {
-        "filepattern": "page_PAGENUMBER_utsc.html",
-        "page_range": range(0, 72 + 1),
-    },
+    # "UTM": {"filepattern": "page_PAGENUMBER_utm.html", "page_range": range(0, 81 + 1)},
+    # "UTSC": {
+    #     "filepattern": "page_PAGENUMBER_utsc.html",
+    #     "page_range": range(0, 72 + 1),
+    # },
 }
 SAVE_FOLDER: str = "scraper/data"
 SAVE_FILENAME: str = "courses.json"
@@ -641,6 +641,30 @@ class CourseParser:
             self.general_logger.critical("course has no title")
         return course_code, title
 
+    def original_req_strings_preformatter(self, strings: list[str]) -> str:
+        """
+        Original strings have a really annoying format like:
+        Prerequisite: MAT257Y1/ [ MAT223H1/ MATA23H3/ MAT223H5/ MAT240H1/ MAT240H5, ( MAT235H1, MAT236H1)/ MAT235Y1 / MAT235Y5/ ( MAT232H5, MAT236H5)/ ( MATB41H3, MATB42H3/ MATB43H3)/ MAT237Y1/ MAT237Y5, MAT246H1/ (MAT1581, MAT159H1)/ MAT157Y1/ ( MAT157H5, MAT159H5)/ MAT157Y5/ CSC236H1/ CSC240H1]
+        This function cleans up these formatting problems.
+
+        Input is a list of bs4 strings (.strings attribute output)
+        """
+        output_chars = []
+        space_del = False
+        for s in strings:
+            for c in s:
+                if c in WHITESPACE and not space_del:
+                    output_chars.append(c)
+                    continue
+                elif c in WHITESPACE and space_del:
+                    continue
+                if c not in WHITESPACE and space_del:
+                    space_del = False
+                if c in "([/":
+                    space_del = True
+                output_chars.append(c)
+        return "".join(output_chars)
+
     def course_bs4_to_dict(self, div: bs4.PageElement | bs4.Tag) -> tuple[dict, str]:
         """
         Convert a Beautifulsoup object corresponding to the HTML element containing a course, into a dictionary.
@@ -766,7 +790,9 @@ class CourseParser:
         if len(prerequisites_raw) > 0:
             if len(prerequisites_raw) > 1:
                 self.general_logger.warning("multiple prerequisite fields")
-            prerequisite_original = "".join(prerequisites_raw[0].strings)
+            prerequisite_original = self.original_req_strings_preformatter(
+                prerequisites_raw[0].strings
+            )
             structure = self.requisites_parser(prerequisite_original)
             prerequisites = structure
             has_fields.append("prerequisites")
@@ -776,7 +802,9 @@ class CourseParser:
         if len(corequisites_raw) > 0:
             if len(corequisites_raw) > 1:
                 self.general_logger.warning("multiple corequisite fields")
-            corequisites_original = "".join(corequisites_raw[0].strings)
+            corequisites_original = self.original_req_strings_preformatter(
+                corequisites_raw[0].strings
+            )
             structure = self.requisites_parser(corequisites_original)
             corequisites = structure
             has_fields.append("corequisites")
@@ -787,7 +815,9 @@ class CourseParser:
         if len(exclusions_raw) > 0:
             if len(exclusions_raw) > 1:
                 self.general_logger.warning("multiple prerequisite fields")
-            exclusions_original = "".join(exclusions_raw[0].strings)
+            exclusions_original = self.original_req_strings_preformatter(
+                exclusions_raw[0].strings
+            )
             structure = self.requisites_parser(exclusions_original)
             exclusions = structure
             has_fields.append("exclusions")
@@ -803,7 +833,7 @@ class CourseParser:
             "title": title,
             "course_code": course_code,
             "split_course_code": split_course_code,
-            "previous_course_code": previous_course_codes,
+            "previous_course_codes": previous_course_codes,
             "description": description,
             "cr_ncr_eligible": cr_ncr_eligible,
             "breadth_requirements_list": breadth_requirements_list,
@@ -874,17 +904,18 @@ class CourseParser:
         Returns the selected parsing target, default target is UTSG.
         """
         target = "UTSG"
-        print(
-            """Select Scrapping Target:
-            (1) UTSG ArtSci - defaults
-            (2) UTSC
-            (3) UTM"""
-        )
-        selection = input("Enter>").strip()
-        if selection.isdigit() and 1 <= int(selection) <= 3:
-            target = ["UTSG", "UTSC", "UTM"][int(selection) - 1]
+        keys = PARSING_TARGETS.keys()
+        if len(keys) > 1:
+            print("Select Parsing target:")
+            for i, k in enumerate(keys):
+                print(f"({i}) {k}")
+            selection = input("Enter>").strip()
+            if selection.isdigit() and 1 <= int(selection) <= 3:
+                target = keys[int(selection) - 1]
+            else:
+                print("selection interpreted as default.")
         else:
-            print("selection interpreted as default.")
+            print(f"parsing {target}")
         return target
 
     def simplify_requisite(

@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import SearchMenu from "./SearchMenu";
 
 import { fetchGraphData } from "../../lib/api";
@@ -27,6 +27,7 @@ export default function GraphQuery({
   setIsLoading,
   setMessage,
   setMessageType,
+  manualFetch,
 }: {
   data: GraphData;
   setData: (data: GraphData) => void;
@@ -34,6 +35,7 @@ export default function GraphQuery({
   setIsLoading: (isLoading: boolean) => void;
   setMessage: (message: string) => void;
   setMessageType: (type: "info" | "success" | "error") => void;
+  manualFetch: string;
 }) {
   void data;
 
@@ -44,6 +46,8 @@ export default function GraphQuery({
     breadth_requirements: [],
   });
   const [error, setError] = useState<string | null>(null);
+
+  const [manualFetchArg, setManualFetchArg] = useState<string>("");
 
   const fetch = useCallback(async () => {
     setIsLoading(true);
@@ -78,6 +82,19 @@ export default function GraphQuery({
       fetchGraph();
     }
   };
+
+  useEffect(() => {
+    if (manualFetch.trim()) {
+      setQuery(manualFetch);
+      setManualFetchArg(manualFetch);
+    }
+  }, [manualFetch]);
+
+  useEffect(() => {
+    if (manualFetchArg.trim()) {
+      fetchGraph();
+    }
+  }, [manualFetchArg]);
 
   return (
     <div className="absolute top-3 flex w-full flex-wrap content-start items-center justify-center gap-2.5 p-4">

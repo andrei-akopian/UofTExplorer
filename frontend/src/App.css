@@ -9,6 +9,7 @@
 
   /* Page backgrounds */
   --color-page-bg: #fcfcfa;
+  --color-page-bg-light: #fcfcfa;
   --color-input-bg: #fcfdff;
   --color-code-bg: #f5f7fa;
 
@@ -79,6 +80,162 @@
 
   /* Disabled */
   --color-disabled: #d1d5db;
+
+  /* Additional surfaces */
+  --color-surface-1: #f4f7fb;
+  --color-surface-2: #e9eff7;
+}
+
+:root {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Page backgrounds */
+  --color-page-bg: #0b1220;
+  --color-input-bg: #121a2a;
+  --color-code-bg: #101a2c;
+
+  /* Body text */
+  --color-text-body: #e6edf7;
+  --color-text-secondary: #d8e2f0;
+  --color-text-muted: #a8b5c8;
+  --color-text-subtle: #95a6bf;
+  --color-text-code: #c4d3ea;
+  --color-text-query: #d8e3f5;
+
+  /* Links */
+  --color-link: #85b8ff;
+  --color-link-hover: #b2d2ff;
+  --color-link-focus-ring: rgba(133, 184, 255, 0.4);
+
+  /* Primary actions */
+  --color-primary: #7ea7ff;
+  --color-primary-hover: #a4c1ff;
+  --color-primary-info: #7fb0ff;
+
+  /* Gradient button */
+  --color-btn-gradient-from: #3e63b8;
+  --color-btn-gradient-to: #2c4a8c;
+
+  /* Input borders & focus */
+  --color-input-border: #334763;
+  --color-input-focus-border: #638bcc;
+  --color-input-focus-ring: rgba(99, 139, 204, 0.28);
+
+  /* Card / panel borders */
+  --color-border-card: #2b3d56;
+  --color-border-panel: rgba(120, 152, 194, 0.24);
+  --color-border-dropdown: #38506f;
+
+  /* Panel / card backgrounds */
+  --color-panel-bg: rgba(17, 25, 39, 0.9);
+  --color-card-bg: rgba(20, 30, 46, 0.8);
+  --color-surface-1: #101a2b;
+  --color-surface-2: #162338;
+
+  /* Badge */
+  --color-badge-bg: #223b66;
+  --color-badge-text: #d4e4ff;
+
+  /* Graph node */
+  --color-graph-node: #6f8fb9;
+
+  /* Shadows */
+  --shadow-card: 0 8px 20px rgba(0, 0, 0, 0.32);
+  --shadow-dropdown: 0 10px 24px rgba(0, 0, 0, 0.5);
+  --shadow-search: 0 18px 34px rgba(0, 0, 0, 0.45);
+
+  /* Status */
+  --color-success: #5ccf8c;
+  --color-success-text: #9be7b8;
+  --color-error: #ff6f6f;
+  --color-error-hover: #ff8f8f;
+  --color-danger: #ff6f6f;
+  --color-danger-hover: #ff8f8f;
+  --color-warning-bg: #3c2d0d;
+  --color-warning-border: #7b5a1f;
+  --color-warning-text: #ffd686;
+
+  /* Disabled */
+  --color-disabled: #4a5f7f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+
+    /* Page backgrounds */
+    --color-page-bg: #0b1220;
+    --color-input-bg: #121a2a;
+    --color-code-bg: #101a2c;
+
+    /* Body text */
+    --color-text-body: #e6edf7;
+    --color-text-secondary: #d8e2f0;
+    --color-text-muted: #a8b5c8;
+    --color-text-subtle: #95a6bf;
+    --color-text-code: #c4d3ea;
+    --color-text-query: #d8e3f5;
+
+    /* Links */
+    --color-link: #85b8ff;
+    --color-link-hover: #b2d2ff;
+    --color-link-focus-ring: rgba(133, 184, 255, 0.4);
+
+    /* Primary actions */
+    --color-primary: #7ea7ff;
+    --color-primary-hover: #a4c1ff;
+    --color-primary-info: #7fb0ff;
+
+    /* Gradient button */
+    --color-btn-gradient-from: #3e63b8;
+    --color-btn-gradient-to: #2c4a8c;
+
+    /* Input borders & focus */
+    --color-input-border: #334763;
+    --color-input-focus-border: #638bcc;
+    --color-input-focus-ring: rgba(99, 139, 204, 0.28);
+
+    /* Card / panel borders */
+    --color-border-card: #2b3d56;
+    --color-border-panel: rgba(120, 152, 194, 0.24);
+    --color-border-dropdown: #38506f;
+
+    /* Panel / card backgrounds */
+    --color-panel-bg: rgba(17, 25, 39, 0.9);
+    --color-card-bg: rgba(20, 30, 46, 0.8);
+    --color-surface-1: #101a2b;
+    --color-surface-2: #162338;
+
+    /* Badge */
+    --color-badge-bg: #223b66;
+    --color-badge-text: #d4e4ff;
+
+    /* Graph node */
+    --color-graph-node: #6f8fb9;
+
+    /* Shadows */
+    --shadow-card: 0 8px 20px rgba(0, 0, 0, 0.32);
+    --shadow-dropdown: 0 10px 24px rgba(0, 0, 0, 0.5);
+    --shadow-search: 0 18px 34px rgba(0, 0, 0, 0.45);
+
+    /* Status */
+    --color-success: #5ccf8c;
+    --color-success-text: #9be7b8;
+    --color-error: #ff6f6f;
+    --color-error-hover: #ff8f8f;
+    --color-danger: #ff6f6f;
+    --color-danger-hover: #ff8f8f;
+    --color-warning-bg: #3c2d0d;
+    --color-warning-border: #7b5a1f;
+    --color-warning-text: #ffd686;
+
+    /* Disabled */
+    --color-disabled: #4a5f7f;
+  }
 }
 
 @font-face {
@@ -170,8 +327,26 @@
 }
 
 body {
-  font-family:
-    system-ui,
-    -apple-system,
-    sans-serif;
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-page-bg);
+  color: var(--color-text-body);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+a {
+  color: var(--color-link);
+}
+
+a:hover {
+  color: var(--color-link-hover);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-primary) 35%, transparent);
 }

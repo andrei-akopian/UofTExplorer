@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import type { GraphData, GraphEdge, GraphNode, QueryInfo } from "../../types";
 
 interface Node extends GraphNode {
@@ -9,23 +9,31 @@ interface Node extends GraphNode {
   x?: number;
   y?: number;
   targetRadius?: number;
-  size: number;
+  mass: number;
   color: string;
   font?: { size: number };
 }
 
 const convertGenericNode = (node: GraphNode): Node => {
   return {
+    ...node,
     id: node.id,
     label: node.label,
     code: node.code,
     depth: node.depth,
+    size: node.size,
+    shape: node.shape ? node.shape : "circle",
     x: node.x,
     y: node.y,
     targetRadius: node.targetRadius,
-    size: node.size,
     color: node.color,
-    font: node.font,
+    mass: 10,
+    font: {
+      size:
+        20 + node["class_size"]
+          ? Math.log(node["class_size"]) / Math.log(1.3)
+          : 0,
+    },
   };
 };
 
@@ -59,27 +67,33 @@ const convertGenericGraph = (data: GraphData): Graph2DData => {
   };
 };
 
-const PHYSICS_DAMPING = 0.4;
+const PHYSICS_DAMPING = 0.9;
 const PHYSICS_SPRING_CONST = 0.1;
 const PHYSICS_GRAV_CONSTANT = -4000;
-const PHYSICS_SPRING_LENGTH = 300;
+const PHYSICS_SPRING_LENGTH = 50;
 
 interface GraphVis2DProps {
   graphData: GraphData;
+  loading?: boolean;
   setLoading?: (loading: boolean) => void;
   onNodeClickCallback?: (node: GraphNode) => void;
   onEdgeClickCallback?: (edge: GraphEdge) => void;
-  config: {[key: string]: any};
 }
 
 export default function GraphVis2D({
   graphData,
+  loading,
   setLoading,
-  config
+  onNodeClickCallback,
 }: GraphVis2DProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const networkRef = useRef<any>(null);
-  const [_activeNodes, setActiveNodes] = useState<Node[]>([]);
+  const [activeNodes, setActiveNodes] = useState<Node[]>([]);
+  const activeNodesRef = useRef<Node[]>([]);
+  const onNodeClickRef = useRef(onNodeClickCallback);
+  useEffect(() => {
+    onNodeClickRef.current = onNodeClickCallback;
+  }, [onNodeClickCallback]);
 
   useEffect(() => {
     const initNetwork = async () => {
@@ -93,7 +107,7 @@ export default function GraphVis2D({
           layout: { hierarchical: { enabled: false } },
           nodes: {
             shape: "circle",
-            size: config["size"],
+            size: 26,
             font: { size: 14, face: "system-ui", color: "#000000" },
             borderWidth: 1,
             color: "#A0B9DB",
@@ -113,12 +127,13 @@ export default function GraphVis2D({
             solver: "barnesHut",
             barnesHut: {
               gravitationalConstant: PHYSICS_GRAV_CONSTANT,
-              centralGravity: 0.05,
+              centralGravity: 0.2,
               springLength: PHYSICS_SPRING_LENGTH,
               springConstant: PHYSICS_SPRING_CONST,
               damping: PHYSICS_DAMPING,
               avoidOverlap: 0.8,
             },
+            minVelocity: 5,
             maxVelocity: 140,
             timestep: 0.35,
             adaptiveTimestep: true,
@@ -138,6 +153,18 @@ export default function GraphVis2D({
           { nodes: [], edges: [] },
           options,
         );
+        network.on("click", (params: any) => {
+          if (params.nodes?.length > 0) {
+            const nodeId = String(params.nodes[0]);
+            const node = activeNodesRef.current.find(
+              (n) => String(n.id) === nodeId,
+            );
+            if (node && onNodeClickRef.current) {
+              onNodeClickRef.current(node);
+            }
+          }
+        });
+
         networkRef.current = network;
       } catch (err) {
         console.error("Failed to initialize network:", err);
@@ -154,19 +181,6 @@ export default function GraphVis2D({
     const levels: Record<number, Node[]> = {};
     const MIN_RADIUS_STEP = 300;
     const NODE_GIRTH = 120;
-
-    if (config["useShellLayout"]) {
-      nodes.forEach((n) => {
-        const depth =
-          n.depth !== null && n.depth !== undefined
-            ? parseInt(String(n.depth))
-            : null;
-        if (depth !== null) {
-          if (!levels[depth]) levels[depth] = [];
-          levels[depth].push(n);
-        }
-      });
-    }
 
     const levelRadii: Record<number, number> = {};
     let currentRadius = 0;
@@ -191,17 +205,9 @@ export default function GraphVis2D({
           : undefined;
       const processedNode = { ...n, depth };
 
-      if (config["useShellLayout"] && depth !== undefined && levelRadii[depth]) {
-        const radius = levelRadii[depth];
-        const angle = Math.PI / 2 + (Math.random() - 0.5) * 2;
-        processedNode.x = Math.cos(angle) * radius;
-        processedNode.y = Math.sin(angle) * radius;
-        processedNode.targetRadius = radius;
-      } else {
-        processedNode.x = (Math.random() - 0.5) * 200;
-        processedNode.y = (Math.random() - 0.5) * 200;
-        processedNode.targetRadius = undefined;
-      }
+      processedNode.x = (Math.random() - 0.5) * 200;
+      processedNode.y = (Math.random() - 0.5) * 200;
+      processedNode.targetRadius = undefined;
 
       sumX += processedNode.x || 0;
       sumY += processedNode.y || 0;
@@ -219,10 +225,10 @@ export default function GraphVis2D({
 
   /* Graph Updating */
   useEffect(() => {
-    console.log("Graph data updated:", graphData);
     const data2D = convertGenericGraph(graphData);
     const prepared = prepareData(data2D.nodes, data2D.edges);
     setActiveNodes(prepared.nodes);
+    activeNodesRef.current = prepared.nodes;
 
     if (networkRef.current) {
       networkRef.current.setData({
@@ -236,10 +242,20 @@ export default function GraphVis2D({
   }, [graphData]);
 
   return (
-    <div
-      ref={containerRef}
-      id="mynetwork"
-      className="relative h-full w-full overflow-hidden"
-    ></div>
+    <>
+      <div
+        ref={containerRef}
+        id="mynetwork"
+        className="relative h-full w-full overflow-hidden"
+      ></div>
+      <div className={loading ? "" : "hidden"}>
+        <div className="absolute top-0 flex h-full w-full">
+          <div className="m-auto flex h-60 w-60 animate-spin items-center justify-center rounded-[50%] border-8 border-blue-100 border-t-blue-500"></div>
+        </div>
+        <div className="absolute top-0 flex h-full w-full">
+          <div className="m-auto text-center text-5xl">Loading</div>
+        </div>
+      </div>
+    </>
   );
 }

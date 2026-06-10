@@ -42,7 +42,6 @@ export interface CourseInfo {
   code: string;
   name: string;
   description?: string;
-  credits?: number;
   prerequisites?: string[];
   corequisites?: string[];
   exclusions?: string[];

@@ -27,10 +27,10 @@ export default function SearchBar({
         autoComplete="off"
         onFocus={() => setShowSearchResults(true)}
         onBlur={() => setShowSearchResults(false)}
-        className={`min-w-93 rounded-md border border-gray-300 bg-white px-3 py-2.5 text-sm text-slate-900 ${query.length > 0 ? "not-italic" : "italic"} focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none`}
+        className={`border-input-border bg-input-bg text-text-body focus:border-input-focus-border focus:ring-input-focus-ring min-w-93 rounded-md border px-3 py-2.5 text-sm ${query.length > 0 ? "not-italic" : "italic"} focus:ring-2 focus:outline-none`}
       />
       {showSearchResults && (
-        <div className="absolute top-full left-0 z-50 mt-1 max-h-64 w-full overflow-y-auto rounded-md border border-gray-300 bg-white shadow-lg">
+        <div className="border-border-dropdown bg-panel-bg shadow-dropdown absolute top-full left-0 z-50 mt-1 max-h-64 w-full overflow-y-auto rounded-md border">
           {results.length > 0 ? (
             results.map((result) => (
               <SuggestionEntry
@@ -39,11 +39,11 @@ export default function SearchBar({
                   setQuery(result.code || result.label);
                   setShowSearchResults(false);
                 }}
-                labelling={`${result.code}: ${result.title} | ${result.num_prereqs}`}
+                labelling={`${result.code}: ${result.title}${result.num_prereqs ? ` | ${result.num_prereqs}` : ""}`}
               />
             ))
           ) : (
-            <div className="px-3 py-2 text-sm text-slate-600">
+            <div className="text-text-muted px-3 py-2 text-sm">
               No results found
             </div>
           )}

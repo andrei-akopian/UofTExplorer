@@ -4,6 +4,8 @@ import json
 SCRAPES_FOLDER = "scraper/courses/ttb_scrapes"
 SAVE_FILEPATH = "scraper/data/ttb_courses.json"
 INSTRUCT_TYPES = ["LEC", "TUT", "PRA"]
+DEFAULT_CLASS_SIZE = 30
+RIDICULUS_CLASS_SIZE_THRESHOLD = 9998
 
 
 def aggregate_mentioned_courses(filelist=None):
@@ -62,6 +64,8 @@ def gatherCourseEnrollmentNumbers(c, filldict=None) -> dict:
         tm = s["teachMethod"]
         assert tm in filldict["capacityByInstructType"]
         me = s["maxEnrolment"]
+        if me > RIDICULUS_CLASS_SIZE_THRESHOLD:
+            me = DEFAULT_CLASS_SIZE
         assert isinstance(me, int)
         filldict["capacityByInstructType"][tm] += me
     return filldict

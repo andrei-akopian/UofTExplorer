@@ -14,7 +14,7 @@ export default function SuggestionEntry({
       onMouseDown={(e) => {
         e.preventDefault();
       }}
-      className="cursor-pointer border-b border-slate-100 px-3 py-2 text-sm text-slate-800 last:border-b-0 hover:bg-slate-50"
+      className="border-border-card text-text-body hover:bg-surface-1 cursor-pointer border-b px-3 py-2 text-sm last:border-b-0"
     >
       {labelling}
     </div>

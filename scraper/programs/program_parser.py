@@ -33,18 +33,18 @@ SAVE_PATH = f"{SAVE_FOLDER}/{SAVE_FILENAME}"
 SCRAPE_FOLDER = "scraper/programs/raw_output"
 LOG_FOLDER = "scraper/programs/parser_logs"
 PARSING_TARGETS: dict[str, dict] = {
-    "UTM": {
-        "filepattern": "programs_page_PAGENUMBER_utm.html",
-        "page_range": range(0, 5 + 1),
-    },
     "UTSG": {
         "filepattern": "programs_page_PAGENUMBER_utsg.html",
         "page_range": range(0, 12 + 1),
     },
-    "UTSC": {
-        "filepattern": "programs_page_PAGENUMBER_utsc.html",
-        "page_range": range(0, 7 + 1),
-    },
+    # "UTM": {
+    #     "filepattern": "programs_page_PAGENUMBER_utm.html",
+    #     "page_range": range(0, 5 + 1),
+    # },
+    # "UTSC": {
+    #     "filepattern": "programs_page_PAGENUMBER_utsc.html",
+    #     "page_range": range(0, 7 + 1),
+    # },
 }
 
 
@@ -258,17 +258,18 @@ class ProgramParser:
         Returns the selected parsing target, default target is UTSG.
         """
         target = "UTSG"
-        print(
-            """Select Scrapping Target:
-            (1) UTSG ArtSci - defaults
-            (2) UTSC
-            (3) UTM"""
-        )
-        selection = input("Enter>").strip()
-        if selection.isdigit() and 1 <= int(selection) <= 3:
-            target = ["UTSG", "UTSC", "UTM"][int(selection) - 1]
+        keys = PARSING_TARGETS.keys()
+        if len(keys) > 1:
+            print("Select Parsing target:")
+            for i, k in enumerate(keys):
+                print(f"({i}) {k}")
+            selection = input("Enter>").strip()
+            if selection.isdigit() and 1 <= int(selection) <= 3:
+                target = keys[int(selection) - 1]
+            else:
+                print("selection interpreted as default.")
         else:
-            self.logger.info("selection interpreted as default %s", target)
+            print(f"parsing {target}")
         return target
 
     def full_scrape_parse(self, target: str = "UTSG", interactive: bool = True) -> None:
