@@ -57,10 +57,13 @@ def run_job(punchcard):
             JOB_RESOLVERS[jt]()
 
 
-def scraperui():
-    report_outdatedness()
+def main():
+    argv = sys.argv
+    auto = False
+    if len(argv) > 1:
+        auto = argv[2] == "-R"
     for jt in JOB_TYPES:
-        if getYorN(f"Run {jt}? [y/(n)]:"):
+        if getYorN(f"Run {jt} [y/(n)]:"):
             JOB_RESOLVERS[jt]()
 
 
@@ -95,4 +98,7 @@ def report_outdatedness():
                 f"({delta} ago)",
             )
 
-__all__ = ["report_outdatedness", "run_job", "main"]
+
+if __name__ == "__main__":
+    report_outdatedness()
+    main()

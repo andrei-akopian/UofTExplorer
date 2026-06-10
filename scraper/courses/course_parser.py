@@ -1020,3 +1020,11 @@ class CourseParser:
         self.save_to_json(self.courses)
         end = time.clock_gettime(time.CLOCK_MONOTONIC)
         self.general_logger.info("parsing finished in: %ss", round(end - start, 4))
+
+    @classmethod
+    def get_parse_job(target: str = "UTSG", interactive: bool = True):
+        def job():
+            cp = CourseParser()
+            cp.full_parse(traget, interactive)
+
+        return job

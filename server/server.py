@@ -33,7 +33,7 @@ from core.algorithms import (
 )
 from core.deconstructor import deconstruct_course_graph
 
-app = Flask(__name__, template_folder="./templates", static_folder="../frontend/dist")
+app = Flask(__name__, static_folder="../frontend/dist")
 
 DATA_FOLDER = "./data"
 COURSE_GRAPH_CONTAINER = construct_container(
