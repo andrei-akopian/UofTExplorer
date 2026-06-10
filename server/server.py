@@ -415,7 +415,7 @@ def start_server() -> None:
     port = find_port()
     print(flush=True)
     print(f"http://127.0.0.1:{port}/")
-    app.run(debug=True, port=port)
+    app.run(debug=True, host="0.0.0.0", port=port)
 
 
 if __name__ == "__main__":
