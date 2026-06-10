@@ -8,9 +8,6 @@ import { useRef, useEffect } from "react";
 // ───────────────────────────────────────────────
 const MIN_RADIUS_STEP = 50;
 const NODE_GIRTH = 60;
-const DEPTH_STRENGTH = 0.12;
-const PENDULUM_BIAS = 0.0;
-const DOWN_VECTOR_FORCE = 5.0;
 
 function getGraphBackgroundColor(): string {
   const cssColor = getComputedStyle(document.documentElement)
@@ -47,27 +44,11 @@ interface ProcessedGraphData {
   links: Array<{ source: string; target: string }>;
 }
 
-function processGraphData(
-  data: GraphData,
-  useShellLayout: boolean,
-): ProcessedGraphData {
+function processGraphData(data: GraphData): ProcessedGraphData {
   if (!data?.nodes) return { nodes: [], links: [] };
 
   const validNodeIds = new Set(data.nodes.map((n) => String(n.id)));
   const levels: Record<number, any[]> = {};
-
-  if (useShellLayout) {
-    data.nodes.forEach((n) => {
-      const d =
-        n.depth !== null && n.depth !== undefined
-          ? parseInt(String(n.depth))
-          : null;
-      if (d !== null) {
-        if (!levels[d]) levels[d] = [];
-        levels[d].push(n);
-      }
-    });
-  }
 
   const levelRadii: Record<number, number> = {};
   let currentRadius = 0;
@@ -87,19 +68,14 @@ function processGraphData(
       n.depth !== null && n.depth !== undefined
         ? parseInt(String(n.depth))
         : null;
-    const targetRadius = depth !== null ? levelRadii[depth] : null;
 
     return {
       ...n,
       id: String(n.id),
       depth,
-      targetRadius: useShellLayout ? targetRadius : null,
       x: (Math.random() - 0.5) * 120,
       z: (Math.random() - 0.5) * 120,
-      y:
-        useShellLayout && depth !== null
-          ? -levelRadii[depth]
-          : (Math.random() - 0.5) * 120,
+      y: (Math.random() - 0.5) * 120,
     };
   });
 
@@ -118,35 +94,6 @@ function processGraphData(
     }));
 
   return { nodes, links };
-}
-
-function radialPendulumForce(useShellLayout: boolean) {
-  let nodes: any;
-  function force(alpha: number) {
-    if (!useShellLayout || !nodes) return;
-    for (let i = 0; i < nodes.length; i++) {
-      const node = nodes[i];
-      const rTarget = node.targetRadius;
-
-      if (rTarget === null || rTarget === undefined) continue;
-
-      const x = node.x;
-      const y = node.y;
-      const z = node.z;
-      const rCurrent = Math.sqrt(x * x + y * y + z * z) || 1;
-
-      const rDelta = (rTarget - rCurrent) * DEPTH_STRENGTH * alpha;
-      node.vx += (x / rCurrent) * rDelta;
-      node.vy += (y / rCurrent) * rDelta;
-      node.vz += (z / rCurrent) * rDelta;
-
-      node.vx -= x * PENDULUM_BIAS * alpha;
-      node.vz -= z * PENDULUM_BIAS * alpha;
-      node.vy -= DOWN_VECTOR_FORCE * PENDULUM_BIAS * alpha;
-    }
-  }
-  force.initialize = (_: any) => (nodes = _);
-  return force;
 }
 
 function focusNode(graph: any, node: any) {
@@ -175,14 +122,12 @@ function focusNode(graph: any, node: any) {
 
 export default function GraphVis3D({
   graphData,
-  useShellLayout,
   loading,
   onNodeClickCallback,
 }: {
   graphData: GraphData;
   loading: boolean;
   setLoading: (loading: boolean) => void;
-  useShellLayout: boolean;
   setMessage: (message: string) => void;
   setMessageType: (messageType: "success" | "error" | "info") => void;
   onNodeClickCallback?: (node: GraphNode) => void;
@@ -222,7 +167,7 @@ export default function GraphVis3D({
   useEffect(() => {
     if (!graphFrame.current || !graphData?.nodes?.length) return;
 
-    const processedData = processGraphData(graphData, useShellLayout);
+    const processedData = processGraphData(graphData);
     if (!graphRef.current) {
       graphRef.current = new ForceGraph3D(graphFrame.current)
         .graphData(processedData)
@@ -244,14 +189,13 @@ export default function GraphVis3D({
         .linkColor(() => "#999999")
         .backgroundColor(getGraphBackgroundColor());
 
-      graphRef.current.d3Force("radial", radialPendulumForce(useShellLayout));
       graphRef.current.d3Force("charge").strength(-150);
       graphRef.current.d3Force("link").distance(100);
     } else {
       graphRef.current.graphData(processedData);
       graphRef.current.d3ReheatSimulation();
     }
-  }, [graphData, useShellLayout]);
+  }, [graphData]);
 
   return (
     <>

@@ -84,7 +84,6 @@ export default function GraphVis2D({
   graphData,
   loading,
   setLoading,
-  useShellLayout,
   onNodeClickCallback,
 }: GraphVis2DProps) {
   const containerRef = useRef<HTMLDivElement>(null);

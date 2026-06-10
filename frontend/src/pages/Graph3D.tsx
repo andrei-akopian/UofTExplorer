@@ -5,6 +5,7 @@ import GraphVis3D from "../components/graph/GraphVis3D";
 import GraphStatsPanel from "../components/graph/GraphStatsPanel";
 import GraphInfoPanel from "../components/graph/GraphInfoPanel";
 import MobileWarning from "../components/MobileWarning";
+import Settings from "../components/graph/Settings";
 import { useSearchParams } from "react-router-dom";
 
 export default function Graph3D() {
@@ -18,10 +19,10 @@ export default function Graph3D() {
   const [_messageType, setMessageType] = useState<"info" | "success" | "error">(
     "info",
   );
-  const [useShellLayout, setUseShellLayout] = useState(true);
 
   const [searchParams] = useSearchParams();
   const [manualFetch, setManualFetch] = useState<string>("");
+  const settings: React.ReactNode[] = [];
 
   useEffect(() => {
     if (searchParams.has("search")) {
@@ -42,28 +43,13 @@ export default function Graph3D() {
           graphData={graphData}
           loading={isLoading}
           setLoading={setIsLoading}
-          useShellLayout={useShellLayout}
           setMessage={setMessage}
           setMessageType={setMessageType}
           onNodeClickCallback={setSelectedNode}
         />
       </div>
 
-      <details className="close-on-outclick absolute right-0 z-2 mt-3 mr-2 h-[4.7rem] w-[4.7rem] shrink-0 self-start bg-transparent">
-        <summary className="m-0 flex h-full w-full list-none items-center justify-center p-0 [&::-webkit-details-marker]:hidden">
-          <img src="/settings_gear.svg"></img>
-        </summary>
-        <div className="border-border-dropdown bg-panel-bg text-text-body shadow-dropdown absolute top-[calc(100%+6px)] right-0 left-auto z-1200 flex max-h-[20em] w-[20em] flex-col gap-1.5 overflow-y-auto rounded-md border p-2.5">
-          <label className="flex max-h-none w-max min-w-[5em] items-center gap-2 overflow-visible font-sans text-sm">
-            <input
-              type="checkbox"
-              defaultChecked
-              onChange={(e) => setUseShellLayout(e.target.checked)}
-            />
-            <span>Use shell layout</span>
-          </label>
-        </div>
-      </details>
+      <Settings settings={settings}></Settings>
 
       <GraphQuery
         data={graphData}
