@@ -18,7 +18,7 @@ export default function SearchBar({
   };
 
   return (
-    <div className="relative">
+    <div className="relative w-full sm:w-auto">
       <input
         type="text"
         placeholder="Search for course, program, department, or 'all' ..."
@@ -27,7 +27,7 @@ export default function SearchBar({
         autoComplete="off"
         onFocus={() => setShowSearchResults(true)}
         onBlur={() => setShowSearchResults(false)}
-        className={`border-input-border bg-input-bg text-text-body focus:border-input-focus-border focus:ring-input-focus-ring min-w-93 rounded-md border px-3 py-2.5 text-sm ${query.length > 0 ? "not-italic" : "italic"} focus:ring-2 focus:outline-none`}
+        className={`border-input-border bg-input-bg text-text-body focus:border-input-focus-border focus:ring-input-focus-ring w-full rounded-md border px-3 py-2.5 text-sm sm:min-w-80 md:min-w-93 ${query.length > 0 ? "not-italic" : "italic"} focus:ring-2 focus:outline-none`}
       />
       {showSearchResults && (
         <div className="border-border-dropdown bg-panel-bg shadow-dropdown absolute top-full left-0 z-50 mt-1 max-h-64 w-full overflow-y-auto rounded-md border">
