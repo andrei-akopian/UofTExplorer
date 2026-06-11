@@ -218,10 +218,6 @@ export function useCreateDirectedGraph(
       const curr = directedGraph.get(origin);
 
       if (!curr) {
-        console.warn("cannot find origin in directedGraph", {
-          origin,
-          directedGraphSize: directedGraph.size,
-        });
         return visited;
       }
 

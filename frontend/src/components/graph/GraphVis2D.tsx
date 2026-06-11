@@ -1,17 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import type {
-  GraphData,
-  GraphEdge,
-  GraphNode,
-  QueryInfo,
-  DirectionNode,
-} from "../../types";
+import type { GraphData, GraphEdge, GraphNode, QueryInfo } from "../../types";
 import { useCreateDirectedGraph } from "../../hooks/useGraph";
 import { DataSet } from "vis-network/standalone/esm/vis-network.min.js";
-
-interface DirectionNode2D extends DirectionNode {
-  edgeLinks: string[];
-}
 
 interface Node extends GraphNode {
   id: string;
@@ -178,7 +168,6 @@ export default function GraphVis2D({
           options,
         );
         network.on("click", (params: any) => {
-          console.log("CLICK");
           if (params.nodes?.length > 0) {
             const nodeId = String(params.nodes[0]);
             const node = activeNodesRef.current.find(
@@ -193,7 +182,6 @@ export default function GraphVis2D({
               onNodeClickRef.current(node);
             }
           } else {
-            console.log("EMPTY CLICK");
             highlightGraphRef.current?.("");
           }
         });
@@ -264,10 +252,6 @@ export default function GraphVis2D({
     activeNodesRef.current = prepared.nodes;
 
     visNodesRef.current = new DataSet(prepared.nodes);
-    console.log("BARK");
-    console.log(prepared.edges);
-    console.log(visNodesRef.current);
-    console.log("treee");
 
     colorMapRef.current = new Map();
     for (const node of prepared.nodes) {
@@ -285,17 +269,8 @@ export default function GraphVis2D({
     setLoading && setLoading(false);
   }, [graphData]);
 
-  useEffect(() => {
-    console.log("directedGraph in GraphVis2D.tsx: ");
-    console.log(directedGraph);
-  }, [directedGraph]);
-
   const hightlightGraph = useCallback(
     (origin: string) => {
-      console.log("highlighting", {
-        origin,
-        directedGraphSize: directedGraph.size,
-      });
       if (previousColorPacketRef.current) {
         if (visNodesRef.current) {
           visNodesRef.current.update(previousColorPacketRef.current);
@@ -303,7 +278,6 @@ export default function GraphVis2D({
       }
 
       const connected = findConnected(origin);
-      console.log("connected nodes", connected);
 
       previousColorPacketRef.current = [];
       const updatePacket: any[] = [];
