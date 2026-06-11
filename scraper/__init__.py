@@ -5,7 +5,9 @@ Wrapper on all scraping and parsing modules for easy usage.
 import scraper.synthesizer as synthesizer
 from scraper.courses.course_parser import CourseParser
 from scraper.courses.course_scraper import full_scrape as course_scrape
-from scraper.courses.ttb_scraper import scrape_everything as ttb_scrape  # TODO rename everything here
+from scraper.courses.ttb_scraper import (
+    scrape_everything as ttb_scrape,
+)  # TODO rename everything here
 from scraper.courses.ttb_parser import full_parse as ttb_parse
 from scraper.programs.program_parser import ProgramParser
 from scraper.programs.artsci_program_scraper import (
@@ -67,7 +69,7 @@ def scraperui():
 def report_outdatedness():
     today = datetime.today()
     print(
-        f"Scrape outdatedness report {today}: (note, negative results are shown, what wasn't mentioned, wasn't checked.)"
+        f"= Scrape outdatedness report {today}: (note, negative results are shown, what wasn't mentioned, wasn't checked.)"
     )
     # courses
     paths = [
@@ -79,8 +81,6 @@ def report_outdatedness():
         "data/courses.json",
         "data/programs.json",
         "data/glossary.json",
-        "data/global_statistics.json",
-        "frontend/src/assets/globalstats",
     ]
     for p in paths:
         if not os.path.exists(p):
@@ -94,5 +94,6 @@ def report_outdatedness():
                 mtime,
                 f"({delta} ago)",
             )
+
 
 __all__ = ["report_outdatedness", "run_job", "main"]

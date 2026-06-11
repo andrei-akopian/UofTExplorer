@@ -1,4 +1,11 @@
-def distr_direct_prereqs(GRAPH) -> None:
+from core.algorithms import get_prereq_course_set
+import matplotlib.pyplot as plt
+
+SAVE_PATH = None
+GRAPH = None
+
+
+def distr_direct_prereqs() -> None:
     """ """
     num_direct_prereqs = [
         len(course_node.prereqs.reqs) if course_node.prereqs is not None else 0
@@ -26,7 +33,7 @@ def distr_direct_prereqs(GRAPH) -> None:
     )
 
 
-def distr_total_prereqs(GRAPH) -> None:
+def distr_total_prereqs() -> None:
     """ """
     num_total_prereqs = [
         len(get_prereq_course_set(GRAPH, course_code)) - 1
