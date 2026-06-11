@@ -2,13 +2,8 @@
  * React hooks for common graph operations
  */
 
-import { useState, useCallback, useMemo, useEffect } from "react";
-import type {
-  GraphData,
-  GraphEdge,
-  FilterOptions,
-  DirectionNode,
-} from "../types";
+import { useState, useCallback, useMemo } from "react";
+import type { GraphData, FilterOptions, DirectionNode } from "../types";
 import {
   fetchGraphData,
   searchAll,
@@ -185,36 +180,69 @@ export function useSearch(
 export function useCreateDirectedGraph(
   data: GraphData,
   reverse: boolean = false,
-): Map<string, DirectionNode> {
-  const [directedGraph, setDirectedGraph] = useState<
-    Map<string, DirectionNode>
-  >(new Map());
+): {
+  directedGraph: Map<string, DirectionNode>;
+  findConnected: (origin: string, visited?: Set<string>) => Set<string>;
+} {
+  const directedGraph = useMemo(() => {
+    const dict = new Map<string, DirectionNode>();
 
-  useEffect(() => {
-    let dict: Map<string, DirectionNode> = new Map();
     for (const edge of data.edges) {
       let edgeFrom = edge.from;
       let edgeTo = edge.to;
+
       if (reverse) {
         edgeFrom = edge.to;
         edgeTo = edge.from;
       }
+
       if (!dict.has(edgeTo)) {
-        let newNode: DirectionNode = { id: edgeTo, targets: [] };
-        dict.set(edgeTo, newNode);
+        dict.set(edgeTo, { id: edgeTo, targets: [] });
       }
+
       if (!dict.has(edgeFrom)) {
-        let newNode: DirectionNode = { id: edgeFrom, targets: [] };
-        dict.set(edgeFrom, newNode);
+        dict.set(edgeFrom, { id: edgeFrom, targets: [] });
       }
+
       const toNode = dict.get(edgeTo);
       if (toNode) {
         dict.get(edgeFrom)?.targets.push(toNode);
       }
     }
-    setDirectedGraph(dict);
-  }, [data]);
-  return directedGraph;
+
+    return dict;
+  }, [data, reverse]);
+
+  const findConnected = useCallback(
+    (origin: string, visited = new Set<string>()) => {
+      const curr = directedGraph.get(origin);
+
+      if (!curr) {
+        console.warn("cannot find origin in directedGraph", {
+          origin,
+          directedGraphSize: directedGraph.size,
+        });
+        return visited;
+      }
+
+      if (visited.has(curr.id)) {
+        return visited;
+      }
+
+      visited.add(curr.id);
+
+      for (const tar of curr.targets) {
+        if (!visited.has(tar.id)) {
+          findConnected(tar.id, visited);
+        }
+      }
+
+      return visited;
+    },
+    [directedGraph],
+  );
+
+  return { directedGraph, findConnected };
 }
 
 interface UseLocalStorageReturn<T> {

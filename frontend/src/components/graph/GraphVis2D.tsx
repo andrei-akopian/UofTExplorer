@@ -7,6 +7,11 @@ import type {
   DirectionNode,
 } from "../../types";
 import { useCreateDirectedGraph } from "../../hooks/useGraph";
+import { DataSet } from "vis-network/standalone/esm/vis-network.min.js";
+
+interface DirectionNode2D extends DirectionNode {
+  edgeLinks: string[];
+}
 
 interface Node extends GraphNode {
   id: string;
@@ -95,10 +100,19 @@ export default function GraphVis2D({
 }: GraphVis2DProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const networkRef = useRef<any>(null);
-  const directedGraph = useCreateDirectedGraph(graphData, true);
+
+  const { directedGraph, findConnected } = useCreateDirectedGraph(
+    graphData,
+    true,
+  );
+  const visNodesRef = useRef<any>(null);
+
   const [activeNodes, setActiveNodes] = useState<Node[]>([]);
   const activeNodesRef = useRef<Node[]>([]);
   const onNodeClickRef = useRef(onNodeClickCallback);
+  const highlightGraphRef = useRef<(origin: string) => Set<string> | void>(
+    () => new Set<string>(),
+  );
   useEffect(() => {
     onNodeClickRef.current = onNodeClickCallback;
   }, [onNodeClickCallback]);
@@ -167,6 +181,11 @@ export default function GraphVis2D({
             const node = activeNodesRef.current.find(
               (n) => String(n.id) === nodeId,
             );
+
+            if (node) {
+              highlightGraphRef.current?.(node.id);
+            }
+
             if (node && onNodeClickRef.current) {
               onNodeClickRef.current(node);
             }
@@ -238,9 +257,15 @@ export default function GraphVis2D({
     setActiveNodes(prepared.nodes);
     activeNodesRef.current = prepared.nodes;
 
+    visNodesRef.current = new DataSet(prepared.nodes);
+    console.log("BARK");
+    console.log(prepared.edges);
+    console.log(visNodesRef.current);
+    console.log("treee");
+
     if (networkRef.current) {
       networkRef.current.setData({
-        nodes: prepared.nodes,
+        nodes: visNodesRef.current,
         edges: prepared.edges,
       });
       networkRef.current.startSimulation();
@@ -250,8 +275,37 @@ export default function GraphVis2D({
   }, [graphData]);
 
   useEffect(() => {
+    console.log("directedGraph in GraphVis2D.tsx: ");
     console.log(directedGraph);
   }, [directedGraph]);
+
+  const hightlightGraph = useCallback(
+    (origin: string) => {
+      console.log("highlighting", {
+        origin,
+        directedGraphSize: directedGraph.size,
+      });
+      const connected = findConnected(origin);
+      console.log("connected nodes", connected);
+
+      const updatePacket: any[] = [];
+      for (const item of connected) {
+        updatePacket.push({ id: item, color: "yellow" });
+      }
+
+      if (visNodesRef.current) {
+        visNodesRef.current.update(updatePacket);
+        //networkRef.current?.redraw();
+      }
+
+      return connected;
+    },
+    [directedGraph, findConnected],
+  );
+
+  useEffect(() => {
+    highlightGraphRef.current = hightlightGraph;
+  }, [hightlightGraph]);
 
   return (
     <>

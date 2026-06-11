@@ -34,6 +34,7 @@ export interface GraphData {
 export interface DirectionNode {
   id: string;
   targets: DirectionNode[];
+  [key: string]: any;
 }
 
 export interface QueryInfo {
