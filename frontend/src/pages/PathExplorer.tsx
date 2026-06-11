@@ -11,6 +11,7 @@ export default function PathExplorer() {
   const [desiredCourses, setDesiredCourses] = useState<string[]>([]);
   const [solutionDisplay, setSolutionDisplay] = useState<string[]>([]);
   const [placeholderText, setPlaceholderText] = useState<string>("");
+  const [isMobileControlsOpen, setIsMobileControlsOpen] = useState(false);
 
   const { data: graphDataPostreqs, fetch: fetchImmediatePostreqs } =
     useImmediatePostreqs();
@@ -98,19 +99,39 @@ export default function PathExplorer() {
   }, [[pathfindError]]);
 
   return (
-    <div className="relative flex h-full w-full font-sans max-md:flex-col">
+    <div className="relative flex h-full w-full flex-col overflow-hidden font-sans lg:flex-row">
       <MobileWarning />
 
-      <div id="vis graph" className="relative h-full w-full max-md:h-[50vh]">
+      <div id="vis graph" className="relative min-h-0 w-full flex-1 lg:h-full">
         <GraphVis2D graphData={graphData} />
       </div>
       <div
         id="controls"
-        className="border-l-border-panel bg-panel-bg max-md:border-t-border-panel z-2 mr-4 flex h-full w-124 flex-col gap-4 border-l p-4 backdrop-blur-[10px] max-md:mr-0 max-md:h-[50vh] max-md:w-full max-md:border-t max-md:border-l-0"
+        className="border-border-panel bg-panel-bg fixed right-2 bottom-2 left-2 z-30 overflow-hidden rounded-2xl border backdrop-blur-[10px] lg:relative lg:right-auto lg:bottom-auto lg:left-auto lg:mr-4 lg:flex lg:h-full lg:w-124 lg:flex-col lg:gap-4 lg:rounded-none lg:border-t-0 lg:border-r-0 lg:border-b-0 lg:border-l lg:p-4"
       >
+        <button
+          type="button"
+          onClick={() => setIsMobileControlsOpen((prev) => !prev)}
+          className="text-text-body flex w-full items-center justify-between px-4 py-3 text-left text-sm font-semibold lg:hidden"
+          aria-expanded={isMobileControlsOpen}
+          aria-controls="path-explorer-mobile-controls"
+        >
+          <span>Path Explorer Controls</span>
+          <span className="text-lg leading-none">
+            {isMobileControlsOpen ? "−" : "+"}
+          </span>
+        </button>
+
         <div
-          id="topSection"
-          className="flex min-h-0 flex-1 flex-col items-center gap-[0.9rem] overflow-x-hidden overflow-y-auto"
+          id="path-explorer-mobile-controls"
+          className={`flex min-h-0 flex-1 flex-col items-center gap-[0.9rem] overflow-x-hidden px-4 lg:px-0 ${isMobileControlsOpen ? "max-h-[58vh] overflow-y-auto pb-3" : "max-h-0 overflow-hidden lg:max-h-none lg:overflow-y-auto"}`}
+          aria-hidden={!isMobileControlsOpen && undefined}
+          aria-live="polite"
+          aria-atomic="true"
+          role="region"
+          aria-label="Path explorer controls"
+          data-expanded={isMobileControlsOpen}
+          style={{ transition: "max-height 220ms ease" }}
         >
           <h1>
             Discover courses you can take next based on courses you have
@@ -154,7 +175,7 @@ export default function PathExplorer() {
 
         <div
           id="bottomSection"
-          className="mb-6 flex shrink-0 flex-col items-center gap-3"
+          className={`flex shrink-0 flex-col items-center gap-3 px-4 pb-4 lg:mb-6 lg:px-0 lg:pb-0 ${isMobileControlsOpen ? "" : "hidden lg:flex"}`}
         >
           <button
             id="demoSendButton"
@@ -202,10 +223,10 @@ export default function PathExplorer() {
 
       <p
         id="requestStatus"
-        className="text-text-subtle [&.error]:text-error-hover [&.success]:text-success-text pointer-events-none absolute bottom-17.5 left-54 z-4 m-0 min-h-[1.3rem] w-96 -translate-x-1/2 text-left text-[0.9rem] wrap-break-word whitespace-pre-wrap max-md:left-1/2 max-md:w-[calc(100%-2rem)]"
+        className="text-text-subtle [&.error]:text-error-hover [&.success]:text-success-text pointer-events-none absolute bottom-4 left-1/2 z-4 m-0 min-h-[1.3rem] w-[calc(100%-2rem)] -translate-x-1/2 text-left text-[0.9rem] wrap-break-word whitespace-pre-wrap lg:bottom-17.5 lg:left-54 lg:w-96"
         aria-live="polite"
       ></p>
-      <div className="fixed bottom-10 left-5 z-20 flex min-w-[20rem] flex-col gap-1">
+      <div className="fixed right-3 bottom-3 left-3 z-20 flex min-w-0 flex-col gap-1 sm:right-auto sm:bottom-10 sm:left-5 sm:min-w-[20rem]">
         <div id="message" className="m-0 min-h-6 text-[0.84rem] font-medium">
           {solutionDisplay.map((x) => (
             <p>{x}</p>
@@ -213,7 +234,7 @@ export default function PathExplorer() {
         </div>
       </div>
 
-      <div className="fixed top-20 left-10 w-200 text-4xl text-red-500">
+      <div className="fixed top-20 left-1/2 w-[calc(100%-2rem)] -translate-x-1/2 text-center text-xl text-red-500 sm:text-2xl lg:left-10 lg:w-200 lg:translate-x-0 lg:text-left lg:text-4xl">
         {placeholderText}
       </div>
     </div>
