@@ -26,34 +26,7 @@ Originally completed as a project for [CSC111 — Foundations of Computer Scienc
 
 ## Project Structure
 
-```mermaid
-flowchart TD
-    subgraph DataSources[Data Sources]
-      ttb[TTB]
-      artscical[ArtSci Calendar]
-    end
-    scrapers[scrapers]
-    scraped_data[.html / .json scrapes]
-    parsers[parsers]
-    refiner[refinement and sanity checks]
-    ttb --> scrapers
-    artscical --> scrapers
-    scrapers --> scraped_data
-    scraped_data --> parsers
-    parsers --> structured_data
-    structured_data --> refiner
-    core --> refiner
-    data_analysis <--> refiner
-    refiner --> database
-    data_analysis --> database
-    sat --> core
-    core --> backend
-    data_analysis --> backend
-    backend[Flask backend]
-    database --> backend
-    frontend[React frontend]
-    backend <--> frontend
-```
+![Project Structure](./docs/project_structure.svg)
 
 ## Contributors
 

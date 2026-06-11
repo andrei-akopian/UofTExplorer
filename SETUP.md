@@ -42,3 +42,24 @@ Start frontend (Vite):
 cd frontend
 npm run dev
 ```
+
+---
+
+## Docker Build
+
+Install [Docker Desktop](https://docs.docker.com/get-started/introduction/get-docker-desktop/) or (macos only) [Orbstack](https://orbstack.dev/).
+
+Make sure your scrapes are up to date. The server won't automatically update them.
+
+### Unix
+Start the docker deamon. (start the docker app in the background.)
+
+```sh
+sh dockerbuilder.sh
+```
+
+should build everything automatically. The resulting image should appear under Images in the Docker app.
+
+### Windows
+
+TODO add windows build instructions. Same thing as unix probably.
