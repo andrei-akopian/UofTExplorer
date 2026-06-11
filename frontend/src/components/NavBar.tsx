@@ -47,6 +47,8 @@ export default function Navbar() {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(getInitialDarkMode);
   const [menuOpen, setMenuOpen] = useState(false);
   const isMobile = useIsMobile();
+  const activePageLabel =
+    links.find(({ href }) => href === pathname)?.label ?? "Home";
 
   // Close menu when navigating
   useEffect(() => {
@@ -113,13 +115,18 @@ export default function Navbar() {
     <nav className="border-border-panel bg-panel-bg shadow-card border-b">
       {/* Top bar */}
       <div className="flex min-h-16 items-center px-3 sm:px-4 md:px-8 lg:px-20">
-        {/* Logo — pinned left */}
-        <Link
-          to="/"
-          className="font-display text-text-body shrink-0 text-sm font-semibold whitespace-nowrap no-underline sm:text-base"
-        >
-          UofT Explorer
-        </Link>
+        {/* Logo + active page (mobile) */}
+        <div className="flex min-w-0 items-center gap-2">
+          <Link
+            to="/"
+            className="font-display text-text-body shrink-0 text-sm font-semibold whitespace-nowrap no-underline sm:text-base"
+          >
+            UofT Explorer
+          </Link>
+          <span className="text-text-muted max-w-32 truncate text-sm font-semibold md:hidden">
+            {activePageLabel}
+          </span>
+        </div>
 
         {/* Desktop: nav links centered + toggle right */}
         <div className="hidden min-w-0 flex-1 items-center justify-center gap-1 overflow-x-auto md:flex">
