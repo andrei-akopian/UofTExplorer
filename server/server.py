@@ -408,14 +408,14 @@ def find_port() -> int:
             return s.getsockname()[1]
 
 
-def start_server() -> None:
+def start_server(host="127.0.0.1") -> None:
     """
     Start the Flask server on an open port, and print the URL to access it.
     """
     port = find_port()
     print(flush=True)
-    print(f"http://127.0.0.1:{port}/")
-    app.run(debug=True, port=port)
+    print(f"http://{host}:{port}/")
+    app.run(debug=True, host=host, port=port)
 
 
 if __name__ == "__main__":
