@@ -106,6 +106,8 @@ export default function GraphVis2D({
     true,
   );
   const visNodesRef = useRef<any>(null);
+  const colorMapRef = useRef<Map<string, string>>(null);
+  const previousColorPacketRef = useRef<any>(null);
 
   const [activeNodes, setActiveNodes] = useState<Node[]>([]);
   const activeNodesRef = useRef<Node[]>([]);
@@ -176,6 +178,7 @@ export default function GraphVis2D({
           options,
         );
         network.on("click", (params: any) => {
+          console.log("CLICK");
           if (params.nodes?.length > 0) {
             const nodeId = String(params.nodes[0]);
             const node = activeNodesRef.current.find(
@@ -189,6 +192,9 @@ export default function GraphVis2D({
             if (node && onNodeClickRef.current) {
               onNodeClickRef.current(node);
             }
+          } else {
+            console.log("EMPTY CLICK");
+            highlightGraphRef.current?.("");
           }
         });
 
@@ -263,6 +269,11 @@ export default function GraphVis2D({
     console.log(visNodesRef.current);
     console.log("treee");
 
+    colorMapRef.current = new Map();
+    for (const node of prepared.nodes) {
+      colorMapRef.current.set(node.id, node.color);
+    }
+
     if (networkRef.current) {
       networkRef.current.setData({
         nodes: visNodesRef.current,
@@ -285,12 +296,23 @@ export default function GraphVis2D({
         origin,
         directedGraphSize: directedGraph.size,
       });
+      if (previousColorPacketRef.current) {
+        if (visNodesRef.current) {
+          visNodesRef.current.update(previousColorPacketRef.current);
+        }
+      }
+
       const connected = findConnected(origin);
       console.log("connected nodes", connected);
 
+      previousColorPacketRef.current = [];
       const updatePacket: any[] = [];
       for (const item of connected) {
         updatePacket.push({ id: item, color: "yellow" });
+        previousColorPacketRef.current.push({
+          id: item,
+          color: colorMapRef.current?.get(item),
+        });
       }
 
       if (visNodesRef.current) {
