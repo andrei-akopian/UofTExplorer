@@ -44,7 +44,7 @@ export default function GlobalStatsTable() {
 
   return (
     <div className="mt-4 mb-6 overflow-x-auto">
-      <table className="border-border-card min-w-full border-separate border-spacing-0 border-t border-b [counter-increment:tablecaption]">
+      <table className="border-border-card min-w-lg border-separate border-spacing-0 border-t border-b text-sm [counter-increment:tablecaption] sm:min-w-full">
         <caption className="mt-2 ml-0 w-full px-1 pt-1 text-left italic before:font-bold before:not-italic before:[content:'Table_'counter(tablecaption)'._']">
           Statistics computed on the entire graph.
         </caption>

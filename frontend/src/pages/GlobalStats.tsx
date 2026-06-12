@@ -34,7 +34,7 @@ function genericFigure(src: string, caption: string) {
   return (
     <figure className="mx-auto my-6 text-center [counter-increment:figcaption]">
       <img
-        className="bg-page-bg-light mx-auto h-auto w-full"
+        className="bg-page-bg-light mx-auto h-auto w-full rounded-md"
         src={src}
         alt={caption}
       />
@@ -54,8 +54,16 @@ function doubleFigure(
   return (
     <figure className="mx-auto my-6 text-center [counter-increment:figcaption]">
       <div className="bg-page-bg-light flex flex-col gap-4 md:flex-row md:gap-6">
-        <img className="mx-auto h-auto" width="50%" src={src1} alt={caption1} />
-        <img className="mx-auto h-auto" width="50%" src={src2} alt={caption2} />
+        <img
+          className="mx-auto h-auto w-full rounded-md md:w-1/2"
+          src={src1}
+          alt={caption1}
+        />
+        <img
+          className="mx-auto h-auto w-full rounded-md md:w-1/2"
+          src={src2}
+          alt={caption2}
+        />
       </div>
       <figcaption className="mt-2 ml-0 w-full px-1 pt-1 text-center italic before:font-bold before:not-italic before:[content:'Figure_'counter(figcaption)'._']">
         {caption1} and {caption2}
@@ -67,9 +75,9 @@ function doubleFigure(
 export default function GlobalStats() {
   return (
     <div className="bg-page-bg text-text-body flex min-h-screen justify-center overflow-y-auto font-serif">
-      <div className="mx-auto max-w-[80ch] px-4 py-8">
-        <article className="leading-7 [counter-reset:theorem_figcaption_tablecaption]">
-          <h1 className="mt-6 mb-2 text-center text-3xl font-semibold">
+      <div className="w-full min-w-0 px-4 py-6 sm:mx-auto sm:max-w-[80ch] sm:px-6 sm:py-8">
+        <article className="leading-6 [counter-reset:theorem_figcaption_tablecaption] sm:leading-7">
+          <h1 className="mt-4 mb-2 text-center text-2xl font-semibold sm:mt-6 sm:text-3xl">
             Executive Report on the Global Statistics
           </h1>
 
@@ -94,7 +102,9 @@ export default function GlobalStats() {
             .
           </div>
 
-          <h2 className="mt-6 mb-2 text-2xl font-semibold">Statistics</h2>
+          <h2 className="mt-6 mb-2 text-xl font-semibold sm:text-2xl">
+            Statistics
+          </h2>
 
           <div>
             We computed many statistical measures, with the following being done
@@ -317,7 +327,9 @@ export default function GlobalStats() {
             </p>
           </div>
 
-          <h2 className="mt-6 mb-2 text-2xl font-semibold">Discussion</h2>
+          <h2 className="mt-6 mb-2 text-xl font-semibold sm:text-2xl">
+            Discussion
+          </h2>
 
           <Theorem>Kimchi.</Theorem>
 

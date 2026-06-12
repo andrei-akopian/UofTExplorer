@@ -62,7 +62,7 @@ export default function CourseSearchBar({
       </label>
       <input
         type="text"
-        className="border-border-card bg-input-bg focus:border-focus-border focus:ring-focus-ring box-border w-[96%] rounded-[0.9rem] border px-[0.9rem] py-[0.78rem] text-sm focus:ring-2 focus:outline-none"
+        className="border-border-card bg-input-bg focus:border-focus-border focus:ring-focus-ring box-border w-full rounded-[0.9rem] border px-[0.9rem] py-[0.78rem] text-[0.96rem] focus:ring-2 focus:outline-none"
         placeholder={placeholder}
         autoComplete="off"
         value={query}

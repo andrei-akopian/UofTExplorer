@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import GraphQuery from "../components/graph/GraphQuery";
 import type { GraphData, GraphNode } from "../types";
 import GraphVis2D from "../components/graph/GraphVis2D";
-import GraphStatsPanel from "../components/graph/GraphStatsPanel";
 import GraphInfoPanel from "../components/graph/GraphInfoPanel";
 import MobileWarning from "../components/MobileWarning";
 import Settings from "../components/graph/Settings";
@@ -64,7 +63,7 @@ export default function Graph2D() {
         <Settings settings={settings}></Settings>
       </div>
 
-      <div className="fixed bottom-10 left-5 z-20 flex min-w-[20rem] flex-col gap-1">
+      <div className="fixed right-3 bottom-3 left-3 z-20 flex min-w-0 flex-col gap-1 sm:right-auto sm:bottom-10 sm:left-5 sm:min-w-[20rem]">
         <div className="text-text-query overflow-hidden text-[0.84rem] leading-[1.3] font-semibold text-ellipsis whitespace-nowrap">
           {currentQuery.code &&
             `Currently displaying: ${currentQuery.code} - ${currentQuery.name}`}
@@ -92,10 +91,6 @@ export default function Graph2D() {
         selectedNode={selectedNode}
         onNodeSelect={setSelectedNode}
       />
-
-      <div className="fixed right-10 bottom-10 flex h-120 w-80">
-        <GraphStatsPanel data={graphData}></GraphStatsPanel>
-      </div>
     </div>
   );
 }
