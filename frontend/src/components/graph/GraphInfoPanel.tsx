@@ -284,9 +284,6 @@ export function GraphNodesPanel({
               value={activeNode.crNcr ? "Eligible" : "Not eligible"}
             />
           )}
-          {activeNode.depth !== undefined && activeNode.depth !== null && (
-            <NodeDetail label="Depth" value={String(activeNode.depth)} />
-          )}
         </div>
       ) : (
         <ul className="divide-border-card flex-1 divide-y overflow-y-auto">
@@ -310,11 +307,20 @@ export function GraphNodesPanel({
                     </span>
                   )}
                 </span>
-                {node.depth !== undefined && node.depth !== null && (
-                  <span className="text-text-subtle ml-auto shrink-0 text-xs">
-                    depth {node.depth}
-                  </span>
-                )}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="ml-auto h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="gray"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M2 12h20M16 6l6 6-6 6"
+                  />
+                </svg>
               </button>
             </li>
           ))}

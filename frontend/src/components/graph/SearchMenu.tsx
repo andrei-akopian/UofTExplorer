@@ -135,13 +135,6 @@ export default function SearchMenu({
     <div className="flex w-full flex-col gap-2 font-sans sm:w-auto sm:flex-row sm:flex-wrap">
       <div className="flex w-full items-center gap-2 sm:w-auto">
         <SearchBar query={query} setQuery={setQuery} />
-        <button
-          onClick={onLoadGraph}
-          disabled={isLoading}
-          className="bg-primary hover:bg-primary-hover h-10.5 shrink-0 cursor-pointer rounded-md border-0 px-4 py-2 font-sans text-sm text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60 sm:hidden"
-        >
-          Load Graph
-        </button>
       </div>
 
       <details className="group close-on-outclick relative sm:hidden">
