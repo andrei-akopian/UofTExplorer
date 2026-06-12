@@ -1,7 +1,15 @@
 import argparse
-from scraper import scraperui, report_outdatedness
 from server import start_server
-from data_analysis import stats_outdatedness, recompute_stats
+try:
+    from scraper import scraperui, report_outdatedness
+    from data_analysis import stats_outdatedness, recompute_stats
+except:
+    message = lambda: print("sorry, you are trying to use a module that was excluded from this docker build.")
+    scraperui = message
+    report_outdatedness = message
+    stats_outdatedness = message
+    recompute_stats = message
+    
 import subprocess
 import sys
 
@@ -35,7 +43,7 @@ def main():
     if len(sys.argv) <= 1:
         parser.print_help()
         exit(0)
-    if args.status or args.serve:
+    if args.status or (args.serve and not args.docker):
         report_outdatedness()
         stats_outdatedness()
     if args.build:

@@ -18,10 +18,12 @@ COPY core ./core
 RUN mkdir frontend
 COPY frontend/dist ./frontend/dist
 COPY server ./server
+COPY __init__.py ./__init__.py
+COPY __main__.py ./__main__.py
 # which ports to expose
 EXPOSE 5000
 # but then the ports need to be mapped.
 # docker run -p 5000:5000 myapp     # Manual mapping
 # docker run -P myapp  # automap if possible
 
-CMD ["python3", "-m", "server.server"]
+CMD ["python3", ".", "--serve", "--docker"]
