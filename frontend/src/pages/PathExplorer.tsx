@@ -88,6 +88,24 @@ export default function PathExplorer() {
     setAvoidedCourses(packet.avoided);
   }, []);
 
+  const exportHistory = useCallback((packets: HistoryPacket[]) => {
+    const stringed = JSON.stringify(packets);
+    const blob = new Blob([stringed], { type: "application/json" });
+
+    const url = URL.createObjectURL(blob);
+    const blobLink = document.createElement("a");
+    blobLink.href = url;
+    blobLink.download =
+      packets.length == 1
+        ? "pathexplorer-snapshot.json"
+        : "pathexplorer-history.json";
+
+    document.body.appendChild(blobLink);
+    blobLink.click();
+    document.body.removeChild(blobLink);
+    URL.revokeObjectURL(url);
+  }, []);
+
   const historyCard = useCallback((packet: HistoryPacket) => {
     return (
       <details className="border-border-card bg-panel-bg shadow-card mt-0.5 mb-1.5 rounded-lg border p-1">
@@ -111,6 +129,7 @@ export default function PathExplorer() {
             <button
               type="button"
               className="border-border-card bg-surface-1 text-text-body hover:bg-surface-2 shrink-0 rounded-md border px-2.5 py-1 text-[0.72rem] font-medium"
+              onClick={() => exportHistory([packet])}
             >
               Export
             </button>
