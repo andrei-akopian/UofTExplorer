@@ -1,7 +1,11 @@
 from core.sat import solve_sat, solve_satz3
+import matplotlib.pyplot as plt
+
+SAVE_PATH = None
+GRAPH = None
 
 
-def distr_sat_lengthz3(GRAPH) -> None:
+def distr_sat_lengthz3() -> None:
     """
     Make a bar plot of sat lengths using the z3 sat solver
     """
@@ -25,8 +29,7 @@ def distr_sat_lengthz3(GRAPH) -> None:
 
     ax.bar(
         x=list(range(1, max(lengths) + 1)),
-        y=[lengths.count(i) for i in range(1, max(lengths) + 1)],
-        ax=ax,
+        height=[lengths.count(i) for i in range(1, max(lengths) + 1)],
     )
     ax.set_xlabel("Length of Shortest Prerequisite Path")
     ax.set_yscale("log")

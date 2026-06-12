@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 
 from core.core import CourseGraph, Program
 from core.constructor import construct_container
-from core.algorithms import separate_courses_by_department, get_prereq_course_set
+from core.algorithms import separate_courses_by_department
 from core.sat import solve_sat, solve_satz3
 
 from data_analysis.graph_generators import sat_graphs
@@ -50,6 +50,11 @@ GRAPH, PROGRAMS = initialize(
     "data/glossary.json",
     "data/breadths.json",
 )
+
+sat_graphs.SAVE_PATH = SAVE_PATH
+req_graphs.SAVE_PATH = SAVE_PATH
+sat_graphs.GRAPH = GRAPH
+req_graphs.GRAPH = GRAPH
 
 
 def hours_per_course() -> None:
@@ -435,8 +440,8 @@ def run_all() -> None:
     """
     Runs all the plots
     """
-    # course_level_pie()
-    # course_length_pie_chart()
+    course_level_pie()
+    course_length_pie_chart()
     hour_type_departments()
     levels_in_departments()
     hours_per_course()
@@ -444,10 +449,9 @@ def run_all() -> None:
     breadth_count_by_program()
     req_graphs.distr_total_prereqs()
     req_graphs.distr_direct_prereqs()
-    # sat_graphs.distr_sat_lengthz3(GRAPH)
+    sat_graphs.distr_sat_lengthz3()
 
 
 if __name__ == "__main__":
-    # distr_sat_lengthz3()
     run_all()
     pass

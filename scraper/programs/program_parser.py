@@ -1,22 +1,4 @@
 """
-CSC111 Winter 2026 Project 2
-
-ACADEMIC CALENDAR PARSER
-This Python module provides functions to parse University of Toronto Academic Calendar pages.
-It takes html files from raw_output and converts them into courses.json stored to ../data/courses.json
-
-The HTMLs might not have a standarized format, and might contain incorrectly structured data.
-- in fact, a few courses have non-matching parenthesies
-
-The philosophy of the parsers is thus:
-- parsers must be complicated by necessity, do not seek to simplify or clean them up like normal modules.
-- write many assert statements, so if unexpected cases are reported immediately.
-    make use of global variables, to make asserts and debugging most powerful.
-- due to changing requirements from downstream functions,
-    parsers are to always maintain flexibility and strong debugging infrastructure.
-- code partaining to edge cases no longer needed, is to be left commented out rather than removed.
-    Need for documentation and edgecase detection might arise at any moment.
-
 Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 """
 
@@ -272,7 +254,7 @@ class ProgramParser:
             print(f"parsing {target}")
         return target
 
-    def full_scrape_parse(self, target: str = "UTSG", interactive: bool = True) -> None:
+    def full_parse(self, target: str = "UTSG", interactive: bool = True) -> None:
         """
         Parse all the pages associate with programs and a particular target.
         """
@@ -298,3 +280,11 @@ class ProgramParser:
         self.save_to_json(self.programs)
         end = time.clock_gettime(time.CLOCK_MONOTONIC)
         self.logger.info("parsing finished in: %ss", round(end - start, 4))
+
+    @classmethod
+    def get_parse_job(target: str = "UTSG", interactive: bool = True):
+        def job():
+            pp = ProgramParser()
+            pp.full_parse(traget, interactive)
+
+        return job
