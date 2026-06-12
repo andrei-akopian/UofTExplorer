@@ -21,6 +21,7 @@ Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 """
 
 from __future__ import annotations
+from scraper.courses.course_utils import course_code_parser
 import json
 import os
 import re
@@ -191,51 +192,6 @@ class CourseParser:
             self.bs4_prefered_parser = "lxml"
         except bs4.FeatureNotFound:
             self.bs4_prefered_parser = "html.parser"
-
-    def course_code_parser(self, course_code: str) -> Optional[list[str | int]]:
-        """
-        Dilutes the course code into its prime components.
-        verify flag converts this into a checker.
-
-        Returns either parsed string, or a boolean regarding whether the parse was
-        successful or not.
-        """
-        if len(course_code) != 8 or not course_code.isupper():
-            return None
-
-        department_code = ""
-        course_number = ""
-        length = ""
-        campus = ""
-        i = 0
-        # Department code
-        while i < len(course_code) and course_code[i].isalpha():
-            department_code += course_code[i]
-            i += 1
-        if len(department_code) not in [3, 4]:
-            return None
-        # Course number with  department
-        while i < len(course_code) and course_code[i].isdigit():
-            course_number += course_code[i]
-            i += 1
-        if (len(course_number) == 2 and len(department_code) != 4) or (
-            len(course_number) > 4
-        ):
-            return None
-        # Length (year) or (halfyear)
-        while i < len(course_code) and course_code[i].isalpha():
-            length += course_code[i]
-            i += 1
-        if len(length) != 1:
-            return None
-        # Compus code, see CAMPUSES constant
-        while i < len(course_code) and course_code[i].isdigit():
-            campus += course_code[i]
-            i += 1
-        if len(campus) != 1:
-            return None
-        assert campus in CAMPUSES
-        return [department_code, int(course_number), length, int(campus)]
 
     def course_hours_extract_int(self, hour_entry: str) -> int:
         """
@@ -431,7 +387,7 @@ class CourseParser:
                     continue
                 else:
                     ops_list.append("/")
-            elif self.course_code_parser(token) is not None:
+            elif course_code_parser(token) is not None:
                 if len(ops_list) > 0 and ops_list[-1] not in OP_PARENTH + ANDS + ORS:
                     self.modifications_logger.warning(
                         "inserted an OR during interpretation"
@@ -463,7 +419,7 @@ class CourseParser:
         """
         output = ["AND"]
         for req in requisites_raw_list:
-            if self.course_code_parser(req) is not None:
+            if course_code_parser(req) is not None:
                 output.append(req)
         return output, set()
 
@@ -607,10 +563,10 @@ class CourseParser:
             if c.isdigit() or c.isalpha():
                 collector += c
             else:
-                if self.course_code_parser(collector) is not None:
+                if course_code_parser(collector) is not None:
                     output.append(collector)
                 collector = ""
-        if self.course_code_parser(collector) is not None:
+        if course_code_parser(collector) is not None:
             output.append(collector)
         return output
 
@@ -635,7 +591,7 @@ class CourseParser:
 
         course_code = collections[0]
         title = " ".join(collections[1:])
-        if len(course_code) == 0 or self.course_code_parser(course_code) is None:
+        if len(course_code) == 0 or course_code_parser(course_code) is None:
             self.general_logger.critical("course has no code")
         if len(title) == 0:
             self.general_logger.critical("course has no title")
@@ -676,8 +632,9 @@ class CourseParser:
         # course name
         raw_name = div.h3.div.string.strip()
         course_code, title = self.split_curse_name(raw_name)
-        split_course_code = self.course_code_parser(course_code)
+        split_course_code = course_code_parser(course_code)
         assert split_course_code is not None
+        assert f"{split_course_code[3]}" in CAMPUSES
         self.current_course = course_code
 
         # This block must be below the title parsing, to make sure the course code is caught.
@@ -708,7 +665,7 @@ class CourseParser:
             has_fields.append("previous_course_codes")
             # assert course_code_parser(previous_course_code) is not None
             for pcc in previous_course_codes:
-                if self.course_code_parser(pcc) is None:
+                if course_code_parser(pcc) is None:
                     self.general_logger.info(
                         "previous course code has strange format: %s", pcc.encode()
                     )
