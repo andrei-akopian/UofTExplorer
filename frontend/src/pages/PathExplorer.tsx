@@ -3,7 +3,21 @@ import type { GraphData } from "../types";
 import CourseSearchBar from "../components/search/CourseSearchBar";
 import GraphVis2D from "../components/graph/GraphVis2D";
 import MobileWarning from "../components/MobileWarning";
-import { useImmediatePostreqs, usePathFinderSolution } from "../hooks/useGraph";
+import {
+  useImmediatePostreqs,
+  usePathFinderSolution,
+  useLocalStorage,
+} from "../hooks/useGraph";
+
+interface HistoryPacket {
+  desired: string[];
+  completed: string[];
+  avoided: string[];
+  solution: string[];
+  tool: string;
+}
+
+const MaxHistoryCount = 2;
 
 export default function PathExplorer() {
   const [completedCourses, setCompletedCourses] = useState<string[]>([]);
@@ -12,6 +26,7 @@ export default function PathExplorer() {
   const [solutionDisplay, setSolutionDisplay] = useState<string[]>([]);
   const [placeholderText, setPlaceholderText] = useState<string>("");
   const [isMobileControlsOpen, setIsMobileControlsOpen] = useState(false);
+  const [lastTool, setLastTool] = useState<string>("");
 
   const { data: graphDataPostreqs, fetch: fetchImmediatePostreqs } =
     useImmediatePostreqs();
@@ -26,6 +41,79 @@ export default function PathExplorer() {
     nodes: [],
     edges: [],
   });
+
+  const { value: historyList, set: setHistoryList } = useLocalStorage<
+    HistoryPacket[]
+  >("PathExplorerHistory", []);
+
+  useEffect(() => {
+    console.log(historyList);
+  }, [historyList]);
+
+  const updateHistory = useCallback(
+    (newPacket: HistoryPacket) => {
+      const newList = historyList.slice(0, MaxHistoryCount - 1);
+      newList.unshift(newPacket);
+      setHistoryList(newList);
+    },
+    [historyList],
+  );
+
+  const captureHistory = useCallback((): HistoryPacket => {
+    return {
+      completed: completedCourses,
+      desired: desiredCourses,
+      avoided: avoidedCourses,
+      solution: solutionDisplay,
+      tool: lastTool,
+    };
+  }, [
+    completedCourses,
+    avoidedCourses,
+    desiredCourses,
+    solutionDisplay,
+    lastTool,
+  ]);
+
+  useEffect(() => {
+    if (completedCourses.length == 0 && desiredCourses.length == 0) {
+      return;
+    }
+    updateHistory(captureHistory());
+  }, [graphData]);
+
+  const historyCard = useCallback((packet: HistoryPacket) => {
+    return (
+      <details className="border-border-card bg-panel-bg shadow-card rounded-lg border p-0.5">
+        <summary className="hover:bg-surface-1 cursor-pointer list-none rounded-md p-0.5 transition-colors duration-150 hover:shadow-sm">
+          <span className="flex items-start justify-between gap-3">
+            <span className="text-text-body min-w-0 flex-1">
+              <span className="block text-sm font-semibold">
+                {`R: ${packet.solution.length} | C: ${packet.completed.length} | D: ${packet.desired.length} | A: ${packet.avoided.length}`}
+              </span>
+              <span className="block text-xs leading-snug">
+                {packet.tool == "postreqs" ? "Find Next Courses" : "Path Find"}
+              </span>
+            </span>
+            <button
+              type="button"
+              className="border-border-card bg-surface-1 text-text-body hover:bg-surface-2 shrink-0 rounded-md border px-2.5 py-1 text-[0.72rem] font-medium"
+            >
+              Load
+            </button>
+          </span>
+        </summary>
+        <div className="m-1">
+          <p className="font-bold">Result:</p>
+          <p className="font-normal">
+            {packet.solution.map((x) => (
+              <div>{x}</div>
+            ))}
+          </p>
+        </div>
+      </details>
+    );
+  }, []);
 
   const courseCard = useCallback(
     (code: string, dataDict: Map<string, any>, highlight: boolean) => {
@@ -124,6 +212,7 @@ export default function PathExplorer() {
   };
 
   useEffect(() => {
+    setLastTool("postreqs");
     if (graphDataPostreqs) {
       setGraphData(graphDataPostreqs);
 
@@ -162,6 +251,7 @@ export default function PathExplorer() {
   };
 
   useEffect(() => {
+    setLastTool("pathfind");
     if (graphDataPathfind) {
       setPlaceholderText("");
       setGraphData(graphDataPathfind?.graph_data);
@@ -213,8 +303,8 @@ export default function PathExplorer() {
             History
           </header>
           <div className="text-text-secondary min-h-0 flex-1 overflow-y-auto px-4 py-3 text-sm">
-            {solutionDisplay.length > 0
-              ? solutionDisplay.map((course) => <p>{course}</p>)
+            {historyList.length > 0
+              ? historyList.map((packet: HistoryPacket) => historyCard(packet))
               : "No history to display yet. Try running Path Explorer."}
           </div>
         </section>
