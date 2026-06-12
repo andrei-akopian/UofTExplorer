@@ -4,7 +4,7 @@ export default function Settings({
   settings: React.ReactNode[];
 }) {
   return (
-    <details className="close-on-outclick fixed right-16 bottom-3 z-30 sm:right-16 sm:bottom-4">
+    <details className="close-on-outclick fixed right-28 bottom-3 z-30 sm:right-28 sm:bottom-4">
       <summary className="border-border-card bg-panel-bg shadow-card m-0 flex h-10 w-10 list-none items-center justify-center rounded-full border p-0 transition-colors hover:brightness-95 [&::-webkit-details-marker]:hidden">
         <svg
           className="h-5 w-5"

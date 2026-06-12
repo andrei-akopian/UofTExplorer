@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import type { GraphData, GraphNode } from "../types";
 import GraphQuery from "../components/graph/GraphQuery";
 import GraphVis3D from "../components/graph/GraphVis3D";
-import GraphInfoPanel from "../components/graph/GraphInfoPanel";
+import {
+  GraphStatsPanel,
+  GraphNodesPanel,
+} from "../components/graph/GraphInfoPanel";
+import GraphInfoMenu from "../components/graph/GraphInfoMenu";
 import MobileWarning from "../components/MobileWarning";
 import Settings from "../components/graph/Settings";
 import { useSearchParams } from "react-router-dom";
@@ -60,11 +64,14 @@ export default function Graph3D() {
         manualFetch={manualFetch}
       />
 
-      <GraphInfoPanel
-        graphData={graphData}
-        selectedNode={selectedNode}
-        onNodeSelect={setSelectedNode}
-      />
+      <GraphInfoMenu>
+        <GraphStatsPanel graphData={graphData} />
+        <GraphNodesPanel
+          graphData={graphData}
+          selectedNode={selectedNode}
+          onNodeSelect={setSelectedNode}
+        />
+      </GraphInfoMenu>
       <div className="fixed right-3 bottom-3 left-3 z-20 flex min-w-0 flex-col gap-1 sm:right-auto sm:bottom-10 sm:left-5 sm:min-w-[20rem]">
         <div
           id="currQueryDisplay"
