@@ -210,6 +210,7 @@ export default function GraphVis3D({
       const connected = findConnected(origin);
       highlightedNodesRef.current = connected;
       graphRef.current.nodeColor(graphRef.current.nodeColor());
+      graphRef.current.linkColor(graphRef.current.linkColor());
     },
     [directedGraph, findConnected],
   );
@@ -275,7 +276,7 @@ export default function GraphVis3D({
           node["class_size"] ? node["class_size"] / 10 : 5,
         )
         .nodeColor((n: any) =>
-          highlightedNodesRef.current.has(n.id) ? "yellow" : n.color,
+          highlightedNodesRef.current.has(n.id) ? "#ffdd63" : n.color,
         )
         .linkDirectionalArrowLength(4)
         .linkDirectionalArrowRelPos(0.5)
@@ -298,7 +299,12 @@ export default function GraphVis3D({
           }
         })
         .linkHoverPrecision(10)
-        .linkColor(() => "#999999")
+        .linkColor((link: any) =>
+          highlightedNodesRef.current.has(link.source.id) &&
+          highlightedNodesRef.current.has(link.target.id)
+            ? "#ffdd63"
+            : "#999999",
+        )
         .backgroundColor(getGraphBackgroundColor());
 
       graphRef.current.d3Force("radial", radialPendulumForce(useShellLayout));
