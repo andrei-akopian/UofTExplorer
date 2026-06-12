@@ -53,8 +53,9 @@ PROGRAM_TYPE_CODE_MAP = {
     "MIN": "Minor",
     "SPE": "Specialist",
     "FOC": "Focus",
-    "CER": "Certification"
+    "CER": "Certification",
 }
+
 
 class ContextFilter(logging.Filter):
     """Context filter for the logger."""
@@ -211,12 +212,15 @@ class ProgramParser:
                 a_tags = p_tag.find_all("a")
                 for a_tag in a_tags:
                     course_code = a_tag.string
-                    if course_code is not None and course_code_parser(course_code) is not None:
+                    if (
+                        course_code is not None
+                        and course_code_parser(course_code) is not None
+                    ):
                         courses_mentioned.append(course_code)
 
         program_information = {
             "title": title,
-            "program_artsci": program_artsci, # (Arts Program) or (Science Program)
+            "program_artsci": program_artsci,  # (Arts Program) or (Science Program)
             "program_code": program_code,
             "field_section": field_section,
             "description": description,

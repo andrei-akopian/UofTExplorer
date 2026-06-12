@@ -292,14 +292,20 @@ def construct_programs(
             code = "".join(entry["program_code"])
             title = entry["title"]
             mentions = entry["courses_mentioned"]
-            program = construct_program(total_graph, mentions, code, title)
+            program = construct_program(
+                total_graph, mentions, code, title, entry["program_artsci"]
+            )
             programs[code] = program
 
     return programs
 
 
 def construct_program(
-    total_graph: CourseGraph, courses: list[str], code: str, title: str
+    total_graph: CourseGraph,
+    courses: list[str],
+    code: str,
+    title: str,
+    artsci_type: Optional[str],
 ) -> Program:
     """
     Return a Program object that contains the given courses, including the courses' prerequisites and corequisites.
@@ -307,7 +313,7 @@ def construct_program(
     subgraph = construct_subgraph(
         total_graph, courses, traversers.Targets(True, True, False, False)
     )
-    return Program(code=code, title=title, graph=subgraph)
+    return Program(code=code, title=title, artsci_type=artsci_type, graph=subgraph)
 
 
 def construct_subgraph(
