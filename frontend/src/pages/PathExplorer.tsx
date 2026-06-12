@@ -17,7 +17,7 @@ interface HistoryPacket {
   tool: string;
 }
 
-const MaxHistoryCount = 2;
+const MaxHistoryCount = 10;
 
 export default function PathExplorer() {
   const [completedCourses, setCompletedCourses] = useState<string[]>([]);
@@ -82,9 +82,15 @@ export default function PathExplorer() {
     updateHistory(captureHistory());
   }, [graphData]);
 
+  const loadHistory = useCallback((packet: HistoryPacket) => {
+    setCompletedCourses(packet.completed);
+    setDesiredCourses(packet.desired);
+    setAvoidedCourses(packet.avoided);
+  }, []);
+
   const historyCard = useCallback((packet: HistoryPacket) => {
     return (
-      <details className="border-border-card bg-panel-bg shadow-card rounded-lg border p-0.5">
+      <details className="border-border-card bg-panel-bg shadow-card mt-0.5 mb-1.5 rounded-lg border p-1">
         <summary className="hover:bg-surface-1 cursor-pointer list-none rounded-md p-0.5 transition-colors duration-150 hover:shadow-sm">
           <span className="flex items-start justify-between gap-3">
             <span className="text-text-body min-w-0 flex-1">
@@ -98,18 +104,27 @@ export default function PathExplorer() {
             <button
               type="button"
               className="border-border-card bg-surface-1 text-text-body hover:bg-surface-2 shrink-0 rounded-md border px-2.5 py-1 text-[0.72rem] font-medium"
+              onClick={() => loadHistory(packet)}
             >
               Load
+            </button>
+            <button
+              type="button"
+              className="border-border-card bg-surface-1 text-text-body hover:bg-surface-2 shrink-0 rounded-md border px-2.5 py-1 text-[0.72rem] font-medium"
+            >
+              Export
             </button>
           </span>
         </summary>
         <div className="m-1">
-          <p className="font-bold">Result:</p>
-          <p className="font-normal">
-            {packet.solution.map((x) => (
-              <div>{x}</div>
-            ))}
-          </p>
+          <p className="mt-1 font-bold">Result:</p>
+          <p className="font-normal">{packet.solution.join(", ")}</p>
+          <p className="mt-1 font-bold">Completed Courses:</p>
+          <p className="font-normal">{packet.completed.join(", ")}</p>
+          <p className="mt-1 font-bold">Desired Courses:</p>
+          <p className="font-normal">{packet.desired.join(", ")}</p>
+          <p className="mt-1 font-bold">Avoided Courses:</p>
+          <p className="font-normal">{packet.avoided.join(", ")}</p>
         </div>
       </details>
     );
