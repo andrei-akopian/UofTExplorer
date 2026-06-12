@@ -1,7 +1,8 @@
 import SpriteText from "three-spritetext";
 import ForceGraph3D from "3d-force-graph";
 import type { GraphData, GraphNode } from "../../types";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useCallback } from "react";
+import { useCreateDirectedGraph } from "../../hooks/useGraph";
 
 // ───────────────────────────────────────────────
 //   TUNABLE CONSTANTS
@@ -139,6 +140,50 @@ export default function GraphVis3D({
     onNodeClickRef.current = onNodeClickCallback;
   }, [onNodeClickCallback]);
 
+  const { directedGraph, findConnected } = useCreateDirectedGraph(
+    graphData,
+    true,
+  );
+  const highlightedNodesRef = useRef<Set<string>>(new Set());
+  const highlightGraphRef = useRef<(origin: string) => void>(null);
+  const hoverHighlightTimeRef = useRef<number>(Date.now());
+  const isHoveringRef = useRef<boolean>(false);
+  const isNodePinnedRef = useRef<boolean>(false);
+
+  const highlightGraph = useCallback(
+    (origin: string) => {
+      const connected = findConnected(origin);
+      highlightedNodesRef.current = connected;
+      graphRef.current.nodeColor(graphRef.current.nodeColor());
+      graphRef.current.linkColor(graphRef.current.linkColor());
+    },
+    [directedGraph, findConnected],
+  );
+
+  useEffect(() => {
+    highlightGraphRef.current = highlightGraph;
+  }, [highlightGraph]);
+
+  const hoverHighlightGraph = useCallback((origin: string) => {
+    if (isNodePinnedRef.current) {
+      return;
+    }
+    let currTime = Date.now();
+    if (currTime - hoverHighlightTimeRef.current > 32) {
+      hoverHighlightTimeRef.current = currTime;
+      highlightGraphRef.current?.(origin);
+    }
+  }, []);
+
+  const handleFrameClick = useCallback(() => {
+    if (isHoveringRef.current) {
+      isNodePinnedRef.current = true;
+    } else {
+      isNodePinnedRef.current = false;
+      highlightGraphRef.current?.("");
+    }
+  }, []);
+
   useEffect(() => {
     const applyThemeStyles = () => {
       if (graphRef.current) {
@@ -175,6 +220,9 @@ export default function GraphVis3D({
         .nodeVal((node: any) =>
           node["class_size"] ? node["class_size"] / 10 : 5,
         )
+        .nodeColor((n: any) =>
+          highlightedNodesRef.current.has(n.id) ? "#ffdd63" : n.color,
+        )
         .linkDirectionalArrowLength(4)
         .linkDirectionalArrowRelPos(0.5)
         .nodeThreeObjectExtend(true)
@@ -184,9 +232,24 @@ export default function GraphVis3D({
           if (onNodeClickRef.current) {
             onNodeClickRef.current(node as GraphNode);
           }
+          highlightGraphRef.current?.(node.id);
+        })
+        .onNodeHover((node: any) => {
+          if (node) {
+            isHoveringRef.current = true;
+            hoverHighlightGraph(node.id);
+          } else {
+            isHoveringRef.current = false;
+            hoverHighlightGraph("");
+          }
         })
         .linkHoverPrecision(10)
-        .linkColor(() => "#999999")
+        .linkColor((link: any) =>
+          highlightedNodesRef.current.has(link.source.id) &&
+          highlightedNodesRef.current.has(link.target.id)
+            ? "#ffdd63"
+            : "#999999",
+        )
         .backgroundColor(getGraphBackgroundColor());
 
       graphRef.current.d3Force("charge").strength(-150);
@@ -203,6 +266,7 @@ export default function GraphVis3D({
         ref={graphFrame}
         id="graph"
         className="h-full w-full overflow-hidden"
+        onClick={handleFrameClick}
       ></div>
       <div className={loading ? "" : "hidden"}>
         <div className="absolute top-0 flex h-full w-full">

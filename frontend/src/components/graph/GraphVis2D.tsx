@@ -1,5 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import type { GraphData, GraphEdge, GraphNode, QueryInfo } from "../../types";
+import { useCreateDirectedGraph } from "../../hooks/useGraph";
+import { DataSet } from "vis-network/standalone/esm/vis-network.min.js";
 
 interface Node extends GraphNode {
   id: string;
@@ -88,9 +90,23 @@ export default function GraphVis2D({
 }: GraphVis2DProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const networkRef = useRef<any>(null);
+
+  const { directedGraph, findConnected } = useCreateDirectedGraph(
+    graphData,
+    true,
+  );
+  const visNodesRef = useRef<any>(null);
+  const colorMapRef = useRef<Map<string, string>>(null);
+  const previousColorPacketRef = useRef<any>(null);
+  const isNodePinnedRef = useRef<boolean>(false);
+  const hoverHighlightDebounce = useRef<number>(Date.now());
+
   const [_activeNodes, setActiveNodes] = useState<Node[]>([]);
   const activeNodesRef = useRef<Node[]>([]);
   const onNodeClickRef = useRef(onNodeClickCallback);
+  const highlightGraphRef = useRef<(origin: string) => Set<string> | void>(
+    () => new Set<string>(),
+  );
   useEffect(() => {
     onNodeClickRef.current = onNodeClickCallback;
   }, [onNodeClickCallback]);
@@ -153,15 +169,37 @@ export default function GraphVis2D({
           { nodes: [], edges: [] },
           options,
         );
+
         network.on("click", (params: any) => {
           if (params.nodes?.length > 0) {
             const nodeId = String(params.nodes[0]);
             const node = activeNodesRef.current.find(
               (n) => String(n.id) === nodeId,
             );
+
+            if (node) {
+              isNodePinnedRef.current = true;
+              highlightGraphRef.current?.(node.id);
+            }
+
             if (node && onNodeClickRef.current) {
               onNodeClickRef.current(node);
             }
+          } else {
+            isNodePinnedRef.current = false;
+            highlightGraphRef.current?.("");
+          }
+        });
+
+        network.on("hoverNode", (params: any) => {
+          if (!isNodePinnedRef.current) {
+            hoverHighlightGraph(params.node);
+          }
+        });
+
+        network.on("blurNode", (_params: any) => {
+          if (!isNodePinnedRef.current) {
+            hoverHighlightGraph("");
           }
         });
 
@@ -230,9 +268,16 @@ export default function GraphVis2D({
     setActiveNodes(prepared.nodes);
     activeNodesRef.current = prepared.nodes;
 
+    visNodesRef.current = new DataSet(prepared.nodes);
+
+    colorMapRef.current = new Map();
+    for (const node of prepared.nodes) {
+      colorMapRef.current.set(node.id, node.color);
+    }
+
     if (networkRef.current) {
       networkRef.current.setData({
-        nodes: prepared.nodes,
+        nodes: visNodesRef.current,
         edges: prepared.edges,
       });
       networkRef.current.startSimulation();
@@ -240,6 +285,48 @@ export default function GraphVis2D({
 
     setLoading && setLoading(false);
   }, [graphData]);
+
+  const hightlightGraph = useCallback(
+    (origin: string) => {
+      if (previousColorPacketRef.current) {
+        if (visNodesRef.current) {
+          visNodesRef.current.update(previousColorPacketRef.current);
+        }
+      }
+
+      const connected = findConnected(origin);
+
+      previousColorPacketRef.current = [];
+      const updatePacket: any[] = [];
+      for (const item of connected) {
+        updatePacket.push({ id: item, color: "#ffdd63" });
+        previousColorPacketRef.current.push({
+          id: item,
+          color: colorMapRef.current?.get(item),
+        });
+      }
+
+      if (visNodesRef.current) {
+        visNodesRef.current.update(updatePacket);
+        //networkRef.current?.redraw();
+      }
+
+      return connected;
+    },
+    [directedGraph, findConnected],
+  );
+
+  useEffect(() => {
+    highlightGraphRef.current = hightlightGraph;
+  }, [hightlightGraph]);
+
+  const hoverHighlightGraph = useCallback((origin: string) => {
+    let currTime = Date.now();
+    if (currTime - hoverHighlightDebounce.current > 32) {
+      hoverHighlightDebounce.current = currTime;
+      highlightGraphRef.current(origin);
+    }
+  }, []);
 
   return (
     <>
