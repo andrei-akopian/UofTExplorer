@@ -3,6 +3,7 @@ Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 """
 
 from __future__ import annotations
+from scraper.courses.course_utils import course_code_parser
 import os
 import time
 import logging
@@ -27,6 +28,14 @@ PARSING_TARGETS: dict[str, dict] = {
     #     "filepattern": "programs_page_PAGENUMBER_utsc.html",
     #     "page_range": range(0, 7 + 1),
     # },
+}
+
+PROGRAM_TYPE_CODE_MAP = {
+    "MAJ": "Major",
+    "MIN": "Minor",
+    "SPE": "Specialist",
+    "FOC": "Focus",
+    "CER": "Certification",
 }
 
 
@@ -126,9 +135,18 @@ class ProgramParser:
         # course name
         raw_name = div.h3.div.string.strip()
         self.current_program = raw_name
-        split_temp = raw_name.split(" - ")
         program_code: list[str] = []
+        if "(Science Program)" in raw_name:
+            temp = raw_name.replace("(Science Program)", "").strip()
+            program_artsci = "Science Program"
+        elif "(Arts Program)" in raw_name:
+            temp = raw_name.replace("(Arts Program)", "").strip()
+            program_artsci = "Arts Program"
+        else:
+            temp = raw_name
+        split_temp = temp.split(" - ")
         title: str = "Missing Program Title"
+        program_artsci = None
         if len(split_temp) == 1:
             # example: Focus in Green Chemistry
             # there are only like 5 of them
@@ -136,12 +154,14 @@ class ProgramParser:
             self.current_program = ""
             return {}, "discard"  # Drop programs with no program code
         elif len(split_temp) == 2:
-            title = split_temp[0]
-            program_code = self.program_code_parser(split_temp[1])
+            title = split_temp[0].strip()
+            program_code = self.program_code_parser(split_temp[1].strip())
         elif len(split_temp) == 3:
             # example: Criminology and Sociolegal Studies - Major (Arts Program) - ASMAJ0826
-            title += f"{split_temp[0]} - {split_temp[1]}"
-            program_code = self.program_code_parser(split_temp[2])
+            program_code = self.program_code_parser(split_temp[2].strip())
+            title = split_temp[0].strip()
+        else:
+            raise ValueError("not sure how to parse this")
 
         field_section_raw = div.find_all(class_="views-field-field-section-link")
         field_section = ""
@@ -173,12 +193,16 @@ class ProgramParser:
                 # completion_requirements.append(p_tag.string)
                 a_tags = p_tag.find_all("a")
                 for a_tag in a_tags:
-                    course_name = a_tag.string
-                    if course_name != "CR/NCR":
-                        courses_mentioned.append(course_name)
+                    course_code = a_tag.string
+                    if (
+                        course_code is not None
+                        and course_code_parser(course_code) is not None
+                    ):
+                        courses_mentioned.append(course_code)
 
         program_information = {
             "title": title,
+            "program_artsci": program_artsci,  # (Arts Program) or (Science Program)
             "program_code": program_code,
             "field_section": field_section,
             "description": description,

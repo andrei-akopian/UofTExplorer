@@ -828,15 +828,19 @@ class Program:
 
     code: str
     title: str
+    artsci_type: Optional[str]
     graph: CourseGraph
 
-    def __init__(self, code: str, title: str, graph: CourseGraph) -> None:
+    def __init__(
+        self, code: str, title: str, artsci_type: Optional[str], graph: CourseGraph
+    ) -> None:
         """
         Initialize a new Program.
         """
         self.code = code
         self.title = title
         self.graph = graph
+        self.artsci_type = artsci_type
 
     def code_contains(self, string: str) -> bool:
         """
