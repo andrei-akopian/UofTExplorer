@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { GraphData } from "../types";
 import CourseSearchBar from "../components/search/CourseSearchBar";
 import GraphVis2D from "../components/graph/GraphVis2D";
@@ -27,6 +27,68 @@ export default function PathExplorer() {
     edges: [],
   });
 
+  const courseCard = useCallback(
+    (code: string, dataDict: Map<string, any>, highlight: boolean) => {
+      return (
+        <details
+          className={
+            highlight
+              ? "border-border-card shadow-card bg-green-bg rounded-lg border p-0.5"
+              : "border-border-card bg-panel-bg shadow-card rounded-lg border p-0.5"
+          }
+        >
+          <summary className="hover:bg-surface-1 cursor-pointer list-none rounded-md p-0.5 transition-colors duration-150 hover:shadow-sm">
+            <span className="flex items-start justify-between gap-3">
+              <span
+                className={
+                  highlight
+                    ? "text-text-body min-w-0 flex-1"
+                    : "text-text-muted min-w-0 flex-1"
+                }
+              >
+                <span className="block text-sm font-semibold">{code}</span>
+                <span className="block text-xs leading-snug">
+                  {dataDict.get(code).title}
+                </span>
+              </span>
+              <a href={`/graph/2d?search=${code}`} target="_blank">
+                <button
+                  type="button"
+                  className="border-border-card bg-surface-1 text-text-body hover:bg-surface-2 shrink-0 rounded-md border px-2.5 py-1 text-[0.72rem] font-medium"
+                >
+                  Open
+                </button>
+              </a>
+            </span>
+          </summary>
+          <div className="m-1">
+            <p className="font-bold">Description:</p>
+            <p className="font-normal">{dataDict.get(code).description}</p>
+            <p className="font-bold">Prerequisites:</p>
+            <p className="font-normal">{dataDict.get(code).prerequisites}</p>
+            {dataDict.get(code).corequisites ? (
+              <>
+                <p className="font-bold">Corequisites:</p>
+                <p className="font-normal">{dataDict.get(code).corequisites}</p>
+              </>
+            ) : (
+              <></>
+            )}
+            {dataDict.get(code).exclusions ? (
+              <>
+                <p className="font-bold">Exclusions:</p>
+                <p className="font-normal">{dataDict.get(code).exclusions}</p>
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
+        </details>
+      );
+    },
+    [],
+  );
+
   const resultsDisplay = useMemo(() => {
     const dataDict = new Map();
     const topList = [];
@@ -44,61 +106,10 @@ export default function PathExplorer() {
     }
     topList.sort();
     bottomList.sort();
-    const mergedList = topList.concat(bottomList);
     return (
       <>
-        {mergedList.map((code) => (
-          <details
-            className={
-              solutionDisplay.find((v) => v == code)
-                ? "border-border-card shadow-card bg-green-bg rounded-lg border p-0.5"
-                : "border-border-card bg-panel-bg shadow-card rounded-lg border p-0.5"
-            }
-          >
-            <summary className="hover:bg-surface-1 cursor-pointer list-none rounded-md p-0.5 transition-colors duration-150 hover:shadow-sm">
-              <span className="flex items-start justify-between gap-3">
-                <span className="min-w-0 flex-1">
-                  <span className="text-text-body block text-sm font-semibold">
-                    {code}
-                  </span>
-                  <span className="text-text-secondary block text-xs leading-snug">
-                    {dataDict.get(code).title}
-                  </span>
-                </span>
-                <button
-                  type="button"
-                  className="border-border-card bg-surface-1 text-text-body hover:bg-surface-2 shrink-0 rounded-md border px-2.5 py-1 text-[0.72rem] font-medium"
-                >
-                  Open
-                </button>
-              </span>
-            </summary>
-            <div className="m-1">
-              <p className="font-bold">Description:</p>
-              <p className="font-normal">{dataDict.get(code).description}</p>
-              <p className="font-bold">Prerequisites:</p>
-              <p className="font-normal">{dataDict.get(code).prerequisites}</p>
-              {dataDict.get(code).corequisites ? (
-                <>
-                  <p className="font-bold">Corequisites:</p>
-                  <p className="font-normal">
-                    {dataDict.get(code).corequisites}
-                  </p>
-                </>
-              ) : (
-                <></>
-              )}
-              {dataDict.get(code).exclusions ? (
-                <>
-                  <p className="font-bold">Exclusions:</p>
-                  <p className="font-normal">{dataDict.get(code).exclusions}</p>
-                </>
-              ) : (
-                <></>
-              )}
-            </div>
-          </details>
-        ))}
+        {topList.map((code) => courseCard(code, dataDict, true))} <hr></hr>
+        {bottomList.map((code) => courseCard(code, dataDict, false))}
       </>
     );
   }, [graphData]);
