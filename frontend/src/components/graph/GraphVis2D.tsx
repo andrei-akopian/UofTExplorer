@@ -321,9 +321,9 @@ export default function GraphVis2D({
   }, [hightlightGraph]);
 
   const hoverHighlightGraph = useCallback((origin: string) => {
-    let curr_time = Date.now();
-    if (curr_time - hoverHighlightDebounce.current > 32) {
-      hoverHighlightDebounce.current = curr_time;
+    let currTime = Date.now();
+    if (currTime - hoverHighlightDebounce.current > 32) {
+      hoverHighlightDebounce.current = currTime;
       highlightGraphRef.current(origin);
     }
   }, []);
