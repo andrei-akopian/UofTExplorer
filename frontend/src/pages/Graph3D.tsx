@@ -27,7 +27,7 @@ export default function Graph3D() {
     if (searchParams.has("search")) {
       setManualFetch(searchParams.get("search") ?? "");
     }
-  }, []);
+  }, [searchParams]);
 
   useEffect(() => {
     console.log("Graph data updated:", graphData);

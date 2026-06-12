@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import SearchMenu from "./SearchMenu";
 
 import { fetchGraphData } from "../../lib/api";
@@ -39,6 +40,8 @@ export default function GraphQuery({
 }) {
   void data;
 
+  const navigate = useNavigate();
+  const location = useLocation();
   const [query, setQuery] = useState<string>("");
   const [filters, setFilters] = useState<QueryFilters>({
     cr_ncr: [],
@@ -79,7 +82,11 @@ export default function GraphQuery({
 
   const handleFetchClick = () => {
     if (query.trim()) {
-      fetchGraph();
+      // Determine which graph page we're on, default to 2d
+      const isGraph3D = location.pathname.includes("/graph/3d");
+      const graphPath = isGraph3D ? "/graph/3d" : "/graph/2d";
+      // Redirect to graph page with search query parameter
+      navigate(`${graphPath}?search=${encodeURIComponent(query.trim())}`);
     }
   };
 

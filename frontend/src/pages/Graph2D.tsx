@@ -44,7 +44,7 @@ export default function Graph2D() {
     if (searchParams.has("search")) {
       setManualFetch(searchParams.get("search") ?? "");
     }
-  }, []);
+  }, [searchParams]);
 
   return (
     <div className="relative h-full w-full overflow-hidden">
