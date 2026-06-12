@@ -42,6 +42,8 @@ interface PanelProps {
   label: string;
   children: React.ReactNode;
   cardClassName?: string;
+  isOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }
 
 export function GraphInfoPanel({
@@ -49,26 +51,19 @@ export function GraphInfoPanel({
   label,
   children,
   cardClassName = "right-0",
+  isOpen: controlledOpen,
+  onOpenChange,
 }: PanelProps) {
-  const [isOpen, setIsOpen] = useState(true);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [internalOpen, setInternalOpen] = useState(true);
 
-  useEffect(() => {
-    if (!isOpen) return;
-    const handlePointerDown = (e: PointerEvent) => {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(e.target as Node)
-      ) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener("pointerdown", handlePointerDown);
-    return () => document.removeEventListener("pointerdown", handlePointerDown);
-  }, [isOpen]);
+  const isOpen = controlledOpen !== undefined ? controlledOpen : internalOpen;
+  const setIsOpen = (val: boolean) => {
+    onOpenChange?.(val);
+    setInternalOpen(val);
+  };
 
   return (
-    <div ref={containerRef} className="relative">
+    <div className="relative">
       {isOpen && (
         <div
           className={`border-border-card bg-panel-bg shadow-dropdown ${cardClassName} absolute bottom-12 flex h-[60vh] w-[calc(100vw-1.5rem)] max-w-80 flex-col overflow-hidden rounded-xl border sm:h-112 sm:w-80`}
@@ -78,7 +73,7 @@ export function GraphInfoPanel({
       )}
 
       <button
-        onClick={() => setIsOpen((prev) => !prev)}
+        onClick={() => setIsOpen(!isOpen)}
         className="border-border-card bg-primary hover:bg-primary-hover shadow-card flex h-10 w-10 items-center justify-center rounded-full border transition-colors hover:brightness-95"
         title={isOpen ? `Close ${label}` : `Open ${label}`}
         aria-label={isOpen ? `Close ${label}` : `Open ${label}`}
@@ -171,6 +166,8 @@ interface GraphNodesPanelProps {
   graphData: GraphData;
   selectedNode?: GraphNode | null;
   onNodeSelect?: (node: GraphNode | null) => void;
+  isOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }
 
 const nodesIcon = (
@@ -194,6 +191,8 @@ export function GraphNodesPanel({
   graphData,
   selectedNode,
   onNodeSelect,
+  isOpen,
+  onOpenChange,
 }: GraphNodesPanelProps) {
   const [internalSelected, setInternalSelected] = useState<GraphNode | null>(
     null,
@@ -213,7 +212,12 @@ export function GraphNodesPanel({
   const nodes = graphData?.nodes ?? [];
 
   return (
-    <GraphInfoPanel icon={nodesIcon} label="Graph Nodes">
+    <GraphInfoPanel
+      icon={nodesIcon}
+      label="Graph Nodes"
+      isOpen={isOpen}
+      onOpenChange={onOpenChange}
+    >
       <div className="border-border-card flex items-center justify-between border-b px-4 py-3">
         <h2 className="text-text-body text-sm font-semibold">
           Graph Nodes

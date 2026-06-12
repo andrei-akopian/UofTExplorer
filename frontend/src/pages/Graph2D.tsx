@@ -50,6 +50,13 @@ export default function Graph2D() {
     }
   }, []);
 
+  const [nodesOpen, setNodesOpen] = useState(true);
+
+  const handleNodeSelect = (node: GraphNode | null) => {
+    setSelectedNode(node);
+    if (node) setNodesOpen(true);
+  };
+
   return (
     <div className="relative h-full w-full overflow-hidden">
       <MobileWarning />
@@ -60,7 +67,7 @@ export default function Graph2D() {
             graphData={graphData}
             loading={loading}
             setLoading={setLoading}
-            onNodeClickCallback={setSelectedNode}
+            onNodeClickCallback={handleNodeSelect}
           />
         </div>
 
@@ -95,7 +102,9 @@ export default function Graph2D() {
         <GraphNodesPanel
           graphData={graphData}
           selectedNode={selectedNode}
-          onNodeSelect={setSelectedNode}
+          onNodeSelect={handleNodeSelect}
+          isOpen={nodesOpen}
+          onOpenChange={setNodesOpen}
         />
       </GraphInfoMenu>
     </div>

@@ -37,6 +37,13 @@ export default function Graph3D() {
     console.log("Graph data updated:", graphData);
   }, [graphData]);
 
+  const [nodesOpen, setNodesOpen] = useState(true);
+
+  const handleNodeSelect = (node: GraphNode | null) => {
+    setSelectedNode(node);
+    if (node) setNodesOpen(true);
+  };
+
   return (
     <div className="relative flex h-full min-h-0 w-full overflow-hidden">
       <MobileWarning />
@@ -48,7 +55,7 @@ export default function Graph3D() {
           setLoading={setIsLoading}
           setMessage={setMessage}
           setMessageType={setMessageType}
-          onNodeClickCallback={setSelectedNode}
+          onNodeClickCallback={handleNodeSelect}
         />
       </div>
 
@@ -69,7 +76,9 @@ export default function Graph3D() {
         <GraphNodesPanel
           graphData={graphData}
           selectedNode={selectedNode}
-          onNodeSelect={setSelectedNode}
+          onNodeSelect={handleNodeSelect}
+          isOpen={nodesOpen}
+          onOpenChange={setNodesOpen}
         />
       </GraphInfoMenu>
       <div className="fixed right-3 bottom-3 left-3 z-20 flex min-w-0 flex-col gap-1 sm:right-auto sm:bottom-10 sm:left-5 sm:min-w-[20rem]">
