@@ -50,7 +50,7 @@ export default function CourseSearchBar({
   }, [searchResults]);
 
   return (
-    <div className="border-border-card bg-card-bg shadow-card relative w-full shrink-0 rounded-2xl border px-[0.9rem] py-[0.85rem] pb-[0.95rem] text-sm">
+    <div className="border-border-card bg-card-bg shadow-card relative w-full shrink-0 rounded-2xl border px-4 py-1 text-sm">
       <label
         className="text-text-muted mb-[0.45rem] flex items-center gap-[0.55rem] text-[0.88rem] font-semibold"
         htmlFor="avoidedSearch"
@@ -62,7 +62,7 @@ export default function CourseSearchBar({
       </label>
       <input
         type="text"
-        className="border-border-card bg-input-bg focus:border-focus-border focus:ring-focus-ring box-border w-[96%] rounded-[0.9rem] border px-[0.9rem] py-[0.78rem] text-[0.96rem] focus:ring-2 focus:outline-none"
+        className="border-border-card bg-input-bg focus:border-focus-border focus:ring-focus-ring box-border w-[96%] rounded-[0.9rem] border px-[0.9rem] py-[0.78rem] text-sm focus:ring-2 focus:outline-none"
         placeholder={placeholder}
         autoComplete="off"
         value={query}
