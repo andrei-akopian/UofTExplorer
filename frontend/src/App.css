@@ -48,6 +48,7 @@
   /* Panel / card backgrounds */
   --color-panel-bg: rgba(255, 255, 255, 0.85);
   --color-card-bg: rgba(255, 255, 255, 0.6);
+  --color-green-bg: #7ce49a;
 
   /* Badge */
   --color-badge-bg: #e7eefb;
@@ -135,6 +136,7 @@
   --color-card-bg: rgba(20, 30, 46, 0.8);
   --color-surface-1: #101a2b;
   --color-surface-2: #162338;
+  --color-green-bg: rgb(52, 143, 78);
 
   /* Badge */
   --color-badge-bg: #223b66;
@@ -209,6 +211,7 @@
     --color-card-bg: rgba(20, 30, 46, 0.8);
     --color-surface-1: #101a2b;
     --color-surface-2: #162338;
+    --color-green-bg: rgb(52, 143, 78);
 
     /* Badge */
     --color-badge-bg: #223b66;

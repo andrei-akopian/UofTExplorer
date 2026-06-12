@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { GraphData } from "../types";
 import CourseSearchBar from "../components/search/CourseSearchBar";
 import GraphVis2D from "../components/graph/GraphVis2D";
@@ -26,6 +26,82 @@ export default function PathExplorer() {
     nodes: [],
     edges: [],
   });
+
+  const resultsDisplay = useMemo(() => {
+    const dataDict = new Map();
+    const topList = [];
+    const bottomList = [];
+    for (const node of graphData.nodes) {
+      if (node.label == "AND" || node.label == "OR") {
+        continue;
+      }
+      dataDict.set(node.id, node);
+      if (solutionDisplay.find((v) => v == node.id)) {
+        topList.push(node.id);
+      } else {
+        bottomList.push(node.id);
+      }
+    }
+    topList.sort();
+    bottomList.sort();
+    const mergedList = topList.concat(bottomList);
+    return (
+      <>
+        {mergedList.map((code) => (
+          <details
+            className={
+              solutionDisplay.find((v) => v == code)
+                ? "border-border-card shadow-card bg-green-bg rounded-lg border p-0.5"
+                : "border-border-card bg-panel-bg shadow-card rounded-lg border p-0.5"
+            }
+          >
+            <summary className="hover:bg-surface-1 cursor-pointer list-none rounded-md p-0.5 transition-colors duration-150 hover:shadow-sm">
+              <span className="flex items-start justify-between gap-3">
+                <span className="min-w-0 flex-1">
+                  <span className="text-text-body block text-sm font-semibold">
+                    {code}
+                  </span>
+                  <span className="text-text-secondary block text-xs leading-snug">
+                    {dataDict.get(code).title}
+                  </span>
+                </span>
+                <button
+                  type="button"
+                  className="border-border-card bg-surface-1 text-text-body hover:bg-surface-2 shrink-0 rounded-md border px-2.5 py-1 text-[0.72rem] font-medium"
+                >
+                  Open
+                </button>
+              </span>
+            </summary>
+            <div className="m-1">
+              <p className="font-bold">Description:</p>
+              <p className="font-normal">{dataDict.get(code).description}</p>
+              <p className="font-bold">Prerequisites:</p>
+              <p className="font-normal">{dataDict.get(code).prerequisites}</p>
+              {dataDict.get(code).corequisites ? (
+                <>
+                  <p className="font-bold">Corequisites:</p>
+                  <p className="font-normal">
+                    {dataDict.get(code).corequisites}
+                  </p>
+                </>
+              ) : (
+                <></>
+              )}
+              {dataDict.get(code).exclusions ? (
+                <>
+                  <p className="font-bold">Exclusions:</p>
+                  <p className="font-normal">{dataDict.get(code).exclusions}</p>
+                </>
+              ) : (
+                <></>
+              )}
+            </div>
+          </details>
+        ))}
+      </>
+    );
+  }, [graphData]);
 
   const handleGetImmediatePostreqs = async () => {
     console.log("Completed courses:", completedCourses);
@@ -116,32 +192,19 @@ export default function PathExplorer() {
           </header>
           <div className="min-h-0 flex-1 overflow-y-auto px-4 py-3">
             <div className="text-text-body flex flex-col gap-2 text-[0.84rem] font-medium">
-              {solutionDisplay.length > 0 ? (
-                solutionDisplay.map((course) => (
-                  <p
-                    key={course}
-                    className="m-0 rounded-md bg-white/60 px-3 py-2 shadow-sm"
-                  >
-                    {course}
-                  </p>
-                ))
-              ) : (
-                <p className="text-text-secondary m-0">
-                  No results yet. Run a path search to see the next unlocks
-                  here.
-                </p>
-              )}
+              {resultsDisplay}
             </div>
           </div>
         </section>
 
         <section className="flex min-h-0 flex-[0_0_38%] flex-col overflow-hidden">
           <header className="border-border-panel text-text-body shrink-0 border-b px-4 py-3 text-sm font-semibold">
-            Status
+            History
           </header>
           <div className="text-text-secondary min-h-0 flex-1 overflow-y-auto px-4 py-3 text-sm">
-            {placeholderText ||
-              "Select courses to see immediate unlocks or path guidance."}
+            {solutionDisplay.length > 0
+              ? solutionDisplay.map((course) => <p>{course}</p>)
+              : "No history to display yet. Try running Path Explorer."}
           </div>
         </section>
       </div>
