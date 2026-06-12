@@ -26,7 +26,9 @@ export default function PathExplorer() {
   const [solutionDisplay, setSolutionDisplay] = useState<string[]>([]);
   const [placeholderText, setPlaceholderText] = useState<string>("");
   const [isMobileControlsOpen, setIsMobileControlsOpen] = useState(false);
+
   const [lastTool, setLastTool] = useState<string>("");
+  const [resultVisibility, setResultVisibility] = useState<string>("all");
 
   const { data: graphDataPostreqs, fetch: fetchImmediatePostreqs } =
     useImmediatePostreqs();
@@ -230,11 +232,20 @@ export default function PathExplorer() {
     bottomList.sort();
     return (
       <>
-        {topList.map((code) => courseCard(code, dataDict, true))} <hr></hr>
-        {bottomList.map((code) => courseCard(code, dataDict, false))}
+        {resultVisibility == "all" || resultVisibility == "target" ? (
+          topList.map((code) => courseCard(code, dataDict, true))
+        ) : (
+          <></>
+        )}{" "}
+        <hr></hr>
+        {resultVisibility == "all" || resultVisibility == "side" ? (
+          bottomList.map((code) => courseCard(code, dataDict, false))
+        ) : (
+          <></>
+        )}
       </>
     );
-  }, [graphData]);
+  }, [graphData, resultVisibility]);
 
   const handleGetImmediatePostreqs = async () => {
     console.log("Completed courses:", completedCourses);
@@ -322,8 +333,21 @@ export default function PathExplorer() {
         className="border-border-panel bg-surface-1 fixed top-16 bottom-0 left-2 z-30 flex h-[calc(100vh-4rem)] w-[min(22rem,calc(100vw-1rem))] flex-col overflow-hidden rounded-none border shadow-sm lg:w-96"
       >
         <section className="border-border-panel flex min-h-0 flex-[0_0_62%] flex-col overflow-hidden border-b">
-          <header className="border-border-panel text-text-body shrink-0 border-b px-4 py-3 text-sm font-semibold">
-            Result
+          <header className="border-border-panel text-text-body flex shrink-0 items-center justify-between gap-3 border-b px-4 py-3 text-sm font-semibold">
+            <span>Result</span>
+            <label className="text-text-secondary flex items-center gap-2 text-xs font-medium">
+              <span>Show</span>
+              <select
+                className="border-border-card bg-surface-1 text-text-body focus:border-input-focus-border focus:ring-input-focus-ring rounded-md border px-2 py-1 text-xs shadow-sm outline-none focus:ring-1"
+                defaultValue="all"
+                aria-label="Select result display mode"
+                onChange={(e) => setResultVisibility(e.target.value)}
+              >
+                <option value="all">All</option>
+                <option value="target">Target Courses</option>
+                <option value="side">Side Courses</option>
+              </select>
+            </label>
           </header>
           <div className="min-h-0 flex-1 overflow-y-auto px-4 py-3">
             <div className="text-text-body flex flex-col gap-2 text-[0.84rem] font-medium">
