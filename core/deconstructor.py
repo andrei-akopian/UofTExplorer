@@ -8,6 +8,11 @@ visualizations.
 Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 """
 
+import json
+
+from typing import Callable
+from coloraide import Color
+
 from core.constructor import construct_course_graph
 from core.core import CourseGraph, CourseNode, Requisite
 
@@ -45,6 +50,12 @@ def deconstruct_course_graph(
     json_edges = []  # List of dictionaries for each edge
     logic_gate_dict = {}  # Dictionary of dictionaries for each AND/OR node
 
+    # Read colours
+    colours_dict = read_colours("data/colours.json")
+    colour_line = Color.interpolate(
+        [colours_dict["start"], colours_dict["end"]], space="srgb"
+    )
+
     # Create dictionaries for each course
     for course_code, course in course_graph.courses.items():
         course_number: int = int(course.split_code()[1])
@@ -79,11 +90,17 @@ def deconstruct_course_graph(
 
         # Set the colour of the course
         if course_code in filtered_courses:
-            json_course["color"] = "#77ba79"  # Green for filtered courses
+            json_course["color"] = colours_dict["filtered"].to_string(
+                hex=True, upper=True, alpha=False
+            )
         elif course_code in special_courses:
-            json_course["color"] = "#e8745a"  # Red for special courses
+            json_course["color"] = colours_dict["special"].to_string(
+                hex=True, upper=True, alpha=False
+            )
         else:
-            json_course["color"] = "#93c9cc"  # Blue for all other courses
+            json_course["color"] = colour_line((depth - 1) / 3).to_string(
+                hex=True, upper=True, alpha=False
+            )
 
         json_courses.append(json_course)
 
@@ -202,6 +219,14 @@ def deconstruct_prerequisites(
                 )
 
         return
+
+
+def read_colours(file_path: str) -> dict[str, Color]:
+    """
+    Return a dictionary mapping breadth codes to their corresponding colours.
+    """
+    with open(file_path, "r") as f:
+        return {k: Color(v) for k, v in json.load(f).items()}
 
 
 if __name__ == "__main__":
