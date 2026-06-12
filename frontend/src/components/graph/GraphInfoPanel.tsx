@@ -209,7 +209,9 @@ export function GraphNodesPanel({
     }
   };
 
-  const nodes = graphData?.nodes ?? [];
+  const nodes = (graphData?.nodes ?? []).filter(
+    (node) => node.label !== "AND" && node.label !== "OR",
+  );
 
   return (
     <GraphInfoPanel
