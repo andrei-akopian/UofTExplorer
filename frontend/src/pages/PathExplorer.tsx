@@ -99,12 +99,53 @@ export default function PathExplorer() {
   }, [[pathfindError]]);
 
   return (
-    <div className="relative flex h-full w-full flex-col overflow-hidden font-sans lg:flex-row">
+    <div className="relative flex h-full w-full flex-col overflow-hidden font-sans lg:flex-row lg:pl-96">
       <MobileWarning />
 
       <div id="vis graph" className="relative min-h-0 w-full flex-1 lg:h-full">
         <GraphVis2D graphData={graphData} />
       </div>
+
+      <div
+        id="resultBar"
+        className="border-border-panel bg-surface-1 fixed top-16 bottom-0 left-2 z-30 flex h-[calc(100vh-4rem)] w-[min(22rem,calc(100vw-1rem))] flex-col overflow-hidden rounded-none border shadow-sm lg:w-96"
+      >
+        <section className="border-border-panel flex min-h-0 flex-[0_0_62%] flex-col overflow-hidden border-b">
+          <header className="border-border-panel text-text-body shrink-0 border-b px-4 py-3 text-sm font-semibold">
+            Result
+          </header>
+          <div className="min-h-0 flex-1 overflow-y-auto px-4 py-3">
+            <div className="text-text-body flex flex-col gap-2 text-[0.84rem] font-medium">
+              {solutionDisplay.length > 0 ? (
+                solutionDisplay.map((course) => (
+                  <p
+                    key={course}
+                    className="m-0 rounded-md bg-white/60 px-3 py-2 shadow-sm"
+                  >
+                    {course}
+                  </p>
+                ))
+              ) : (
+                <p className="text-text-secondary m-0">
+                  No results yet. Run a path search to see the next unlocks
+                  here.
+                </p>
+              )}
+            </div>
+          </div>
+        </section>
+
+        <section className="flex min-h-0 flex-[0_0_38%] flex-col overflow-hidden">
+          <header className="border-border-panel text-text-body shrink-0 border-b px-4 py-3 text-sm font-semibold">
+            Status
+          </header>
+          <div className="text-text-secondary min-h-0 flex-1 overflow-y-auto px-4 py-3 text-sm">
+            {placeholderText ||
+              "Select courses to see immediate unlocks or path guidance."}
+          </div>
+        </section>
+      </div>
+
       <div
         id="controls"
         className="border-border-panel bg-panel-bg fixed right-2 bottom-2 left-2 z-30 overflow-hidden rounded-2xl border backdrop-blur-[10px] lg:relative lg:right-auto lg:bottom-auto lg:left-auto lg:mr-4 lg:flex lg:h-full lg:w-124 lg:flex-col lg:gap-4 lg:rounded-none lg:border-t-0 lg:border-r-0 lg:border-b-0 lg:border-l lg:p-4"
