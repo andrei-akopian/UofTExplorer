@@ -34,8 +34,25 @@ function createNodeLabelSprite(node: any): SpriteText {
   sprite.strokeWidth = 1;
   sprite.strokeColor = darkMode ? "#000000" : "#ffffff";
   sprite.textHeight = 8;
-  // @ts-expect-error: position is not typed on SpriteText, but it exists at runtime
-  sprite.position.y = -10;
+
+  // Offset the label toward the camera each frame (sunflower effect).
+  // 3d-force-graph sizes spheres as r = cbrt(nodeVal) * 4.
+  const nodeVal = node["class_size"] ? node["class_size"] / 10 : 5;
+  const nodeRadius = Math.cbrt(nodeVal) * 4 + 2;
+  const obj = sprite as any;
+  obj.onBeforeRender = (_renderer: any, _scene: any, camera: any) => {
+    // node.x/y/z are updated in-place by the force simulation each tick.
+    const dx = camera.position.x - (node.x || 0);
+    const dy = camera.position.y - (node.y || 0);
+    const dz = camera.position.z - (node.z || 0);
+    const len = Math.sqrt(dx * dx + dy * dy + dz * dz) || 1;
+    obj.position.set(
+      (dx / len) * nodeRadius,
+      (dy / len) * nodeRadius,
+      (dz / len) * nodeRadius,
+    );
+  };
+
   return sprite;
 }
 
