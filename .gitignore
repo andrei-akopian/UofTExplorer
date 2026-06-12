@@ -11,7 +11,8 @@
 # ==================
 __pycache__/
 .mypy_cache/
-/__marimo__/
+__marimo__/
+/.venv/
 
 # ============
 # JavaScript

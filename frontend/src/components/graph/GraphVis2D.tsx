@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { GraphData, GraphEdge, GraphNode, QueryInfo } from "../../types";
 
 interface Node extends GraphNode {
@@ -88,7 +88,7 @@ export default function GraphVis2D({
 }: GraphVis2DProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const networkRef = useRef<any>(null);
-  const [activeNodes, setActiveNodes] = useState<Node[]>([]);
+  const [_activeNodes, setActiveNodes] = useState<Node[]>([]);
   const activeNodesRef = useRef<Node[]>([]);
   const onNodeClickRef = useRef(onNodeClickCallback);
   useEffect(() => {
