@@ -152,6 +152,7 @@ class CourseGraph:
         num_direct_reqs = []
         for course in self.courses:
             if self.courses[course].prereqs is not None:
+                # TODO make it explore the full tree
                 num_direct_reqs.append(len(self.courses[course].prereqs.reqs))
             else:
                 num_direct_reqs.append(0)
