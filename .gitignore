@@ -26,3 +26,4 @@ raw_output
 ttb_scrapes
 scraper/data/
 parser_logs
+logs
