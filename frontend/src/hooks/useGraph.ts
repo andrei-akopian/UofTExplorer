@@ -123,6 +123,7 @@ interface UseSearchReturn {
 export function useSearch(
   debounceDelay = 300,
   coursesOnly = false,
+  allowEmptyQuery = false,
 ): UseSearchReturn {
   const [results, setResults] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
@@ -136,8 +137,10 @@ export function useSearch(
       if (timeoutId) clearTimeout(timeoutId);
 
       if (!query.trim()) {
-        setResults([]);
-        return;
+        if (!allowEmptyQuery) {
+          setResults([]);
+          return;
+        }
       }
 
       const id = setTimeout(async () => {
@@ -159,7 +162,7 @@ export function useSearch(
 
       setTimeoutId(id);
     },
-    [debounceDelay, timeoutId],
+    [debounceDelay, timeoutId, allowEmptyQuery, coursesOnly],
   );
 
   const clear = useCallback(() => {

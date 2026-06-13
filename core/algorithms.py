@@ -251,7 +251,7 @@ def get_filtered_graph(
     graph_data: dict = {}
 
     # Get the full graph
-    if query_lower in ["all", "full"]:
+    if query_lower == "all":
         subgraph = container.graph
         graph_data["search"] = "all"
         graph_data["curr_query"] = {"type": "all", "code": "", "name": ""}
@@ -372,10 +372,6 @@ def get_search_suggestions(
         matches.append(
             {"code": "all", "title": "Display All Courses", "num_prereqs": ""}
         )
-    if query in "FULL":
-        matches.append(
-            {"code": "full", "title": "Display All Courses", "num_prereqs": ""}
-        )
 
     # Search for departments that contain query in its code or title
     department_matches = get_department_suggestions(container, query)
@@ -436,7 +432,7 @@ def get_department_suggestions(
     """
     department_matches = []
     for dept_code, dept_name in container.departments.items():
-        if query.upper() in {dept_code, dept_name.upper()}:
+        if query.upper() in dept_code or query.upper() in dept_name.upper():
             department_matches.append(
                 {
                     "code": dept_code,

@@ -35,7 +35,7 @@ export default function CourseSearchBar({
   title: string;
   placeholder: string;
 }) {
-  const { results, search } = useSearch(300, true);
+  const { results, search } = useSearch(300, true, true);
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [numSelected, setNumSelected] = useState(0);
   const [query, setQuery] = useState("");
@@ -67,7 +67,12 @@ export default function CourseSearchBar({
         autoComplete="off"
         value={query}
         onChange={handleChange}
-        onFocus={() => setShowSearchResults(true)}
+        onFocus={() => {
+          setShowSearchResults(true);
+          if (!query.trim()) {
+            void search("");
+          }
+        }}
         onBlur={() => setShowSearchResults(false)}
       />
       {showSearchResults && (

@@ -238,7 +238,7 @@ def suggest() -> ResponseReturnValue:
         data = request.get_json()
         query = (data or {}).get("q", "").strip().upper()
 
-        if not query or len(query) < 2:
+        if query and len(query) < 2:
             return jsonify({"results": []})
 
         matches = get_search_suggestions(COURSE_GRAPH_CONTAINER, query, MAX_RESULTS)
@@ -261,7 +261,7 @@ def suggest_courses() -> ResponseReturnValue:
         data = request.get_json()
         query = (data or {}).get("q", "").strip().upper()
 
-        if not query or len(query) < 2:
+        if query and len(query) < 2:
             return jsonify({"results": []})
 
         matches = get_course_suggestions(COURSE_GRAPH_CONTAINER, query)[

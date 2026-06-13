@@ -9,7 +9,7 @@ export default function SearchBar({
   query: string;
   setQuery: (q: string) => void;
 }) {
-  const { results, search } = useSearch(300);
+  const { results, search } = useSearch(300, false, true);
   const [showSearchResults, setShowSearchResults] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,7 +25,12 @@ export default function SearchBar({
         value={query}
         onChange={handleChange}
         autoComplete="off"
-        onFocus={() => setShowSearchResults(true)}
+        onFocus={() => {
+          setShowSearchResults(true);
+          if (!query.trim()) {
+            void search("");
+          }
+        }}
         onBlur={() => setShowSearchResults(false)}
         className={`border-input-border bg-input-bg text-text-body focus:border-input-focus-border focus:ring-input-focus-ring w-full rounded-md border px-3 py-2.5 text-sm sm:min-w-80 md:min-w-93 ${query.length > 0 ? "not-italic" : "italic"} focus:ring-2 focus:outline-none`}
       />
