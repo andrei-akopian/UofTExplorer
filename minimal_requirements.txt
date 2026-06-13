@@ -1,3 +1,4 @@
 # requirements for docker
 flask
 z3
+coloraide
