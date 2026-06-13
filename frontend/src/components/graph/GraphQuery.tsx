@@ -116,7 +116,7 @@ export default function GraphQuery({
       <button
         onClick={handleFetchClick}
         disabled={isLoading}
-        className="bg-primary hover:bg-primary-hover hidden cursor-pointer rounded-md border-0 px-5 py-2 font-sans text-sm text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60 sm:block sm:w-auto sm:text-base"
+        className="from-btn-gradient-from to-btn-gradient-to hidden cursor-pointer rounded-md border-0 bg-linear-to-br px-5 py-2 font-sans text-sm text-white transition-colors duration-200 hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60 sm:block sm:w-auto sm:text-base"
       >
         Load Graph
       </button>

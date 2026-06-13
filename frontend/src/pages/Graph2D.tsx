@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import GraphQuery from "../components/graph/GraphQuery";
 import type { GraphData, GraphNode } from "../types";
 import GraphVis2D from "../components/graph/GraphVis2D";
-import GraphInfoPanel from "../components/graph/GraphInfoPanel";
+import {
+  GraphStatsPanel,
+  GraphNodesPanel,
+} from "../components/graph/GraphInfoPanel";
+import GraphInfoMenu from "../components/graph/GraphInfoMenu";
 import MobileWarning from "../components/MobileWarning";
 import Settings from "../components/graph/Settings";
 import { useSearchParams } from "react-router-dom";
@@ -46,6 +50,13 @@ export default function Graph2D() {
     }
   }, [searchParams]);
 
+  const [nodesOpen, setNodesOpen] = useState(true);
+
+  const handleNodeSelect = (node: GraphNode | null) => {
+    setSelectedNode(node);
+    if (node) setNodesOpen(true);
+  };
+
   return (
     <div className="relative h-full w-full overflow-hidden">
       <MobileWarning />
@@ -56,7 +67,7 @@ export default function Graph2D() {
             graphData={graphData}
             loading={loading}
             setLoading={setLoading}
-            onNodeClickCallback={setSelectedNode}
+            onNodeClickCallback={handleNodeSelect}
           />
         </div>
 
@@ -86,11 +97,16 @@ export default function Graph2D() {
         manualFetch={manualFetch}
       />
 
-      <GraphInfoPanel
-        graphData={graphData}
-        selectedNode={selectedNode}
-        onNodeSelect={setSelectedNode}
-      />
+      <GraphInfoMenu>
+        <GraphStatsPanel graphData={graphData} />
+        <GraphNodesPanel
+          graphData={graphData}
+          selectedNode={selectedNode}
+          onNodeSelect={handleNodeSelect}
+          isOpen={nodesOpen}
+          onOpenChange={setNodesOpen}
+        />
+      </GraphInfoMenu>
     </div>
   );
 }
