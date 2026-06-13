@@ -311,6 +311,7 @@ export default function PathExplorer() {
             !(completedCourses.includes(ele) || desiredCourses.includes(ele)),
         );
         setSolutionDisplay(filtered);
+        console.log("filtered: ", filtered);
         if (filtered.length == 0) {
           setPlaceholderText(
             "There are no courses which is immediately unlocked by your completed courses.",
@@ -365,6 +366,11 @@ export default function PathExplorer() {
 
       <div id="vis graph" className="relative min-h-0 w-full flex-1 lg:h-full">
         <GraphVis2D graphData={graphData} />
+        <div inert className="absolute top-0 left-0 h-full w-full">
+          <div className="absolute top-20 left-1/2 w-[calc(100%-2rem)] -translate-x-1/2 p-5 text-center text-xl text-red-500 sm:text-2xl lg:left-10 lg:translate-x-0 lg:text-left lg:text-4xl">
+            {placeholderText}
+          </div>
+        </div>
       </div>
 
       <div
@@ -565,17 +571,6 @@ export default function PathExplorer() {
         className="text-text-subtle [&.error]:text-error-hover [&.success]:text-success-text pointer-events-none absolute bottom-4 left-1/2 z-4 m-0 min-h-[1.3rem] w-[calc(100%-2rem)] -translate-x-1/2 text-left text-[0.9rem] wrap-break-word whitespace-pre-wrap lg:bottom-17.5 lg:left-54 lg:w-96"
         aria-live="polite"
       ></p>
-      <div className="fixed right-3 bottom-3 left-3 z-20 flex min-w-0 flex-col gap-1 sm:right-auto sm:bottom-10 sm:left-5 sm:min-w-[20rem]">
-        <div id="message" className="m-0 min-h-6 text-[0.84rem] font-medium">
-          {solutionDisplay.map((x) => (
-            <p>{x}</p>
-          ))}
-        </div>
-      </div>
-
-      <div className="fixed top-20 left-1/2 w-[calc(100%-2rem)] -translate-x-1/2 text-center text-xl text-red-500 sm:text-2xl lg:left-10 lg:w-200 lg:translate-x-0 lg:text-left lg:text-4xl">
-        {placeholderText}
-      </div>
     </div>
   );
 }
