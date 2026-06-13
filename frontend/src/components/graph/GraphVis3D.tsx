@@ -120,20 +120,34 @@ function focusNode(graph: any, node: any) {
   const nodeX = Number.isFinite(node.x) ? node.x : 0;
   const nodeY = Number.isFinite(node.y) ? node.y : 0;
   const nodeZ = Number.isFinite(node.z) ? node.z : 0;
-  const distance = 140;
-  const length = Math.hypot(nodeX, nodeY, nodeZ);
 
-  let cameraTarget;
-  if (length > 0) {
-    const scale = 1 + distance / length;
-    cameraTarget = {
-      x: nodeX * scale,
-      y: nodeY * scale,
-      z: nodeZ * scale,
-    };
-  } else {
-    cameraTarget = { x: distance, y: distance * 0.35, z: distance };
-  }
+  const cam = graph.camera();
+  console.log(cam);
+  const q = cam.quaternion;
+
+  const forwardX = 2 * (q.x * q.z + q.w * q.y);
+  const forwardY = 2 * (q.y * q.z - q.w * q.x);
+  const forwardZ = 1 - 2 * (q.x * q.x + q.y * q.y);
+
+  const forwardLength = Math.hypot(forwardX, forwardY, forwardZ) || 1;
+  const normalizedForward = {
+    x: forwardX / forwardLength,
+    y: forwardY / forwardLength,
+    z: forwardZ / forwardLength,
+  };
+
+  const currentDistance = Math.hypot(
+    cam.position.x - nodeX,
+    cam.position.y - nodeY,
+    cam.position.z - nodeZ,
+  );
+  const focusDistance = Math.min(240, currentDistance);
+
+  const cameraTarget = {
+    x: nodeX + normalizedForward.x * focusDistance,
+    y: nodeY + normalizedForward.y * focusDistance,
+    z: nodeZ + normalizedForward.z * focusDistance,
+  };
 
   graph.cameraPosition(cameraTarget, node, 1200);
 }
