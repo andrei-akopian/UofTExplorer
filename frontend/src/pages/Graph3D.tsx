@@ -20,7 +20,7 @@ export default function Graph3D() {
   );
 
   const [searchParams] = useSearchParams();
-  const [manualFetch, setManualFetch] = useState<string>("");
+  const [manualFetch, setManualFetch] = useState<string>("MAT332H1");
   const settings: React.ReactNode[] = [];
 
   useEffect(() => {

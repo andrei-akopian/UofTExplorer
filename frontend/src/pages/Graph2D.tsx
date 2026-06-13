@@ -22,7 +22,7 @@ export default function Graph2D() {
     name: "",
   });
   const [loading, setLoading] = useState(false);
-  const [manualFetch, setManualFetch] = useState<string>("");
+  const [manualFetch, setManualFetch] = useState<string>("MAT332H1");
   const settings: React.ReactNode[] = [];
 
   const [graphData, setGraphData] = useState<GraphData>({
