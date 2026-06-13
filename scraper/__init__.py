@@ -5,9 +5,7 @@ Wrapper on all scraping and parsing modules for easy usage.
 import scraper.synthesizer as synthesizer
 from scraper.courses.course_parser import CourseParser
 from scraper.courses.course_scraper import full_scrape as course_scrape
-from scraper.courses.ttb_scraper import (
-    scrape_everything as ttb_scrape,
-)  # TODO rename everything here
+from scraper.courses.ttb_scraper import scrape_everything as ttb_scrape
 from scraper.courses.ttb_parser import full_parse as ttb_parse
 from scraper.programs.program_parser import ProgramParser
 from scraper.programs.artsci_program_scraper import (
@@ -20,8 +18,8 @@ from datetime import datetime
 import os
 
 JOB_TYPES = [  # list, so I can iterate through it and parse in the right order
-    "glossary_scraper",
-    "glossary_parser",
+    # "glossary_scraper",
+    # "glossary_parser",
     "program_scraper",
     "program_parser",
     "course_scraper",
@@ -32,8 +30,8 @@ JOB_TYPES = [  # list, so I can iterate through it and parse in the right order
 ]
 
 JOB_RESOLVERS = {
-    "glossary_scraper": parse_glossary,
-    "glossary_parser": scrape_glossary,
+    # "glossary_scraper": parse_glossary,  # glossary is pointless to scrape. we are using a custom made glossary now.
+    # "glossary_parser": scrape_glossary,
     "program_scraper": full_scrape_artsci_programs,
     "program_parser": ProgramParser.get_parse_job(interactive=False),
     "course_scraper": course_scrape,

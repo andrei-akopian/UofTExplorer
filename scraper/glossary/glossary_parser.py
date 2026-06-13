@@ -13,9 +13,9 @@ import json
 import bs4
 
 LOADPATH = "scraper/glossary/raw_output/glossary.html"
-SAVEPATH = "data/glossary.json"
+SAVEPATH = "scraper/data/glossary.json"
 
-TEXT_SWAPS = {"\u00a0": " ", "\u2014": "-", "\u200b": " ", "\u2019": "'"}
+TEXT_SWAPS = {"\u00a0": " ", "\u2014": "-", "\u200b": "", "\u2019": "'"}
 
 
 def clean_unicodes(text) -> str:
@@ -59,10 +59,20 @@ def parse_glossary() -> dict[str, str]:
     course_codes.update(parse_table(join_course_codes_table))
 
     with open(SAVEPATH, "w") as f:
-        json.dump(course_codes, f)
+        json.dump(course_codes, f, indent=1)
 
     return course_codes
 
 
+def glossary_notice() -> bool:
+    print(
+        "Notice: the glossary source does not update and is incomplete, so re-parsing is pointless.\n"
+        "missing course codes to glossary.json in this respoitory was extended by hand, and might get overwritten."
+    )
+    user = input("Run anyway y/(n)?:")
+    return len(user) > 0 and user[0].lower() == "y"
+
+
 if __name__ == "__main__":
-    parse_glossary()
+    if glossary_notice():
+        parse_glossary()

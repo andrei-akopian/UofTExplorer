@@ -39,20 +39,15 @@ def scrape_glossary() -> None:
     print("glossary scrape saved to", filepath)
 
 
+def glossary_notice() -> bool:
+    print(
+        "Notice: the glossary source does not update and is incomplete, so re-scraping is pointless.\n"
+        "missing course codes to glossary.json in this respoitory was extended by hand, and might get overwritten."
+    )
+    user = input("Run anyway y/(n)?:")
+    return len(user) > 0 and user[0].lower() == "y"
+
+
 if __name__ == "__main__":
-    # import doctest
-    # doctest.testmod(verbose=True)
-
-    # import python_ta
-    # python_ta.check_all(config={
-    #     'allow-local-imports': True,
-    #     'extra-imports': ['requests', 'os'],
-    #     'allowed-io': ['scrape_glossary'],
-    #     'max-line-length': 120,
-    #     'max-nested-blocks': 5,
-    #     'max-locals': 20,
-    #     'max-branches': 15,
-    #     'max-args': 7
-    # })
-
-    scrape_glossary()
+    if glossary_notice():
+        scrape_glossary()
