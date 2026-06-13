@@ -157,6 +157,9 @@ export default function GraphVis3D({
     onNodeClickRef.current = onNodeClickCallback;
   }, [onNodeClickCallback]);
 
+  const lastClickNodeRef = useRef<string>("");
+  const lastClickTimeRef = useRef<number>(Date.now());
+
   const { directedGraph, findConnected } = useCreateDirectedGraph(
     graphData,
     true,
@@ -245,11 +248,20 @@ export default function GraphVis3D({
         .nodeThreeObjectExtend(true)
         .nodeThreeObject(createNodeLabelSprite)
         .onNodeClick((node: any) => {
-          focusNode(graphRef.current, node);
+          const now = Date.now();
+          if (
+            now - lastClickTimeRef.current < 500 &&
+            lastClickNodeRef.current == node.id
+          ) {
+            focusNode(graphRef.current, node);
+          } else {
+            lastClickNodeRef.current = node.id;
+            highlightGraphRef.current?.(node.id);
+          }
+          lastClickTimeRef.current = now;
           if (onNodeClickRef.current) {
             onNodeClickRef.current(node as GraphNode);
           }
-          highlightGraphRef.current?.(node.id);
         })
         .onNodeHover((node: any) => {
           if (node) {

@@ -111,6 +111,9 @@ export default function GraphVis2D({
     onNodeClickRef.current = onNodeClickCallback;
   }, [onNodeClickCallback]);
 
+  const lastClickNodeRef = useRef<string>("");
+  const lastClickTimeRef = useRef<number>(Date.now());
+
   useEffect(() => {
     const initNetwork = async () => {
       try {
@@ -178,9 +181,19 @@ export default function GraphVis2D({
             );
 
             if (node) {
-              isNodePinnedRef.current = true;
-              highlightGraphRef.current?.(node.id);
-              networkRef.current.fit({ nodes: [node.id], animation: true });
+              let now = Date.now();
+              if (
+                now - lastClickTimeRef.current < 500 &&
+                lastClickNodeRef.current == nodeId
+              ) {
+                lastClickTimeRef.current = now;
+                networkRef.current.fit({ nodes: [node.id], animation: true });
+              } else {
+                lastClickTimeRef.current = now;
+                lastClickNodeRef.current = nodeId;
+                isNodePinnedRef.current = true;
+                highlightGraphRef.current?.(node.id);
+              }
             }
 
             if (node && onNodeClickRef.current) {
@@ -189,6 +202,8 @@ export default function GraphVis2D({
           } else {
             isNodePinnedRef.current = false;
             highlightGraphRef.current?.("");
+            lastClickTimeRef.current = Date.now();
+            lastClickNodeRef.current = "";
           }
         });
 
