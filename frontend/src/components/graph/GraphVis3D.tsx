@@ -159,6 +159,8 @@ export default function GraphVis3D({
 
   const lastClickNodeRef = useRef<string>("");
   const lastClickTimeRef = useRef<number>(Date.now());
+  const mouseDownXRef = useRef<number>(0);
+  const mouseDownYRef = useRef<number>(0);
 
   const { directedGraph, findConnected } = useCreateDirectedGraph(
     graphData,
@@ -295,7 +297,18 @@ export default function GraphVis3D({
         ref={graphFrame}
         id="graph"
         className="h-full w-full overflow-hidden"
-        onClick={handleFrameClick}
+        onMouseDown={(e) => {
+          mouseDownXRef.current = e.clientX;
+          mouseDownYRef.current = e.clientY;
+        }}
+        onMouseUp={(e) => {
+          const diffX = Math.abs(e.clientX - mouseDownXRef.current);
+          const diffY = Math.abs(e.clientY - mouseDownYRef.current);
+          if (diffX > 5 || diffY > 5) {
+            return;
+          }
+          handleFrameClick();
+        }}
       ></div>
       <div className={loading ? "" : "hidden"}>
         <div className="absolute top-0 flex h-full w-full">
