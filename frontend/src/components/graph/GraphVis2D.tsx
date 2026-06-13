@@ -111,6 +111,8 @@ export default function GraphVis2D({
     onNodeClickRef.current = onNodeClickCallback;
   }, [onNodeClickCallback]);
 
+  const lastHoverNodeRef = useRef<string>("");
+
   useEffect(() => {
     const initNetwork = async () => {
       try {
@@ -192,12 +194,14 @@ export default function GraphVis2D({
         });
 
         network.on("hoverNode", (params: any) => {
+          lastHoverNodeRef.current = params.node.id;
           if (!isNodePinnedRef.current) {
             hoverHighlightGraph(params.node);
           }
         });
 
         network.on("blurNode", (_params: any) => {
+          lastHoverNodeRef.current = "";
           if (!isNodePinnedRef.current) {
             hoverHighlightGraph("");
           }
@@ -321,10 +325,17 @@ export default function GraphVis2D({
   }, [hightlightGraph]);
 
   const hoverHighlightGraph = useCallback((origin: string) => {
-    let currTime = Date.now();
-    if (currTime - hoverHighlightDebounce.current > 32) {
+    const currTime = Date.now();
+    const deltaTime = currTime - hoverHighlightDebounce.current;
+    if (deltaTime > 32) {
       hoverHighlightDebounce.current = currTime;
       highlightGraphRef.current(origin);
+    } else {
+      setTimeout(() => {
+        if (lastHoverNodeRef.current == origin) {
+          highlightGraphRef.current(origin);
+        }
+      }, deltaTime + 1);
     }
   }, []);
 
