@@ -85,6 +85,7 @@ def deconstruct_course_graph(
             or None,
             "exclusions": course.data.original_requisite_strings.get("exclusions")[11:]
             or None,
+            "previousCourseCodes": course.data.previous_course_codes or None,
             # FIXME, make better default behavior here
             "class_size": [course.data.class_size, 30][course.data.class_size is None],
         }

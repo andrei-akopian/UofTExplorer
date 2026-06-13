@@ -239,6 +239,13 @@ export default function GraphInfoPanel({
                         value={activeNode.exclusions}
                       />
                     )}
+                  {activeNode.previousCourseCodes &&
+                    activeNode.previousCourseCodes.length > 0 && (
+                      <NodeDetail
+                        label="Previously known as"
+                        value={activeNode.previousCourseCodes.join(", ")}
+                      />
+                    )}
                   {activeNode.crNcr !== undefined && (
                     <NodeDetail
                       label="CR/NCR"
