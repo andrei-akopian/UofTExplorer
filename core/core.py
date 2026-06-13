@@ -445,6 +445,15 @@ class CourseNode:
             return True
         return False
 
+    def old_courses_contains(self, string: str) -> bool:
+        """
+        Return whether any of the previous course codes for this course contains string, case-insensitive.
+        """
+        for old_course in self.data.previous_course_codes:
+            if string.lower() in old_course.lower():
+                return True
+        return False
+
     def is_satisfied(
         self, courses: list[CourseNode], satisfied_if_no_prereqs: bool = True
     ) -> bool:

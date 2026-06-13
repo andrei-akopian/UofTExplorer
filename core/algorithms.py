@@ -481,40 +481,28 @@ def get_course_suggestions(
     filtered_courses = container.graph.get_filtered_courses(
         [
             lambda course_obj: course_obj.code_contains(query),
+            lambda course_obj: course_obj.old_courses_contains(query),
             lambda course_obj: course_obj.title_contains(query),
         ]
     )
 
-    # Add the filtered courses that contain query in their course code to the list of matches
+    # Add the filtered courses to the list of matches
     course_matches = []
-    for course in filtered_courses[0]:
-        if filtered_courses[0][course].prereqs is not None:
-            num_prereqs = str(len(filtered_courses[0][course].prereqs))
-        else:
-            num_prereqs = ""
 
-        course_matches.append(
-            {
-                "code": filtered_courses[0][course].code,
-                "title": filtered_courses[0][course].data.title,
-                "num_prereqs": num_prereqs,
-            }
-        )
+    for i in range(len(filtered_courses)):
+        for course in filtered_courses[i]:
+            if filtered_courses[i][course].prereqs is not None:
+                num_prereqs = str(len(filtered_courses[i][course].prereqs))
+            else:
+                num_prereqs = ""
 
-    # Add the filtered courses that contain query in their course title to the list of matches
-    for course in filtered_courses[1]:
-        if filtered_courses[1][course].prereqs is not None:
-            num_prereqs = str(len(filtered_courses[1][course].prereqs))
-        else:
-            num_prereqs = ""
-
-        course_matches.append(
-            {
-                "code": filtered_courses[1][course].code,
-                "title": filtered_courses[1][course].data.title,
-                "num_prereqs": num_prereqs,
-            }
-        )
+            course_matches.append(
+                {
+                    "code": filtered_courses[i][course].code,
+                    "title": filtered_courses[i][course].data.title,
+                    "num_prereqs": num_prereqs,
+                }
+            )
 
     return course_matches
 
