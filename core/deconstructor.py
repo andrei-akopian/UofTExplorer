@@ -53,7 +53,8 @@ def deconstruct_course_graph(
     # Read colours
     colours_dict = read_colours("data/colours.json")
     colour_line = Color.interpolate(
-        [colours_dict["start"], colours_dict["end"]], space="srgb"
+        colours_dict["base"],
+        space="srgb",
     )
 
     # Create dictionaries for each course
@@ -221,12 +222,20 @@ def deconstruct_prerequisites(
         return
 
 
-def read_colours(file_path: str) -> dict[str, Color]:
+def read_colours(file_path: str) -> dict[str, Color | list[Color]]:
     """
     Return a dictionary mapping breadth codes to their corresponding colours.
     """
+    colours_dict = {}
+
     with open(file_path, "r") as f:
-        return {k: Color(v) for k, v in json.load(f).items()}
+        for k, v in json.load(f).items():
+            if isinstance(v, list):
+                colours_dict[k] = [Color(col) for col in v]
+            else:
+                colours_dict[k] = Color(v)
+
+    return colours_dict
 
 
 if __name__ == "__main__":
