@@ -11,7 +11,7 @@ bs4
 
 # Graphs and visualization
 flask
-z3
+z3-solver
 coloraide
 
 # Statistics
