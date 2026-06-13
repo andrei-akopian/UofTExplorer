@@ -12,6 +12,7 @@ bs4
 # Graphs and visualization
 flask
 z3
+coloraide
 
 # Statistics
 matplotlib

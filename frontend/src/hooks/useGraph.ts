@@ -3,7 +3,7 @@
  */
 
 import { useState, useCallback, useMemo } from "react";
-import type { GraphData, FilterOptions } from "../types";
+import type { GraphData, FilterOptions, DirectionNode } from "../types";
 import {
   fetchGraphData,
   searchAll,
@@ -171,6 +171,74 @@ export function useSearch(
     () => ({ results, loading, error, search, clear }),
     [results, loading, error, search, clear],
   );
+}
+
+/**
+ * Hook for Directional Graph
+ */
+
+export function useCreateDirectedGraph(
+  data: GraphData,
+  reverse: boolean = false,
+): {
+  directedGraph: Map<string, DirectionNode>;
+  findConnected: (origin: string, visited?: Set<string>) => Set<string>;
+} {
+  const directedGraph = useMemo(() => {
+    const dict = new Map<string, DirectionNode>();
+
+    for (const edge of data.edges) {
+      let edgeFrom = edge.from;
+      let edgeTo = edge.to;
+
+      if (reverse) {
+        edgeFrom = edge.to;
+        edgeTo = edge.from;
+      }
+
+      if (!dict.has(edgeTo)) {
+        dict.set(edgeTo, { id: edgeTo, targets: [] });
+      }
+
+      if (!dict.has(edgeFrom)) {
+        dict.set(edgeFrom, { id: edgeFrom, targets: [] });
+      }
+
+      const toNode = dict.get(edgeTo);
+      if (toNode) {
+        dict.get(edgeFrom)?.targets.push(toNode);
+      }
+    }
+
+    return dict;
+  }, [data, reverse]);
+
+  const findConnected = useCallback(
+    (origin: string, visited = new Set<string>()) => {
+      const curr = directedGraph.get(origin);
+
+      if (!curr) {
+        return visited;
+      }
+
+      if (visited.has(curr.id)) {
+        return visited;
+      }
+
+      visited.add(curr.id);
+
+      for (const tar of curr.targets) {
+        if (!visited.has(tar.id)) {
+          findConnected(tar.id, visited);
+        }
+      }
+
+      return visited;
+    },
+    [directedGraph],
+  );
+
+  return { directedGraph, findConnected };
 }
 
 interface UseLocalStorageReturn<T> {

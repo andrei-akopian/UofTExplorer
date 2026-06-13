@@ -48,7 +48,7 @@ export default function Graph2D() {
     if (searchParams.has("search")) {
       setManualFetch(searchParams.get("search") ?? "");
     }
-  }, []);
+  }, [searchParams]);
 
   const [nodesOpen, setNodesOpen] = useState(true);
 
