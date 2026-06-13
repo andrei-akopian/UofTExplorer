@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { GraphData } from "../types";
 import CourseSearchBar from "../components/search/CourseSearchBar";
 import GraphVis2D from "../components/graph/GraphVis2D";
@@ -26,6 +26,7 @@ export default function PathExplorer() {
   const [solutionDisplay, setSolutionDisplay] = useState<string[]>([]);
   const [placeholderText, setPlaceholderText] = useState<string>("");
   const [isMobileControlsOpen, setIsMobileControlsOpen] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const [lastTool, setLastTool] = useState<string>("");
   const [resultVisibility, setResultVisibility] = useState<string>("all");
@@ -107,6 +108,44 @@ export default function PathExplorer() {
     document.body.removeChild(blobLink);
     URL.revokeObjectURL(url);
   }, []);
+
+  const importHistory = useCallback(
+    async (file: File) => {
+      try {
+        const rawText = await file.text();
+        const parsed = JSON.parse(rawText) as HistoryPacket[] | HistoryPacket;
+
+        const packets = Array.isArray(parsed) ? parsed : [parsed];
+
+        const isValidHistoryPacket = (value: unknown): value is HistoryPacket =>
+          typeof value === "object" &&
+          value !== null &&
+          Array.isArray((value as HistoryPacket).completed) &&
+          Array.isArray((value as HistoryPacket).desired) &&
+          Array.isArray((value as HistoryPacket).avoided) &&
+          Array.isArray((value as HistoryPacket).solution) &&
+          typeof (value as HistoryPacket).tool === "string";
+
+        if (!packets.every(isValidHistoryPacket)) {
+          window.alert(
+            "The selected file is not a valid HistoryPacket[] JSON export.",
+          );
+          return;
+        }
+
+        const existing = Array.isArray(historyList) ? historyList : [];
+        const merged = [...packets, ...existing].slice(0, MaxHistoryCount);
+
+        setHistoryList(merged);
+      } catch (error) {
+        console.error("Failed to import history:", error);
+        window.alert(
+          "Could not import history. Please choose a valid JSON file.",
+        );
+      }
+    },
+    [historyList, setHistoryList],
+  );
 
   const historyCard = useCallback((packet: HistoryPacket) => {
     return (
@@ -357,8 +396,45 @@ export default function PathExplorer() {
         </section>
 
         <section className="flex min-h-0 flex-[0_0_38%] flex-col overflow-hidden">
-          <header className="border-border-panel text-text-body shrink-0 border-b px-4 py-3 text-sm font-semibold">
-            History
+          <header className="border-border-panel text-text-body flex shrink-0 items-center justify-between gap-2 border-b px-4 py-3 text-sm font-semibold">
+            <span>History</span>
+            <div className="flex items-center gap-2">
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="application/json,.json"
+                className="hidden"
+                onChange={async (event) => {
+                  const [file] = event.target.files ?? [];
+                  if (!file) return;
+
+                  await importHistory(file);
+                  event.target.value = "";
+                }}
+              />
+              <button
+                type="button"
+                className="border-border-card bg-surface-1 text-text-body hover:bg-surface-2 shrink-0 rounded-md border px-2.5 py-1 text-[0.72rem] font-medium"
+                onClick={() => {
+                  const confirmed = window.confirm(
+                    `Importing history will overwrite the current history after the ${MaxHistoryCount}th entry. Continue?`,
+                  );
+
+                  if (confirmed) {
+                    fileInputRef.current?.click();
+                  }
+                }}
+              >
+                Import
+              </button>
+              <button
+                type="button"
+                className="border-border-card bg-surface-1 text-text-body hover:bg-surface-2 shrink-0 rounded-md border px-2.5 py-1 text-[0.72rem] font-medium"
+                onClick={() => exportHistory(historyList)}
+              >
+                Export
+              </button>
+            </div>
           </header>
           <div className="text-text-secondary min-h-0 flex-1 overflow-y-auto px-4 py-3 text-sm">
             {historyList.length > 0
