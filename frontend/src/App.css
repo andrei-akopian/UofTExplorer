@@ -2,9 +2,9 @@
 
 @theme {
   /* Fonts */
-  --font-display: "Unbounded", "Montserrat", sans-serif;
+  --font-display: "Unbounded", "Public Sans", sans-serif;
   --font-mono: "Latin Modern Mono", monospace;
-  --font-sans: "Montserrat", sans-serif;
+  --font-sans: "Public Sans", "Inter", sans-serif;
   --font-serif: "Latin Modern Roman", serif;
 
   /* Page backgrounds */
