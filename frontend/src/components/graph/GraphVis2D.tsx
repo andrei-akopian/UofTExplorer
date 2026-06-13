@@ -180,6 +180,7 @@ export default function GraphVis2D({
             if (node) {
               isNodePinnedRef.current = true;
               highlightGraphRef.current?.(node.id);
+              networkRef.current.fit({ nodes: [node.id], animation: true });
             }
 
             if (node && onNodeClickRef.current) {
