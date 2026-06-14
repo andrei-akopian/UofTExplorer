@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearch } from "../../hooks/useGraph";
 import SuggestionEntry from "../search/SuggestionEntry";
 
@@ -14,6 +14,12 @@ export default function SearchBar({
   const { results, loading, search } = useSearch(300, false, true);
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [activeTab, setActiveTab] = useState<SearchTab>("courses");
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const scrollPositionsRef = useRef<Record<SearchTab, number>>({
+    courses: 0,
+    programs: 0,
+    departments: 0,
+  });
 
   const courseResults = results.filter((result) => result.type === "course");
   const programResults = results.filter((result) => result.type === "program");
@@ -32,6 +38,21 @@ export default function SearchBar({
     setQuery(e.target.value);
     void search(e.target.value);
   };
+
+  const handleTabChange = (nextTab: SearchTab) => {
+    if (scrollContainerRef.current) {
+      scrollPositionsRef.current[activeTab] =
+        scrollContainerRef.current.scrollTop;
+    }
+    setActiveTab(nextTab);
+  };
+
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop =
+        scrollPositionsRef.current[activeTab];
+    }
+  }, [activeTab]);
 
   return (
     <div className="relative w-full sm:w-auto">
@@ -52,12 +73,18 @@ export default function SearchBar({
         className={`border-input-border bg-input-bg text-text-body focus:border-input-focus-border focus:ring-input-focus-ring w-full rounded-md border px-3 py-2.5 text-sm sm:min-w-96 md:min-w-120 ${query.length > 0 ? "not-italic" : "italic"} focus:ring-2 focus:outline-none`}
       />
       {showSearchResults && (
-        <div className="border-border-dropdown bg-panel-bg shadow-dropdown absolute top-full left-0 z-50 mt-1 max-h-64 w-full overflow-y-auto rounded-md border">
+        <div
+          ref={scrollContainerRef}
+          onScroll={(e) => {
+            scrollPositionsRef.current[activeTab] = e.currentTarget.scrollTop;
+          }}
+          className="border-border-dropdown bg-panel-bg shadow-dropdown absolute top-full left-0 z-50 mt-1 max-h-64 w-full overflow-y-auto rounded-md border"
+        >
           <div className="border-border-card bg-panel-bg sticky top-0 z-10 grid grid-cols-3 border-b">
             <button
               type="button"
               onMouseDown={(e) => e.preventDefault()}
-              onClick={() => setActiveTab("courses")}
+              onClick={() => handleTabChange("courses")}
               className={`px-2 py-2 text-xs font-semibold transition-colors ${activeTab === "courses" ? "bg-input-focus-border text-white" : "bg-panel-bg text-text-muted"}`}
             >
               Courses ({courseResults.length})
@@ -65,7 +92,7 @@ export default function SearchBar({
             <button
               type="button"
               onMouseDown={(e) => e.preventDefault()}
-              onClick={() => setActiveTab("programs")}
+              onClick={() => handleTabChange("programs")}
               className={`px-2 py-2 text-xs font-semibold transition-colors ${activeTab === "programs" ? "bg-input-focus-border text-white" : "bg-panel-bg text-text-muted"}`}
             >
               Programs ({programResults.length})
@@ -73,7 +100,7 @@ export default function SearchBar({
             <button
               type="button"
               onMouseDown={(e) => e.preventDefault()}
-              onClick={() => setActiveTab("departments")}
+              onClick={() => handleTabChange("departments")}
               className={`px-2 py-2 text-xs font-semibold transition-colors ${activeTab === "departments" ? "bg-input-focus-border text-white" : "bg-panel-bg text-text-muted"}`}
             >
               Departments ({departmentResults.length})
