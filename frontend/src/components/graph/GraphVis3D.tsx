@@ -171,6 +171,8 @@ export default function GraphVis3D({
     onNodeClickRef.current = onNodeClickCallback;
   }, [onNodeClickCallback]);
 
+  const lastHoverNodeRef = useRef<string>("");
+
   const lastClickNodeRef = useRef<string>("");
   const lastClickTimeRef = useRef<number>(Date.now());
   const mouseDownXRef = useRef<number>(0);
@@ -204,10 +206,17 @@ export default function GraphVis3D({
     if (isNodePinnedRef.current) {
       return;
     }
-    let currTime = Date.now();
-    if (currTime - hoverHighlightTimeRef.current > 32) {
+    const currTime = Date.now();
+    const deltaTime = currTime - hoverHighlightTimeRef.current;
+    if (deltaTime > 32) {
       hoverHighlightTimeRef.current = currTime;
       highlightGraphRef.current?.(origin);
+    } else {
+      setTimeout(() => {
+        if (lastHoverNodeRef.current == origin) {
+          highlightGraphRef.current?.(origin);
+        }
+      }, deltaTime + 1);
     }
   }, []);
 
@@ -282,9 +291,11 @@ export default function GraphVis3D({
         .onNodeHover((node: any) => {
           if (node) {
             isHoveringRef.current = true;
+            lastHoverNodeRef.current = node.id;
             hoverHighlightGraph(node.id);
           } else {
             isHoveringRef.current = false;
+            lastHoverNodeRef.current = "";
             hoverHighlightGraph("");
           }
         })
