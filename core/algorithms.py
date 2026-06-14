@@ -355,7 +355,7 @@ def get_filtered_graph(
 
 def get_search_suggestions(
     container: CourseGraphContainer, query: str, max_results: dict[str, int]
-) -> list[dict[str, str]]:
+) -> list[dict[str, str | int | None]]:
     """
     Return search suggestions for the given search query to be displayed as search suggestions.
 
@@ -373,6 +373,7 @@ def get_search_suggestions(
             {
                 "code": "all",
                 "title": "Display All Courses",
+                "type": "course",
                 "num_prereqs": "",
                 "num_nodes": container.graph.num_courses(),
             }
@@ -448,6 +449,7 @@ def get_department_suggestions(
                 {
                     "code": dept_code,
                     "title": "Department of " + dept_name,
+                    "type": "department",
                     "num_prereqs": "",
                     "num_nodes": num_nodes,
                 }
@@ -478,6 +480,7 @@ def get_program_suggestions(
             {
                 "code": program.code,
                 "title": program.title,
+                "type": "program",
                 "num_prereqs": "",
                 "num_nodes": num_nodes,
             }
@@ -524,6 +527,7 @@ def get_course_suggestions(
                 {
                     "code": filtered_courses[i][course].code,
                     "title": filtered_courses[i][course].data.title,
+                    "type": "course",
                     "num_prereqs": num_prereqs,
                     "class_size": filtered_courses[i][course].data.class_size,
                     "num_nodes": num_nodes,
