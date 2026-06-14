@@ -47,7 +47,7 @@ COURSE_GRAPH_CONTAINER = construct_container(
 PROGRESS_TRACKER = {}
 TICKETS: dict[str, dict[str, Any]] = {}
 
-MAX_RESULTS = {"departments": 20, "programs": 4, "courses": 36}
+MAX_RESULTS = {"departments": -1, "programs": -1, "courses": -1}
 
 
 def get_global_statistics_from_file() -> dict[str, int | float]:

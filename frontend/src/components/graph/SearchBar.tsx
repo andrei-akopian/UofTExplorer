@@ -53,12 +53,12 @@ export default function SearchBar({
       />
       {showSearchResults && (
         <div className="border-border-dropdown bg-panel-bg shadow-dropdown absolute top-full left-0 z-50 mt-1 max-h-64 w-full overflow-y-auto rounded-md border">
-          <div className="border-border-card bg-card-bg sticky top-0 z-10 grid grid-cols-3 border-b">
+          <div className="border-border-card bg-panel-bg sticky top-0 z-10 grid grid-cols-3 border-b">
             <button
               type="button"
               onMouseDown={(e) => e.preventDefault()}
               onClick={() => setActiveTab("courses")}
-              className={`px-2 py-2 text-xs font-semibold transition-colors ${activeTab === "courses" ? "bg-input-focus-border text-white" : "text-text-muted"}`}
+              className={`px-2 py-2 text-xs font-semibold transition-colors ${activeTab === "courses" ? "bg-input-focus-border text-white" : "bg-panel-bg text-text-muted"}`}
             >
               Courses ({courseResults.length})
             </button>
@@ -66,7 +66,7 @@ export default function SearchBar({
               type="button"
               onMouseDown={(e) => e.preventDefault()}
               onClick={() => setActiveTab("programs")}
-              className={`px-2 py-2 text-xs font-semibold transition-colors ${activeTab === "programs" ? "bg-input-focus-border text-white" : "text-text-muted"}`}
+              className={`px-2 py-2 text-xs font-semibold transition-colors ${activeTab === "programs" ? "bg-input-focus-border text-white" : "bg-panel-bg text-text-muted"}`}
             >
               Programs ({programResults.length})
             </button>
@@ -74,7 +74,7 @@ export default function SearchBar({
               type="button"
               onMouseDown={(e) => e.preventDefault()}
               onClick={() => setActiveTab("departments")}
-              className={`px-2 py-2 text-xs font-semibold transition-colors ${activeTab === "departments" ? "bg-input-focus-border text-white" : "text-text-muted"}`}
+              className={`px-2 py-2 text-xs font-semibold transition-colors ${activeTab === "departments" ? "bg-input-focus-border text-white" : "bg-panel-bg text-text-muted"}`}
             >
               Departments ({departmentResults.length})
             </button>
