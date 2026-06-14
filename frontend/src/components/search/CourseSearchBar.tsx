@@ -77,6 +77,9 @@ export default function CourseSearchBar({
               <SuggestionEntry
                 key={result.id}
                 onClickCallback={() => {
+                  if (searchResults.find((x) => x == result.code)) {
+                    return;
+                  }
                   setSearchResults([
                     ...searchResults,
                     result.code || result.label,
