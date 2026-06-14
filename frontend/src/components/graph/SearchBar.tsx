@@ -54,6 +54,11 @@ export default function SearchBar({
     }
   }, [activeTab]);
 
+  // Prefetch suggestions for the default query (MAT332H1) on mount
+  useEffect(() => {
+    void search("MAT332H1");
+  }, []);
+
   return (
     <div className="relative w-full sm:w-auto">
       <input
