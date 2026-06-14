@@ -15,6 +15,7 @@ interface HistoryPacket {
   avoided: string[];
   solution: string[];
   tool: string;
+  timestamp: number;
 }
 
 const MaxHistoryCount = 10;
@@ -69,6 +70,7 @@ export default function PathExplorer() {
       avoided: avoidedCourses,
       solution: solutionDisplay,
       tool: lastTool,
+      timestamp: Date.now(),
     };
   }, [
     completedCourses,
@@ -151,13 +153,16 @@ export default function PathExplorer() {
     return (
       <details className="border-border-card bg-panel-bg shadow-card mt-0.5 mb-1.5 rounded-lg border p-1">
         <summary className="hover:bg-surface-1 cursor-pointer list-none rounded-md p-0.5 transition-colors duration-150 hover:shadow-sm">
-          <span className="flex items-start justify-between gap-3">
+          <span className="flex items-start justify-between gap-2">
             <span className="text-text-body min-w-0 flex-1">
-              <span className="block text-sm font-semibold">
-                {`R: ${packet.solution.length} | C: ${packet.completed.length} | D: ${packet.desired.length} | A: ${packet.avoided.length}`}
+              <span className="text-sm font-semibold">{`Result`}</span>
+              <span className="text-text-subtle mx-2 text-xs">
+                {packet.timestamp
+                  ? new Date(packet.timestamp).toLocaleTimeString()
+                  : "Unknown Date"}
               </span>
               <span className="block text-xs leading-snug">
-                {packet.tool == "postreqs" ? "Find Next Courses" : "Path Find"}
+                {packet.tool == "postreqs" ? "Find next courses" : "Find path"}
               </span>
             </span>
             <button
@@ -174,10 +179,14 @@ export default function PathExplorer() {
             >
               Export
             </button>
+
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="m2 4 4 4 4-4" stroke="currentColor" />
+            </svg>
           </span>
         </summary>
         <div className="m-1">
-          <p className="mt-1 font-bold">Result:</p>
+          <p className="mt-1 font-bold">Courses to Target:</p>
           <p className="font-normal">{packet.solution.join(", ")}</p>
           <p className="mt-1 font-bold">Completed Courses:</p>
           <p className="font-normal">{packet.completed.join(", ")}</p>
@@ -214,14 +223,10 @@ export default function PathExplorer() {
                   {dataDict.get(code).title}
                 </span>
               </span>
-              <a href={`/graph/2d?search=${code}`} target="_blank">
-                <button
-                  type="button"
-                  className="border-border-card bg-surface-1 text-text-body hover:bg-surface-2 shrink-0 rounded-md border px-2.5 py-1 text-[0.72rem] font-medium"
-                >
-                  Open
-                </button>
-              </a>
+
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="m2 4 4 4 4-4" stroke="currentColor" />
+              </svg>
             </span>
           </summary>
           <div className="m-1">
@@ -314,7 +319,7 @@ export default function PathExplorer() {
         console.log("filtered: ", filtered);
         if (filtered.length == 0) {
           setPlaceholderText(
-            "There are no courses which is immediately unlocked by your completed courses.",
+            "There are no courses which are immediately unlocked by your completed courses.",
           );
         } else {
           setPlaceholderText("");
@@ -361,7 +366,7 @@ export default function PathExplorer() {
   }, [[pathfindError]]);
 
   return (
-    <div className="relative flex h-full w-full flex-col overflow-hidden font-sans lg:flex-row lg:pl-96">
+    <div className="relative flex h-full w-full flex-col overflow-hidden font-sans lg:flex-1 lg:flex-row">
       <MobileWarning />
 
       <div id="vis graph" className="relative min-h-0 w-full flex-1 lg:h-full">
@@ -375,7 +380,7 @@ export default function PathExplorer() {
 
       <div
         id="resultBar"
-        className="border-border-panel bg-surface-1 fixed top-16 bottom-0 left-2 z-30 flex h-[calc(100vh-4rem)] w-[min(22rem,calc(100vw-1rem))] flex-col overflow-hidden rounded-none border shadow-sm lg:w-96"
+        className="border-border-panel bg-surface-1 z-30 order-first flex h-full w-[min(22rem,calc(100vw-1rem))] shrink-0 flex-col overflow-hidden border-r shadow-sm lg:w-96"
       >
         <section className="border-border-panel flex min-h-0 flex-[0_0_62%] flex-col overflow-hidden border-b">
           <header className="border-border-panel text-text-body flex shrink-0 items-center justify-between gap-3 border-b px-4 py-3 text-sm font-semibold">
@@ -390,7 +395,7 @@ export default function PathExplorer() {
               >
                 <option value="all">All</option>
                 <option value="target">Target Courses</option>
-                <option value="side">Side Courses</option>
+                <option value="side">Other Courses</option>
               </select>
             </label>
           </header>
@@ -452,7 +457,7 @@ export default function PathExplorer() {
 
       <div
         id="controls"
-        className="border-border-panel bg-panel-bg fixed right-2 bottom-2 left-2 z-30 overflow-hidden rounded-2xl border backdrop-blur-[10px] lg:relative lg:right-auto lg:bottom-auto lg:left-auto lg:mr-4 lg:flex lg:h-full lg:w-124 lg:flex-col lg:gap-4 lg:rounded-none lg:border-t-0 lg:border-r-0 lg:border-b-0 lg:border-l lg:p-4"
+        className="border-border-panel bg-panel-bg fixed right-2 bottom-2 left-2 z-30 overflow-hidden rounded-2xl border backdrop-blur-[10px] lg:relative lg:right-auto lg:bottom-auto lg:left-auto lg:mr-auto lg:flex lg:h-full lg:w-96 lg:flex-col lg:gap-4 lg:rounded-none lg:border-t-0 lg:border-r-0 lg:border-b-0 lg:border-l lg:p-4"
       >
         <button
           type="button"
@@ -478,30 +483,12 @@ export default function PathExplorer() {
           data-expanded={isMobileControlsOpen}
           style={{ transition: "max-height 220ms ease" }}
         >
-          <h1>
-            Discover courses you can take next based on courses you have
-            completed:
-          </h1>
           <CourseSearchBar
             searchResults={completedCourses}
             setSearchResults={setCompletedCourses}
             title="Courses you have completed"
             placeholder="Add a course you completed"
           />
-
-          <button
-            id="postreqsButton"
-            type="button"
-            className="from-btn-gradient-from to-btn-gradient-to w-full cursor-pointer self-stretch rounded-[0.8rem] border-0 bg-linear-to-br px-4 py-[0.8rem] text-[0.95rem] text-white hover:brightness-105 disabled:cursor-wait disabled:opacity-70"
-            onClick={handleGetImmediatePostreqs}
-          >
-            Find out now
-          </button>
-
-          <h1 className="mt-5">
-            Find the optimal path to courses you want to take: (considers
-            completed courses)
-          </h1>
 
           <CourseSearchBar
             searchResults={desiredCourses}
@@ -522,10 +509,33 @@ export default function PathExplorer() {
           id="bottomSection"
           className="mb-6 flex shrink-0 flex-col items-center gap-3 text-sm"
         >
+          <h1>
+            <b>
+              Discover courses you can take next from courses you have
+              completed:
+            </b>
+          </h1>
+
+          <button
+            id="postreqsButton"
+            type="button"
+            className="from-btn-gradient-from to-btn-gradient-to w-full cursor-pointer self-stretch rounded-[0.8rem] border-0 bg-linear-to-br px-4 py-[0.8rem] text-sm text-white hover:brightness-105 disabled:cursor-wait disabled:opacity-70"
+            onClick={handleGetImmediatePostreqs}
+          >
+            Find unlocked courses
+          </button>
+
+          <h1 className="mt-5">
+            <b>
+              Find the optimal path to courses you want to take from courses you
+              have completed and want to avoid:
+            </b>
+          </h1>
+
           <button
             id="demoSendButton"
             type="button"
-            className="from-btn-gradient-from to-btn-gradient-to w-full cursor-pointer self-stretch rounded-[0.8rem] border-0 bg-linear-to-br px-4 py-[0.8rem] text-[0.82rem] text-white hover:brightness-105 disabled:cursor-wait disabled:opacity-70"
+            className="from-btn-gradient-from to-btn-gradient-to w-full cursor-pointer self-stretch rounded-[0.8rem] border-0 bg-linear-to-br px-4 py-[0.8rem] text-sm text-white hover:brightness-105 disabled:cursor-wait disabled:opacity-70"
             onClick={handleRunPathFinder}
           >
             Find your path
