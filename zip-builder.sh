@@ -13,6 +13,7 @@ cp minimal_requirements.txt zip_build/minimal_requirements.txt
 cp start.sh zip_build/start.sh
 cp -r data zip_build/data
 cp -r core zip_build/core
+cp -r server zip_build/server
 mkdir zip_build/frontend
 cp -r frontend/dist zip_build/frontend/dist
 cp __main__.py zip_build/__main__.py
