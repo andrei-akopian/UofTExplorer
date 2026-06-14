@@ -392,8 +392,16 @@ def get_search_suggestions(
     # Check the length of the program and course matches
     # We always want to show the maximum total results with max_results["programs"] and max_results["courses"] satisfied
 
-    # If both are shorter than the maximum, show them all
+    # If all limits are -1 (unlimited), don't do any slicing
     if (
+        max_results["departments"] == -1
+        and max_results["programs"] == -1
+        and max_results["courses"] == -1
+    ):
+        matches.extend(program_matches + course_matches)
+
+    # If both are shorter than the maximum, show them all
+    elif (
         len(program_matches) <= max_results["programs"]
         and len(course_matches) <= max_results["courses"]
     ):

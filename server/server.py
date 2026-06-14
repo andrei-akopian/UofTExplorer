@@ -47,6 +47,7 @@ COURSE_GRAPH_CONTAINER = construct_container(
 PROGRESS_TRACKER = {}
 TICKETS: dict[str, dict[str, Any]] = {}
 
+# Disable results limit
 MAX_RESULTS = {"departments": -1, "programs": -1, "courses": -1}
 
 
@@ -265,9 +266,11 @@ def suggest_courses() -> ResponseReturnValue:
         if query and len(query) < 2:
             return jsonify({"results": []})
 
-        matches = get_course_suggestions(COURSE_GRAPH_CONTAINER, query)[
-            : MAX_RESULTS["courses"]
-        ]
+        matches = get_course_suggestions(COURSE_GRAPH_CONTAINER, query)
+
+        # Only slice if max_results is not -1 (unlimited)
+        if MAX_RESULTS["courses"] != -1:
+            matches = matches[: MAX_RESULTS["courses"]]
 
         return jsonify({"results": matches})
 
