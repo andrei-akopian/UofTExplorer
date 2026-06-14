@@ -1,5 +1,5 @@
 from typing import Optional
-
+from scraper.parser_constants import SEPARATORS
 
 def course_code_parser(course_code: str) -> Optional[list[str | int]]:
     """
@@ -43,3 +43,31 @@ def course_code_parser(course_code: str) -> Optional[list[str | int]]:
     if len(campus) != 1:
         return None
     return [department_code, int(course_number), length, int(campus)]
+
+
+def split_curse_name(course_name: str, logger=None) -> tuple[str, str]:
+    """
+    Take the course name string of the format "MAT137Y1 - Calculus 1"
+    and split it on the dash.
+    The input could contain unicode characters, hence the hassle.
+    """
+    collections = []
+    collector = ""
+    for char in course_name:
+        if char in SEPARATORS:
+            if len(collector) > 0:
+                collections.append(collector)
+                collector = ""
+        else:
+            collector += char
+    if len(collector) > 0:
+        collections.append(collector)
+        collector = ""
+
+    course_code = collections[0]
+    title = " ".join(collections[1:])
+    if logger is not None and (len(course_code) == 0 or course_code_parser(course_code) is None):
+        logger.critical(f"course has no code {course_name}")
+    if logger is not None and (len(title) == 0):
+        logger.critical("course has no title")
+    return course_code, title

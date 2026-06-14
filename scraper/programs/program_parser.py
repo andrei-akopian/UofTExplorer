@@ -4,6 +4,7 @@ Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 
 from __future__ import annotations
 from scraper.courses.course_utils import course_code_parser
+from scraper.programs.program_utils import program_code_parser
 import os
 import time
 import logging
@@ -92,7 +93,7 @@ class ProgramParser:
         self.programs_accepted = 0
         self.programs = []
 
-    def program_code_parser(self, program_code: str) -> list[str]:
+    def program_code_parser(self, program_code: str, logger=None) -> list[str]:
         """
         Dilutes the program code into its prime components.
         No department information, surprisingly.
@@ -131,7 +132,6 @@ class ProgramParser:
         Take beautiful soup object corresponding to a programs's section in the HTML page,
         and extract all relevant data.
         """
-        review_flags = []
         # course name
         raw_name = div.h3.div.string.strip()
         self.current_program = raw_name
@@ -155,10 +155,10 @@ class ProgramParser:
             return {}, "discard"  # Drop programs with no program code
         elif len(split_temp) == 2:
             title = split_temp[0].strip()
-            program_code = self.program_code_parser(split_temp[1].strip())
+            program_code = program_code_parser(split_temp[1].strip(), self.logger)
         elif len(split_temp) == 3:
             # example: Criminology and Sociolegal Studies - Major (Arts Program) - ASMAJ0826
-            program_code = self.program_code_parser(split_temp[2].strip())
+            program_code = program_code_parser(split_temp[2].strip(), self.logger)
             title = split_temp[0].strip()
         else:
             raise ValueError("not sure how to parse this")
@@ -208,8 +208,7 @@ class ProgramParser:
             "description": description,
             "enrollment_requirement": enrollment_requirements,
             "completion_requirement": completion_requirements,
-            "courses_mentioned": courses_mentioned,
-            "review_flags": review_flags,
+            "courses_mentioned": courses_mentioned
         }
         self.current_program = ""
         return program_information, "accept"

@@ -21,7 +21,7 @@ Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 """
 
 from __future__ import annotations
-from scraper.courses.course_utils import course_code_parser
+from scraper.courses.course_utils import course_code_parser, split_curse_name
 import json
 import os
 import re
@@ -69,14 +69,7 @@ CL_PARENTH = [")", "]"]
 PARENTHS = OP_PARENTH + CL_PARENTH
 SPECIAL_CHARS = ORS + ANDS + PARENTHS
 WHITESPACE = [" ", "\u200b", "\xa0", "\n"]
-SEPARATORS = [
-    "•",
-    "-",
-    " ",
-    "\u200b",
-    "\xa0",
-    "\n",
-]  # used by course_name_parser to split the name into code and title
+from scraper.parser_constants import SEPARATORS
 
 # regex pattern for detecting notes about CR/NCR eligibility
 CR_NCR_REGEX_PATTERN = re.compile(
@@ -570,33 +563,6 @@ class CourseParser:
             output.append(collector)
         return output
 
-    def split_curse_name(self, course_name: str) -> tuple[str, str]:
-        """
-        Take the course name string of the format "MAT137Y1 - Calculus 1"
-        and split it on the dash.
-        The input could contain unicode characters, hence the hassle.
-        """
-        collections = []
-        collector = ""
-        for char in course_name:
-            if char in SEPARATORS:
-                if len(collector) > 0:
-                    collections.append(collector)
-                    collector = ""
-            else:
-                collector += char
-        if len(collector) > 0:
-            collections.append(collector)
-            collector = ""
-
-        course_code = collections[0]
-        title = " ".join(collections[1:])
-        if len(course_code) == 0 or course_code_parser(course_code) is None:
-            self.general_logger.critical("course has no code")
-        if len(title) == 0:
-            self.general_logger.critical("course has no title")
-        return course_code, title
-
     def original_req_strings_preformatter(self, strings: list[str]) -> str:
         """
         Original strings have a really annoying format like:
@@ -833,6 +799,11 @@ class CourseParser:
             self.general_logger.critical("Warning: Couldn't find view-content in html.")
             return []
         courses_html = course_list.children
+        courses_json = parse_children(courses_html)
+        return courses_json
+
+
+    def parse_children(self, courses_html):
         courses_json = []
         for child in courses_html:
             if child != "\n":
@@ -842,6 +813,7 @@ class CourseParser:
                     self.counters["courses_accepted"] += 1
                     courses_json.append(parsed_child)
         return courses_json
+
 
     def save_to_json(self, courses: list[dict], filepath: str = SAVE_PATH) -> None:
         """Save a list containing dictionaries of course objects into a json file."""
