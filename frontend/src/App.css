@@ -3,7 +3,7 @@
 @theme {
   /* Fonts */
   --font-display: "Unbounded", "Public Sans", sans-serif;
-  --font-mono: "Latin Modern Mono", monospace;
+  --font-mono: "Roboto Mono", monospace;
   --font-sans: "Public Sans", "Inter", sans-serif;
   --font-serif: "Latin Modern Roman", serif;
 

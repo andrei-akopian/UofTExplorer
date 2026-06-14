@@ -370,7 +370,12 @@ def get_search_suggestions(
 
     if query in "ALL":
         matches.append(
-            {"code": "all", "title": "Display All Courses", "num_prereqs": ""}
+            {
+                "code": "all",
+                "title": "Display All Courses",
+                "num_prereqs": "",
+                "num_nodes": container.graph.num_courses(),
+            }
         )
 
     # Search for departments that contain query in its code or title
@@ -425,7 +430,7 @@ def get_search_suggestions(
 
 def get_department_suggestions(
     container: CourseGraphContainer, query: str
-) -> list[dict[str, str]]:
+) -> list[dict[str, str | int]]:
     """
     Get search suggestions for matching departments for the given query.
     Includes departments that contain the query in its three-letter code or name.
@@ -433,11 +438,18 @@ def get_department_suggestions(
     department_matches = []
     for dept_code, dept_name in container.departments.items():
         if query.upper() in dept_code or query.upper() in dept_name.upper():
+            # Count courses in this department
+            dept_courses = container.graph.get_filtered_courses(
+                [lambda course: course.is_in_department(dept_code)]
+            )[0]
+            num_nodes = len(dept_courses)
+
             department_matches.append(
                 {
                     "code": dept_code,
                     "title": "Department of " + dept_name,
                     "num_prereqs": "",
+                    "num_nodes": num_nodes,
                 }
             )
 
@@ -446,7 +458,7 @@ def get_department_suggestions(
 
 def get_program_suggestions(
     container: CourseGraphContainer, query: str
-) -> list[dict[str, str]]:
+) -> list[dict[str, str | int]]:
     """
     Get search suggestions for matching programs for the given query.
     Includes programs that contain the query in its code or name.
@@ -459,8 +471,16 @@ def get_program_suggestions(
     # Add the filtered programs to the list of matches
     program_matches = []
     for program in filtered_programs:
+        # Count courses in this program's graph
+        num_nodes = program.graph.num_courses()
+
         program_matches.append(
-            {"code": program.code, "title": program.title, "num_prereqs": ""}
+            {
+                "code": program.code,
+                "title": program.title,
+                "num_prereqs": "",
+                "num_nodes": num_nodes,
+            }
         )
 
     return program_matches
@@ -468,7 +488,7 @@ def get_program_suggestions(
 
 def get_course_suggestions(
     container: CourseGraphContainer, query: str
-) -> list[dict[str, str]]:
+) -> list[dict[str, str | int | None]]:
     """
     Get search suggestions for matching courses for the given query.
     Includes courses that contain the query in its code or name.
@@ -492,11 +512,21 @@ def get_course_suggestions(
             else:
                 num_prereqs = ""
 
+            # Construct subgraph to count nodes (course + prerequisites)
+            subgraph = construct_subgraph(
+                container.graph,
+                [filtered_courses[i][course].code],
+                traversers.Targets(True, True, False, False),
+            )
+            num_nodes = subgraph.num_courses()
+
             course_matches.append(
                 {
                     "code": filtered_courses[i][course].code,
                     "title": filtered_courses[i][course].data.title,
                     "num_prereqs": num_prereqs,
+                    "class_size": filtered_courses[i][course].data.class_size,
+                    "num_nodes": num_nodes,
                 }
             )
 

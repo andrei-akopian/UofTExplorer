@@ -81,6 +81,12 @@ export default function CourseSearchBar({
             results.map((result) => (
               <SuggestionEntry
                 key={result.id}
+                id={result.code || result.label}
+                title={result.title || ""}
+                classSize={
+                  result.class_size ? String(result.class_size) : undefined
+                }
+                numNodes={result.num_nodes || 0}
                 onClickCallback={() => {
                   setSearchResults([
                     ...searchResults,
@@ -89,7 +95,6 @@ export default function CourseSearchBar({
                   setQuery("");
                   setShowSearchResults(false);
                 }}
-                labelling={`${result.code}: ${result.title}${result.num_prereqs ? ` | ${result.num_prereqs}` : ""}`}
               />
             ))
           ) : (
