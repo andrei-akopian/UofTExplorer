@@ -3,6 +3,7 @@ import ForceGraph3D from "3d-force-graph";
 import type { GraphData, GraphNode } from "../../types";
 import { useRef, useEffect, useCallback } from "react";
 import { useCreateDirectedGraph } from "../../hooks/useGraph";
+import LoadingOverlay from "../LoadingOverlay";
 
 // ───────────────────────────────────────────────
 //   TUNABLE CONSTANTS
@@ -335,14 +336,7 @@ export default function GraphVis3D({
           handleFrameClick();
         }}
       ></div>
-      <div className={loading ? "" : "hidden"}>
-        <div className="absolute top-0 flex h-full w-full">
-          <div className="m-auto flex h-60 w-60 animate-spin items-center justify-center rounded-[50%] border-8 border-blue-100 border-t-blue-500"></div>
-        </div>
-        <div className="absolute top-0 flex h-full w-full">
-          <div className="m-auto text-center text-5xl">Loading</div>
-        </div>
-      </div>
+      <LoadingOverlay visible={loading} />
     </>
   );
 }

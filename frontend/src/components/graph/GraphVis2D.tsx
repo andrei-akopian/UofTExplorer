@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import type { GraphData, GraphEdge, GraphNode, QueryInfo } from "../../types";
 import { useCreateDirectedGraph } from "../../hooks/useGraph";
 import { DataSet } from "vis-network/standalone/esm/vis-network.min.js";
+import LoadingOverlay from "../LoadingOverlay";
 
 interface Node extends GraphNode {
   id: string;
@@ -362,14 +363,7 @@ export default function GraphVis2D({
         id="mynetwork"
         className="relative h-full w-full overflow-hidden"
       ></div>
-      <div className={loading ? "" : "hidden"}>
-        <div className="absolute top-0 flex h-full w-full">
-          <div className="m-auto flex h-60 w-60 animate-spin items-center justify-center rounded-[50%] border-8 border-blue-100 border-t-blue-500"></div>
-        </div>
-        <div className="absolute top-0 flex h-full w-full">
-          <div className="m-auto text-center text-5xl">Loading</div>
-        </div>
-      </div>
+      <LoadingOverlay visible={Boolean(loading)} />
     </>
   );
 }
