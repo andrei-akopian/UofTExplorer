@@ -31,6 +31,10 @@ export default function PathExplorer() {
 
   const [lastTool, setLastTool] = useState<string>("");
   const [resultVisibility, setResultVisibility] = useState<string>("all");
+  const isHistoryLoadFetchRef = useRef<boolean>(false);
+  const [historyLoadFetchTrigger, setHistoryLoadFetchTrigger] = useState<any[]>(
+    [false, ""],
+  );
 
   const { data: graphDataPostreqs, fetch: fetchImmediatePostreqs } =
     useImmediatePostreqs();
@@ -84,14 +88,37 @@ export default function PathExplorer() {
     if (completedCourses.length == 0 && desiredCourses.length == 0) {
       return;
     }
-    updateHistory(captureHistory());
+    if (!isHistoryLoadFetchRef.current) {
+      updateHistory(captureHistory());
+    } else {
+      isHistoryLoadFetchRef.current = false;
+    }
   }, [graphData]);
 
   const loadHistory = useCallback((packet: HistoryPacket) => {
     setCompletedCourses(packet.completed);
     setDesiredCourses(packet.desired);
     setAvoidedCourses(packet.avoided);
+    isHistoryLoadFetchRef.current = true;
+    setHistoryLoadFetchTrigger([!historyLoadFetchTrigger[0], packet.tool]);
   }, []);
+
+  useEffect(() => {
+    switch (historyLoadFetchTrigger[1]) {
+      case "pathfind": {
+        handleRunPathFinder();
+        return;
+      }
+      case "postreqs": {
+        handleGetImmediatePostreqs();
+        return;
+      }
+      default: {
+        isHistoryLoadFetchRef.current = false;
+        return;
+      }
+    }
+  }, [historyLoadFetchTrigger]);
 
   const exportHistory = useCallback((packets: HistoryPacket[]) => {
     const stringed = JSON.stringify(packets);
