@@ -11,12 +11,12 @@ export default function Home() {
           UofT Explorer
         </h1>
 
-        <p className="mt-8 text-sm sm:text-base">
+        <p className="mt-8 text-center text-sm sm:text-base">
           Welcome! Explore how courses, programs, and departments are connected
           at the Faculty of Arts & Science at the University of Toronto.
         </p>
 
-        <p className="text-sm sm:text-base">
+        <p className="text-center text-sm sm:text-base">
           All data is sourced from the{" "}
           <a
             className={pageLinkClassName}
@@ -66,7 +66,7 @@ export default function Home() {
               Find out which courses you're eligible to take, and discover the
               shortest path to reach your desired courses.
             </div>
-            <div className="mt-6">
+            <div className="mt-10">
               <Link
                 to="/path-explorer"
                 className="from-btn-gradient-from to-btn-gradient-to cursor-pointer rounded-[0.8rem] border-0 bg-linear-to-br px-4 py-[0.8rem] text-[0.95rem] text-white! no-underline hover:brightness-105"
@@ -84,7 +84,7 @@ export default function Home() {
               Get an overview of the global statistics across courses at the
               Faculty of Arts & Science.
             </div>
-            <div className="mt-12">
+            <div className="mt-10">
               <Link
                 to="/global-stats"
                 className="from-btn-gradient-from to-btn-gradient-to cursor-pointer rounded-[0.8rem] border-0 bg-linear-to-br px-4 py-[0.8rem] text-[0.95rem] text-white! no-underline hover:brightness-105"
