@@ -453,15 +453,16 @@ def get_department_suggestions(
             )[0]
             num_nodes = len(dept_courses)
 
-            department_matches.append(
-                {
-                    "code": dept_code,
-                    "title": "Department of " + dept_name,
-                    "type": "department",
-                    "num_prereqs": "",
-                    "num_nodes": num_nodes,
-                }
-            )
+            if num_nodes > 0:
+                department_matches.append(
+                    {
+                        "code": dept_code,
+                        "title": "Department of " + dept_name,
+                        "type": "department",
+                        "num_prereqs": "",
+                        "num_nodes": num_nodes,
+                    }
+                )
 
     return department_matches
 
@@ -484,15 +485,16 @@ def get_program_suggestions(
         # Count courses in this program's graph
         num_nodes = program.graph.num_courses()
 
-        program_matches.append(
-            {
-                "code": program.code,
-                "title": program.title,
-                "type": "program",
-                "num_prereqs": "",
-                "num_nodes": num_nodes,
-            }
-        )
+        if num_nodes > 0:
+            program_matches.append(
+                {
+                    "code": program.code,
+                    "title": program.title,
+                    "type": "program",
+                    "num_prereqs": "",
+                    "num_nodes": num_nodes,
+                }
+            )
 
     return program_matches
 
