@@ -261,6 +261,7 @@ export default function GraphVis3D({
     const processedData = processGraphData(graphData);
     if (!graphRef.current) {
       graphRef.current = new ForceGraph3D(graphFrame.current)
+        .showNavInfo(false)
         .graphData(processedData)
         .nodeLabel((n: any) => `${n.label}: ${n.title}`)
         .nodeVal((node: any) =>
