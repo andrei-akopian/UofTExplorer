@@ -177,9 +177,29 @@ export default function PathExplorer() {
   );
 
   const historyCard = useCallback((packet: HistoryPacket) => {
+    const formatList = (values: string[]) =>
+      values.length > 0 ? values.join(", ") : "None";
+
     return (
-      <details className="close-on-outclick border-border-card bg-panel-bg shadow-card mt-0.5 mb-1.5 rounded-lg border p-1">
-        <summary className="hover:bg-surface-1 cursor-pointer list-none rounded-md p-0.5 transition-colors duration-150 hover:shadow-sm">
+      <details
+        className="hover:bg-surface-1 border-border-card bg-panel-bg shadow-card mt-0.5 mb-1.5 rounded-lg border p-2 hover:shadow-sm"
+        onClick={(e) => {
+          const details = e.currentTarget as HTMLDetailsElement;
+          const summary = details.querySelector("summary");
+          const clickTarget = e.target as HTMLElement;
+
+          // If click is on summary or inside summary, allow default toggle behavior
+          if (summary && summary.contains(clickTarget)) {
+            return;
+          }
+
+          // If open and click is inside content, close it
+          if (details.open) {
+            details.removeAttribute("open");
+          }
+        }}
+      >
+        <summary className="cursor-pointer list-none rounded-md transition-colors duration-150">
           <span className="flex items-start justify-between gap-2">
             <span className="text-text-body min-w-0 flex-1">
               <span className="text-sm font-semibold">{`Result`}</span>
@@ -212,15 +232,39 @@ export default function PathExplorer() {
             </svg>
           </span>
         </summary>
-        <div className="m-1">
-          <p className="mt-1 font-bold">Courses to Target:</p>
-          <p className="font-mono font-normal">{packet.solution.join(", ")}</p>
-          <p className="mt-1 font-bold">Completed Courses:</p>
-          <p className="font-mono font-normal">{packet.completed.join(", ")}</p>
-          <p className="mt-1 font-bold">Desired Courses:</p>
-          <p className="font-mono font-normal">{packet.desired.join(", ")}</p>
-          <p className="mt-1 font-bold">Avoided Courses:</p>
-          <p className="font-mono font-normal">{packet.avoided.join(", ")}</p>
+        <div className="flex flex-col gap-3 overflow-y-auto pt-4 text-xs">
+          <div className="flex flex-col gap-0.5">
+            <span className="text-text-muted font-semibold tracking-wide uppercase">
+              Courses to Target
+            </span>
+            <span className="text-text-body font-mono wrap-break-word whitespace-normal">
+              {formatList(packet.solution)}
+            </span>
+          </div>
+          <div className="flex flex-col gap-0.5">
+            <span className="text-text-muted font-semibold tracking-wide uppercase">
+              Completed Courses
+            </span>
+            <span className="text-text-body font-mono wrap-break-word whitespace-normal">
+              {formatList(packet.completed)}
+            </span>
+          </div>
+          <div className="flex flex-col gap-0.5">
+            <span className="text-text-muted font-semibold tracking-wide uppercase">
+              Desired Courses
+            </span>
+            <span className="text-text-body font-mono wrap-break-word whitespace-normal">
+              {formatList(packet.desired)}
+            </span>
+          </div>
+          <div className="flex flex-col gap-0.5">
+            <span className="text-text-muted font-semibold tracking-wide uppercase">
+              Avoided Courses
+            </span>
+            <span className="text-text-body font-mono wrap-break-word whitespace-normal">
+              {formatList(packet.avoided)}
+            </span>
+          </div>
         </div>
       </details>
     );
