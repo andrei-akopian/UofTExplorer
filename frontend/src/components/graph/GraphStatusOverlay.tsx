@@ -24,7 +24,7 @@ export default function GraphStatusOverlay({
     messageType === "error"
       ? "text-text-query"
       : messageType === "success"
-        ? "text-white"
+        ? "text-success-text"
         : "text-(--color-primary-info)";
 
   return (
