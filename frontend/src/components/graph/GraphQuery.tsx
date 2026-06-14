@@ -118,7 +118,6 @@ export default function GraphQuery({
       >
         Load Graph
       </button>
-      {error && <div className="text-error font-sans text-sm">{error}</div>}
     </div>
   );
 }
