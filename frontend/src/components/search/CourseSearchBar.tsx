@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { useSearch } from "../../hooks/useGraph";
 import SuggestionEntry from "./SuggestionEntry";
 
@@ -39,6 +40,15 @@ export default function CourseSearchBar({
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [numSelected, setNumSelected] = useState(0);
   const [query, setQuery] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [dropdownRect, setDropdownRect] = useState<DOMRect | null>(null);
+  const courseResults = results.filter((result) => result.type === "course");
+
+  const updateDropdownRect = () => {
+    if (inputRef.current) {
+      setDropdownRect(inputRef.current.getBoundingClientRect());
+    }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
@@ -61,13 +71,15 @@ export default function CourseSearchBar({
         </span>
       </label>
       <input
+        ref={inputRef}
         type="text"
-        className="border-border-card bg-input-bg focus:border-focus-border focus:ring-focus-ring box-border w-full rounded-[0.9rem] border px-[0.9rem] py-[0.78rem] text-[0.96rem] focus:ring-2 focus:outline-none"
+        className="border-border-card bg-input-bg focus:border-input-focus-border focus:ring-input-focus-ring box-border w-full rounded-[0.9rem] border px-[0.9rem] py-[0.78rem] text-[0.96rem] focus:ring-2 focus:outline-none"
         placeholder={placeholder}
         autoComplete="off"
         value={query}
         onChange={handleChange}
         onFocus={() => {
+          updateDropdownRect();
           setShowSearchResults(true);
           if (!query.trim()) {
             void search("");
@@ -75,43 +87,58 @@ export default function CourseSearchBar({
         }}
         onBlur={() => setShowSearchResults(false)}
       />
-      {showSearchResults && (
-        <div className={showSearchResults ? "" : "hidden"}>
-          {loading ? (
-            <div className="text-text-muted px-3 py-2 text-sm">
-              Loading results...
-            </div>
-          ) : results.length > 0 ? (
-            results.map((result) => (
-              <SuggestionEntry
-                key={result.id}
-                id={result.code || result.label}
-                title={result.title || ""}
-                classSize={
-                  result.class_size ? String(result.class_size) : undefined
-                }
-                numNodes={result.num_nodes || 0}
-                onClickCallback={() => {
-                  if (searchResults.find((x) => x == result.code)) {
-                    return;
+
+      {showSearchResults &&
+        dropdownRect &&
+        createPortal(
+          <div
+            className="border-border-dropdown bg-surface-1 shadow-dropdown fixed z-9999 max-h-72 overflow-y-auto rounded-[0.95rem] border"
+            style={{
+              top: dropdownRect.bottom + 6,
+              left: dropdownRect.left,
+              width: dropdownRect.width,
+            }}
+          >
+            {loading ? (
+              <div className="text-text-muted px-3 py-2 text-sm">
+                Loading results...
+              </div>
+            ) : courseResults.length > 0 ? (
+              courseResults.map((result) => (
+                <SuggestionEntry
+                  key={result.id}
+                  id={result.code || result.label}
+                  title={result.title || ""}
+                  classSize={
+                    result.class_size ? String(result.class_size) : undefined
                   }
-                  setSearchResults([
-                    ...searchResults,
-                    result.code || result.label,
-                  ]);
-                  setQuery("");
-                  setShowSearchResults(false);
-                }}
-              />
-            ))
-          ) : (
-            <div>No results found</div>
-          )}
-        </div>
-      )}
+                  numNodes={result.num_nodes || 0}
+                  onClickCallback={() => {
+                    if (searchResults.find((x) => x == result.code)) {
+                      return;
+                    }
+                    setSearchResults([
+                      ...searchResults,
+                      result.code || result.label,
+                    ]);
+                    setQuery("");
+                    setShowSearchResults(false);
+                  }}
+                />
+              ))
+            ) : (
+              <div className="text-text-muted px-3 py-2 text-sm">
+                No courses found
+              </div>
+            )}
+          </div>,
+          document.body,
+        )}
+
       <div className="mt-[0.65rem] flex min-h-0 flex-wrap gap-[0.55rem]">
         {searchResults.map((course) => (
           <CourseChip
+            key={course}
             course={course}
             onRemove={() =>
               setSearchResults(searchResults.filter((c) => c !== course))
@@ -119,7 +146,6 @@ export default function CourseSearchBar({
           />
         ))}
       </div>
-      <div className="border-border-card bg-panel-bg shadow-card absolute top-[calc(100%+0.35rem)] right-0 left-0 z-10 max-h-72 overflow-y-auto rounded-[0.95rem] border [&.show]:block [&:not(.show)]:hidden"></div>
     </div>
   );
 }

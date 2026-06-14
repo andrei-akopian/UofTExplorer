@@ -183,7 +183,7 @@ export default function PathExplorer() {
           <span className="flex items-start justify-between gap-2">
             <span className="text-text-body min-w-0 flex-1">
               <span className="text-sm font-semibold">{`Result`}</span>
-              <span className="text-text-subtle mx-2 text-xs">
+              <span className="text-text-subtle mx-2 font-mono text-xs">
                 {packet.timestamp
                   ? new Date(packet.timestamp).toLocaleTimeString()
                   : "Unknown Date"}
