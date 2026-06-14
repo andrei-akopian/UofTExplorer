@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import type { GraphData, GraphNode } from "../../types";
 
 // ---------------------------------------------------------------------------
@@ -268,15 +268,21 @@ export function GraphNodesPanel({
               className="inline-block h-4 w-4 shrink-0 rounded-full border border-gray-300"
               style={{ backgroundColor: activeNode.color ?? "#A0B9DB" }}
             />
-            <span className="text-text-body text-base leading-tight font-semibold">
+            <span className="text-text-body font-mono text-base leading-tight font-semibold">
               {activeNode.label}
             </span>
           </div>
           {activeNode.code && activeNode.code !== activeNode.label && (
-            <NodeDetail label="Code" value={activeNode.code} />
+            <NodeDetail
+              label="Code"
+              value={<span className="font-mono">{activeNode.code}</span>}
+            />
           )}
           {activeNode.id && !activeNode.code && (
-            <NodeDetail label="ID" value={activeNode.id} />
+            <NodeDetail
+              label="ID"
+              value={<span className="font-mono">{activeNode.id}</span>}
+            />
           )}
           {activeNode.title && (
             <NodeDetail label="Title" value={activeNode.title} />
@@ -290,14 +296,24 @@ export function GraphNodesPanel({
           {activeNode.prerequisites && activeNode.prerequisites.length > 0 && (
             <NodeDetail
               label="Prerequisites"
-              value={activeNode.prerequisites}
+              value={
+                <span className="font-mono">{activeNode.prerequisites}</span>
+              }
             />
           )}
           {activeNode.corequisites && activeNode.corequisites.length > 0 && (
-            <NodeDetail label="Corequisites" value={activeNode.corequisites} />
+            <NodeDetail
+              label="Corequisites"
+              value={
+                <span className="font-mono">{activeNode.corequisites}</span>
+              }
+            />
           )}
           {activeNode.exclusions && activeNode.exclusions.length > 0 && (
-            <NodeDetail label="Exclusions" value={activeNode.exclusions} />
+            <NodeDetail
+              label="Exclusions"
+              value={<span className="font-mono">{activeNode.exclusions}</span>}
+            />
           )}
           {activeNode.crNcr !== undefined && (
             <NodeDetail
@@ -319,11 +335,11 @@ export function GraphNodesPanel({
                   style={{ backgroundColor: node.color ?? "#A0B9DB" }}
                 />
                 <span className="flex min-w-0 flex-col">
-                  <span className="text-text-body truncate text-sm font-medium">
+                  <span className="text-text-body truncate font-mono text-sm font-medium">
                     {node.label}
                   </span>
                   {node.code && node.code !== node.label && (
-                    <span className="text-text-muted truncate text-xs">
+                    <span className="text-text-muted truncate font-mono text-xs">
                       {node.code}
                     </span>
                   )}

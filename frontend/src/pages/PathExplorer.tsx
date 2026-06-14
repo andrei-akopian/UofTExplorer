@@ -214,13 +214,13 @@ export default function PathExplorer() {
         </summary>
         <div className="m-1">
           <p className="mt-1 font-bold">Courses to Target:</p>
-          <p className="font-normal">{packet.solution.join(", ")}</p>
+          <p className="font-mono font-normal">{packet.solution.join(", ")}</p>
           <p className="mt-1 font-bold">Completed Courses:</p>
-          <p className="font-normal">{packet.completed.join(", ")}</p>
+          <p className="font-mono font-normal">{packet.completed.join(", ")}</p>
           <p className="mt-1 font-bold">Desired Courses:</p>
-          <p className="font-normal">{packet.desired.join(", ")}</p>
+          <p className="font-mono font-normal">{packet.desired.join(", ")}</p>
           <p className="mt-1 font-bold">Avoided Courses:</p>
-          <p className="font-normal">{packet.avoided.join(", ")}</p>
+          <p className="font-mono font-normal">{packet.avoided.join(", ")}</p>
         </div>
       </details>
     );
@@ -245,7 +245,9 @@ export default function PathExplorer() {
                     : "text-text-muted min-w-0 flex-1"
                 }
               >
-                <span className="block text-sm font-semibold">{code}</span>
+                <span className="block font-mono text-sm font-semibold">
+                  {code}
+                </span>
                 <span className="block text-xs leading-snug">
                   {dataDict.get(code).title}
                 </span>
@@ -260,11 +262,15 @@ export default function PathExplorer() {
             <p className="font-bold">Description:</p>
             <p className="font-normal">{dataDict.get(code).description}</p>
             <p className="font-bold">Prerequisites:</p>
-            <p className="font-normal">{dataDict.get(code).prerequisites}</p>
+            <p className="font-mono font-normal">
+              {dataDict.get(code).prerequisites}
+            </p>
             {dataDict.get(code).corequisites ? (
               <>
                 <p className="font-bold">Corequisites:</p>
-                <p className="font-normal">{dataDict.get(code).corequisites}</p>
+                <p className="font-mono font-normal">
+                  {dataDict.get(code).corequisites}
+                </p>
               </>
             ) : (
               <></>
@@ -272,7 +278,9 @@ export default function PathExplorer() {
             {dataDict.get(code).exclusions ? (
               <>
                 <p className="font-bold">Exclusions:</p>
-                <p className="font-normal">{dataDict.get(code).exclusions}</p>
+                <p className="font-mono font-normal">
+                  {dataDict.get(code).exclusions}
+                </p>
               </>
             ) : (
               <></>

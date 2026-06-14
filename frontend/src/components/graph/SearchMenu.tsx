@@ -23,6 +23,7 @@ function FilterBar({
   setFiltersHook,
   filtersTitle,
   keyFormat,
+  renderOptionLabel,
 }: {
   title: string;
   options: string[];
@@ -30,6 +31,7 @@ function FilterBar({
   setFiltersHook: (filtersHook: QueryFilters) => void;
   filtersTitle: keyof QueryFilters;
   keyFormat: (option: string) => string;
+  renderOptionLabel?: (option: string) => React.ReactNode;
 }) {
   function handleChange(e: React.ChangeEvent<HTMLInputElement>, key: string) {
     console.log(`Toggled ${key}: ${e.target.checked}`);
@@ -68,7 +70,9 @@ function FilterBar({
               onChange={(e) => handleChange(e, keyFormat(option))}
               className="mt-0.5 shrink-0"
             />
-            <span className="max-w-xs min-w-0 wrap-break-word">{option}</span>
+            <span className="max-w-xs min-w-0 wrap-break-word">
+              {renderOptionLabel ? renderOptionLabel(option) : option}
+            </span>
           </label>
         ))}
       </div>
@@ -195,7 +199,10 @@ export default function SearchMenu({
                       }
                       className="mt-0.5 shrink-0"
                     />
-                    <span className="wrap-break-word">{option}</span>
+                    <span className="wrap-break-word">
+                      <span className="font-mono">{option.slice(0, 3)}</span>
+                      {option.slice(3)}
+                    </span>
                   </label>
                 );
               })}
@@ -250,6 +257,12 @@ export default function SearchMenu({
           setFiltersHook={setFiltersHook}
           filtersTitle="departments"
           keyFormat={(option) => option.slice(0, 3)}
+          renderOptionLabel={(option) => (
+            <>
+              <span className="font-mono">{option.slice(0, 3)}</span>
+              {option.slice(3)}
+            </>
+          )}
         />
         <FilterBar
           title="Breadth Requirements"

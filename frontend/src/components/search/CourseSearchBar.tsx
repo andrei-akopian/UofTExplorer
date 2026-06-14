@@ -10,7 +10,7 @@ function CourseChip({
   onRemove: () => void;
 }) {
   return (
-    <div className="border-border-card bg-panel-bg shadow-card flex items-center gap-[0.55rem] rounded-[0.95rem] border px-[0.9rem] py-[0.78rem] text-[0.96rem]">
+    <div className="border-border-card bg-panel-bg shadow-card flex items-center gap-[0.55rem] rounded-[0.95rem] border px-[0.9rem] py-[0.78rem] font-mono text-[0.96rem]">
       {course}
       <button
         key={`${course}-remove`}
