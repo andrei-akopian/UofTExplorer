@@ -515,29 +515,38 @@ def get_course_suggestions(
 
     # Add the filtered courses to the list of matches
     course_matches = []
+    seen_course_codes: set[str] = set()
 
     for i in range(len(filtered_courses)):
         for course in filtered_courses[i]:
-            if filtered_courses[i][course].prereqs is not None:
-                num_prereqs = str(len(filtered_courses[i][course].prereqs))
+            course_node = filtered_courses[i][course]
+            course_code = course_node.code
+
+            # A course can match multiple conditions (e.g., code and title), so only keep first hit.
+            if course_code in seen_course_codes:
+                continue
+            seen_course_codes.add(course_code)
+
+            if course_node.prereqs is not None:
+                num_prereqs = str(len(course_node.prereqs))
             else:
                 num_prereqs = ""
 
             # Construct subgraph to count nodes (course + prerequisites)
             subgraph = construct_subgraph(
                 container.graph,
-                [filtered_courses[i][course].code],
+                [course_code],
                 traversers.Targets(True, True, False, False),
             )
             num_nodes = subgraph.num_courses()
 
             course_matches.append(
                 {
-                    "code": filtered_courses[i][course].code,
-                    "title": filtered_courses[i][course].data.title,
+                    "code": course_code,
+                    "title": course_node.data.title,
                     "type": "course",
                     "num_prereqs": num_prereqs,
-                    "class_size": filtered_courses[i][course].data.class_size,
+                    "class_size": course_node.data.class_size,
                     "num_nodes": num_nodes,
                 }
             )
