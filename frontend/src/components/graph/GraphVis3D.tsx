@@ -270,7 +270,7 @@ export default function GraphVis3D({
         .nodeColor((n: any) =>
           highlightedNodesRef.current.has(n.id) ? "#ffdd63" : n.color,
         )
-        .linkDirectionalArrowLength(4)
+        .linkDirectionalArrowLength(8)
         .linkDirectionalArrowRelPos(0.5)
         .nodeThreeObjectExtend(true)
         .nodeThreeObject(createNodeLabelSprite)

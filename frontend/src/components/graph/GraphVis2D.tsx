@@ -135,7 +135,7 @@ export default function GraphVis2D({
             color: "#A0B9DB",
           },
           edges: {
-            arrows: { to: { enabled: true, scaleFactor: 0.8 } },
+            arrows: { to: { enabled: true, scaleFactor: 2 } },
             width: 2,
             smooth: {
               type: "cubicBezier",
