@@ -239,7 +239,8 @@ def suggest() -> ResponseReturnValue:
         query = (data or {}).get("q", "").strip().upper()
 
         if query and len(query) < 2:
-            return jsonify({"results": []})
+            # Treat very short queries like empty queries to return all queries
+            query = ""
 
         matches = get_search_suggestions(COURSE_GRAPH_CONTAINER, query, MAX_RESULTS)
 
