@@ -11,12 +11,12 @@ function CourseChip({
   onRemove: () => void;
 }) {
   return (
-    <div className="border-border-card bg-panel-bg shadow-card flex items-center gap-[0.55rem] rounded-[0.95rem] border px-[0.9rem] py-[0.78rem] font-mono text-[0.96rem]">
+    <div className="border-border-card bg-panel-bg shadow-card flex items-center gap-2 rounded-xl border px-3 py-2 font-mono text-sm">
       {course}
       <button
         key={`${course}-remove`}
         type="button"
-        className="text-error hover:text-error-hover"
+        className="text-error hover:text-error-hover hover:cursor-pointer"
         onClick={onRemove}
       >
         ×
@@ -60,20 +60,20 @@ export default function CourseSearchBar({
   }, [searchResults]);
 
   return (
-    <div className="border-border-card bg-card-bg shadow-card relative w-full shrink-0 rounded-2xl border px-4 py-1 text-sm">
+    <div className="border-border-card bg-card-bg shadow-card relative w-full shrink-0 rounded-xl border px-3 py-2 text-xs">
       <label
-        className="text-text-muted mb-[0.45rem] flex items-center gap-[0.55rem] text-[0.88rem] font-semibold"
+        className="text-text-muted mb-2 flex items-center gap-2 text-xs font-semibold"
         htmlFor="avoidedSearch"
       >
         {title}
-        <span className="bg-badge text-badge-text min-w-8 rounded-full px-[0.6rem] py-[0.28rem] text-center font-bold">
+        <span className="bg-badge text-badge-text min-w-7 rounded-full px-2 py-0.5 text-center text-[0.7rem] font-bold">
           {numSelected}
         </span>
       </label>
       <input
         ref={inputRef}
         type="text"
-        className="border-border-card bg-input-bg focus:border-input-focus-border focus:ring-input-focus-ring box-border w-full rounded-[0.9rem] border px-[0.9rem] py-[0.78rem] text-[0.96rem] focus:ring-2 focus:outline-none"
+        className="border-border-card bg-input-bg focus:border-input-focus-border focus:ring-input-focus-ring box-border w-full rounded-xl border px-3 py-2 text-sm focus:ring-2 focus:outline-none"
         placeholder={placeholder}
         autoComplete="off"
         value={query}
@@ -92,7 +92,7 @@ export default function CourseSearchBar({
         dropdownRect &&
         createPortal(
           <div
-            className="border-border-dropdown bg-surface-1 shadow-dropdown fixed z-9999 max-h-72 overflow-y-auto rounded-[0.95rem] border"
+            className="border-border-dropdown bg-surface-1 shadow-dropdown fixed z-9999 max-h-72 overflow-y-auto rounded-xl border"
             style={{
               top: dropdownRect.bottom + 6,
               left: dropdownRect.left,
@@ -135,7 +135,7 @@ export default function CourseSearchBar({
           document.body,
         )}
 
-      <div className="mt-[0.65rem] flex min-h-0 flex-wrap gap-[0.55rem]">
+      <div className="mt-2 flex min-h-0 flex-wrap gap-2">
         {searchResults.map((course) => (
           <CourseChip
             key={course}

@@ -248,7 +248,7 @@ export default function PathExplorer() {
                 <span className="block font-mono text-sm font-semibold">
                   {code}
                 </span>
-                <span className="block text-xs leading-snug">
+                <span className="block text-xs leading-snug wrap-break-word whitespace-normal">
                   {dataDict.get(code).title}
                 </span>
               </span>
@@ -259,16 +259,24 @@ export default function PathExplorer() {
             </span>
           </summary>
           <div className="m-1">
-            <p className="font-bold">Description:</p>
-            <p className="font-normal">{dataDict.get(code).description}</p>
-            <p className="font-bold">Prerequisites:</p>
-            <p className="font-mono font-normal">
+            <p className="font-bold wrap-break-word whitespace-normal">
+              Description:
+            </p>
+            <p className="font-normal wrap-break-word whitespace-normal">
+              {dataDict.get(code).description}
+            </p>
+            <p className="font-bold wrap-break-word whitespace-normal">
+              Prerequisites:
+            </p>
+            <p className="font-mono font-normal wrap-break-word whitespace-normal">
               {dataDict.get(code).prerequisites}
             </p>
             {dataDict.get(code).corequisites ? (
               <>
-                <p className="font-bold">Corequisites:</p>
-                <p className="font-mono font-normal">
+                <p className="font-bold wrap-break-word whitespace-normal">
+                  Corequisites:
+                </p>
+                <p className="font-mono font-normal wrap-break-word whitespace-normal">
                   {dataDict.get(code).corequisites}
                 </p>
               </>
@@ -277,8 +285,10 @@ export default function PathExplorer() {
             )}
             {dataDict.get(code).exclusions ? (
               <>
-                <p className="font-bold">Exclusions:</p>
-                <p className="font-mono font-normal">
+                <p className="font-bold wrap-break-word whitespace-normal">
+                  Exclusions:
+                </p>
+                <p className="font-mono font-normal wrap-break-word whitespace-normal">
                   {dataDict.get(code).exclusions}
                 </p>
               </>
@@ -315,8 +325,14 @@ export default function PathExplorer() {
           topList.map((code) => courseCard(code, dataDict, true))
         ) : (
           <></>
-        )}{" "}
-        <hr></hr>
+        )}
+        {resultVisibility == "all" &&
+        topList.length > 0 &&
+        bottomList.length > 0 ? (
+          <hr></hr>
+        ) : (
+          <></>
+        )}
         {resultVisibility == "all" || resultVisibility == "side" ? (
           bottomList.map((code) => courseCard(code, dataDict, false))
         ) : (
@@ -420,19 +436,65 @@ export default function PathExplorer() {
         <section className="border-border-panel flex min-h-0 flex-[0_0_62%] flex-col overflow-hidden border-b">
           <header className="border-border-panel text-text-body flex shrink-0 items-center justify-between gap-3 border-b px-4 py-3 text-sm font-semibold">
             <span>Result</span>
-            <label className="text-text-secondary flex items-center gap-2 text-xs font-medium">
+            <div className="text-text-secondary flex items-center gap-2 text-xs font-medium">
               <span>Show</span>
-              <select
-                className="border-border-card bg-surface-1 text-text-body focus:border-input-focus-border focus:ring-input-focus-ring rounded-md border px-2 py-1 text-xs shadow-sm outline-none focus:ring-1"
-                defaultValue="all"
-                aria-label="Select result display mode"
-                onChange={(e) => setResultVisibility(e.target.value)}
-              >
-                <option value="all">All</option>
-                <option value="target">Target Courses</option>
-                <option value="side">Other Courses</option>
-              </select>
-            </label>
+              <details className="group close-on-outclick relative">
+                <summary className="border-input-border bg-panel-bg text-text-body flex cursor-pointer list-none items-center gap-2 rounded-md border px-3 py-1.5 text-sm shadow-sm select-none [&::-webkit-details-marker]:hidden">
+                  {resultVisibility === "all"
+                    ? "All"
+                    : resultVisibility === "target"
+                      ? "Target Courses"
+                      : "Other Courses"}
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="m2 4 4 4 4-4" stroke="currentColor" />
+                  </svg>
+                </summary>
+                <div className="border-border-dropdown bg-surface-1 text-text-body shadow-dropdown absolute top-[calc(100%+6px)] right-0 z-50 flex min-w-40 flex-col rounded-md border p-1.5">
+                  <button
+                    type="button"
+                    className="hover:bg-surface-2 rounded px-2 py-1 text-left text-sm"
+                    onClick={(e) => {
+                      setResultVisibility("all");
+                      (
+                        e.currentTarget.closest(
+                          "details",
+                        ) as HTMLDetailsElement | null
+                      )?.removeAttribute("open");
+                    }}
+                  >
+                    All
+                  </button>
+                  <button
+                    type="button"
+                    className="hover:bg-surface-2 rounded px-2 py-1 text-left text-sm"
+                    onClick={(e) => {
+                      setResultVisibility("target");
+                      (
+                        e.currentTarget.closest(
+                          "details",
+                        ) as HTMLDetailsElement | null
+                      )?.removeAttribute("open");
+                    }}
+                  >
+                    Target Courses
+                  </button>
+                  <button
+                    type="button"
+                    className="hover:bg-surface-2 rounded px-2 py-1 text-left text-sm"
+                    onClick={(e) => {
+                      setResultVisibility("side");
+                      (
+                        e.currentTarget.closest(
+                          "details",
+                        ) as HTMLDetailsElement | null
+                      )?.removeAttribute("open");
+                    }}
+                  >
+                    Other Courses
+                  </button>
+                </div>
+              </details>
+            </div>
           </header>
           <div className="min-h-0 flex-1 overflow-y-auto px-4 py-3">
             <div className="text-text-body flex flex-col gap-2 text-[0.84rem] font-medium">
@@ -497,7 +559,7 @@ export default function PathExplorer() {
         <button
           type="button"
           onClick={() => setIsMobileControlsOpen((prev) => !prev)}
-          className="text-text-body flex w-full items-center justify-between px-4 py-3 text-left text-sm font-semibold lg:hidden"
+          className="text-text-body flex w-full items-center justify-between px-3 py-2 text-left text-xs font-semibold lg:hidden"
           aria-expanded={isMobileControlsOpen}
           aria-controls="path-explorer-mobile-controls"
         >
@@ -509,7 +571,7 @@ export default function PathExplorer() {
 
         <div
           id="path-explorer-mobile-controls"
-          className={`flex min-h-0 flex-1 flex-col items-center gap-[0.9rem] overflow-x-hidden px-4 lg:px-0 ${isMobileControlsOpen ? "max-h-[58vh] overflow-y-auto pb-3" : "max-h-0 overflow-hidden lg:max-h-none lg:overflow-y-auto"}`}
+          className={`flex min-h-0 flex-1 flex-col items-center gap-3 overflow-x-hidden px-3 lg:px-0 ${isMobileControlsOpen ? "max-h-[58vh] overflow-y-auto pb-3" : "max-h-0 overflow-hidden lg:max-h-none lg:overflow-y-auto"}`}
           aria-hidden={!isMobileControlsOpen && undefined}
           aria-live="polite"
           aria-atomic="true"
@@ -542,9 +604,9 @@ export default function PathExplorer() {
 
         <div
           id="bottomSection"
-          className="mb-6 flex shrink-0 flex-col items-center gap-3 text-sm"
+          className="mb-4 flex shrink-0 flex-col items-center gap-2.5 px-3 text-xs"
         >
-          <h1>
+          <h1 className="w-full text-sm leading-snug">
             <b>
               Discover courses you can take next from courses you have
               completed:
@@ -554,13 +616,13 @@ export default function PathExplorer() {
           <button
             id="postreqsButton"
             type="button"
-            className="from-btn-gradient-from to-btn-gradient-to w-full cursor-pointer self-stretch rounded-[0.8rem] border-0 bg-linear-to-br px-4 py-[0.8rem] text-sm text-white hover:brightness-105 disabled:cursor-wait disabled:opacity-70"
+            className="from-btn-gradient-from to-btn-gradient-to w-full cursor-pointer self-stretch rounded-md border-0 bg-linear-to-br px-3 py-2 text-sm text-white hover:brightness-105 disabled:cursor-wait disabled:opacity-70"
             onClick={handleGetImmediatePostreqs}
           >
             Find unlocked courses
           </button>
 
-          <h1 className="mt-5">
+          <h1 className="mt-4 w-full text-sm leading-snug">
             <b>
               Find the optimal path to courses you want to take from courses you
               have completed and want to avoid:
@@ -570,52 +632,13 @@ export default function PathExplorer() {
           <button
             id="demoSendButton"
             type="button"
-            className="from-btn-gradient-from to-btn-gradient-to w-full cursor-pointer self-stretch rounded-[0.8rem] border-0 bg-linear-to-br px-4 py-[0.8rem] text-sm text-white hover:brightness-105 disabled:cursor-wait disabled:opacity-70"
+            className="from-btn-gradient-from to-btn-gradient-to w-full cursor-pointer self-stretch rounded-md border-0 bg-linear-to-br px-3 py-2 text-sm text-white hover:brightness-105 disabled:cursor-wait disabled:opacity-70"
             onClick={handleRunPathFinder}
           >
             Find your path
           </button>
-          <div
-            id="progressContainer"
-            className="flex w-full flex-col gap-3 self-stretch"
-            style={{ display: "none" }}
-          >
-            <p
-              id="fundamentalsInfo"
-              className="text-text-secondary m-0 mb-[0.6rem] text-[0.8rem] font-medium"
-            ></p>
-            <p
-              id="progressStatus"
-              className="border-l-border-from bg-code-bg text-text-code m-0 rounded-[0.2rem] border-l-[3px] p-2 pl-[0.7rem] font-mono text-[0.78rem]"
-            >
-              Starting...
-            </p>
-            <button
-              id="cancelSolverButton"
-              type="button"
-              className="bg-btn-error hover:bg-btn-error-hover disabled:bg-btn-error-disabled w-full cursor-pointer self-stretch rounded-sm border-0 px-4 py-2 text-[0.78rem] font-medium text-white transition-colors duration-200 disabled:cursor-not-allowed"
-            >
-              Cancel
-            </button>
-          </div>
-          <div
-            id="warningContainer"
-            className="w-full self-stretch"
-            style={{ display: "none" }}
-          >
-            <div className="border-warning-border bg-warning-bg text-warning-text flex items-start gap-[0.6rem] rounded-[0.8rem] border px-[0.8rem] py-[0.65rem] text-[0.78rem] leading-[1.4]">
-              <span className="shrink-0 text-[1rem]">⚠️</span>
-              <span id="warningText"></span>
-            </div>
-          </div>
         </div>
       </div>
-
-      <p
-        id="requestStatus"
-        className="text-text-subtle [&.error]:text-error-hover [&.success]:text-success-text pointer-events-none absolute bottom-4 left-1/2 z-4 m-0 min-h-[1.3rem] w-[calc(100%-2rem)] -translate-x-1/2 text-left text-[0.9rem] wrap-break-word whitespace-pre-wrap lg:bottom-17.5 lg:left-54 lg:w-96"
-        aria-live="polite"
-      ></p>
     </div>
   );
 }
