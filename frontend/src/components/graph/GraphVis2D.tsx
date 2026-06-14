@@ -34,7 +34,7 @@ const convertGenericNode = (node: GraphNode): Node => {
       size:
         20 + node["class_size"]
           ? Math.log(node["class_size"]) / Math.log(1.3)
-          : 0,
+          : 20,
     },
   };
 };
