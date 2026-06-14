@@ -27,3 +27,9 @@ ttb_scrapes
 scraper/data/
 parser_logs
 logs
+
+# ====================
+# Build Files
+# ====================
+zip_build
+zip_build.zip
