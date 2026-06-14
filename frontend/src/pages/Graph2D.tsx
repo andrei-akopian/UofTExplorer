@@ -51,6 +51,7 @@ export default function Graph2D() {
   }, [searchParams]);
 
   const [nodesOpen, setNodesOpen] = useState(true);
+  const [statsOpen, setStatsOpen] = useState(true);
 
   const handleNodeSelect = (node: GraphNode | null) => {
     setSelectedNode(node);
@@ -98,7 +99,12 @@ export default function Graph2D() {
       />
 
       <GraphInfoMenu>
-        <GraphStatsPanel graphData={graphData} />
+        <GraphStatsPanel
+          graphData={graphData}
+          nodesOpen={nodesOpen}
+          isOpen={statsOpen}
+          onOpenChange={setStatsOpen}
+        />
         <GraphNodesPanel
           graphData={graphData}
           selectedNode={selectedNode}

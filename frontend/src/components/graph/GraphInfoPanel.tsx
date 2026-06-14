@@ -135,14 +135,29 @@ const statsIcon = (
   </svg>
 );
 
-export function GraphStatsPanel({ graphData }: { graphData: GraphData }) {
+interface GraphStatsPanelProps {
+  graphData: GraphData;
+  nodesOpen?: boolean;
+  isOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
+}
+
+export function GraphStatsPanel({
+  graphData,
+  nodesOpen = true,
+  isOpen,
+  onOpenChange,
+}: GraphStatsPanelProps) {
   const stats = graphData?.live_stats ?? {};
+  const cardClassName = nodesOpen ? "right-70" : "right-0";
 
   return (
     <GraphInfoPanel
       icon={statsIcon}
       label="Graph Statistics"
-      cardClassName="right-70"
+      cardClassName={cardClassName}
+      isOpen={isOpen}
+      onOpenChange={onOpenChange}
     >
       <div className="border-border-card border-b px-4 py-3">
         <h2 className="text-text-body text-sm font-semibold">
