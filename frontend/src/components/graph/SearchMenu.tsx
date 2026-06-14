@@ -57,17 +57,18 @@ function FilterBar({
           <path d="m2 4 4 4 4-4" stroke="currentColor" />
         </svg>
       </summary>
-      <div className="border-border-dropdown bg-panel-bg text-text-body shadow-dropdown absolute top-[calc(100%+6px)] left-0 z-50 flex max-h-[20em] w-[min(20rem,calc(100vw-1rem))] flex-col gap-1.5 overflow-y-auto rounded-md border p-2.5 sm:w-max">
+      <div className="border-border-dropdown bg-panel-bg text-text-body shadow-dropdown absolute top-[calc(100%+6px)] left-0 z-50 flex max-h-[20em] w-max max-w-[calc(100vw-1rem)] min-w-full flex-col gap-1.5 overflow-y-auto rounded-md border p-2.5">
         {options.map((option) => (
           <label
             key={keyFormat(option)}
-            className="flex max-h-none w-max min-w-[5em] items-center gap-2 overflow-visible text-sm"
+            className="flex flex-nowrap items-start gap-2 text-sm"
           >
             <input
               type="checkbox"
               onChange={(e) => handleChange(e, keyFormat(option))}
+              className="mt-0.5 shrink-0"
             />
-            <span>{option}</span>
+            <span className="wrap-break-word">{option}</span>
           </label>
         ))}
       </div>
@@ -178,19 +179,23 @@ export default function SearchMenu({
                 ▾
               </span>
             </summary>
-            <div className="mt-1.5 flex max-h-40 flex-col gap-1.5 overflow-y-auto pr-1">
+            <div className="mt-1.5 flex max-h-40 max-w-40 flex-col gap-1.5 overflow-y-auto pr-1">
               {departments.map((option) => {
                 const key = option.slice(0, 3);
                 return (
-                  <label key={key} className="flex items-center gap-2 text-sm">
+                  <label
+                    key={key}
+                    className="flex flex-nowrap items-start gap-2 text-sm"
+                  >
                     <input
                       type="checkbox"
                       checked={filtersHook.departments.includes(key)}
                       onChange={(e) =>
                         toggleFilter("departments", key, e.target.checked)
                       }
+                      className="mt-0.5 shrink-0"
                     />
-                    <span>{option}</span>
+                    <span className="wrap-break-word">{option}</span>
                   </label>
                 );
               })}
