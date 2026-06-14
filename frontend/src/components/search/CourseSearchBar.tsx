@@ -35,7 +35,7 @@ export default function CourseSearchBar({
   title: string;
   placeholder: string;
 }) {
-  const { results, search } = useSearch(300, true);
+  const { results, loading, search } = useSearch(300, true, true);
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [numSelected, setNumSelected] = useState(0);
   const [query, setQuery] = useState("");
@@ -67,15 +67,30 @@ export default function CourseSearchBar({
         autoComplete="off"
         value={query}
         onChange={handleChange}
-        onFocus={() => setShowSearchResults(true)}
+        onFocus={() => {
+          setShowSearchResults(true);
+          if (!query.trim()) {
+            void search("");
+          }
+        }}
         onBlur={() => setShowSearchResults(false)}
       />
       {showSearchResults && (
         <div className={showSearchResults ? "" : "hidden"}>
-          {results.length > 0 ? (
+          {loading ? (
+            <div className="text-text-muted px-3 py-2 text-sm">
+              Loading results...
+            </div>
+          ) : results.length > 0 ? (
             results.map((result) => (
               <SuggestionEntry
                 key={result.id}
+                id={result.code || result.label}
+                title={result.title || ""}
+                classSize={
+                  result.class_size ? String(result.class_size) : undefined
+                }
+                numNodes={result.num_nodes || 0}
                 onClickCallback={() => {
                   setSearchResults([
                     ...searchResults,
@@ -84,7 +99,6 @@ export default function CourseSearchBar({
                   setQuery("");
                   setShowSearchResults(false);
                 }}
-                labelling={`${result.code}: ${result.title}${result.num_prereqs ? ` | ${result.num_prereqs}` : ""}`}
               />
             ))
           ) : (

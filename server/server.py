@@ -47,7 +47,8 @@ COURSE_GRAPH_CONTAINER = construct_container(
 PROGRESS_TRACKER = {}
 TICKETS: dict[str, dict[str, Any]] = {}
 
-MAX_RESULTS = {"departments": 20, "programs": 4, "courses": 36}
+# Disable results limit
+MAX_RESULTS = {"departments": -1, "programs": -1, "courses": -1}
 
 
 def get_global_statistics_from_file() -> dict[str, int | float]:
@@ -238,8 +239,9 @@ def suggest() -> ResponseReturnValue:
         data = request.get_json()
         query = (data or {}).get("q", "").strip().upper()
 
-        if not query or len(query) < 2:
-            return jsonify({"results": []})
+        if query and len(query) < 2:
+            # Treat very short queries like empty queries to return all queries
+            query = ""
 
         matches = get_search_suggestions(COURSE_GRAPH_CONTAINER, query, MAX_RESULTS)
 
@@ -261,12 +263,14 @@ def suggest_courses() -> ResponseReturnValue:
         data = request.get_json()
         query = (data or {}).get("q", "").strip().upper()
 
-        if not query or len(query) < 2:
+        if query and len(query) < 2:
             return jsonify({"results": []})
 
-        matches = get_course_suggestions(COURSE_GRAPH_CONTAINER, query)[
-            : MAX_RESULTS["courses"]
-        ]
+        matches = get_course_suggestions(COURSE_GRAPH_CONTAINER, query)
+
+        # Only slice if max_results is not -1 (unlimited)
+        if MAX_RESULTS["courses"] != -1:
+            matches = matches[: MAX_RESULTS["courses"]]
 
         return jsonify({"results": matches})
 

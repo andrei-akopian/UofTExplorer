@@ -23,7 +23,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from functools import total_ordering
-from typing import Any, Callable, Hashable
+from typing import Any, Callable, Hashable, Optional
 
 
 class CourseGraphContainer:
@@ -538,7 +538,7 @@ class CourseData:
 
     def __init__(
         self,
-        code_split: list[str],
+        code_split: list[str | int],
         previous_course_codes: list[str],
         title: str,
         description: str,
