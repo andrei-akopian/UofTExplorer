@@ -92,6 +92,9 @@ export default function CourseSearchBar({
                 }
                 numNodes={result.num_nodes || 0}
                 onClickCallback={() => {
+                  if (searchResults.find((x) => x == result.code)) {
+                    return;
+                  }
                   setSearchResults([
                     ...searchResults,
                     result.code || result.label,
