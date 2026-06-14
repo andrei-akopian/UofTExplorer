@@ -35,7 +35,7 @@ export default function CourseSearchBar({
   title: string;
   placeholder: string;
 }) {
-  const { results, search } = useSearch(300, true, true);
+  const { results, loading, search } = useSearch(300, true, true);
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [numSelected, setNumSelected] = useState(0);
   const [query, setQuery] = useState("");
@@ -77,7 +77,11 @@ export default function CourseSearchBar({
       />
       {showSearchResults && (
         <div className={showSearchResults ? "" : "hidden"}>
-          {results.length > 0 ? (
+          {loading ? (
+            <div className="text-text-muted px-3 py-2 text-sm">
+              Loading results...
+            </div>
+          ) : results.length > 0 ? (
             results.map((result) => (
               <SuggestionEntry
                 key={result.id}

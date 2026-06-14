@@ -11,7 +11,7 @@ export default function SearchBar({
   query: string;
   setQuery: (q: string) => void;
 }) {
-  const { results, search } = useSearch(300, false, true);
+  const { results, loading, search } = useSearch(300, false, true);
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [activeTab, setActiveTab] = useState<SearchTab>("courses");
 
@@ -80,7 +80,11 @@ export default function SearchBar({
             </button>
           </div>
 
-          {visibleResults.length > 0 ? (
+          {loading ? (
+            <div className="text-text-muted px-3 py-2 text-sm">
+              Loading results...
+            </div>
+          ) : visibleResults.length > 0 ? (
             visibleResults.map((result) => (
               <SuggestionEntry
                 key={result.id}
