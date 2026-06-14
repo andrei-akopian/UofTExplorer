@@ -7,6 +7,7 @@ import Graph2D from "./pages/Graph2D";
 import Graph3D from "./pages/Graph3D";
 import PathExplorer from "./pages/PathExplorer";
 import GlobalStats from "./pages/GlobalStats";
+import NotFound from "./pages/NotFound";
 import NavBar from "./components/NavBar";
 
 const PAGE_TITLES: Record<string, string> = {
@@ -15,6 +16,7 @@ const PAGE_TITLES: Record<string, string> = {
   "/graph/3d": "3D Graph",
   "/path-explorer": "Path Explorer",
   "/global-stats": "Global Statistics",
+  "*": "404 Not Found",
 };
 
 function TitleManager() {
@@ -66,6 +68,7 @@ function App() {
             <Route path="/graph/3d" element={<Graph3D />} />
             <Route path="/path-explorer" element={<PathExplorer />} />
             <Route path="/global-stats" element={<GlobalStats />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
       </div>
