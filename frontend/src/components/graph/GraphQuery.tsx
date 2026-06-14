@@ -61,15 +61,13 @@ export default function GraphQuery({
         convertFiltersToApiFormat(filters),
       );
       setData(result);
-      setMessage(
-        `Currently Displaying: ${query} | Number of Nodes: ${result.nodes.length}`,
-      );
+      setMessage(`Number of nodes: ${result.nodes.length}`);
       setMessageType("success");
     } catch (err) {
       const message = err instanceof Error ? err.message : "Unknown error";
       console.warn("Error fetching graph data:", message);
       setError(message);
-      setMessage(`Error: ${message}`);
+      setMessage(`${message}`);
       setMessageType("error");
     } finally {
       setIsLoading(false);
@@ -120,7 +118,7 @@ export default function GraphQuery({
       >
         Load Graph
       </button>
-      {error && <div className="font-sans text-sm text-red-700">{error}</div>}
+      {error && <div className="text-error font-sans text-sm">{error}</div>}
     </div>
   );
 }

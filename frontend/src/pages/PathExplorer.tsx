@@ -407,7 +407,7 @@ export default function PathExplorer() {
       <div id="vis graph" className="relative min-h-0 w-full flex-1 lg:h-full">
         <GraphVis2D graphData={graphData} />
         <div inert className="absolute top-0 left-0 h-full w-full">
-          <div className="absolute top-20 left-1/2 w-[calc(100%-2rem)] -translate-x-1/2 p-5 text-center text-xl text-red-500 sm:text-2xl lg:left-10 lg:translate-x-0 lg:text-left lg:text-4xl">
+          <div className="text-error absolute top-20 left-1/2 w-[calc(100%-2rem)] -translate-x-1/2 p-5 text-center text-xl sm:text-2xl lg:left-10 lg:translate-x-0 lg:text-left lg:text-4xl">
             {placeholderText}
           </div>
         </div>

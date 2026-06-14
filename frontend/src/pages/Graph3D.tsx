@@ -2,13 +2,8 @@ import { useEffect, useState } from "react";
 import type { GraphData, GraphNode } from "../types";
 import GraphQuery from "../components/graph/GraphQuery";
 import GraphVis3D from "../components/graph/GraphVis3D";
-import {
-  GraphStatsPanel,
-  GraphNodesPanel,
-} from "../components/graph/GraphInfoPanel";
-import GraphInfoMenu from "../components/graph/GraphInfoMenu";
 import MobileWarning from "../components/MobileWarning";
-import Settings from "../components/graph/Settings";
+import GraphBottomInfo from "../components/graph/GraphBottomInfo";
 import { useSearchParams } from "react-router-dom";
 
 export default function Graph3D() {
@@ -19,13 +14,12 @@ export default function Graph3D() {
   const [selectedNode, setSelectedNode] = useState<GraphNode | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const [_messageType, setMessageType] = useState<"info" | "success" | "error">(
+  const [messageType, setMessageType] = useState<"info" | "success" | "error">(
     "info",
   );
 
   const [searchParams] = useSearchParams();
   const [manualFetch, setManualFetch] = useState<string>("MAT332H1");
-  const settings: React.ReactNode[] = [];
 
   useEffect(() => {
     if (searchParams.has("search")) {
@@ -46,7 +40,7 @@ export default function Graph3D() {
   };
 
   return (
-    <div className="relative flex h-full min-h-0 w-full overflow-hidden">
+    <div className="relative h-full min-h-0 w-full overflow-hidden">
       <MobileWarning />
 
       <div className="h-full min-w-0 flex-1">
@@ -60,7 +54,17 @@ export default function Graph3D() {
         />
       </div>
 
-      <Settings settings={settings}></Settings>
+      <GraphBottomInfo
+        message={message}
+        messageType={messageType}
+        graphData={graphData}
+        selectedNode={selectedNode}
+        onNodeSelect={handleNodeSelect}
+        nodesOpen={nodesOpen}
+        onNodesOpenChange={setNodesOpen}
+        statsOpen={statsOpen}
+        onStatsOpenChange={setStatsOpen}
+      />
 
       <GraphQuery
         data={graphData}
@@ -71,31 +75,6 @@ export default function Graph3D() {
         setMessageType={setMessageType}
         manualFetch={manualFetch}
       />
-
-      <GraphInfoMenu>
-        <GraphStatsPanel
-          graphData={graphData}
-          nodesOpen={nodesOpen}
-          isOpen={statsOpen}
-          onOpenChange={setStatsOpen}
-        />
-        <GraphNodesPanel
-          graphData={graphData}
-          selectedNode={selectedNode}
-          onNodeSelect={handleNodeSelect}
-          isOpen={nodesOpen}
-          onOpenChange={setNodesOpen}
-        />
-      </GraphInfoMenu>
-      <div className="fixed right-3 bottom-3 left-3 z-20 flex min-w-0 flex-col gap-1 sm:right-auto sm:bottom-10 sm:left-5 sm:min-w-[20rem]">
-        <div
-          id="currQueryDisplay"
-          className="text-text-query overflow-hidden text-[0.84rem] leading-[1.3] font-semibold text-ellipsis whitespace-nowrap"
-        ></div>
-        <div id="message" className="m-0 min-h-6 text-[0.84rem] font-medium">
-          {message}
-        </div>
-      </div>
     </div>
   );
 }
