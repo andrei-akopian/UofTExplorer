@@ -178,7 +178,7 @@ export default function PathExplorer() {
 
   const historyCard = useCallback((packet: HistoryPacket) => {
     return (
-      <details className="border-border-card bg-panel-bg shadow-card mt-0.5 mb-1.5 rounded-lg border p-1">
+      <details className="close-on-outclick border-border-card bg-panel-bg shadow-card mt-0.5 mb-1.5 rounded-lg border p-1">
         <summary className="hover:bg-surface-1 cursor-pointer list-none rounded-md p-0.5 transition-colors duration-150 hover:shadow-sm">
           <span className="flex items-start justify-between gap-2">
             <span className="text-text-body min-w-0 flex-1">
@@ -232,11 +232,32 @@ export default function PathExplorer() {
         <details
           className={
             highlight
-              ? "border-border-card shadow-card bg-green-bg rounded-lg border p-0.5"
-              : "border-border-card bg-panel-bg shadow-card rounded-lg border p-0.5"
+              ? "border-border-card shadow-card hover:bg-green-bg-hover bg-green-bg rounded-lg border p-2 hover:shadow-sm"
+              : "border-border-card hover:bg-surface-1 bg-panel-bg shadow-card rounded-lg border p-2 hover:shadow-sm"
           }
+          onClick={(e) => {
+            const details = e.currentTarget as HTMLDetailsElement;
+            const summary = details.querySelector("summary");
+            const clickTarget = e.target as HTMLElement;
+
+            // If click is on summary or inside summary, allow default toggle behavior
+            if (summary && summary.contains(clickTarget)) {
+              return;
+            }
+
+            // If open and click is inside content, close it
+            if (details.open) {
+              details.removeAttribute("open");
+            }
+          }}
         >
-          <summary className="hover:bg-surface-1 cursor-pointer list-none rounded-md p-0.5 transition-colors duration-150 hover:shadow-sm">
+          <summary
+            className={
+              highlight
+                ? "list-none rounded-md transition-colors duration-150"
+                : "cursor-pointer list-none rounded-md transition-colors duration-150"
+            }
+          >
             <span className="flex items-start justify-between gap-3">
               <span
                 className={
@@ -258,42 +279,42 @@ export default function PathExplorer() {
               </svg>
             </span>
           </summary>
-          <div className="m-1">
-            <p className="font-bold wrap-break-word whitespace-normal">
-              Description:
-            </p>
-            <p className="font-normal wrap-break-word whitespace-normal">
-              {dataDict.get(code).description}
-            </p>
-            <p className="font-bold wrap-break-word whitespace-normal">
-              Prerequisites:
-            </p>
-            <p className="font-mono font-normal wrap-break-word whitespace-normal">
-              {dataDict.get(code).prerequisites}
-            </p>
-            {dataDict.get(code).corequisites ? (
-              <>
-                <p className="font-bold wrap-break-word whitespace-normal">
-                  Corequisites:
-                </p>
-                <p className="font-mono font-normal wrap-break-word whitespace-normal">
+          <div className="flex flex-col gap-3 overflow-y-auto pt-4 text-xs">
+            <div className="flex flex-col gap-0.5">
+              <span className="text-text-muted font-semibold tracking-wide uppercase">
+                Description
+              </span>
+              <span className="text-text-body wrap-break-word whitespace-normal">
+                {dataDict.get(code).description}
+              </span>
+            </div>
+            <div className="flex flex-col gap-0.5">
+              <span className="text-text-muted font-semibold tracking-wide uppercase">
+                Prerequisites
+              </span>
+              <span className="text-text-body font-mono wrap-break-word whitespace-normal">
+                {dataDict.get(code).prerequisites}
+              </span>
+            </div>
+            {dataDict.get(code).corequisites && (
+              <div className="flex flex-col gap-0.5">
+                <span className="text-text-muted font-semibold tracking-wide uppercase">
+                  Corequisites
+                </span>
+                <span className="text-text-body font-mono wrap-break-word whitespace-normal">
                   {dataDict.get(code).corequisites}
-                </p>
-              </>
-            ) : (
-              <></>
+                </span>
+              </div>
             )}
-            {dataDict.get(code).exclusions ? (
-              <>
-                <p className="font-bold wrap-break-word whitespace-normal">
-                  Exclusions:
-                </p>
-                <p className="font-mono font-normal wrap-break-word whitespace-normal">
+            {dataDict.get(code).exclusions && (
+              <div className="flex flex-col gap-0.5">
+                <span className="text-text-muted font-semibold tracking-wide uppercase">
+                  Exclusions
+                </span>
+                <span className="text-text-body font-mono wrap-break-word whitespace-normal">
                   {dataDict.get(code).exclusions}
-                </p>
-              </>
-            ) : (
-              <></>
+                </span>
+              </div>
             )}
           </div>
         </details>
