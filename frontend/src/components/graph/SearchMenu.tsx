@@ -57,7 +57,7 @@ function FilterBar({
           <path d="m2 4 4 4 4-4" stroke="currentColor" />
         </svg>
       </summary>
-      <div className="border-border-dropdown bg-panel-bg text-text-body shadow-dropdown absolute top-[calc(100%+6px)] left-0 z-50 flex max-h-[20em] w-max max-w-[calc(100vw-1rem)] min-w-full flex-col gap-1.5 overflow-y-auto rounded-md border p-2.5">
+      <div className="border-border-dropdown bg-surface-1 text-text-body shadow-dropdown absolute top-[calc(100%+6px)] left-0 z-50 flex max-h-[20em] w-max max-w-88 min-w-full flex-col gap-1.5 overflow-y-auto rounded-md border p-2.5">
         {options.map((option) => (
           <label
             key={keyFormat(option)}
@@ -68,7 +68,7 @@ function FilterBar({
               onChange={(e) => handleChange(e, keyFormat(option))}
               className="mt-0.5 shrink-0"
             />
-            <span className="wrap-break-word">{option}</span>
+            <span className="max-w-xs min-w-0 wrap-break-word">{option}</span>
           </label>
         ))}
       </div>
@@ -145,7 +145,7 @@ export default function SearchMenu({
             <path d="m2 4 4 4 4-4" stroke="currentColor" />
           </svg>
         </summary>
-        <div className="border-border-dropdown bg-panel-bg text-text-body shadow-dropdown fixed top-28 right-2 left-2 z-60 flex max-h-[70vh] flex-col gap-3 overflow-y-auto rounded-md border p-2.5">
+        <div className="border-border-dropdown bg-surface-1 text-text-body shadow-dropdown fixed top-28 right-2 left-2 z-60 flex max-h-[70vh] flex-col gap-3 overflow-y-auto rounded-md border p-2.5">
           <details className="group" open>
             <summary className="text-text-muted flex cursor-pointer list-none items-center justify-between text-xs font-semibold uppercase [&::-webkit-details-marker]:hidden">
               CR / NCR
