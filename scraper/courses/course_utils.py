@@ -1,5 +1,6 @@
 from typing import Optional
 from scraper.parser_constants import SEPARATORS
+import re
 
 def course_code_parser(course_code: str) -> Optional[list[str | int]]:
     """
@@ -71,3 +72,6 @@ def split_curse_name(course_name: str, logger=None) -> tuple[str, str]:
     if logger is not None and (len(title) == 0):
         logger.critical("course has no title")
     return course_code, title
+
+
+COURSE_CODE_REGEX = "r"
