@@ -96,14 +96,14 @@ export default function Home() {
         </div>
 
         <p className="mt-8 text-center text-sm italic lg:mt-10">
-          This project is open source. Visit the repository{" "}
+          This project is open source. Visit the repository on{" "}
           <a
             className={pageLinkClassName}
-            href="https://github.com/andrei-akopian/UofTExplorer/tree/main"
+            href="https://github.com/andrei-akopian/UofTExplorer"
             target="_blank"
             rel="noreferrer"
           >
-            here
+            GitHub
           </a>
           .
         </p>
