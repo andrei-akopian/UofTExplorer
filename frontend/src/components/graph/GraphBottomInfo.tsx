@@ -37,9 +37,9 @@ export default function GraphBottomInfo({
       <GraphInfoMenu>
         <GraphStatsPanel
           graphData={graphData}
-          nodesOpen={nodesOpen}
           isOpen={statsOpen}
           onOpenChange={onStatsOpenChange}
+          cardClassName={nodesOpen ? "right-70" : "right-[-48px]"}
         />
         <GraphNodesPanel
           graphData={graphData}
@@ -47,6 +47,7 @@ export default function GraphBottomInfo({
           onNodeSelect={onNodeSelect}
           isOpen={nodesOpen}
           onOpenChange={onNodesOpenChange}
+          cardClassName="right-0"
         />
       </GraphInfoMenu>
     </div>

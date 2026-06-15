@@ -6,7 +6,7 @@ interface MobileWarningProps {
 }
 
 export default function MobileWarning({
-  message = "Mobile view may be limited. For the best experience, use a desktop screen.",
+  message = "View may be limited on smaller screens. For the best experience, use a desktop screen.",
 }: MobileWarningProps) {
   const isMobile = useIsMobile();
   const [dismissed, setDismissed] = useState(false);
