@@ -71,7 +71,7 @@ export default function Home() {
                 to="/path-explorer"
                 className="from-btn-gradient-from to-btn-gradient-to cursor-pointer rounded-[0.8rem] border-0 bg-linear-to-br px-4 py-[0.8rem] text-[0.95rem] text-white! no-underline hover:brightness-105"
               >
-                Check it out
+                Check out Path Explorer
               </Link>
             </div>
           </div>
@@ -89,7 +89,7 @@ export default function Home() {
                 to="/global-stats"
                 className="from-btn-gradient-from to-btn-gradient-to cursor-pointer rounded-[0.8rem] border-0 bg-linear-to-br px-4 py-[0.8rem] text-[0.95rem] text-white! no-underline hover:brightness-105"
               >
-                Check it out
+                Check out Global Stats
               </Link>
             </div>
           </div>
