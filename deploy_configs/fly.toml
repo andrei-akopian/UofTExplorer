@@ -6,6 +6,10 @@
 app = 'uoftexplorer'
 primary_region = 'yyz'
 
+# [build]
+# dockerfile = "Dockerfile"
+# ignorefile = ".dockerignore"
+
 [build]
 image = "ghcr.io/andrei-akopian/uoftexplorer:latest"
 
