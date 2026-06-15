@@ -2,13 +2,13 @@ import { useState } from "react";
 
 export const helpTemplateGraph2D = (
   <>
-    <p className="text-lg">2D Graph</p>
+    <h1 className="text-lg">2D Graph</h1>
     <p>
       Use the top search bar to load the requisite structure of a course,
       program, or department. The dropdown filters will highlight the target
       courses green.
     </p>
-    <p className="text-lg">Graph Controls</p>
+    <h1 className="text-lg">Graph Controls</h1>
     <p>LMB Drag: move viewport</p>
     <p>Scroll: zoom in/out</p>
     <p>Hover: highlight prerequisites</p>
@@ -18,13 +18,13 @@ export const helpTemplateGraph2D = (
 
 export const helpTemplateGraph3D = (
   <>
-    <p className="text-lg">3D Graph</p>
+    <h1 className="text-lg">3D Graph</h1>
     <p>
       Use the top search bar to load the requisite structure of a course,
       program, or department. The dropdown filters will highlight the target
       courses green.
     </p>
-    <p className="text-lg">Graph Controls</p>
+    <h1 className="text-lg">Graph Controls</h1>
     <p>LMB Drag: orbit</p>
     <p>RMB Drag: pan</p>
     <p>Scroll: zoom in/out</p>
@@ -35,21 +35,21 @@ export const helpTemplateGraph3D = (
 
 export const helpTemplatePathExplorer = (
   <>
-    <p className="text-lg">Path Explorer</p>
+    <h1 className="text-lg">Path Explorer</h1>
     <p>
       Search and select courses with the panel on the right. Click the bottom
       right buttons to run.
     </p>
-    <p className="mt-2 text-lg">Graph Controls</p>
+    <h1 className="mt-2 text-lg">Graph Controls</h1>
     <p>LMB Drag: move viewport</p>
     <p>Scroll: zoom in/out</p>
     <p>Hover: highlight prerequisites</p>
-    <p className="mt-2 text-lg">Result Panel (top left)</p>
+    <h1 className="mt-2 text-lg">Result Panel (top left)</h1>
     <p>
       Show the target courses (courses you can take / courses to take in the
       optimal path) in green. Click for course details.
     </p>
-    <p className="mt-2 text-lg">History Panel (bottom left)</p>
+    <h1 className="mt-2 text-lg">History Panel (bottom left)</h1>
     <p>Saves the last 10 results.</p>
     <p>Import: import history data from a save file</p>
     <p>Export: download the saved history</p>
