@@ -63,8 +63,8 @@ export default function HelpMenu({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="z-50">
-      <details className="group relative">
-        <summary
+      <div className="group relative">
+        <div
           onClick={() => setIsOpen(!isOpen)}
           className="border-input-border bg-input-bg text-text-body focus:ring-input-focus-ring flex cursor-pointer list-none items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium transition-all duration-150 hover:-translate-y-0 focus:outline-none focus-visible:ring-2 [&::-webkit-details-marker]:hidden"
         >
@@ -117,14 +117,18 @@ export default function HelpMenu({ children }: { children: React.ReactNode }) {
               </svg>
             </div>
           )}
-        </summary>
-
-        <div className="border-border-dropdown bg-panel-bg shadow-dropdown text-text-body absolute top-[calc(100%+8px)] right-0 z-50 w-[min(22rem,calc(100vw-1rem))] rounded-xl border p-2 text-sm backdrop-blur-sm sm:w-80">
-          <div className="border-border-card/70 bg-surface-1/80 rounded-lg border p-3">
-            {children}
-          </div>
         </div>
-      </details>
+
+        {isOpen ? (
+          <div className="border-border-dropdown bg-panel-bg shadow-dropdown text-text-body absolute top-[calc(100%+8px)] right-0 z-50 w-[min(22rem,calc(100vw-1rem))] rounded-xl border p-2 text-sm backdrop-blur-sm sm:w-80">
+            <div className="border-border-card/70 bg-surface-1/80 rounded-lg border p-3">
+              {children}
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   );
 }
