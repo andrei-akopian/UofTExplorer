@@ -94,8 +94,6 @@ export default function SearchMenu({
   setQuery,
   filtersHook,
   setFiltersHook,
-  onLoadGraph,
-  isLoading,
 }: SearchMenuProps) {
   const [departments, setDepartments] = useState<string[]>([]);
 

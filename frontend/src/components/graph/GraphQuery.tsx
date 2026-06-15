@@ -48,7 +48,7 @@ export default function GraphQuery({
     departments: [],
     breadth_requirements: [],
   });
-  const [error, setError] = useState<string | null>(null);
+  const [, setError] = useState<string | null>(null);
 
   const [manualFetchArg, setManualFetchArg] = useState<string>("");
 
