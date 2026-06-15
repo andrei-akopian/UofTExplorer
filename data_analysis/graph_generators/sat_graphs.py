@@ -1,3 +1,7 @@
+"""
+SAT GRAPHS
+"""
+
 from core.sat import solve_sat, solve_satz3
 import matplotlib.pyplot as plt
 

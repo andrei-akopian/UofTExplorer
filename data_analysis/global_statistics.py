@@ -1,11 +1,7 @@
 """
-CSC111 Winter 2026 Project 2: ArtSci Atlas
-
 GLOBAL STATISTICS
 This Python module computes static global statistics, to be displayed on the Global Statistics page.
 The global statistics are saved in json format to a file.
-
-Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 """
 
 import json
@@ -60,7 +56,6 @@ def run_global_statistics(output: str = "data/global_statistics.json") -> None:
     )
 
     for i in ["1", "2", "3", "4", "5"]:
-        # TODO: Get rid of error underline Angela
         stats[f"Total number of courses in breadth {i}"] = len(
             courses_filtered_by_breadth[i]
         )

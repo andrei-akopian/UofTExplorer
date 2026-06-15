@@ -1,11 +1,7 @@
 """
-CSC111 Winter 2026 Project 2: ArtSci Atlas
-
 DECONSTRUCTOR
 This Python module provides deconstructor functions that turn CourseGraph objects into json files, to be used for
 visualizations.
-
-Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 """
 
 import json
@@ -45,7 +41,6 @@ def deconstruct_course_graph(
     if breadths is None:
         breadths = {}
 
-    # Maybe should be renamed b/c logic-gate nodes also are added to this dictionary?
     json_courses = []  # List of dictionaries for each course and each AND/OR node
     json_edges = []  # List of dictionaries for each edge
     logic_gate_dict = {}  # Dictionary of dictionaries for each AND/OR node
@@ -86,7 +81,6 @@ def deconstruct_course_graph(
             "exclusions": course.data.original_requisite_strings.get("exclusions")[11:]
             or None,
             "previousCourseCodes": course.data.previous_course_codes or None,
-            # FIXME, make better default behavior here
             "class_size": [course.data.class_size, 30][course.data.class_size is None],
         }
 
@@ -242,20 +236,4 @@ def read_colours(file_path: str) -> dict[str, Color | list[Color]]:
 if __name__ == "__main__":
     pass
     # import doctest
-
     # doctest.testmod(verbose=True)
-
-    # import python_ta
-
-    # python_ta.check_all(
-    #     config={
-    #         "allow-local-imports": True,
-    #         "extra-imports": [],
-    #         "allowed-io": [],
-    #         "max-line-length": 120,
-    #         "max-nested-blocks": 5,
-    #         "max-locals": 20,
-    #         "max-branches": 15,
-    #         "max-args": 7,
-    #     }
-    # )

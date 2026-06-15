@@ -1,10 +1,6 @@
 """
-CSC111 Winter 2026 Project 2: ArtSci Atlas
-
 CONSTRUCTOR
 This Python module provides constructor functions to construct graphs from json file data.
-
-Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 """
 
 import os
@@ -411,35 +407,6 @@ def bind_programs(programs: dict[str, Program]) -> None:
 
 
 if __name__ == "__main__":
-    import doctest
-
-    doctest.testmod(verbose=True)
-
-    import python_ta
-
-    python_ta.check_all(
-        config={
-            "allow-local-imports": True,
-            "extra-imports": ["json", "os"],
-            "allowed-io": [
-                "construct_course_graph",
-                "construct_programs",
-                "construct_program",
-                "construct_requisites_helper",
-                "construct_container",
-                "construct_subgraph",
-                "construct_departments",
-            ],
-            "max-line-length": 120,
-            "max-nested-blocks": 5,
-            "max-locals": 20,
-            "max-branches": 15,
-            "max-args": 7,
-        }
-    )
-
-    # TODO: remove these
-    X = construct_course_graph("data/courses.json")
-    Y = construct_programs(X, "data/programs.json")
-    bind_postreqs(X)
-    bind_programs(Y)
+    pass
+    # import doctest
+    # doctest.testmod(verbose=True)
