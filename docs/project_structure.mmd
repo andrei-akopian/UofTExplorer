@@ -5,13 +5,17 @@
 
 flowchart TD
     subgraph DataSources[Data Sources]
-      ttb[TTB]
-      artscical[ArtSci Calendar]
+      ttb([TTB])
+      artscical([ArtSci Calendar])
     end
-    scrapers[scrapers]  
-    scraped_data[.html / .json scrapes]
-    parsers[parsers]
-    refiner[refinement and sanity checks]
+    subgraph DataPipeline[Data Pipeline]
+      data_analysis[Data Analysis]
+      scrapers[scrapers]  
+      scraped_data[(".html / .json scrapes")]
+      parsers[parsers]
+      refiner((refinement & sanity checks))
+      structured_data[("Structured Data")]
+    end
     ttb --> scrapers
     artscical --> scrapers
     scrapers --> scraped_data
@@ -25,7 +29,7 @@ flowchart TD
       backend[Flask Server]
       core[Core]
       sat[Z3 & SAT optimizers]
-      static[Built Frontend]
+      static([Built Frontend])
     end
     refiner --> data
     data_analysis --> data
@@ -34,4 +38,6 @@ flowchart TD
     data_analysis --> backend
     data --> backend
     backend <--> static
-    frontend[React Frontend] --> static
+    frontend[React Frontend]:::wide
+    frontend --> static
+    classDef wide padding:1em;
