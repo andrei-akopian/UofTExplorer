@@ -76,7 +76,7 @@ You can create a minimal ~3MB package with compiled react frontend and just the 
 
 ### Unix
 
-`make zip_build` will create a `.zip` file
+`make zip` will create a `.zip` file
 
 then copy the zip over to a unix machine, and run
 

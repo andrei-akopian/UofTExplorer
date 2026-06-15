@@ -1,23 +1,29 @@
 .PHONY: clear_zip frontend
 
-default:
-	echo "Please enter subcommand on what to make."
+BUILDPLATFORM = linux/amd64
+# BUILDPLATFORM = linux/arm64
+
+help:
+	@echo "Please enter subcommand on what to make."
+	@echo "make docker-full\tbuild full docker image from ground up"
+	@echo "make docker-minimal\tpiggy back of local npm to build minimal docker image"
+	@echo "make zip\tsame as docker minimal, but a zip that might be easier to move around"
 
 docker-full:
-	docker build --platform linux/amd64 -f Dockerfile -t uoftexplorer
-	echo "run using: docker run -p 5000:5000 uoftexplorer:full"
-	echo "publish using"
-	echo "docker tag uoftexplorer ghcr.io/andrei-akopian/uoftexplorer:full"
-	echo "docker push ghcr.io/andrei-akopian/uoftexplorer:full"
+	docker build --platform $(BUILDPLATFORM) -f Dockerfile -t uoftexplorer .
+	@echo "run using: docker run -p 5000:5000 uoftexplorer:full"
+	@echo "publish using"
+	@echo "docker tag uoftexplorer ghcr.io/andrei-akopian/uoftexplorer:full"
+	@echo "docker push ghcr.io/andrei-akopian/uoftexplorer:full"
 
 docker-minimal: frontend
-	docker build --platform linux/amd64 -f MinimalDockerfile -t uoftexplorer
-	echo "run using: docker run -p 5000:5000 uoftexplorer:minimal"
-	echo "publish using"
-	echo "docker tag uoftexplorer ghcr.io/andrei-akopian/uoftexplorer:minimal"
-	echo "docker push ghcr.io/andrei-akopian/uoftexplorer:minimal"
+	docker build --platform $(BUILDPLATFORM) -f MinimalDockerfile -t uoftexplorer .
+	@echo "run using: docker run -p 5000:5000 uoftexplorer:minimal"
+	@echo "publish using"
+	@echo "docker tag uoftexplorer ghcr.io/andrei-akopian/uoftexplorer:minimal"
+	@echo "docker push ghcr.io/andrei-akopian/uoftexplorer:minimal"
 
-zip_build: clear_zip frontend
+zip: clear_zip frontend
 	cp minimal_requirements.txt zip_build/minimal_requirements.txt 
 	cp start.sh zip_build/start.sh
 	cp -r data zip_build/data
@@ -28,7 +34,7 @@ zip_build: clear_zip frontend
 	cp __main__.py zip_build/__main__.py
 	cp __init__.py zip_build/__init__.py
 	zip -r zip_build.zip zip_build/
-	echo "Run start.sh wherever you are deploying."
+	@echo "Run start.sh wherever you are deploying."
 
 clear_zip:
 	mkdir -p zip_build

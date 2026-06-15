@@ -26,7 +26,6 @@ COPY --from=builder ./frontend/dist ./frontend/dist
 COPY server ./server
 COPY __init__.py ./__init__.py
 COPY __main__.py ./__main__.py
-RUN python3 . --build
 # which ports to expose
 EXPOSE 5000
 # but then the ports need to be mapped.
