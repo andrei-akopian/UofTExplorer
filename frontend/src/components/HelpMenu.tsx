@@ -1,5 +1,13 @@
 import { useState } from "react";
 
+export const helpTemplateHome = (
+  <>
+    <p className="text-lg">Home Page</p>
+    <p>Just a home page.</p>
+    <p>Use this help button on other pages for instructions and manuals.</p>
+  </>
+);
+
 export const helpTemplateGraph2D = (
   <>
     <p className="text-lg">2D Graph</p>
@@ -55,6 +63,14 @@ export const helpTemplatePathExplorer = (
     <p>Export: download the saved history</p>
     <p>Click on each entry to see details.</p>
     <p>Load: load the specific saved query</p>
+  </>
+);
+
+export const helpTemplateGlobalStats = (
+  <>
+    <p className="text-lg">Global Statistics</p>
+    <p>Just read, plz.</p>
+    <p>Scroll down - there are content.</p>
   </>
 );
 
