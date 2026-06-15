@@ -1,10 +1,6 @@
 """
-UofTExplorer
-
 Z3 WRAPPER
-SAT solver for course pre-requisites using the Z3 python package.
-
-Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
+This Python module is a SAT solver for course pre-requisites using the Z3 python package.
 """
 
 from z3 import *

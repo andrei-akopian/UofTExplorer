@@ -1,9 +1,8 @@
 """
-CSC111 Winter 2026 Project 2: ArtSci Atlas
-
-TODO
-
-Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
+DATASET EDA PURE
+This Python module contains functions that compute global statistics and generate their graphical
+representations.
+The graphs are saved in svg format.
 """
 
 import json

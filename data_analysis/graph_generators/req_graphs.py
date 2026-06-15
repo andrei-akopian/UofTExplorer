@@ -1,3 +1,10 @@
+"""
+REQ GRAPHS
+This Python module contains functions that compute global statistics for the CourseGraph's prerequisites
+and generate their graphical representations.
+The graphs are saved in svg format.
+"""
+
 from core.algorithms import get_prereq_course_set
 import matplotlib.pyplot as plt
 
@@ -12,7 +19,6 @@ def distr_direct_prereqs() -> None:
         for course_node in GRAPH.courses.values()
     ]
     maximum = max(num_direct_prereqs)
-    # print('courses with no direct prerequisites:', num_direct_prereqs.count(0))
 
     _, ax = plt.subplots(figsize=(5, 5))
     plt.rcParams["font.size"] = 6
@@ -40,7 +46,6 @@ def distr_total_prereqs() -> None:
         for course_code in GRAPH.courses
     ]
     maximum = max(num_total_prereqs)
-    # print('courses with no prerequisites:', num_total_prereqs.count(0))
 
     _, ax = plt.subplots(figsize=(10, 5))
     plt.rcParams["font.size"] = 6

@@ -1,10 +1,6 @@
 """
-CSC111 Winter 2026 Project 2: ArtSci Atlas
-
 ALGORITHMS
 This Python module contains top-level algorithms for the core graph structures.
-
-Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 """
 
 from core.constructor import (
@@ -122,8 +118,6 @@ def separate_courses_by_department(
     # Turn departments from a dict into a string
     departments_list = list(departments.keys())
 
-    # TODO: figure out how to get rid of this error (it works, it's just mad that the return type annotation for
-    # TODO: graph.get_filtered_courses has Hashable while this function returns str)
     return graph.get_filtered_courses(conditions, departments_list)
 
 
@@ -301,7 +295,7 @@ def get_filtered_graph(
         special_courses[query_upper] = container.graph.courses[query_upper]
 
     # Otherwise, the query is invalid
-    else:  # TODO improve this error handling, so frontend get 400 response codes
+    else: 
         raise ValueError("query value has no corresponding graph to display")
 
     # Apply filters
@@ -390,7 +384,7 @@ def get_search_suggestions(
     course_matches = get_course_suggestions(container, query)
 
     # Check the length of the program and course matches
-    # We always want to show the maximum total results with max_results["programs"] and max_results["courses"] satisfied
+    # Always want to show the maximum total results with max_results["programs"] and max_results["courses"] satisfied
 
     # If all limits are -1 (unlimited), don't do any slicing
     if (
@@ -592,22 +586,6 @@ def compute_live_statistics(
 
 
 if __name__ == "__main__":
-    # pass
-    import doctest
-
-    doctest.testmod(verbose=True)
-
-    import python_ta
-
-    python_ta.check_all(
-        config={
-            "allow-local-imports": True,
-            "extra-imports": [],
-            "allowed-io": [],
-            "max-line-length": 120,
-            "max-nested-blocks": 5,
-            "max-locals": 20,
-            "max-branches": 15,
-            "max-args": 7,
-        }
-    )
+    pass
+    # import doctest
+    # doctest.testmod(verbose=True)

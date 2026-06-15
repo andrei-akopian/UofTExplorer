@@ -1,10 +1,6 @@
 """
-CSC111 Winter 2026 Project 2: ArtSci Atlas
-
 TRAVERSERS
 This Python module contains the breadth-first-search generator function for traversing through the CourseGraph.
-
-Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 """
 
 from __future__ import annotations
@@ -173,20 +169,6 @@ def _update_queue(queue: collections.deque, visited: set[str], nodes: list) -> N
 
 
 if __name__ == "__main__":
+    pass
     # import doctest
     # doctest.testmod(verbose=True)
-
-    import python_ta
-
-    python_ta.check_all(
-        config={
-            "allow-local-imports": True,
-            "extra-imports": ["collections", "typing"],
-            "allowed-io": ["bfs_prereq", "bfs_all", "bfs_generator"],
-            "max-line-length": 120,
-            "max-nested-blocks": 5,
-            "max-locals": 20,
-            "max-branches": 15,
-            "max-args": 7,
-        }
-    )

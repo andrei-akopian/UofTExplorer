@@ -1,6 +1,4 @@
 """
-CSC111 Winter 2026 Project 2: ArtSci Atlas
-
 CORE
 This Python module is the core engine that contains the course graphs.
 
@@ -15,8 +13,6 @@ Notes:
     The hash begins with the degree metric, followed by the string representation of each child, sorted alphabetically.
     A course child is represented by its unique course code.
     A Requisite child is represented by its hash, wrapped in parentheses.
-
-Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 """
 
 from __future__ import annotations
@@ -870,22 +866,6 @@ class Program:
 
 
 if __name__ == "__main__":
-    # pass
-    import doctest
-
-    doctest.testmod(verbose=True)
-
-    import python_ta
-
-    python_ta.check_all(
-        config={
-            "allow-local-imports": True,
-            "extra-imports": ["annotations", "dataclass", "functools", "typing"],
-            "allowed-io": [],
-            "max-line-length": 120,
-            "max-nested-blocks": 5,
-            "max-locals": 20,
-            "max-branches": 15,
-            "max-args": 8,
-        }
-    )
+    pass
+    # import doctest
+    # doctest.testmod(verbose=True)

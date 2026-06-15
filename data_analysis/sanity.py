@@ -1,5 +1,6 @@
 """
-Data Check for special conditions in the graph
+SANITY
+This Python module performs a data check for special conditions in the graph.
 """
 
 import collections

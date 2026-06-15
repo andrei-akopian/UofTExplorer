@@ -1,3 +1,10 @@
+"""
+SAT GRAPHS
+This Python module contains functions that compute the shortest prerequisite path length to each
+course and generate a graphical representation.
+The graph is saved in svg format.
+"""
+
 from core.sat import solve_sat, solve_satz3
 import matplotlib.pyplot as plt
 
@@ -70,10 +77,6 @@ def distr_sat_length(GRAPH) -> None:
         else:
             lengths.append(len(sol))
         progressed += 1
-
-    # print(f'skipped {skipped} / {total} courses due to too many fundamentals')
-    # print(f'found solutions for {progressed - skipped} / {total} courses')
-    # print(f'zero-length paths: {zeros}')
 
     _, ax = plt.subplots(figsize=(10, 6))
     plt.rcParams["font.size"] = 6
