@@ -535,6 +535,8 @@ class CourseData:
     breadth: dict[int, int]
     original_requisite_strings: dict[str, str]
     class_size: Optional[int]
+    subgraph_num_requisites: int
+    subgraph_num_courses: int
 
     def __init__(
         self,
@@ -547,6 +549,8 @@ class CourseData:
         breadth: dict,
         original_requisite_strings: dict[str, str],
         class_size: Optional[int],
+        subgraph_num_requisites: int,
+        subgraph_num_courses: int
     ) -> None:
         """
         Initialize a new CourseData object.
@@ -560,6 +564,8 @@ class CourseData:
         self.breadth = breadth
         self.original_requisite_strings = original_requisite_strings
         self.class_size = class_size
+        self.subgraph_num_requisites = subgraph_num_requisites
+        self.subgraph_num_courses = subgraph_num_courses
 
     def to_dict(self) -> dict[str, str]:
         """
