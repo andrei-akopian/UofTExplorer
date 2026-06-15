@@ -1,5 +1,63 @@
 import { useState } from "react";
 
+export const helpTemplateGraph2D = (
+  <>
+    <p className="text-lg">2D Graph</p>
+    <p>
+      Use the top search bar to load the requisite structure of a course,
+      program, or department. The dropdown filters will highlight the target
+      courses green.
+    </p>
+    <p className="text-lg">Graph Controls</p>
+    <p>LMB Drag: move viewport</p>
+    <p>Scroll: zoom in/out</p>
+    <p>Hover: highlight prerequisites</p>
+    <p>Click Node: see course info (bottom right)</p>
+  </>
+);
+
+export const helpTemplateGraph3D = (
+  <>
+    <p className="text-lg">3D Graph</p>
+    <p>
+      Use the top search bar to load the requisite structure of a course,
+      program, or department. The dropdown filters will highlight the target
+      courses green.
+    </p>
+    <p className="text-lg">Graph Controls</p>
+    <p>LMB Drag: orbit</p>
+    <p>RMB Drag: pan</p>
+    <p>Scroll: zoom in/out</p>
+    <p>Hover: highlight prerequisites</p>
+    <p>Click Node: see course info (bottom right)</p>
+  </>
+);
+
+export const helpTemplatePathExplorer = (
+  <>
+    <p className="text-lg">Path Explorer</p>
+    <p>
+      Search and select courses with the panel on the right. Click the bottom
+      right buttons to run.
+    </p>
+    <p className="mt-2 text-lg">Graph Controls</p>
+    <p>LMB Drag: move viewport</p>
+    <p>Scroll: zoom in/out</p>
+    <p>Hover: highlight prerequisites</p>
+    <p className="mt-2 text-lg">Result Panel (top left)</p>
+    <p>
+      Show the target courses (courses you can take / courses to take in the
+      optimal path) in green. Click for course details.
+    </p>
+    <p className="mt-2 text-lg">History Panel (bottom left)</p>
+    <p>Saves the last 10 results.</p>
+    <p>Import: import history data from a save file</p>
+    <p>Export: download the saved history</p>
+    <p>Click on each entry to see details.</p>
+    <p>Load: load the specific saved query</p>
+  </>
+);
+
 export default function HelpMenu({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -43,7 +101,7 @@ export default function HelpMenu({ children }: { children: React.ReactNode }) {
           )}
         </summary>
 
-        <div className="border-border-dropdown bg-panel-bg shadow-dropdown text-text-body absolute top-[calc(100%+8px)] right-0 z-50 w-[min(22rem,calc(100vw-1rem))] rounded-xl border p-3 text-sm backdrop-blur-sm sm:w-80">
+        <div className="border-border-dropdown bg-panel-bg shadow-dropdown text-text-body absolute top-[calc(100%+8px)] right-0 z-50 w-[min(22rem,calc(100vw-1rem))] rounded-xl border p-2 text-sm backdrop-blur-sm sm:w-80">
           <div className="border-border-card/70 bg-surface-1/80 rounded-lg border p-3">
             {children}
           </div>

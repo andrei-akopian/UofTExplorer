@@ -6,6 +6,7 @@ import MobileWarning from "../components/MobileWarning";
 import GraphBottomInfo from "../components/graph/GraphBottomInfo";
 import { useSearchParams } from "react-router-dom";
 import HelpMenu from "../components/HelpMenu";
+import { helpTemplateGraph3D } from "../components/HelpMenu";
 
 export default function Graph3D() {
   const [graphData, setGraphData] = useState<GraphData>({
@@ -78,7 +79,7 @@ export default function Graph3D() {
       />
 
       <div className="absolute top-4 right-4 z-100">
-        <HelpMenu>3D Graph Help Placeholder</HelpMenu>
+        <HelpMenu>{helpTemplateGraph3D}</HelpMenu>
       </div>
     </div>
   );
