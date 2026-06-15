@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import HelpMenu, { helpTemplateHome } from "../components/HelpMenu";
 
 const pageLinkClassName =
   "text-link no-underline border-b border-transparent transition-colors duration-150 hover:text-link-hover hover:border-current focus-visible:text-link-hover focus-visible:border-current focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus-outline focus-visible:outline-offset-2 focus-visible:rounded-sm";
@@ -108,10 +107,6 @@ export default function Home() {
           </a>
           .
         </p>
-      </div>
-
-      <div className="absolute top-20 right-4">
-        <HelpMenu>{helpTemplateHome}</HelpMenu>
       </div>
     </div>
   );

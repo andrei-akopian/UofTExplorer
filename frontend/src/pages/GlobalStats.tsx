@@ -14,7 +14,6 @@ import number_of_total_prereqs from "../assets/globalstats/number_of_total_prere
 import kimchi from "../assets/globalstats/kimchi.jpg";
 
 import GlobalStatsTable from "../components/GlobalStatsTable";
-import HelpMenu, { helpTemplateGlobalStats } from "../components/HelpMenu";
 
 type TheoremProps = {
   children: ReactNode;
@@ -279,9 +278,6 @@ export default function GlobalStats() {
 
           {genericFigure(kimchi, "Kimchi the cat.")}
         </article>
-      </div>
-      <div className="absolute top-20 right-8 z-100">
-        <HelpMenu>{helpTemplateGlobalStats}</HelpMenu>
       </div>
     </div>
   );
