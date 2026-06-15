@@ -534,9 +534,9 @@ def get_course_suggestions(
                     "code": course_code,
                     "title": course_node.data.title,
                     "type": "course",
-                    "num_prereqs": course_node.subgraph_num_requisites,
+                    "num_prereqs": course_node.data.subgraph_num_requisites,
                     "class_size": course_node.data.class_size,
-                    "num_nodes": course_node.subgraph_num_courses,
+                    "num_nodes": course_node.data.subgraph_num_courses,
                 }
             )
 
