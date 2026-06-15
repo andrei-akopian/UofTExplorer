@@ -12,7 +12,7 @@ export const helpTemplateGraph2D = (
     <p>Scroll: Zoom in/out</p>
     <p>Hover on Node: Highlight course prereqs</p>
     <p>Click Node: See course info</p>
-    <p>Double CLick Node: Zoom in on node</p>
+    <p>Double Click Node: Zoom in on node</p>
   </>
 );
 
