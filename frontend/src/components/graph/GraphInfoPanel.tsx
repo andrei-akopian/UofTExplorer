@@ -66,7 +66,7 @@ export function GraphInfoPanel({
     <div className="relative">
       {isOpen && (
         <div
-          className={`border-border-card bg-panel-bg shadow-dropdown ${cardClassName} absolute bottom-12 flex h-[60vh] w-[calc(100vw-1.5rem)] max-w-80 flex-col overflow-hidden rounded-xl border sm:h-112 sm:w-80`}
+          className={`border-border-card ${cardClassName} bg-panel-bg shadow-dropdown absolute right-0 bottom-12 flex h-[60vh] w-[calc(100vw-1.5rem)] max-w-80 flex-col overflow-hidden rounded-xl border sm:h-112 sm:w-80`}
         >
           {children}
         </div>
@@ -137,27 +137,26 @@ const statsIcon = (
 
 interface GraphStatsPanelProps {
   graphData: GraphData;
-  nodesOpen?: boolean;
   isOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
+  cardClassName?: string;
 }
 
 export function GraphStatsPanel({
   graphData,
-  nodesOpen = true,
   isOpen,
   onOpenChange,
+  cardClassName,
 }: GraphStatsPanelProps) {
   const stats = graphData?.live_stats ?? {};
-  const cardClassName = nodesOpen ? "right-70" : "right-0";
 
   return (
     <GraphInfoPanel
       icon={statsIcon}
       label="Graph Statistics"
-      cardClassName={cardClassName}
       isOpen={isOpen}
       onOpenChange={onOpenChange}
+      cardClassName={cardClassName}
     >
       <div className="border-border-card border-b px-4 py-3">
         <h2 className="text-text-body text-sm font-semibold">
@@ -181,6 +180,7 @@ interface GraphNodesPanelProps {
   graphData: GraphData;
   selectedNode?: GraphNode | null;
   onNodeSelect?: (node: GraphNode | null) => void;
+  cardClassName?: string;
   isOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
 }
@@ -208,6 +208,7 @@ export function GraphNodesPanel({
   onNodeSelect,
   isOpen,
   onOpenChange,
+  cardClassName,
 }: GraphNodesPanelProps) {
   const [internalSelected, setInternalSelected] = useState<GraphNode | null>(
     null,
@@ -234,6 +235,7 @@ export function GraphNodesPanel({
       label="Graph Nodes"
       isOpen={isOpen}
       onOpenChange={onOpenChange}
+      cardClassName={cardClassName}
     >
       <div className="border-border-card flex items-center justify-between border-b px-4 py-3">
         <h2 className="text-text-body text-sm font-semibold">
