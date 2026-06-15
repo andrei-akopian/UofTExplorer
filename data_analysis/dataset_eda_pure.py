@@ -1,7 +1,7 @@
 """
 DATASET EDA PURE
 This Python module contains functions that compute global statistics and generate their graphical
-displays.
+representations.
 The graphs are saved in svg format.
 """
 

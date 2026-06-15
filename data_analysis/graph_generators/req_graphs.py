@@ -1,5 +1,8 @@
 """
 REQ GRAPHS
+This Python module contains functions that compute global statistics for the CourseGraph's prerequisites
+and generate their graphical representations.
+The graphs are saved in svg format.
 """
 
 from core.algorithms import get_prereq_course_set
