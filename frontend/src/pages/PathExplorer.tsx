@@ -8,6 +8,7 @@ import {
   usePathFinderSolution,
   useLocalStorage,
 } from "../hooks/useGraph";
+import HelpMenu from "../components/HelpMenu";
 
 interface HistoryPacket {
   desired: string[];
@@ -703,6 +704,10 @@ export default function PathExplorer() {
             Find your path
           </button>
         </div>
+      </div>
+
+      <div className="absolute top-4 right-100 z-100">
+        <HelpMenu>Path Explorer Help Placeholder</HelpMenu>
       </div>
     </div>
   );
