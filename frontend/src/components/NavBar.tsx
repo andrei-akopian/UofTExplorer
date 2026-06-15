@@ -136,7 +136,9 @@ export default function Navbar() {
             </Link>
           ))}
         </div>
-        <div className="ml-auto hidden md:block">{themeToggle}</div>
+        <div className="ml-auto hidden sm:translate-x-0 md:block md:translate-x-4 lg:translate-x-16">
+          {themeToggle}
+        </div>
 
         {/* Mobile: hamburger button */}
         <button
