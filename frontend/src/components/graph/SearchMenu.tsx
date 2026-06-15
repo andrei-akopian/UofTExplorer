@@ -80,8 +80,8 @@ interface SearchMenuProps {
   setQuery: (q: string) => void;
   filtersHook: QueryFilters;
   setFiltersHook: (filtersHook: QueryFilters) => void;
-  onLoadGraph: () => void;
-  isLoading: boolean;
+  // onLoadGraph: () => void;
+  // isLoading: boolean;
 }
 
 export default function SearchMenu({
@@ -89,8 +89,8 @@ export default function SearchMenu({
   setQuery,
   filtersHook,
   setFiltersHook,
-  onLoadGraph,
-  isLoading,
+  // onLoadGraph,
+  // isLoading,
 }: SearchMenuProps) {
   const [departments, setDepartments] = useState<string[]>([]);
 

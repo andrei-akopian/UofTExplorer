@@ -1,5 +1,3 @@
-import { useRef, useEffect } from "react";
-
 interface BottomRightMenuProps {
   children: React.ReactNode;
 }
