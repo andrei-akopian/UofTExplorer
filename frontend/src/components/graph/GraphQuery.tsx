@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import SearchMenu from "./SearchMenu";
 
@@ -51,6 +51,7 @@ export default function GraphQuery({
   const [, setError] = useState<string | null>(null);
 
   const [manualFetchArg, setManualFetchArg] = useState<string>("");
+  const lastFetchQueryRef = useRef<string>("");
 
   const fetch = useCallback(async () => {
     setIsLoading(true);
@@ -79,12 +80,19 @@ export default function GraphQuery({
   };
 
   const handleFetchClick = () => {
-    if (query.trim()) {
+    const trimmed = query.trim();
+    if (trimmed) {
       // Determine which graph page we're on, default to 2d
       const isGraph3D = location.pathname.includes("/graph/3d");
       const graphPath = isGraph3D ? "/graph/3d" : "/graph/2d";
-      // Redirect to graph page with search query parameter
-      navigate(`${graphPath}?search=${encodeURIComponent(query.trim())}`);
+      if (lastFetchQueryRef.current == trimmed) {
+        // Directly fetch graph as URL params should not change
+        fetchGraph();
+      } else {
+        // Redirect to graph page with search query parameter
+        navigate(`${graphPath}?search=${encodeURIComponent(trimmed)}`);
+      }
+      lastFetchQueryRef.current = trimmed;
     }
   };
 
