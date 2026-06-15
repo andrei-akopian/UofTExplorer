@@ -16,6 +16,7 @@ from scraper.glossary.glossary_scraper import scrape_glossary
 import sys
 from datetime import datetime
 import os
+import json
 
 JOB_TYPES = [  # list, so I can iterate through it and parse in the right order
     # "glossary_scraper",
@@ -41,6 +42,8 @@ JOB_RESOLVERS = {
     "synthesizer": synthesizer.full_sync,
 }
 
+OUTDATEDNESS_REPORT_PATH = "data/outdatedness_report.json"
+
 
 def getYorN(text) -> bool:
     user = input(text)
@@ -64,27 +67,28 @@ def scraperui():
             JOB_RESOLVERS[jt]()
 
 
-def report_outdatedness():
+def report_outdatedness(save=True):
     today = datetime.today()
     print(
         f"= Scrape outdatedness report {today}: (note, negative results are shown, what wasn't mentioned, wasn't checked.)"
     )
     # courses
-    paths = [
-        "scraper/courses/raw_output",
-        "scraper/courses/ttb_scrapes",
-        "scraper/programs/raw_output",
-        "scraper/data/courses.json",
-        "scraper/data/ttb_courses.json",
-        "data/courses.json",
-        "data/programs.json",
-        "data/glossary.json",
-    ]
+    paths = {
+        "scraper/courses/raw_output": 0,
+        "scraper/courses/ttb_scrapes": 0,
+        "scraper/programs/raw_output": 0,
+        "scraper/data/courses.json": 0,
+        "scraper/data/ttb_courses.json": 0,
+        "data/courses.json": 0,
+        "data/programs.json": 0,
+        "data/glossary.json": 0,
+    }
     for p in paths:
         if not os.path.exists(p):
             print(f"{p} does not exist")
         else:
-            mtime = datetime.fromtimestamp(os.path.getmtime(p))
+            mts = os.path.getmtime(p)
+            mtime = datetime.fromtimestamp(mts)
             delta = today - mtime
             print(
                 p,
@@ -92,6 +96,17 @@ def report_outdatedness():
                 mtime,
                 f"({delta} ago)",
             )
+            paths[p] = mts
+    if save:
+        if os.path.exists(OUTDATEDNESS_REPORT_PATH):
+            with open(OUTDATEDNESS_REPORT_PATH, "r") as f:
+                old_report = json.load(f)
+            for p in paths:
+                old_report[p] = paths[p]
+        else:
+            old_report = paths
+        with open(OUTDATEDNESS_REPORT_PATH, "w") as f:
+            json.dump(old_report, f, indent=2)
 
 
 __all__ = ["report_outdatedness", "run_job", "main"]
