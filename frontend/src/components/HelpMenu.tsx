@@ -2,59 +2,59 @@ import { useState } from "react";
 
 export const helpTemplateGraph2D = (
   <>
-    <h1 className="text-lg">2D Graph</h1>
+    <h1 className="text-base font-semibold">2D Graph</h1>
     <p>
-      Use the top search bar to load the requisite structure of a course,
-      program, or department. The dropdown filters will highlight the target
-      courses green.
+      Use the search bar to load the graph for a course, program, or department.
+      Applied filters will highlight the target courses green.
     </p>
-    <h1 className="text-lg">Graph Controls</h1>
-    <p>LMB Drag: move viewport</p>
-    <p>Scroll: zoom in/out</p>
-    <p>Hover: highlight prerequisites</p>
-    <p>Click Node: see course info (bottom right)</p>
+    <h1 className="mt-4 text-base font-semibold">Graph Controls</h1>
+    <p>LMB Drag: Move viewport</p>
+    <p>Scroll: Zoom in/out</p>
+    <p>Hover on Node: Highlight course prereqs</p>
+    <p>Click Node: See course info</p>
+    <p>Double CLick Node: Zoom in on node</p>
   </>
 );
 
 export const helpTemplateGraph3D = (
   <>
-    <h1 className="text-lg">3D Graph</h1>
+    <h1 className="text-base font-semibold">3D Graph</h1>
     <p>
-      Use the top search bar to load the requisite structure of a course,
-      program, or department. The dropdown filters will highlight the target
-      courses green.
+      Use the search bar to load the graph for a course, program, or department.
+      Applied filters will highlight the target courses green.
     </p>
-    <h1 className="text-lg">Graph Controls</h1>
-    <p>LMB Drag: orbit</p>
-    <p>RMB Drag: pan</p>
-    <p>Scroll: zoom in/out</p>
-    <p>Hover: highlight prerequisites</p>
-    <p>Click Node: see course info (bottom right)</p>
+    <h1 className="mt-4 text-base font-semibold">Graph Controls</h1>
+    <p>LMB Drag: Orbit</p>
+    <p>RMB Drag: Pan</p>
+    <p>Scroll: Zoom in/out</p>
+    <p>Hover on Node: Highlight course prereqs</p>
+    <p>Click Node: See course info</p>
+    <p>Double Click Node: Zoom in on node</p>
   </>
 );
 
 export const helpTemplatePathExplorer = (
   <>
-    <h1 className="text-lg">Path Explorer</h1>
+    <h1 className="text-base font-semibold">Path Explorer</h1>
     <p>
       Search and select courses with the panel on the right. Click the bottom
       right buttons to run.
     </p>
-    <h1 className="mt-2 text-lg">Graph Controls</h1>
-    <p>LMB Drag: move viewport</p>
-    <p>Scroll: zoom in/out</p>
-    <p>Hover: highlight prerequisites</p>
-    <h1 className="mt-2 text-lg">Result Panel (top left)</h1>
+    <h1 className="mt-4 text-base font-semibold">Graph Controls</h1>
+    <p>LMB Drag: Move viewport</p>
+    <p>Scroll: Zoom in/out</p>
+    <p>Hover on Node: Highlight course prereqs</p>
+    <h1 className="mt-4 text-base font-semibold">Result Panel</h1>
     <p>
-      Show the target courses (courses you can take / courses to take in the
+      Shows target courses (courses you have unlocked / courses to take in the
       optimal path) in green. Click for course details.
     </p>
-    <h1 className="mt-2 text-lg">History Panel (bottom left)</h1>
-    <p>Saves the last 10 results.</p>
-    <p>Import: import history data from a save file</p>
-    <p>Export: download the saved history</p>
+    <h1 className="mt-4 text-base font-semibold">History Panel</h1>
+    <p>Saves the last 10 query results.</p>
+    <p>Import: Import history data from a save file</p>
+    <p>Export: Download the saved history</p>
     <p>Click on each entry to see details.</p>
-    <p>Load: load the specific saved query</p>
+    <p>Load: Load a saved query</p>
   </>
 );
 
@@ -97,7 +97,22 @@ export default function HelpMenu({ children }: { children: React.ReactNode }) {
               <span>Help</span>
             </div>
           ) : (
-            <div className="flex w-14 justify-center">❌</div>
+            <div className="flex w-14 justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="black"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </div>
           )}
         </summary>
 
