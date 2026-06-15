@@ -529,27 +529,14 @@ def get_course_suggestions(
                 continue
             seen_course_codes.add(course_code)
 
-            if course_node.prereqs is not None:
-                num_prereqs = str(len(course_node.prereqs))
-            else:
-                num_prereqs = ""
-
-            # Construct subgraph to count nodes (course + prerequisites)
-            subgraph = construct_subgraph(
-                container.graph,
-                [course_code],
-                traversers.Targets(True, True, False, False),
-            )
-            num_nodes = subgraph.num_courses()
-
             course_matches.append(
                 {
                     "code": course_code,
                     "title": course_node.data.title,
                     "type": "course",
-                    "num_prereqs": num_prereqs,
+                    "num_prereqs": course_node.subgraph_num_requisites,
                     "class_size": course_node.data.class_size,
-                    "num_nodes": num_nodes,
+                    "num_nodes": course_node.subgraph_num_courses,
                 }
             )
 
