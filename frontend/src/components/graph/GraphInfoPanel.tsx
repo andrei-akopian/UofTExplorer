@@ -158,10 +158,26 @@ export function GraphStatsPanel({
       onOpenChange={onOpenChange}
       cardClassName={cardClassName}
     >
-      <div className="border-border-card border-b px-4 py-3">
+      <div className="border-border-card flex items-center justify-between border-b px-4 py-3">
         <h2 className="text-text-body text-sm font-semibold">
           Graph Statistics
         </h2>
+        <button onClick={() => onOpenChange?.(false)}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="text-text-muted h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="black"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
       </div>
       <div className="flex-1 overflow-y-auto px-4 py-3">
         {STAT_ENTRIES.map(([label, key]) => (
@@ -246,6 +262,22 @@ export function GraphNodesPanel({
             </span>
           )}
         </h2>
+        <button onClick={() => onOpenChange?.(false)}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="text-text-muted h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="black"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
       </div>
 
       {activeNode && (
