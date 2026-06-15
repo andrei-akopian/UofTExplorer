@@ -116,8 +116,8 @@ export default function GraphQuery({
         setQuery={setQuery}
         filtersHook={filters}
         setFiltersHook={setFilters}
-        onLoadGraph={handleFetchClick}
-        isLoading={isLoading}
+        // onLoadGraph={handleFetchClick}
+        // isLoading={isLoading}
       />
       <button
         onClick={handleFetchClick}

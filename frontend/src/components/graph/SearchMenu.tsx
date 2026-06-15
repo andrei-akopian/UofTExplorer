@@ -85,8 +85,8 @@ interface SearchMenuProps {
   setQuery: (q: string) => void;
   filtersHook: QueryFilters;
   setFiltersHook: (filtersHook: QueryFilters) => void;
-  onLoadGraph: () => void;
-  isLoading: boolean;
+  // onLoadGraph: () => void;
+  // isLoading: boolean;
 }
 
 export default function SearchMenu({
