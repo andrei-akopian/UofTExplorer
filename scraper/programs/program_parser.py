@@ -208,7 +208,7 @@ class ProgramParser:
             "description": description,
             "enrollment_requirement": enrollment_requirements,
             "completion_requirement": completion_requirements,
-            "courses_mentioned": courses_mentioned
+            "courses_mentioned": courses_mentioned,
         }
         self.current_program = ""
         return program_information, "accept"

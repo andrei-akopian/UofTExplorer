@@ -6,6 +6,7 @@ import logging
 
 TRAVERSER_TARGETS = Targets(True, True, False, True)
 
+
 def get_subgraph_sizes(data) -> dict[str, int]:
     graph = construct_course_graph(filename="", data=data)
     subgraphs = construct_disjoint_subgraphs(graph, TRAVERSER_TARGETS)

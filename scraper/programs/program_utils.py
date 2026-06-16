@@ -13,19 +13,13 @@ def program_code_parser(program_code: str, logger=None) -> list[str]:
     """
     artsci = program_code[0:2]
     if artsci != "AS" and logger is not None:
-        logger.critical(
-            "Program title does not start with artsci. %s", program_code
-        )
+        logger.critical("Program title does not start with artsci. %s", program_code)
     program_type = program_code[2:5]  # major / minor / spec / focus / cert
     if program_type not in ["MAJ", "MIN", "SPE", "FOC", "CER"] and logger is not None:
-        logger.critical(
-            "Program does not have major specification. %s", program_code
-        )
+        logger.critical("Program does not have major specification. %s", program_code)
     program_number = program_code[5:9]  # 4 digit number
     if not program_number.isdigit() and logger is not None:
-        logger.critical(
-            "Program number has strange number format. %s", program_code
-        )
+        logger.critical("Program number has strange number format. %s", program_code)
     suffix = program_code[9:]  # they ran out of numbers, this is the fix :\
     if not (len(suffix) == 0 or suffix.isalpha()) and logger is not None:
         logger.critical("Unexpected program sufix. %s", program_code)
