@@ -85,8 +85,8 @@ interface SearchMenuProps {
   setQuery: (q: string) => void;
   filtersHook: QueryFilters;
   setFiltersHook: (filtersHook: QueryFilters) => void;
-  // onLoadGraph: () => void;
-  // isLoading: boolean;
+  onLoadGraph: () => void;
+  isLoading: boolean;
 }
 
 export default function SearchMenu({
@@ -94,6 +94,8 @@ export default function SearchMenu({
   setQuery,
   filtersHook,
   setFiltersHook,
+  onLoadGraph,
+  isLoading,
 }: SearchMenuProps) {
   const [departments, setDepartments] = useState<string[]>([]);
 
@@ -271,6 +273,13 @@ export default function SearchMenu({
           keyFormat={(option) => option.at(-2) ?? ""}
         />
       </div>
+      <button
+        onClick={onLoadGraph}
+        disabled={isLoading}
+        className="from-btn-gradient-from to-btn-gradient-to hidden cursor-pointer rounded-md border-0 bg-linear-to-br px-5 py-2 font-sans text-sm text-white transition-colors duration-200 hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60 sm:inline-flex sm:w-auto sm:text-base"
+      >
+        Load Graph
+      </button>
     </div>
   );
 }
