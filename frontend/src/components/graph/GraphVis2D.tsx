@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import type { GraphData, GraphEdge, GraphNode, QueryInfo } from "../../types";
 import { useCreateDirectedGraph } from "../../hooks/useGraph";
-import { DataSet } from "vis-network/standalone/esm/vis-network.min.js";
+import {
+  DataSet,
+  Network,
+} from "vis-network/standalone/esm/vis-network.min.js";
 import LoadingOverlay from "../LoadingOverlay";
 
 interface Node extends GraphNode {
@@ -120,9 +123,6 @@ export default function GraphVis2D({
   useEffect(() => {
     const initNetwork = async () => {
       try {
-        const { Network } =
-          await import("vis-network/standalone/esm/vis-network.min.js");
-
         if (!containerRef.current) return;
 
         const options = {
