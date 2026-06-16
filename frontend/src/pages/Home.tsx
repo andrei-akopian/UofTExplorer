@@ -4,6 +4,10 @@ const pageLinkClassName =
   "text-link no-underline border-b border-transparent transition-colors duration-150 hover:text-link-hover hover:border-current focus-visible:text-link-hover focus-visible:border-current focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus-outline focus-visible:outline-offset-2 focus-visible:rounded-sm";
 
 export default function Home() {
+  const commit_hash = __COMMIT_HASH__;
+  const git_tag = __GIT_TAG__;
+  const scrape_ts = new Date(__SCRAPE_TS__ * 1000).toDateString();
+  const repo_url = __REPO_URL__;
   return (
     <div className="bg-page-bg text-text-body flex h-full w-full flex-col items-center px-4 py-4 font-sans leading-relaxed sm:px-5">
       <div className="mx-auto w-full max-w-6xl pt-4 pb-8 font-sans sm:pt-6">
@@ -105,7 +109,36 @@ export default function Home() {
           >
             GitHub
           </a>
-          .
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="fill-text-muted inline h-4 w-4"
+          >
+            <g stroke-width="0" />
+            <g stroke-linecap="round" stroke-linejoin="round" />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M6 5a1 1 0 1 1 2 0 1 1 0 0 1-2 0m2 2.83a3.001 3.001 0 1 0-2 0v8.34a3.001 3.001 0 1 0 2.105.04A3 3 0 0 1 11 14h2a6 6 0 0 0 6-6v-.17a3.001 3.001 0 1 0-2 0V8a4 4 0 0 1-4 4h-2a4.98 4.98 0 0 0-3 1zM18 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2M6 19a1 1 0 1 1 2 0 1 1 0 0 1-2 0"
+              className="fill-text-muted"
+            />
+          </svg>
+          <a
+            href={`${repo_url}/commit/${commit_hash}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {commit_hash}
+          </a>{" "}
+          {git_tag == "untagged" ? (
+            ""
+          ) : (
+            <span>
+              ,<a href={`${repo_url}/releases/tag/${git_tag}`}>{git_tag}</a>
+            </span>
+          )}
+          <span>; Course Data from {scrape_ts}</span>
         </p>
       </div>
     </div>
