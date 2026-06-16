@@ -28,6 +28,7 @@ export default function PathExplorer() {
   const [solutionDisplay, setSolutionDisplay] = useState<string[]>([]);
   const [placeholderText, setPlaceholderText] = useState<string>("");
   const [isMobileControlsOpen, setIsMobileControlsOpen] = useState(false);
+  const [isResultBarOpen, setIsResultBarOpen] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const [lastTool, setLastTool] = useState<string>("");
@@ -486,6 +487,21 @@ export default function PathExplorer() {
     <div className="relative flex h-full w-full flex-col overflow-hidden font-sans lg:flex-1 lg:flex-row">
       <MobileWarning />
 
+      {/* Mobile top bar - Results toggle*/}
+      <div className="border-border-panel bg-panel-bg z-40 flex shrink-0 items-center justify-between border-b px-3 py-2 lg:hidden">
+        <button
+          type="button"
+          onClick={() => setIsResultBarOpen((prev) => !prev)}
+          className="text-text-body flex items-center gap-1 text-xs font-semibold"
+        >
+          {isResultBarOpen ? "Hide Results " : "Show Results"}
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="m2 4 4 4 4-4" stroke="currentColor" />
+          </svg>
+        </button>
+        <HelpMenu>{helpTemplatePathExplorer}</HelpMenu>
+      </div>
+
       <div id="vis graph" className="relative min-h-0 w-full flex-1 lg:h-full">
         <GraphVis2D graphData={graphData} />
         <div inert className="absolute top-0 left-0 h-full w-full">
@@ -495,9 +511,10 @@ export default function PathExplorer() {
         </div>
       </div>
 
+      {/* Result + History panel */}
       <div
         id="resultBar"
-        className="border-border-panel bg-surface-1 z-30 order-first flex h-full w-[min(22rem,calc(100vw-1rem))] shrink-0 flex-col overflow-hidden border-r shadow-sm lg:w-96"
+        className={`border-border-panel bg-surface-1 z-30 flex w-full shrink-0 flex-col overflow-hidden border-b shadow-sm transition-[height] duration-200 lg:order-first lg:h-full lg:w-96 lg:border-t-0 lg:border-r lg:transition-none ${isResultBarOpen ? "h-[45vh]" : "h-0"} absolute top-[41px] right-0 left-0 lg:relative lg:top-auto lg:h-full`}
       >
         <section className="border-border-panel flex min-h-0 flex-[0_0_62%] flex-col overflow-hidden border-b">
           <header className="border-border-panel text-text-body flex shrink-0 items-center justify-between gap-3 border-b px-4 py-3 text-sm font-semibold">
@@ -581,7 +598,6 @@ export default function PathExplorer() {
                 onChange={async (event) => {
                   const [file] = event.target.files ?? [];
                   if (!file) return;
-
                   await importHistory(file);
                   event.target.value = "";
                 }}
@@ -593,7 +609,6 @@ export default function PathExplorer() {
                   const confirmed = window.confirm(
                     `Importing history will overwrite the current history after the ${MaxHistoryCount}th entry. Continue?`,
                   );
-
                   if (confirmed) {
                     fileInputRef.current?.click();
                   }
@@ -618,6 +633,7 @@ export default function PathExplorer() {
         </section>
       </div>
 
+      {/* Controls */}
       <div
         id="controls"
         className="border-border-panel bg-panel-bg fixed right-2 bottom-2 left-2 z-30 overflow-hidden rounded-2xl border backdrop-blur-[10px] lg:relative lg:right-auto lg:bottom-auto lg:left-auto lg:mr-auto lg:flex lg:h-full lg:w-96 lg:flex-col lg:gap-4 lg:rounded-none lg:border-t-0 lg:border-r-0 lg:border-b-0 lg:border-l lg:p-4"
@@ -652,14 +668,12 @@ export default function PathExplorer() {
             title="Courses you have completed"
             placeholder="Add a course you completed"
           />
-
           <CourseSearchBar
             searchResults={desiredCourses}
             setSearchResults={setDesiredCourses}
             title="Courses you want to take"
             placeholder="Add a course to take"
           />
-
           <CourseSearchBar
             searchResults={avoidedCourses}
             setSearchResults={setAvoidedCourses}
@@ -678,7 +692,6 @@ export default function PathExplorer() {
               completed:
             </b>
           </h1>
-
           <button
             id="postreqsButton"
             type="button"
@@ -687,14 +700,12 @@ export default function PathExplorer() {
           >
             Find unlocked courses
           </button>
-
           <h1 className="mt-4 w-full text-sm leading-snug">
             <b>
               Find the optimal path to courses you want to take from courses you
               have completed and want to avoid:
             </b>
           </h1>
-
           <button
             id="demoSendButton"
             type="button"
@@ -706,7 +717,8 @@ export default function PathExplorer() {
         </div>
       </div>
 
-      <div className="absolute top-4 right-100 z-100">
+      {/* Desktop help button */}
+      <div className="absolute top-4 right-4 z-40 hidden lg:block">
         <HelpMenu>{helpTemplatePathExplorer}</HelpMenu>
       </div>
     </div>
