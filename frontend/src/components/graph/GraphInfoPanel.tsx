@@ -168,7 +168,7 @@ export function GraphStatsPanel({
             className="text-text-muted h-4 w-4"
             fill="none"
             viewBox="0 0 24 24"
-            stroke="black"
+            stroke="currentColor"
             strokeWidth={2}
           >
             <path
@@ -268,7 +268,7 @@ export function GraphNodesPanel({
             className="text-text-muted h-4 w-4"
             fill="none"
             viewBox="0 0 24 24"
-            stroke="black"
+            stroke="currentColor"
             strokeWidth={2}
           >
             <path
