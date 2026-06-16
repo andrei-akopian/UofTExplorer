@@ -7,6 +7,7 @@ export default function Home() {
   const commit_hash = __COMMIT_HASH__;
   const git_tag = __GIT_TAG__;
   const scrape_ts = new Date(__SCRAPE_TS__ * 1000).toDateString();
+  console.log(__SCRAPE_TS__);
   const repo_url = __REPO_URL__;
   return (
     <div className="bg-page-bg text-text-body flex h-full w-full flex-col items-center px-4 py-4 font-sans leading-relaxed sm:px-5">
@@ -115,11 +116,11 @@ export default function Home() {
             xmlns="http://www.w3.org/2000/svg"
             className="fill-text-muted inline h-4 w-4"
           >
-            <g stroke-width="0" />
-            <g stroke-linecap="round" stroke-linejoin="round" />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
+              strokeWidth="0"
+              strokeLinejoin="round"
               d="M6 5a1 1 0 1 1 2 0 1 1 0 0 1-2 0m2 2.83a3.001 3.001 0 1 0-2 0v8.34a3.001 3.001 0 1 0 2.105.04A3 3 0 0 1 11 14h2a6 6 0 0 0 6-6v-.17a3.001 3.001 0 1 0-2 0V8a4 4 0 0 1-4 4h-2a4.98 4.98 0 0 0-3 1zM18 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2M6 19a1 1 0 1 1 2 0 1 1 0 0 1-2 0"
               className="fill-text-muted"
             />

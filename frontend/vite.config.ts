@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { execSync } from "child_process";
+import fs from "fs";
 
 const commitHash = execSync("git rev-parse --short HEAD").toString().trim();
 const tag = execSync(
@@ -9,11 +10,10 @@ const tag = execSync(
 )
   .toString()
   .trim();
-const lastScrape = execSync(
-  `jq '."scraper/courses/raw_output"' ../data/outdatedness_report.json`,
-)
-  .toString()
-  .trim();
+const outdatedness_report = JSON.parse(
+  fs.readFileSync("../data/outdatedness_report.json", "utf8"),
+);
+const lastScrape = outdatedness_report["scraper/courses/raw_output"];
 const repoUrl = execSync("git remote get-url origin")
   .toString()
   .trim()

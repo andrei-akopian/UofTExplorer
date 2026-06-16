@@ -31,7 +31,7 @@ SCRAPING_TARGETS: dict[str, dict] = {
     # },
 }
 
-SAVE_PATH: str = "raw_output/"
+SAVE_PATH: str = "scraper/courses/raw_output/"
 SCRAPE_DELAY: int = 3  # in seconds. wait between hitting the endpoint
 
 
