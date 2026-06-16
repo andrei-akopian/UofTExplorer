@@ -41,7 +41,10 @@ export default function Graph2D() {
   return (
     <div className="relative h-full w-full overflow-hidden">
       <MobileWarning />
-
+      {/* Mobile Help Button*/}
+      <div className="relative z-50 flex justify-end px-2 pt-2 sm:hidden">
+        <HelpMenu>{helpTemplateGraph2D}</HelpMenu>
+      </div>
       <div className="h-full min-w-0 flex-1">
         <GraphVis2D
           graphData={graphData}
@@ -50,7 +53,6 @@ export default function Graph2D() {
           onNodeClickCallback={handleNodeSelect}
         />
       </div>
-
       <GraphBottomInfo
         message={message}
         messageType={messageType}
@@ -62,7 +64,6 @@ export default function Graph2D() {
         statsOpen={statsOpen}
         onStatsOpenChange={setStatsOpen}
       />
-
       <GraphQuery
         data={graphData}
         setData={setGraphData}
@@ -73,7 +74,8 @@ export default function Graph2D() {
         manualFetch={manualFetch}
       />
 
-      <div className="absolute top-4 right-4 z-100">
+      {/*Desktop Help Button*/}
+      <div className="absolute top-3 right-2 z-50 hidden sm:right-4 sm:block">
         <HelpMenu>{helpTemplateGraph2D}</HelpMenu>
       </div>
     </div>

@@ -38,15 +38,23 @@ export default function GraphBottomInfo({
         <GraphStatsPanel
           graphData={graphData}
           isOpen={statsOpen}
-          onOpenChange={onStatsOpenChange}
-          cardClassName={nodesOpen ? "right-70" : "right-[-48px]"}
+          onOpenChange={(open) => {
+            if (open && window.innerWidth < 640) onNodesOpenChange(false);
+            onStatsOpenChange(open);
+          }}
+          cardClassName={
+            nodesOpen ? "right-[-48px] sm:right-70" : "right-[-48px] sm:right-0"
+          }
         />
         <GraphNodesPanel
           graphData={graphData}
           selectedNode={selectedNode}
           onNodeSelect={onNodeSelect}
           isOpen={nodesOpen}
-          onOpenChange={onNodesOpenChange}
+          onOpenChange={(open) => {
+            if (open && window.innerWidth < 640) onStatsOpenChange(false);
+            onNodesOpenChange(open);
+          }}
           cardClassName="right-0"
         />
       </GraphInfoMenu>
