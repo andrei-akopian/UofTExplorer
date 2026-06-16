@@ -43,7 +43,7 @@ export default function GraphBottomInfo({
             onStatsOpenChange(open);
           }}
           cardClassName={
-            nodesOpen ? "right-[60px] sm:right-70" : "right-[-48px] sm:right-0"
+            nodesOpen ? "right-[-48px] sm:right-70" : "right-[-48px] sm:right-0"
           }
         />
         <GraphNodesPanel
