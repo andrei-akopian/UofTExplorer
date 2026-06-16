@@ -26,7 +26,7 @@ def get_avg_total_num_prereqs(graph: CourseGraph) -> float:
     """
     num_total_reqs = []
     for course in graph.courses:
-        num = len(get_prereq_course_set(graph=graph, origin=course)) - 1
+        num = graph.courses[course].data.subgraph_num_courses + graph.courses[course].data.subgraph_num_requisites - 1
         num_total_reqs.append(num)
 
     return round(sum(num_total_reqs) / len(num_total_reqs), 2)
