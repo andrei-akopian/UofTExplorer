@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { getDepartments } from "../../lib/api";
 import SearchBar from "./SearchBar";
 
@@ -135,6 +135,23 @@ export default function SearchMenu({
       setDepartments(departmentList);
     });
   }, []);
+
+  const handleGlobalKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key == "Enter") {
+        onLoadGraph();
+      }
+    },
+    [onLoadGraph],
+  );
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleGlobalKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleGlobalKeyDown);
+    };
+  }, [handleGlobalKeyDown]);
 
   return (
     <div className="flex w-full flex-col gap-2 font-sans sm:w-auto sm:flex-row sm:flex-wrap">
