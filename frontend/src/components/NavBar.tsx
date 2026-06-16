@@ -114,7 +114,7 @@ export default function Navbar() {
   return (
     <nav className="border-border-panel bg-panel-bg shadow-card border-b">
       {/* Top bar */}
-      <div className="flex min-h-16 items-center px-3 sm:px-4 md:px-8 lg:px-20">
+      <div className="flex min-h-16 items-center px-3 sm:px-2 md:px-2 lg:px-20">
         {/* Logo + active page (mobile) */}
         <div className="flex min-w-0 items-center gap-2">
           <Link
