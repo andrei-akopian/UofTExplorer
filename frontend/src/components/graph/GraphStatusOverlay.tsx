@@ -15,7 +15,7 @@ export default function GraphStatusOverlay({
 
   const defaultMessageClass =
     messageType === "success"
-      ? "text-sm font-sans text-white"
+      ? "text-sm font-sans text-success-text"
       : messageType === "error"
         ? "text-sm font-sans text-error"
         : "text-sm font-sans text-(--color-primary-info)";
