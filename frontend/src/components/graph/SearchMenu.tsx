@@ -146,6 +146,7 @@ export default function SearchMenu({
   );
 
   useEffect(() => {
+    window.removeEventListener("keydown", handleGlobalKeyDown);
     window.addEventListener("keydown", handleGlobalKeyDown);
 
     return () => {
