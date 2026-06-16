@@ -552,7 +552,7 @@ class CourseData:
         original_requisite_strings: dict[str, str],
         class_size: Optional[int],
         subgraph_num_requisites: int,
-        subgraph_num_courses: int
+        subgraph_num_courses: int,
     ) -> None:
         """
         Initialize a new CourseData object.

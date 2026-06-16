@@ -16,7 +16,9 @@ if not os.path.exists(LOG_DIR):
     os.makedirs(LOG_DIR)
 RAW_DIR = "scraper/programs/raw_output"
 if not os.path.exists(LOG_DIR):
-    logging.warning(f"{RAW_DIR} should exist, parsing without it is pointless. Maybe reorder imports?")
+    logging.warning(
+        f"{RAW_DIR} should exist, parsing without it is pointless. Maybe reorder imports?"
+    )
     os.makedirs(LOG_DIR)
 
 logging.basicConfig(
@@ -25,7 +27,7 @@ logging.basicConfig(
     handlers=[
         logging.FileHandler(f"{LOG_DIR}/program_areas_parser.log"),
         logging.StreamHandler(),
-    ]
+    ],
 )
 
 TEXT_SWAPS = {"\u00a0": " ", "\xa0": " ", "\u2014": "-", "\u200b": "", "\u2019": "'"}
@@ -60,10 +62,14 @@ def prase_program_list(programs_html):
                 # there are only like 5 of them
                 logging.info(f"{split_temp} no program code. Discarded.")
             elif len(split_temp) == 2:
-                program_code = program_code_parser(split_temp[1].strip(), logger=logging)
+                program_code = program_code_parser(
+                    split_temp[1].strip(), logger=logging
+                )
             elif len(split_temp) == 3:
                 # example: Criminology and Sociolegal Studies - Major (Arts Program) - ASMAJ0826
-                program_code = program_code_parser(split_temp[2].strip(), logger=logging)
+                program_code = program_code_parser(
+                    split_temp[2].strip(), logger=logging
+                )
             else:
                 raise ValueError("not sure how to parse this")
             programs_list.append(program_code)
@@ -79,7 +85,9 @@ def parse_course_list(courses_html):
                 if name_tag is None:
                     print(name_tag)
                 course_name = name_tag.string.strip()
-                course_code, title = split_curse_name(course_name=course_name, logger=logging)
+                course_code, title = split_curse_name(
+                    course_name=course_name, logger=logging
+                )
                 course_list.append(course_code)
     return course_list
 
@@ -95,7 +103,7 @@ def parse_program_area(i, loadpath):
     title = "".join(title_section.strings).strip()
     course_list = []
     programs_list = []
-    assert len(title) > 0 # sanity check
+    assert len(title) > 0  # sanity check
 
     # now the program and course lists
     footer = soup.find("footer")  # course listings are in footer
@@ -104,21 +112,23 @@ def parse_program_area(i, loadpath):
         return {
             "title": title,
             "course_list": course_list,
-            "programs_list": programs_list
+            "programs_list": programs_list,
         }
     course_and_programs_divs = footer.findChildren("div", recursive=False)
     if not len(course_and_programs_divs) == 2:
         return {
             "title": title,
             "course_list": course_list,
-            "programs_list": programs_list
+            "programs_list": programs_list,
         }
     # assert len(course_and_programs_divs) == 2
     programs_view = course_and_programs_divs[0]
     course_view = course_and_programs_divs[1]
 
     # programs
-    if "view-programs-view" in programs_view["class"]:  # sometimes no programs are listed
+    if (
+        "view-programs-view" in programs_view["class"]
+    ):  # sometimes no programs are listed
         programs_list_contents = programs_view.find("div", class_="view-content")
         if programs_list_contents is None:  # sometimes this also happens
             pass
@@ -145,23 +155,16 @@ def parse_program_area(i, loadpath):
         if len(course_groups) > 0:
             for group in course_groups:
                 group_content = group.find(class_="view-grouping-content")
-                course_list.extend(
-                    parse_course_list(group_content.select("h3"))
-                )
+                course_list.extend(parse_course_list(group_content.select("h3")))
         else:
             course_view_content = course_view.find(class_="view-content")
             if course_view_content is not None:
-                course_list.extend(
-                    parse_course_list(course_view_content.select("h3"))
-                )
+                course_list.extend(parse_course_list(course_view_content.select("h3")))
             else:
                 logging.warning(f"No courses found in {loadpath} {title}")
 
-    return {
-        "title": title,
-        "course_list": course_list,
-        "programs_list": programs_list
-    }
+    return {"title": title, "course_list": course_list, "programs_list": programs_list}
+
 
 if __name__ == "__main__":
     parse_all_program_areas()

@@ -90,9 +90,11 @@ def full_sync():
 
     graph = construct_course_graph(filename="", data=cal_courses)
     for i, course in enumerate(cal_courses):
-        subgraph = construct_subgraph(graph, [course["course_code"]], Targets(True, True, False, False))
+        subgraph = construct_subgraph(
+            graph, [course["course_code"]], Targets(True, True, False, False)
+        )
         course["subgraph_num_courses"] = subgraph.num_courses()
-        course["subgraph_num_requisites"] =  subgraph.num_requisites()
+        course["subgraph_num_requisites"] = subgraph.num_requisites()
 
     savepath = f"{SAVE_FOLDER}/courses.json"
     with open(savepath, "w", encoding="utf-8") as f:

@@ -7,6 +7,7 @@ import json
 
 OUTDATEDNESS_REPORT_PATH = "data/outdatedness_report.json"
 
+
 def recompute_stats():
     run_all()
     run_global_statistics()
@@ -22,7 +23,7 @@ def stats_outdatedness(save=True):
     paths = {
         "data/global_statistics.json": 0,
         "frontend/src/assets/globalstats": 0,
-        "data_analysis/sanity_report.log": 0
+        "data_analysis/sanity_report.log": 0,
     }
     for p in paths:
         if not os.path.exists(p):

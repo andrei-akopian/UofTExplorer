@@ -26,7 +26,11 @@ def get_avg_total_num_prereqs(graph: CourseGraph) -> float:
     """
     num_total_reqs = []
     for course in graph.courses:
-        num = graph.courses[course].data.subgraph_num_courses + graph.courses[course].data.subgraph_num_requisites - 1
+        num = (
+            graph.courses[course].data.subgraph_num_courses
+            + graph.courses[course].data.subgraph_num_requisites
+            - 1
+        )
         num_total_reqs.append(num)
 
     return round(sum(num_total_reqs) / len(num_total_reqs), 2)
@@ -295,7 +299,7 @@ def get_filtered_graph(
         special_courses[query_upper] = container.graph.courses[query_upper]
 
     # Otherwise, the query is invalid
-    else: 
+    else:
         raise ValueError("query value has no corresponding graph to display")
 
     # Apply filters

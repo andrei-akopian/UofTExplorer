@@ -248,6 +248,6 @@ def solve_satz3(
 
 
 if __name__ == "__main__":
-    pass 
+    pass
     # import doctest
     # doctest.testmod(verbose=True)

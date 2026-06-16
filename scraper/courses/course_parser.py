@@ -802,7 +802,6 @@ class CourseParser:
         courses_json = self.parse_children(courses_html)
         return courses_json
 
-
     def parse_children(self, courses_html):
         courses_json = []
         for child in courses_html:
@@ -813,7 +812,6 @@ class CourseParser:
                     self.counters["courses_accepted"] += 1
                     courses_json.append(parsed_child)
         return courses_json
-
 
     def save_to_json(self, courses: list[dict], filepath: str = SAVE_PATH) -> None:
         """Save a list containing dictionaries of course objects into a json file."""

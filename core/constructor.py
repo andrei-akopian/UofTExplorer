@@ -53,7 +53,7 @@ def construct_container(
     return CourseGraphContainer(graph, programs, departments, breadths)
 
 
-def construct_course_graph(filename: str, data: Optional[list]=None) -> CourseGraph:
+def construct_course_graph(filename: str, data: Optional[list] = None) -> CourseGraph:
     """
     Return a graph of courses and requisites based on the given data in the json file.
 

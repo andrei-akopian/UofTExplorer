@@ -2,6 +2,7 @@ from typing import Optional
 from scraper.parser_constants import SEPARATORS
 import re
 
+
 def course_code_parser(course_code: str) -> Optional[list[str | int]]:
     """
     Dilutes the course code into its prime components.
@@ -67,7 +68,9 @@ def split_curse_name(course_name: str, logger=None) -> tuple[str, str]:
 
     course_code = collections[0]
     title = " ".join(collections[1:])
-    if logger is not None and (len(course_code) == 0 or course_code_parser(course_code) is None):
+    if logger is not None and (
+        len(course_code) == 0 or course_code_parser(course_code) is None
+    ):
         logger.critical(f"course has no code {course_name}")
     if logger is not None and (len(title) == 0):
         logger.critical("course has no title")
