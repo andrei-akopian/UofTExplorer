@@ -110,7 +110,7 @@ export default function GraphQuery({
   }, [manualFetchArg]);
 
   return (
-    <div className="absolute top-2 left-1/2 z-40 flex w-[calc(100%-1rem)] -translate-x-1/2 flex-col content-start items-stretch justify-center gap-2 sm:top-3 sm:w-full sm:flex-row sm:flex-wrap sm:items-center sm:gap-2.5 sm:px-4">
+    <div className="absolute top-13 left-1/2 z-40 flex w-[calc(100%-1rem)] -translate-x-1/2 flex-col content-start items-stretch justify-center gap-2 sm:top-3 sm:w-full sm:flex-row sm:flex-wrap sm:items-center sm:gap-2.5 sm:px-4">
       <SearchMenu
         query={query}
         setQuery={setQuery}

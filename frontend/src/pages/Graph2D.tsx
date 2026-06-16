@@ -42,6 +42,10 @@ export default function Graph2D() {
     <div className="relative h-full w-full overflow-hidden">
       <MobileWarning />
 
+      <div className="relative z-50 flex justify-end px-2 pt-2 sm:hidden">
+        <HelpMenu>{helpTemplateGraph2D}</HelpMenu>
+      </div>
+
       <div className="h-full min-w-0 flex-1">
         <GraphVis2D
           graphData={graphData}
@@ -73,7 +77,7 @@ export default function Graph2D() {
         manualFetch={manualFetch}
       />
 
-      <div className="absolute top-4 right-4 z-100">
+      <div className="absolute top-4 right-4 z-40 hidden sm:block">
         <HelpMenu>{helpTemplateGraph2D}</HelpMenu>
       </div>
     </div>

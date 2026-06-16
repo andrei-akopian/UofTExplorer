@@ -45,6 +45,10 @@ export default function Graph3D() {
     <div className="relative h-full min-h-0 w-full overflow-hidden">
       <MobileWarning />
 
+      <div className="relative z-50 flex justify-end px-2 pt-2 sm:hidden">
+        <HelpMenu>{helpTemplateGraph3D}</HelpMenu>
+      </div>
+
       <div className="h-full min-w-0 flex-1">
         <GraphVis3D
           graphData={graphData}
@@ -78,7 +82,7 @@ export default function Graph3D() {
         manualFetch={manualFetch}
       />
 
-      <div className="absolute top-4 right-4 z-100">
+      <div className="absolute top-4 right-4 z-40 hidden sm:block">
         <HelpMenu>{helpTemplateGraph3D}</HelpMenu>
       </div>
     </div>
