@@ -13,7 +13,7 @@ const links = [
 const navLink = (active: boolean) =>
   `font-sans flex h-10 shrink-0 items-center whitespace-nowrap border-b-2 px-2 text-xs transition-colors duration-150 sm:px-3 sm:text-sm md:h-full md:px-5 ${
     active
-      ? "text-text-body border-text-body"
+      ? "text-text-body border-text-subtle"
       : "text-text-muted border-transparent hover:text-text-secondary"
   }`;
 
@@ -129,7 +129,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop: nav links centered + toggle right */}
-        <div className="hidden min-w-0 flex-1 items-center justify-center gap-1 overflow-x-auto md:flex">
+        <div className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 overflow-x-auto md:flex">
           {links.map(({ label, href }) => (
             <Link key={href} to={href} className={navLink(pathname === href)}>
               {label}
