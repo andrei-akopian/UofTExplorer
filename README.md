@@ -10,6 +10,14 @@
 A graph visualizer tool for courses and their requisites at the University of Toronto.
 Currently a work in progress for further improvements and deployment.
 
+## Demo
+
+<div align="center">
+  <img src="docs/images/homepage.png" width="355" />
+  <img src="docs/images/3d-graph.png" width="355" />
+  <img src="docs/images/pathexplorer.png" width="355" />
+</div>
+
 ## Features
 
 - **Graph Querying**: Generate graph visualizations of courses by searching for courses and programs, and filtering by CR/NCR, breadth requirements, and department.
