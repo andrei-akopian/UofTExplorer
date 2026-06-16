@@ -288,6 +288,7 @@ class ProgramParser:
         self.programs = []
         self.programs_accepted = 0
         self.programs_parsed = 0
+        print(target)
         target_page_range = PARSING_TARGETS[target]["page_range"]
         for p in target_page_range:
             if (p % (len(target_page_range) // 10)) == 0:
@@ -305,9 +306,9 @@ class ProgramParser:
         self.logger.info("parsing finished in: %ss", round(end - start, 4))
 
     @classmethod
-    def get_parse_job(target: str = "UTSG", interactive: bool = True):
-        def job():
+    def get_parse_job(cls, target: str = "UTSG", interactive: bool = True):
+        def job(target=target, interactive=interactive):
             pp = ProgramParser()
-            pp.full_parse(traget, interactive)
+            pp.full_parse(target, interactive)
 
         return job

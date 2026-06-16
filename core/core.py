@@ -159,7 +159,6 @@ class CourseGraph:
                 num_direct_reqs.append(counter)
             else:
                 num_direct_reqs.append(0)
-        print(num_direct_reqs, sum(num_direct_reqs), len(num_direct_reqs))
         return round(sum(num_direct_reqs) / len(num_direct_reqs), 2)
 
     def get_filtered_courses(

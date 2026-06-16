@@ -96,7 +96,7 @@ def full_scrape() -> None:
         now = time.time()
         print(
             f"[{round(time.time(), 3):<014}] Scraping page={p}, {round(p / len(page_range) * 100, 1)}% done."
-            + f" remaining={round((len(page_range) - p) * (p + 1) / (now - start))}s"
+            + f" remaining={round((len(page_range) - p) * (now - start) / (p + 1))}s"
         )
         time.sleep(SCRAPE_DELAY)
 

@@ -76,8 +76,7 @@
       "STA255H1",
       "MGT100H1",
       "RSM100H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Actuarial Science Major",
@@ -164,8 +163,7 @@
       "MAT336H1",
       "MAT337H1",
       "APM346H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Actuarial Science Specialist",
@@ -262,8 +260,7 @@
       "RSM433H1",
       "RSM437H1",
       "MAT246H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "African Studies Major",
@@ -413,8 +410,7 @@
       "WGS386H1",
       "WGS426H1",
       "WGS440H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "African Studies Minor",
@@ -559,8 +555,7 @@
       "WGS386H1",
       "WGS426H1",
       "WGS440H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "African Studies Specialist",
@@ -725,8 +720,7 @@
       "PRT102H1",
       "PRT201H1",
       "PRT202H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Al and Malka Green Yiddish Program Minor",
@@ -839,8 +833,7 @@
       "SLA495H1",
       "SOC201H1",
       "SOC251H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "American Studies Major",
@@ -967,8 +960,7 @@
       "HIS487H1",
       "HIS497H1",
       "JIH366H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "American Studies Minor",
@@ -1079,8 +1071,7 @@
       "HIS497H1",
       "HUN335H1",
       "JIH366H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Animal Physiology Major",
@@ -1167,8 +1158,7 @@
       "HMB499Y1",
       "PSL432H1",
       "PSL452H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Anthropology Major (Evolutionary)",
@@ -1231,8 +1221,7 @@
       "ANT498H1",
       "ANT499H1",
       "ANT390H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Anthropology Major (General)",
@@ -1419,8 +1408,7 @@
       "JAL355H1",
       "JAL401H1",
       "SLA380H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Anthropology Major (Society, Culture, and Language)",
@@ -1534,8 +1522,7 @@
       "JAL355H1",
       "JAL401H1",
       "SLA380H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Anthropology Minor (General)",
@@ -1722,8 +1709,7 @@
       "JAL355H1",
       "JAL401H1",
       "SLA380H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Anthropology Specialist (Society, Culture, and Language)",
@@ -1833,8 +1819,7 @@
       "JAL355H1",
       "JAL401H1",
       "SLA380H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Applied Data Science Minor",
@@ -1951,8 +1936,7 @@
       "PSY369H1",
       "PSY379H1",
       "SOC303H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Applied Genetics and Biotechnology Major",
@@ -2082,8 +2066,7 @@
       "HMB435H1",
       "HMB441H1",
       "HMB491Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Applied Genetics and Biotechnology Specialist",
@@ -2213,8 +2196,7 @@
       "HMB435H1",
       "HMB441H1",
       "HMB491Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Applied Mathematics Specialist",
@@ -2298,8 +2280,7 @@
       "PHL281H1",
       "PHL295H1",
       "SDS256H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Archaeology Major",
@@ -2483,8 +2464,7 @@
       "ARH360H1",
       "EAS312H1",
       "EAS412H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Archaeology Minor",
@@ -2650,8 +2630,7 @@
       "ARH360H1",
       "EAS312H1",
       "EAS412H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Archaeology Specialist",
@@ -2848,8 +2827,7 @@
       "ARH360H1",
       "EAS312H1",
       "EAS412H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Art History Major",
@@ -2972,8 +2950,7 @@
       "FAH470H1",
       "FAH472H1",
       "FAH473H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Art History Minor",
@@ -3093,8 +3070,7 @@
       "FAH470H1",
       "FAH472H1",
       "FAH473H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Art History Specialist",
@@ -3217,8 +3193,7 @@
       "FAH470H1",
       "FAH472H1",
       "FAH473H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Asian Canadian Studies Minor",
@@ -3300,8 +3275,7 @@
       "SOC311H1",
       "SOC336H1",
       "POL467H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Astronomy & Astrophysics Major",
@@ -3394,8 +3368,7 @@
       "AST430H1",
       "AST425Y1",
       "AST425Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Astronomy & Astrophysics Minor",
@@ -3452,8 +3425,7 @@
       "MAT158H1",
       "MAT159H1",
       "MAT157Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Astronomy & Physics Specialist",
@@ -3566,8 +3538,7 @@
       "AST424H1",
       "AST425Y1",
       "AST425Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Biochemistry Major",
@@ -3630,8 +3601,7 @@
       "BCH479H1",
       "CHM447H1",
       "MGY441H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Biochemistry Specialist",
@@ -3726,8 +3696,7 @@
       "BCH472Y1",
       "BCH473Y1",
       "CHM220H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Biodiversity and Conservation Biology Major",
@@ -3851,8 +3820,7 @@
       "GGR272H1",
       "JHE353H1",
       "JHE355H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Bioethics Major",
@@ -3923,8 +3891,7 @@
       "SOC363H1",
       "SOC427H1",
       "WGS367H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Bioethics Minor",
@@ -3965,8 +3932,7 @@
       "PHL412H1",
       "PHL413H1",
       "PHL483H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Bioethics Specialist",
@@ -4037,8 +4003,7 @@
       "SOC363H1",
       "SOC427H1",
       "WGS367H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Bioinformatics and Computational Biology Specialist",
@@ -4109,8 +4074,7 @@
       "BCB410H1",
       "BCB410H1",
       "CSB280H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Biological Chemistry Specialist",
@@ -4174,8 +4138,7 @@
       "CHM447H1",
       "CHM479H1",
       "CSB450H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Biological Physics Specialist",
@@ -4190,8 +4153,7 @@
     "description": "",
     "enrollment_requirement": [],
     "completion_requirement": [],
-    "courses_mentioned": [],
-    "review_flags": []
+    "courses_mentioned": []
   },
   {
     "title": "Biological Physics Specialist: Advanced Physics Stream",
@@ -4282,8 +4244,7 @@
       "PHY479Y1",
       "PHY478H1",
       "PHY479Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Biological Physics Specialist: Biochemistry Stream",
@@ -4388,8 +4349,7 @@
       "PHY479Y1",
       "CHM222H1",
       "PHY252H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Biological Physics Specialist: Immunology Stream",
@@ -4492,8 +4452,7 @@
       "PHY479Y1",
       "CHM222H1",
       "PHY252H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Biological Physics Specialist: Physiology Stream",
@@ -4595,8 +4554,7 @@
       "PHY479Y1",
       "CHM222H1",
       "PHY252H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Biology Major",
@@ -4723,8 +4681,7 @@
       "EHJ352H1",
       "BIO271H1",
       "PSL301H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Biology Minor",
@@ -4786,8 +4743,7 @@
       "MGY277H1",
       "PSY397H1",
       "PSY497H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Biology Specialist",
@@ -4939,8 +4895,7 @@
       "ENV432H1",
       "BIO271H1",
       "PSL301H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Biomedical Toxicology Major",
@@ -4999,8 +4954,7 @@
       "PCL483H1",
       "PCL472Y1",
       "PCL474Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Biomedical Toxicology Specialist",
@@ -5099,8 +5053,7 @@
       "PCL474Y1",
       "PCL497H1",
       "PCL498Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Book and Media Studies Major",
@@ -5256,8 +5209,7 @@
       "BMS432H1",
       "BMS433H1",
       "BMS434H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Book and Media Studies Minor",
@@ -5403,8 +5355,7 @@
       "URB234H1",
       "WGS271Y1",
       "WRR303H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Buddhism, Psychology and Mental Health Minor",
@@ -5594,8 +5545,7 @@
       "SOC483H1",
       "VIC106H1",
       "VIC206H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Buddhist Studies Major",
@@ -5703,8 +5653,7 @@
       "MHB256H1",
       "MHB355H1",
       "MHB356H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Buddhist Studies Specialist",
@@ -5827,8 +5776,7 @@
       "RLG406H1",
       "RLG407H1",
       "RLG426H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Business German Minor",
@@ -5868,8 +5816,7 @@
       "JGJ360H1",
       "GER361H1",
       "GER410H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Canadian Studies Major",
@@ -5914,8 +5861,7 @@
       "SOC218H1",
       "SOC220H1",
       "TRN235H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Canadian Studies Minor",
@@ -5950,8 +5896,7 @@
       "UNI102H1",
       "UNI103H1",
       "UNI104H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Canadian Studies Specialist",
@@ -5996,8 +5941,7 @@
       "SOC218H1",
       "SOC220H1",
       "TRN235H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Caribbean Studies Major",
@@ -6207,8 +6151,7 @@
       "WGS450H1",
       "WGS463H1",
       "WGS481H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Caribbean Studies Minor",
@@ -6292,8 +6235,7 @@
       "SPA202H1",
       "WGS381H1",
       "WGS480H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Caribbean Studies Specialist",
@@ -6496,8 +6438,7 @@
       "WGS450H1",
       "WGS463H1",
       "WGS481H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Cell & Molecular Biology Major",
@@ -6600,8 +6541,7 @@
       "HMB499Y1",
       "MGY441H1",
       "MGY480Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Cell & Molecular Biology Major: Focus in Molecular Networks of the Cell",
@@ -6669,8 +6609,7 @@
       "CSB497H1",
       "CSB498Y1",
       "CSB499Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Cell & Molecular Biology Major: Focus in Plant Genomics and Biotechnology",
@@ -6732,8 +6671,7 @@
       "CSB497H1",
       "CSB498Y1",
       "CSB499Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Cell & Molecular Biology Major: Focus in Stem Cells and Developmental Biology",
@@ -6775,8 +6713,7 @@
       "CSB497H1",
       "CSB498Y1",
       "CSB499Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Cell & Molecular Biology Specialist",
@@ -6909,8 +6846,7 @@
       "HMB499Y1",
       "MGY441H1",
       "MGY480Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Cell & Molecular Biology Specialist: Focus in Molecular Networks of the Cell",
@@ -6994,8 +6930,7 @@
       "CSB498Y1",
       "CSB499Y1",
       "MGY441H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Cell & Molecular Biology Specialist: Focus in Plant Genomics and Biotechnology",
@@ -7071,8 +7006,7 @@
       "CSB498Y1",
       "CSB499Y1",
       "MGY441H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Cell & Molecular Biology Specialist: Focus in Stem Cells and Developmental Biology",
@@ -7136,8 +7070,7 @@
       "CSB497H1",
       "CSB498Y1",
       "CSB499Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Celtic Studies Major",
@@ -7203,8 +7136,7 @@
       "CLT444H1",
       "MST341H1",
       "SMC385H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Celtic Studies Minor",
@@ -7261,8 +7193,7 @@
       "SMC165H1",
       "SMC457H1",
       "MST226H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Celtic Studies Specialist",
@@ -7326,8 +7257,7 @@
       "CLT378H1",
       "MST341H1",
       "SMC385H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Black Canadian Studies (Category 2)",
@@ -7412,8 +7342,7 @@
       "WGS381H1",
       "WGS390H1",
       "WGS463H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Bosnian, Croatian, Serbian Language (BCS) (Category 2)",
@@ -7437,8 +7366,7 @@
       "SLA257H1",
       "SLA277H1",
       "SLA337H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Business Fundamentals (Category 2)",
@@ -7471,8 +7399,7 @@
       "RSM250H1",
       "RSM100H1",
       "MGT100H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Czech and Slovak Language (Category 2)",
@@ -7495,8 +7422,7 @@
       "SLA204Y1",
       "SLA214H1",
       "SLA405H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Estonian Language (Category 2)",
@@ -7520,8 +7446,7 @@
       "EST200H1",
       "EST201H1",
       "EST300H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Finnish Language (Category 2)",
@@ -7547,8 +7472,7 @@
       "FIN300H1",
       "FIN340H1",
       "FIN400H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in French Language (Category 2)",
@@ -7569,8 +7493,7 @@
     "courses_mentioned": [
       "FCS185H1",
       "JFL388H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in German Language (Category 2)",
@@ -7591,8 +7514,7 @@
     "courses_mentioned": [
       "GER150H1",
       "GER275H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Global German Studies (UofT Global Scholar) (Category 2)",
@@ -7625,8 +7547,7 @@
       "GER391H1",
       "GER354Y0",
       "GER398H0"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Global Latin America (Category 2)",
@@ -7647,8 +7568,7 @@
     "courses_mentioned": [
       "LAS200H1",
       "LAS201H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Human Resource Management (Category 1)",
@@ -7686,8 +7606,7 @@
       "STA220H1",
       "STA221H1",
       "IRW220H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in International Affairs (UofT Global Scholar) (Category 2)",
@@ -7841,8 +7760,7 @@
       "POL477H1",
       "POL486H1",
       "POL487H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Macedonian Language (Category 2)",
@@ -7864,8 +7782,7 @@
       "SLA109Y1",
       "SLA209H1",
       "SLA213H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Polish Language (Category 2)",
@@ -7891,8 +7808,7 @@
       "SLA306H1",
       "SLA336H1",
       "SLA426H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Portuguese Language (Category 2)",
@@ -7913,8 +7829,7 @@
     "courses_mentioned": [
       "PRT250H1",
       "PRT375H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Russian Language (Category 2)",
@@ -7944,8 +7859,7 @@
       "SLA322H1",
       "SLA410H1",
       "SLA420Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Spanish Language (Category 2)",
@@ -7966,8 +7880,7 @@
     "courses_mentioned": [
       "SPA254H1",
       "SPA275H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Sustainability (U of T Sustainability Scholar) (Category 2)",
@@ -8037,8 +7950,7 @@
       "ENV461H1",
       "ENV463H1",
       "ENV465Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Ukrainian Language (Category 2)",
@@ -8060,8 +7972,7 @@
       "SLA108Y1",
       "SLA208Y1",
       "SLA308H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Chemical Physics Specialist",
@@ -8130,8 +8041,7 @@
       "CHM348H1",
       "CHM415H1",
       "CHM395Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Chemistry Major",
@@ -8186,8 +8096,7 @@
       "CHM399Y1",
       "CHM395Y1",
       "CHM499Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Chemistry Minor",
@@ -8221,8 +8130,7 @@
       "CHM398H0",
       "CHM398Y0",
       "CHM399Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Chemistry Specialist",
@@ -8278,8 +8186,7 @@
       "CHM499Y1",
       "PHC489Y1",
       "CHM410H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Christianity And Culture Major",
@@ -8382,8 +8289,7 @@
       "CHC383H1",
       "JCA302H1",
       "SMC385H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Christianity And Culture Minor",
@@ -8480,8 +8386,7 @@
       "MST407Y1",
       "MST436H1",
       "SMC457H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Christianity and Culture: Major Program in Religious Education",
@@ -8520,8 +8425,7 @@
       "CHC327H1",
       "CHC330H1",
       "CHC382H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Cinema Studies Major",
@@ -8661,8 +8565,7 @@
       "SLA234H1",
       "SLA333H1",
       "SPA275H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Cinema Studies Minor",
@@ -8786,8 +8689,7 @@
       "SLA234H1",
       "SLA333H1",
       "SPA275H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Cinema Studies Specialist",
@@ -8927,8 +8829,7 @@
       "SLA234H1",
       "SLA333H1",
       "SPA275H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Classical Civilization Major",
@@ -8980,8 +8881,7 @@
       "PHL307H1",
       "PHL400H1",
       "PHL471H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Classical Civilization Minor",
@@ -9030,8 +8930,7 @@
       "PHL307H1",
       "PHL400H1",
       "PHL471H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Classics (Greek and Latin) Major",
@@ -9059,8 +8958,7 @@
       "CLA160H1",
       "CLA170H1",
       "CLA260H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Climate Change Studies Minor",
@@ -9127,8 +9025,7 @@
       "ENV450H1",
       "ENV465Y1",
       "ENV465Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Cognitive Science Major",
@@ -9208,8 +9105,7 @@
       "COG498H1",
       "COG499H1",
       "COG497Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Cognitive Science Major",
@@ -9276,8 +9172,7 @@
       "COG498H1",
       "COG499H1",
       "COG497Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Cognitive Science Major",
@@ -9351,8 +9246,7 @@
       "COG498H1",
       "COG499H1",
       "COG497Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Cognitive Science Major",
@@ -9455,8 +9349,7 @@
       "COG497Y1",
       "COG498H1",
       "COG499H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Cognitive Science Major",
@@ -9574,8 +9467,7 @@
       "COG497Y1",
       "COG498H1",
       "COG499H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Computer Science Major",
@@ -9696,8 +9588,7 @@
       "CSC494H1",
       "CSC495H1",
       "CSC494Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Computer Science Minor",
@@ -9741,8 +9632,7 @@
       "CSC148H1",
       "CSC165H1",
       "CSC240H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Computer Science Specialist",
@@ -9850,8 +9740,7 @@
       "CSC494H1",
       "CSC495H1",
       "CSC494Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Contemporary Asian Studies Major",
@@ -10105,8 +9994,7 @@
       "SAN392Y5",
       "URD212Y5",
       "URD312Y5"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Contemporary Asian Studies Minor",
@@ -10336,8 +10224,7 @@
       "SAN392Y5",
       "URD212Y5",
       "URD312Y5"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Creativity and Society Minor",
@@ -10427,8 +10314,7 @@
       "WRR311Y1",
       "WRR312H1",
       "WRR414H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Criminology and Sociolegal Studies",
@@ -10514,8 +10400,7 @@
       "SOC413H1",
       "TRN412H1",
       "CRI389Y0"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Criminology and Sociolegal Studies",
@@ -10601,8 +10486,7 @@
       "SOC413H1",
       "TRN412H1",
       "CRI389Y0"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Critical Studies in Equity and Solidarity Major",
@@ -11076,8 +10960,7 @@
       "VIC168H1",
       "VIC185H1",
       "WRR414H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Critical Studies in Equity and Solidarity Minor",
@@ -11550,8 +11433,7 @@
       "VIC168H1",
       "VIC185H1",
       "WRR414H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Data Science Specialist",
@@ -11658,8 +11540,7 @@
       "STA130H1",
       "STA130H1",
       "STA130H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Diaspora & Transnational Studies Major",
@@ -11965,8 +11846,7 @@
       "DTS300H1",
       "DTS200Y1",
       "DTS200H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Diaspora & Transnational Studies Minor",
@@ -12272,8 +12152,7 @@
       "DTS300H1",
       "DTS200Y1",
       "DTS200H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Digital Humanities Minor",
@@ -12332,8 +12211,7 @@
       "MST300H1",
       "MUS300H1",
       "WRR303H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Drama Major",
@@ -12460,8 +12338,7 @@
       "DRM490Y1",
       "DRM491H1",
       "SMC145Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Drama Minor",
@@ -12585,8 +12462,7 @@
       "DRM490Y1",
       "DRM491H1",
       "SMC145Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Drama Specialist",
@@ -12713,8 +12589,7 @@
       "DRM490Y1",
       "DRM491H1",
       "SMC145Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Earth and Environmental Systems Major",
@@ -12856,8 +12731,7 @@
       "ESS490H1",
       "ESS491H1",
       "ESS492Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "East Asian Studies Major",
@@ -13113,8 +12987,7 @@
       "RLG379H1",
       "RLG465H1",
       "SLA280H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "East Asian Studies Minor",
@@ -13336,8 +13209,7 @@
       "RLG379H1",
       "RLG465H1",
       "SLA280H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "East Asian Studies Specialist",
@@ -13589,8 +13461,7 @@
       "RLG379H1",
       "RLG465H1",
       "SLA280H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Ecology and Evolutionary Biology Major",
@@ -13729,8 +13600,7 @@
       "EEB465H1",
       "EEB466H1",
       "ENV432H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Ecology and Evolutionary Biology Minor",
@@ -13784,8 +13654,7 @@
       "BIO260H1",
       "EHJ352H1",
       "HMB265H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Ecology and Evolutionary Biology Specialist",
@@ -14000,8 +13869,7 @@
       "JHE355H1",
       "EEB322H1",
       "EEB455H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Economics & Mathematics Specialist",
@@ -14068,8 +13936,7 @@
       "MAT157Y1",
       "MAT246H1",
       "MAT246H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Economics Major",
@@ -14134,8 +14001,7 @@
       "MAT246H1",
       "STA220H1",
       "STA255H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Economics Minor",
@@ -14175,8 +14041,7 @@
       "ECO105Y1",
       "ECO220Y1",
       "ECO220Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Economics Specialist",
@@ -14253,8 +14118,7 @@
       "CSC108H1",
       "CSC148H1",
       "CSC110Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Education and Society Minor",
@@ -14297,8 +14161,7 @@
       "EDS363H1",
       "EDS368H1",
       "EDS369H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "English Major- Stream in Creative Writing",
@@ -14407,8 +14270,7 @@
       "CRE480H1",
       "WRR211H1",
       "WRR311H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "English Major- Stream in Literature and Language",
@@ -14503,8 +14365,7 @@
       "ENG497H1",
       "ENG498H1",
       "JWE206H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "English Minor",
@@ -14535,8 +14396,7 @@
       "ENG497H1",
       "ENG498H1",
       "JWE206H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "English Specialist",
@@ -14631,8 +14491,7 @@
       "ENG497H1",
       "ENG498H1",
       "JWE206H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environment & Behaviour Minor",
@@ -14666,8 +14525,7 @@
       "PSY321H1",
       "PSY427H1",
       "PSY336H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environment & Health Major",
@@ -14773,8 +14631,7 @@
       "PSL420H1",
       "PSY435H1",
       "JEH455H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environment & Health Specialist",
@@ -14907,8 +14764,7 @@
       "ENV492H1",
       "ENV493H1",
       "JEH455H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environment & Toxicology Specialist",
@@ -15020,8 +14876,7 @@
       "PCL474Y1",
       "PCL497H1",
       "PCL498Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environment and Energy Minor",
@@ -15081,8 +14936,7 @@
       "PHY132H1",
       "PHY151H1",
       "PHY152H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environmental Anthropology Minor",
@@ -15208,8 +15062,7 @@
       "JAL355H1",
       "JAL401H1",
       "SLA380H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environmental Biology Major",
@@ -15349,8 +15202,7 @@
       "EEB498Y1",
       "EEB488H1",
       "EEB499Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environmental Biology Minor",
@@ -15391,8 +15243,7 @@
       "EEB324H1",
       "EEB328H1",
       "ENV432H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environmental Chemistry Major",
@@ -15444,8 +15295,7 @@
       "CHM398Y0",
       "CHM399H1",
       "CHM399Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environmental Chemistry Minor",
@@ -15480,8 +15330,7 @@
       "CHM317H1",
       "CHM410H1",
       "CHM415H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environmental Economics Minor",
@@ -15518,8 +15367,7 @@
       "ECO206Y1",
       "ECO313H1",
       "ECO314H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environmental Ethics Major",
@@ -15586,8 +15434,7 @@
       "RLG345H1",
       "WGS273H1",
       "WGS442H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environmental Ethics Minor",
@@ -15613,8 +15460,7 @@
       "JGE331H1",
       "ENV221H1",
       "ENV222H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environmental Geography Major",
@@ -15737,8 +15583,7 @@
       "ENV395Y0",
       "ENV396Y0",
       "ENV422H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environmental Geography Minor",
@@ -15855,8 +15700,7 @@
       "ENV395Y0",
       "ENV396Y0",
       "ENV422H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environmental Geography Specialist",
@@ -15987,8 +15831,7 @@
       "ENV395Y0",
       "ENV396Y0",
       "ENV422H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environmental Geosciences Minor",
@@ -16015,8 +15858,7 @@
       "ESS311H1",
       "ESS312H1",
       "ESS410H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environmental Geosciences Specialist",
@@ -16127,8 +15969,7 @@
       "ESS322H1",
       "GGR205H1",
       "JEG205H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environmental Science Major",
@@ -16276,8 +16117,7 @@
       "ARC382H1",
       "ARC386H1",
       "ARC387H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environmental Science Minor",
@@ -16379,8 +16219,7 @@
       "ESS410H1",
       "ESS450H1",
       "GGR390H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environmental Studies Major",
@@ -16537,8 +16376,7 @@
       "ARC382H1",
       "ARC386H1",
       "ARC387H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Environmental Studies Minor",
@@ -16667,8 +16505,7 @@
       "ARC382H1",
       "ARC386H1",
       "ARC387H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Ethics, Society, and Law Major",
@@ -16817,8 +16654,7 @@
       "TRN161Y1",
       "TRN171Y1",
       "TRN172Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "European Affairs Major",
@@ -17038,8 +16874,7 @@
       "SPA341H1",
       "SPA345H1",
       "SPA435H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "European Affairs Minor",
@@ -17065,8 +16900,7 @@
       "POL358H1",
       "POL359H1",
       "POL387H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Finance and Economics Specialist (BCom)",
@@ -17143,8 +16977,7 @@
       "STA255H1",
       "MGT100H1",
       "RSM100H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Financial Economics Specialist",
@@ -17225,8 +17058,7 @@
       "CSC108H1",
       "CSC148H1",
       "CSC110Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Accounting",
@@ -17258,8 +17090,7 @@
       "RSM427H1",
       "RSM429H1",
       "RSM470H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Artificial Intelligence (Major)",
@@ -17309,8 +17140,7 @@
       "PSY270H1",
       "PHL232H1",
       "PHL342H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Artificial Intelligence (Specialist)",
@@ -17360,8 +17190,7 @@
       "PSY270H1",
       "PHL232H1",
       "PHL342H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Canadian Foreign & Security Relations (Major)",
@@ -17393,8 +17222,7 @@
       "TRN410H1",
       "TRN419Y1",
       "VIC476H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Canadian Foreign & Security Relations (Specialist)",
@@ -17426,8 +17254,7 @@
       "TRN410H1",
       "TRN419Y1",
       "VIC476H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Computational Linguistics and Natural Language Processing (Major)",
@@ -17460,8 +17287,7 @@
       "COG250Y1",
       "CSC384H1",
       "CSC420H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Computational Linguistics and Natural Language Processing (Specialist)",
@@ -17494,8 +17320,7 @@
       "COG250Y1",
       "CSC384H1",
       "CSC420H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Computer Systems (Major)",
@@ -17537,8 +17362,7 @@
       "CSC427H5",
       "ECE454H1",
       "ECE568H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Computer Systems (Specialist)",
@@ -17578,8 +17402,7 @@
       "CSC427H5",
       "ECE454H1",
       "ECE568H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Computer Vision (Major)",
@@ -17624,8 +17447,7 @@
       "PSY280H1",
       "STA257H1",
       "STA261H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Computer Vision (Specialist)",
@@ -17670,8 +17492,7 @@
       "PSY280H1",
       "STA257H1",
       "STA261H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Data Analytics (Major)",
@@ -17722,8 +17543,7 @@
       "ECO484H1",
       "ECO499H1",
       "ECO489H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Data Analytics (Specialist)",
@@ -17773,8 +17593,7 @@
       "ECO499H1",
       "ECO475H1",
       "ECO489H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Data Science in Business",
@@ -17812,8 +17631,7 @@
       "RSM456H1",
       "RSM470H1",
       "RSM483H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Finance",
@@ -17847,8 +17665,7 @@
       "RSM437H1",
       "RSM438H1",
       "RSM439H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Game Design (Major)",
@@ -17888,8 +17705,7 @@
       "ENG235H1",
       "ECO326H1",
       "RSM482H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Game Design (Specialist)",
@@ -17929,8 +17745,7 @@
       "ENG235H1",
       "ECO326H1",
       "RSM482H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Green Chemistry",
@@ -17955,8 +17770,7 @@
       "CHM249H1",
       "CHM310H1",
       "CHM343H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Human-Computer Interaction (Major)",
@@ -18009,8 +17823,7 @@
       "COG341H1",
       "COG343H1",
       "COG344H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Human-Computer Interaction (Specialist)",
@@ -18063,8 +17876,7 @@
       "COG341H1",
       "COG343H1",
       "COG344H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in International Business (UofT Global Scholar)",
@@ -18105,8 +17917,7 @@
       "ECO406H1",
       "ECO435H1",
       "ECO451H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in International Economy (Major)",
@@ -18144,8 +17955,7 @@
       "HIS417H1",
       "POL435H1",
       "POL477H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in International Economy (Specialist)",
@@ -18183,8 +17993,7 @@
       "HIS417H1",
       "POL435H1",
       "POL477H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in International Law & Human Rights (Major)",
@@ -18221,8 +18030,7 @@
       "POL457Y1",
       "POL469H1",
       "TRN421Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in International Law & Human Rights (Specialist)",
@@ -18259,8 +18067,7 @@
       "POL457Y1",
       "POL469H1",
       "TRN421Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Law and History (Major)",
@@ -18315,8 +18122,7 @@
       "HIS389H1",
       "HIS466H1",
       "HIS496H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Law and History (Specialist)",
@@ -18371,8 +18177,7 @@
       "HIS389H1",
       "HIS466H1",
       "HIS496H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Law and Politics (Major)",
@@ -18435,8 +18240,7 @@
       "POL494H1",
       "POL496H1",
       "POL497H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Law and Politics (Specialist)",
@@ -18499,8 +18303,7 @@
       "POL494H1",
       "POL496H1",
       "POL497H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Leadership in Organizations",
@@ -18532,8 +18335,7 @@
       "RSM466H1",
       "RSM496H1",
       "RSM499H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Managing in Diverse Economies (UofT Global Scholar)",
@@ -18606,8 +18408,7 @@
       "RLG365H1",
       "RSM427H1",
       "RSM499H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Marketing",
@@ -18641,8 +18442,7 @@
       "RSM458H1",
       "RSM459H1",
       "RSM470H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Medical Anthropology (Major: General)",
@@ -18678,8 +18478,7 @@
       "ANT458H1",
       "ANT460H1",
       "ANT488H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Medical Anthropology (Major: Society, Culture and Language)",
@@ -18715,8 +18514,7 @@
       "ANT458H1",
       "ANT460H1",
       "ANT488H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Medical Anthropology (Specialist: Society, Culture and Language)",
@@ -18752,8 +18550,7 @@
       "ANT458H1",
       "ANT460H1",
       "ANT488H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Planning (Major)",
@@ -18793,8 +18590,7 @@
       "GGR456H1",
       "GGR460H1",
       "GGR493Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Planning (Specialist)",
@@ -18834,8 +18630,7 @@
       "GGR456H1",
       "GGR460H1",
       "GGR493Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Practical Chemical Analysis",
@@ -18865,8 +18660,7 @@
       "CHM395Y1",
       "CHM499Y1",
       "PHC489Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Quantitative Finance (Data Science Specialist)",
@@ -18895,8 +18689,7 @@
       "STA452H1",
       "MAT244H1",
       "MAT267H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Quantitative Finance (Specialist in Statistical Science: Theory and Methods)",
@@ -18925,8 +18718,7 @@
       "STA452H1",
       "MAT244H1",
       "MAT267H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Quantitative Political Analysis (Major)",
@@ -18961,8 +18753,7 @@
       "POL314H1",
       "POL342H1",
       "POL440H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Quantitative Political Analysis (Specialist)",
@@ -18997,8 +18788,7 @@
       "POL314H1",
       "POL342H1",
       "POL440H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Scientific Computing (Major)",
@@ -19044,8 +18834,7 @@
       "MAT354H1",
       "MAT337H1",
       "MAT357H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Scientific Computing (Specialist)",
@@ -19091,8 +18880,7 @@
       "MAT354H1",
       "MAT337H1",
       "MAT357H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Strategy and Innovation",
@@ -19133,8 +18921,7 @@
       "RSM496H1",
       "RSM497H1",
       "RSM499H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Technology Leadership (Computer Science Major)",
@@ -19177,8 +18964,7 @@
       "CSC494H1",
       "CSC495H1",
       "CSC494Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Technology Leadership (Computer Science Specialist)",
@@ -19223,8 +19009,7 @@
       "CSC494H1",
       "CSC495H1",
       "CSC494Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Technology Leadership (Data Science Specialist)",
@@ -19267,8 +19052,7 @@
       "CSC494H1",
       "CSC495H1",
       "CSC494Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Theory of Computation (Major)",
@@ -19304,8 +19088,7 @@
       "CSC495H1",
       "CSC494H1",
       "CSC495H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Theory of Computation (Specialist)",
@@ -19340,8 +19123,7 @@
       "CSC495H1",
       "CSC494H1",
       "CSC495H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Transnational Exchanges (Major)",
@@ -19375,8 +19157,7 @@
       "POL472H1",
       "TRN409H1",
       "TRN410H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Transnational Exchanges (Specialist)",
@@ -19410,8 +19191,7 @@
       "POL472H1",
       "TRN409H1",
       "TRN410H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Urban Geography (Major)",
@@ -19448,8 +19228,7 @@
       "GGR458H1",
       "GGR460H1",
       "GGR482H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Urban Geography (Specialist)",
@@ -19486,8 +19265,7 @@
       "GGR458H1",
       "GGR460H1",
       "GGR482H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Web and Internet Technologies (Major)",
@@ -19524,8 +19302,7 @@
       "ECE568H1",
       "ENV281H1",
       "ENV381H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Web and Internet Technologies (Specialist)",
@@ -19563,8 +19340,7 @@
       "ECE568H1",
       "ENV281H1",
       "ENV381H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Forest Biomaterials Science Major",
@@ -19622,8 +19398,7 @@
       "FOR420H1",
       "FOR423H1",
       "CHE475H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Forest Biomaterials Science Minor",
@@ -19665,8 +19440,7 @@
       "FOR410H1",
       "FOR420H1",
       "FOR423H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Forest Conservation Major",
@@ -19711,8 +19485,7 @@
       "FOR310H1",
       "EEB321H1",
       "FOR400Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Forest Conservation Minor",
@@ -19749,8 +19522,7 @@
       "FOR310H1",
       "FOR400Y1",
       "FOR401H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Forest Conservation Science Major",
@@ -19798,8 +19570,7 @@
       "FOR310H1",
       "EEB321H1",
       "FOR400Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Forest Conservation Science Minor",
@@ -19833,8 +19604,7 @@
       "FOR307H1",
       "FOR310H1",
       "FOR400Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Forest Conservation Science Specialist",
@@ -19922,8 +19692,7 @@
       "EEB406H1",
       "EEB407H1",
       "FOR301H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Forest Conservation Specialist",
@@ -19986,8 +19755,7 @@
       "ENV440H1",
       "GGR416H1",
       "FOR301H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "French Language and French Linguistics Major",
@@ -20038,8 +19806,7 @@
       "FRE490Y1",
       "FSL220H1",
       "FSL122H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "French Language and French Linguistics Specialist",
@@ -20091,8 +19858,7 @@
       "FRE492H1",
       "FSL220H1",
       "FSL122H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "French Language and Literature Major",
@@ -20150,8 +19916,7 @@
       "FSL222H1",
       "FSL320H1",
       "FSL322H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "French Language and Literature Specialist",
@@ -20208,8 +19973,7 @@
       "FSL222H1",
       "FSL320H1",
       "FSL322H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "French Language Learning Major",
@@ -20250,8 +20014,7 @@
       "FSL443H1",
       "FSL220H1",
       "FSL122H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "French Studies Minor",
@@ -20289,8 +20052,7 @@
       "FSL222H1",
       "FSL224H1",
       "FSL225H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Genome Biology Major",
@@ -20383,8 +20145,7 @@
       "EEB498Y1",
       "EEB499Y1",
       "MGY480Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Geographic Data Science Major: Human Systems Stream",
@@ -20473,8 +20234,7 @@
       "JGC439H1",
       "JIG440H1",
       "GGR456H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Geographic Data Science Major: Physical and Environmental Systems Stream",
@@ -20558,8 +20318,7 @@
       "GGR419H1",
       "GGR438H1",
       "JGE481H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Geographic Data Science Major: Urban Systems Stream",
@@ -20629,8 +20388,7 @@
       "GGR458H1",
       "GGR460H1",
       "GGR482H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Geographic Information Systems Minor",
@@ -20684,8 +20442,7 @@
       "GGR497H1",
       "GGR498H1",
       "GGR499H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Geology Specialist",
@@ -20863,8 +20620,7 @@
       "GGR462H1",
       "GGR472H1",
       "GGR473H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Geophysics Specialist",
@@ -20951,8 +20707,7 @@
       "ESS490H1",
       "ESS491H1",
       "ESS492Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Geoscience Major",
@@ -21030,8 +20785,7 @@
       "JGA305H1",
       "ESS461H1",
       "ESS450H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Geoscience Minor",
@@ -21058,8 +20812,7 @@
       "EEB240H1",
       "JEG100H1",
       "ESS224H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "German Studies in English",
@@ -21079,8 +20832,7 @@
     "completion_requirement": [],
     "courses_mentioned": [
       "GER150H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "German Studies Major",
@@ -21109,8 +20861,7 @@
       "GER401H1",
       "GER205H1",
       "GER400H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "German Studies Minor",
@@ -21137,8 +20888,7 @@
       "GER400H1",
       "GER401H1",
       "GER100Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "German Studies Specialist",
@@ -21170,8 +20920,7 @@
       "GER205H1",
       "GER305H1",
       "GER401H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Global Health Major",
@@ -21315,8 +21064,7 @@
       "JEH455H1",
       "HMB462H1",
       "JHU473H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Global Health Specialist",
@@ -21463,8 +21211,7 @@
       "JEH455H1",
       "HMB462H1",
       "JHU473H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Greek Major",
@@ -21490,8 +21237,7 @@
       "CLA160H1",
       "CLA170H1",
       "CLA260H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Greek Minor",
@@ -21516,8 +21262,7 @@
       "GRK102H1",
       "CLA160H1",
       "CLA170H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Health & Disease Major",
@@ -21641,8 +21386,7 @@
       "JEH455H1",
       "HMB462H1",
       "HMB474H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Health & Disease Specialist",
@@ -21778,8 +21522,7 @@
       "HMB462H1",
       "HMB474H1",
       "HMB489H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "History and Philosophy of Science and Technology Major",
@@ -21805,8 +21548,7 @@
       "PHL355H1",
       "PHL356H1",
       "PHL357H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "History and Philosophy of Science and Technology Minor",
@@ -21831,8 +21573,7 @@
       "PHL245H1",
       "PHL356H1",
       "PHL357H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "History Major",
@@ -22233,8 +21974,7 @@
       "HIS465H1",
       "HIS481H1",
       "HIS262H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "History Minor",
@@ -22306,8 +22046,7 @@
       "TRN250Y1",
       "WGS481H1",
       "HIS262H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "History Specialist",
@@ -22760,8 +22499,7 @@
       "HIS465H1",
       "HIS481H1",
       "HIS262H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Human Biology Major",
@@ -22918,8 +22656,7 @@
       "PSY470H1",
       "PSY471H1",
       "PSY494H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Human Geography Major",
@@ -23085,8 +22822,7 @@
       "GGR414H1",
       "GGR415H1",
       "GGR498H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Human Geography Minor",
@@ -23235,8 +22971,7 @@
       "GGR414H1",
       "GGR415H1",
       "GGR498H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Human Geography Specialist",
@@ -23404,8 +23139,7 @@
       "GGR414H1",
       "GGR415H1",
       "GGR498H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Hungarian Studies Major",
@@ -23442,8 +23176,7 @@
       "HUN450H1",
       "HUN455H1",
       "INI381H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Hungarian Studies Minor",
@@ -23477,8 +23210,7 @@
       "HIS389H1",
       "HIS453H1",
       "INI381H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Immunology Major",
@@ -23534,8 +23266,7 @@
       "MGY377H1",
       "MGY378H1",
       "IMM435H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Immunology Minor",
@@ -23563,8 +23294,7 @@
       "IMM250H1",
       "IMM340H1",
       "IMM350H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Immunology Specialist",
@@ -23631,8 +23361,7 @@
       "PHY152H1",
       "IMM435H1",
       "IMM385Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Indigenous Studies Major",
@@ -23773,8 +23502,7 @@
       "LIN351H1",
       "RLG307H1",
       "SDS382H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Indigenous Studies Minor",
@@ -23880,8 +23608,7 @@
       "RLG331H1",
       "SDS385H1",
       "WGS395H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Indigenous Studies Specialist",
@@ -24023,8 +23750,7 @@
       "LIN351H1",
       "RLG307H1",
       "SDS382H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Industrial Relations & Human Resources",
@@ -24082,8 +23808,7 @@
       "SOC367H1",
       "SOC370H1",
       "WRR300H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Industrial Relations & Human Resources",
@@ -24144,8 +23869,7 @@
       "SOC367H1",
       "SOC370H1",
       "WRR300H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "International Relations Major",
@@ -24324,8 +24048,7 @@
       "TRN377Y1",
       "TRN409H1",
       "TRN410H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "International Relations Specialist",
@@ -24572,8 +24295,7 @@
       "TRN409H1",
       "TRN410H1",
       "VIC476H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Islamic Studies Major",
@@ -24661,8 +24383,7 @@
       "MHB256H1",
       "MHB355H1",
       "MHB356H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Italian Language  Minor",
@@ -24725,8 +24446,7 @@
       "ITA349H1",
       "ITA358Y0",
       "ITA359Y0"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Italian Studies Major",
@@ -24792,8 +24512,7 @@
       "ITA349H1",
       "ITA358Y0",
       "ITA359Y0"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Italian Studies Minor",
@@ -24852,8 +24571,7 @@
       "ITA349H1",
       "ITA358Y0",
       "ITA359Y0"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Italian Studies Specialist",
@@ -24921,8 +24639,7 @@
       "ITA349H1",
       "ITA358Y0",
       "ITA359Y0"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Jewish Studies Major",
@@ -24951,8 +24668,7 @@
       "GER260Y1",
       "GER261H1",
       "GER262H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Jewish Studies Minor",
@@ -24980,8 +24696,7 @@
       "GER260Y1",
       "GER261H1",
       "GER262H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Jewish Studies Specialist",
@@ -25028,8 +24743,7 @@
       "GER260Y1",
       "GER261H1",
       "GER262H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Latin American Studies Major",
@@ -25137,8 +24851,7 @@
       "CSE240H1",
       "CSE270H1",
       "CSE346H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Latin American Studies Minor",
@@ -25235,8 +24948,7 @@
       "LIN202H1",
       "LIN302H1",
       "LIN303H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Latin Major",
@@ -25262,8 +24974,7 @@
       "CLA160H1",
       "CLA170H1",
       "CLA260H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Latin Minor",
@@ -25288,8 +24999,7 @@
       "LAT102H1",
       "CLA160H1",
       "CLA170H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Linguistics Major",
@@ -25376,8 +25086,7 @@
       "SPA421H1",
       "SPA422H1",
       "SPA423H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Linguistics Minor",
@@ -25453,8 +25162,7 @@
       "SPA421H1",
       "SPA422H1",
       "SPA423H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Linguistics Specialist",
@@ -25601,8 +25309,7 @@
       "SLA277H1",
       "SLA108Y1",
       "SLA208Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Literature and Critical Theory Major in the Comparative Literature Stream",
@@ -25645,8 +25352,7 @@
       "LCT494H1",
       "LCT494Y1",
       "LCT402H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Literature and Critical Theory Major in the Cultural Theory Stream",
@@ -25689,8 +25395,7 @@
       "LCT494H1",
       "LCT494Y1",
       "LCT402H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Literature and Critical Theory Minor",
@@ -25733,8 +25438,7 @@
       "LCT403H1",
       "LCT494H1",
       "LCT494Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Literature and Critical Theory Specialist in the Comparative Literature Stream",
@@ -25777,8 +25481,7 @@
       "LCT494H1",
       "LCT494Y1",
       "LCT402H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Literature and Critical Theory Specialist in the Cultural Theory Stream",
@@ -25821,8 +25524,7 @@
       "LCT494H1",
       "LCT494Y1",
       "LCT402H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Major in Public Policy",
@@ -25975,8 +25677,7 @@
       "SOC208H1",
       "SOC215H1",
       "SOC389H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Management Specialist (BCom)",
@@ -26046,8 +25747,7 @@
       "STA255H1",
       "MGT100H1",
       "RSM100H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Material Culture and Semiotics Minor",
@@ -26122,8 +25822,7 @@
       "RLG307H1",
       "BMS387H1",
       "VIC119H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Materials Science Specialist",
@@ -26202,8 +25901,7 @@
       "MSE540H1",
       "CHM499Y1",
       "MSE491Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Mathematical Applications in Economics and Finance Specialist",
@@ -26274,8 +25972,7 @@
       "PHL281H1",
       "PHL295H1",
       "SDS256H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Mathematics & Its Applications Specialist (Physical Science)",
@@ -26370,8 +26067,7 @@
       "PHL281H1",
       "PHL295H1",
       "SDS256H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Mathematics & Its Applications Specialist (Probability/Statistics)",
@@ -26456,8 +26152,7 @@
       "PHL281H1",
       "PHL295H1",
       "SDS256H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Mathematics & Its Applications Specialist (Teaching)",
@@ -26537,8 +26232,7 @@
       "PHL281H1",
       "PHL295H1",
       "SDS256H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Mathematics and Philosophy Specialist",
@@ -26589,8 +26283,7 @@
       "MAT347Y1",
       "MAT354H1",
       "MAT357H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Mathematics and Physics Specialist",
@@ -26670,8 +26363,7 @@
       "PHL281H1",
       "PHL295H1",
       "SDS256H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Mathematics Major",
@@ -26785,8 +26477,7 @@
       "PHL281H1",
       "PHL295H1",
       "SDS256H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Mathematics Minor",
@@ -26835,8 +26526,7 @@
       "PSL432H1",
       "HPS390H1",
       "HPS391H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Mathematics Specialist",
@@ -26896,8 +26586,7 @@
       "PHL281H1",
       "PHL295H1",
       "SDS256H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Medical Anthropology Minor",
@@ -26947,8 +26636,7 @@
       "ANT458H1",
       "ANT460H1",
       "ANT488H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Medieval Studies Major",
@@ -27087,8 +26775,7 @@
       "FAH421H1",
       "FAH424H1",
       "MST300H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Medieval Studies Minor",
@@ -27221,8 +26908,7 @@
       "FAH421H1",
       "FAH424H1",
       "MST300H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Medieval Studies Specialist",
@@ -27369,8 +27055,7 @@
       "FAH421H1",
       "FAH424H1",
       "MST300H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Minor in Creative Writing",
@@ -27426,8 +27111,7 @@
       "DRM428H1",
       "WRR211H1",
       "WRR311H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Minor in French Language",
@@ -27457,8 +27141,7 @@
       "FSL321Y1",
       "FSL120H1",
       "FSL102H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Minor Program in Christianity and Education",
@@ -27551,8 +27234,7 @@
       "MST407Y1",
       "MST436H1",
       "SMC457H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Molecular Genetics and Microbiology Major",
@@ -27614,8 +27296,7 @@
       "MGY311Y1",
       "BCH311H1",
       "CSB349H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Molecular Genetics And Microbiology Specialist: Genetics Stream",
@@ -27688,8 +27369,7 @@
       "CSB472H1",
       "BCH448H1",
       "EEB460H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Molecular Genetics And Microbiology Specialist: Microbiology Stream",
@@ -27766,8 +27446,7 @@
       "BCH428H1",
       "CSB472H1",
       "BCH445H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Music History & Culture Minor",
@@ -27795,8 +27474,7 @@
       "MUS215H1",
       "MUS120Y1",
       "MUS220Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Music Major with Ensemble Option- Creative Practice Stream",
@@ -27836,8 +27514,7 @@
       "DMU409H1",
       "JMU210H1",
       "JMU215H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Music Major with Ensemble Option- Research Stream",
@@ -27867,8 +27544,7 @@
       "JMU210H1",
       "JMU210H1",
       "JMU215H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Music Major- Creative Practice Stream",
@@ -27908,8 +27584,7 @@
       "DMU409H1",
       "JMU210H1",
       "JMU215H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Music Major- Research Stream",
@@ -27939,8 +27614,7 @@
       "JMU210H1",
       "JMU210H1",
       "JMU215H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Music Specialist",
@@ -27973,8 +27647,7 @@
       "HMU433H1",
       "HMU435H1",
       "HMU450H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Music Specialist with Ensemble Option",
@@ -28008,8 +27681,7 @@
       "HMU432H1",
       "HMU433H1",
       "HMU435H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Near and Middle Eastern Civilizations Major (Ancient)",
@@ -28226,8 +27898,7 @@
       "NMC497H1",
       "NMC499Y1",
       "JMH385H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Near and Middle Eastern Civilizations Major (General)",
@@ -28252,8 +27923,7 @@
       "NMC104H1",
       "NMC105H1",
       "NMC106H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Near and Middle Eastern Civilizations Major (Medieval)",
@@ -28471,8 +28141,7 @@
       "NMC497H1",
       "NMC499Y1",
       "JMH385H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Near and Middle Eastern Civilizations Major (Modern)",
@@ -28687,8 +28356,7 @@
       "NMC496H1",
       "NMC497H1",
       "NMC499Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Near and Middle Eastern Civilizations Minor",
@@ -28706,8 +28374,7 @@
       "This is an open enrolment program. A student who has completed 4.0 credits may enrol in the program."
     ],
     "completion_requirement": [],
-    "courses_mentioned": [],
-    "review_flags": []
+    "courses_mentioned": []
   },
   {
     "title": "Near and Middle Eastern Civilizations Specialist (Ancient)",
@@ -28928,8 +28595,7 @@
       "NMC497H1",
       "NMC499Y1",
       "JMH385H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Near and Middle Eastern Civilizations Specialist (General)",
@@ -29080,8 +28746,7 @@
       "NMC450H1",
       "NMC480H1",
       "NMC491H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Near and Middle Eastern Civilizations Specialist (Medieval)",
@@ -29296,8 +28961,7 @@
       "NMC497H1",
       "NMC499Y1",
       "JMH385H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Near and Middle Eastern Civilizations Specialist (Modern)",
@@ -29509,8 +29173,7 @@
       "NMC497H1",
       "NMC499Y1",
       "JHM307H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Neuroscience Major",
@@ -29627,8 +29290,7 @@
       "HMB450H1",
       "HMB460H1",
       "HMB473H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Neuroscience Specialist",
@@ -29747,8 +29409,7 @@
       "HMB450H1",
       "HMB460H1",
       "HMB473H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Nutritional Sciences Major",
@@ -29802,8 +29463,7 @@
       "NFS489H1",
       "NFS490H1",
       "NFS494Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Pathobiology Specialist",
@@ -29875,8 +29535,7 @@
       "LMP450H1",
       "LMP460H1",
       "LMP405Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Peace, Conflict and Justice Major",
@@ -29963,8 +29622,7 @@
       "TRN312H1",
       "WGS273H1",
       "WGS340H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Peace, Conflict and Justice Specialist",
@@ -30055,8 +29713,7 @@
       "TRN312H1",
       "WGS273H1",
       "WGS340H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Pharmaceutical Chemistry Specialist",
@@ -30129,8 +29786,7 @@
       "PHC470H1",
       "PSL300H1",
       "PSL301H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Pharmacology Major",
@@ -30185,8 +29841,7 @@
       "PCL470H1",
       "PCL472Y1",
       "PCL474Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Pharmacology Specialist",
@@ -30283,8 +29938,7 @@
       "PCL472Y1",
       "PCL497H1",
       "PCL498Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Philosophy Major",
@@ -30319,8 +29973,7 @@
       "PHL275H1",
       "PHL245H1",
       "PHL246H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Philosophy Minor",
@@ -30351,8 +30004,7 @@
       "PHL240H1",
       "PHL265H1",
       "PHL275H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Philosophy Specialist",
@@ -30387,8 +30039,7 @@
       "PHL275H1",
       "PHL245H1",
       "PHL246H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Physical and Environmental Geography Major",
@@ -30496,8 +30147,7 @@
       "JEE337H1",
       "PHY392H1",
       "PHY408H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Physical and Environmental Geography Minor",
@@ -30574,8 +30224,7 @@
       "GGR375H1",
       "GGR386H1",
       "GGR493Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Physical and Environmental Geography Specialist",
@@ -30692,8 +30341,7 @@
       "JEE337H1",
       "PHY392H1",
       "PHY408H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Physics and Philosophy Specialist",
@@ -30788,8 +30436,7 @@
       "PHL412H1",
       "PHL413H1",
       "PHL483H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Physics Major",
@@ -30861,8 +30508,7 @@
       "AST310H1",
       "PHY407H1",
       "PHY408H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Physics Minor",
@@ -30899,8 +30545,7 @@
       "JPE493H1",
       "JPH311H1",
       "JPH441H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Physics Specialist",
@@ -30992,8 +30637,7 @@
       "MAT351Y1",
       "APM346H1",
       "PHY424H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Physiology Major",
@@ -31074,8 +30718,7 @@
       "PSL379H0",
       "PSL398H0",
       "PSL399Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Physiology Minor",
@@ -31125,8 +30768,7 @@
       "PSY492H1",
       "PSY494H1",
       "PSY497H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Physiology Specialist",
@@ -31223,8 +30865,7 @@
       "HMB430H1",
       "HMB470H1",
       "HMB472H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Planetary Science Specialist",
@@ -31324,8 +30965,7 @@
       "CHM415H1",
       "JPE493H1",
       "APM346H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Political Science Major",
@@ -31500,8 +31140,7 @@
       "VIC476H1",
       "WDW151H1",
       "WDW152H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Political Science Minor",
@@ -31564,8 +31203,7 @@
       "VIC476H1",
       "WDW151H1",
       "WDW152H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Political Science Specialist",
@@ -31753,8 +31391,7 @@
       "VIC476H1",
       "WDW151H1",
       "WDW152H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Portuguese Major",
@@ -31805,8 +31442,7 @@
       "PRT302H1",
       "PRT320Y1",
       "PRT420H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Portuguese Minor",
@@ -31856,8 +31492,7 @@
       "PRT302H1",
       "PRT320Y1",
       "PRT420H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Portuguese Specialist",
@@ -31903,8 +31538,7 @@
       "PRT302H1",
       "PRT320Y1",
       "PRT420H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Psychology Major",
@@ -32173,8 +31807,7 @@
       "VIC206H1",
       "WGS372H1",
       "WRR307H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Psychology Minor",
@@ -32441,8 +32074,7 @@
       "VIC206H1",
       "WGS372H1",
       "WRR307H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Psychology of Economics and Management Certificate (Category 2)",
@@ -32473,8 +32105,7 @@
       "PSY322H1",
       "PSY326H1",
       "PSY336H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Psychology Research Specialist",
@@ -32761,8 +32392,7 @@
       "VIC206H1",
       "WGS372H1",
       "WRR307H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Psychology Specialist",
@@ -33061,8 +32691,7 @@
       "VIC206H1",
       "WGS372H1",
       "WRR307H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Public Health Major",
@@ -33216,8 +32845,7 @@
       "PHS450Y1",
       "PHS451Y1",
       "PHS480H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Quantitative Biology Major",
@@ -33341,8 +32969,7 @@
       "PHY431H1",
       "PSY474H1",
       "STA480H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Religion Major",
@@ -33620,8 +33247,7 @@
       "MHB256H1",
       "MHB355H1",
       "MHB356H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Religion Minor",
@@ -33672,8 +33298,7 @@
       "MHB256H1",
       "MHB355H1",
       "MHB356H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Religion Specialist",
@@ -33901,8 +33526,7 @@
       "MHB256H1",
       "MHB355H1",
       "MHB356H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Renaissance Studies Major",
@@ -34010,8 +33634,7 @@
       "FAH440H1",
       "FAH470H1",
       "REN440H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Renaissance Studies Minor",
@@ -34107,8 +33730,7 @@
       "FAH436H1",
       "FAH440H1",
       "FAH470H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Renaissance Studies Specialist",
@@ -34220,8 +33842,7 @@
       "REN492H1",
       "REN492Y1",
       "REN440H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Science, Technology, and Society Minor",
@@ -34343,8 +33964,7 @@
       "SOC331H1",
       "SOC356H1",
       "WGS367H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Sexual Diversity Studies Major",
@@ -34465,8 +34085,7 @@
       "WGS374H1",
       "WGS480H1",
       "WGS481H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Sexual Diversity Studies Minor",
@@ -34582,8 +34201,7 @@
       "WGS374H1",
       "WGS480H1",
       "WGS481H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Sexual Diversity Studies Specialist",
@@ -34704,8 +34322,7 @@
       "WGS374H1",
       "WGS480H1",
       "WGS481H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Slavic and East European Languages and Cultures Major",
@@ -34957,8 +34574,7 @@
       "SLA425H1",
       "SLA435H1",
       "SLA492H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Slavic and East European Languages and Cultures Minor",
@@ -35213,8 +34829,7 @@
       "SLA425H1",
       "SLA435H1",
       "SLA492H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Slavic and East European Languages and Cultures Specialist",
@@ -35468,8 +35083,7 @@
       "SLA425H1",
       "SLA435H1",
       "SLA492H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Slavic and East European Literature in Translation Minor",
@@ -35631,8 +35245,7 @@
       "SLA425H1",
       "SLA435H1",
       "SLA492H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Sociology Major",
@@ -35661,7 +35274,6 @@
       "SOC254H1",
       "SOC317H1",
       "SOC354H1"
-    ],
-    "review_flags": []
+    ]
   }
 ]

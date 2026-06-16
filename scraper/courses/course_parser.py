@@ -597,7 +597,7 @@ class CourseParser:
         has_fields = []
         # course name
         raw_name = div.h3.div.string.strip()
-        course_code, title = self.split_curse_name(raw_name)
+        course_code, title = split_curse_name(raw_name)
         split_course_code = course_code_parser(course_code)
         assert split_course_code is not None
         assert f"{split_course_code[3]}" in CAMPUSES
@@ -799,7 +799,7 @@ class CourseParser:
             self.general_logger.critical("Warning: Couldn't find view-content in html.")
             return []
         courses_html = course_list.children
-        courses_json = parse_children(courses_html)
+        courses_json = self.parse_children(courses_html)
         return courses_json
 
 
@@ -951,9 +951,9 @@ class CourseParser:
         self.general_logger.info("parsing finished in: %ss", round(end - start, 4))
 
     @classmethod
-    def get_parse_job(target: str = "UTSG", interactive: bool = True):
-        def job():
+    def get_parse_job(cls, target: str = "UTSG", interactive: bool = True):
+        def job(target=target, interactive=interactive):
             cp = CourseParser()
-            cp.full_parse(traget, interactive)
+            cp.full_parse(target, interactive)
 
         return job

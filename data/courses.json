@@ -33,7 +33,7 @@
       "hours",
       "breadth_requirements_list"
     ],
-    "class_size": 240,
+    "class_size": 90,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -70,7 +70,7 @@
       "hours",
       "breadth_requirements_list"
     ],
-    "class_size": 240,
+    "class_size": 90,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -113,7 +113,7 @@
       "breadth_requirements_list",
       "exclusions"
     ],
-    "class_size": 480,
+    "class_size": 180,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -155,7 +155,7 @@
       "breadth_requirements_list",
       "exclusions"
     ],
-    "class_size": 240,
+    "class_size": 90,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -196,7 +196,7 @@
       "breadth_requirements_list",
       "exclusions"
     ],
-    "class_size": 240,
+    "class_size": 90,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -237,7 +237,7 @@
       "breadth_requirements_list",
       "exclusions"
     ],
-    "class_size": 480,
+    "class_size": 180,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -278,7 +278,7 @@
       "breadth_requirements_list",
       "exclusions"
     ],
-    "class_size": 240,
+    "class_size": 90,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -319,7 +319,7 @@
       "breadth_requirements_list",
       "exclusions"
     ],
-    "class_size": 240,
+    "class_size": 90,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -361,7 +361,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 960,
+    "class_size": 360,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -424,7 +424,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 3040,
+    "class_size": 1140,
     "subgraph_num_courses": 8,
     "subgraph_num_requisites": 7
   },
@@ -487,7 +487,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 2400,
+    "class_size": 900,
     "subgraph_num_courses": 9,
     "subgraph_num_requisites": 8
   },
@@ -555,7 +555,7 @@
       "prerequisites",
       "corequisites"
     ],
-    "class_size": 2200,
+    "class_size": 825,
     "subgraph_num_courses": 23,
     "subgraph_num_requisites": 25
   },
@@ -616,7 +616,7 @@
       "prerequisites",
       "corequisites"
     ],
-    "class_size": 2160,
+    "class_size": 810,
     "subgraph_num_courses": 27,
     "subgraph_num_requisites": 33
   },
@@ -684,7 +684,7 @@
       "corequisites",
       "exclusions"
     ],
-    "class_size": 1440,
+    "class_size": 540,
     "subgraph_num_courses": 27,
     "subgraph_num_requisites": 33
   },
@@ -750,7 +750,7 @@
       "prerequisites",
       "corequisites"
     ],
-    "class_size": 400,
+    "class_size": 150,
     "subgraph_num_courses": 27,
     "subgraph_num_requisites": 33
   },
@@ -802,7 +802,7 @@
       "corequisites",
       "exclusions"
     ],
-    "class_size": 1760,
+    "class_size": 660,
     "subgraph_num_courses": 25,
     "subgraph_num_requisites": 26
   },
@@ -5923,7 +5923,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 583,
+    "class_size": 683,
     "subgraph_num_courses": 19,
     "subgraph_num_requisites": 25
   },
@@ -9315,6 +9315,49 @@
     "subgraph_num_requisites": 1
   },
   {
+    "title": "The Illustrated Dante",
+    "course_code": "BMS351H1",
+    "split_course_code": [
+      "BMS",
+      351,
+      "H",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "This course will explore the multifaceted relationship between text, image, and culture from late medieval illuminated manuscripts up to the present day through an examination of illustrated versions of Dante\u2019s Divine Comedy. As early as the fourteenth century and into the present day, the reading and reception of Dante Alighieri\u2019s Divine Comedy has been tied to its presentation in illustration. Students will also study how engagements with Dante\u2019s poem have given life to visual responses and creative re-elaborations.",
+    "cr_ncr_eligible": true,
+    "breadth_requirements_list": [
+      "Creative and Cultural Representations (1)"
+    ],
+    "hours": {
+      "lecture": 24,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 0
+    },
+    "prerequisites": [
+      "AND",
+      "BMS100H1",
+      "BMS200Y1"
+    ],
+    "prerequisites_original": "Prerequisite: Completion of 6.0 credits including  BMS100H1,  BMS200Y1,  BMS201H1. Students who do not meet these prerequisites are encouraged to contact the unit.",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "Exclusion: BMS302H1S (Special Topics in Book & Media Histories: The Illustrated Dante) offered in Winter 2024.",
+    "experience": "",
+    "recommended_prep": [],
+    "has_fields": [
+      "hours",
+      "breadth_requirements_list",
+      "prerequisites",
+      "exclusions"
+    ],
+    "class_size": 45,
+    "subgraph_num_courses": 3,
+    "subgraph_num_requisites": 1
+  },
+  {
     "title": "Media and the Myths of Romance",
     "course_code": "BMS352H1",
     "split_course_code": [
@@ -12379,7 +12422,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 30,
+    "class_size": 27,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -12453,6 +12496,45 @@
       "recommended_prep"
     ],
     "class_size": 23,
+    "subgraph_num_courses": 1,
+    "subgraph_num_requisites": 0
+  },
+  {
+    "title": "Topics in Canadian Studies III",
+    "course_code": "CDN406H1",
+    "split_course_code": [
+      "CDN",
+      406,
+      "H",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "An in-depth study of selected questions in contemporary Canadian culture and society. Content will vary from year to year. Specific course information will be available on the Canadian Studies website at www.uc.utoronto.ca/canadianstudies.",
+    "cr_ncr_eligible": true,
+    "breadth_requirements_list": [
+      "Society and its Institutions (3)"
+    ],
+    "hours": {
+      "lecture": 0,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 24
+    },
+    "prerequisites": [],
+    "prerequisites_original": "Prerequisite: 4.0 credits or 1.0 credit in Canadian Studies",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "",
+    "experience": "",
+    "recommended_prep": "CDN265H1",
+    "has_fields": [
+      "hours",
+      "breadth_requirements_list",
+      "prerequisites",
+      "recommended_prep"
+    ],
+    "class_size": 30,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -34307,7 +34389,7 @@
     "has_fields": [
       "hours"
     ],
-    "class_size": 170,
+    "class_size": 135,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -35877,7 +35959,7 @@
       "exclusions",
       "recommended_prep"
     ],
-    "class_size": 4093,
+    "class_size": 3973,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -35923,7 +36005,7 @@
       "exclusions",
       "recommended_prep"
     ],
-    "class_size": 2992,
+    "class_size": 2970,
     "subgraph_num_courses": 2,
     "subgraph_num_requisites": 1
   },
@@ -36042,7 +36124,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 915,
+    "class_size": 925,
     "subgraph_num_courses": 12,
     "subgraph_num_requisites": 11
   },
@@ -36196,7 +36278,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 1010,
+    "class_size": 981,
     "subgraph_num_courses": 12,
     "subgraph_num_requisites": 11
   },
@@ -37091,7 +37173,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 185,
+    "class_size": 190,
     "subgraph_num_courses": 32,
     "subgraph_num_requisites": 39
   },
@@ -38846,7 +38928,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 160,
+    "class_size": 120,
     "subgraph_num_courses": 35,
     "subgraph_num_requisites": 40
   },
@@ -46670,7 +46752,7 @@
       "breadth_requirements_list",
       "exclusions"
     ],
-    "class_size": 750,
+    "class_size": 775,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -52894,6 +52976,44 @@
     "subgraph_num_requisites": 0
   },
   {
+    "title": "Case Studies at the Royal Ontario Museum",
+    "course_code": "FAH486H1",
+    "split_course_code": [
+      "FAH",
+      486,
+      "H",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "In-depth investigation of objects at the Royal Ontario Museum. Content will vary according to the museum department offering the course in any given semester.",
+    "cr_ncr_eligible": true,
+    "breadth_requirements_list": [
+      "Creative and Cultural Representations (1)"
+    ],
+    "hours": {
+      "lecture": 0,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 24
+    },
+    "prerequisites": [],
+    "prerequisites_original": "Prerequisite: 1.0 FAH credit at the 300-level",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "",
+    "experience": "",
+    "recommended_prep": [],
+    "has_fields": [
+      "hours",
+      "breadth_requirements_list",
+      "prerequisites"
+    ],
+    "class_size": 15,
+    "subgraph_num_courses": 1,
+    "subgraph_num_requisites": 0
+  },
+  {
     "title": "Independent Studies",
     "course_code": "FAH494H1",
     "split_course_code": [
@@ -57138,7 +57258,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 30,
+    "class_size": 24,
     "subgraph_num_courses": 5,
     "subgraph_num_requisites": 2
   },
@@ -57756,7 +57876,7 @@
       "hours",
       "breadth_requirements_list"
     ],
-    "class_size": 25,
+    "class_size": 0,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -58880,7 +59000,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 60,
+    "class_size": 0,
     "subgraph_num_courses": 3,
     "subgraph_num_requisites": 1
   },
@@ -58957,7 +59077,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 60,
+    "class_size": 0,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -60128,7 +60248,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 30,
+    "class_size": 38,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -66515,7 +66635,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 224,
+    "class_size": 242,
     "subgraph_num_courses": 32,
     "subgraph_num_requisites": 31
   },
@@ -73356,10 +73476,7 @@
     "prerequisites_original": "Prerequisite: 4.0 credits",
     "corequisites": [],
     "corequisites_original": "",
-    "exclusions": [
-      "AND",
-      "WRR300H1"
-    ],
+    "exclusions": [],
     "exclusions_original": "Exclusion: WRR300H1",
     "experience": "",
     "recommended_prep": [],
@@ -73513,6 +73630,59 @@
       "exclusions"
     ],
     "class_size": 135,
+    "subgraph_num_courses": 52,
+    "subgraph_num_requisites": 39
+  },
+  {
+    "title": "Capstone Research Project",
+    "course_code": "IRW452Y1",
+    "split_course_code": [
+      "IRW",
+      452,
+      "Y",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "In this capstone course, students will have the opportunity to design and implement an original research project on work and organizations. Students will receive in-class training and guidance on: 1) developing and refining a research question, 2) identifying and implementing appropriate research methods, 3) locating or collecting relevant data, 4) identifying the significance of their work to various audiences, and 5) effectively writing a research paper. Not eligible for CR/NCR option.",
+    "cr_ncr_eligible": false,
+    "breadth_requirements_list": [
+      "Society and its Institutions (3)"
+    ],
+    "hours": {
+      "lecture": 24,
+      "tutorial": 0,
+      "practical": 24,
+      "seminar": 0
+    },
+    "prerequisites": [
+      "AND",
+      "IRE260H1",
+      "IRE244H1",
+      "IRW220H1",
+      "IRW240H1",
+      [
+        "OR",
+        "PHL295H1",
+        "IRE342H1"
+      ],
+      "IRE379H1",
+      "IRW300H1",
+      "IRW410H1",
+      "IRW420H1"
+    ],
+    "prerequisites_original": "Prerequisite: 14.0 credits including 1.0 credit from  IRE260H1,  IRE244H1,  IRW220H1,  IRW240H1,  PHL295H1 and 1.0 credit from  IRE342H1,  IRE379H1,  IRW300H1,  IRW410H1,  IRW420H1",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "",
+    "experience": "",
+    "recommended_prep": [],
+    "has_fields": [
+      "hours",
+      "breadth_requirements_list",
+      "prerequisites"
+    ],
+    "class_size": 25,
     "subgraph_num_courses": 52,
     "subgraph_num_requisites": 39
   },
@@ -87879,7 +88049,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 100,
+    "class_size": 50,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -88486,7 +88656,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 5,
+    "class_size": 10,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -88531,6 +88701,52 @@
     "class_size": 15,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
+  },
+  {
+    "title": "Peace and Conflict Studies Independent Study Course",
+    "course_code": "MUN469H1",
+    "split_course_code": [
+      "MUN",
+      469,
+      "H",
+      1
+    ],
+    "previous_course_codes": [
+      "PCJ499H1"
+    ],
+    "description": "This course is designed to provide students with the opportunity to explore topics not covered in the curriculum, or to develop a more detailed focus on topics covered. Approval of the program director is required. The student must obtain written agreement of the instructor who will supervise the independent study, submit the proposal to and obtain approval from the director and program administrator, who will then add the student to the course. Not eligible for CR/NCR option.",
+    "cr_ncr_eligible": false,
+    "breadth_requirements_list": [
+      "Society and its Institutions (3)"
+    ],
+    "hours": {
+      "lecture": 0,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 0
+    },
+    "prerequisites": [
+      "AND",
+      "MUN201H1",
+      "MUN210H1"
+    ],
+    "prerequisites_original": "Prerequisite: PCJ200H1/MUN201H1,  PCJ210H1/MUN210H1",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "Exclusion: PCJ499H1",
+    "experience": "",
+    "recommended_prep": "For students enrolled in the Peace, Conflict and Justice Major or Specialist program.",
+    "has_fields": [
+      "previous_course_codes",
+      "breadth_requirements_list",
+      "prerequisites",
+      "exclusions",
+      "recommended_prep"
+    ],
+    "class_size": 60,
+    "subgraph_num_courses": 3,
+    "subgraph_num_requisites": 1
   },
   {
     "title": "Advanced Topics in Global Affairs and Public Policy",
@@ -90267,7 +90483,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 80,
+    "class_size": 35,
     "subgraph_num_courses": 36,
     "subgraph_num_requisites": 38
   },
@@ -90369,7 +90585,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 99,
+    "class_size": 95,
     "subgraph_num_courses": 19,
     "subgraph_num_requisites": 23
   },
@@ -91654,7 +91870,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 120,
+    "class_size": 128,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -98155,7 +98371,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 35,
+    "class_size": 30,
     "subgraph_num_courses": 2,
     "subgraph_num_requisites": 1
   },
@@ -98929,6 +99145,49 @@
     "subgraph_num_requisites": 1
   },
   {
+    "title": "Philosophy of Emotions",
+    "course_code": "PHL344H1",
+    "split_course_code": [
+      "PHL",
+      344,
+      "H",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "A survey of philosophical topics related to the emotions, from a range of philosophical perspectives. Questions to be considered may include the following: What exactly is an emotion? Are emotions feelings? What emotions are there, and how are they shaped by culture and society? How are emotions related to reason, the brain and the body? What role do -- and should -- the emotions play in decision-making? Can an emotion be morally right or wrong, and what makes it so?",
+    "cr_ncr_eligible": true,
+    "breadth_requirements_list": [
+      "Thought, Belief and Behaviour (2)"
+    ],
+    "hours": {
+      "lecture": 36,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 0
+    },
+    "prerequisites": [
+      "OR",
+      "PHL240H1",
+      "PHL244H1",
+      "PHL342H1"
+    ],
+    "prerequisites_original": "Prerequisite: PHL240H1/PHL244H1/PHL342H1, 7.5 courses (in any field) with at least 1.5 in philosophy",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "",
+    "experience": "",
+    "recommended_prep": [],
+    "has_fields": [
+      "hours",
+      "breadth_requirements_list",
+      "prerequisites"
+    ],
+    "class_size": 34,
+    "subgraph_num_courses": 5,
+    "subgraph_num_requisites": 2
+  },
+  {
     "title": "Intermediate Logic",
     "course_code": "PHL345H1",
     "split_course_code": [
@@ -99273,7 +99532,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 35,
+    "class_size": 70,
     "subgraph_num_courses": 3,
     "subgraph_num_requisites": 1
   },
@@ -104081,7 +104340,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 92,
+    "class_size": 87,
     "subgraph_num_courses": 28,
     "subgraph_num_requisites": 42
   },
@@ -107154,7 +107413,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 250,
+    "class_size": 390,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -108960,7 +109219,7 @@
     "has_fields": [
       "exclusions"
     ],
-    "class_size": 90,
+    "class_size": 120,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -112715,7 +112974,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 350,
+    "class_size": 405,
     "subgraph_num_courses": 43,
     "subgraph_num_requisites": 36
   },
@@ -126658,7 +126917,7 @@
       "exclusions",
       "recommended_prep"
     ],
-    "class_size": 410,
+    "class_size": 407,
     "subgraph_num_courses": 3,
     "subgraph_num_requisites": 2
   },
@@ -126789,7 +127048,7 @@
       "exclusions",
       "recommended_prep"
     ],
-    "class_size": 210,
+    "class_size": 225,
     "subgraph_num_courses": 2,
     "subgraph_num_requisites": 1
   },
@@ -126921,7 +127180,7 @@
       "exclusions",
       "recommended_prep"
     ],
-    "class_size": 255,
+    "class_size": 265,
     "subgraph_num_courses": 2,
     "subgraph_num_requisites": 1
   },
@@ -127409,7 +127668,7 @@
       "exclusions",
       "recommended_prep"
     ],
-    "class_size": 120,
+    "class_size": 95,
     "subgraph_num_courses": 2,
     "subgraph_num_requisites": 1
   },
@@ -131417,7 +131676,7 @@
       "corequisites",
       "exclusions"
     ],
-    "class_size": 500,
+    "class_size": 490,
     "subgraph_num_courses": 18,
     "subgraph_num_requisites": 21
   },
@@ -131878,7 +132137,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 625,
+    "class_size": 575,
     "subgraph_num_courses": 43,
     "subgraph_num_requisites": 47
   },
@@ -132563,6 +132822,47 @@
       "corequisites"
     ],
     "class_size": 120,
+    "subgraph_num_courses": 42,
+    "subgraph_num_requisites": 43
+  },
+  {
+    "title": "Fundamentals of Statistical Genetics",
+    "course_code": "STA480H1",
+    "split_course_code": [
+      "STA",
+      480,
+      "H",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "Statistical analysis of genetic data is an important emerging research area with direct impact on population health. This course provides an introduction to the concepts and fundamentals of statistical genetics, including current research directions.\u00a0 The course includes lectures and hands-on experience with R programming and state-of-the-art statistical genetics software packages.",
+    "cr_ncr_eligible": true,
+    "breadth_requirements_list": [
+      "The Physical and Mathematical Universes (5)"
+    ],
+    "hours": {
+      "lecture": 36,
+      "tutorial": 0,
+      "practical": 9,
+      "seminar": 0
+    },
+    "prerequisites": [
+      "AND",
+      "STA303H1"
+    ],
+    "prerequisites_original": "Prerequisite: STA303H1",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "",
+    "experience": "",
+    "recommended_prep": [],
+    "has_fields": [
+      "hours",
+      "breadth_requirements_list",
+      "prerequisites"
+    ],
+    "class_size": 40,
     "subgraph_num_courses": 42,
     "subgraph_num_requisites": 43
   },
@@ -135421,7 +135721,7 @@
       "previous_course_codes",
       "recommended_prep"
     ],
-    "class_size": 100,
+    "class_size": 140,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -138679,7 +138979,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 150,
+    "class_size": 161,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -138718,7 +139018,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 155,
+    "class_size": 165,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -139039,7 +139339,7 @@
       "exclusions",
       "recommended_prep"
     ],
-    "class_size": 216,
+    "class_size": 227,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -139275,7 +139575,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 180,
+    "class_size": 60,
     "subgraph_num_courses": 4,
     "subgraph_num_requisites": 2
   },
@@ -139314,7 +139614,7 @@
     "has_fields": [
       "prerequisites"
     ],
-    "class_size": 90,
+    "class_size": 30,
     "subgraph_num_courses": 4,
     "subgraph_num_requisites": 2
   },
@@ -139352,7 +139652,7 @@
       "hours",
       "prerequisites"
     ],
-    "class_size": 45,
+    "class_size": 15,
     "subgraph_num_courses": 2,
     "subgraph_num_requisites": 1
   },
@@ -139390,7 +139690,7 @@
       "hours",
       "prerequisites"
     ],
-    "class_size": 60,
+    "class_size": 20,
     "subgraph_num_courses": 2,
     "subgraph_num_requisites": 1
   },
@@ -139432,7 +139732,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 60,
+    "class_size": 20,
     "subgraph_num_courses": 3,
     "subgraph_num_requisites": 1
   },
@@ -139473,7 +139773,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 45,
+    "class_size": 15,
     "subgraph_num_courses": 2,
     "subgraph_num_requisites": 1
   },
@@ -139514,345 +139814,7 @@
       "breadth_requirements_list",
       "exclusions"
     ],
-    "class_size": 945,
-    "subgraph_num_courses": 1,
-    "subgraph_num_requisites": 0
-  },
-  {
-    "title": "Writing Reports",
-    "course_code": "WRR104H1",
-    "split_course_code": [
-      "WRR",
-      104,
-      "H",
-      1
-    ],
-    "previous_course_codes": [
-      "INI104H1"
-    ],
-    "description": "Students will learn the fundamentals of report writing, including how to write abstracts and conduct literature reviews as well as qualitative and quantitative research. Students also learn to communicate visually, including how to create tables, charts, and graphs with attention to purpose, audience, structure, style, skills they apply to a formal report and a poster presentation.",
-    "cr_ncr_eligible": true,
-    "breadth_requirements_list": [
-      "Thought, Belief and Behaviour (2)"
-    ],
-    "hours": {
-      "lecture": 0,
-      "tutorial": 12,
-      "practical": 0,
-      "seminar": 24
-    },
-    "prerequisites": [],
-    "prerequisites_original": "",
-    "corequisites": [],
-    "corequisites_original": "",
-    "exclusions": [],
-    "exclusions_original": "Exclusion: INI104H1",
-    "experience": "",
-    "recommended_prep": [],
-    "has_fields": [
-      "previous_course_codes",
-      "hours",
-      "breadth_requirements_list",
-      "exclusions"
-    ],
-    "class_size": 210,
-    "subgraph_num_courses": 1,
-    "subgraph_num_requisites": 0
-  },
-  {
-    "title": "Theories of Rhetoric: A Brief History of Persuasion",
-    "course_code": "WRR201H1",
-    "split_course_code": [
-      "WRR",
-      201,
-      "H",
-      1
-    ],
-    "previous_course_codes": [
-      "INI201H1"
-    ],
-    "description": "When contemporary critics seek to discredit dishonest politicians, they tend to refer to their discourse as \u201cmere rhetoric.\u201d But there is so much more to rhetoric than deception. This course examines the history of rhetoric, the art of persuasion, from its birth in Greco-Roman antiquity to its rebirth in twentieth and twenty-first century thought. In addition to tracking the history of Western ideas about persuasion, we will bring rhetorical theories to bear on vital questions about philosophy, psychology, media, and advertising.",
-    "cr_ncr_eligible": true,
-    "breadth_requirements_list": [
-      "Creative and Cultural Representations (1)"
-    ],
-    "hours": {
-      "lecture": 0,
-      "tutorial": 0,
-      "practical": 0,
-      "seminar": 24
-    },
-    "prerequisites": [],
-    "prerequisites_original": "Prerequisite: Completion of 4.0 credits",
-    "corequisites": [],
-    "corequisites_original": "",
-    "exclusions": [],
-    "exclusions_original": "Exclusion: INI201H1",
-    "experience": "",
-    "recommended_prep": [],
-    "has_fields": [
-      "previous_course_codes",
-      "hours",
-      "breadth_requirements_list",
-      "prerequisites",
-      "exclusions"
-    ],
-    "class_size": 135,
-    "subgraph_num_courses": 1,
-    "subgraph_num_requisites": 0
-  },
-  {
-    "title": "Introduction to Creative Writing",
-    "course_code": "WRR211H1",
-    "split_course_code": [
-      "WRR",
-      211,
-      "H",
-      1
-    ],
-    "previous_course_codes": [
-      "INI211H1"
-    ],
-    "description": "This introductory course focuses on the process and craft of creative writing. Students will study short fiction, creative nonfiction and poetry by established writers, and learn to respond to works-in-progress by their peers. A variety of activities will help students generate, develop, and revise a portfolio of original creative work.",
-    "cr_ncr_eligible": true,
-    "breadth_requirements_list": [
-      "Creative and Cultural Representations (1)"
-    ],
-    "hours": {
-      "lecture": 0,
-      "tutorial": 0,
-      "practical": 0,
-      "seminar": 24
-    },
-    "prerequisites": [],
-    "prerequisites_original": "Prerequisite: Completion of 4.0 credits",
-    "corequisites": [],
-    "corequisites_original": "",
-    "exclusions": [],
-    "exclusions_original": "Exclusion: INI211H1",
-    "experience": "",
-    "recommended_prep": [],
-    "has_fields": [
-      "previous_course_codes",
-      "hours",
-      "breadth_requirements_list",
-      "prerequisites",
-      "exclusions"
-    ],
-    "class_size": 75,
-    "subgraph_num_courses": 1,
-    "subgraph_num_requisites": 0
-  },
-  {
-    "title": "Strategic Writing in Business and the Professions: Theory and Practice",
-    "course_code": "WRR300H1",
-    "split_course_code": [
-      "WRR",
-      300,
-      "H",
-      1
-    ],
-    "previous_course_codes": [
-      "INI300H1"
-    ],
-    "description": "Students learn the theory and practice of effective and ethical communication in the workplace, including business, government, and non-profit organizations. Students apply ethical reasoning models to case studies. Students have an opportunity to work directly with a community partner, helping them to solve an industry-specific problem or concern. This experiential learning enables students to work together as a team to develop relevant solutions as they strengthen their written and verbal communication skills.",
-    "cr_ncr_eligible": true,
-    "breadth_requirements_list": [
-      "Creative and Cultural Representations (1)"
-    ],
-    "hours": {
-      "lecture": 0,
-      "tutorial": 0,
-      "practical": 0,
-      "seminar": 24
-    },
-    "prerequisites": [],
-    "prerequisites_original": "Prerequisite: Completion of 4.0 credits",
-    "corequisites": [],
-    "corequisites_original": "",
-    "exclusions": [
-      "AND",
-      "WRR302H1"
-    ],
-    "exclusions_original": "Exclusion: INI300H1,  INI302H1,  WRR302H1",
-    "experience": "",
-    "recommended_prep": [],
-    "has_fields": [
-      "previous_course_codes",
-      "hours",
-      "breadth_requirements_list",
-      "prerequisites",
-      "exclusions"
-    ],
-    "class_size": 135,
-    "subgraph_num_courses": 1,
-    "subgraph_num_requisites": 0
-  },
-  {
-    "title": "Writing in Business and the Professions for Rotman Commerce Students",
-    "course_code": "WRR302H1",
-    "split_course_code": [
-      "WRR",
-      302,
-      "H",
-      1
-    ],
-    "previous_course_codes": [
-      "INI302H1"
-    ],
-    "description": "Designed for and restricted to Rotman Commerce undergraduates, the course reflects the program\u2019s learning goals, which include critical thinking, ethical reasoning, and business and professional communication (oral and written). Students apply business communication theory and ethical reasoning models to business cases. Students have an opportunity to work directly with a community partner, helping them to solve an industry-specific problem or concern. This experiential learning enables students to work together as a team to develop relevant solutions as they strengthen their written and verbal communication skills",
-    "cr_ncr_eligible": true,
-    "breadth_requirements_list": [
-      "Creative and Cultural Representations (1)"
-    ],
-    "hours": {
-      "lecture": 0,
-      "tutorial": 0,
-      "practical": 0,
-      "seminar": 24
-    },
-    "prerequisites": [],
-    "prerequisites_original": "Prerequisite: Completion of 4.0 credits",
-    "corequisites": [],
-    "corequisites_original": "",
-    "exclusions": [
-      "AND",
-      "WRR300H1"
-    ],
-    "exclusions_original": "Exclusion: INI300H1,  INI302H1,  WRR300H1",
-    "experience": "",
-    "recommended_prep": [],
-    "has_fields": [
-      "previous_course_codes",
-      "hours",
-      "breadth_requirements_list",
-      "prerequisites",
-      "exclusions"
-    ],
-    "class_size": 180,
-    "subgraph_num_courses": 1,
-    "subgraph_num_requisites": 0
-  },
-  {
-    "title": "Digital Rhetoric",
-    "course_code": "WRR303H1",
-    "split_course_code": [
-      "WRR",
-      303,
-      "H",
-      1
-    ],
-    "previous_course_codes": [
-      "INI303H1"
-    ],
-    "description": "This course explores the pivotal role that media plays in our culture. Beginning with U of T rhetorician Marshall McLuhan\u2019s far-reaching ideas about media environments,  WRR303H1 takes students on a journey through a wide variety of ideas about media, technology, and rhetoric. Topics include the rhetorical dimensions of social media platforms, the strengths and shortcomings of online activism, the emergence of surveillance capitalism, and the operation of persuasion in dating apps.",
-    "cr_ncr_eligible": true,
-    "breadth_requirements_list": [
-      "Creative and Cultural Representations (1)"
-    ],
-    "hours": {
-      "lecture": 24,
-      "tutorial": 12,
-      "practical": 0,
-      "seminar": 0
-    },
-    "prerequisites": [],
-    "prerequisites_original": "Prerequisite: 4.0 credits",
-    "corequisites": [],
-    "corequisites_original": "",
-    "exclusions": [],
-    "exclusions_original": "Exclusion: INI303H1",
-    "experience": "",
-    "recommended_prep": [],
-    "has_fields": [
-      "previous_course_codes",
-      "hours",
-      "breadth_requirements_list",
-      "prerequisites",
-      "exclusions"
-    ],
-    "class_size": 135,
-    "subgraph_num_courses": 1,
-    "subgraph_num_requisites": 0
-  },
-  {
-    "title": "Rhetoric of Health and Medicine",
-    "course_code": "WRR307H1",
-    "split_course_code": [
-      "WRR",
-      307,
-      "H",
-      1
-    ],
-    "previous_course_codes": [],
-    "description": "Since its inception, rhetoric has been concerned with persuasion and its relationship to human flourishing. This course brings rhetorical thought into important dialogue with health research, medical practices, and pharmaceutical advertising. Medicalized phenomena\u2014like hypochondria, depression, sexual dysfunction, and death & dying\u2014are all bound up with influence. A rhetorical perspective on health and wellness tracks this influence through networks of individuals, institutions, texts, media forms, genres, and narratives.",
-    "cr_ncr_eligible": true,
-    "breadth_requirements_list": [
-      "Thought, Belief and Behaviour (2)"
-    ],
-    "hours": {
-      "lecture": 0,
-      "tutorial": 0,
-      "practical": 0,
-      "seminar": 24
-    },
-    "prerequisites": [],
-    "prerequisites_original": "Prerequisite: Completion of 4.0 credits",
-    "corequisites": [],
-    "corequisites_original": "",
-    "exclusions": [],
-    "exclusions_original": "Exclusion: INI308H1 (Selected Topics in Writing and Rhetoric: Rhetoric of Health and Medicine) offered in Fall 2019, and  WRR308H1 (Selected Topics in Writing and Rhetoric: Rhetoric of Health and Medicine) offered in Winter 2022",
-    "experience": "",
-    "recommended_prep": [],
-    "has_fields": [
-      "hours",
-      "breadth_requirements_list",
-      "prerequisites",
-      "exclusions"
-    ],
-    "class_size": 75,
-    "subgraph_num_courses": 1,
-    "subgraph_num_requisites": 0
-  },
-  {
-    "title": "Stylistic Editing and Copy Editing",
-    "course_code": "WRR310H1",
-    "split_course_code": [
-      "WRR",
-      310,
-      "H",
-      1
-    ],
-    "previous_course_codes": [
-      "INI310H1"
-    ],
-    "description": "This course introduces students to professional editorial conventions at two later stages of the editorial process. Both stages require analytical skills and sentence expertise. Through stylistic editing, students learn how to improve a writer\u2019s literary style; through copy editing, they learn how to ensure both accuracy and consistency (editorial style).",
-    "cr_ncr_eligible": true,
-    "breadth_requirements_list": [
-      "Creative and Cultural Representations (1)"
-    ],
-    "hours": {
-      "lecture": 0,
-      "tutorial": 0,
-      "practical": 0,
-      "seminar": 24
-    },
-    "prerequisites": [],
-    "prerequisites_original": "Prerequisite: Completion of 4.0 credits",
-    "corequisites": [],
-    "corequisites_original": "",
-    "exclusions": [],
-    "exclusions_original": "Exclusion: INI310H1",
-    "experience": "",
-    "recommended_prep": [],
-    "has_fields": [
-      "previous_course_codes",
-      "hours",
-      "breadth_requirements_list",
-      "prerequisites",
-      "exclusions"
-    ],
-    "class_size": 165,
+    "class_size": 125,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   }
