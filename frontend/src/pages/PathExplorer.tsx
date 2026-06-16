@@ -718,7 +718,7 @@ export default function PathExplorer() {
       </div>
 
       {/* Desktop help button */}
-      <div className="absolute top-4 right-4 z-40 hidden lg:block">
+      <div className="absolute top-4 right-100 z-40 hidden lg:block">
         <HelpMenu>{helpTemplatePathExplorer}</HelpMenu>
       </div>
     </div>
