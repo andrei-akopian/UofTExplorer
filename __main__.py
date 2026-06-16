@@ -64,7 +64,7 @@ def main():
         recompute_stats()
     if args.serve:
         if args.docker:
-            start_server(host="0.0.0.0")
+            start_server(host="0.0.0.0", debug=False)
         else:
             start_server()
     pass

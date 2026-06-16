@@ -11,7 +11,7 @@ primary_region = 'yyz'
 # ignorefile = ".dockerignore"
 
 [build]
-image = "ghcr.io/andrei-akopian/uoftexplorer:latest"
+image = "ghcr.io/andrei-akopian/uoftexplorer:minimal"
 
 [http_service]
 internal_port = 5000
