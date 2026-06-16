@@ -17,7 +17,7 @@ const lastScrape = execSync(
 const repoUrl = execSync("git remote get-url origin")
   .toString()
   .trim()
-  .replace("git@github.com:", "https://github.com/") // handle SSH remotes
+  .replace(/^git@[^:]+:/, "https://github.com/") // handle any SSH host alias
   .replace(/\.git$/, "");
 
 export default defineConfig({
