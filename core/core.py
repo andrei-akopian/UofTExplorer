@@ -148,11 +148,18 @@ class CourseGraph:
         num_direct_reqs = []
         for course in self.courses:
             if self.courses[course].prereqs is not None:
-                # TODO make it explore the full tree
-                num_direct_reqs.append(len(self.courses[course].prereqs.reqs))
+                stack = self.courses[course].prereqs.reqs[:]
+                counter = 0
+                while len(stack) > 0:
+                    item = stack.pop()
+                    if isinstance(item, CourseNode):
+                        counter += 1
+                    elif isinstance(item, Requisite):
+                        stack.extend(item.reqs[:])
+                num_direct_reqs.append(counter)
             else:
                 num_direct_reqs.append(0)
-
+        print(num_direct_reqs, sum(num_direct_reqs), len(num_direct_reqs))
         return round(sum(num_direct_reqs) / len(num_direct_reqs), 2)
 
     def get_filtered_courses(
