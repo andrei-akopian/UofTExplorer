@@ -83,9 +83,10 @@ def cycle_checker(
     return True
 
 
-def nsquare_cyclechecker():
+def nsquare_cyclechecker(graph=None):
     setup_logging()
-    graph = construct_course_graph("data/courses.json")
+    if graph is None:
+        graph = construct_course_graph("data/courses.json")
     subgraphs = construct_disjoint_subgraphs(graph)
     targets = Targets(prereq=True, coreq=False, excl=False, postreq=False)
     logging.info(f"Cycle Checker: Scanning {len(subgraphs)} subgraphs.")

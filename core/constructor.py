@@ -53,12 +53,13 @@ def construct_container(
     return CourseGraphContainer(graph, programs, departments, breadths)
 
 
-def construct_course_graph(filename: str) -> CourseGraph:
+def construct_course_graph(filename: str, data: Optional[list]=None) -> CourseGraph:
     """
     Return a graph of courses and requisites based on the given data in the json file.
 
     Preconditions:
         - filename is the file name of a json file in the correct format
+        - data (if not None) is a json load (list) of a courses.json file.
 
     >>> course_graph = construct_course_graph('data/courses.json')
     >>> course_graph.num_courses() >= 5000
@@ -78,11 +79,14 @@ def construct_course_graph(filename: str) -> CourseGraph:
     '(1,MAT138H1,MAT246H1))),(1,MAT223H1,MAT240H1)'
     True
     """
-    # Load all the course data from the json file
-    if not os.path.isfile(filename):
-        raise FileNotFoundError(f"{filename} not found, unable to construct graph")
-    with open(filename) as f:
-        data = json.load(f)
+    if isinstance(data, list):
+        pass
+    else:
+        # Load all the course data from the json file
+        if not os.path.isfile(filename):
+            raise FileNotFoundError(f"{filename} not found, unable to construct graph")
+        with open(filename) as f:
+            data = json.load(f)
 
     courses_dict = {}  # Dictionary of course nodes
     for course in data:  # Iterate over each course from the json file
@@ -120,6 +124,8 @@ def construct_course_graph(filename: str) -> CourseGraph:
                 "exclusions": course["exclusions_original"],
             },
             class_size=course["class_size"],
+            subgraph_num_courses=course.get("subgraph_num_courses", -1),
+            subgraph_num_requisites=course.get("subgraph_num_requisites", -1),
         )
 
         # Add to the course dictionary
