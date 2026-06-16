@@ -46,3 +46,6 @@ clear_zip:
 frontend: frontend/src
 	cd frontend && npm install
 	cd frontend && npm run build
+
+fly-deploy:
+	fly deploy -c deploy_configs/fly.toml

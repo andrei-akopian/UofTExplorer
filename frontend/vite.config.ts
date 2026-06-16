@@ -1,6 +1,24 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
+import { execSync } from "child_process";
+
+const commitHash = execSync("git rev-parse --short HEAD").toString().trim();
+const tag = execSync(
+  'git describe --tags --abbrev=0 2>/dev/null || echo "untagged"',
+)
+  .toString()
+  .trim();
+const lastScrape = execSync(
+  `jq '."scraper/courses/raw_output"' ../data/outdatedness_report.json`,
+)
+  .toString()
+  .trim();
+const repoUrl = execSync("git remote get-url origin")
+  .toString()
+  .trim()
+  .replace("git@github.com:", "https://github.com/") // handle SSH remotes
+  .replace(/\.git$/, "");
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
@@ -12,5 +30,11 @@ export default defineConfig({
         secure: false,
       },
     },
+  },
+  define: {
+    __REPO_URL__: JSON.stringify(repoUrl),
+    __COMMIT_HASH__: JSON.stringify(commitHash),
+    __GIT_TAG__: JSON.stringify(tag),
+    __SCRAPE_TS__: JSON.stringify(lastScrape),
   },
 });
