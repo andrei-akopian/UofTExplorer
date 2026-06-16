@@ -6,20 +6,12 @@ The global statistics are saved in json format to a file.
 
 import json
 
-try:
-    from core.algorithms import (
-        get_avg_total_num_prereqs,
-        separate_courses_by_cr_ncr_eligibility,
-        separate_courses_by_breadth,
-    )
-    from core.constructor import construct_container
-except ImportError:
-    from algorithms import (
-        get_avg_total_num_prereqs,
-        separate_courses_by_cr_ncr_eligibility,
-        separate_courses_by_breadth,
-    )
-    from constructor import construct_container
+from core.algorithms import (
+    get_avg_total_num_prereqs,
+    separate_courses_by_cr_ncr_eligibility,
+    separate_courses_by_breadth,
+)
+from core.constructor import construct_container
 
 
 def run_global_statistics(output: str = "data/global_statistics.json") -> None:
