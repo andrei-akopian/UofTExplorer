@@ -39,10 +39,12 @@ export default function GraphBottomInfo({
           graphData={graphData}
           isOpen={statsOpen}
           onOpenChange={(open) => {
-            if (open) onNodesOpenChange(false);
+            if (open && window.innerWidth < 640) onNodesOpenChange(false);
             onStatsOpenChange(open);
           }}
-          cardClassName={nodesOpen ? "sm:right-70 right-0" : "right-[-48px]"}
+          cardClassName={
+            nodesOpen ? "right-[60px] sm:right-70" : "right-[-48px] sm:right-0"
+          }
         />
         <GraphNodesPanel
           graphData={graphData}
@@ -50,7 +52,7 @@ export default function GraphBottomInfo({
           onNodeSelect={onNodeSelect}
           isOpen={nodesOpen}
           onOpenChange={(open) => {
-            if (open) onStatsOpenChange(false);
+            if (open && window.innerWidth < 640) onStatsOpenChange(false);
             onNodesOpenChange(open);
           }}
           cardClassName="right-0"
