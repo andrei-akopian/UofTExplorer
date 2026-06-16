@@ -113,7 +113,7 @@ export default function GlobalStats() {
             <p>
               Direct prerequisites are defined as the number of CourseNode or
               Requisite objects that are listed as the prerequisites of a
-              course. The average number of direct prerequisites is below 1, an
+              course. The average number of direct prerequisites is 1, an
               indication that the majority of courses do not have any direct
               prerequisites.
             </p>
@@ -261,10 +261,10 @@ export default function GlobalStats() {
               for each course.
             </p>
             <p>
-              Since a lot of courses have 0-1 prerequisites, 800+ courses have a
-              shortest path length of 1. Overall, the sharp decrease in shortest
-              path length shows that courses in the Faculty of Arts & Science
-              generally do not require many prerequisites.
+              Since a lot of courses have 0-1 prerequisites, 1000+ courses have
+              a shortest path length of 1. Overall, the sharp decrease in
+              shortest path length shows that courses in the Faculty of Arts &
+              Science generally do not require many prerequisites.
             </p>
           </div>
 
