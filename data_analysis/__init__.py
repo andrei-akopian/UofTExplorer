@@ -28,7 +28,11 @@ def stats_outdatedness(save=True):
         if not os.path.exists(p):
             print(f"{p} does not exist")
         else:
-            mts = os.path.getmtime(p)
+            if os.path.isdir(p):
+                fp = f"{p}/{os.listdir(p)[0]}"
+            else:
+                fp = p
+            mts = os.path.getmtime(fp)
             mtime = datetime.fromtimestamp(mts)
             delta = today - mtime
             print(
