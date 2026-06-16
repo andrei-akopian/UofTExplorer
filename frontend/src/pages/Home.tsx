@@ -100,7 +100,7 @@ export default function Home() {
         </div>
 
         <p className="mt-8 text-center text-sm italic lg:mt-10">
-          This project is open source. Visit the repository on{" "}
+          This project is open source. Visit the repository at{" "}
           <a
             className={pageLinkClassName}
             href="https://github.com/andrei-akopian/UofTExplorer"
@@ -138,7 +138,10 @@ export default function Home() {
               ,<a href={`${repo_url}/releases/tag/${git_tag}`}>{git_tag}</a>
             </span>
           )}
-          <span>; Course Data from {scrape_ts}</span>
+          .
+        </p>
+        <p className="text-center text-sm italic">
+          Course data last fetched on {scrape_ts}.
         </p>
       </div>
     </div>
