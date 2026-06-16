@@ -113,8 +113,8 @@ export default function GlobalStats() {
             <p>
               Direct prerequisites are defined as the number of CourseNode or
               Requisite objects that are listed as the prerequisites of a
-              course. The average number of direct prerequisites is 1, an
-              indication that the majority of courses do not have any direct
+              course. The average number of direct prerequisites is below 2, an
+              indication that the majority of courses do not have many direct
               prerequisites.
             </p>
             <p>
