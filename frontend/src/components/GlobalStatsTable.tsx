@@ -23,9 +23,9 @@ export default function GlobalStatsTable() {
   if (loading || data === null) {
     entries = (
       <tbody>
-        <tr className="odd:bg-white even:bg-slate-50">
-          <td className="border-b border-slate-200 px-3 py-2">Loading...</td>
-          <td className="border-b border-slate-200 px-3 py-2">Loading...</td>
+        <tr className="odd:bg-panel-bg even:bg-surface-1">
+          <td className="border-border-card border-b px-3 py-2">Loading...</td>
+          <td className="border-border-card border-b px-3 py-2">Loading...</td>
         </tr>
       </tbody>
     );
@@ -33,9 +33,9 @@ export default function GlobalStatsTable() {
     entries = (
       <tbody>
         {Object.entries(data).map(([key, value], index) => (
-          <tr key={index} className="odd:bg-white even:bg-slate-50">
-            <td className="border-b border-slate-200 px-3 py-2">{key}</td>
-            <td className="border-b border-slate-200 px-3 py-2">{value}</td>
+          <tr key={index} className="odd:bg-panel-bg even:bg-surface-1">
+            <td className="border-border-card border-b px-3 py-2">{key}</td>
+            <td className="border-border-card border-b px-3 py-2">{value}</td>
           </tr>
         ))}
       </tbody>
@@ -44,16 +44,16 @@ export default function GlobalStatsTable() {
 
   return (
     <div className="mt-4 mb-6 overflow-x-auto">
-      <table className="min-w-full border-separate border-spacing-0 border-t border-b border-slate-300 [counter-increment:tablecaption]">
+      <table className="border-border-card min-w-lg border-separate border-spacing-0 border-t border-b text-sm [counter-increment:tablecaption] sm:min-w-full">
         <caption className="mt-2 ml-0 w-full px-1 pt-1 text-left italic before:font-bold before:not-italic before:[content:'Table_'counter(tablecaption)'._']">
           Statistics computed on the entire graph.
         </caption>
         <thead>
           <tr>
-            <th className="bg-slate-50 px-3 py-2 text-left font-semibold text-slate-900">
+            <th className="bg-surface-2 text-text-body px-3 py-2 text-left font-semibold">
               Statistic
             </th>
-            <th className="bg-slate-50 px-3 py-2 text-left font-semibold text-slate-900">
+            <th className="bg-surface-2 text-text-body px-3 py-2 text-left font-semibold">
               Value
             </th>
           </tr>

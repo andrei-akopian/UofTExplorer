@@ -1,0 +1,4 @@
+# Requirements for Docker
+flask
+z3-solver
+coloraide

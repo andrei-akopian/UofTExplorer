@@ -1,10 +1,6 @@
 """
-CSC111 Winter 2026 Project 2: ArtSci Atlas
-
 CONSTRUCTOR
 This Python module provides constructor functions to construct graphs from json file data.
-
-Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 """
 
 import os
@@ -57,12 +53,13 @@ def construct_container(
     return CourseGraphContainer(graph, programs, departments, breadths)
 
 
-def construct_course_graph(filename: str) -> CourseGraph:
+def construct_course_graph(filename: str, data: Optional[list] = None) -> CourseGraph:
     """
     Return a graph of courses and requisites based on the given data in the json file.
 
     Preconditions:
         - filename is the file name of a json file in the correct format
+        - data (if not None) is a json load (list) of a courses.json file.
 
     >>> course_graph = construct_course_graph('data/courses.json')
     >>> course_graph.num_courses() >= 5000
@@ -82,11 +79,14 @@ def construct_course_graph(filename: str) -> CourseGraph:
     '(1,MAT138H1,MAT246H1))),(1,MAT223H1,MAT240H1)'
     True
     """
-    # Load all the course data from the json file
-    if not os.path.isfile(filename):
-        raise FileNotFoundError(f"{filename} not found, unable to construct graph")
-    with open(filename) as f:
-        data = json.load(f)
+    if isinstance(data, list):
+        pass
+    else:
+        # Load all the course data from the json file
+        if not os.path.isfile(filename):
+            raise FileNotFoundError(f"{filename} not found, unable to construct graph")
+        with open(filename) as f:
+            data = json.load(f)
 
     courses_dict = {}  # Dictionary of course nodes
     for course in data:  # Iterate over each course from the json file
@@ -112,6 +112,7 @@ def construct_course_graph(filename: str) -> CourseGraph:
         # Create course data object
         course_data = CourseData(
             code_split=split_course_code,
+            previous_course_codes=course["previous_course_codes"],
             title=course["title"],
             description=course["description"],
             cr_ncr=course["cr_ncr_eligible"],
@@ -123,6 +124,8 @@ def construct_course_graph(filename: str) -> CourseGraph:
                 "exclusions": course["exclusions_original"],
             },
             class_size=course["class_size"],
+            subgraph_num_courses=course.get("subgraph_num_courses", -1),
+            subgraph_num_requisites=course.get("subgraph_num_requisites", -1),
         )
 
         # Add to the course dictionary
@@ -291,14 +294,20 @@ def construct_programs(
             code = "".join(entry["program_code"])
             title = entry["title"]
             mentions = entry["courses_mentioned"]
-            program = construct_program(total_graph, mentions, code, title)
+            program = construct_program(
+                total_graph, mentions, code, title, entry["program_artsci"]
+            )
             programs[code] = program
 
     return programs
 
 
 def construct_program(
-    total_graph: CourseGraph, courses: list[str], code: str, title: str
+    total_graph: CourseGraph,
+    courses: list[str],
+    code: str,
+    title: str,
+    artsci_type: Optional[str],
 ) -> Program:
     """
     Return a Program object that contains the given courses, including the courses' prerequisites and corequisites.
@@ -306,7 +315,7 @@ def construct_program(
     subgraph = construct_subgraph(
         total_graph, courses, traversers.Targets(True, True, False, False)
     )
-    return Program(code=code, title=title, graph=subgraph)
+    return Program(code=code, title=title, artsci_type=artsci_type, graph=subgraph)
 
 
 def construct_subgraph(
@@ -346,6 +355,28 @@ def construct_subgraph(
     return subgraph
 
 
+def construct_disjoint_subgraphs(
+    graph: CourseGraph, directions: Optional[traversers.Targets] = None
+):
+    """
+    Construct a list of disjoint subgraphs of a graph.
+
+    Postcondition:
+    - all graphs in subgraphs are connected graphs.
+    """
+    subgraphs = []
+    if directions is None:
+        directions = traversers.Targets(True, False, False, True)
+    assert directions.prereq and directions.postreq  # makes no sense otherwise
+    all_courses = set(graph.courses.keys())
+    while len(all_courses) > 0:
+        some_course = next(iter(all_courses))
+        subgraph = construct_subgraph(graph, [some_course], directions=directions)
+        subgraphs.append(subgraph)
+        all_courses -= set(subgraph.courses.keys())
+    return subgraphs
+
+
 def construct_departments(department_file: str) -> dict[str, str]:
     """
     Return a dictionary mapping department codes to department names.
@@ -382,35 +413,6 @@ def bind_programs(programs: dict[str, Program]) -> None:
 
 
 if __name__ == "__main__":
-    import doctest
-
-    doctest.testmod(verbose=True)
-
-    import python_ta
-
-    python_ta.check_all(
-        config={
-            "allow-local-imports": True,
-            "extra-imports": ["json", "os"],
-            "allowed-io": [
-                "construct_course_graph",
-                "construct_programs",
-                "construct_program",
-                "construct_requisites_helper",
-                "construct_container",
-                "construct_subgraph",
-                "construct_departments",
-            ],
-            "max-line-length": 120,
-            "max-nested-blocks": 5,
-            "max-locals": 20,
-            "max-branches": 15,
-            "max-args": 7,
-        }
-    )
-
-    # TODO: remove these
-    X = construct_course_graph("data/courses.json")
-    Y = construct_programs(X, "data/programs.json")
-    bind_postreqs(X)
-    bind_programs(Y)
+    pass
+    # import doctest
+    # doctest.testmod(verbose=True)

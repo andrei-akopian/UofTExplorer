@@ -1,12 +1,8 @@
 """
-CSC111 Winter 2026 Project 2
-
 SAT
 This Python module provides the solver for the Path Explorer.
 Solves for the shortest list of courses one must take in order to take some target courses.
 Shorten this task as the "SAT" problem, essentially a variant of the Satisfiability Problem in computing.
-
-Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 """
 
 from __future__ import annotations
@@ -96,7 +92,6 @@ def _solve_sat(
         case = set()  # the set of courses planned to take
         cases_evaluated += 1
 
-        # START OF CODE WRITTEN BY Claude Haiku 4.5
         # call progress callback if provided (debounced)
         if (
             progress_callback
@@ -104,7 +99,6 @@ def _solve_sat(
         ):
             progress_callback(curr.copy(), dimension)
             last_callback_case = cases_evaluated
-        # END OF CODE WRITTEN BY Claude Haiku 4.5
 
         # adds the current brute force case of courses and the target courses
         for i in range(0, dimension):
@@ -254,21 +248,6 @@ def solve_satz3(
 
 
 if __name__ == "__main__":
-    import doctest
-
-    doctest.testmod(verbose=True)
-
-    import python_ta
-
-    python_ta.check_all(
-        config={
-            "allow-local-imports": True,
-            "extra-imports": ["annotations", "dataclass", "functools", "typing"],
-            "allowed-io": ["_verify"],
-            "max-line-length": 120,
-            "max-nested-blocks": 5,
-            "max-locals": 20,
-            "max-branches": 15,
-            "max-args": 7,
-        }
-    )
+    pass
+    # import doctest
+    # doctest.testmod(verbose=True)

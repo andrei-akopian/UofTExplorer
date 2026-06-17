@@ -1,5 +1,3 @@
-# CSC111 Winter 2026 Project 2: ArtSci Atlas
-# Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 # Python libraries to be installed
 
 # Testing
@@ -11,11 +9,11 @@ bs4
 
 # Graphs and visualization
 flask
-z3
+z3-solver
+coloraide
 
 # Statistics
 matplotlib
-seaborn
 
 # Styling
 black

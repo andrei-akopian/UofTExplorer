@@ -1,5 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import type { GraphData, GraphEdge, GraphNode, QueryInfo } from "../../types";
+import { useCreateDirectedGraph } from "../../hooks/useGraph";
+import {
+  DataSet,
+  Network,
+} from "vis-network/standalone/esm/vis-network.min.js";
+import LoadingOverlay from "../LoadingOverlay";
 
 interface Node extends GraphNode {
   id: string;
@@ -9,23 +15,31 @@ interface Node extends GraphNode {
   x?: number;
   y?: number;
   targetRadius?: number;
-  size: number;
+  mass: number;
   color: string;
   font?: { size: number };
 }
 
 const convertGenericNode = (node: GraphNode): Node => {
   return {
+    ...node,
     id: node.id,
     label: node.label,
     code: node.code,
     depth: node.depth,
+    size: node.size,
+    shape: node.shape ? node.shape : "circle",
     x: node.x,
     y: node.y,
     targetRadius: node.targetRadius,
-    size: node.size,
     color: node.color,
-    font: node.font,
+    mass: 10,
+    font: {
+      size:
+        20 + node["class_size"]
+          ? Math.log(node["class_size"]) / Math.log(1.3)
+          : 20,
+    },
   };
 };
 
@@ -59,10 +73,10 @@ const convertGenericGraph = (data: GraphData): Graph2DData => {
   };
 };
 
-const PHYSICS_DAMPING = 0.4;
+const PHYSICS_DAMPING = 0.9;
 const PHYSICS_SPRING_CONST = 0.1;
 const PHYSICS_GRAV_CONSTANT = -4000;
-const PHYSICS_SPRING_LENGTH = 300;
+const PHYSICS_SPRING_LENGTH = 50;
 
 interface GraphVis2DProps {
   graphData: GraphData;
@@ -70,24 +84,45 @@ interface GraphVis2DProps {
   setLoading?: (loading: boolean) => void;
   onNodeClickCallback?: (node: GraphNode) => void;
   onEdgeClickCallback?: (edge: GraphEdge) => void;
-  useShellLayout?: boolean;
 }
 
 export default function GraphVis2D({
   graphData,
+  loading,
   setLoading,
-  useShellLayout,
+  onNodeClickCallback,
 }: GraphVis2DProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const networkRef = useRef<any>(null);
+
+  const { directedGraph, findConnected } = useCreateDirectedGraph(
+    graphData,
+    true,
+  );
+  const visNodesRef = useRef<any>(null);
+  const colorMapRef = useRef<Map<string, string>>(null);
+  const previousColorPacketRef = useRef<any>(null);
+  const isNodePinnedRef = useRef<boolean>(false);
+  const hoverHighlightDebounce = useRef<number>(Date.now());
+
   const [_activeNodes, setActiveNodes] = useState<Node[]>([]);
+  const activeNodesRef = useRef<Node[]>([]);
+  const onNodeClickRef = useRef(onNodeClickCallback);
+  const highlightGraphRef = useRef<(origin: string) => Set<string> | void>(
+    () => new Set<string>(),
+  );
+  useEffect(() => {
+    onNodeClickRef.current = onNodeClickCallback;
+  }, [onNodeClickCallback]);
+
+  const lastHoverNodeRef = useRef<string>("");
+
+  const lastClickNodeRef = useRef<string>("");
+  const lastClickTimeRef = useRef<number>(Date.now());
 
   useEffect(() => {
     const initNetwork = async () => {
       try {
-        const { Network } =
-          await import("vis-network/standalone/esm/vis-network.min.js");
-
         if (!containerRef.current) return;
 
         const options = {
@@ -100,7 +135,7 @@ export default function GraphVis2D({
             color: "#A0B9DB",
           },
           edges: {
-            arrows: { to: { enabled: true, scaleFactor: 0.8 } },
+            arrows: { to: { enabled: true, scaleFactor: 2 } },
             width: 2,
             smooth: {
               type: "cubicBezier",
@@ -114,12 +149,13 @@ export default function GraphVis2D({
             solver: "barnesHut",
             barnesHut: {
               gravitationalConstant: PHYSICS_GRAV_CONSTANT,
-              centralGravity: 0.05,
+              centralGravity: 0.2,
               springLength: PHYSICS_SPRING_LENGTH,
               springConstant: PHYSICS_SPRING_CONST,
               damping: PHYSICS_DAMPING,
               avoidOverlap: 0.8,
             },
+            minVelocity: 5,
             maxVelocity: 140,
             timestep: 0.35,
             adaptiveTimestep: true,
@@ -139,6 +175,55 @@ export default function GraphVis2D({
           { nodes: [], edges: [] },
           options,
         );
+
+        network.on("click", (params: any) => {
+          if (params.nodes?.length > 0) {
+            const nodeId = String(params.nodes[0]);
+            const node = activeNodesRef.current.find(
+              (n) => String(n.id) === nodeId,
+            );
+
+            if (node) {
+              let now = Date.now();
+              if (
+                now - lastClickTimeRef.current < 500 &&
+                lastClickNodeRef.current == nodeId
+              ) {
+                lastClickTimeRef.current = now;
+                networkRef.current.fit({ nodes: [node.id], animation: true });
+              } else {
+                lastClickTimeRef.current = now;
+                lastClickNodeRef.current = nodeId;
+                isNodePinnedRef.current = true;
+                highlightGraphRef.current?.(node.id);
+              }
+            }
+
+            if (node && onNodeClickRef.current) {
+              onNodeClickRef.current(node);
+            }
+          } else {
+            isNodePinnedRef.current = false;
+            highlightGraphRef.current?.("");
+            lastClickTimeRef.current = Date.now();
+            lastClickNodeRef.current = "";
+          }
+        });
+
+        network.on("hoverNode", (params: any) => {
+          lastHoverNodeRef.current = params.node.id;
+          if (!isNodePinnedRef.current) {
+            hoverHighlightGraph(params.node);
+          }
+        });
+
+        network.on("blurNode", (_params: any) => {
+          lastHoverNodeRef.current = "";
+          if (!isNodePinnedRef.current) {
+            hoverHighlightGraph("");
+          }
+        });
+
         networkRef.current = network;
       } catch (err) {
         console.error("Failed to initialize network:", err);
@@ -155,19 +240,6 @@ export default function GraphVis2D({
     const levels: Record<number, Node[]> = {};
     const MIN_RADIUS_STEP = 300;
     const NODE_GIRTH = 120;
-
-    if (useShellLayout) {
-      nodes.forEach((n) => {
-        const depth =
-          n.depth !== null && n.depth !== undefined
-            ? parseInt(String(n.depth))
-            : null;
-        if (depth !== null) {
-          if (!levels[depth]) levels[depth] = [];
-          levels[depth].push(n);
-        }
-      });
-    }
 
     const levelRadii: Record<number, number> = {};
     let currentRadius = 0;
@@ -192,17 +264,9 @@ export default function GraphVis2D({
           : undefined;
       const processedNode = { ...n, depth };
 
-      if (useShellLayout && depth !== undefined && levelRadii[depth]) {
-        const radius = levelRadii[depth];
-        const angle = Math.PI / 2 + (Math.random() - 0.5) * 2;
-        processedNode.x = Math.cos(angle) * radius;
-        processedNode.y = Math.sin(angle) * radius;
-        processedNode.targetRadius = radius;
-      } else {
-        processedNode.x = (Math.random() - 0.5) * 200;
-        processedNode.y = (Math.random() - 0.5) * 200;
-        processedNode.targetRadius = undefined;
-      }
+      processedNode.x = (Math.random() - 0.5) * 200;
+      processedNode.y = (Math.random() - 0.5) * 200;
+      processedNode.targetRadius = undefined;
 
       sumX += processedNode.x || 0;
       sumY += processedNode.y || 0;
@@ -220,14 +284,21 @@ export default function GraphVis2D({
 
   /* Graph Updating */
   useEffect(() => {
-    console.log("Graph data updated:", graphData);
     const data2D = convertGenericGraph(graphData);
     const prepared = prepareData(data2D.nodes, data2D.edges);
     setActiveNodes(prepared.nodes);
+    activeNodesRef.current = prepared.nodes;
+
+    visNodesRef.current = new DataSet(prepared.nodes);
+
+    colorMapRef.current = new Map();
+    for (const node of prepared.nodes) {
+      colorMapRef.current.set(node.id, node.color);
+    }
 
     if (networkRef.current) {
       networkRef.current.setData({
-        nodes: prepared.nodes,
+        nodes: visNodesRef.current,
         edges: prepared.edges,
       });
       networkRef.current.startSimulation();
@@ -236,11 +307,63 @@ export default function GraphVis2D({
     setLoading && setLoading(false);
   }, [graphData]);
 
+  const hightlightGraph = useCallback(
+    (origin: string) => {
+      if (previousColorPacketRef.current) {
+        if (visNodesRef.current) {
+          visNodesRef.current.update(previousColorPacketRef.current);
+        }
+      }
+
+      const connected = findConnected(origin);
+
+      previousColorPacketRef.current = [];
+      const updatePacket: any[] = [];
+      for (const item of connected) {
+        updatePacket.push({ id: item, color: "#ffdd63" });
+        previousColorPacketRef.current.push({
+          id: item,
+          color: colorMapRef.current?.get(item),
+        });
+      }
+
+      if (visNodesRef.current) {
+        visNodesRef.current.update(updatePacket);
+        //networkRef.current?.redraw();
+      }
+
+      return connected;
+    },
+    [directedGraph, findConnected],
+  );
+
+  useEffect(() => {
+    highlightGraphRef.current = hightlightGraph;
+  }, [hightlightGraph]);
+
+  const hoverHighlightGraph = useCallback((origin: string) => {
+    const currTime = Date.now();
+    const deltaTime = currTime - hoverHighlightDebounce.current;
+    if (deltaTime > 32) {
+      hoverHighlightDebounce.current = currTime;
+      highlightGraphRef.current(origin);
+    } else {
+      setTimeout(() => {
+        if (lastHoverNodeRef.current == origin) {
+          highlightGraphRef.current(origin);
+        }
+      }, deltaTime + 1);
+    }
+  }, []);
+
   return (
-    <div
-      ref={containerRef}
-      id="mynetwork"
-      className="relative h-full w-full overflow-hidden"
-    ></div>
+    <>
+      <div
+        ref={containerRef}
+        id="mynetwork"
+        className="relative h-full w-full overflow-hidden"
+      ></div>
+      <LoadingOverlay visible={Boolean(loading)} />
+    </>
   );
 }

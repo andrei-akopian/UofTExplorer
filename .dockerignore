@@ -1,0 +1,48 @@
+# Git
+.git
+.gitignore
+.worktrees
+.vscode
+
+# Docker files
+Dockerfile
+.dockerignore
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# package managers
+**/node_modules
+
+# ===========
+# IDE / Tools
+# ===========
+.idea/
+.lsp/
+/.lsp/.cache/
+.worktrees
+
+# ==================
+# Python / Notebook
+# ==================
+**/__pycache__/
+**/.mypy_cache/
+**/.ipynb_checkpoints
+/__marimo__/
+venv/
+.venv/
+
+# ============
+# JavaScript
+# ============
+**/node_modules/
+
+# ====================
+# Scraper output files
+# ====================
+**/raw_output
+**/ttb_scrapes
+scraper/data/*
+**/parser_logs
+**/logs

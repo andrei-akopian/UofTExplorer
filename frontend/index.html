@@ -4,12 +4,18 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Notable&display=swap" rel="stylesheet">
-    <title>UofT Explorer</title>
-  </head>
+    <meta name="description" content="UofT Explorer: Visualize course prerequisites, find optimal paths to your desired courses, and explore University of Toronto's course requirements with interactive graphs." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">  </head>
   <body>
+    <noscript>
+      <h1>UofT Explorer</h1>
+      <div id="noscript-warning">
+        <strong>Hey, your JavaScript is disabled!</strong>
+        Please enable JavaScript to use interactive features (graph exploration, search, path finding).
+      </div>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

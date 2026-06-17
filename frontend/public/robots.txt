@@ -1,0 +1,11 @@
+# UofT Explorer robots.txt
+# Allow search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Crawl-delay for respectful crawling (in seconds)
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://uoftexplorer.ca/sitemap.xml

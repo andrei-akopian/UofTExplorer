@@ -8,15 +8,24 @@
 ![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
 
 A graph visualizer tool for courses and their requisites at the University of Toronto.
+Currently a work in progress for further improvements and deployment.
 
-Originally completed as a project for [CSC111 — Foundations of Computer Science II](https://artsci.calendar.utoronto.ca/course/csc111h1) and currently a work in progress for further improvements and deployment.
+## Demo
+
+<div align="center">
+  <img src="docs/images/homepage.png" width="355" />
+  <img src="docs/images/3d-graph.png" width="355" />
+  <img src="docs/images/pathexplorer.png" width="355" />
+</div>
 
 ## Features
 
 - **Graph Querying**: Generate graph visualizations of courses by searching for courses and programs, and filtering by CR/NCR, breadth requirements, and department.
 - **2D and 3D Graph Visualizations**: Explore colour-coded graph visualizations of courses and their relationships in 2D and 3D.
-- **Path Explorer - Find Eligible Courses**: Discover what courses you become eligible to take based on the courses you have already completed.
-- **Path Explorer - Course Planning Recommendations**: Find the optimal course combination to take in order to become eligible for a desired course.
+- **Path Explorer Tool — Find Eligible Courses**: Discover what courses you become eligible to take based on the courses you have already completed.
+- **Path Explorer Tool — Course Planning Recommendations**: Find the optimal course combination to take in order to become eligible for a desired course.
+- **Live Graph Statistics**: View statistics about the graphs you generate.
+- **Global Statistics**: A report on computed statistics across the Faculty of Arts & Science at UofT.
 
 ## Related Projects
 
@@ -26,34 +35,7 @@ Originally completed as a project for [CSC111 — Foundations of Computer Scienc
 
 ## Project Structure
 
-```mermaid
-flowchart TD
-    subgraph DataSources[Data Sources]
-      ttb[TTB]
-      artscical[ArtSci Calendar]
-    end
-    scrapers[scrapers]
-    scraped_data[.html / .json scrapes]
-    parsers[parsers]
-    refiner[refinement and sanity checks]
-    ttb --> scrapers
-    artscical --> scrapers
-    scrapers --> scraped_data
-    scraped_data --> parsers
-    parsers --> structured_data
-    structured_data --> refiner
-    core --> refiner
-    data_analysis <--> refiner
-    refiner --> database
-    data_analysis --> database
-    sat --> core
-    core --> backend
-    data_analysis --> backend
-    backend[Flask backend]
-    database --> backend
-    frontend[React frontend]
-    backend <--> frontend
-```
+![Project Structure](./docs/project_structure.svg)
 
 ## Contributors
 

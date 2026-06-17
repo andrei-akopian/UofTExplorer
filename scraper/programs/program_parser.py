@@ -1,26 +1,10 @@
 """
-CSC111 Winter 2026 Project 2
-
-ACADEMIC CALENDAR PARSER
-This Python module provides functions to parse University of Toronto Academic Calendar pages.
-It takes html files from raw_output and converts them into courses.json stored to ../data/courses.json
-
-The HTMLs might not have a standarized format, and might contain incorrectly structured data.
-- in fact, a few courses have non-matching parenthesies
-
-The philosophy of the parsers is thus:
-- parsers must be complicated by necessity, do not seek to simplify or clean them up like normal modules.
-- write many assert statements, so if unexpected cases are reported immediately.
-    make use of global variables, to make asserts and debugging most powerful.
-- due to changing requirements from downstream functions,
-    parsers are to always maintain flexibility and strong debugging infrastructure.
-- code partaining to edge cases no longer needed, is to be left commented out rather than removed.
-    Need for documentation and edgecase detection might arise at any moment.
-
 Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 """
 
 from __future__ import annotations
+from scraper.courses.course_utils import course_code_parser
+from scraper.programs.program_utils import program_code_parser
 import os
 import time
 import logging
@@ -33,18 +17,26 @@ SAVE_PATH = f"{SAVE_FOLDER}/{SAVE_FILENAME}"
 SCRAPE_FOLDER = "scraper/programs/raw_output"
 LOG_FOLDER = "scraper/programs/parser_logs"
 PARSING_TARGETS: dict[str, dict] = {
-    "UTM": {
-        "filepattern": "programs_page_PAGENUMBER_utm.html",
-        "page_range": range(0, 5 + 1),
-    },
     "UTSG": {
         "filepattern": "programs_page_PAGENUMBER_utsg.html",
         "page_range": range(0, 12 + 1),
     },
-    "UTSC": {
-        "filepattern": "programs_page_PAGENUMBER_utsc.html",
-        "page_range": range(0, 7 + 1),
-    },
+    # "UTM": {
+    #     "filepattern": "programs_page_PAGENUMBER_utm.html",
+    #     "page_range": range(0, 5 + 1),
+    # },
+    # "UTSC": {
+    #     "filepattern": "programs_page_PAGENUMBER_utsc.html",
+    #     "page_range": range(0, 7 + 1),
+    # },
+}
+
+PROGRAM_TYPE_CODE_MAP = {
+    "MAJ": "Major",
+    "MIN": "Minor",
+    "SPE": "Specialist",
+    "FOC": "Focus",
+    "CER": "Certification",
 }
 
 
@@ -101,7 +93,7 @@ class ProgramParser:
         self.programs_accepted = 0
         self.programs = []
 
-    def program_code_parser(self, program_code: str) -> list[str]:
+    def program_code_parser(self, program_code: str, logger=None) -> list[str]:
         """
         Dilutes the program code into its prime components.
         No department information, surprisingly.
@@ -140,13 +132,21 @@ class ProgramParser:
         Take beautiful soup object corresponding to a programs's section in the HTML page,
         and extract all relevant data.
         """
-        review_flags = []
         # course name
         raw_name = div.h3.div.string.strip()
         self.current_program = raw_name
-        split_temp = raw_name.split(" - ")
         program_code: list[str] = []
+        if "(Science Program)" in raw_name:
+            temp = raw_name.replace("(Science Program)", "").strip()
+            program_artsci = "Science Program"
+        elif "(Arts Program)" in raw_name:
+            temp = raw_name.replace("(Arts Program)", "").strip()
+            program_artsci = "Arts Program"
+        else:
+            temp = raw_name
+        split_temp = temp.split(" - ")
         title: str = "Missing Program Title"
+        program_artsci = None
         if len(split_temp) == 1:
             # example: Focus in Green Chemistry
             # there are only like 5 of them
@@ -154,12 +154,14 @@ class ProgramParser:
             self.current_program = ""
             return {}, "discard"  # Drop programs with no program code
         elif len(split_temp) == 2:
-            title = split_temp[0]
-            program_code = self.program_code_parser(split_temp[1])
+            title = split_temp[0].strip()
+            program_code = program_code_parser(split_temp[1].strip(), self.logger)
         elif len(split_temp) == 3:
             # example: Criminology and Sociolegal Studies - Major (Arts Program) - ASMAJ0826
-            title += f"{split_temp[0]} - {split_temp[1]}"
-            program_code = self.program_code_parser(split_temp[2])
+            program_code = program_code_parser(split_temp[2].strip(), self.logger)
+            title = split_temp[0].strip()
+        else:
+            raise ValueError("not sure how to parse this")
 
         field_section_raw = div.find_all(class_="views-field-field-section-link")
         field_section = ""
@@ -191,19 +193,22 @@ class ProgramParser:
                 # completion_requirements.append(p_tag.string)
                 a_tags = p_tag.find_all("a")
                 for a_tag in a_tags:
-                    course_name = a_tag.string
-                    if course_name != "CR/NCR":
-                        courses_mentioned.append(course_name)
+                    course_code = a_tag.string
+                    if (
+                        course_code is not None
+                        and course_code_parser(course_code) is not None
+                    ):
+                        courses_mentioned.append(course_code)
 
         program_information = {
             "title": title,
+            "program_artsci": program_artsci,  # (Arts Program) or (Science Program)
             "program_code": program_code,
             "field_section": field_section,
             "description": description,
             "enrollment_requirement": enrollment_requirements,
             "completion_requirement": completion_requirements,
             "courses_mentioned": courses_mentioned,
-            "review_flags": review_flags,
         }
         self.current_program = ""
         return program_information, "accept"
@@ -258,20 +263,21 @@ class ProgramParser:
         Returns the selected parsing target, default target is UTSG.
         """
         target = "UTSG"
-        print(
-            """Select Scrapping Target:
-            (1) UTSG ArtSci - defaults
-            (2) UTSC
-            (3) UTM"""
-        )
-        selection = input("Enter>").strip()
-        if selection.isdigit() and 1 <= int(selection) <= 3:
-            target = ["UTSG", "UTSC", "UTM"][int(selection) - 1]
+        keys = PARSING_TARGETS.keys()
+        if len(keys) > 1:
+            print("Select Parsing target:")
+            for i, k in enumerate(keys):
+                print(f"({i}) {k}")
+            selection = input("Enter>").strip()
+            if selection.isdigit() and 1 <= int(selection) <= 3:
+                target = keys[int(selection) - 1]
+            else:
+                print("selection interpreted as default.")
         else:
-            self.logger.info("selection interpreted as default %s", target)
+            print(f"parsing {target}")
         return target
 
-    def full_scrape_parse(self, target: str = "UTSG", interactive: bool = True) -> None:
+    def full_parse(self, target: str = "UTSG", interactive: bool = True) -> None:
         """
         Parse all the pages associate with programs and a particular target.
         """
@@ -282,6 +288,7 @@ class ProgramParser:
         self.programs = []
         self.programs_accepted = 0
         self.programs_parsed = 0
+        print(target)
         target_page_range = PARSING_TARGETS[target]["page_range"]
         for p in target_page_range:
             if (p % (len(target_page_range) // 10)) == 0:
@@ -297,3 +304,11 @@ class ProgramParser:
         self.save_to_json(self.programs)
         end = time.clock_gettime(time.CLOCK_MONOTONIC)
         self.logger.info("parsing finished in: %ss", round(end - start, 4))
+
+    @classmethod
+    def get_parse_job(cls, target: str = "UTSG", interactive: bool = True):
+        def job(target=target, interactive=interactive):
+            pp = ProgramParser()
+            pp.full_parse(target, interactive)
+
+        return job

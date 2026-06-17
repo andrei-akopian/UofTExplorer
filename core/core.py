@@ -1,6 +1,4 @@
 """
-CSC111 Winter 2026 Project 2: ArtSci Atlas
-
 CORE
 This Python module is the core engine that contains the course graphs.
 
@@ -15,15 +13,13 @@ Notes:
     The hash begins with the degree metric, followed by the string representation of each child, sorted alphabetically.
     A course child is represented by its unique course code.
     A Requisite child is represented by its hash, wrapped in parentheses.
-
-Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 """
 
 from __future__ import annotations
 
 from dataclasses import dataclass
 from functools import total_ordering
-from typing import Any, Callable, Hashable
+from typing import Any, Callable, Hashable, Optional
 
 
 class CourseGraphContainer:
@@ -152,10 +148,17 @@ class CourseGraph:
         num_direct_reqs = []
         for course in self.courses:
             if self.courses[course].prereqs is not None:
-                num_direct_reqs.append(len(self.courses[course].prereqs.reqs))
+                stack = self.courses[course].prereqs.reqs[:]
+                counter = 0
+                while len(stack) > 0:
+                    item = stack.pop()
+                    if isinstance(item, CourseNode):
+                        counter += 1
+                    elif isinstance(item, Requisite):
+                        stack.extend(item.reqs[:])
+                num_direct_reqs.append(counter)
             else:
                 num_direct_reqs.append(0)
-
         return round(sum(num_direct_reqs) / len(num_direct_reqs), 2)
 
     def get_filtered_courses(
@@ -445,6 +448,15 @@ class CourseNode:
             return True
         return False
 
+    def old_courses_contains(self, string: str) -> bool:
+        """
+        Return whether any of the previous course codes for this course contains string, case-insensitive.
+        """
+        for old_course in self.data.previous_course_codes:
+            if string.lower() in old_course.lower():
+                return True
+        return False
+
     def is_satisfied(
         self, courses: list[CourseNode], satisfied_if_no_prereqs: bool = True
     ) -> bool:
@@ -517,6 +529,7 @@ class CourseData:
     """
 
     code_split: list[str | int]
+    previous_course_codes: list[str]
     title: str
     description: str
     cr_ncr: bool
@@ -524,10 +537,13 @@ class CourseData:
     breadth: dict[int, int]
     original_requisite_strings: dict[str, str]
     class_size: Optional[int]
+    subgraph_num_requisites: int
+    subgraph_num_courses: int
 
     def __init__(
         self,
-        code_split: list[str],
+        code_split: list[str | int],
+        previous_course_codes: list[str],
         title: str,
         description: str,
         cr_ncr: bool,
@@ -535,11 +551,14 @@ class CourseData:
         breadth: dict,
         original_requisite_strings: dict[str, str],
         class_size: Optional[int],
+        subgraph_num_requisites: int,
+        subgraph_num_courses: int,
     ) -> None:
         """
         Initialize a new CourseData object.
         """
         self.code_split = code_split
+        self.previous_course_codes = previous_course_codes
         self.title = title
         self.description = description
         self.cr_ncr = cr_ncr
@@ -547,6 +566,8 @@ class CourseData:
         self.breadth = breadth
         self.original_requisite_strings = original_requisite_strings
         self.class_size = class_size
+        self.subgraph_num_requisites = subgraph_num_requisites
+        self.subgraph_num_courses = subgraph_num_courses
 
     def to_dict(self) -> dict[str, str]:
         """
@@ -825,15 +846,19 @@ class Program:
 
     code: str
     title: str
+    artsci_type: Optional[str]
     graph: CourseGraph
 
-    def __init__(self, code: str, title: str, graph: CourseGraph) -> None:
+    def __init__(
+        self, code: str, title: str, artsci_type: Optional[str], graph: CourseGraph
+    ) -> None:
         """
         Initialize a new Program.
         """
         self.code = code
         self.title = title
         self.graph = graph
+        self.artsci_type = artsci_type
 
     def code_contains(self, string: str) -> bool:
         """
@@ -853,22 +878,6 @@ class Program:
 
 
 if __name__ == "__main__":
-    # pass
-    import doctest
-
-    doctest.testmod(verbose=True)
-
-    import python_ta
-
-    python_ta.check_all(
-        config={
-            "allow-local-imports": True,
-            "extra-imports": ["annotations", "dataclass", "functools", "typing"],
-            "allowed-io": [],
-            "max-line-length": 120,
-            "max-nested-blocks": 5,
-            "max-locals": 20,
-            "max-branches": 15,
-            "max-args": 8,
-        }
-    )
+    pass
+    # import doctest
+    # doctest.testmod(verbose=True)

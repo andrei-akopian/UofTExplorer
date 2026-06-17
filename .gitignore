@@ -4,13 +4,15 @@
 .idea/
 .lsp/
 /.lsp/.cache/
+.worktrees
 
 # ==================
 # Python / Notebook
 # ==================
 __pycache__/
 .mypy_cache/
-/__marimo__/
+__marimo__/
+/.venv/
 
 # ============
 # JavaScript
@@ -22,4 +24,12 @@ node_modules/
 # ====================
 raw_output
 ttb_scrapes
+scraper/data/
 parser_logs
+logs
+
+# ====================
+# Build Files
+# ====================
+zip_build
+zip_build.zip

@@ -1,12 +1,13 @@
 """
-CSC111 Winter 2026 Project 2: ArtSci Atlas
-
 DECONSTRUCTOR
 This Python module provides deconstructor functions that turn CourseGraph objects into json files, to be used for
 visualizations.
-
-Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 """
+
+import json
+
+from typing import Callable
+from coloraide import Color
 
 from core.constructor import construct_course_graph
 from core.core import CourseGraph, CourseNode, Requisite
@@ -16,6 +17,7 @@ def deconstruct_course_graph(
     course_graph: CourseGraph,
     filtered_courses: dict[str, CourseNode] = None,
     special_courses: dict[str, CourseNode] = None,
+    breadths: dict[str, str] = None,
 ) -> dict[str, list[dict]]:
     """
     Return a dictionary of course nodes, logic gate AND/OR nodes, and graph edges to be passed into a json file and
@@ -36,11 +38,19 @@ def deconstruct_course_graph(
         filtered_courses = {}
     if special_courses is None:
         special_courses = {}
+    if breadths is None:
+        breadths = {}
 
-    # Maybe should be renamed b/c logic-gate nodes also are added to this dictionary?
     json_courses = []  # List of dictionaries for each course and each AND/OR node
     json_edges = []  # List of dictionaries for each edge
     logic_gate_dict = {}  # Dictionary of dictionaries for each AND/OR node
+
+    # Read colours
+    colours_dict = read_colours("data/colours.json")
+    colour_line = Color.interpolate(
+        colours_dict["base"],
+        space="srgb",
+    )
 
     # Create dictionaries for each course
     for course_code, course in course_graph.courses.items():
@@ -49,17 +59,44 @@ def deconstruct_course_graph(
         json_course = {
             "id": course_code,
             "label": course_code,
+            "code": course_code,
             "title": course.data.title,
             "depth": depth,
+            "description": course.data.description,
+            "crNcr": course.data.cr_ncr,
+            "breadth": ", ".join(
+                f"{breadths[str(br)]}" if str(br) in breadths else str(br)
+                for br in course.data.breadth
+                if course.data.breadth[br] != 0
+            )
+            or None,
+            "prerequisites": course.data.original_requisite_strings.get(
+                "prerequisites"
+            )[14:]
+            or None,
+            "corequisites": course.data.original_requisite_strings.get("corequisites")[
+                13:
+            ]
+            or None,
+            "exclusions": course.data.original_requisite_strings.get("exclusions")[11:]
+            or None,
+            "previousCourseCodes": course.data.previous_course_codes or None,
+            "class_size": [course.data.class_size, 30][course.data.class_size is None],
         }
 
         # Set the colour of the course
         if course_code in filtered_courses:
-            json_course["color"] = "#77ba79"  # Green for filtered courses
+            json_course["color"] = colours_dict["filtered"].to_string(
+                hex=True, upper=True, alpha=False
+            )
         elif course_code in special_courses:
-            json_course["color"] = "#e8745a"  # Red for special courses
+            json_course["color"] = colours_dict["special"].to_string(
+                hex=True, upper=True, alpha=False
+            )
         else:
-            json_course["color"] = "#93c9cc"  # Blue for all other courses
+            json_course["color"] = colour_line((depth - 1) / 3).to_string(
+                hex=True, upper=True, alpha=False
+            )
 
         json_courses.append(json_course)
 
@@ -180,23 +217,23 @@ def deconstruct_prerequisites(
         return
 
 
+def read_colours(file_path: str) -> dict[str, Color | list[Color]]:
+    """
+    Return a dictionary mapping breadth codes to their corresponding colours.
+    """
+    colours_dict = {}
+
+    with open(file_path, "r") as f:
+        for k, v in json.load(f).items():
+            if isinstance(v, list):
+                colours_dict[k] = [Color(col) for col in v]
+            else:
+                colours_dict[k] = Color(v)
+
+    return colours_dict
+
+
 if __name__ == "__main__":
-    # pass
-    import doctest
-
-    doctest.testmod(verbose=True)
-
-    import python_ta
-
-    python_ta.check_all(
-        config={
-            "allow-local-imports": True,
-            "extra-imports": [],
-            "allowed-io": [],
-            "max-line-length": 120,
-            "max-nested-blocks": 5,
-            "max-locals": 20,
-            "max-branches": 15,
-            "max-args": 7,
-        }
-    )
+    pass
+    # import doctest
+    # doctest.testmod(verbose=True)

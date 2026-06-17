@@ -21,6 +21,7 @@ Copyright (c) 2026 Andrei Akopian, Jasmine Chen, Jack Tang, and Angela Zheng
 """
 
 from __future__ import annotations
+from scraper.courses.course_utils import course_code_parser, split_curse_name
 import json
 import os
 import re
@@ -32,15 +33,15 @@ import bs4
 
 SCRAPE_FOLDER = "scraper/courses/raw_output"
 PARSING_TARGETS: dict[str, dict] = {
-    "UTM": {"filepattern": "page_PAGENUMBER_utm.html", "page_range": range(0, 81 + 1)},
     "UTSG": {
         "filepattern": "page_PAGENUMBER_utsg.html",
         "page_range": range(0, 178 + 1),
     },
-    "UTSC": {
-        "filepattern": "page_PAGENUMBER_utsc.html",
-        "page_range": range(0, 72 + 1),
-    },
+    # "UTM": {"filepattern": "page_PAGENUMBER_utm.html", "page_range": range(0, 81 + 1)},
+    # "UTSC": {
+    #     "filepattern": "page_PAGENUMBER_utsc.html",
+    #     "page_range": range(0, 72 + 1),
+    # },
 }
 SAVE_FOLDER: str = "scraper/data"
 SAVE_FILENAME: str = "courses.json"
@@ -68,14 +69,7 @@ CL_PARENTH = [")", "]"]
 PARENTHS = OP_PARENTH + CL_PARENTH
 SPECIAL_CHARS = ORS + ANDS + PARENTHS
 WHITESPACE = [" ", "\u200b", "\xa0", "\n"]
-SEPARATORS = [
-    "•",
-    "-",
-    " ",
-    "\u200b",
-    "\xa0",
-    "\n",
-]  # used by course_name_parser to split the name into code and title
+from scraper.parser_constants import SEPARATORS
 
 # regex pattern for detecting notes about CR/NCR eligibility
 CR_NCR_REGEX_PATTERN = re.compile(
@@ -191,51 +185,6 @@ class CourseParser:
             self.bs4_prefered_parser = "lxml"
         except bs4.FeatureNotFound:
             self.bs4_prefered_parser = "html.parser"
-
-    def course_code_parser(self, course_code: str) -> Optional[list[str | int]]:
-        """
-        Dilutes the course code into its prime components.
-        verify flag converts this into a checker.
-
-        Returns either parsed string, or a boolean regarding whether the parse was
-        successful or not.
-        """
-        if len(course_code) != 8 or not course_code.isupper():
-            return None
-
-        department_code = ""
-        course_number = ""
-        length = ""
-        campus = ""
-        i = 0
-        # Department code
-        while i < len(course_code) and course_code[i].isalpha():
-            department_code += course_code[i]
-            i += 1
-        if len(department_code) not in [3, 4]:
-            return None
-        # Course number with  department
-        while i < len(course_code) and course_code[i].isdigit():
-            course_number += course_code[i]
-            i += 1
-        if (len(course_number) == 2 and len(department_code) != 4) or (
-            len(course_number) > 4
-        ):
-            return None
-        # Length (year) or (halfyear)
-        while i < len(course_code) and course_code[i].isalpha():
-            length += course_code[i]
-            i += 1
-        if len(length) != 1:
-            return None
-        # Compus code, see CAMPUSES constant
-        while i < len(course_code) and course_code[i].isdigit():
-            campus += course_code[i]
-            i += 1
-        if len(campus) != 1:
-            return None
-        assert campus in CAMPUSES
-        return [department_code, int(course_number), length, int(campus)]
 
     def course_hours_extract_int(self, hour_entry: str) -> int:
         """
@@ -431,7 +380,7 @@ class CourseParser:
                     continue
                 else:
                     ops_list.append("/")
-            elif self.course_code_parser(token) is not None:
+            elif course_code_parser(token) is not None:
                 if len(ops_list) > 0 and ops_list[-1] not in OP_PARENTH + ANDS + ORS:
                     self.modifications_logger.warning(
                         "inserted an OR during interpretation"
@@ -463,7 +412,7 @@ class CourseParser:
         """
         output = ["AND"]
         for req in requisites_raw_list:
-            if self.course_code_parser(req) is not None:
+            if course_code_parser(req) is not None:
                 output.append(req)
         return output, set()
 
@@ -607,39 +556,36 @@ class CourseParser:
             if c.isdigit() or c.isalpha():
                 collector += c
             else:
-                if self.course_code_parser(collector) is not None:
+                if course_code_parser(collector) is not None:
                     output.append(collector)
                 collector = ""
-        if self.course_code_parser(collector) is not None:
+        if course_code_parser(collector) is not None:
             output.append(collector)
         return output
 
-    def split_curse_name(self, course_name: str) -> tuple[str, str]:
+    def original_req_strings_preformatter(self, strings: list[str]) -> str:
         """
-        Take the course name string of the format "MAT137Y1 - Calculus 1"
-        and split it on the dash.
-        The input could contain unicode characters, hence the hassle.
-        """
-        collections = []
-        collector = ""
-        for char in course_name:
-            if char in SEPARATORS:
-                if len(collector) > 0:
-                    collections.append(collector)
-                    collector = ""
-            else:
-                collector += char
-        if len(collector) > 0:
-            collections.append(collector)
-            collector = ""
+        Original strings have a really annoying format like:
+        Prerequisite: MAT257Y1/ [ MAT223H1/ MATA23H3/ MAT223H5/ MAT240H1/ MAT240H5, ( MAT235H1, MAT236H1)/ MAT235Y1 / MAT235Y5/ ( MAT232H5, MAT236H5)/ ( MATB41H3, MATB42H3/ MATB43H3)/ MAT237Y1/ MAT237Y5, MAT246H1/ (MAT1581, MAT159H1)/ MAT157Y1/ ( MAT157H5, MAT159H5)/ MAT157Y5/ CSC236H1/ CSC240H1]
+        This function cleans up these formatting problems.
 
-        course_code = collections[0]
-        title = " ".join(collections[1:])
-        if len(course_code) == 0 or self.course_code_parser(course_code) is None:
-            self.general_logger.critical("course has no code")
-        if len(title) == 0:
-            self.general_logger.critical("course has no title")
-        return course_code, title
+        Input is a list of bs4 strings (.strings attribute output)
+        """
+        output_chars = []
+        space_del = False
+        for s in strings:
+            for c in s:
+                if c in WHITESPACE and not space_del:
+                    output_chars.append(c)
+                    continue
+                elif c in WHITESPACE and space_del:
+                    continue
+                if c not in WHITESPACE and space_del:
+                    space_del = False
+                if c in "([/":
+                    space_del = True
+                output_chars.append(c)
+        return "".join(output_chars)
 
     def course_bs4_to_dict(self, div: bs4.PageElement | bs4.Tag) -> tuple[dict, str]:
         """
@@ -651,9 +597,10 @@ class CourseParser:
         has_fields = []
         # course name
         raw_name = div.h3.div.string.strip()
-        course_code, title = self.split_curse_name(raw_name)
-        split_course_code = self.course_code_parser(course_code)
+        course_code, title = split_curse_name(raw_name)
+        split_course_code = course_code_parser(course_code)
         assert split_course_code is not None
+        assert f"{split_course_code[3]}" in CAMPUSES
         self.current_course = course_code
 
         # This block must be below the title parsing, to make sure the course code is caught.
@@ -684,7 +631,7 @@ class CourseParser:
             has_fields.append("previous_course_codes")
             # assert course_code_parser(previous_course_code) is not None
             for pcc in previous_course_codes:
-                if self.course_code_parser(pcc) is None:
+                if course_code_parser(pcc) is None:
                     self.general_logger.info(
                         "previous course code has strange format: %s", pcc.encode()
                     )
@@ -766,7 +713,9 @@ class CourseParser:
         if len(prerequisites_raw) > 0:
             if len(prerequisites_raw) > 1:
                 self.general_logger.warning("multiple prerequisite fields")
-            prerequisite_original = "".join(prerequisites_raw[0].strings)
+            prerequisite_original = self.original_req_strings_preformatter(
+                prerequisites_raw[0].strings
+            )
             structure = self.requisites_parser(prerequisite_original)
             prerequisites = structure
             has_fields.append("prerequisites")
@@ -776,7 +725,9 @@ class CourseParser:
         if len(corequisites_raw) > 0:
             if len(corequisites_raw) > 1:
                 self.general_logger.warning("multiple corequisite fields")
-            corequisites_original = "".join(corequisites_raw[0].strings)
+            corequisites_original = self.original_req_strings_preformatter(
+                corequisites_raw[0].strings
+            )
             structure = self.requisites_parser(corequisites_original)
             corequisites = structure
             has_fields.append("corequisites")
@@ -787,7 +738,9 @@ class CourseParser:
         if len(exclusions_raw) > 0:
             if len(exclusions_raw) > 1:
                 self.general_logger.warning("multiple prerequisite fields")
-            exclusions_original = "".join(exclusions_raw[0].strings)
+            exclusions_original = self.original_req_strings_preformatter(
+                exclusions_raw[0].strings
+            )
             structure = self.requisites_parser(exclusions_original)
             exclusions = structure
             has_fields.append("exclusions")
@@ -803,7 +756,7 @@ class CourseParser:
             "title": title,
             "course_code": course_code,
             "split_course_code": split_course_code,
-            "previous_course_code": previous_course_codes,
+            "previous_course_codes": previous_course_codes,
             "description": description,
             "cr_ncr_eligible": cr_ncr_eligible,
             "breadth_requirements_list": breadth_requirements_list,
@@ -846,6 +799,10 @@ class CourseParser:
             self.general_logger.critical("Warning: Couldn't find view-content in html.")
             return []
         courses_html = course_list.children
+        courses_json = self.parse_children(courses_html)
+        return courses_json
+
+    def parse_children(self, courses_html):
         courses_json = []
         for child in courses_html:
             if child != "\n":
@@ -874,17 +831,18 @@ class CourseParser:
         Returns the selected parsing target, default target is UTSG.
         """
         target = "UTSG"
-        print(
-            """Select Scrapping Target:
-            (1) UTSG ArtSci - defaults
-            (2) UTSC
-            (3) UTM"""
-        )
-        selection = input("Enter>").strip()
-        if selection.isdigit() and 1 <= int(selection) <= 3:
-            target = ["UTSG", "UTSC", "UTM"][int(selection) - 1]
+        keys = PARSING_TARGETS.keys()
+        if len(keys) > 1:
+            print("Select Parsing target:")
+            for i, k in enumerate(keys):
+                print(f"({i}) {k}")
+            selection = input("Enter>").strip()
+            if selection.isdigit() and 1 <= int(selection) <= 3:
+                target = keys[int(selection) - 1]
+            else:
+                print("selection interpreted as default.")
         else:
-            print("selection interpreted as default.")
+            print(f"parsing {target}")
         return target
 
     def simplify_requisite(
@@ -989,3 +947,11 @@ class CourseParser:
         self.save_to_json(self.courses)
         end = time.clock_gettime(time.CLOCK_MONOTONIC)
         self.general_logger.info("parsing finished in: %ss", round(end - start, 4))
+
+    @classmethod
+    def get_parse_job(cls, target: str = "UTSG", interactive: bool = True):
+        def job(target=target, interactive=interactive):
+            cp = CourseParser()
+            cp.full_parse(target, interactive)
+
+        return job

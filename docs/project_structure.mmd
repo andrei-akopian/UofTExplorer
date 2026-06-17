@@ -1,0 +1,43 @@
+
+%% This is a mermaid graph of our project structure.
+%% Compile using https://github.com/mermaid-js/mermaid-cli
+%% mmdc -i project_structure.mmd -o project_structure.svg -b transparent
+
+flowchart TD
+    subgraph DataSources[Data Sources]
+      ttb([TTB])
+      artscical([ArtSci Calendar])
+    end
+    subgraph DataPipeline[Data Pipeline]
+      data_analysis[Data Analysis]
+      scrapers[scrapers]  
+      scraped_data[(".html / .json scrapes")]
+      parsers[parsers]
+      refiner((refinement & sanity checks))
+      structured_data[("Structured Data")]
+    end
+    ttb --> scrapers
+    artscical --> scrapers
+    scrapers --> scraped_data
+    scraped_data --> parsers
+    parsers --> structured_data
+    structured_data --> refiner
+    core --> refiner
+    data_analysis <--> refiner
+    subgraph minimalpack[Minimal Package for eg. Docker]
+      data[Data & Graphs]
+      backend[Flask Server]
+      core[Core]
+      sat[Z3 & SAT optimizers]
+      static([Built Frontend])
+    end
+    refiner --> data
+    data_analysis --> data
+    sat --> core
+    core --> backend
+    data_analysis --> backend
+    data --> backend
+    backend <--> static
+    frontend[React Frontend]:::wide
+    frontend --> static
+    classDef wide padding:1em;

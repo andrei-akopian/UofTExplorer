@@ -121,6 +121,7 @@ def get_num_pages():
 
 
 def scrape_everything(pages=None):
+    # TODO add a chack to make sure I am actually getting everything, and there are no more pages left.
     if pages is None:
         pages = get_num_pages()
     for page in range(0, pages):

@@ -1,4 +1,5 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import SearchMenu from "./SearchMenu";
 
 import { fetchGraphData } from "../../lib/api";
@@ -27,6 +28,7 @@ export default function GraphQuery({
   setIsLoading,
   setMessage,
   setMessageType,
+  manualFetch,
 }: {
   data: GraphData;
   setData: (data: GraphData) => void;
@@ -34,16 +36,22 @@ export default function GraphQuery({
   setIsLoading: (isLoading: boolean) => void;
   setMessage: (message: string) => void;
   setMessageType: (type: "info" | "success" | "error") => void;
+  manualFetch: string;
 }) {
   void data;
 
+  const navigate = useNavigate();
+  const location = useLocation();
   const [query, setQuery] = useState<string>("");
   const [filters, setFilters] = useState<QueryFilters>({
     cr_ncr: [],
     departments: [],
     breadth_requirements: [],
   });
-  const [error, setError] = useState<string | null>(null);
+  const [, setError] = useState<string | null>(null);
+
+  const [manualFetchArg, setManualFetchArg] = useState<string>("");
+  const lastFetchQueryRef = useRef<string>("");
 
   const fetch = useCallback(async () => {
     setIsLoading(true);
@@ -54,15 +62,13 @@ export default function GraphQuery({
         convertFiltersToApiFormat(filters),
       );
       setData(result);
-      setMessage(
-        `Currently Displaying: ${query} | Number of Nodes: ${result.nodes.length}`,
-      );
+      setMessage(`Number of nodes: ${result.nodes.length}`);
       setMessageType("success");
     } catch (err) {
       const message = err instanceof Error ? err.message : "Unknown error";
       console.warn("Error fetching graph data:", message);
       setError(message);
-      setMessage(`Error: ${message}`);
+      setMessage(`${message}`);
       setMessageType("error");
     } finally {
       setIsLoading(false);
@@ -74,27 +80,47 @@ export default function GraphQuery({
   };
 
   const handleFetchClick = () => {
-    if (query.trim()) {
-      fetchGraph();
+    const trimmed = query.trim();
+    if (trimmed) {
+      // Determine which graph page we're on, default to 2d
+      const isGraph3D = location.pathname.includes("/graph/3d");
+      const graphPath = isGraph3D ? "/graph/3d" : "/graph/2d";
+      if (lastFetchQueryRef.current == trimmed) {
+        // Directly fetch graph as URL params should not change
+        fetchGraph();
+      } else {
+        // Redirect to graph page with search query parameter
+        navigate(`${graphPath}?search=${encodeURIComponent(trimmed)}`);
+      }
+      lastFetchQueryRef.current = trimmed;
     }
   };
 
+  useEffect(() => {
+    if (manualFetch.trim()) {
+      setQuery(manualFetch);
+      setManualFetchArg(manualFetch);
+    }
+  }, [manualFetch]);
+
+  useEffect(() => {
+    if (manualFetchArg.trim()) {
+      fetchGraph();
+    }
+  }, [manualFetchArg]);
+
   return (
-    <div className="absolute top-3 flex w-full flex-wrap content-start items-center justify-center gap-2.5 p-4">
-      <SearchMenu
-        query={query}
-        setQuery={setQuery}
-        filtersHook={filters}
-        setFiltersHook={setFilters}
-      />
-      <button
-        onClick={handleFetchClick}
-        disabled={isLoading}
-        className="bg-primary hover:bg-primary-hover cursor-pointer rounded-md border-0 px-5 py-2 font-sans text-base text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60"
-      >
-        Load Graph
-      </button>
-      {error && <div className="font-sans text-sm text-red-700">{error}</div>}
+    <div className="absolute top-13 left-1/2 z-40 flex w-[calc(100%-1rem)] -translate-x-1/2 flex-col content-start items-stretch gap-2 sm:top-3 sm:w-full sm:items-center sm:gap-2.5 sm:px-4 sm:pr-28">
+      <div className="flex flex-wrap items-center justify-center gap-2.5">
+        <SearchMenu
+          query={query}
+          setQuery={setQuery}
+          filtersHook={filters}
+          setFiltersHook={setFilters}
+          onLoadGraph={handleFetchClick}
+          isLoading={isLoading}
+        />
+      </div>
     </div>
   );
 }

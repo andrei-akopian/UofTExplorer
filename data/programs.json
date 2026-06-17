@@ -1,6 +1,7 @@
 [
   {
     "title": "Accounting Specialist (BCom)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -74,13 +75,12 @@
       "STA220H1",
       "STA255H1",
       "MGT100H1",
-      "RSM100H1",
-      "Rotman Commerce website"
-    ],
-    "review_flags": []
+      "RSM100H1"
+    ]
   },
   {
-    "title": "Actuarial Science Major (Science Program)",
+    "title": "Actuarial Science Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -163,11 +163,11 @@
       "MAT336H1",
       "MAT337H1",
       "APM346H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Actuarial Science Specialist (Science Program)",
+    "title": "Actuarial Science Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -260,11 +260,11 @@
       "RSM433H1",
       "RSM437H1",
       "MAT246H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "African Studies Major (Arts Program)",
+    "title": "African Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -279,7 +279,6 @@
     ],
     "completion_requirement": [],
     "courses_mentioned": [
-      "undergraduatecoordinator.afr@utoronto.ca",
       "AFR150Y1",
       "AFR199H1",
       "AFR250Y1",
@@ -410,13 +409,12 @@
       "WGS385H1",
       "WGS386H1",
       "WGS426H1",
-      "WGS440H1",
-      "Arts & Science Internship Program (ASIP)"
-    ],
-    "review_flags": []
+      "WGS440H1"
+    ]
   },
   {
-    "title": "African Studies Minor (Arts Program)",
+    "title": "African Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -431,7 +429,6 @@
     ],
     "completion_requirement": [],
     "courses_mentioned": [
-      "undergraduatecoordinator.afr@utoronto.ca",
       "AFR150Y1",
       "AFR199H1",
       "AFR250Y1",
@@ -558,11 +555,11 @@
       "WGS386H1",
       "WGS426H1",
       "WGS440H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "African Studies Specialist (Arts Program)",
+    "title": "African Studies Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -577,7 +574,6 @@
     ],
     "completion_requirement": [],
     "courses_mentioned": [
-      "undergraduatecoordinator.afr@utoronto.ca",
       "AFR150Y1",
       "AFR199H1",
       "AFR250Y1",
@@ -723,13 +719,12 @@
       "PRT101H1",
       "PRT102H1",
       "PRT201H1",
-      "PRT202H1",
-      "Arts & Science Internship Program (ASIP)"
-    ],
-    "review_flags": []
+      "PRT202H1"
+    ]
   },
   {
-    "title": "Al and Malka Green Yiddish Program Minor (Arts Program)",
+    "title": "Al and Malka Green Yiddish Program Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -838,11 +833,11 @@
       "SLA495H1",
       "SOC201H1",
       "SOC251H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "American Studies Major (Arts Program)",
+    "title": "American Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -964,13 +959,12 @@
       "HIS484H1",
       "HIS487H1",
       "HIS497H1",
-      "JIH366H1",
-      "CSUS website"
-    ],
-    "review_flags": []
+      "JIH366H1"
+    ]
   },
   {
-    "title": "American Studies Minor (Arts Program)",
+    "title": "American Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -1076,13 +1070,12 @@
       "HIS487H1",
       "HIS497H1",
       "HUN335H1",
-      "JIH366H1",
-      "CSUS website"
-    ],
-    "review_flags": []
+      "JIH366H1"
+    ]
   },
   {
-    "title": "Animal Physiology Major (Science Program)",
+    "title": "Animal Physiology Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -1164,13 +1157,12 @@
       "HMB496Y1",
       "HMB499Y1",
       "PSL432H1",
-      "PSL452H1",
-      "Arts & Science Internship Program"
-    ],
-    "review_flags": []
+      "PSL452H1"
+    ]
   },
   {
-    "title": "Anthropology Major (Evolutionary) (Science Program)",
+    "title": "Anthropology Major (Evolutionary)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -1229,11 +1221,11 @@
       "ANT498H1",
       "ANT499H1",
       "ANT390H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Anthropology Major (General) (Arts Program)",
+    "title": "Anthropology Major (General)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -1416,11 +1408,11 @@
       "JAL355H1",
       "JAL401H1",
       "SLA380H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Anthropology Major (Society, Culture, and Language) (Arts Program)",
+    "title": "Anthropology Major (Society, Culture, and Language)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -1530,11 +1522,11 @@
       "JAL355H1",
       "JAL401H1",
       "SLA380H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Anthropology Minor (General) (Arts Program)",
+    "title": "Anthropology Minor (General)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -1717,11 +1709,11 @@
       "JAL355H1",
       "JAL401H1",
       "SLA380H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Anthropology Specialist (Society, Culture, and Language) (Arts Program)",
+    "title": "Anthropology Specialist (Society, Culture, and Language)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -1827,11 +1819,11 @@
       "JAL355H1",
       "JAL401H1",
       "SLA380H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Applied Data Science Minor (Science Program)",
+    "title": "Applied Data Science Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -1944,11 +1936,11 @@
       "PSY369H1",
       "PSY379H1",
       "SOC303H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Applied Genetics and Biotechnology Major (Science Program)",
+    "title": "Applied Genetics and Biotechnology Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -2074,11 +2066,11 @@
       "HMB435H1",
       "HMB441H1",
       "HMB491Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Applied Genetics and Biotechnology Specialist (Science Program)",
+    "title": "Applied Genetics and Biotechnology Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -2203,13 +2195,12 @@
       "HMB431H1",
       "HMB435H1",
       "HMB441H1",
-      "HMB491Y1",
-      "Arts & Science Internship Program"
-    ],
-    "review_flags": []
+      "HMB491Y1"
+    ]
   },
   {
-    "title": "Applied Mathematics Specialist (Science Program)",
+    "title": "Applied Mathematics Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -2289,11 +2280,11 @@
       "PHL281H1",
       "PHL295H1",
       "SDS256H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Archaeology Major (Arts Program)",
+    "title": "Archaeology Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -2473,11 +2464,11 @@
       "ARH360H1",
       "EAS312H1",
       "EAS412H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Archaeology Minor (Arts Program)",
+    "title": "Archaeology Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -2639,11 +2630,11 @@
       "ARH360H1",
       "EAS312H1",
       "EAS412H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Archaeology Specialist (Arts Program)",
+    "title": "Archaeology Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -2836,11 +2827,11 @@
       "ARH360H1",
       "EAS312H1",
       "EAS412H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Art History Major (Arts Program)",
+    "title": "Art History Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -2857,7 +2848,6 @@
     "courses_mentioned": [
       "FAH101H1",
       "FAH102H1",
-      "Department website",
       "FAH275H1",
       "FAH338H1",
       "ARH440H1",
@@ -2960,11 +2950,11 @@
       "FAH470H1",
       "FAH472H1",
       "FAH473H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Art History Minor (Arts Program)",
+    "title": "Art History Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -3080,11 +3070,11 @@
       "FAH470H1",
       "FAH472H1",
       "FAH473H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Art History Specialist (Arts Program)",
+    "title": "Art History Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -3101,7 +3091,6 @@
     "courses_mentioned": [
       "FAH101H1",
       "FAH102H1",
-      "Department website",
       "FAH275H1",
       "FAH338H1",
       "ARH440H1",
@@ -3204,11 +3193,11 @@
       "FAH470H1",
       "FAH472H1",
       "FAH473H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Asian Canadian Studies Minor (Arts Program)",
+    "title": "Asian Canadian Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -3226,8 +3215,6 @@
       "CDN307H1",
       "CDN450H1",
       "CDN455H1",
-      "www.uc.utoronto.ca/canadianstudies",
-      "canadian.studies@utoronto.ca",
       "ANT477H1",
       "CAS413H1",
       "CDN225H1",
@@ -3287,14 +3274,12 @@
       "INS200H1",
       "SOC311H1",
       "SOC336H1",
-      "POL467H1",
-      "www.uc.utoronto.ca/canadianstudies/",
-      "canadian.studies@utoronto.ca"
-    ],
-    "review_flags": []
+      "POL467H1"
+    ]
   },
   {
-    "title": "Astronomy & Astrophysics Major (Science Program)",
+    "title": "Astronomy & Astrophysics Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -3383,11 +3368,11 @@
       "AST430H1",
       "AST425Y1",
       "AST425Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Astronomy & Astrophysics Minor (Science Program)",
+    "title": "Astronomy & Astrophysics Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -3440,11 +3425,11 @@
       "MAT158H1",
       "MAT159H1",
       "MAT157Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Astronomy & Physics Specialist (Science Program)",
+    "title": "Astronomy & Physics Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -3553,11 +3538,11 @@
       "AST424H1",
       "AST425Y1",
       "AST425Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Biochemistry Major (Science Program)",
+    "title": "Biochemistry Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -3616,11 +3601,11 @@
       "BCH479H1",
       "CHM447H1",
       "MGY441H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Biochemistry Specialist (Science Program)",
+    "title": "Biochemistry Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -3711,11 +3696,11 @@
       "BCH472Y1",
       "BCH473Y1",
       "CHM220H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Biodiversity and Conservation Biology Major (Science Program)",
+    "title": "Biodiversity and Conservation Biology Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -3835,11 +3820,11 @@
       "GGR272H1",
       "JHE353H1",
       "JHE355H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Bioethics Major (Arts Program)",
+    "title": "Bioethics Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -3906,11 +3891,11 @@
       "SOC363H1",
       "SOC427H1",
       "WGS367H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Bioethics Minor (Arts Program)",
+    "title": "Bioethics Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -3947,11 +3932,11 @@
       "PHL412H1",
       "PHL413H1",
       "PHL483H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Bioethics Specialist (Arts Program)",
+    "title": "Bioethics Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -4018,11 +4003,11 @@
       "SOC363H1",
       "SOC427H1",
       "WGS367H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Bioinformatics and Computational Biology Specialist (Science Program)",
+    "title": "Bioinformatics and Computational Biology Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -4082,7 +4067,6 @@
       "BCB410H1",
       "BCB420H1",
       "BCB430Y1",
-      "Arts & Science Internship Program",
       "BIO120H1",
       "CSB352H1",
       "BCH441H1",
@@ -4090,11 +4074,11 @@
       "BCB410H1",
       "BCB410H1",
       "CSB280H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Biological Chemistry Specialist (Science Program)",
+    "title": "Biological Chemistry Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -4153,13 +4137,12 @@
       "CHM437H1",
       "CHM447H1",
       "CHM479H1",
-      "CSB450H1",
-      "Arts & Science Internship Program"
-    ],
-    "review_flags": []
+      "CSB450H1"
+    ]
   },
   {
-    "title": "Biological Physics Specialist (Science Program)",
+    "title": "Biological Physics Specialist",
+    "program_artsci": null,
     "program_code": [
       "Bi",
       "olo",
@@ -4170,11 +4153,11 @@
     "description": "",
     "enrollment_requirement": [],
     "completion_requirement": [],
-    "courses_mentioned": [],
-    "review_flags": []
+    "courses_mentioned": []
   },
   {
-    "title": "Biological Physics Specialist: Advanced Physics Stream (Science Program)",
+    "title": "Biological Physics Specialist: Advanced Physics Stream",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -4257,16 +4240,15 @@
       "PHY472H1",
       "PHY478H1",
       "PHY479Y1",
-      "Arts & Science Internship Program",
       "PHY478H1",
       "PHY479Y1",
       "PHY478H1",
       "PHY479Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Biological Physics Specialist: Biochemistry Stream (Science Program)",
+    "title": "Biological Physics Specialist: Biochemistry Stream",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -4361,18 +4343,17 @@
       "PHY479Y1",
       "BCH472Y1",
       "BCH473Y1",
-      "Arts & Science Internship Program",
       "PHY478H1",
       "PHY479Y1",
       "PHY478H1",
       "PHY479Y1",
       "CHM222H1",
       "PHY252H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Biological Physics Specialist: Immunology Stream (Science Program)",
+    "title": "Biological Physics Specialist: Immunology Stream",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -4465,18 +4446,17 @@
       "IMM385Y1",
       "IMM435H1",
       "IMM450Y1",
-      "Arts & Science Internship Program",
       "PHY478H1",
       "PHY479Y1",
       "PHY478H1",
       "PHY479Y1",
       "CHM222H1",
       "PHY252H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Biological Physics Specialist: Physiology Stream (Science Program)",
+    "title": "Biological Physics Specialist: Physiology Stream",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -4568,18 +4548,17 @@
       "PSL399Y1",
       "PSL498Y1",
       "PSL499H1",
-      "Arts & Science Internship Program",
       "PHY478H1",
       "PHY479Y1",
       "PHY478H1",
       "PHY479Y1",
       "CHM222H1",
       "PHY252H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Biology Major (Science Program)",
+    "title": "Biology Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -4594,7 +4573,6 @@
     ],
     "completion_requirement": [],
     "courses_mentioned": [
-      "undergrad.eeb@utoronto.ca",
       "BIO120H1",
       "BIO130H1",
       "CHM135H1",
@@ -4703,11 +4681,11 @@
       "EHJ352H1",
       "BIO271H1",
       "PSL301H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Biology Minor (Science Program)",
+    "title": "Biology Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -4722,7 +4700,6 @@
     ],
     "completion_requirement": [],
     "courses_mentioned": [
-      "undergrad.eeb@utoronto.ca",
       "BIO120H1",
       "BIO130H1",
       "BIO220H1",
@@ -4766,11 +4743,11 @@
       "MGY277H1",
       "PSY397H1",
       "PSY497H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Biology Specialist (Science Program)",
+    "title": "Biology Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -4785,7 +4762,6 @@
     ],
     "completion_requirement": [],
     "courses_mentioned": [
-      "undergrad.eeb@utoronto.ca",
       "BIO120H1",
       "BIO130H1",
       "CHM135H1",
@@ -4919,11 +4895,11 @@
       "ENV432H1",
       "BIO271H1",
       "PSL301H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Biomedical Toxicology Major (Science Program)",
+    "title": "Biomedical Toxicology Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -4978,11 +4954,11 @@
       "PCL483H1",
       "PCL472Y1",
       "PCL474Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Biomedical Toxicology Specialist (Science Program)",
+    "title": "Biomedical Toxicology Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -5072,17 +5048,16 @@
       "JPM400Y1",
       "PCL474Y1",
       "JPM400Y1",
-      "undergrad.pharmtox@utoronto.ca",
       "JPM400Y1",
       "PCL298H1",
       "PCL474Y1",
       "PCL497H1",
       "PCL498Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Book and Media Studies Major (Arts Program)",
+    "title": "Book and Media Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -5234,11 +5209,11 @@
       "BMS432H1",
       "BMS433H1",
       "BMS434H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Book and Media Studies Minor (Arts Program)",
+    "title": "Book and Media Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -5380,11 +5355,11 @@
       "URB234H1",
       "WGS271Y1",
       "WRR303H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Buddhism, Psychology and Mental Health Minor (Arts Program)",
+    "title": "Buddhism, Psychology and Mental Health Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -5399,7 +5374,6 @@
     ],
     "completion_requirement": [],
     "courses_mentioned": [
-      "nc.undergradadmin@utoronto.ca",
       "BPM232H1",
       "BPM100H1",
       "BPM214H1",
@@ -5571,11 +5545,11 @@
       "SOC483H1",
       "VIC106H1",
       "VIC206H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Buddhist Studies Major (Arts Program)",
+    "title": "Buddhist Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -5679,11 +5653,11 @@
       "MHB256H1",
       "MHB355H1",
       "MHB356H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Buddhist Studies Specialist (Arts Program)",
+    "title": "Buddhist Studies Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -5802,11 +5776,11 @@
       "RLG406H1",
       "RLG407H1",
       "RLG426H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Business German Minor (Arts Program)",
+    "title": "Business German Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -5842,11 +5816,11 @@
       "JGJ360H1",
       "GER361H1",
       "GER410H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Canadian Studies Major (Arts Program)",
+    "title": "Canadian Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -5886,13 +5860,12 @@
       "SLA238H1",
       "SOC218H1",
       "SOC220H1",
-      "TRN235H1",
-      "canadian.studies@utoronto.ca"
-    ],
-    "review_flags": []
+      "TRN235H1"
+    ]
   },
   {
-    "title": "Canadian Studies Minor (Arts Program)",
+    "title": "Canadian Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -5922,13 +5895,12 @@
       "UNI101H1",
       "UNI102H1",
       "UNI103H1",
-      "UNI104H1",
-      "canadian.studies@utoronto.ca"
-    ],
-    "review_flags": []
+      "UNI104H1"
+    ]
   },
   {
-    "title": "Canadian Studies Specialist (Arts Program)",
+    "title": "Canadian Studies Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -5968,13 +5940,12 @@
       "SLA238H1",
       "SOC218H1",
       "SOC220H1",
-      "TRN235H1",
-      "canadian.studies@utoronto.ca"
-    ],
-    "review_flags": []
+      "TRN235H1"
+    ]
   },
   {
-    "title": "Caribbean Studies Major (Arts Program)",
+    "title": "Caribbean Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -6180,11 +6151,11 @@
       "WGS450H1",
       "WGS463H1",
       "WGS481H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Caribbean Studies Minor (Arts Program)",
+    "title": "Caribbean Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -6264,11 +6235,11 @@
       "SPA202H1",
       "WGS381H1",
       "WGS480H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Caribbean Studies Specialist (Arts Program)",
+    "title": "Caribbean Studies Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -6467,11 +6438,11 @@
       "WGS450H1",
       "WGS463H1",
       "WGS481H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Cell & Molecular Biology Major (Science Program)",
+    "title": "Cell & Molecular Biology Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -6569,13 +6540,12 @@
       "HMB496Y1",
       "HMB499Y1",
       "MGY441H1",
-      "MGY480Y1",
-      "Arts & Science Internship Program"
-    ],
-    "review_flags": []
+      "MGY480Y1"
+    ]
   },
   {
     "title": "Cell & Molecular Biology Major: Focus in Molecular Networks of the Cell",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -6639,11 +6609,11 @@
       "CSB497H1",
       "CSB498Y1",
       "CSB499Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Cell & Molecular Biology Major: Focus in Plant Genomics and Biotechnology",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -6701,11 +6671,11 @@
       "CSB497H1",
       "CSB498Y1",
       "CSB499Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Cell & Molecular Biology Major: Focus in Stem Cells and Developmental Biology",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -6743,11 +6713,11 @@
       "CSB497H1",
       "CSB498Y1",
       "CSB499Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Cell & Molecular Biology Specialist (Science Program)",
+    "title": "Cell & Molecular Biology Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -6875,13 +6845,12 @@
       "HMB496Y1",
       "HMB499Y1",
       "MGY441H1",
-      "MGY480Y1",
-      "Arts & Science Internship Program"
-    ],
-    "review_flags": []
+      "MGY480Y1"
+    ]
   },
   {
     "title": "Cell & Molecular Biology Specialist: Focus in Molecular Networks of the Cell",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -6961,11 +6930,11 @@
       "CSB498Y1",
       "CSB499Y1",
       "MGY441H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Cell & Molecular Biology Specialist: Focus in Plant Genomics and Biotechnology",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -7037,11 +7006,11 @@
       "CSB498Y1",
       "CSB499Y1",
       "MGY441H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Cell & Molecular Biology Specialist: Focus in Stem Cells and Developmental Biology",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -7101,11 +7070,11 @@
       "CSB497H1",
       "CSB498Y1",
       "CSB499Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Celtic Studies Major (Arts Program)",
+    "title": "Celtic Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -7167,11 +7136,11 @@
       "CLT444H1",
       "MST341H1",
       "SMC385H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Celtic Studies Minor (Arts Program)",
+    "title": "Celtic Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -7224,11 +7193,11 @@
       "SMC165H1",
       "SMC457H1",
       "MST226H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Celtic Studies Specialist (Arts Program)",
+    "title": "Celtic Studies Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -7288,11 +7257,11 @@
       "CLT378H1",
       "MST341H1",
       "SMC385H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Black Canadian Studies (Category 2)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "CER",
@@ -7372,13 +7341,12 @@
       "URB339H1",
       "WGS381H1",
       "WGS390H1",
-      "WGS463H1",
-      "canadian.studies@utoronto.ca"
-    ],
-    "review_flags": []
+      "WGS463H1"
+    ]
   },
   {
     "title": "Certificate in Bosnian, Croatian, Serbian Language (BCS) (Category 2)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "CER",
@@ -7397,13 +7365,12 @@
       "SLA118H1",
       "SLA257H1",
       "SLA277H1",
-      "SLA337H1",
-      "slavic@utoronto.ca"
-    ],
-    "review_flags": []
+      "SLA337H1"
+    ]
   },
   {
     "title": "Certificate in Business Fundamentals (Category 2)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "CER",
@@ -7431,13 +7398,12 @@
       "RSM230H1",
       "RSM250H1",
       "RSM100H1",
-      "MGT100H1",
-      "Rotman Commerce section of the Calendar"
-    ],
-    "review_flags": []
+      "MGT100H1"
+    ]
   },
   {
     "title": "Certificate in Czech and Slovak Language (Category 2)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "CER",
@@ -7455,13 +7421,12 @@
       "SLA105Y1",
       "SLA204Y1",
       "SLA214H1",
-      "SLA405H1",
-      "slavic@utoronto.ca"
-    ],
-    "review_flags": []
+      "SLA405H1"
+    ]
   },
   {
     "title": "Certificate in Estonian Language (Category 2)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "CER",
@@ -7480,13 +7445,12 @@
       "EST101H1",
       "EST200H1",
       "EST201H1",
-      "EST300H1",
-      "slavic@utoronto.ca"
-    ],
-    "review_flags": []
+      "EST300H1"
+    ]
   },
   {
     "title": "Certificate in Finnish Language (Category 2)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "CER",
@@ -7507,13 +7471,12 @@
       "FIN210H1",
       "FIN300H1",
       "FIN340H1",
-      "FIN400H1",
-      "slavic@utoronto.ca"
-    ],
-    "review_flags": []
+      "FIN400H1"
+    ]
   },
   {
     "title": "Certificate in French Language (Category 2)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "CER",
@@ -7530,11 +7493,11 @@
     "courses_mentioned": [
       "FCS185H1",
       "JFL388H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in German Language (Category 2)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "CER",
@@ -7550,13 +7513,12 @@
     "completion_requirement": [],
     "courses_mentioned": [
       "GER150H1",
-      "GER275H1",
-      "german.undergradadmin@utoronto.ca"
-    ],
-    "review_flags": []
+      "GER275H1"
+    ]
   },
   {
     "title": "Certificate in Global German Studies (UofT Global Scholar) (Category 2)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "CER",
@@ -7585,11 +7547,11 @@
       "GER391H1",
       "GER354Y0",
       "GER398H0"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Global Latin America (Category 2)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "CER",
@@ -7606,11 +7568,11 @@
     "courses_mentioned": [
       "LAS200H1",
       "LAS201H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Human Resource Management (Category 1)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       " CH",
@@ -7644,11 +7606,11 @@
       "STA220H1",
       "STA221H1",
       "IRW220H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in International Affairs (UofT Global Scholar) (Category 2)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "CER",
@@ -7798,11 +7760,11 @@
       "POL477H1",
       "POL486H1",
       "POL487H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Macedonian Language (Category 2)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "CER",
@@ -7819,13 +7781,12 @@
     "courses_mentioned": [
       "SLA109Y1",
       "SLA209H1",
-      "SLA213H1",
-      "slavic@utoronto.ca"
-    ],
-    "review_flags": []
+      "SLA213H1"
+    ]
   },
   {
     "title": "Certificate in Polish Language (Category 2)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "CER",
@@ -7846,13 +7807,12 @@
       "SLA207H1",
       "SLA306H1",
       "SLA336H1",
-      "SLA426H1",
-      "slavic@utoronto.ca"
-    ],
-    "review_flags": []
+      "SLA426H1"
+    ]
   },
   {
     "title": "Certificate in Portuguese Language (Category 2)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "CER",
@@ -7869,11 +7829,11 @@
     "courses_mentioned": [
       "PRT250H1",
       "PRT375H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Russian Language (Category 2)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "CER",
@@ -7898,13 +7858,12 @@
       "SLA321H1",
       "SLA322H1",
       "SLA410H1",
-      "SLA420Y1",
-      "slavic@utoronto.ca"
-    ],
-    "review_flags": []
+      "SLA420Y1"
+    ]
   },
   {
     "title": "Certificate in Spanish Language (Category 2)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "CER",
@@ -7921,11 +7880,11 @@
     "courses_mentioned": [
       "SPA254H1",
       "SPA275H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Sustainability (U of T Sustainability Scholar) (Category 2)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "CER",
@@ -7986,17 +7945,16 @@
       "WGS367H1",
       "ENV341H1",
       "CSE342H1",
-      "nomination package",
       "ENV411H1",
       "ENV421Y1",
       "ENV461H1",
       "ENV463H1",
       "ENV465Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Certificate in Ukrainian Language (Category 2)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "CER",
@@ -8013,13 +7971,12 @@
     "courses_mentioned": [
       "SLA108Y1",
       "SLA208Y1",
-      "SLA308H1",
-      "slavic@utoronto.ca"
-    ],
-    "review_flags": []
+      "SLA308H1"
+    ]
   },
   {
-    "title": "Chemical Physics Specialist (Science Program)",
+    "title": "Chemical Physics Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -8083,13 +8040,12 @@
       "CHM338H1",
       "CHM348H1",
       "CHM415H1",
-      "CHM395Y1",
-      "Arts & Science Internship Program"
-    ],
-    "review_flags": []
+      "CHM395Y1"
+    ]
   },
   {
-    "title": "Chemistry Major (Science Program)",
+    "title": "Chemistry Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -8140,11 +8096,11 @@
       "CHM399Y1",
       "CHM395Y1",
       "CHM499Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Chemistry Minor (Science Program)",
+    "title": "Chemistry Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -8174,11 +8130,11 @@
       "CHM398H0",
       "CHM398Y0",
       "CHM399Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Chemistry Specialist (Science Program)",
+    "title": "Chemistry Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -8229,13 +8185,12 @@
       "CHM395Y1",
       "CHM499Y1",
       "PHC489Y1",
-      "CHM410H1",
-      "Arts & Science Internship Program"
-    ],
-    "review_flags": []
+      "CHM410H1"
+    ]
   },
   {
-    "title": "Christianity And Culture Major (Arts Program)",
+    "title": "Christianity And Culture Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -8334,11 +8289,11 @@
       "CHC383H1",
       "JCA302H1",
       "SMC385H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Christianity And Culture Minor (Arts Program)",
+    "title": "Christianity And Culture Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -8431,11 +8386,11 @@
       "MST407Y1",
       "MST436H1",
       "SMC457H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Christianity and Culture: Major Program in Religious Education (Arts Program)",
+    "title": "Christianity and Culture: Major Program in Religious Education",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -8470,11 +8425,11 @@
       "CHC327H1",
       "CHC330H1",
       "CHC382H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Cinema Studies Major (Arts Program)",
+    "title": "Cinema Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -8610,11 +8565,11 @@
       "SLA234H1",
       "SLA333H1",
       "SPA275H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Cinema Studies Minor (Arts Program)",
+    "title": "Cinema Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -8734,11 +8689,11 @@
       "SLA234H1",
       "SLA333H1",
       "SPA275H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Cinema Studies Specialist (Arts Program)",
+    "title": "Cinema Studies Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -8874,11 +8829,11 @@
       "SLA234H1",
       "SLA333H1",
       "SPA275H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Classical Civilization Major (Arts Program)",
+    "title": "Classical Civilization Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -8926,11 +8881,11 @@
       "PHL307H1",
       "PHL400H1",
       "PHL471H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Classical Civilization Minor (Arts Program)",
+    "title": "Classical Civilization Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -8975,11 +8930,11 @@
       "PHL307H1",
       "PHL400H1",
       "PHL471H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Classics (Greek and Latin) Major (Arts Program)",
+    "title": "Classics (Greek and Latin) Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -9003,11 +8958,11 @@
       "CLA160H1",
       "CLA170H1",
       "CLA260H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Climate Change Studies Minor (Arts Program)",
+    "title": "Climate Change Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -9022,13 +8977,11 @@
     ],
     "completion_requirement": [],
     "courses_mentioned": [
-      "ug.office.env@utoronto.ca",
       "ENV101H1",
       "ENV222H1",
       "ENV200H1",
       "ENV301H1",
       "ENV200H1",
-      "ug.office.env@utoronto.ca",
       "CHM210H1",
       "ESS262H1",
       "EEB240H1",
@@ -9069,15 +9022,14 @@
       "RSM436H1",
       "RSM466H1",
       "TRN350H1",
-      "nomination form",
       "ENV450H1",
       "ENV465Y1",
       "ENV465Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Missing Program TitleCognitive Science Major - Arts (Language and Cognition Stream) (Arts Program)",
+    "title": "Cognitive Science Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -9153,11 +9105,11 @@
       "COG498H1",
       "COG499H1",
       "COG497Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Missing Program TitleCognitive Science Major - Arts (Perception and Attention Stream) (Arts Program)",
+    "title": "Cognitive Science Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -9220,11 +9172,11 @@
       "COG498H1",
       "COG499H1",
       "COG497Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Missing Program TitleCognitive Science Major - Arts (Thinking and Reasoning Stream) (Arts Program)",
+    "title": "Cognitive Science Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -9294,11 +9246,11 @@
       "COG498H1",
       "COG499H1",
       "COG497Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Missing Program TitleCognitive Science Major - Science (Cognition and the Brain Stream) (Science Program)",
+    "title": "Cognitive Science Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -9397,11 +9349,11 @@
       "COG497Y1",
       "COG498H1",
       "COG499H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Missing Program TitleCognitive Science Major - Science (Computational Cognition Stream) (Science Program)",
+    "title": "Cognitive Science Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -9515,11 +9467,11 @@
       "COG497Y1",
       "COG498H1",
       "COG499H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Computer Science Major (Science Program)",
+    "title": "Computer Science Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -9549,7 +9501,6 @@
       "MAT136H1",
       "MAT137Y1",
       "MAT157Y1",
-      "Arts & Science Internship Program",
       "CSC108H1",
       "CSC148H1",
       "CSC240H1",
@@ -9637,11 +9588,11 @@
       "CSC494H1",
       "CSC495H1",
       "CSC494Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Computer Science Minor (Science Program)",
+    "title": "Computer Science Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -9681,11 +9632,11 @@
       "CSC148H1",
       "CSC165H1",
       "CSC240H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Computer Science Specialist (Science Program)",
+    "title": "Computer Science Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -9789,11 +9740,11 @@
       "CSC494H1",
       "CSC495H1",
       "CSC494Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Contemporary Asian Studies Major (Arts Program)",
+    "title": "Contemporary Asian Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -10043,11 +9994,11 @@
       "SAN392Y5",
       "URD212Y5",
       "URD312Y5"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Contemporary Asian Studies Minor (Arts Program)",
+    "title": "Contemporary Asian Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -10273,11 +10224,11 @@
       "SAN392Y5",
       "URD212Y5",
       "URD312Y5"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Creativity and Society Minor (Arts Program)",
+    "title": "Creativity and Society Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -10363,11 +10314,11 @@
       "WRR311Y1",
       "WRR312H1",
       "WRR414H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Missing Program TitleCriminology and Sociolegal Studies - Major (Arts Program)",
+    "title": "Criminology and Sociolegal Studies",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -10388,7 +10339,6 @@
       "CRI215H1",
       "CRI225H1",
       "CRI389Y0",
-      "Arts & Science Internship Program (ASIP)",
       "CRI300H1",
       "CRI322H1",
       "CRI335H1",
@@ -10450,11 +10400,11 @@
       "SOC413H1",
       "TRN412H1",
       "CRI389Y0"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Missing Program TitleCriminology and Sociolegal Studies - Specialist (Arts Program)",
+    "title": "Criminology and Sociolegal Studies",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -10478,7 +10428,6 @@
       "CRI340H1",
       "CRI350H1",
       "CRI389Y0",
-      "Arts & Science Internship Program (ASIP)",
       "CRI300H1",
       "CRI322H1",
       "CRI343H1",
@@ -10537,11 +10486,11 @@
       "SOC413H1",
       "TRN412H1",
       "CRI389Y0"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Critical Studies in Equity and Solidarity Major (Arts Program)",
+    "title": "Critical Studies in Equity and Solidarity Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -10556,7 +10505,6 @@
     ],
     "completion_requirement": [],
     "courses_mentioned": [
-      "nc.undergradadmin@utoronto.ca",
       "CSE240H1",
       "CSE341H1",
       "JQR360H1",
@@ -11012,11 +10960,11 @@
       "VIC168H1",
       "VIC185H1",
       "WRR414H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Critical Studies in Equity and Solidarity Minor (Arts Program)",
+    "title": "Critical Studies in Equity and Solidarity Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -11031,7 +10979,6 @@
     ],
     "completion_requirement": [],
     "courses_mentioned": [
-      "nc.undergradadmin@utoronto.ca",
       "CSE240H1",
       "CAR215H1",
       "CSE241Y1",
@@ -11486,11 +11433,11 @@
       "VIC168H1",
       "VIC185H1",
       "WRR414H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Data Science Specialist (Science Program)",
+    "title": "Data Science Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -11593,11 +11540,11 @@
       "STA130H1",
       "STA130H1",
       "STA130H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Diaspora & Transnational Studies Major (Arts Program)",
+    "title": "Diaspora & Transnational Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -11899,11 +11846,11 @@
       "DTS300H1",
       "DTS200Y1",
       "DTS200H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Diaspora & Transnational Studies Minor (Arts Program)",
+    "title": "Diaspora & Transnational Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -12205,11 +12152,11 @@
       "DTS300H1",
       "DTS200Y1",
       "DTS200H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Digital Humanities Minor (Arts Program)",
+    "title": "Digital Humanities Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -12264,11 +12211,11 @@
       "MST300H1",
       "MUS300H1",
       "WRR303H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Drama Major (Arts Program)",
+    "title": "Drama Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -12391,11 +12338,11 @@
       "DRM490Y1",
       "DRM491H1",
       "SMC145Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Drama Minor (Arts Program)",
+    "title": "Drama Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -12515,11 +12462,11 @@
       "DRM490Y1",
       "DRM491H1",
       "SMC145Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Drama Specialist (Arts Program)",
+    "title": "Drama Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -12642,11 +12589,11 @@
       "DRM490Y1",
       "DRM491H1",
       "SMC145Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Earth and Environmental Systems Major (Science Program)",
+    "title": "Earth and Environmental Systems Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -12783,13 +12730,12 @@
       "ESS481H1",
       "ESS490H1",
       "ESS491H1",
-      "ESS492Y1",
-      "Arts & Science Internship Program (ASIP)"
-    ],
-    "review_flags": []
+      "ESS492Y1"
+    ]
   },
   {
-    "title": "East Asian Studies Major (Arts Program)",
+    "title": "East Asian Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -13041,11 +12987,11 @@
       "RLG379H1",
       "RLG465H1",
       "SLA280H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "East Asian Studies Minor (Arts Program)",
+    "title": "East Asian Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -13263,11 +13209,11 @@
       "RLG379H1",
       "RLG465H1",
       "SLA280H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "East Asian Studies Specialist (Arts Program)",
+    "title": "East Asian Studies Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -13515,11 +13461,11 @@
       "RLG379H1",
       "RLG465H1",
       "SLA280H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Ecology and Evolutionary Biology Major (Science Program)",
+    "title": "Ecology and Evolutionary Biology Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -13654,11 +13600,11 @@
       "EEB465H1",
       "EEB466H1",
       "ENV432H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Ecology and Evolutionary Biology Minor (Science Program)",
+    "title": "Ecology and Evolutionary Biology Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -13708,11 +13654,11 @@
       "BIO260H1",
       "EHJ352H1",
       "HMB265H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Ecology and Evolutionary Biology Specialist (Science Program)",
+    "title": "Ecology and Evolutionary Biology Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -13923,11 +13869,11 @@
       "JHE355H1",
       "EEB322H1",
       "EEB455H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Economics & Mathematics Specialist (Science Program)",
+    "title": "Economics & Mathematics Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -13973,7 +13919,6 @@
       "MAT357H1",
       "APM462H1",
       "APM462H1",
-      "Arts & Science Internship Program",
       "ECO101H1",
       "ECO102H1",
       "ECO206Y1",
@@ -13991,11 +13936,11 @@
       "MAT157Y1",
       "MAT246H1",
       "MAT246H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Economics Major (Arts Program)",
+    "title": "Economics Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -14037,7 +13982,6 @@
       "STA248H1",
       "STA257H1",
       "STA261H1",
-      "Arts & Science Internship Program",
       "ECO101H1",
       "ECO102H1",
       "ECO105Y1",
@@ -14057,11 +14001,11 @@
       "MAT246H1",
       "STA220H1",
       "STA255H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Economics Minor (Arts Program)",
+    "title": "Economics Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -14097,11 +14041,11 @@
       "ECO105Y1",
       "ECO220Y1",
       "ECO220Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Economics Specialist (Arts Program)",
+    "title": "Economics Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -14146,7 +14090,6 @@
       "ECO325H1",
       "ECO326H1",
       "ECO375H1",
-      "Arts & Science Internship Program",
       "ECO101H1",
       "ECO102H1",
       "ECO206Y1",
@@ -14175,11 +14118,11 @@
       "CSC108H1",
       "CSC148H1",
       "CSC110Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Education and Society Minor (Arts Program)",
+    "title": "Education and Society Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -14218,11 +14161,11 @@
       "EDS363H1",
       "EDS368H1",
       "EDS369H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "English Major- Stream in Creative Writing (Arts Program)",
+    "title": "English Major- Stream in Creative Writing",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -14327,11 +14270,11 @@
       "CRE480H1",
       "WRR211H1",
       "WRR311H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "English Major- Stream in Literature and Language (Arts Program)",
+    "title": "English Major- Stream in Literature and Language",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -14422,11 +14365,11 @@
       "ENG497H1",
       "ENG498H1",
       "JWE206H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "English Minor (Arts Program)",
+    "title": "English Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -14453,11 +14396,11 @@
       "ENG497H1",
       "ENG498H1",
       "JWE206H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "English Specialist (Arts Program)",
+    "title": "English Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -14548,11 +14491,11 @@
       "ENG497H1",
       "ENG498H1",
       "JWE206H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Environment & Behaviour Minor (Science Program)",
+    "title": "Environment & Behaviour Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -14567,7 +14510,6 @@
     ],
     "completion_requirement": [],
     "courses_mentioned": [
-      "ug.office.env@utoronto.ca",
       "ENV221H1",
       "ENV222H1",
       "PSY220H1",
@@ -14583,11 +14525,11 @@
       "PSY321H1",
       "PSY427H1",
       "PSY336H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Environment & Health Major (Science Program)",
+    "title": "Environment & Health Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -14688,13 +14630,12 @@
       "PSL372H1",
       "PSL420H1",
       "PSY435H1",
-      "JEH455H1",
-      "Arts & Science Internship Program (ASIP)"
-    ],
-    "review_flags": []
+      "JEH455H1"
+    ]
   },
   {
-    "title": "Environment & Health Specialist (Science Program)",
+    "title": "Environment & Health Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -14822,13 +14763,12 @@
       "ENV491Y1",
       "ENV492H1",
       "ENV493H1",
-      "JEH455H1",
-      "Arts & Science Internship Program (ASIP)"
-    ],
-    "review_flags": []
+      "JEH455H1"
+    ]
   },
   {
-    "title": "Environment & Toxicology Specialist (Science Program)",
+    "title": "Environment & Toxicology Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -14936,11 +14876,11 @@
       "PCL474Y1",
       "PCL497H1",
       "PCL498Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Environment and Energy Minor (Science Program)",
+    "title": "Environment and Energy Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -14996,11 +14936,11 @@
       "PHY132H1",
       "PHY151H1",
       "PHY152H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Environmental Anthropology Minor (Arts Program)",
+    "title": "Environmental Anthropology Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -15122,11 +15062,11 @@
       "JAL355H1",
       "JAL401H1",
       "SLA380H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Environmental Biology Major (Science Program)",
+    "title": "Environmental Biology Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -15262,11 +15202,11 @@
       "EEB498Y1",
       "EEB488H1",
       "EEB499Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Environmental Biology Minor (Science Program)",
+    "title": "Environmental Biology Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -15303,11 +15243,11 @@
       "EEB324H1",
       "EEB328H1",
       "ENV432H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Environmental Chemistry Major (Science Program)",
+    "title": "Environmental Chemistry Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -15355,11 +15295,11 @@
       "CHM398Y0",
       "CHM399H1",
       "CHM399Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Environmental Chemistry Minor (Science Program)",
+    "title": "Environmental Chemistry Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -15390,11 +15330,11 @@
       "CHM317H1",
       "CHM410H1",
       "CHM415H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Environmental Economics Minor (Arts Program)",
+    "title": "Environmental Economics Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -15427,11 +15367,11 @@
       "ECO206Y1",
       "ECO313H1",
       "ECO314H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Environmental Ethics Major (Arts Program)",
+    "title": "Environmental Ethics Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -15462,7 +15402,6 @@
       "ENV451H1",
       "ENV421Y1",
       "ENV491Y1",
-      "Arts & Science Internship Program (ASIP)",
       "ANT450H1",
       "EAS479H1",
       "CRE271H1",
@@ -15495,11 +15434,11 @@
       "RLG345H1",
       "WGS273H1",
       "WGS442H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Environmental Ethics Minor (Arts Program)",
+    "title": "Environmental Ethics Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -15521,11 +15460,11 @@
       "JGE331H1",
       "ENV221H1",
       "ENV222H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Environmental Geography Major (Arts Program)",
+    "title": "Environmental Geography Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -15644,11 +15583,11 @@
       "ENV395Y0",
       "ENV396Y0",
       "ENV422H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Environmental Geography Minor (Arts Program)",
+    "title": "Environmental Geography Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -15761,11 +15700,11 @@
       "ENV395Y0",
       "ENV396Y0",
       "ENV422H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Environmental Geography Specialist (Arts Program)",
+    "title": "Environmental Geography Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -15892,11 +15831,11 @@
       "ENV395Y0",
       "ENV396Y0",
       "ENV422H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Environmental Geosciences Minor (Science Program)",
+    "title": "Environmental Geosciences Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -15919,11 +15858,11 @@
       "ESS311H1",
       "ESS312H1",
       "ESS410H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Environmental Geosciences Specialist (Science Program)",
+    "title": "Environmental Geosciences Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -16029,13 +15968,12 @@
       "JGA305H1",
       "ESS322H1",
       "GGR205H1",
-      "JEG205H1",
-      "Arts & Science Internship Program (ASIP)"
-    ],
-    "review_flags": []
+      "JEG205H1"
+    ]
   },
   {
-    "title": "Environmental Science Major (Science Program)",
+    "title": "Environmental Science Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -16175,17 +16113,15 @@
       "ENV461H1",
       "ENV462H1",
       "FOR302H1",
-      "Arts & Science Internship Program (ASIP)",
       "ARC357H1",
       "ARC382H1",
       "ARC386H1",
-      "ARC387H1",
-      "ug.office.env@utoronto.ca"
-    ],
-    "review_flags": []
+      "ARC387H1"
+    ]
   },
   {
-    "title": "Environmental Science Minor (Science Program)",
+    "title": "Environmental Science Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -16230,7 +16166,6 @@
       "ARC382H1",
       "ARC386H1",
       "ARC387H1",
-      "ug.office.env@utoronto.ca",
       "CHM310H1",
       "CHM410H1",
       "CHM415H1",
@@ -16284,11 +16219,11 @@
       "ESS410H1",
       "ESS450H1",
       "GGR390H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Environmental Studies Major (Arts Program)",
+    "title": "Environmental Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -16303,7 +16238,6 @@
     ],
     "completion_requirement": [],
     "courses_mentioned": [
-      "ug.office.env@utoronto.ca",
       "ENV100H1",
       "ENV221H1",
       "ENV222H1",
@@ -16438,17 +16372,15 @@
       "GGR337H1",
       "ESS205H1",
       "JEH455H1",
-      "Arts & Science Internship Program (ASIP)",
       "ARC357H1",
       "ARC382H1",
       "ARC386H1",
-      "ARC387H1",
-      "ug.office.env@utoronto.ca"
-    ],
-    "review_flags": []
+      "ARC387H1"
+    ]
   },
   {
-    "title": "Environmental Studies Minor (Arts Program)",
+    "title": "Environmental Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -16463,7 +16395,6 @@
     ],
     "completion_requirement": [],
     "courses_mentioned": [
-      "ug.office.env@utoronto.ca",
       "ENV100H1",
       "ENV221H1",
       "ENV222H1",
@@ -16573,13 +16504,12 @@
       "ARC357H1",
       "ARC382H1",
       "ARC386H1",
-      "ARC387H1",
-      "ug.office.env@utoronto.ca"
-    ],
-    "review_flags": []
+      "ARC387H1"
+    ]
   },
   {
-    "title": "Ethics, Society, and Law Major (Arts Program)",
+    "title": "Ethics, Society, and Law Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -16724,11 +16654,11 @@
       "TRN161Y1",
       "TRN171Y1",
       "TRN172Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "European Affairs Major (Arts Program)",
+    "title": "European Affairs Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -16944,11 +16874,11 @@
       "SPA341H1",
       "SPA345H1",
       "SPA435H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "European Affairs Minor (Arts Program)",
+    "title": "European Affairs Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -16970,11 +16900,11 @@
       "POL358H1",
       "POL359H1",
       "POL387H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Finance and Economics Specialist (BCom)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -17046,13 +16976,12 @@
       "STA220H1",
       "STA255H1",
       "MGT100H1",
-      "RSM100H1",
-      "RC website"
-    ],
-    "review_flags": []
+      "RSM100H1"
+    ]
   },
   {
-    "title": "Financial Economics Specialist (Science Program)",
+    "title": "Financial Economics Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -17108,7 +17037,6 @@
       "ECO464H1",
       "ECO465H1",
       "ECO475H1",
-      "Arts & Science Internship Program",
       "ECO101H1",
       "ECO102H1",
       "ECO206Y1",
@@ -17130,11 +17058,11 @@
       "CSC108H1",
       "CSC148H1",
       "CSC110Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Accounting",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -17162,11 +17090,11 @@
       "RSM427H1",
       "RSM429H1",
       "RSM470H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Artificial Intelligence (Major)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -17212,11 +17140,11 @@
       "PSY270H1",
       "PHL232H1",
       "PHL342H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Artificial Intelligence (Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -17262,11 +17190,11 @@
       "PSY270H1",
       "PHL232H1",
       "PHL342H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Canadian Foreign & Security Relations (Major)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -17294,11 +17222,11 @@
       "TRN410H1",
       "TRN419Y1",
       "VIC476H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Canadian Foreign & Security Relations (Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -17326,11 +17254,11 @@
       "TRN410H1",
       "TRN419Y1",
       "VIC476H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Computational Linguistics and Natural Language Processing (Major)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -17359,11 +17287,11 @@
       "COG250Y1",
       "CSC384H1",
       "CSC420H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Computational Linguistics and Natural Language Processing (Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -17392,11 +17320,11 @@
       "COG250Y1",
       "CSC384H1",
       "CSC420H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Computer Systems (Major)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -17411,34 +17339,20 @@
     ],
     "completion_requirement": [],
     "courses_mentioned": [
-      null,
       "CSC209H1",
-      null,
       "CSC343H1",
-      null,
       "CSC367H1",
-      null,
       "CSC369H1",
-      null,
       "CSC457H1",
-      null,
       "CSC458H1",
-      null,
       "CSC457H1",
-      null,
       "CSC458H1",
-      null,
       "CSC324H1",
       "CSC364H1",
-      null,
       "CSC368H1",
-      null,
       "CSC385H1",
-      null,
       "CSC443H1",
-      null,
       "CSC469H1",
-      null,
       "CSC488H1",
       "CSC301H1",
       "CSC309H1",
@@ -17448,11 +17362,11 @@
       "CSC427H5",
       "ECE454H1",
       "ECE568H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Computer Systems (Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -17467,29 +17381,18 @@
     ],
     "completion_requirement": [],
     "courses_mentioned": [
-      null,
       "CSC343H1",
-      null,
       "CSC367H1",
       "CSC457H1",
-      null,
       "CSC458H1",
-      null,
       "CSC457H1",
-      null,
       "CSC458H1",
-      null,
       "CSC324H1",
       "CSC364H1",
-      null,
       "CSC368H1",
-      null,
       "CSC385H1",
-      null,
       "CSC443H1",
-      null,
       "CSC469H1",
-      null,
       "CSC488H1",
       "CSC301H1",
       "CSC309H1",
@@ -17498,13 +17401,12 @@
       "CSC423H5",
       "CSC427H5",
       "ECE454H1",
-      null,
       "ECE568H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Computer Vision (Major)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -17532,7 +17434,6 @@
       "CSC417H1",
       "CSC317H1",
       "CSC419H1",
-      "CSC2503H",
       "APM462H1",
       "COG250Y1",
       "CSC384H1",
@@ -17546,11 +17447,11 @@
       "PSY280H1",
       "STA257H1",
       "STA261H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Computer Vision (Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -17578,7 +17479,6 @@
       "CSC417H1",
       "CSC317H1",
       "CSC419H1",
-      "CSC2503H",
       "APM462H1",
       "COG250Y1",
       "CSC384H1",
@@ -17592,11 +17492,11 @@
       "PSY280H1",
       "STA257H1",
       "STA261H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Data Analytics (Major)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -17643,11 +17543,11 @@
       "ECO484H1",
       "ECO499H1",
       "ECO489H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Data Analytics (Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -17693,11 +17593,11 @@
       "ECO499H1",
       "ECO475H1",
       "ECO489H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Data Science in Business",
+    "program_artsci": null,
     "program_code": [
       "Fo",
       "cus",
@@ -17731,11 +17631,11 @@
       "RSM456H1",
       "RSM470H1",
       "RSM483H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Finance",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -17765,11 +17665,11 @@
       "RSM437H1",
       "RSM438H1",
       "RSM439H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Game Design (Major)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -17805,11 +17705,11 @@
       "ENG235H1",
       "ECO326H1",
       "RSM482H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Game Design (Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -17845,11 +17745,11 @@
       "ENG235H1",
       "ECO326H1",
       "RSM482H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Green Chemistry",
+    "program_artsci": null,
     "program_code": [
       "Fo",
       "cus",
@@ -17870,11 +17770,11 @@
       "CHM249H1",
       "CHM310H1",
       "CHM343H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Human-Computer Interaction (Major)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -17922,13 +17822,12 @@
       "COG260H1",
       "COG341H1",
       "COG343H1",
-      "COG344H1",
-      "cs.undergrad@utoronto.ca"
-    ],
-    "review_flags": []
+      "COG344H1"
+    ]
   },
   {
     "title": "Focus in Human-Computer Interaction (Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -17976,13 +17875,12 @@
       "COG260H1",
       "COG341H1",
       "COG343H1",
-      "COG344H1",
-      "cs.undergrad@utoronto.ca"
-    ],
-    "review_flags": []
+      "COG344H1"
+    ]
   },
   {
     "title": "Focus in International Business (UofT Global Scholar)",
+    "program_artsci": null,
     "program_code": [
       "Fo",
       "cus",
@@ -18019,11 +17917,11 @@
       "ECO406H1",
       "ECO435H1",
       "ECO451H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in International Economy (Major)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -18057,11 +17955,11 @@
       "HIS417H1",
       "POL435H1",
       "POL477H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in International Economy (Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -18095,11 +17993,11 @@
       "HIS417H1",
       "POL435H1",
       "POL477H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in International Law & Human Rights (Major)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -18132,11 +18030,11 @@
       "POL457Y1",
       "POL469H1",
       "TRN421Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in International Law & Human Rights (Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -18169,11 +18067,11 @@
       "POL457Y1",
       "POL469H1",
       "TRN421Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Law and History (Major)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -18224,11 +18122,11 @@
       "HIS389H1",
       "HIS466H1",
       "HIS496H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Law and History (Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -18279,11 +18177,11 @@
       "HIS389H1",
       "HIS466H1",
       "HIS496H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Law and Politics (Major)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -18342,11 +18240,11 @@
       "POL494H1",
       "POL496H1",
       "POL497H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Law and Politics (Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -18405,11 +18303,11 @@
       "POL494H1",
       "POL496H1",
       "POL497H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Leadership in Organizations",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -18437,11 +18335,11 @@
       "RSM466H1",
       "RSM496H1",
       "RSM499H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Managing in Diverse Economies (UofT Global Scholar)",
+    "program_artsci": null,
     "program_code": [
       "Fo",
       "cus",
@@ -18510,11 +18408,11 @@
       "RLG365H1",
       "RSM427H1",
       "RSM499H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Marketing",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -18544,11 +18442,11 @@
       "RSM458H1",
       "RSM459H1",
       "RSM470H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Medical Anthropology (Major: General)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -18580,11 +18478,11 @@
       "ANT458H1",
       "ANT460H1",
       "ANT488H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Medical Anthropology (Major: Society, Culture and Language)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -18616,11 +18514,11 @@
       "ANT458H1",
       "ANT460H1",
       "ANT488H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Medical Anthropology (Specialist: Society, Culture and Language)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -18652,11 +18550,11 @@
       "ANT458H1",
       "ANT460H1",
       "ANT488H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Planning (Major)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -18692,11 +18590,11 @@
       "GGR456H1",
       "GGR460H1",
       "GGR493Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Planning (Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -18732,11 +18630,11 @@
       "GGR456H1",
       "GGR460H1",
       "GGR493Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Practical Chemical Analysis",
+    "program_artsci": null,
     "program_code": [
       "Fo",
       "cus",
@@ -18762,11 +18660,11 @@
       "CHM395Y1",
       "CHM499Y1",
       "PHC489Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Quantitative Finance (Data Science Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -18791,11 +18689,11 @@
       "STA452H1",
       "MAT244H1",
       "MAT267H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Quantitative Finance (Specialist in Statistical Science: Theory and Methods)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -18820,11 +18718,11 @@
       "STA452H1",
       "MAT244H1",
       "MAT267H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Quantitative Political Analysis (Major)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -18855,11 +18753,11 @@
       "POL314H1",
       "POL342H1",
       "POL440H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Quantitative Political Analysis (Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -18890,11 +18788,11 @@
       "POL314H1",
       "POL342H1",
       "POL440H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Scientific Computing (Major)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -18936,11 +18834,11 @@
       "MAT354H1",
       "MAT337H1",
       "MAT357H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Scientific Computing (Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -18982,11 +18880,11 @@
       "MAT354H1",
       "MAT337H1",
       "MAT357H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Strategy and Innovation",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -19023,11 +18921,11 @@
       "RSM496H1",
       "RSM497H1",
       "RSM499H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Technology Leadership (Computer Science Major)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -19066,11 +18964,11 @@
       "CSC494H1",
       "CSC495H1",
       "CSC494Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Technology Leadership (Computer Science Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -19111,11 +19009,11 @@
       "CSC494H1",
       "CSC495H1",
       "CSC494Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Technology Leadership (Data Science Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -19154,11 +19052,11 @@
       "CSC494H1",
       "CSC495H1",
       "CSC494Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Theory of Computation (Major)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -19186,16 +19084,15 @@
       "MAT332H1",
       "MAT344H1",
       "MAT302H5",
-      "graduate timetable webpage",
       "CSC494H1",
       "CSC495H1",
       "CSC494H1",
       "CSC495H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Theory of Computation (Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -19222,16 +19119,15 @@
       "MAT332H1",
       "MAT344H1",
       "MAT302H5",
-      "graduate timetable webpage",
       "CSC494H1",
       "CSC495H1",
       "CSC494H1",
       "CSC495H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Transnational Exchanges (Major)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -19261,11 +19157,11 @@
       "POL472H1",
       "TRN409H1",
       "TRN410H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Transnational Exchanges (Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -19295,11 +19191,11 @@
       "POL472H1",
       "TRN409H1",
       "TRN410H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Urban Geography (Major)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -19332,11 +19228,11 @@
       "GGR458H1",
       "GGR460H1",
       "GGR482H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Urban Geography (Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -19369,11 +19265,11 @@
       "GGR458H1",
       "GGR460H1",
       "GGR482H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Web and Internet Technologies (Major)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -19406,11 +19302,11 @@
       "ECE568H1",
       "ENV281H1",
       "ENV381H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Focus in Web and Internet Technologies (Specialist)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "FOC",
@@ -19444,11 +19340,11 @@
       "ECE568H1",
       "ENV281H1",
       "ENV381H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Forest Biomaterials Science Major (Science Program)",
+    "title": "Forest Biomaterials Science Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -19463,7 +19359,6 @@
     ],
     "completion_requirement": [],
     "courses_mentioned": [
-      "programs@daniels.utoronto.ca",
       "BIO120H1",
       "MSE101H1",
       "ECO101H1",
@@ -19503,11 +19398,11 @@
       "FOR420H1",
       "FOR423H1",
       "CHE475H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Forest Biomaterials Science Minor (Science Program)",
+    "title": "Forest Biomaterials Science Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -19522,7 +19417,6 @@
     ],
     "completion_requirement": [],
     "courses_mentioned": [
-      "programs@daniels.utoronto.ca",
       "BIO120H1",
       "MSE101H1",
       "ECO105Y1",
@@ -19546,11 +19440,11 @@
       "FOR410H1",
       "FOR420H1",
       "FOR423H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Forest Conservation Major (Arts Program)",
+    "title": "Forest Conservation Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -19591,11 +19485,11 @@
       "FOR310H1",
       "EEB321H1",
       "FOR400Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Forest Conservation Minor (Arts Program)",
+    "title": "Forest Conservation Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -19628,11 +19522,11 @@
       "FOR310H1",
       "FOR400Y1",
       "FOR401H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Forest Conservation Science Major (Science Program)",
+    "title": "Forest Conservation Science Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -19676,11 +19570,11 @@
       "FOR310H1",
       "EEB321H1",
       "FOR400Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Forest Conservation Science Minor (Science Program)",
+    "title": "Forest Conservation Science Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -19710,11 +19604,11 @@
       "FOR307H1",
       "FOR310H1",
       "FOR400Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Forest Conservation Science Specialist (Science Program)",
+    "title": "Forest Conservation Science Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -19798,11 +19692,11 @@
       "EEB406H1",
       "EEB407H1",
       "FOR301H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Forest Conservation Specialist (Arts Program)",
+    "title": "Forest Conservation Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -19861,11 +19755,11 @@
       "ENV440H1",
       "GGR416H1",
       "FOR301H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "French Language and French Linguistics Major (Arts Program)",
+    "title": "French Language and French Linguistics Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -19912,11 +19806,11 @@
       "FRE490Y1",
       "FSL220H1",
       "FSL122H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "French Language and French Linguistics Specialist (Arts Program)",
+    "title": "French Language and French Linguistics Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -19964,11 +19858,11 @@
       "FRE492H1",
       "FSL220H1",
       "FSL122H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "French Language and Literature Major (Arts Program)",
+    "title": "French Language and Literature Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -20022,11 +19916,11 @@
       "FSL222H1",
       "FSL320H1",
       "FSL322H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "French Language and Literature Specialist (Arts Program)",
+    "title": "French Language and Literature Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -20079,11 +19973,11 @@
       "FSL222H1",
       "FSL320H1",
       "FSL322H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "French Language Learning Major (Arts Program)",
+    "title": "French Language Learning Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -20120,11 +20014,11 @@
       "FSL443H1",
       "FSL220H1",
       "FSL122H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "French Studies Minor (Arts Program)",
+    "title": "French Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -20158,11 +20052,11 @@
       "FSL222H1",
       "FSL224H1",
       "FSL225H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Genome Biology Major (Science Program)",
+    "title": "Genome Biology Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -20250,13 +20144,12 @@
       "EEB497H1",
       "EEB498Y1",
       "EEB499Y1",
-      "MGY480Y1",
-      "Arts & Science Internship Program"
-    ],
-    "review_flags": []
+      "MGY480Y1"
+    ]
   },
   {
-    "title": "Geographic Data Science Major: Human Systems Stream (Science Program)",
+    "title": "Geographic Data Science Major: Human Systems Stream",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -20282,7 +20175,6 @@
       "GGR197H1",
       "GGR198H1",
       "GGR199H1",
-      "undergraduate.geography@utoronto.ca",
       "GGR270H1",
       "GGR271H1",
       "GGR274H1",
@@ -20308,7 +20200,6 @@
       "GGR497H1",
       "GGR498H1",
       "GGR499H1",
-      "undergraduate.geography@utoronto.ca",
       "GGR221H1",
       "GGR240H1",
       "GGR246H1",
@@ -20342,13 +20233,12 @@
       "GGR433H1",
       "JGC439H1",
       "JIG440H1",
-      "GGR456H1",
-      "undergraduate.geography@utoronto.ca"
-    ],
-    "review_flags": []
+      "GGR456H1"
+    ]
   },
   {
-    "title": "Geographic Data Science Major: Physical and Environmental Systems Stream (Science Program)",
+    "title": "Geographic Data Science Major: Physical and Environmental Systems Stream",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -20374,7 +20264,6 @@
       "GGR197H1",
       "GGR198H1",
       "GGR199H1",
-      "undergraduate.geography@utoronto.ca",
       "GGR270H1",
       "GGR271H1",
       "GGR274H1",
@@ -20400,7 +20289,6 @@
       "GGR497H1",
       "GGR498H1",
       "GGR499H1",
-      "undergraduate.geography@utoronto.ca",
       "JEG201H1",
       "GGR203H1",
       "JEG205H1",
@@ -20429,13 +20317,12 @@
       "GGR418H1",
       "GGR419H1",
       "GGR438H1",
-      "JGE481H1",
-      "undergraduate.geography@utoronto.ca"
-    ],
-    "review_flags": []
+      "JGE481H1"
+    ]
   },
   {
-    "title": "Geographic Data Science Major: Urban Systems Stream (Science Program)",
+    "title": "Geographic Data Science Major: Urban Systems Stream",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -20461,7 +20348,6 @@
       "GGR197H1",
       "GGR198H1",
       "GGR199H1",
-      "undergraduate.geography@utoronto.ca",
       "GGR270H1",
       "GGR271H1",
       "GGR274H1",
@@ -20487,7 +20373,6 @@
       "GGR497H1",
       "GGR498H1",
       "GGR499H1",
-      "undergraduate.geography@utoronto.ca",
       "JGU216H1",
       "GGR217H1",
       "GGR259H1",
@@ -20502,13 +20387,12 @@
       "JGU454H1",
       "GGR458H1",
       "GGR460H1",
-      "GGR482H1",
-      "undergraduate.geography@utoronto.ca"
-    ],
-    "review_flags": []
+      "GGR482H1"
+    ]
   },
   {
-    "title": "Geographic Information Systems Minor (Arts Program)",
+    "title": "Geographic Information Systems Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -20558,11 +20442,11 @@
       "GGR497H1",
       "GGR498H1",
       "GGR499H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Geology Specialist (Science Program)",
+    "title": "Geology Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -20661,7 +20545,6 @@
       "ESS490H1",
       "ESS491H1",
       "ESS492Y1",
-      "Arts & Science Internship Program (ASIP)",
       "CHM151Y1",
       "PHY151H1",
       "MAT148H1",
@@ -20737,11 +20620,11 @@
       "GGR462H1",
       "GGR472H1",
       "GGR473H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Geophysics Specialist (Science Program)",
+    "title": "Geophysics Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -20823,13 +20706,12 @@
       "ESS481H1",
       "ESS490H1",
       "ESS491H1",
-      "ESS492Y1",
-      "Arts & Science Internship Program (ASIP)"
-    ],
-    "review_flags": []
+      "ESS492Y1"
+    ]
   },
   {
-    "title": "Geoscience Major (Science Program)",
+    "title": "Geoscience Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -20902,13 +20784,12 @@
       "ESS261H1",
       "JGA305H1",
       "ESS461H1",
-      "ESS450H1",
-      "Arts & Science Internship Program (ASIP)"
-    ],
-    "review_flags": []
+      "ESS450H1"
+    ]
   },
   {
-    "title": "Geoscience Minor (Science Program)",
+    "title": "Geoscience Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -20931,11 +20812,11 @@
       "EEB240H1",
       "JEG100H1",
       "ESS224H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "German Studies in English (Arts Program)",
+    "title": "German Studies in English",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -20951,11 +20832,11 @@
     "completion_requirement": [],
     "courses_mentioned": [
       "GER150H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "German Studies Major (Arts Program)",
+    "title": "German Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -20980,11 +20861,11 @@
       "GER401H1",
       "GER205H1",
       "GER400H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "German Studies Minor (Arts Program)",
+    "title": "German Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -21007,11 +20888,11 @@
       "GER400H1",
       "GER401H1",
       "GER100Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "German Studies Specialist (Arts Program)",
+    "title": "German Studies Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -21039,11 +20920,11 @@
       "GER205H1",
       "GER305H1",
       "GER401H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Global Health Major (Science Program)",
+    "title": "Global Health Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -21183,11 +21064,11 @@
       "JEH455H1",
       "HMB462H1",
       "JHU473H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Global Health Specialist (Science Program)",
+    "title": "Global Health Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -21329,13 +21210,12 @@
       "HMB453H1",
       "JEH455H1",
       "HMB462H1",
-      "JHU473H1",
-      "Arts & Science Internship Program"
-    ],
-    "review_flags": []
+      "JHU473H1"
+    ]
   },
   {
-    "title": "Greek Major (Arts Program)",
+    "title": "Greek Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -21357,11 +21237,11 @@
       "CLA160H1",
       "CLA170H1",
       "CLA260H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Greek Minor (Arts Program)",
+    "title": "Greek Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -21382,11 +21262,11 @@
       "GRK102H1",
       "CLA160H1",
       "CLA170H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Health & Disease Major (Science Program)",
+    "title": "Health & Disease Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -21506,11 +21386,11 @@
       "JEH455H1",
       "HMB462H1",
       "HMB474H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Health & Disease Specialist (Science Program)",
+    "title": "Health & Disease Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -21641,13 +21521,12 @@
       "JEH455H1",
       "HMB462H1",
       "HMB474H1",
-      "HMB489H1",
-      "Arts & Science Internship Program"
-    ],
-    "review_flags": []
+      "HMB489H1"
+    ]
   },
   {
-    "title": "History and Philosophy of Science and Technology Major (Arts Program)",
+    "title": "History and Philosophy of Science and Technology Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -21669,11 +21548,11 @@
       "PHL355H1",
       "PHL356H1",
       "PHL357H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "History and Philosophy of Science and Technology Minor (Arts Program)",
+    "title": "History and Philosophy of Science and Technology Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -21694,11 +21573,11 @@
       "PHL245H1",
       "PHL356H1",
       "PHL357H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "History Major (Arts Program)",
+    "title": "History Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -22094,13 +21973,12 @@
       "HIS446H1",
       "HIS465H1",
       "HIS481H1",
-      "Arts & Science Internship Program",
       "HIS262H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "History Minor (Arts Program)",
+    "title": "History Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -22168,11 +22046,11 @@
       "TRN250Y1",
       "WGS481H1",
       "HIS262H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "History Specialist (Arts Program)",
+    "title": "History Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -22620,13 +22498,12 @@
       "HIS446H1",
       "HIS465H1",
       "HIS481H1",
-      "Arts & Science Internship Program",
       "HIS262H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Human Biology Major (Science Program)",
+    "title": "Human Biology Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -22779,11 +22656,11 @@
       "PSY470H1",
       "PSY471H1",
       "PSY494H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Human Geography Major (Arts Program)",
+    "title": "Human Geography Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -22945,11 +22822,11 @@
       "GGR414H1",
       "GGR415H1",
       "GGR498H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Human Geography Minor (Arts Program)",
+    "title": "Human Geography Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -23094,11 +22971,11 @@
       "GGR414H1",
       "GGR415H1",
       "GGR498H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Human Geography Specialist (Arts Program)",
+    "title": "Human Geography Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -23262,11 +23139,11 @@
       "GGR414H1",
       "GGR415H1",
       "GGR498H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Hungarian Studies Major (Arts Program)",
+    "title": "Hungarian Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -23299,11 +23176,11 @@
       "HUN450H1",
       "HUN455H1",
       "INI381H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Hungarian Studies Minor (Arts Program)",
+    "title": "Hungarian Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -23333,11 +23210,11 @@
       "HIS389H1",
       "HIS453H1",
       "INI381H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Immunology Major (Science Program)",
+    "title": "Immunology Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -23389,11 +23266,11 @@
       "MGY377H1",
       "MGY378H1",
       "IMM435H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Immunology Minor (Science Program)",
+    "title": "Immunology Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -23408,7 +23285,6 @@
     ],
     "completion_requirement": [],
     "courses_mentioned": [
-      "www.immunology.utoronto.ca",
       "BIO120H1",
       "BIO130H1",
       "CHM135H1",
@@ -23418,11 +23294,11 @@
       "IMM250H1",
       "IMM340H1",
       "IMM350H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Immunology Specialist (Science Program)",
+    "title": "Immunology Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -23485,11 +23361,11 @@
       "PHY152H1",
       "IMM435H1",
       "IMM385Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Indigenous Studies Major (Arts Program)",
+    "title": "Indigenous Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -23626,11 +23502,11 @@
       "LIN351H1",
       "RLG307H1",
       "SDS382H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Indigenous Studies Minor (Arts Program)",
+    "title": "Indigenous Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -23732,11 +23608,11 @@
       "RLG331H1",
       "SDS385H1",
       "WGS395H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Indigenous Studies Specialist (Arts Program)",
+    "title": "Indigenous Studies Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -23874,11 +23750,11 @@
       "LIN351H1",
       "RLG307H1",
       "SDS382H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Missing Program TitleIndustrial Relations & Human Resources - Major (Arts Program)",
+    "title": "Industrial Relations & Human Resources",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -23931,13 +23807,12 @@
       "SOC366H1",
       "SOC367H1",
       "SOC370H1",
-      "WRR300H1",
-      "timetable"
-    ],
-    "review_flags": []
+      "WRR300H1"
+    ]
   },
   {
-    "title": "Missing Program TitleIndustrial Relations & Human Resources - Specialist Program (Arts Program)",
+    "title": "Industrial Relations & Human Resources",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -23993,13 +23868,12 @@
       "SOC366H1",
       "SOC367H1",
       "SOC370H1",
-      "WRR300H1",
-      "timetable"
-    ],
-    "review_flags": []
+      "WRR300H1"
+    ]
   },
   {
-    "title": "International Relations Major (Arts Program)",
+    "title": "International Relations Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -24174,11 +24048,11 @@
       "TRN377Y1",
       "TRN409H1",
       "TRN410H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "International Relations Specialist (Arts Program)",
+    "title": "International Relations Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -24421,11 +24295,11 @@
       "TRN409H1",
       "TRN410H1",
       "VIC476H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Islamic Studies Major (Arts Program)",
+    "title": "Islamic Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -24508,13 +24382,12 @@
       "MHB255H1",
       "MHB256H1",
       "MHB355H1",
-      "MHB356H1",
-      "religion.undergrad@utoronto.ca"
-    ],
-    "review_flags": []
+      "MHB356H1"
+    ]
   },
   {
-    "title": "Italian Language  Minor (Arts Program)",
+    "title": "Italian Language  Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -24573,11 +24446,11 @@
       "ITA349H1",
       "ITA358Y0",
       "ITA359Y0"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Italian Studies Major (Arts Program)",
+    "title": "Italian Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -24639,11 +24512,11 @@
       "ITA349H1",
       "ITA358Y0",
       "ITA359Y0"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Italian Studies Minor (Arts Program)",
+    "title": "Italian Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -24698,11 +24571,11 @@
       "ITA349H1",
       "ITA358Y0",
       "ITA359Y0"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Italian Studies Specialist (Arts Program)",
+    "title": "Italian Studies Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -24766,11 +24639,11 @@
       "ITA349H1",
       "ITA358Y0",
       "ITA359Y0"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Jewish Studies Major (Arts Program)",
+    "title": "Jewish Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -24787,10 +24660,7 @@
     "courses_mentioned": [
       "CJS200H1",
       "CJS201H1",
-      "Centre for Jewish Studies Undergraduate Course Handbook",
-      "Centre for Jewish Studies Undergraduate Course Handbook",
       "DTS300H1",
-      "Centre for Jewish Studies Undergraduate Course Handbook",
       "CJS200H1",
       "CJS201H1",
       "MHB155H1",
@@ -24798,11 +24668,11 @@
       "GER260Y1",
       "GER261H1",
       "GER262H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Jewish Studies Minor (Arts Program)",
+    "title": "Jewish Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -24819,7 +24689,6 @@
     "courses_mentioned": [
       "CJS200H1",
       "CJS201H1",
-      "Centre for Jewish Studies Undergraduate Course Handbook",
       "CJS200H1",
       "CJS201H1",
       "MHB155H1",
@@ -24827,11 +24696,11 @@
       "GER260Y1",
       "GER261H1",
       "GER262H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Jewish Studies Specialist (Arts Program)",
+    "title": "Jewish Studies Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -24848,7 +24717,6 @@
     "courses_mentioned": [
       "CJS200H1",
       "CJS201H1",
-      "Centre for Jewish Studies Undergraduate Course Handbook",
       "MHB155H1",
       "MHB156H1",
       "MHB255H1",
@@ -24867,9 +24735,7 @@
       "GER360H1",
       "GER460H1",
       "GER463Y1",
-      "Centre for Jewish Studies Undergraduate Course Handbook",
       "DTS300H1",
-      "Centre for Jewish Studies Undergraduate Course Handbook",
       "CJS200H1",
       "CJS201H1",
       "MHB155H1",
@@ -24877,11 +24743,11 @@
       "GER260Y1",
       "GER261H1",
       "GER262H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Latin American Studies Major (Arts Program)",
+    "title": "Latin American Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -24985,11 +24851,11 @@
       "CSE240H1",
       "CSE270H1",
       "CSE346H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Latin American Studies Minor (Arts Program)",
+    "title": "Latin American Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -25082,11 +24948,11 @@
       "LIN202H1",
       "LIN302H1",
       "LIN303H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Latin Major (Arts Program)",
+    "title": "Latin Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -25108,11 +24974,11 @@
       "CLA160H1",
       "CLA170H1",
       "CLA260H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Latin Minor (Arts Program)",
+    "title": "Latin Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -25133,11 +24999,11 @@
       "LAT102H1",
       "CLA160H1",
       "CLA170H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Linguistics Major (Arts Program)",
+    "title": "Linguistics Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -25220,11 +25086,11 @@
       "SPA421H1",
       "SPA422H1",
       "SPA423H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Linguistics Minor (Arts Program)",
+    "title": "Linguistics Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -25296,11 +25162,11 @@
       "SPA421H1",
       "SPA422H1",
       "SPA423H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Linguistics Specialist (Arts Program)",
+    "title": "Linguistics Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -25443,11 +25309,11 @@
       "SLA277H1",
       "SLA108Y1",
       "SLA208Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Literature and Critical Theory Major in the Comparative Literature Stream (Arts Program)",
+    "title": "Literature and Critical Theory Major in the Comparative Literature Stream",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -25486,11 +25352,11 @@
       "LCT494H1",
       "LCT494Y1",
       "LCT402H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Literature and Critical Theory Major in the Cultural Theory Stream (Arts Program)",
+    "title": "Literature and Critical Theory Major in the Cultural Theory Stream",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -25529,11 +25395,11 @@
       "LCT494H1",
       "LCT494Y1",
       "LCT402H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Literature and Critical Theory Minor (Arts Program)",
+    "title": "Literature and Critical Theory Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -25572,11 +25438,11 @@
       "LCT403H1",
       "LCT494H1",
       "LCT494Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Literature and Critical Theory Specialist in the Comparative Literature Stream (Arts Program)",
+    "title": "Literature and Critical Theory Specialist in the Comparative Literature Stream",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -25615,11 +25481,11 @@
       "LCT494H1",
       "LCT494Y1",
       "LCT402H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Literature and Critical Theory Specialist in the Cultural Theory Stream (Arts Program)",
+    "title": "Literature and Critical Theory Specialist in the Cultural Theory Stream",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -25658,11 +25524,11 @@
       "LCT494H1",
       "LCT494Y1",
       "LCT402H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Major in Public Policy (Arts Program)",
+    "title": "Major in Public Policy",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -25811,11 +25677,11 @@
       "SOC208H1",
       "SOC215H1",
       "SOC389H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Management Specialist (BCom)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -25880,13 +25746,12 @@
       "STA220H1",
       "STA255H1",
       "MGT100H1",
-      "RSM100H1",
-      "RC website"
-    ],
-    "review_flags": []
+      "RSM100H1"
+    ]
   },
   {
-    "title": "Material Culture and Semiotics Minor (Arts Program)",
+    "title": "Material Culture and Semiotics Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -25957,11 +25822,11 @@
       "RLG307H1",
       "BMS387H1",
       "VIC119H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Materials Science Specialist (Science Program)",
+    "title": "Materials Science Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -26035,13 +25900,12 @@
       "MSE465H1",
       "MSE540H1",
       "CHM499Y1",
-      "MSE491Y1",
-      "Arts & Science Internship Program"
-    ],
-    "review_flags": []
+      "MSE491Y1"
+    ]
   },
   {
-    "title": "Mathematical Applications in Economics and Finance Specialist (Science Program)",
+    "title": "Mathematical Applications in Economics and Finance Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -26108,11 +25972,11 @@
       "PHL281H1",
       "PHL295H1",
       "SDS256H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Mathematics & Its Applications Specialist (Physical Science) (Science Program)",
+    "title": "Mathematics & Its Applications Specialist (Physical Science)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -26203,11 +26067,11 @@
       "PHL281H1",
       "PHL295H1",
       "SDS256H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Mathematics & Its Applications Specialist (Probability/Statistics) (Science Program)",
+    "title": "Mathematics & Its Applications Specialist (Probability/Statistics)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -26288,11 +26152,11 @@
       "PHL281H1",
       "PHL295H1",
       "SDS256H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Mathematics & Its Applications Specialist (Teaching) (Science Program)",
+    "title": "Mathematics & Its Applications Specialist (Teaching)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -26368,11 +26232,11 @@
       "PHL281H1",
       "PHL295H1",
       "SDS256H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Mathematics and Philosophy Specialist (Science Program)",
+    "title": "Mathematics and Philosophy Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -26419,11 +26283,11 @@
       "MAT347Y1",
       "MAT354H1",
       "MAT357H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Mathematics and Physics Specialist (Science Program)",
+    "title": "Mathematics and Physics Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -26499,11 +26363,11 @@
       "PHL281H1",
       "PHL295H1",
       "SDS256H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Mathematics Major (Science Program)",
+    "title": "Mathematics Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -26613,11 +26477,11 @@
       "PHL281H1",
       "PHL295H1",
       "SDS256H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Mathematics Minor (Science Program)",
+    "title": "Mathematics Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -26662,11 +26526,11 @@
       "PSL432H1",
       "HPS390H1",
       "HPS391H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Mathematics Specialist (Science Program)",
+    "title": "Mathematics Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -26722,11 +26586,11 @@
       "PHL281H1",
       "PHL295H1",
       "SDS256H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Medical Anthropology Minor (Arts Program)",
+    "title": "Medical Anthropology Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -26772,11 +26636,11 @@
       "ANT458H1",
       "ANT460H1",
       "ANT488H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Medieval Studies Major (Arts Program)",
+    "title": "Medieval Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -26911,11 +26775,11 @@
       "FAH421H1",
       "FAH424H1",
       "MST300H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Medieval Studies Minor (Arts Program)",
+    "title": "Medieval Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -27044,11 +26908,11 @@
       "FAH421H1",
       "FAH424H1",
       "MST300H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Medieval Studies Specialist (Arts Program)",
+    "title": "Medieval Studies Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -27191,11 +27055,11 @@
       "FAH421H1",
       "FAH424H1",
       "MST300H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Minor in Creative Writing (Arts Program)",
+    "title": "Minor in Creative Writing",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -27247,11 +27111,11 @@
       "DRM428H1",
       "WRR211H1",
       "WRR311H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Minor in French Language (Arts Program)",
+    "title": "Minor in French Language",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -27277,11 +27141,11 @@
       "FSL321Y1",
       "FSL120H1",
       "FSL102H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Minor Program in Christianity and Education (Arts Program)",
+    "title": "Minor Program in Christianity and Education",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -27370,11 +27234,11 @@
       "MST407Y1",
       "MST436H1",
       "SMC457H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Molecular Genetics and Microbiology Major (Science Program)",
+    "title": "Molecular Genetics and Microbiology Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -27431,13 +27295,12 @@
       "BCH428H1",
       "MGY311Y1",
       "BCH311H1",
-      "CSB349H1",
-      "Arts & Science Internship Program (ASIP)"
-    ],
-    "review_flags": []
+      "CSB349H1"
+    ]
   },
   {
-    "title": "Molecular Genetics And Microbiology Specialist: Genetics Stream (Science Program)",
+    "title": "Molecular Genetics And Microbiology Specialist: Genetics Stream",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -27505,13 +27368,12 @@
       "BCH440H1",
       "CSB472H1",
       "BCH448H1",
-      "EEB460H1",
-      "Arts & Science Internship Program (ASIP)"
-    ],
-    "review_flags": []
+      "EEB460H1"
+    ]
   },
   {
-    "title": "Molecular Genetics And Microbiology Specialist: Microbiology Stream (Science Program)",
+    "title": "Molecular Genetics And Microbiology Specialist: Microbiology Stream",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -27583,13 +27445,12 @@
       "BCH450H1",
       "BCH428H1",
       "CSB472H1",
-      "BCH445H1",
-      "Arts & Science Internship Program (ASIP)"
-    ],
-    "review_flags": []
+      "BCH445H1"
+    ]
   },
   {
-    "title": "Music History & Culture Minor (Arts Program)",
+    "title": "Music History & Culture Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -27613,11 +27474,11 @@
       "MUS215H1",
       "MUS120Y1",
       "MUS220Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Music Major with Ensemble Option- Creative Practice Stream (Arts Program)",
+    "title": "Music Major with Ensemble Option- Creative Practice Stream",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -27651,18 +27512,13 @@
       "DMU330H1",
       "DMU406H1",
       "DMU409H1",
-      " DMU430H1",
-      "HMU200+ level courses",
       "JMU210H1",
-      "JMU215H1",
-      "TMU300+ level courses",
-      "SMU400+ level courses",
-      "Academic Calendar of the Faculty of Music"
-    ],
-    "review_flags": []
+      "JMU215H1"
+    ]
   },
   {
-    "title": "Music Major with Ensemble Option- Research Stream (Arts Program)",
+    "title": "Music Major with Ensemble Option- Research Stream",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -27686,17 +27542,13 @@
       "MUS220Y1",
       "HMU225H1",
       "JMU210H1",
-      "HMU200+ level courses",
       "JMU210H1",
-      "JMU215H1",
-      "TMU200+ courses",
-      "SMU400-level courses",
-      "Academic Calendar of the Faculty of Music"
-    ],
-    "review_flags": []
+      "JMU215H1"
+    ]
   },
   {
-    "title": "Music Major- Creative Practice Stream (Arts Program)",
+    "title": "Music Major- Creative Practice Stream",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -27730,18 +27582,13 @@
       "DMU330H1",
       "DMU406H1",
       "DMU409H1",
-      " DMU430H1",
-      "HMU200+ level courses",
       "JMU210H1",
-      "JMU215H1",
-      "TMU300+ level courses",
-      "SMU400+ level courses",
-      "Academic Calendar of the Faculty of Music"
-    ],
-    "review_flags": []
+      "JMU215H1"
+    ]
   },
   {
-    "title": "Music Major- Research Stream (Arts Program)",
+    "title": "Music Major- Research Stream",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -27766,15 +27613,12 @@
       "HMU225H1",
       "JMU210H1",
       "JMU210H1",
-      "JMU215H1",
-      "TMU300+ level\u00a0courses",
-      "SMU400+ level courses",
-      "Academic Calendar of the Faculty of Music."
-    ],
-    "review_flags": []
+      "JMU215H1"
+    ]
   },
   {
-    "title": "Music Specialist (Arts Program)",
+    "title": "Music Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -27803,11 +27647,11 @@
       "HMU433H1",
       "HMU435H1",
       "HMU450H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Music Specialist with Ensemble Option (Arts Program)",
+    "title": "Music Specialist with Ensemble Option",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -27837,11 +27681,11 @@
       "HMU432H1",
       "HMU433H1",
       "HMU435H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Near and Middle Eastern Civilizations Major (Ancient) (Arts Program)",
+    "title": "Near and Middle Eastern Civilizations Major (Ancient)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -28054,11 +27898,11 @@
       "NMC497H1",
       "NMC499Y1",
       "JMH385H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Near and Middle Eastern Civilizations Major (General) (Arts Program)",
+    "title": "Near and Middle Eastern Civilizations Major (General)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -28079,11 +27923,11 @@
       "NMC104H1",
       "NMC105H1",
       "NMC106H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Near and Middle Eastern Civilizations Major (Medieval) (Arts Program)",
+    "title": "Near and Middle Eastern Civilizations Major (Medieval)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -28297,11 +28141,11 @@
       "NMC497H1",
       "NMC499Y1",
       "JMH385H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Near and Middle Eastern Civilizations Major (Modern) (Arts Program)",
+    "title": "Near and Middle Eastern Civilizations Major (Modern)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -28512,11 +28356,11 @@
       "NMC496H1",
       "NMC497H1",
       "NMC499Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Near and Middle Eastern Civilizations Minor (Arts Program)",
+    "title": "Near and Middle Eastern Civilizations Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -28530,11 +28374,11 @@
       "This is an open enrolment program. A student who has completed 4.0 credits may enrol in the program."
     ],
     "completion_requirement": [],
-    "courses_mentioned": [],
-    "review_flags": []
+    "courses_mentioned": []
   },
   {
-    "title": "Near and Middle Eastern Civilizations Specialist (Ancient) (Arts Program)",
+    "title": "Near and Middle Eastern Civilizations Specialist (Ancient)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -28751,11 +28595,11 @@
       "NMC497H1",
       "NMC499Y1",
       "JMH385H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Near and Middle Eastern Civilizations Specialist (General) (Arts Program)",
+    "title": "Near and Middle Eastern Civilizations Specialist (General)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -28902,11 +28746,11 @@
       "NMC450H1",
       "NMC480H1",
       "NMC491H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Near and Middle Eastern Civilizations Specialist (Medieval) (Arts Program)",
+    "title": "Near and Middle Eastern Civilizations Specialist (Medieval)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -29117,11 +28961,11 @@
       "NMC497H1",
       "NMC499Y1",
       "JMH385H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Near and Middle Eastern Civilizations Specialist (Modern) (Arts Program)",
+    "title": "Near and Middle Eastern Civilizations Specialist (Modern)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -29329,11 +29173,11 @@
       "NMC497H1",
       "NMC499Y1",
       "JHM307H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Neuroscience Major (Science Program)",
+    "title": "Neuroscience Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -29446,11 +29290,11 @@
       "HMB450H1",
       "HMB460H1",
       "HMB473H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Neuroscience Specialist (Science Program)",
+    "title": "Neuroscience Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -29564,13 +29408,12 @@
       "HMB442H1",
       "HMB450H1",
       "HMB460H1",
-      "HMB473H1",
-      "Arts & Science Internship Program"
-    ],
-    "review_flags": []
+      "HMB473H1"
+    ]
   },
   {
-    "title": "Nutritional Sciences Major (Science Program)",
+    "title": "Nutritional Sciences Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -29620,11 +29463,11 @@
       "NFS489H1",
       "NFS490H1",
       "NFS494Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Pathobiology Specialist (Science Program)",
+    "title": "Pathobiology Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -29692,11 +29535,11 @@
       "LMP450H1",
       "LMP460H1",
       "LMP405Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Peace, Conflict and Justice Major (Arts Program)",
+    "title": "Peace, Conflict and Justice Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -29779,11 +29622,11 @@
       "TRN312H1",
       "WGS273H1",
       "WGS340H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Peace, Conflict and Justice Specialist (Arts Program)",
+    "title": "Peace, Conflict and Justice Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -29870,11 +29713,11 @@
       "TRN312H1",
       "WGS273H1",
       "WGS340H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Pharmaceutical Chemistry Specialist (Science Program)",
+    "title": "Pharmaceutical Chemistry Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -29943,11 +29786,11 @@
       "PHC470H1",
       "PSL300H1",
       "PSL301H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Pharmacology Major (Science Program)",
+    "title": "Pharmacology Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -29998,11 +29841,11 @@
       "PCL470H1",
       "PCL472Y1",
       "PCL474Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Pharmacology Specialist (Science Program)",
+    "title": "Pharmacology Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -30090,17 +29933,16 @@
       "JPM400Y1",
       "PCL472Y1",
       "JPM400Y1",
-      "undergrad.pharmtox@utoronto.ca",
       "JPM400Y1",
       "PCL298H1",
       "PCL472Y1",
       "PCL497H1",
       "PCL498Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Philosophy Major (Arts Program)",
+    "title": "Philosophy Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -30131,11 +29973,11 @@
       "PHL275H1",
       "PHL245H1",
       "PHL246H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Philosophy Minor (Arts Program)",
+    "title": "Philosophy Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -30162,11 +30004,11 @@
       "PHL240H1",
       "PHL265H1",
       "PHL275H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Philosophy Specialist (Arts Program)",
+    "title": "Philosophy Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -30197,11 +30039,11 @@
       "PHL275H1",
       "PHL245H1",
       "PHL246H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Physical and Environmental Geography Major (Science Program)",
+    "title": "Physical and Environmental Geography Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -30305,11 +30147,11 @@
       "JEE337H1",
       "PHY392H1",
       "PHY408H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Physical and Environmental Geography Minor (Science Program)",
+    "title": "Physical and Environmental Geography Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -30382,11 +30224,11 @@
       "GGR375H1",
       "GGR386H1",
       "GGR493Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Physical and Environmental Geography Specialist (Science Program)",
+    "title": "Physical and Environmental Geography Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -30499,11 +30341,11 @@
       "JEE337H1",
       "PHY392H1",
       "PHY408H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Physics and Philosophy Specialist (Science Program)",
+    "title": "Physics and Philosophy Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -30594,11 +30436,11 @@
       "PHL412H1",
       "PHL413H1",
       "PHL483H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Physics Major (Science Program)",
+    "title": "Physics Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -30664,14 +30506,13 @@
       "PHL273H1",
       "VIC172Y1",
       "AST310H1",
-      "Arts & Science Internship Program",
       "PHY407H1",
       "PHY408H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Physics Minor (Science Program)",
+    "title": "Physics Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -30704,11 +30545,11 @@
       "JPE493H1",
       "JPH311H1",
       "JPH441H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Physics Specialist (Science Program)",
+    "title": "Physics Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -30790,18 +30631,17 @@
       "PHL273H1",
       "VIC172Y1",
       "AST310H1",
-      "Arts & Science Internship Program",
       "PHY371Y1",
       "PHY478H1",
       "PHY479Y1",
       "MAT351Y1",
       "APM346H1",
       "PHY424H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Physiology Major (Science Program)",
+    "title": "Physiology Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -30878,11 +30718,11 @@
       "PSL379H0",
       "PSL398H0",
       "PSL399Y1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Physiology Minor (Science Program)",
+    "title": "Physiology Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -30928,11 +30768,11 @@
       "PSY492H1",
       "PSY494H1",
       "PSY497H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Physiology Specialist (Science Program)",
+    "title": "Physiology Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -31025,11 +30865,11 @@
       "HMB430H1",
       "HMB470H1",
       "HMB472H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Planetary Science Specialist (Science Program)",
+    "title": "Planetary Science Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -31125,11 +30965,11 @@
       "CHM415H1",
       "JPE493H1",
       "APM346H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Political Science Major (Arts Program)",
+    "title": "Political Science Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -31207,7 +31047,6 @@
       "POL474H1",
       "POL490H1",
       "POL491H1",
-      "https://politics.utoronto.ca/undergraduate/courses/canadian-politics-co\u2026",
       "POL222H1",
       "ECO220Y1",
       "PSY201H1",
@@ -31257,8 +31096,6 @@
       "JPR459H1",
       "POL467H1",
       "POL469H1",
-      "https://politics.utoronto.ca/undergraduate/courses/diversity-identity-p\u2026",
-      "Arts & Science Internship Program",
       "AFR353H1",
       "AFR455H1",
       "CAR226H1",
@@ -31303,11 +31140,11 @@
       "VIC476H1",
       "WDW151H1",
       "WDW152H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Political Science Minor (Arts Program)",
+    "title": "Political Science Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -31366,11 +31203,11 @@
       "VIC476H1",
       "WDW151H1",
       "WDW152H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Political Science Specialist (Arts Program)",
+    "title": "Political Science Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -31448,7 +31285,6 @@
       "POL474H1",
       "POL490H1",
       "POL491H1",
-      "https://politics.utoronto.ca/undergraduate/courses/canadian-politics-co\u2026",
       "POL222H1",
       "ECO220Y1",
       "PSY201H1",
@@ -31500,7 +31336,6 @@
       "JPR459H1",
       "POL467H1",
       "POL469H1",
-      "https://politics.utoronto.ca/undergraduate/courses/diversity-identity-p\u2026",
       "POL320H1",
       "POL321H1",
       "POL304H1",
@@ -31512,7 +31347,6 @@
       "POL440H1",
       "POL478H1",
       "POL483H1",
-      "Arts & Science Internship Program",
       "AFR353H1",
       "AFR455H1",
       "CAR226H1",
@@ -31557,11 +31391,11 @@
       "VIC476H1",
       "WDW151H1",
       "WDW152H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Portuguese Major (Arts Program)",
+    "title": "Portuguese Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -31608,11 +31442,11 @@
       "PRT302H1",
       "PRT320Y1",
       "PRT420H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Portuguese Minor (Arts Program)",
+    "title": "Portuguese Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -31658,11 +31492,11 @@
       "PRT302H1",
       "PRT320Y1",
       "PRT420H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Portuguese Specialist (Arts Program)",
+    "title": "Portuguese Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -31704,11 +31538,11 @@
       "PRT302H1",
       "PRT320Y1",
       "PRT420H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Psychology Major (Science Program)",
+    "title": "Psychology Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -31748,7 +31582,6 @@
       "PSY290H1",
       "HMB200H1",
       "PSY290H1",
-      "Arts & Science Internship Program (ASIP)",
       "PSY304Y1",
       "PSY306Y0",
       "PSY299H1",
@@ -31760,7 +31593,6 @@
       "PSY405Y1",
       "PSY406Y1",
       "PSY201H1",
-      "contact us",
       "JLP315H1",
       "PSY194H1",
       "PSY195H1",
@@ -31975,11 +31807,11 @@
       "VIC206H1",
       "WGS372H1",
       "WRR307H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Psychology Minor (Science Program)",
+    "title": "Psychology Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -32028,7 +31860,6 @@
       "PSY405Y1",
       "PSY406Y1",
       "PSY201H1",
-      "contact us",
       "JLP315H1",
       "PSY194H1",
       "PSY195H1",
@@ -32243,11 +32074,11 @@
       "VIC206H1",
       "WGS372H1",
       "WRR307H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
     "title": "Psychology of Economics and Management Certificate (Category 2)",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "CER",
@@ -32274,11 +32105,11 @@
       "PSY322H1",
       "PSY326H1",
       "PSY336H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Missing Program TitlePsychology Research Specialist - Thesis (Science Program)",
+    "title": "Psychology Research Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -32347,7 +32178,6 @@
       "PSY405Y1",
       "PSY406Y1",
       "PSY201H1",
-      "contact us",
       "JLP315H1",
       "PSY194H1",
       "PSY195H1",
@@ -32562,11 +32392,11 @@
       "VIC206H1",
       "WGS372H1",
       "WRR307H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Psychology Specialist (Science Program)",
+    "title": "Psychology Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -32634,7 +32464,6 @@
       "PSY480H1",
       "PSY490H1",
       "PSY497H1",
-      "Arts & Science Internship Program (ASIP)",
       "PSY304Y1",
       "PSY306Y0",
       "PSY299H1",
@@ -32647,7 +32476,6 @@
       "PSY406Y1",
       "PSY201H1",
       "PSY202H1",
-      "contact us",
       "JLP315H1",
       "PSY194H1",
       "PSY195H1",
@@ -32863,11 +32691,11 @@
       "VIC206H1",
       "WGS372H1",
       "WRR307H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Public Health Major (Arts Program)",
+    "title": "Public Health Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -33017,11 +32845,11 @@
       "PHS450Y1",
       "PHS451Y1",
       "PHS480H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Quantitative Biology Major (Science Program)",
+    "title": "Quantitative Biology Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -33141,11 +32969,11 @@
       "PHY431H1",
       "PSY474H1",
       "STA480H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Religion Major (Arts Program)",
+    "title": "Religion Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -33287,7 +33115,6 @@
       "RLG406H1",
       "RLG407H1",
       "RLG426H1",
-      "Arts & Science Internship Program",
       "ANT356H1",
       "ANT386H1",
       "ANT426H1",
@@ -33419,13 +33246,12 @@
       "MHB255H1",
       "MHB256H1",
       "MHB355H1",
-      "MHB356H1",
-      "religion.undergrad@utoronto.ca"
-    ],
-    "review_flags": []
+      "MHB356H1"
+    ]
   },
   {
-    "title": "Religion Minor (Arts Program)",
+    "title": "Religion Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -33471,13 +33297,12 @@
       "MHB255H1",
       "MHB256H1",
       "MHB355H1",
-      "MHB356H1",
-      "religion.undergrad@utoronto.ca"
-    ],
-    "review_flags": []
+      "MHB356H1"
+    ]
   },
   {
-    "title": "Religion Specialist (Arts Program)",
+    "title": "Religion Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -33569,7 +33394,6 @@
       "RLG406H1",
       "RLG407H1",
       "RLG426H1",
-      "Arts & Science Internship Program",
       "ANT356H1",
       "ANT386H1",
       "ANT426H1",
@@ -33701,13 +33525,12 @@
       "MHB255H1",
       "MHB256H1",
       "MHB355H1",
-      "MHB356H1",
-      "religion.undergrad@utoronto.ca"
-    ],
-    "review_flags": []
+      "MHB356H1"
+    ]
   },
   {
-    "title": "Renaissance Studies Major (Arts Program)",
+    "title": "Renaissance Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -33811,11 +33634,11 @@
       "FAH440H1",
       "FAH470H1",
       "REN440H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Renaissance Studies Minor (Arts Program)",
+    "title": "Renaissance Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -33907,11 +33730,11 @@
       "FAH436H1",
       "FAH440H1",
       "FAH470H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Renaissance Studies Specialist (Arts Program)",
+    "title": "Renaissance Studies Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -34019,11 +33842,11 @@
       "REN492H1",
       "REN492Y1",
       "REN440H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Science, Technology, and Society Minor (Arts Program)",
+    "title": "Science, Technology, and Society Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -34141,11 +33964,11 @@
       "SOC331H1",
       "SOC356H1",
       "WGS367H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Sexual Diversity Studies Major (Arts Program)",
+    "title": "Sexual Diversity Studies Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -34262,11 +34085,11 @@
       "WGS374H1",
       "WGS480H1",
       "WGS481H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Sexual Diversity Studies Minor (Arts Program)",
+    "title": "Sexual Diversity Studies Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -34378,11 +34201,11 @@
       "WGS374H1",
       "WGS480H1",
       "WGS481H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Sexual Diversity Studies Specialist (Arts Program)",
+    "title": "Sexual Diversity Studies Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -34499,11 +34322,11 @@
       "WGS374H1",
       "WGS480H1",
       "WGS481H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Slavic and East European Languages and Cultures Major (Arts Program)",
+    "title": "Slavic and East European Languages and Cultures Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -34751,11 +34574,11 @@
       "SLA425H1",
       "SLA435H1",
       "SLA492H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Slavic and East European Languages and Cultures Minor (Arts Program)",
+    "title": "Slavic and East European Languages and Cultures Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -35006,11 +34829,11 @@
       "SLA425H1",
       "SLA435H1",
       "SLA492H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Slavic and East European Languages and Cultures Specialist (Arts Program)",
+    "title": "Slavic and East European Languages and Cultures Specialist",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "SPE",
@@ -35260,11 +35083,11 @@
       "SLA425H1",
       "SLA435H1",
       "SLA492H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Slavic and East European Literature in Translation Minor (Arts Program)",
+    "title": "Slavic and East European Literature in Translation Minor",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MIN",
@@ -35422,11 +35245,11 @@
       "SLA425H1",
       "SLA435H1",
       "SLA492H1"
-    ],
-    "review_flags": []
+    ]
   },
   {
-    "title": "Sociology Major (Arts Program)",
+    "title": "Sociology Major",
+    "program_artsci": null,
     "program_code": [
       "AS",
       "MAJ",
@@ -35450,9 +35273,7 @@
       "SOC252H1",
       "SOC254H1",
       "SOC317H1",
-      "SOC354H1",
-      "Arts & Science Internship Program"
-    ],
-    "review_flags": []
+      "SOC354H1"
+    ]
   }
 ]
