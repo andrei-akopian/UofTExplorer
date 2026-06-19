@@ -10,7 +10,7 @@
 A graph visualizer tool for courses and their requisites at the University of Toronto.
 Currently a work in progress for further improvements and deployment.
 
-## Demo
+## [Website](https://uoftexplorer.ca)
 
 <div align="center">
   <img src="docs/images/homepage.png" width="355" />
