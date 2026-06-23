@@ -5,6 +5,7 @@ import {
   DataSet,
   Network,
 } from "vis-network/standalone/esm/vis-network.min.js";
+import { graphlib, layout } from "@dagrejs/dagre";
 import LoadingOverlay from "../LoadingOverlay";
 
 interface Node extends GraphNode {
@@ -74,7 +75,7 @@ const convertGenericGraph = (data: GraphData): Graph2DData => {
 };
 
 const PHYSICS_DAMPING = 0.9;
-const PHYSICS_SPRING_CONST = 0.1;
+const PHYSICS_SPRING_CONST = 0.02;
 const PHYSICS_GRAV_CONSTANT = -4000;
 const PHYSICS_SPRING_LENGTH = 50;
 
@@ -145,7 +146,7 @@ export default function GraphVis2D({
             },
           },
           physics: {
-            enabled: true,
+            enabled: false,
             solver: "barnesHut",
             barnesHut: {
               gravitationalConstant: PHYSICS_GRAV_CONSTANT,
@@ -264,9 +265,11 @@ export default function GraphVis2D({
           : undefined;
       const processedNode = { ...n, depth };
 
-      processedNode.x = (Math.random() - 0.5) * 200;
-      processedNode.y = (Math.random() - 0.5) * 200;
-      processedNode.targetRadius = undefined;
+      if (typeof processedNode.x === "undefined") {
+        processedNode.x = (Math.random() - 0.5) * 200;
+        processedNode.y = (Math.random() - 0.5) * 200;
+        processedNode.targetRadius = undefined;
+      }
 
       sumX += processedNode.x || 0;
       sumY += processedNode.y || 0;
@@ -274,6 +277,7 @@ export default function GraphVis2D({
       return processedNode;
     });
 
+    console.log("pnodes", processedNodes);
     return {
       nodes: processedNodes,
       edges,
@@ -284,6 +288,20 @@ export default function GraphVis2D({
 
   /* Graph Updating */
   useEffect(() => {
+    // initial node positioning using dagre.js
+    const g: graphlib.Graph = new graphlib.Graph();
+    g.setGraph({ nodesep: 150, edgesep: 100, ranksep: 200, rankdir: "BT" });
+    g.setDefaultEdgeLabel(function () {
+      return {};
+    });
+    for (const node of graphData.nodes) {
+      g.setNode(node.id, node);
+    }
+    for (const edge of graphData.edges) {
+      g.setEdge(edge.from, edge.to);
+    }
+    layout(g);
+    // visualize using nodejs
     const data2D = convertGenericGraph(graphData);
     const prepared = prepareData(data2D.nodes, data2D.edges);
     setActiveNodes(prepared.nodes);
