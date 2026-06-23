@@ -63,7 +63,7 @@ export default function HelpMenu({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="z-50">
-      <div className="bg-panel-bg rounded-full pl-2">
+      <div className="group relative">
         <div
           onClick={() => setIsOpen(!isOpen)}
           className="border-input-border bg-input-bg text-text-body focus:ring-input-focus-ring flex cursor-pointer list-none items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium transition-all duration-150 hover:-translate-y-0 focus:outline-none focus-visible:ring-2 [&::-webkit-details-marker]:hidden"
