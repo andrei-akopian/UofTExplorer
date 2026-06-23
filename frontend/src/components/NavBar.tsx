@@ -70,7 +70,7 @@ export default function Navbar() {
     <button
       type="button"
       onClick={() => setIsDarkMode((prev) => !prev)}
-      className="border-input-border bg-input-bg text-text-body focus:ring-input-focus-ring inline-flex shrink-0 items-center gap-2 rounded-md border px-3 py-1.5 text-sm font-medium transition-colors hover:brightness-105 focus:ring-2 focus:outline-none"
+      className="border-input-border bg-input-bg text-text-body focus:ring-input-focus-ring inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-md border px-3 py-1.5 text-sm font-medium transition-colors hover:brightness-105 focus:ring-2 focus:outline-none"
       aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
       title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
     >

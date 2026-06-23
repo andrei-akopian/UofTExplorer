@@ -175,6 +175,7 @@ export default function GraphVis2D({
           { nodes: [], edges: [] },
           options,
         );
+        (network as any).canvas.body.container.style.cursor = "default";
 
         network.on("click", (params: any) => {
           if (params.nodes?.length > 0) {
@@ -211,13 +212,15 @@ export default function GraphVis2D({
         });
 
         network.on("hoverNode", (params: any) => {
-          lastHoverNodeRef.current = params.node.id;
+          (network as any).canvas.body.container.style.cursor = "pointer";
+          lastHoverNodeRef.current = String(params.node);
           if (!isNodePinnedRef.current) {
             hoverHighlightGraph(params.node);
           }
         });
 
         network.on("blurNode", (_params: any) => {
+          (network as any).canvas.body.container.style.cursor = "default";
           lastHoverNodeRef.current = "";
           if (!isNodePinnedRef.current) {
             hoverHighlightGraph("");

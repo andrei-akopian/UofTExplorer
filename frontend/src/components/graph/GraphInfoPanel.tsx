@@ -74,7 +74,7 @@ export function GraphInfoPanel({
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="border-border-card bg-primary hover:bg-primary-hover shadow-card flex h-10 w-10 items-center justify-center rounded-full border transition-colors hover:brightness-95"
+        className="border-border-card bg-primary hover:bg-primary-hover shadow-card flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border transition-colors hover:brightness-95"
         title={isOpen ? `Close ${label}` : `Open ${label}`}
         aria-label={isOpen ? `Close ${label}` : `Open ${label}`}
         aria-expanded={isOpen}
@@ -162,7 +162,10 @@ export function GraphStatsPanel({
         <h2 className="text-text-body text-sm font-semibold">
           Graph Statistics
         </h2>
-        <button onClick={() => onOpenChange?.(false)}>
+        <button
+          onClick={() => onOpenChange?.(false)}
+          className="cursor-pointer"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="text-text-muted h-4 w-4"
@@ -262,7 +265,10 @@ export function GraphNodesPanel({
             </span>
           )}
         </h2>
-        <button onClick={() => onOpenChange?.(false)}>
+        <button
+          onClick={() => onOpenChange?.(false)}
+          className="cursor-pointer"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="text-text-muted h-4 w-4"

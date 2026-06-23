@@ -91,7 +91,7 @@ export default function SearchBar({
               type="button"
               onMouseDown={(e) => e.preventDefault()}
               onClick={() => handleTabChange("courses")}
-              className={`px-2 py-2 text-xs font-semibold transition-colors ${activeTab === "courses" ? "bg-input-focus-border text-white" : "bg-panel-bg text-text-muted"}`}
+              className={`cursor-pointer px-2 py-2 text-xs font-semibold transition-colors ${activeTab === "courses" ? "bg-input-focus-border text-white" : "bg-panel-bg text-text-muted"}`}
             >
               Courses ({courseResults.length})
             </button>
@@ -99,7 +99,7 @@ export default function SearchBar({
               type="button"
               onMouseDown={(e) => e.preventDefault()}
               onClick={() => handleTabChange("programs")}
-              className={`px-2 py-2 text-xs font-semibold transition-colors ${activeTab === "programs" ? "bg-input-focus-border text-white" : "bg-panel-bg text-text-muted"}`}
+              className={`cursor-pointer px-2 py-2 text-xs font-semibold transition-colors ${activeTab === "programs" ? "bg-input-focus-border text-white" : "bg-panel-bg text-text-muted"}`}
             >
               Programs ({programResults.length})
             </button>
@@ -107,7 +107,7 @@ export default function SearchBar({
               type="button"
               onMouseDown={(e) => e.preventDefault()}
               onClick={() => handleTabChange("departments")}
-              className={`px-2 py-2 text-xs font-semibold transition-colors ${activeTab === "departments" ? "bg-input-focus-border text-white" : "bg-panel-bg text-text-muted"}`}
+              className={`cursor-pointer px-2 py-2 text-xs font-semibold transition-colors ${activeTab === "departments" ? "bg-input-focus-border text-white" : "bg-panel-bg text-text-muted"}`}
             >
               Departments ({departmentResults.length})
             </button>

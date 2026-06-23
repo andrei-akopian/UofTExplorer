@@ -63,14 +63,14 @@ function FilterBar({
         {options.map((option) => (
           <label
             key={keyFormat(option)}
-            className="flex flex-nowrap items-start gap-2 text-sm"
+            className="flex cursor-pointer flex-nowrap items-start gap-2 text-sm"
           >
             <input
               type="checkbox"
               onChange={(e) => handleChange(e, keyFormat(option))}
-              className="mt-0.5 shrink-0"
+              className="mt-0.5 shrink-0 cursor-pointer"
             />
-            <span className="max-w-xs min-w-0 wrap-break-word">
+            <span className="max-w-xs min-w-0 cursor-pointer wrap-break-word">
               {renderOptionLabel ? renderOptionLabel(option) : option}
             </span>
           </label>
@@ -179,13 +179,17 @@ export default function SearchMenu({
               {["Eligible", "Ineligible"].map((option) => {
                 const key = option.toLowerCase();
                 return (
-                  <label key={key} className="flex items-center gap-2 text-sm">
+                  <label
+                    key={key}
+                    className="flex cursor-pointer items-center gap-2 text-sm"
+                  >
                     <input
                       type="checkbox"
                       checked={filtersHook.cr_ncr.includes(key)}
                       onChange={(e) =>
                         toggleFilter("cr_ncr", key, e.target.checked)
                       }
+                      className="cursor-pointer"
                     />
                     <span>{option}</span>
                   </label>
@@ -207,7 +211,7 @@ export default function SearchMenu({
                 return (
                   <label
                     key={key}
-                    className="flex flex-nowrap items-start gap-2 text-sm"
+                    className="flex cursor-pointer flex-nowrap items-start gap-2 text-sm"
                   >
                     <input
                       type="checkbox"
@@ -215,7 +219,7 @@ export default function SearchMenu({
                       onChange={(e) =>
                         toggleFilter("departments", key, e.target.checked)
                       }
-                      className="mt-0.5 shrink-0"
+                      className="mt-0.5 shrink-0 cursor-pointer"
                     />
                     <span className="wrap-break-word">
                       <span className="font-mono">{option.slice(0, 3)}</span>
@@ -238,7 +242,10 @@ export default function SearchMenu({
               {breadths.map((option) => {
                 const key = option.at(-2) ?? "";
                 return (
-                  <label key={key} className="flex items-center gap-2 text-sm">
+                  <label
+                    key={key}
+                    className="flex cursor-pointer items-center gap-2 text-sm"
+                  >
                     <input
                       type="checkbox"
                       checked={filtersHook.breadth_requirements.includes(key)}
@@ -249,6 +256,7 @@ export default function SearchMenu({
                           e.target.checked,
                         )
                       }
+                      className="cursor-pointer"
                     />
                     <span>{option}</span>
                   </label>
