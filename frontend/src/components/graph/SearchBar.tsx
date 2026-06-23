@@ -35,6 +35,7 @@ export default function SearchBar({
         : departmentResults;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setShowSearchResults(true);
     setQuery(e.target.value);
     void search(e.target.value);
   };
