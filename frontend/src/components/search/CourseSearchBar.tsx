@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useSearch } from "../../hooks/useGraph";
-import SuggestionEntry from "./SuggestionEntry";
+import SuggestionEntryMulti from "./SuggestionEntryMulti";
 
 function CourseChip({
   course,
@@ -43,6 +43,16 @@ export default function CourseSearchBar({
   const inputRef = useRef<HTMLInputElement>(null);
   const [dropdownRect, setDropdownRect] = useState<DOMRect | null>(null);
   const courseResults = results.filter((result) => result.type === "course");
+  const [searchLookup, setSearchLookup] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    console.log("searchLookup:", searchLookup);
+    const arrayed: string[] = [];
+    for (const ele of searchLookup) {
+      arrayed.push(ele);
+    }
+    setSearchResults(arrayed);
+  }, [searchLookup]);
 
   const updateDropdownRect = () => {
     if (inputRef.current) {
@@ -106,7 +116,7 @@ export default function CourseSearchBar({
               </div>
             ) : courseResults.length > 0 ? (
               courseResults.map((result) => (
-                <SuggestionEntry
+                <SuggestionEntryMulti
                   key={result.id}
                   id={result.code || result.label}
                   title={result.title || ""}
@@ -115,16 +125,10 @@ export default function CourseSearchBar({
                   }
                   numNodes={result.num_nodes || 0}
                   onClickCallback={() => {
-                    if (searchResults.find((x) => x == result.code)) {
-                      return;
-                    }
-                    setSearchResults([
-                      ...searchResults,
-                      result.code || result.label,
-                    ]);
                     setQuery("");
-                    setShowSearchResults(false);
                   }}
+                  lookup={searchLookup}
+                  setLookup={setSearchLookup}
                 />
               ))
             ) : (
@@ -141,9 +145,14 @@ export default function CourseSearchBar({
           <CourseChip
             key={course}
             course={course}
-            onRemove={() =>
-              setSearchResults(searchResults.filter((c) => c !== course))
-            }
+            onRemove={() => {
+              const tempLookup: Set<string> = new Set();
+              for (const ele of searchLookup) {
+                tempLookup.add(ele);
+              }
+              tempLookup.delete(course);
+              setSearchLookup(tempLookup);
+            }}
           />
         ))}
       </div>
