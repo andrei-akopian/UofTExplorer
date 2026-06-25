@@ -1,5 +1,11 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import type { GraphData, GraphEdge, GraphNode, QueryInfo } from "../../types";
+import type {
+  DirectionNode,
+  GraphData,
+  GraphEdge,
+  GraphNode,
+  QueryInfo,
+} from "../../types";
 import { useCreateDirectedGraph } from "../../hooks/useGraph";
 import {
   DataSet,
@@ -85,6 +91,106 @@ interface GraphVis2DProps {
   onNodeClickCallback?: (node: GraphNode) => void;
   onEdgeClickCallback?: (edge: GraphEdge) => void;
 }
+
+const prepareData = (nodes: Node[], edges: Edge[]): Graph2DData => {
+  if (!nodes.length) return { nodes: [], edges };
+
+  const levels: Record<number, Node[]> = {};
+  const MIN_RADIUS_STEP = 300;
+  const NODE_GIRTH = 120;
+
+  const levelRadii: Record<number, number> = {};
+  let currentRadius = 0;
+  const sortedDepths = Object.keys(levels)
+    .map(Number)
+    .sort((a, b) => a - b);
+
+  sortedDepths.forEach((depth) => {
+    const nodeCount = levels[depth].length;
+    const requiredRadius = (nodeCount * NODE_GIRTH) / (2 * Math.PI);
+    currentRadius += Math.max(MIN_RADIUS_STEP, requiredRadius);
+    levelRadii[depth] = currentRadius;
+  });
+
+  let sumX = 0;
+  let sumY = 0;
+
+  const processedNodes = nodes.map((n) => {
+    const depth =
+      n.depth !== null && n.depth !== undefined
+        ? parseInt(String(n.depth))
+        : undefined;
+    const processedNode = { ...n, depth };
+
+    processedNode.x = (Math.random() - 0.5) * 200;
+    processedNode.y = (Math.random() - 0.5) * 200;
+    processedNode.targetRadius = undefined;
+
+    sumX += processedNode.x || 0;
+    sumY += processedNode.y || 0;
+
+    return processedNode;
+  });
+
+  return {
+    nodes: processedNodes,
+    edges,
+    avgX: sumX / (nodes.length || 1),
+    avgY: sumY / (nodes.length || 1),
+  };
+};
+
+const prepareDataShell = (
+  nodes: Node[],
+  edges: Edge[],
+  directed: Map<string, DirectionNode>,
+): Graph2DData => {
+  if (!nodes.length) return { nodes: [], edges };
+
+  const levels: Record<number, Node[]> = {};
+  const MIN_RADIUS_STEP = 300;
+  const NODE_GIRTH = 120;
+
+  const levelRadii: Record<number, number> = {};
+  let currentRadius = 0;
+  const sortedDepths = Object.keys(levels)
+    .map(Number)
+    .sort((a, b) => a - b);
+
+  sortedDepths.forEach((depth) => {
+    const nodeCount = levels[depth].length;
+    const requiredRadius = (nodeCount * NODE_GIRTH) / (2 * Math.PI);
+    currentRadius += Math.max(MIN_RADIUS_STEP, requiredRadius);
+    levelRadii[depth] = currentRadius;
+  });
+
+  let sumX = 0;
+  let sumY = 0;
+
+  const processedNodes = nodes.map((n) => {
+    const depth =
+      n.depth !== null && n.depth !== undefined
+        ? parseInt(String(n.depth))
+        : undefined;
+    const processedNode = { ...n, depth };
+
+    processedNode.x = (Math.random() - 0.5) * 200;
+    processedNode.y = (Math.random() - 0.5) * 200;
+    processedNode.targetRadius = undefined;
+
+    sumX += processedNode.x || 0;
+    sumY += processedNode.y || 0;
+
+    return processedNode;
+  });
+
+  return {
+    nodes: processedNodes,
+    edges,
+    avgX: sumX / (nodes.length || 1),
+    avgY: sumY / (nodes.length || 1),
+  };
+};
 
 export default function GraphVis2D({
   graphData,
@@ -234,58 +340,14 @@ export default function GraphVis2D({
     console.log("GraphVis2D mounted");
   }, []);
 
-  const prepareData = (nodes: Node[], edges: Edge[]): Graph2DData => {
-    if (!nodes.length) return { nodes: [], edges };
-
-    const levels: Record<number, Node[]> = {};
-    const MIN_RADIUS_STEP = 300;
-    const NODE_GIRTH = 120;
-
-    const levelRadii: Record<number, number> = {};
-    let currentRadius = 0;
-    const sortedDepths = Object.keys(levels)
-      .map(Number)
-      .sort((a, b) => a - b);
-
-    sortedDepths.forEach((depth) => {
-      const nodeCount = levels[depth].length;
-      const requiredRadius = (nodeCount * NODE_GIRTH) / (2 * Math.PI);
-      currentRadius += Math.max(MIN_RADIUS_STEP, requiredRadius);
-      levelRadii[depth] = currentRadius;
-    });
-
-    let sumX = 0;
-    let sumY = 0;
-
-    const processedNodes = nodes.map((n) => {
-      const depth =
-        n.depth !== null && n.depth !== undefined
-          ? parseInt(String(n.depth))
-          : undefined;
-      const processedNode = { ...n, depth };
-
-      processedNode.x = (Math.random() - 0.5) * 200;
-      processedNode.y = (Math.random() - 0.5) * 200;
-      processedNode.targetRadius = undefined;
-
-      sumX += processedNode.x || 0;
-      sumY += processedNode.y || 0;
-
-      return processedNode;
-    });
-
-    return {
-      nodes: processedNodes,
-      edges,
-      avgX: sumX / (nodes.length || 1),
-      avgY: sumY / (nodes.length || 1),
-    };
-  };
-
   /* Graph Updating */
   useEffect(() => {
     const data2D = convertGenericGraph(graphData);
-    const prepared = prepareData(data2D.nodes, data2D.edges);
+    const prepared = prepareDataShell(
+      data2D.nodes,
+      data2D.edges,
+      directedGraph,
+    );
     setActiveNodes(prepared.nodes);
     activeNodesRef.current = prepared.nodes;
 
@@ -305,7 +367,7 @@ export default function GraphVis2D({
     }
 
     setLoading && setLoading(false);
-  }, [graphData]);
+  }, [directedGraph]);
 
   const hightlightGraph = useCallback(
     (origin: string) => {
