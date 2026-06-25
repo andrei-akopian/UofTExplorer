@@ -40,14 +40,7 @@ export default function SuggestionEntryMulti({
     >
       <div className="flex">
         <div className="mr-2.5 flex justify-center">
-          <div
-            className="m-auto h-2 w-2 rounded-full border"
-            style={{
-              backgroundColor: lookup.has(id)
-                ? "var(--color-primary)"
-                : "transparent",
-            }}
-          ></div>
+          <input type="checkbox" checked={lookup.has(id)}></input>
         </div>
         <div style={{ display: "initial", flex: 1 }}>
           <div className="flex items-start justify-between gap-3">
