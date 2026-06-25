@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+  type RefObject,
+} from "react";
 import type {
   DirectionNode,
   GraphData,
@@ -90,6 +96,7 @@ interface GraphVis2DProps {
   setLoading?: (loading: boolean) => void;
   onNodeClickCallback?: (node: GraphNode) => void;
   onEdgeClickCallback?: (edge: GraphEdge) => void;
+  queryRef?: RefObject<string>;
 }
 
 const prepareData = (nodes: Node[], edges: Edge[]): Graph2DData => {
@@ -144,8 +151,14 @@ const prepareDataShell = (
   nodes: Node[],
   edges: Edge[],
   directed: Map<string, DirectionNode>,
+  origin: string,
 ): Graph2DData => {
+  console.log("A", origin);
+  if (origin == "") {
+    return prepareData(nodes, edges);
+  }
   if (!nodes.length) return { nodes: [], edges };
+  console.log("B!");
 
   const levels: Record<number, Node[]> = {};
   const MIN_RADIUS_STEP = 300;
@@ -153,6 +166,7 @@ const prepareDataShell = (
 
   const levelRadii: Record<number, number> = {};
   let currentRadius = 0;
+  console.log("levels: ", levels);
   const sortedDepths = Object.keys(levels)
     .map(Number)
     .sort((a, b) => a - b);
@@ -197,6 +211,7 @@ export default function GraphVis2D({
   loading,
   setLoading,
   onNodeClickCallback,
+  queryRef,
 }: GraphVis2DProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const networkRef = useRef<any>(null);
@@ -347,6 +362,7 @@ export default function GraphVis2D({
       data2D.nodes,
       data2D.edges,
       directedGraph,
+      queryRef?.current ?? "",
     );
     setActiveNodes(prepared.nodes);
     activeNodesRef.current = prepared.nodes;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import GraphQuery from "../components/graph/GraphQuery";
 import type { GraphData, GraphNode } from "../types";
 import GraphVis2D from "../components/graph/GraphVis2D";
@@ -23,10 +23,12 @@ export default function Graph2D() {
   const [selectedNode, setSelectedNode] = useState<GraphNode | null>(null);
 
   const [searchParams] = useSearchParams();
+  const searchParamsRef = useRef<string>("");
 
   useEffect(() => {
     if (searchParams.has("search")) {
-      setManualFetch(searchParams.get("search") ?? "");
+      searchParamsRef.current = searchParams.get("search") ?? "";
+      setManualFetch(searchParamsRef.current);
     }
   }, [searchParams]);
 
@@ -51,6 +53,7 @@ export default function Graph2D() {
           loading={loading}
           setLoading={setLoading}
           onNodeClickCallback={handleNodeSelect}
+          queryRef={searchParamsRef}
         />
       </div>
       <GraphBottomInfo
