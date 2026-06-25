@@ -34,12 +34,19 @@ export default function SuggestionEntryMulti({
         e.preventDefault();
       }}
       className="border-border-card text-text-body hover:bg-surface-1 cursor-pointer border-b px-3 py-2 text-sm last:border-b-0"
+      style={{
+        backgroundColor: lookup.has(id) ? "var(--color-surface-2)" : "",
+      }}
     >
       <div className="flex">
         <div className="mr-2.5 flex justify-center">
           <div
             className="m-auto h-2 w-2 rounded-full border"
-            style={{ backgroundColor: lookup.has(id) ? "blue" : "transparent" }}
+            style={{
+              backgroundColor: lookup.has(id)
+                ? "var(--color-primary)"
+                : "transparent",
+            }}
           ></div>
         </div>
         <div style={{ display: "initial", flex: 1 }}>

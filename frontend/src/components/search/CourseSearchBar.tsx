@@ -124,9 +124,7 @@ export default function CourseSearchBar({
                     result.class_size ? String(result.class_size) : undefined
                   }
                   numNodes={result.num_nodes || 0}
-                  onClickCallback={() => {
-                    setQuery("");
-                  }}
+                  onClickCallback={() => {}}
                   lookup={searchLookup}
                   setLookup={setSearchLookup}
                 />
