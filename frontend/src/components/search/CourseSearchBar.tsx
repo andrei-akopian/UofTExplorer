@@ -46,7 +46,6 @@ export default function CourseSearchBar({
   const [searchLookup, setSearchLookup] = useState<Set<string>>(new Set());
 
   useEffect(() => {
-    console.log("searchLookup:", searchLookup);
     const arrayed: string[] = [];
     for (const ele of searchLookup) {
       arrayed.push(ele);
