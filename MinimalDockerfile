@@ -26,4 +26,5 @@ EXPOSE 5000
 # docker run -p 5000:5000 myapp     # Manual mapping
 # docker run -P myapp  # automap if possible
 
-CMD ["python3", ".", "--serve", "--docker"]
+# CMD ["python3", ".", "--serve", "--docker"]
+CMD ["gunicorn", "-w", "4", "--bind", "0.0.0.0:5000", "server.server:app"]

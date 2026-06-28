@@ -87,3 +87,15 @@ sh start.sh
 ```
 
 this should install the minimal flask and z3-solver dependencies, and start the server.
+
+## Production
+
+`pip3 install gunicorn`
+
+`gunicorn -w 4 server.server:app`
+
+### Fly.io
+
+(note, requires setting up certificats and logging in etc.)
+
+`fly deploy -c deploy_configs/fly.toml`

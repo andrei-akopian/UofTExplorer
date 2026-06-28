@@ -1,4 +1,5 @@
 # Requirements for Docker
 flask
+gunicorn
 z3-solver
 coloraide
