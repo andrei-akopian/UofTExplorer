@@ -1,8 +1,8 @@
+⬅️ [Back to Documentation Homepage](README.md)
+
+---
+
 # Contributing Guide
-
-## Installation & Setup
-
-Refer to the [Setup Guide](./SETUP.md).
 
 ## Commit Messages
 

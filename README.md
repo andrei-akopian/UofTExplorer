@@ -35,7 +35,7 @@ Currently a work in progress for further improvements and deployment.
 
 ## Project Structure
 
-![Project Structure](./docs/project_structure.svg)
+![Project Structure](docs/diagrams/project_structure.svg)
 
 ## Contributors
 
@@ -43,6 +43,6 @@ Currently a work in progress for further improvements and deployment.
   <img src="https://contrib.rocks/image?repo=andrei-akopian/UofTExplorer" />
 </a>
 
-## Development Setup & Contributing
+## Documentation
 
-See [SETUP.md](./SETUP.md) and [CONTRIBUTING.md](./CONTRIBUTING.md) for local development setup and contribution guidelines.
+See the [UofT Explorer Documentation Homepage](docs/README.md).
