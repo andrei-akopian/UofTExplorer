@@ -62,6 +62,8 @@ gunicorn -w 4 server.server:app
 
 Note: requires setting up certificates, logging in, etc.
 
+Make sure to set `BUILDPLATFORM = linux/amd64` in the `Makefile`. Fly.io uses amd64, and other platforms won't work.
+
 ```bash
 fly deploy -c deploy_configs/fly.toml
 ```

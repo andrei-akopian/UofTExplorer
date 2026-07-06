@@ -1,7 +1,7 @@
 .PHONY: clear_zip frontend
 
-# BUILDPLATFORM = linux/amd64
-BUILDPLATFORM = linux/arm64
+BUILDPLATFORM = linux/amd64
+# BUILDPLATFORM = linux/arm64
 
 help:
 	@echo "Please enter subcommand on what to make."
