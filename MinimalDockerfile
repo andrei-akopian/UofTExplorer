@@ -6,6 +6,9 @@ FROM python:slim
 
 # Copy source code
 WORKDIR /
+# install nginx
+RUN apt update
+RUN apt -y install nginx
 # install python packages
 RUN python -m venv /venv
 ENV PATH="/venv/bin:$PATH"
@@ -16,15 +19,11 @@ RUN pip install -r requirements.txt
 COPY data ./data
 COPY core ./core
 RUN mkdir frontend
-COPY frontend/dist ./frontend/dist
+COPY frontend/dist /usr/share/nginx/html
 COPY server ./server
 COPY __init__.py ./__init__.py
 COPY __main__.py ./__main__.py
+COPY deploy_configs ./deploy_configs
 # which ports to expose
-EXPOSE 5000
-# but then the ports need to be mapped.
-# docker run -p 5000:5000 myapp     # Manual mapping
-# docker run -P myapp  # automap if possible
-
-# CMD ["python3", ".", "--serve", "--docker"]
-CMD ["gunicorn", "-w", "4", "--bind", "0.0.0.0:5000", "server.server:app"]
+EXPOSE 80
+CMD ["sh", "deploy_configs/flyio-mini-start.sh"]

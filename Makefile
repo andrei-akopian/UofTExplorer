@@ -1,7 +1,7 @@
 .PHONY: clear_zip frontend
 
-BUILDPLATFORM = linux/amd64
-# BUILDPLATFORM = linux/arm64
+# BUILDPLATFORM = linux/amd64
+BUILDPLATFORM = linux/arm64
 
 help:
 	@echo "Please enter subcommand on what to make."
@@ -11,14 +11,14 @@ help:
 
 docker-full:
 	docker build --platform $(BUILDPLATFORM) -f Dockerfile -t uoftexplorer .
-	@echo "run using: docker run -p 5000:5000 uoftexplorer"
+	@echo "run using: docker run -p 80:80 uoftexplorer"
 	@echo "publish using"
 	@echo "docker tag uoftexplorer ghcr.io/andrei-akopian/uoftexplorer:full"
 	@echo "docker push ghcr.io/andrei-akopian/uoftexplorer:full"
 
 docker-minimal: frontend
 	docker build --platform $(BUILDPLATFORM) -f MinimalDockerfile -t uoftexplorer .
-	@echo "run using: docker run -p 5000:5000 uoftexplorer"
+	@echo "run using: docker run -p 80:80 uoftexplorer"
 	@echo "publish using"
 	@echo "docker tag uoftexplorer ghcr.io/andrei-akopian/uoftexplorer:minimal"
 	@echo "docker push ghcr.io/andrei-akopian/uoftexplorer:minimal"
