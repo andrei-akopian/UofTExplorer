@@ -9,6 +9,7 @@ bs4
 
 # Graphs and visualization
 flask
+gunicorn
 z3-solver
 coloraide
 

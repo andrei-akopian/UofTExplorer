@@ -216,14 +216,14 @@ export default function PathExplorer() {
             </span>
             <button
               type="button"
-              className="border-border-card bg-surface-1 text-text-body hover:bg-surface-2 shrink-0 rounded-md border px-2.5 py-1 text-[0.72rem] font-medium"
+              className="border-border-card bg-surface-1 text-text-body hover:bg-surface-2 shrink-0 cursor-pointer rounded-md border px-2.5 py-1 text-[0.72rem] font-medium"
               onClick={() => loadHistory(packet)}
             >
               Load
             </button>
             <button
               type="button"
-              className="border-border-card bg-surface-1 text-text-body hover:bg-surface-2 shrink-0 rounded-md border px-2.5 py-1 text-[0.72rem] font-medium"
+              className="border-border-card bg-surface-1 text-text-body hover:bg-surface-2 shrink-0 cursor-pointer rounded-md border px-2.5 py-1 text-[0.72rem] font-medium"
               onClick={() => exportHistory([packet])}
             >
               Export
@@ -234,7 +234,7 @@ export default function PathExplorer() {
             </svg>
           </span>
         </summary>
-        <div className="flex flex-col gap-3 overflow-y-auto pt-4 text-xs">
+        <div className="flex cursor-pointer flex-col gap-3 overflow-y-auto pt-4 text-xs">
           <div className="flex flex-col gap-0.5">
             <span className="text-text-muted font-semibold tracking-wide uppercase">
               Courses to Target
@@ -514,7 +514,7 @@ export default function PathExplorer() {
       {/* Result + History panel */}
       <div
         id="resultBar"
-        className={`border-border-panel bg-surface-1 z-30 flex w-full shrink-0 flex-col overflow-hidden border-b shadow-sm transition-[height] duration-200 lg:order-first lg:h-full lg:w-96 lg:border-t-0 lg:border-r lg:transition-none ${isResultBarOpen ? "h-[45vh]" : "h-0"} absolute top-[41px] right-0 left-0 lg:relative lg:top-auto lg:h-full`}
+        className={`border-border-panel bg-surface-1 z-30 flex w-full shrink-0 flex-col overflow-hidden border-b shadow-sm transition-[height] duration-200 lg:order-first lg:h-full lg:w-96 lg:border-t-0 lg:border-r lg:transition-none ${isResultBarOpen ? "h-[45vh]" : "h-0"} absolute top-10.25 right-0 left-0 lg:relative lg:top-auto lg:h-full`}
       >
         <section className="border-border-panel flex min-h-0 flex-[0_0_62%] flex-col overflow-hidden border-b">
           <header className="border-border-panel text-text-body flex shrink-0 items-center justify-between gap-3 border-b px-4 py-3 text-sm font-semibold">
@@ -535,7 +535,7 @@ export default function PathExplorer() {
                 <div className="border-border-dropdown bg-surface-1 text-text-body shadow-dropdown absolute top-[calc(100%+6px)] right-0 z-50 flex min-w-40 flex-col rounded-md border p-1.5">
                   <button
                     type="button"
-                    className="hover:bg-surface-2 rounded px-2 py-1 text-left text-sm"
+                    className="hover:bg-surface-2 cursor-pointer rounded px-2 py-1 text-left text-sm"
                     onClick={(e) => {
                       setResultVisibility("all");
                       (
@@ -549,7 +549,7 @@ export default function PathExplorer() {
                   </button>
                   <button
                     type="button"
-                    className="hover:bg-surface-2 rounded px-2 py-1 text-left text-sm"
+                    className="hover:bg-surface-2 cursor-pointer rounded px-2 py-1 text-left text-sm"
                     onClick={(e) => {
                       setResultVisibility("target");
                       (
@@ -563,7 +563,7 @@ export default function PathExplorer() {
                   </button>
                   <button
                     type="button"
-                    className="hover:bg-surface-2 rounded px-2 py-1 text-left text-sm"
+                    className="hover:bg-surface-2 cursor-pointer rounded px-2 py-1 text-left text-sm"
                     onClick={(e) => {
                       setResultVisibility("side");
                       (
@@ -604,7 +604,7 @@ export default function PathExplorer() {
               />
               <button
                 type="button"
-                className="border-border-card bg-surface-1 text-text-body hover:bg-surface-2 shrink-0 rounded-md border px-2.5 py-1 text-[0.72rem] font-medium"
+                className="border-border-card bg-surface-1 text-text-body hover:bg-surface-2 shrink-0 cursor-pointer rounded-md border px-2.5 py-1 text-[0.72rem] font-medium"
                 onClick={() => {
                   const confirmed = window.confirm(
                     `Importing history will overwrite the current history after the ${MaxHistoryCount}th entry. Continue?`,
@@ -618,7 +618,7 @@ export default function PathExplorer() {
               </button>
               <button
                 type="button"
-                className="border-border-card bg-surface-1 text-text-body hover:bg-surface-2 shrink-0 rounded-md border px-2.5 py-1 text-[0.72rem] font-medium"
+                className="border-border-card bg-surface-1 text-text-body hover:bg-surface-2 shrink-0 cursor-pointer rounded-md border px-2.5 py-1 text-[0.72rem] font-medium"
                 onClick={() => exportHistory(historyList)}
               >
                 Export

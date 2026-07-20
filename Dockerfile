@@ -8,6 +8,9 @@ FROM node:20-alpine AS builder
 
 # Copy source code
 WORKDIR /
+# install nginx
+RUN apt update
+RUN apt -y install nginx
 # compile frontend
 COPY frontend ./frontend
 WORKDIR /frontend
@@ -22,14 +25,11 @@ COPY requirements.txt ./requirements.txt
 RUN pip3 install -r requirements.txt
 COPY data ./data
 COPY core ./core
-COPY --from=builder ./frontend/dist ./frontend/dist
+COPY --from=builder ./frontend/dist /usr/share/nginx/html
 COPY server ./server
 COPY __init__.py ./__init__.py
 COPY __main__.py ./__main__.py
+COPY deploy_configs ./deploy_configs
 # which ports to expose
-EXPOSE 5000
-# but then the ports need to be mapped.
-# docker run -p 5000:5000 myapp     # Manual mapping
-# docker run -P myapp  # automap if possible
-
-CMD ["python3", ".", "--serve", "--docker"]
+EXPOSE 80
+CMD ["sh", "deploy_configs/flyio-mini-start.sh"]

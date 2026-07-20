@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { getDepartments } from "../../lib/api";
 import SearchBar from "./SearchBar";
+import CheckBox from "./../ui/CheckBox";
 
 const breadths = [
   "Creative and Cultural Representations (1)",
@@ -63,14 +64,14 @@ function FilterBar({
         {options.map((option) => (
           <label
             key={keyFormat(option)}
-            className="flex flex-nowrap items-start gap-2 text-sm"
+            className="flex cursor-pointer flex-nowrap items-start gap-2 text-sm"
           >
-            <input
-              type="checkbox"
+            <CheckBox
+              checked={filtersHook[filtersTitle].includes(keyFormat(option))}
               onChange={(e) => handleChange(e, keyFormat(option))}
               className="mt-0.5 shrink-0"
             />
-            <span className="max-w-xs min-w-0 wrap-break-word">
+            <span className="max-w-xs min-w-0 cursor-pointer wrap-break-word">
               {renderOptionLabel ? renderOptionLabel(option) : option}
             </span>
           </label>
@@ -179,12 +180,14 @@ export default function SearchMenu({
               {["Eligible", "Ineligible"].map((option) => {
                 const key = option.toLowerCase();
                 return (
-                  <label key={key} className="flex items-center gap-2 text-sm">
-                    <input
-                      type="checkbox"
+                  <label
+                    key={key}
+                    className="flex cursor-pointer items-center gap-2 text-sm"
+                  >
+                    <CheckBox
                       checked={filtersHook.cr_ncr.includes(key)}
                       onChange={(e) =>
-                        toggleFilter("cr_ncr", key, e.target.checked)
+                        toggleFilter("cr_ncr", key, e.currentTarget.checked)
                       }
                     />
                     <span>{option}</span>
@@ -207,13 +210,16 @@ export default function SearchMenu({
                 return (
                   <label
                     key={key}
-                    className="flex flex-nowrap items-start gap-2 text-sm"
+                    className="flex cursor-pointer flex-nowrap items-start gap-2 text-sm"
                   >
-                    <input
-                      type="checkbox"
+                    <CheckBox
                       checked={filtersHook.departments.includes(key)}
                       onChange={(e) =>
-                        toggleFilter("departments", key, e.target.checked)
+                        toggleFilter(
+                          "departments",
+                          key,
+                          e.currentTarget.checked,
+                        )
                       }
                       className="mt-0.5 shrink-0"
                     />
@@ -238,15 +244,17 @@ export default function SearchMenu({
               {breadths.map((option) => {
                 const key = option.at(-2) ?? "";
                 return (
-                  <label key={key} className="flex items-center gap-2 text-sm">
-                    <input
-                      type="checkbox"
+                  <label
+                    key={key}
+                    className="flex cursor-pointer items-center gap-2 text-sm"
+                  >
+                    <CheckBox
                       checked={filtersHook.breadth_requirements.includes(key)}
                       onChange={(e) =>
                         toggleFilter(
                           "breadth_requirements",
                           key,
-                          e.target.checked,
+                          e.currentTarget.checked,
                         )
                       }
                     />

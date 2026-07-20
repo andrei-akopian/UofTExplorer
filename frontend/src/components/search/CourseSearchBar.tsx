@@ -51,6 +51,7 @@ export default function CourseSearchBar({
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setShowSearchResults(true);
     setQuery(e.target.value);
     search(e.target.value);
   };

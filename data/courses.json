@@ -1510,6 +1510,44 @@
     "subgraph_num_requisites": 0
   },
   {
+    "title": "Language, Freedom and Linguistic Human Rights in Africa",
+    "course_code": "AFR251H1",
+    "split_course_code": [
+      "AFR",
+      251,
+      "H",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "Examines the language situation in Africa and the extent to which freedom and linguistic human rights are enabled, granted, nurtured, achieved or protected by post-colonial African states. Using linguistic diversity in Africa as a backdrop, presents, discusses and assesses language policies that were adopted by post-colonial African states, particularly in education, and the implications that these policies have for the rights, freedom and empowerment of citizens of African states. Changes and evolving trends in language use and language planning are also discussed.",
+    "cr_ncr_eligible": true,
+    "breadth_requirements_list": [
+      "Creative and Cultural Representations (1)"
+    ],
+    "hours": {
+      "lecture": 24,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 0
+    },
+    "prerequisites": [],
+    "prerequisites_original": "",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "",
+    "experience": "",
+    "recommended_prep": "AFR150Y1",
+    "has_fields": [
+      "hours",
+      "breadth_requirements_list",
+      "recommended_prep"
+    ],
+    "class_size": 45,
+    "subgraph_num_courses": 1,
+    "subgraph_num_requisites": 0
+  },
+  {
     "title": "Land, Life, and Livelihoods",
     "course_code": "AFR260H1",
     "split_course_code": [
@@ -1905,6 +1943,45 @@
       "previous_course_codes",
       "hours",
       "prerequisites"
+    ],
+    "class_size": 40,
+    "subgraph_num_courses": 1,
+    "subgraph_num_requisites": 0
+  },
+  {
+    "title": "Anticolonialism, Radicalism and Revolutions in Africa",
+    "course_code": "AFR370H1",
+    "split_course_code": [
+      "AFR",
+      370,
+      "H",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "An interdisciplinary exploration of the histories of nationalist and revolutionary movements, ideologies, and regimes in twentieth and twenty-first century Africa, examining the various ways that Africans imagined, actively shaped, and continue to demand freedom and political modernity. Emphasis will be placed on African history methodology (including oral history) and historiography to encourage students to apply a historical lens to approaching key themes and concepts in African Studies such as nationalism, decolonization, the state, politics, citizenship, labour movements, and pro-democracy movements.",
+    "cr_ncr_eligible": true,
+    "breadth_requirements_list": [
+      "Society and its Institutions (3)"
+    ],
+    "hours": {
+      "lecture": 24,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 0
+    },
+    "prerequisites": [],
+    "prerequisites_original": "Prerequisite: Completion of 4.0 credits",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "",
+    "experience": "",
+    "recommended_prep": "AFR150Y1",
+    "has_fields": [
+      "hours",
+      "breadth_requirements_list",
+      "prerequisites",
+      "recommended_prep"
     ],
     "class_size": 40,
     "subgraph_num_courses": 1,
@@ -3114,6 +3191,38 @@
       "recommended_prep"
     ],
     "class_size": 580,
+    "subgraph_num_courses": 1,
+    "subgraph_num_requisites": 0
+  },
+  {
+    "title": "Research Opportunity Program",
+    "course_code": "ANT299H1",
+    "split_course_code": [
+      "ANT",
+      299,
+      "H",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "Credit course for supervised participation in faculty research project. Details at https://www.artsci.utoronto.ca/current/academics/research-opportunities/research-opportunities-program. Not eligible for CR/NCR option.",
+    "cr_ncr_eligible": false,
+    "breadth_requirements_list": [],
+    "hours": {
+      "lecture": 0,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 0
+    },
+    "prerequisites": [],
+    "prerequisites_original": "",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "",
+    "experience": "",
+    "recommended_prep": [],
+    "has_fields": [],
+    "class_size": 30,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -5450,8 +5559,8 @@
       "prerequisites"
     ],
     "class_size": 458,
-    "subgraph_num_courses": 6,
-    "subgraph_num_requisites": 3
+    "subgraph_num_courses": 3,
+    "subgraph_num_requisites": 1
   },
   {
     "title": "Mathematics and Law",
@@ -5508,7 +5617,7 @@
     ],
     "class_size": 100,
     "subgraph_num_courses": 11,
-    "subgraph_num_requisites": 7
+    "subgraph_num_requisites": 6
   },
   {
     "title": "Partial Differential Equations",
@@ -6787,7 +6896,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 90,
+    "class_size": 120,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -11623,6 +11732,44 @@
     "subgraph_num_requisites": 0
   },
   {
+    "title": "Global China and Its Growing Footprints in Asia and Around the World",
+    "course_code": "CAS460H1",
+    "split_course_code": [
+      "CAS",
+      460,
+      "H",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "This course traces the domestic roots of China\u2019s global expansion. The end of \u201cbide your time, hide your strength\u201d era signals a more confident China and an expansionist stance. Intense domestic competition and excess supply have pushed state-owned and private enterprises alike to seek cheaper manufacturing base and consumer markets overseas. However, increased presence of Chinese capital and people have been met with open arms, but also cynicism, and even resistance. This course will examine the rise of Global China, traces the domestic roots of its rise, the implications for its relations with host countries as well as state-society relations in host countries from Asia to elsewhere.",
+    "cr_ncr_eligible": true,
+    "breadth_requirements_list": [
+      "Society and its Institutions (3)"
+    ],
+    "hours": {
+      "lecture": 24,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 0
+    },
+    "prerequisites": [],
+    "prerequisites_original": "Prerequisite: 14.0 credits, including 1.0 200-level CAS credit and 1.0 300-level CAS credit",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "",
+    "experience": "",
+    "recommended_prep": [],
+    "has_fields": [
+      "hours",
+      "breadth_requirements_list",
+      "prerequisites"
+    ],
+    "class_size": 20,
+    "subgraph_num_courses": 1,
+    "subgraph_num_requisites": 0
+  },
+  {
     "title": "Inventing Canada",
     "course_code": "CDN197H1",
     "split_course_code": [
@@ -12068,7 +12215,7 @@
       "breadth_requirements_list",
       "recommended_prep"
     ],
-    "class_size": 42,
+    "class_size": 40,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -14802,7 +14949,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 300,
+    "class_size": 330,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -20548,7 +20695,7 @@
       "hours",
       "prerequisites"
     ],
-    "class_size": 60,
+    "class_size": 86,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -22321,6 +22468,48 @@
     "corequisites_original": "",
     "exclusions": [],
     "exclusions_original": "Exclusion: VIC370H1",
+    "experience": "",
+    "recommended_prep": [],
+    "has_fields": [
+      "previous_course_codes",
+      "hours",
+      "breadth_requirements_list",
+      "prerequisites",
+      "exclusions"
+    ],
+    "class_size": 35,
+    "subgraph_num_courses": 1,
+    "subgraph_num_requisites": 0
+  },
+  {
+    "title": "Documenting Reality",
+    "course_code": "CRE371H1",
+    "split_course_code": [
+      "CRE",
+      371,
+      "H",
+      1
+    ],
+    "previous_course_codes": [
+      "VIC371H1"
+    ],
+    "description": "This seminar course explores methods of capturing, representing, and constructing reality through documentary media. Emphases will include opportunities and challenges brought by technical developments in the digital era, and the history and evolution of documentary work in print and/or photography. Students consider methods and innovations of major practitioners; ethical issues such as privacy, subjectivity, and objectivity; and partisanship and the effects of artificial intelligence and other automatic tools.",
+    "cr_ncr_eligible": true,
+    "breadth_requirements_list": [
+      "Creative and Cultural Representations (1)"
+    ],
+    "hours": {
+      "lecture": 0,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 24
+    },
+    "prerequisites": [],
+    "prerequisites_original": "Prerequisite: Completion of 4.0 credits",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "Exclusion: VIC371H1",
     "experience": "",
     "recommended_prep": [],
     "has_fields": [
@@ -24226,7 +24415,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 150,
+    "class_size": 180,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -27361,7 +27550,7 @@
       "OR",
       "CSC209H1"
     ],
-    "prerequisites_original": "Prerequisite: CSC209H1/CSC209H5/CSCB09H3 Prerequisite for Faculty of Applied Science and Engineering students: ESC180H1/ESC190H1/(APS105H1,  ECE244H1)",
+    "prerequisites_original": "Prerequisite: CSC209H1/CSC209H5/CSCB09H3 Prerequisite for Faculty of Applied Science and Engineering students: ESC180H1/ESC190H1/(APS105H1, ECE244H1)",
     "corequisites": [],
     "corequisites_original": "",
     "exclusions": [],
@@ -27431,7 +27620,7 @@
       ],
       "MAT195H1"
     ],
-    "prerequisites_original": "Prerequisite: CSC207H1/CSC207H5/CSCB07H3;  MAT235H1/MAT235Y1/MAT237Y1/MAT257Y1/(minimum of 77% in  MAT130H1/MAT135H1 and  MAT136H1)/(minimum of 73% in  MAT148H1/minimum of 67% in  MAT158H1 and minimum of 73% in  MAT149H1/minimum of 67% in  MAT159H1)/minimum of 73% in  MAT137Y1/minimum of 67% in  MAT157Y1;  MAT223H1/MAT240H1;  STA237H1/STA247H1/STA255H1/STA257H1 Prerequisite for Faculty of Applied Science and Engineering students: APS105H1/APS106H1/ESC180H1/CSC180H1;  MAT291H1/MAT294H1/MIE230H1/(minimum of 77% in  MAT186H1,  MAT187H1)/(minimum of 73% in  MAT194H1,  MAT195H1)/(minimum of 73% in  ESC194H1,  ESC195H1);  MAT185H1/MAT188H1;  STA286H1/CHE223H1/CME263H1/MIE231H1/MIE236H1/MSE238H1/ECE286H1",
+    "prerequisites_original": "Prerequisite: CSC207H1/CSC207H5/CSCB07H3;  MAT235H1/MAT235Y1/MAT237Y1/MAT257Y1/(minimum of 77% in  MAT130H1/MAT135H1 and  MAT136H1)/(minimum of 73% in  MAT148H1/minimum of 67% in  MAT158H1 and minimum of 73% in  MAT149H1/minimum of 67% in  MAT159H1)/minimum of 73% in  MAT137Y1/minimum of 67% in  MAT157Y1;  MAT223H1/MAT240H1;  STA237H1/STA247H1/STA255H1/STA257H1 Prerequisite for Faculty of Applied Science and Engineering students: APS105H1/APS106H1/ESC180H1/CSC180H1; MAT291H1/MAT294H1/MIE230H1/(minimum of 77% in MAT186H1, MAT187H1)/(minimum of 73% in MAT194H1, MAT195H1)/(minimum of 73% in ESC194H1, ESC195H1); MAT185H1/MAT188H1; STA286H1/CHE223H1/CME263H1/MIE231H1/MIE236H1/MSE238H1/ECE286H1",
     "corequisites": [],
     "corequisites_original": "",
     "exclusions": [
@@ -27538,7 +27727,7 @@
       ],
       "CSC209H1"
     ],
-    "prerequisites_original": "Prerequisite: (MAT235H1,  MAT236H1)/MAT235Y1/MAT237Y1/MAT257Y1/(MAT232H5/MAT233H5,  MAT236H5)/(MATB41H3,  MATB42H3);  MAT223H1/MAT240H1/MAT223H5/MATA22H3;  CSC209H1/CSC209H5/CSCB09H3/proficiency in C or C++ Prerequisite for Faculty of Applied Science and Engineering students:  MAT291H1/MAT292H1/MAT294H1/MIE230H1;  MAT185H1/MAT188H1;  APS105H1/ESC180H1/CSC180H1",
+    "prerequisites_original": "Prerequisite: (MAT235H1,  MAT236H1)/MAT235Y1/MAT237Y1/MAT257Y1/(MAT232H5/MAT233H5,  MAT236H5)/(MATB41H3,  MATB42H3);  MAT223H1/MAT240H1/MAT223H5/MATA22H3;  CSC209H1/CSC209H5/CSCB09H3/proficiency in C or C++ Prerequisite for Faculty of Applied Science and Engineering students: MAT291H1/MAT292H1/MAT294H1/MIE230H1; MAT185H1/MAT188H1; APS105H1/ESC180H1/CSC180H1",
     "corequisites": [],
     "corequisites_original": "",
     "exclusions": [],
@@ -27640,7 +27829,7 @@
         "MAT257Y1"
       ]
     ],
-    "prerequisites_original": "Prerequisite: CSC263H1/CSC265H1/CSC263H5/CSCB63H3;  MAT223H1/MAT240H1; (MAT136H1 with a minimum mark of 77)/(MAT149H1 with a minimum mark of 73)/(MAT137Y1 with a minimum mark of 73)/(MAT159H1 with a minimum mark of 67)/(MAT157Y1 with a minimum mark of 67)/MAT235H1/MAT235Y1/MAT237Y1/MAT257Y1 Prerequisite for Faculty of Applied Science and Engineering students: ECE345H1/ECE358H1/MIE245H1;  MAT185H1/MAT188H1;  MAT291H1/MAT292H1/MIE230H1",
+    "prerequisites_original": "Prerequisite: CSC263H1/CSC265H1/CSC263H5/CSCB63H3;  MAT223H1/MAT240H1; (MAT136H1 with a minimum mark of 77)/(MAT149H1 with a minimum mark of 73)/(MAT137Y1 with a minimum mark of 73)/(MAT159H1 with a minimum mark of 67)/(MAT157Y1 with a minimum mark of 67)/MAT235H1/MAT235Y1/MAT237Y1/MAT257Y1 Prerequisite for Faculty of Applied Science and Engineering students: ECE345H1/ECE358H1/MIE245H1; MAT185H1/MAT188H1; MAT291H1/MAT292H1/MIE230H1",
     "corequisites": [],
     "corequisites_original": "",
     "exclusions": [],
@@ -27776,7 +27965,7 @@
     ],
     "class_size": 250,
     "subgraph_num_courses": 15,
-    "subgraph_num_requisites": 13
+    "subgraph_num_requisites": 12
   },
   {
     "title": "Introduction to Databases",
@@ -27832,11 +28021,11 @@
       "CSC207H1",
       "MAT195H1"
     ],
-    "prerequisites_original": "Prerequisite: CSC111H1/CSC165H1/MAT102H5/CSCA67H3/MATA67H3/CSC240H1/(MAT130H1/MAT135H1,  MAT136H1)/(MAT148H1/MAT158H1,  MAT149H1/MAT159H1)/MAT137Y1/MAT157Y1;  CSC207H1/CSC207H5/CSCB07H3 Prerequisite for Faculty of Applied Science and Engineering students: (ESC194H1,  ESC195H1)/(MAT186H1,  MAT187H1)/(MAT194H1,  MAT195H1);  ECE345H1/ESC190H1",
+    "prerequisites_original": "Prerequisite: CSC111H1/CSC165H1/MAT102H5/CSCA67H3/MATA67H3/CSC240H1/(MAT130H1/MAT135H1,  MAT136H1)/(MAT148H1/MAT158H1,  MAT149H1/MAT159H1)/MAT137Y1/MAT157Y1;  CSC207H1/CSC207H5/CSCB07H3 Prerequisite for Faculty of Applied Science and Engineering students: (ESC194H1, ESC195H1)/(MAT186H1, MAT187H1)/(MAT194H1, MAT195H1); ECE345H1/ESC190H1",
     "corequisites": [],
     "corequisites_original": "",
     "exclusions": [],
-    "exclusions_original": "Exclusion: CSC343H5,  CSCC43H3,  MIE253H1,  MIE353H1. NOTE: Students not enrolled in the Computer Science Major or Specialist program at A&S, UTM, or UTSC, or the Data Science Specialist at A&S, are limited to a maximum of 1.5 credits in 300-/400-level CSC/ECE courses.",
+    "exclusions_original": "Exclusion: CSC343H5,  CSCC43H3, MIE253H1, MIE353H1. NOTE: Students not enrolled in the Computer Science Major or Specialist program at A&S, UTM, or UTSC, or the Data Science Specialist at A&S, are limited to a maximum of 1.5 credits in 300-/400-level CSC/ECE courses.",
     "experience": "",
     "recommended_prep": [],
     "has_fields": [
@@ -28142,11 +28331,11 @@
         "PSY201H1"
       ]
     ],
-    "prerequisites_original": "Prerequisite: CSC263H1/CSC265H1/CSC263H5/CSCB63H3,  STA237H1/STA247H1/STA255H1/STA257H1/STAB57H3/STAB52H3. Notes: students enrolled in ASMAJ1446A who have completed at least 9.0 credits may substitute  CSC111H1/(CSC148H1,  CSC165H1/(MAT148H1,  MAT149H1)/MAT137Y1) for  CSC263H1 and  STA220H1/PSY201H1 for  STA237H1. Prerequisite for Applied Science and Engineering students: ECE345H1/ECE358H1/MIE245H1;  ECE302H1/STA286H1/CHE223H1/CME263H1/MIE231H1/MIE236H1/MSE238H1/ECE286H1",
+    "prerequisites_original": "Prerequisite: CSC263H1/CSC265H1/CSC263H5/CSCB63H3,  STA237H1/STA247H1/STA255H1/STA257H1/STAB57H3/STAB52H3. Notes: students enrolled in ASMAJ1446A who have completed at least 9.0 credits may substitute  CSC111H1/(CSC148H1,  CSC165H1/(MAT148H1,  MAT149H1)/MAT137Y1) for  CSC263H1 and  STA220H1/PSY201H1 for  STA237H1. Prerequisite for Applied Science and Engineering students: ECE345H1/ECE358H1/MIE245H1; ECE302H1/STA286H1/CHE223H1/CME263H1/MIE231H1/MIE236H1/MSE238H1/ECE286H1",
     "corequisites": [],
     "corequisites_original": "",
     "exclusions": [],
-    "exclusions_original": "Exclusion: CSC384H5,  CSCD84H3,  MIE369H1. NOTE: Students not enrolled in the Computer Science Major or Specialist program at A&S, UTM, or UTSC, or the Data Science Specialist at A&S, are limited to a maximum of 1.5 credits in 300-/400-level CSC/ECE courses.",
+    "exclusions_original": "Exclusion: CSC384H5,  CSCD84H3, MIE369H1. NOTE: Students not enrolled in the Computer Science Major or Specialist program at A&S, UTM, or UTSC, or the Data Science Specialist at A&S, are limited to a maximum of 1.5 credits in 300-/400-level CSC/ECE courses.",
     "experience": "",
     "recommended_prep": "CSC324H1",
     "has_fields": [
@@ -28346,7 +28535,7 @@
         "STA257H1"
       ]
     ],
-    "prerequisites_original": "Prerequisite: CSC207H1/CSC209H1/CSC207H5/CSCB07H3/CSC209H5/CSCB09H3;  STA237H1/STA247H1/STA255H1/STA257H1/STAB57H3/STAB52H3 Prerequisite for Faculty of Applied Science and Engineering students: APS105H1/APS106H1/ESC180H1/CSC180H1;  ECE302H1/STA286H1/CHE223H1/CME263H1/MIE231H1/MIE236H1/MSE238H1/ECE286H1",
+    "prerequisites_original": "Prerequisite: CSC207H1/CSC209H1/CSC207H5/CSCB07H3/CSC209H5/CSCB09H3;  STA237H1/STA247H1/STA255H1/STA257H1/STAB57H3/STAB52H3 Prerequisite for Faculty of Applied Science and Engineering students: APS105H1/APS106H1/ESC180H1/CSC180H1; ECE302H1/STA286H1/CHE223H1/CME263H1/MIE231H1/MIE236H1/MSE238H1/ECE286H1",
     "corequisites": [],
     "corequisites_original": "",
     "exclusions": [],
@@ -28545,7 +28734,7 @@
         "MAT240H1"
       ]
     ],
-    "prerequisites_original": "Prerequisite: CSC311H1/CSC311H5/CSCC11H3/STA314H1;  MAT235H1/MAT235Y1/MAT237Y1/MAT257Y1/MAT257Y5/MAT232H5/MAT233H5/MATB41H3;  MAT223H1/MAT240H1/MAT223H5/MATA23H3 Prerequisite for Faculty of Applied Science and Engineering students: ECE421H1/ROB313H1;  MAT291H1/MAT294H1/AER210H1/MIE230H1;  MAT185H1/MAT188H1",
+    "prerequisites_original": "Prerequisite: CSC311H1/CSC311H5/CSCC11H3/STA314H1;  MAT235H1/MAT235Y1/MAT237Y1/MAT257Y1/MAT257Y5/MAT232H5/MAT233H5/MATB41H3;  MAT223H1/MAT240H1/MAT223H5/MATA23H3 Prerequisite for Faculty of Applied Science and Engineering students: ECE421H1/ROB313H1; MAT291H1/MAT294H1/AER210H1/MIE230H1; MAT185H1/MAT188H1",
     "corequisites": [],
     "corequisites_original": "",
     "exclusions": [],
@@ -28706,7 +28895,7 @@
     ],
     "class_size": 90,
     "subgraph_num_courses": 16,
-    "subgraph_num_requisites": 14
+    "subgraph_num_requisites": 13
   },
   {
     "title": "Computability and Logic",
@@ -29210,7 +29399,7 @@
         "STA257H1"
       ]
     ],
-    "prerequisites_original": "Prerequisite: CSC209H1/CSC209H5/CSCB09H3;  STA237H1/STA247H1/STA255H1/STA257H1 Prerequisite for Faculty of Applied Science and Engineering students: APS105H1/APS106H1/ESC180H1/CSC180H1;  ECE302H1/STA286H1/CHE223H1/CME263H1/MIE231H1/MIE236H1/MSE238H1/ECE286H1",
+    "prerequisites_original": "Prerequisite: CSC209H1/CSC209H5/CSCB09H3;  STA237H1/STA247H1/STA255H1/STA257H1 Prerequisite for Faculty of Applied Science and Engineering students: APS105H1/APS106H1/ESC180H1/CSC180H1; ECE302H1/STA286H1/CHE223H1/CME263H1/MIE231H1/MIE236H1/MSE238H1/ECE286H1",
     "corequisites": [],
     "corequisites_original": "",
     "exclusions": [],
@@ -29305,7 +29494,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 135,
+    "class_size": 235,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -34394,6 +34583,38 @@
     "subgraph_num_requisites": 0
   },
   {
+    "title": "Research Opportunity Program",
+    "course_code": "EAS299Y1",
+    "split_course_code": [
+      "EAS",
+      299,
+      "Y",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "Credit course for supervised participation in faculty research project. Details at https://www.artsci.utoronto.ca/current/academics/research-opportunities/research-opportunities-program. Not eligible for CR/NCR option.",
+    "cr_ncr_eligible": false,
+    "breadth_requirements_list": [],
+    "hours": {
+      "lecture": 0,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 0
+    },
+    "prerequisites": [],
+    "prerequisites_original": "",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "",
+    "experience": "",
+    "recommended_prep": [],
+    "has_fields": [],
+    "class_size": 30,
+    "subgraph_num_courses": 1,
+    "subgraph_num_requisites": 0
+  },
+  {
     "title": "Modern Standard Chinese III",
     "course_code": "EAS300Y1",
     "split_course_code": [
@@ -35030,6 +35251,47 @@
     "subgraph_num_requisites": 2
   },
   {
+    "title": "Zen Buddhism",
+    "course_code": "EAS361H1",
+    "split_course_code": [
+      "EAS",
+      361,
+      "H",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "This course introduces the Zen Buddhist traditions of China, Korea, and Japan. Emphasis is placed on the radical views of history, language, ritual, self, and enlightenment espoused by these traditions. The course also examines issues related to Zen monasticism, the development of koans, and the definition of orthodoxy in both premodern and modern Zen. Students will be asked to explore these and other topics by paying close attention to the historical, doctrinal, and institutional contexts from which they arose.",
+    "cr_ncr_eligible": true,
+    "breadth_requirements_list": [
+      "Thought, Belief and Behaviour (2)"
+    ],
+    "hours": {
+      "lecture": 24,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 0
+    },
+    "prerequisites": [
+      "AND",
+      "EAS105H1"
+    ],
+    "prerequisites_original": "Prerequisite: EAS105H1",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "",
+    "experience": "",
+    "recommended_prep": [],
+    "has_fields": [
+      "hours",
+      "breadth_requirements_list",
+      "prerequisites"
+    ],
+    "class_size": 55,
+    "subgraph_num_courses": 3,
+    "subgraph_num_requisites": 2
+  },
+  {
     "title": "China's Cultural Revolution: History and Memory",
     "course_code": "EAS364H1",
     "split_course_code": [
@@ -35224,7 +35486,7 @@
       "hours",
       "prerequisites"
     ],
-    "class_size": 90,
+    "class_size": 45,
     "subgraph_num_courses": 3,
     "subgraph_num_requisites": 2
   },
@@ -35309,7 +35571,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 25,
+    "class_size": 0,
     "subgraph_num_courses": 9,
     "subgraph_num_requisites": 7
   },
@@ -35554,7 +35816,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 20,
+    "class_size": 0,
     "subgraph_num_courses": 4,
     "subgraph_num_requisites": 3
   },
@@ -38403,7 +38665,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 820,
+    "class_size": 560,
     "subgraph_num_courses": 32,
     "subgraph_num_requisites": 39
   },
@@ -38450,7 +38712,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 660,
+    "class_size": 540,
     "subgraph_num_courses": 15,
     "subgraph_num_requisites": 13
   },
@@ -42989,7 +43251,7 @@
       "hours",
       "breadth_requirements_list"
     ],
-    "class_size": 770,
+    "class_size": 1010,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -43180,7 +43442,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 110,
+    "class_size": 70,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -45644,7 +45906,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 40,
+    "class_size": 60,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -46112,7 +46374,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 97,
+    "class_size": 79,
     "subgraph_num_courses": 5,
     "subgraph_num_requisites": 1
   },
@@ -46752,7 +47014,7 @@
       "breadth_requirements_list",
       "exclusions"
     ],
-    "class_size": 775,
+    "class_size": 795,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -47897,7 +48159,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 190,
+    "class_size": 170,
     "subgraph_num_courses": 4,
     "subgraph_num_requisites": 4
   },
@@ -50935,7 +51197,7 @@
       "breadth_requirements_list",
       "recommended_prep"
     ],
-    "class_size": 120,
+    "class_size": 110,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -51587,7 +51849,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 80,
+    "class_size": 0,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -51823,7 +52085,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 40,
+    "class_size": 0,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -52652,6 +52914,50 @@
     "subgraph_num_requisites": 0
   },
   {
+    "title": "Studies in Medieval Cities",
+    "course_code": "FAH421H1",
+    "split_course_code": [
+      "FAH",
+      421,
+      "H",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "A focused examination of urbanism, art and architecture of a specific medieval city, such as Jerusalem, Rome, Constantinople, or Paris.",
+    "cr_ncr_eligible": true,
+    "breadth_requirements_list": [
+      "Creative and Cultural Representations (1)"
+    ],
+    "hours": {
+      "lecture": 0,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 24
+    },
+    "prerequisites": [
+      "OR",
+      "FAH215H1",
+      "FAH216H1",
+      "FAH265H1"
+    ],
+    "prerequisites_original": "Prerequisite: FAH215H1/FAH216H1/FAH265H1/FAH285H5/VPHB53H3, and 1.0 FAH credit at the 300 level",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "",
+    "experience": "",
+    "recommended_prep": "FAH327H1",
+    "has_fields": [
+      "hours",
+      "breadth_requirements_list",
+      "prerequisites",
+      "recommended_prep"
+    ],
+    "class_size": 18,
+    "subgraph_num_courses": 4,
+    "subgraph_num_requisites": 1
+  },
+  {
     "title": "Leonardo and His Legacy in Renaissance Italy",
     "course_code": "FAH433H1",
     "split_course_code": [
@@ -52895,7 +53201,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 40,
+    "class_size": 60,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -54206,7 +54512,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 15,
+    "class_size": 10,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -54611,7 +54917,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 60,
+    "class_size": 90,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -56982,6 +57288,41 @@
     "subgraph_num_requisites": 2
   },
   {
+    "title": "Open Topics in German Studies",
+    "course_code": "GER330H1",
+    "split_course_code": [
+      "GER",
+      330,
+      "H",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "This third-year course taught in English offers an in-depth exploration of diverse themes within German Studies, with a focus that varies from year to year. This course covers a wide range of topics, which may include contemporary issues in German-speaking societies, seminal German-language literary works, influential films, and philosophical movements.",
+    "cr_ncr_eligible": true,
+    "breadth_requirements_list": [],
+    "hours": {
+      "lecture": 0,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 12
+    },
+    "prerequisites": [],
+    "prerequisites_original": "",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "",
+    "experience": "",
+    "recommended_prep": "GER150H1",
+    "has_fields": [
+      "hours",
+      "recommended_prep"
+    ],
+    "class_size": 30,
+    "subgraph_num_courses": 1,
+    "subgraph_num_requisites": 0
+  },
+  {
     "title": "Berlin Between East and West",
     "course_code": "GER336H1",
     "split_course_code": [
@@ -57652,7 +57993,7 @@
       "hours",
       "breadth_requirements_list"
     ],
-    "class_size": 440,
+    "class_size": 470,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -58589,7 +58930,10 @@
     "prerequisites_original": "Prerequisite: 8.0 credits",
     "corequisites": [],
     "corequisites_original": "",
-    "exclusions": [],
+    "exclusions": [
+      "AND",
+      "GGR387H1"
+    ],
     "exclusions_original": "Exclusion: GGR387H1 (Special Topics in Environmental Geography: Commons, Commoning and Ecologies of Care in a Post-Covid World), offered in Winter 2021",
     "experience": "",
     "recommended_prep": "1.0 credit in GGR, including  ",
@@ -58831,7 +59175,10 @@
     "prerequisites_original": "",
     "corequisites": [],
     "corequisites_original": "",
-    "exclusions": [],
+    "exclusions": [
+      "AND",
+      "GGR387H1"
+    ],
     "exclusions_original": "Exclusion: GGR387H1 (Special Topics in Environmental Geography: The Social Geographies of Climate Change), offered in Winter 2020",
     "experience": "",
     "recommended_prep": "8.0 credits,  ",
@@ -59535,6 +59882,46 @@
     "class_size": 60,
     "subgraph_num_courses": 2,
     "subgraph_num_requisites": 1
+  },
+  {
+    "title": "Special Topics in Environmental Geography",
+    "course_code": "GGR387H1",
+    "split_course_code": [
+      "GGR",
+      387,
+      "H",
+      1
+    ],
+    "previous_course_codes": [
+      "GGR300H1"
+    ],
+    "description": "Content in any given year varies by instructor. Students must meet the prerequisites set by the department (see the Geography website for details in May). Can be used towards Environmental Geography and Human Geography programs.",
+    "cr_ncr_eligible": true,
+    "breadth_requirements_list": [
+      "Society and its Institutions (3)"
+    ],
+    "hours": {
+      "lecture": 24,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 0
+    },
+    "prerequisites": [],
+    "prerequisites_original": "",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "",
+    "experience": "",
+    "recommended_prep": [],
+    "has_fields": [
+      "previous_course_codes",
+      "hours",
+      "breadth_requirements_list"
+    ],
+    "class_size": 30,
+    "subgraph_num_courses": 1,
+    "subgraph_num_requisites": 0
   },
   {
     "title": "Advanced Remote Sensing",
@@ -62252,6 +62639,38 @@
     "subgraph_num_requisites": 0
   },
   {
+    "title": "Research Opportunity Program",
+    "course_code": "HIS299Y1",
+    "split_course_code": [
+      "HIS",
+      299,
+      "Y",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "Credit course for supervised participation in faculty research project. Details at https://www.artsci.utoronto.ca/current/academics/research-opportunities\u2026. Not eligible for CR/NCR option.",
+    "cr_ncr_eligible": false,
+    "breadth_requirements_list": [],
+    "hours": {
+      "lecture": 0,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 0
+    },
+    "prerequisites": [],
+    "prerequisites_original": "",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "",
+    "experience": "",
+    "recommended_prep": [],
+    "has_fields": [],
+    "class_size": 60,
+    "subgraph_num_courses": 1,
+    "subgraph_num_requisites": 0
+  },
+  {
     "title": "World War II France",
     "course_code": "HIS301H1",
     "split_course_code": [
@@ -64223,6 +64642,38 @@
     "class_size": 45,
     "subgraph_num_courses": 2,
     "subgraph_num_requisites": 1
+  },
+  {
+    "title": "Research Opportunity Program",
+    "course_code": "HIS399Y1",
+    "split_course_code": [
+      "HIS",
+      399,
+      "Y",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "Credit course for supervised participation in faculty research project. Details at https://www.artsci.utoronto.ca/current/academics/research-opportunities\u2026. Not eligible for CR/NCR option.",
+    "cr_ncr_eligible": false,
+    "breadth_requirements_list": [],
+    "hours": {
+      "lecture": 0,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 0
+    },
+    "prerequisites": [],
+    "prerequisites_original": "",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "",
+    "experience": "",
+    "recommended_prep": [],
+    "has_fields": [],
+    "class_size": 30,
+    "subgraph_num_courses": 1,
+    "subgraph_num_requisites": 0
   },
   {
     "title": "Advanced Topics in U.S. History",
@@ -67798,7 +68249,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 90,
+    "class_size": 80,
     "subgraph_num_courses": 3,
     "subgraph_num_requisites": 1
   },
@@ -68934,7 +69385,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 80,
+    "class_size": 120,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -68973,7 +69424,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 70,
+    "class_size": 40,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -69736,7 +70187,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 22,
+    "class_size": 0,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -76537,7 +76988,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 190,
+    "class_size": 195,
     "subgraph_num_courses": 12,
     "subgraph_num_requisites": 1
   },
@@ -80280,7 +80731,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 120,
+    "class_size": 180,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -80946,7 +81397,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 1948,
+    "class_size": 1933,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -81027,7 +81478,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 2403,
+    "class_size": 2358,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -81070,7 +81521,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 3916,
+    "class_size": 3826,
     "subgraph_num_courses": 3,
     "subgraph_num_requisites": 1
   },
@@ -81503,8 +81954,8 @@
       "prerequisites"
     ],
     "class_size": 1974,
-    "subgraph_num_courses": 6,
-    "subgraph_num_requisites": 3
+    "subgraph_num_courses": 3,
+    "subgraph_num_requisites": 1
   },
   {
     "title": "Vector Calculus I",
@@ -81746,12 +82197,8 @@
     },
     "prerequisites": [],
     "prerequisites_original": "Prerequisite: High school level calculus",
-    "corequisites": [
-      "AND",
-      "MAT158H1",
-      "MAT159H1"
-    ],
-    "corequisites_original": "Corequisite: (MAT158H1,  MAT159H1)/MAT157Y1/(MAT157H5,  MAT159H5)",
+    "corequisites": [],
+    "corequisites_original": "",
     "exclusions": [],
     "exclusions_original": "Exclusion: MAT240H5",
     "experience": "",
@@ -81760,12 +82207,11 @@
       "hours",
       "breadth_requirements_list",
       "prerequisites",
-      "corequisites",
       "exclusions"
     ],
     "class_size": 392,
-    "subgraph_num_courses": 4,
-    "subgraph_num_requisites": 2
+    "subgraph_num_courses": 1,
+    "subgraph_num_requisites": 0
   },
   {
     "title": "Introduction to Ordinary Differential Equations",
@@ -81908,9 +82354,9 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 1299,
-    "subgraph_num_courses": 11,
-    "subgraph_num_requisites": 9
+    "class_size": 1285,
+    "subgraph_num_courses": 10,
+    "subgraph_num_requisites": 7
   },
   {
     "title": "Algebra II",
@@ -82820,8 +83266,8 @@
       "prerequisites"
     ],
     "class_size": 1222,
-    "subgraph_num_courses": 6,
-    "subgraph_num_requisites": 3
+    "subgraph_num_courses": 3,
+    "subgraph_num_requisites": 1
   },
   {
     "title": "Groups, Rings and Fields",
@@ -83649,7 +84095,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 15,
+    "class_size": 0,
     "subgraph_num_courses": 18,
     "subgraph_num_requisites": 21
   },
@@ -85072,7 +85518,7 @@
       "breadth_requirements_list",
       "exclusions"
     ],
-    "class_size": 875,
+    "class_size": 760,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -85466,7 +85912,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 240,
+    "class_size": 270,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -85736,7 +86182,7 @@
       "prerequisites",
       "corequisites"
     ],
-    "class_size": 60,
+    "class_size": 50,
     "subgraph_num_courses": 26,
     "subgraph_num_requisites": 32
   },
@@ -86020,7 +86466,7 @@
       "exclusions",
       "recommended_prep"
     ],
-    "class_size": 28,
+    "class_size": 22,
     "subgraph_num_courses": 27,
     "subgraph_num_requisites": 35
   },
@@ -86461,6 +86907,47 @@
     "subgraph_num_requisites": 42
   },
   {
+    "title": "Elementary Modern Hebrew I",
+    "course_code": "MHB155H1",
+    "split_course_code": [
+      "MHB",
+      155,
+      "H",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "Introduction to the fundamentals of Hebrew grammar and syntax. Emphasis on the development of oral and writing skills.",
+    "cr_ncr_eligible": true,
+    "breadth_requirements_list": [
+      "Creative and Cultural Representations (1)"
+    ],
+    "hours": {
+      "lecture": 36,
+      "tutorial": 12,
+      "practical": 0,
+      "seminar": 0
+    },
+    "prerequisites": [],
+    "prerequisites_original": "",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [
+      "AND",
+      "NML155H1"
+    ],
+    "exclusions_original": "Exclusion: Grade 4 Hebrew (or Grade 2 in Israel)/NML155H1",
+    "experience": "",
+    "recommended_prep": [],
+    "has_fields": [
+      "hours",
+      "breadth_requirements_list",
+      "exclusions"
+    ],
+    "class_size": 20,
+    "subgraph_num_courses": 1,
+    "subgraph_num_requisites": 0
+  },
+  {
     "title": "Elementary Modern Hebrew II",
     "course_code": "MHB156H1",
     "split_course_code": [
@@ -86481,7 +86968,11 @@
       "practical": 0,
       "seminar": 0
     },
-    "prerequisites": [],
+    "prerequisites": [
+      "OR",
+      "MHB155H1",
+      "NML155H1"
+    ],
     "prerequisites_original": "Prerequisite: MHB155H1/NML155H1 permission of the instructor based on previous language knowledge",
     "corequisites": [],
     "corequisites_original": "",
@@ -86499,8 +86990,8 @@
       "exclusions"
     ],
     "class_size": 20,
-    "subgraph_num_courses": 1,
-    "subgraph_num_requisites": 0
+    "subgraph_num_courses": 3,
+    "subgraph_num_requisites": 1
   },
   {
     "title": "Vaccines and Immunity",
@@ -87186,7 +87677,7 @@
       "breadth_requirements_list",
       "prerequisites"
     ],
-    "class_size": 30,
+    "class_size": 22,
     "subgraph_num_courses": 2,
     "subgraph_num_requisites": 1
   },
@@ -87225,7 +87716,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 20,
+    "class_size": 12,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -87969,7 +88460,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 80,
+    "class_size": 100,
     "subgraph_num_courses": 3,
     "subgraph_num_requisites": 1
   },
@@ -89240,7 +89731,7 @@
       "breadth_requirements_list",
       "exclusions"
     ],
-    "class_size": 308,
+    "class_size": 0,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -89315,7 +89806,7 @@
       "breadth_requirements_list",
       "exclusions"
     ],
-    "class_size": 0,
+    "class_size": 308,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -91870,7 +92361,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 128,
+    "class_size": 140,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -92020,6 +92511,38 @@
       "breadth_requirements_list"
     ],
     "class_size": 50,
+    "subgraph_num_courses": 1,
+    "subgraph_num_requisites": 0
+  },
+  {
+    "title": "Research Opportunity Program",
+    "course_code": "NMC299H1",
+    "split_course_code": [
+      "NMC",
+      299,
+      "H",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "Credit course for supervised participation in faculty research project. Details at https://www.artsci.utoronto.ca/current/academics/research-opportunities/research-opportunities-program. Not eligible for CR/NCR option.",
+    "cr_ncr_eligible": false,
+    "breadth_requirements_list": [],
+    "hours": {
+      "lecture": 0,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 0
+    },
+    "prerequisites": [],
+    "prerequisites_original": "",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "",
+    "experience": "",
+    "recommended_prep": [],
+    "has_fields": [],
+    "class_size": 30,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -93053,6 +93576,40 @@
       "exclusions"
     ],
     "class_size": 90,
+    "subgraph_num_courses": 1,
+    "subgraph_num_requisites": 0
+  },
+  {
+    "title": "Elementary Modern Hebrew I",
+    "course_code": "NML155H1",
+    "split_course_code": [
+      "NML",
+      155,
+      "H",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "See  MHB155H1 in Religion.",
+    "cr_ncr_eligible": true,
+    "breadth_requirements_list": [],
+    "hours": {
+      "lecture": 48,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 0
+    },
+    "prerequisites": [],
+    "prerequisites_original": "",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "",
+    "experience": "",
+    "recommended_prep": [],
+    "has_fields": [
+      "hours"
+    ],
+    "class_size": 5,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -97455,7 +98012,7 @@
       "breadth_requirements_list",
       "exclusions"
     ],
-    "class_size": 202,
+    "class_size": 196,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -97913,7 +98470,7 @@
       "breadth_requirements_list",
       "exclusions"
     ],
-    "class_size": 180,
+    "class_size": 200,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -99280,6 +99837,56 @@
     ],
     "class_size": 35,
     "subgraph_num_courses": 5,
+    "subgraph_num_requisites": 3
+  },
+  {
+    "title": "Philosophy of Language",
+    "course_code": "PHL351H1",
+    "split_course_code": [
+      "PHL",
+      351,
+      "H",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "The nature of language as a system of human communication, theories of meaning and meaningfulness, the relation of language to the world and to the human mind.",
+    "cr_ncr_eligible": true,
+    "breadth_requirements_list": [
+      "Thought, Belief and Behaviour (2)"
+    ],
+    "hours": {
+      "lecture": 36,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 0
+    },
+    "prerequisites": [
+      "OR",
+      "PHL245H1",
+      [
+        "AND",
+        "MAT158H1",
+        "MAT159H1"
+      ],
+      "PHL232H1",
+      "PHL233H1",
+      "PHL240H1"
+    ],
+    "prerequisites_original": "Prerequisite: PHL245H1/(MAT158H1,  MAT159H1)/MAT157Y1 and one of  PHL232H1/PHL233H1/PHL240H1, 7.5 courses (in any field) with at least 1.5 in philosophy",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "Exclusion: PHLC80H3,  PHL350H5",
+    "experience": "",
+    "recommended_prep": [],
+    "has_fields": [
+      "hours",
+      "breadth_requirements_list",
+      "prerequisites",
+      "exclusions"
+    ],
+    "class_size": 35,
+    "subgraph_num_courses": 8,
     "subgraph_num_requisites": 3
   },
   {
@@ -103062,7 +103669,7 @@
     ],
     "class_size": 85,
     "subgraph_num_courses": 14,
-    "subgraph_num_requisites": 13
+    "subgraph_num_requisites": 12
   },
   {
     "title": "Research Opportunity Program",
@@ -105770,7 +106377,7 @@
     "experience": "",
     "recommended_prep": [],
     "has_fields": [],
-    "class_size": 30,
+    "class_size": 60,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -106674,7 +107281,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 70,
+    "class_size": 87,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -117502,6 +118109,45 @@
     "subgraph_num_requisites": 0
   },
   {
+    "title": "Early Gospels",
+    "course_code": "RLG322H1",
+    "split_course_code": [
+      "RLG",
+      322,
+      "H",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "Careful examination of the earliest \u201clives of Jesus\u201d (\u2018gospels\u2019) shows that they offer very different portraits of Jesus of Nazareth. The course will compare ancient biographical accounts of famous ancient figures such as Alexander the Great, the Caesars, and wandering philosophers with early depictions of Jesus, both the gospels that eventually were included in the New Testament, and extra-canonical or \u201capocryphal\u201d gospels such as the Gospels of Thomas, Peter, or Mary.",
+    "cr_ncr_eligible": true,
+    "breadth_requirements_list": [
+      "Creative and Cultural Representations (1)"
+    ],
+    "hours": {
+      "lecture": 24,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 0
+    },
+    "prerequisites": [],
+    "prerequisites_original": "Prerequisite: Completion of 4.0 credits",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "",
+    "experience": "",
+    "recommended_prep": "RLG241H1",
+    "has_fields": [
+      "hours",
+      "breadth_requirements_list",
+      "prerequisites",
+      "recommended_prep"
+    ],
+    "class_size": 30,
+    "subgraph_num_courses": 1,
+    "subgraph_num_requisites": 0
+  },
+  {
     "title": "Religion, Race, and the Legacy of Cain and Abel",
     "course_code": "RLG328H1",
     "split_course_code": [
@@ -117616,6 +118262,44 @@
       "prerequisites"
     ],
     "class_size": 34,
+    "subgraph_num_courses": 1,
+    "subgraph_num_requisites": 0
+  },
+  {
+    "title": "How Religions Spread: Networks and Religion",
+    "course_code": "RLG335H1",
+    "split_course_code": [
+      "RLG",
+      335,
+      "H",
+      1
+    ],
+    "previous_course_codes": [],
+    "description": "Social networks are critical in the maintenance and spread of religions. This course offers an introduction to network concepts and, focusing on ancient Mediterranean religions, examines how religious ideas diffuse; networks and the creation of social capital; intersections of religious and trade or business networks; and the collapse of networks.",
+    "cr_ncr_eligible": true,
+    "breadth_requirements_list": [
+      "Society and its Institutions (3)"
+    ],
+    "hours": {
+      "lecture": 0,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 24
+    },
+    "prerequisites": [],
+    "prerequisites_original": "Prerequisite: Completion of 4.0 credits",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "",
+    "experience": "",
+    "recommended_prep": [],
+    "has_fields": [
+      "hours",
+      "breadth_requirements_list",
+      "prerequisites"
+    ],
+    "class_size": 30,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -118598,7 +119282,11 @@
     "prerequisites": [
       "AND",
       "RLG241H1",
-      "RLG321H1"
+      [
+        "OR",
+        "RLG321H1",
+        "RLG322H1"
+      ]
     ],
     "prerequisites_original": "Prerequisite: RLG241H1, and at least one of  RLG320H1/RLG321H1/RLG322H1/RLG323H1/RLG324H1/RLG325H1/RLG326H1",
     "corequisites": [],
@@ -118613,8 +119301,8 @@
       "prerequisites"
     ],
     "class_size": 5,
-    "subgraph_num_courses": 3,
-    "subgraph_num_requisites": 1
+    "subgraph_num_courses": 4,
+    "subgraph_num_requisites": 2
   },
   {
     "title": "Special Topics in Hinduism",
@@ -118864,7 +119552,7 @@
       "breadth_requirements_list",
       "exclusions"
     ],
-    "class_size": 1115,
+    "class_size": 1040,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -119138,7 +119826,7 @@
       "breadth_requirements_list",
       "exclusions"
     ],
-    "class_size": 997,
+    "class_size": 952,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -122359,7 +123047,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 150,
+    "class_size": 155,
     "subgraph_num_courses": 2,
     "subgraph_num_requisites": 1
   },
@@ -126274,7 +126962,7 @@
       "hours",
       "breadth_requirements_list"
     ],
-    "class_size": 25,
+    "class_size": 20,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -127180,7 +127868,7 @@
       "exclusions",
       "recommended_prep"
     ],
-    "class_size": 265,
+    "class_size": 270,
     "subgraph_num_courses": 2,
     "subgraph_num_requisites": 1
   },
@@ -134813,7 +135501,7 @@
       "prerequisites",
       "exclusions"
     ],
-    "class_size": 112,
+    "class_size": 144,
     "subgraph_num_courses": 2,
     "subgraph_num_requisites": 1
   },
@@ -135759,7 +136447,7 @@
       "hours",
       "recommended_prep"
     ],
-    "class_size": 0,
+    "class_size": 30,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -136656,7 +137344,7 @@
     "has_fields": [
       "hours"
     ],
-    "class_size": 50,
+    "class_size": 74,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -138979,7 +139667,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 161,
+    "class_size": 165,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -139018,7 +139706,7 @@
       "prerequisites",
       "recommended_prep"
     ],
-    "class_size": 165,
+    "class_size": 171,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -139339,7 +140027,7 @@
       "exclusions",
       "recommended_prep"
     ],
-    "class_size": 227,
+    "class_size": 238,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   },
@@ -139814,7 +140502,90 @@
       "breadth_requirements_list",
       "exclusions"
     ],
-    "class_size": 125,
+    "class_size": 315,
+    "subgraph_num_courses": 1,
+    "subgraph_num_requisites": 0
+  },
+  {
+    "title": "Writing Reports",
+    "course_code": "WRR104H1",
+    "split_course_code": [
+      "WRR",
+      104,
+      "H",
+      1
+    ],
+    "previous_course_codes": [
+      "INI104H1"
+    ],
+    "description": "Students will learn the fundamentals of report writing, including how to write abstracts and conduct literature reviews as well as qualitative and quantitative research. Students also learn to communicate visually, including how to create tables, charts, and graphs with attention to purpose, audience, structure, style, skills they apply to a formal report and a poster presentation.",
+    "cr_ncr_eligible": true,
+    "breadth_requirements_list": [
+      "Thought, Belief and Behaviour (2)"
+    ],
+    "hours": {
+      "lecture": 0,
+      "tutorial": 12,
+      "practical": 0,
+      "seminar": 24
+    },
+    "prerequisites": [],
+    "prerequisites_original": "",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "Exclusion: INI104H1",
+    "experience": "",
+    "recommended_prep": [],
+    "has_fields": [
+      "previous_course_codes",
+      "hours",
+      "breadth_requirements_list",
+      "exclusions"
+    ],
+    "class_size": 70,
+    "subgraph_num_courses": 1,
+    "subgraph_num_requisites": 0
+  },
+  {
+    "title": "Theories of Rhetoric: A Brief History of Persuasion",
+    "course_code": "WRR201H1",
+    "split_course_code": [
+      "WRR",
+      201,
+      "H",
+      1
+    ],
+    "previous_course_codes": [
+      "INI201H1"
+    ],
+    "description": "When contemporary critics seek to discredit dishonest politicians, they tend to refer to their discourse as \u201cmere rhetoric.\u201d But there is so much more to rhetoric than deception. This course examines the history of rhetoric, the art of persuasion, from its birth in Greco-Roman antiquity to its rebirth in twentieth and twenty-first century thought. In addition to tracking the history of Western ideas about persuasion, we will bring rhetorical theories to bear on vital questions about philosophy, psychology, media, and advertising.",
+    "cr_ncr_eligible": true,
+    "breadth_requirements_list": [
+      "Creative and Cultural Representations (1)"
+    ],
+    "hours": {
+      "lecture": 0,
+      "tutorial": 0,
+      "practical": 0,
+      "seminar": 24
+    },
+    "prerequisites": [],
+    "prerequisites_original": "Prerequisite: Completion of 4.0 credits",
+    "corequisites": [],
+    "corequisites_original": "",
+    "exclusions": [],
+    "exclusions_original": "Exclusion: INI201H1",
+    "experience": "",
+    "recommended_prep": [],
+    "has_fields": [
+      "previous_course_codes",
+      "hours",
+      "breadth_requirements_list",
+      "prerequisites",
+      "exclusions"
+    ],
+    "class_size": 45,
     "subgraph_num_courses": 1,
     "subgraph_num_requisites": 0
   }

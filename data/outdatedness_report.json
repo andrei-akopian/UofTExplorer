@@ -1,13 +1,13 @@
 {
-  "scraper/courses/raw_output": 1781583210.7339768,
-  "scraper/courses/ttb_scrapes": 1781583613.1887417,
-  "scraper/programs/raw_output": 1781580044.9600995,
-  "scraper/data/courses.json": 1781638636.6837103,
-  "scraper/data/ttb_courses.json": 1781585429.909311,
-  "data/courses.json": 1781638643.3074949,
-  "data/programs.json": 1781638627.8475404,
-  "data/glossary.json": 1781409226.5799508,
-  "data/global_statistics.json": 1781638650.051056,
-  "frontend/src/assets/globalstats": 1781638644.0032914,
-  "data_analysis/sanity_report.log": 1781638650.0514486
+  "scraper/courses/raw_output": 1783200493.0016255,
+  "scraper/courses/ttb_scrapes": 1783201105.3270152,
+  "scraper/programs/raw_output": 1783199509.2057495,
+  "scraper/data/courses.json": 1783200661.0059574,
+  "scraper/data/ttb_courses.json": 1783201990.9045622,
+  "data/courses.json": 1783201994.8935246,
+  "data/programs.json": 1783199525.7783089,
+  "data/glossary.json": 1781662599.1669233,
+  "data/global_statistics.json": 1783202005.5115442,
+  "frontend/src/assets/globalstats": 1783201995.9210298,
+  "data_analysis/sanity_report.log": 1783202005.512091
 }

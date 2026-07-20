@@ -195,7 +195,8 @@ def deconstruct_prerequisites(
             if logic_gate_dict[key]["id"] == str(prereqs):
                 logic_gate_node_id = logic_gate_dict[key]["id"]
                 json_edge = {"from": logic_gate_node_id, "to": node, "color": "#CCCCCC"}
-                json_edges.append(json_edge)
+                if json_edge not in json_edges:  # Prevent duplicate edges
+                    json_edges.append(json_edge)
                 break
 
         # Make prerequisite course nodes and necessary AND/OR nodes the children of the current AND/OR node
@@ -207,7 +208,8 @@ def deconstruct_prerequisites(
                     "to": logic_gate_node_id,
                     "color": "#CCCCCC",
                 }
-                json_edges.append(json_edge)
+                if json_edge not in json_edges:  # Prevent duplicate edges
+                    json_edges.append(json_edge)
             # Recurse to construct an edge between the current AND/OR node and it's child AND/OR node
             else:
                 deconstruct_prerequisites(
