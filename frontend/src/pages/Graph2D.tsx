@@ -75,7 +75,7 @@ export default function Graph2D() {
       />
 
       {/*Desktop Help Button*/}
-      <div className="absolute top-3 right-2 z-50 hidden sm:right-4 sm:block">
+      <div className="absolute top-4 right-4 z-50 hidden sm:block">
         <HelpMenu>{helpTemplateGraph2D}</HelpMenu>
       </div>
     </div>
