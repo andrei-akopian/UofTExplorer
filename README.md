@@ -7,8 +7,7 @@
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
 
-A graph visualizer tool for courses and their requisites at the University of Toronto.
-Currently a work in progress for further improvements and deployment.
+A graph visualizer tool for courses, programs, departments, and their requisites at the University of Toronto.
 
 ## [Website](https://uoftexplorer.ca)
 
