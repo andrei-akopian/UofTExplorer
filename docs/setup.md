@@ -46,3 +46,5 @@ Start frontend (Vite):
 cd frontend
 npm run dev
 ```
+
+For deployment see [Deploy](./deploy.md).
