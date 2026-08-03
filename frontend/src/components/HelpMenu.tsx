@@ -106,7 +106,7 @@ export default function HelpMenu({ children }: { children: React.ReactNode }) {
                 className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="black"
+                stroke="currentColor"
                 strokeWidth={2}
               >
                 <path
