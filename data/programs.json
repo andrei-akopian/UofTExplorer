@@ -7345,7 +7345,7 @@
     ]
   },
   {
-    "title": "Certificate in Bosnian, Croatian, Serbian Language (BCS) (Category 2)",
+    "title": "Certificate in Bosnian, Croatian, Serbian Language (BCS Language) (Category 2)",
     "program_artsci": null,
     "program_code": [
       "AS",
@@ -24407,6 +24407,7 @@
     "completion_requirement": [],
     "courses_mentioned": [
       "ITA100Y1",
+      "ITA250Y1",
       "ITA350Y1",
       "ITA450H1",
       "ITA200H1",
