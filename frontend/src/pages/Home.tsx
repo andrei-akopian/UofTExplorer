@@ -131,12 +131,12 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             {commit_hash}
-          </a>{" "}
+          </a>
           {git_tag == "untagged" ? (
             ""
           ) : (
             <span>
-              ,<a href={`${repo_url}/releases/tag/${git_tag}`}>{git_tag}</a>
+              , <a href={`${repo_url}/releases/tag/${git_tag}`}>{git_tag}</a>
             </span>
           )}
           .

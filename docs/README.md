@@ -12,3 +12,4 @@
 ## Deployment
 
 - [Deployment Guide](deploy.md)
+- [Scraping Guide](scraping.md)

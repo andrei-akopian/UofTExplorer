@@ -127,7 +127,7 @@ def scrape_everything(pages=None):
     for page in range(0, pages):
         payload = getPageableCourses("", page=page)
         time.sleep(3)
-        print(page, len(payload["pageableCourse"]["courses"]))
+        print(f"{page}/{pages}, courses on page = {len(payload["pageableCourse"]["courses"]}"))
 
 
 if __name__ == "__main__":
