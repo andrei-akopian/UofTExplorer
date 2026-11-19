@@ -73,7 +73,6 @@ export default function Graph3D() {
       />
 
       <GraphQuery
-        data={graphData}
         setData={setGraphData}
         isLoading={isLoading}
         setIsLoading={setIsLoading}
