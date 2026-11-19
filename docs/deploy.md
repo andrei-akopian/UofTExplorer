@@ -42,9 +42,9 @@ On Github, go to `Settings > Credentials > personal access token (PAT)` in your 
 
 Then log into ghcr.io registery from docker cli:
 
-(Unix): Login using this token via `echo "<token>" | docker login ghcr.io -u <username> --password-stdin` with user username and token.
+(Unix): Login using this token via `echo "<token>" | docker login ghcr.io -u "<username>" --password-stdin` with user username and token. If your username contains strange characters, make sure to put quotes around it.
 
-(Windows): idk figure it out. try `docker login ghcr.io -u <username> --password <token>`
+(Windows): idk figure it out. try `docker login ghcr.io -u "<username>" --password <token>`
 
 Now tag the newly created container.
 
