@@ -9,7 +9,6 @@ import type {
   GlobalStats,
   PathFinderRequest,
   PathFinderResponse,
-  FilterOptions,
 } from "../types";
 
 const API_BASE_URL = "/api";
@@ -30,21 +29,11 @@ class ApiError extends Error {
 /**
  * Fetch graph data from the backend
  */
-export async function fetchGraphData(
-  query: string,
-  filters?: Partial<FilterOptions>,
-): Promise<GraphData> {
-  const payload = {
-    query,
-    cr_ncr: filters?.crNcr || [],
-    departments: filters?.departments || [],
-    breadth_requirements: filters?.breadthRequirements || [],
-  };
-
+export async function fetchGraphData(query: string): Promise<GraphData> {
   const response = await fetch(`${API_BASE_URL}/fetch_graph`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
+    body: JSON.stringify({ query }),
   });
 
   if (!response.ok) {

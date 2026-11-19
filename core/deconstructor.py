@@ -64,6 +64,10 @@ def deconstruct_course_graph(
             "depth": depth,
             "description": course.data.description,
             "crNcr": course.data.cr_ncr,
+            "department": course.data.code_split[0],
+            "breadthRequirements": [
+                str(br) for br in course.data.breadth if course.data.breadth[br] != 0
+            ],
             "breadth": ", ".join(
                 f"{breadths[str(br)]}" if str(br) in breadths else str(br)
                 for br in course.data.breadth

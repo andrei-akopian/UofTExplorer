@@ -230,18 +230,11 @@ def get_parent_program_set(courses: list[CourseNode]) -> set[str]:
     return union
 
 
-def get_filtered_graph(
-    container: CourseGraphContainer, query: str, filters: dict[str, list[str]]
-) -> dict[str, list | str]:
+def get_graph(container: CourseGraphContainer, query: str) -> dict[str, list | str]:
     """
-    Return the deconstructed, filtered graph based on the given container, search query, and filters.
+    Return the deconstructed graph based on the given container and search query.
     This function is case-insensitive to query.
 
-    Preconditions:
-        - key in {'cr_ncr', 'departments', 'breadth'} for key in filters
-        - isinstance(filters['cr_ncr'], list[str])
-        - isinstance(filters['departments'], list[str])
-        - isinstance(filters['breadth'], list[str])
     """
     query_lower = query.lower()
     query_upper = query.upper()
@@ -271,9 +264,6 @@ def get_filtered_graph(
             "name": "Department of " + container.departments[query_upper],
         }
 
-        if all(filters[key] == [] for key in filters):
-            filters["departments"].append(query_upper)
-
     # Get the graph for the program being searched for
     elif query_upper in container.programs:
         subgraph = container.programs[query_upper].graph
@@ -302,41 +292,12 @@ def get_filtered_graph(
     else:
         raise ValueError("query value has no corresponding graph to display")
 
-    # Apply filters
-
-    # If the filters are empty, pass in an empty dictionary of filtered courses
-    if all(filters[key] == [] for key in filters):
-        filtered_courses = {}
-
-    # Otherwise, filter the courses in the subgraph
-    else:
-        filtered_courses = subgraph.get_filtered_courses(
-            [
-                lambda course: all(
-                    [
-                        filters["cr_ncr"] == []
-                        or any(
-                            course.matches_cr_ncr(elig) for elig in filters["cr_ncr"]
-                        ),
-                        filters["departments"] == []
-                        or any(
-                            course.is_in_department(dept)
-                            for dept in filters["departments"]
-                        ),
-                        filters["breadth"] == []
-                        or any(
-                            course.is_in_breadth(breadth)
-                            for breadth in filters["breadth"]
-                        ),
-                    ]
-                )
-            ]
-        )[0]
-
     # Deconstruct the subgraph
     graph_data.update(
         deconstruct_course_graph(
-            subgraph, filtered_courses, special_courses, container.breadths
+            subgraph,
+            special_courses=special_courses,
+            breadths=container.breadths,
         )
     )
 

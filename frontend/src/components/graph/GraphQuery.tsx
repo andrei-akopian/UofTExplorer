@@ -4,6 +4,7 @@ import SearchMenu from "./SearchMenu";
 
 import { fetchGraphData } from "../../lib/api";
 import type { GraphData, FilterOptions } from "../../types";
+import { filterGraph } from "../../lib/filterGraph";
 
 type QueryFilters = {
   cr_ncr: string[];
@@ -11,9 +12,7 @@ type QueryFilters = {
   breadth_requirements: string[];
 };
 
-const convertFiltersToApiFormat = (
-  filters: QueryFilters,
-): Partial<FilterOptions> => {
+const convertFiltersToApiFormat = (filters: QueryFilters): FilterOptions => {
   return {
     crNcr: filters["cr_ncr"] || [],
     departments: filters["departments"] || [],
@@ -22,7 +21,6 @@ const convertFiltersToApiFormat = (
 };
 
 export default function GraphQuery({
-  data,
   setData,
   isLoading,
   setIsLoading,
@@ -30,7 +28,6 @@ export default function GraphQuery({
   setMessageType,
   manualFetch,
 }: {
-  data: GraphData;
   setData: (data: GraphData) => void;
   isLoading: boolean;
   setIsLoading: (isLoading: boolean) => void;
@@ -38,8 +35,6 @@ export default function GraphQuery({
   setMessageType: (type: "info" | "success" | "error") => void;
   manualFetch: string;
 }) {
-  void data;
-
   const navigate = useNavigate();
   const location = useLocation();
   const [query, setQuery] = useState<string>("");
@@ -51,16 +46,32 @@ export default function GraphQuery({
   const [, setError] = useState<string | null>(null);
 
   const [manualFetchArg, setManualFetchArg] = useState<string>("");
-  const lastFetchQueryRef = useRef<string>("");
+  const unfilteredDataRef = useRef<GraphData | null>(null);
+  const loadedQueryRef = useRef<string>("");
 
   const fetch = useCallback(async () => {
-    setIsLoading(true);
     setError(null);
+
+    const normalizedQuery = query.trim().toUpperCase();
+    const apiFilters = convertFiltersToApiFormat(filters);
+
+    if (
+      unfilteredDataRef.current &&
+      loadedQueryRef.current === normalizedQuery
+    ) {
+      const result = filterGraph(unfilteredDataRef.current, apiFilters);
+      setData(result);
+      setMessage(`Number of nodes: ${result.nodes.length}`);
+      setMessageType("success");
+      return;
+    }
+
+    setIsLoading(true);
     try {
-      const result = await fetchGraphData(
-        query,
-        convertFiltersToApiFormat(filters),
-      );
+      const unfilteredResult = await fetchGraphData(query);
+      unfilteredDataRef.current = unfilteredResult;
+      loadedQueryRef.current = normalizedQuery;
+      const result = filterGraph(unfilteredResult, apiFilters);
       setData(result);
       setMessage(`Number of nodes: ${result.nodes.length}`);
       setMessageType("success");
@@ -73,7 +84,7 @@ export default function GraphQuery({
     } finally {
       setIsLoading(false);
     }
-  }, [query, filters]);
+  }, [filters, query, setData, setIsLoading, setMessage, setMessageType]);
 
   const fetchGraph = async () => {
     fetch();
@@ -85,14 +96,13 @@ export default function GraphQuery({
       // Determine which graph page we're on, default to 2d
       const isGraph3D = location.pathname.includes("/graph/3d");
       const graphPath = isGraph3D ? "/graph/3d" : "/graph/2d";
-      if (lastFetchQueryRef.current == trimmed) {
-        // Directly fetch graph as URL params should not change
+      if (loadedQueryRef.current === trimmed.toUpperCase()) {
+        // Reuse the loaded graph and apply the selected filters locally.
         fetchGraph();
       } else {
         // Redirect to graph page with search query parameter
         navigate(`${graphPath}?search=${encodeURIComponent(trimmed)}`);
       }
-      lastFetchQueryRef.current = trimmed;
     }
   };
 
