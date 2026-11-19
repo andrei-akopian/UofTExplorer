@@ -63,6 +63,13 @@ interface ProcessedGraphData {
   links: Array<{ source: string; target: string }>;
 }
 
+function getTopologyKey(data: GraphData): string {
+  return JSON.stringify({
+    nodes: data.nodes.map((node) => String(node.id)),
+    edges: data.edges.map((edge) => [String(edge.from), String(edge.to)]),
+  });
+}
+
 function processGraphData(data: GraphData): ProcessedGraphData {
   if (!data?.nodes) return { nodes: [], links: [] };
 
@@ -167,6 +174,8 @@ export default function GraphVis3D({
 }) {
   const graphFrame = useRef<HTMLDivElement>(null);
   const graphRef = useRef<any>(null);
+  const processedDataRef = useRef<ProcessedGraphData | null>(null);
+  const topologyKeyRef = useRef<string>("");
   const onNodeClickRef = useRef(onNodeClickCallback);
   useEffect(() => {
     onNodeClickRef.current = onNodeClickCallback;
@@ -258,7 +267,29 @@ export default function GraphVis3D({
   useEffect(() => {
     if (!graphFrame.current || !graphData?.nodes?.length) return;
 
+    const topologyKey = getTopologyKey(graphData);
+    if (
+      graphRef.current &&
+      processedDataRef.current &&
+      topologyKeyRef.current === topologyKey
+    ) {
+      const colorsByNodeId = new Map(
+        graphData.nodes.map((node) => [String(node.id), node.color]),
+      );
+
+      for (const node of processedDataRef.current.nodes) {
+        const color = colorsByNodeId.get(node.id);
+        if (color) node.color = color;
+      }
+
+      graphRef.current.nodeColor(graphRef.current.nodeColor());
+      return;
+    }
+
     const processedData = processGraphData(graphData);
+    processedDataRef.current = processedData;
+    topologyKeyRef.current = topologyKey;
+
     if (!graphRef.current) {
       graphRef.current = new ForceGraph3D(graphFrame.current)
         .showNavInfo(false)
