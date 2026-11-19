@@ -1,4 +1,5 @@
 # REST API reverse engineered spec
+
 ```txt
 divisionalLegends : bunches of html tags with descriptions for something
 divisionalEnrolmentIndicators : list of enrollment control types and what they mean (useful)
@@ -45,7 +46,7 @@ pageableCourse: main course data
             currentEnrolment: int
             maxEnrolment: int
             subTitle: subtitle, usually empty
-            'cancelInd', 'waitlistInd', 'deliveryModes', 'currentWaitlist: idk 
+            'cancelInd', 'waitlistInd', 'deliveryModes', 'currentWaitlist: idk
             'enrolmentInd', 'tbaInd', 'openLimitInd': idk
             notes: [{'name': 'Section Note', 'type': 'SECTION', 'content': ''}]
             enrolmentControls: huge dict describing who can sign up.
