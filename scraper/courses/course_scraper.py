@@ -11,7 +11,6 @@ import os
 import time
 import requests
 
-
 SCRAPING_TARGETS: dict[str, dict] = {
     "UTSG": {
         "base_domain_name": "https://artsci.calendar.utoronto.ca/search-courses?page=PAGE_NUMBER",
