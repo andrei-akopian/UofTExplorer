@@ -90,6 +90,22 @@ export default function GraphQuery({
     fetch();
   };
 
+  const handleFiltersChange = useCallback(
+    (newFilters: QueryFilters) => {
+      setFilters(newFilters);
+
+      if (unfilteredDataRef.current) {
+        setData(
+          filterGraph(
+            unfilteredDataRef.current,
+            convertFiltersToApiFormat(newFilters),
+          ),
+        );
+      }
+    },
+    [setData],
+  );
+
   const handleFetchClick = () => {
     const trimmed = query.trim();
     if (trimmed) {
@@ -126,7 +142,7 @@ export default function GraphQuery({
           query={query}
           setQuery={setQuery}
           filtersHook={filters}
-          setFiltersHook={setFilters}
+          setFiltersHook={handleFiltersChange}
           onLoadGraph={handleFetchClick}
           isLoading={isLoading}
         />

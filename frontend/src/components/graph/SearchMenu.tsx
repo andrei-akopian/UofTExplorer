@@ -17,6 +17,16 @@ type QueryFilters = {
   breadth_requirements: string[];
 };
 
+function ActiveCount({ count }: { count: number }) {
+  if (count === 0) return null;
+
+  return (
+    <span className="bg-primary flex min-w-5 items-center justify-center rounded-full px-1.5 py-0.5 text-xs font-semibold text-white tabular-nums">
+      {count}
+    </span>
+  );
+}
+
 function FilterBar({
   title,
   options,
@@ -25,6 +35,7 @@ function FilterBar({
   filtersTitle,
   keyFormat,
   renderOptionLabel,
+  activeCount,
 }: {
   title: string;
   options: string[];
@@ -33,6 +44,7 @@ function FilterBar({
   filtersTitle: keyof QueryFilters;
   keyFormat: (option: string) => string;
   renderOptionLabel?: (option: string) => React.ReactNode;
+  activeCount: number;
 }) {
   function handleChange(e: React.ChangeEvent<HTMLInputElement>, key: string) {
     console.log(`Toggled ${key}: ${e.target.checked}`);
@@ -55,7 +67,10 @@ function FilterBar({
   return (
     <details className="group close-on-outclick relative">
       <summary className="border-input-border bg-panel-bg text-text-body flex w-full cursor-pointer list-none items-center justify-between gap-2 rounded-md border px-4 py-2.5 text-sm select-none sm:w-auto sm:justify-start sm:px-5 [&::-webkit-details-marker]:hidden">
-        {title}
+        <span className="flex items-center gap-1.5">
+          {title}
+          <ActiveCount count={activeCount} />
+        </span>
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
           <path d="m2 4 4 4 4-4" stroke="currentColor" />
         </svg>
@@ -99,6 +114,10 @@ export default function SearchMenu({
   isLoading,
 }: SearchMenuProps) {
   const [departments, setDepartments] = useState<string[]>([]);
+  const activeFilterCount =
+    filtersHook.cr_ncr.length +
+    filtersHook.departments.length +
+    filtersHook.breadth_requirements.length;
 
   const toggleFilter = (
     filterType: keyof QueryFilters,
@@ -163,7 +182,10 @@ export default function SearchMenu({
 
       <details className="group close-on-outclick relative sm:hidden">
         <summary className="border-input-border bg-panel-bg text-text-body flex w-full cursor-pointer list-none items-center justify-between gap-2 rounded-md border px-4 py-2.5 text-sm select-none [&::-webkit-details-marker]:hidden">
-          Filters
+          <span className="flex items-center gap-1.5">
+            Filters
+            <ActiveCount count={activeFilterCount} />
+          </span>
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
             <path d="m2 4 4 4 4-4" stroke="currentColor" />
           </svg>
@@ -171,7 +193,10 @@ export default function SearchMenu({
         <div className="border-border-dropdown bg-surface-1 text-text-body shadow-dropdown fixed top-28 right-2 left-2 z-60 flex max-h-[70vh] flex-col gap-3 overflow-y-auto rounded-md border p-2.5">
           <details className="group" open>
             <summary className="text-text-muted flex cursor-pointer list-none items-center justify-between text-xs font-semibold uppercase [&::-webkit-details-marker]:hidden">
-              CR / NCR
+              <span className="flex items-center gap-1.5">
+                CR / NCR
+                <ActiveCount count={filtersHook.cr_ncr.length} />
+              </span>
               <span className="text-text-subtle transition-transform group-open:rotate-180">
                 ▾
               </span>
@@ -199,7 +224,10 @@ export default function SearchMenu({
 
           <details className="group">
             <summary className="text-text-muted flex cursor-pointer list-none items-center justify-between text-xs font-semibold uppercase [&::-webkit-details-marker]:hidden">
-              Departments
+              <span className="flex items-center gap-1.5">
+                Departments
+                <ActiveCount count={filtersHook.departments.length} />
+              </span>
               <span className="text-text-subtle transition-transform group-open:rotate-180">
                 ▾
               </span>
@@ -235,7 +263,10 @@ export default function SearchMenu({
 
           <details className="group">
             <summary className="text-text-muted flex cursor-pointer list-none items-center justify-between text-xs font-semibold uppercase [&::-webkit-details-marker]:hidden">
-              Breadth Requirements
+              <span className="flex items-center gap-1.5">
+                Breadth Requirements
+                <ActiveCount count={filtersHook.breadth_requirements.length} />
+              </span>
               <span className="text-text-subtle transition-transform group-open:rotate-180">
                 ▾
               </span>
@@ -275,6 +306,7 @@ export default function SearchMenu({
           setFiltersHook={setFiltersHook}
           filtersTitle="cr_ncr"
           keyFormat={(option) => option.toLowerCase()}
+          activeCount={filtersHook.cr_ncr.length}
         />
         <FilterBar
           title="Departments"
@@ -283,6 +315,7 @@ export default function SearchMenu({
           setFiltersHook={setFiltersHook}
           filtersTitle="departments"
           keyFormat={(option) => option.slice(0, 3)}
+          activeCount={filtersHook.departments.length}
           renderOptionLabel={(option) => (
             <>
               <span className="font-mono">{option.slice(0, 3)}</span>
@@ -297,6 +330,7 @@ export default function SearchMenu({
           setFiltersHook={setFiltersHook}
           filtersTitle="breadth_requirements"
           keyFormat={(option) => option.at(-2) ?? ""}
+          activeCount={filtersHook.breadth_requirements.length}
         />
       </div>
       <button
