@@ -26,7 +26,9 @@ or
 make docker-minimal
 ```
 
-should build everything automatically. `docker-full` is a two-stage build: a Node stage compiles the frontend, and only the static `dist` output is copied into the final Python + nginx image (no Node/npm in the result). `docker-minimal` reuses a locally built `frontend/dist` instead. The resulting image should appear under Images in the Docker app.
+should build everything automatically. 
+
+`docker-full` is a two-stage build: a Node stage compiles the frontend, and only the static `dist` output is copied into the final Python + nginx image (no Node/npm in the result). `docker-minimal` reuses a locally built `frontend/dist` instead. The resulting image should appear under Images in the Docker app.
 
 ### Push to Registery
 
