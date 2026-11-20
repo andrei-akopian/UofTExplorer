@@ -1,7 +1,7 @@
 name: Fly Deploy
 on:
   push:
-    branches: [ops/flyio-autodeploy]
+    branches: [main]
   workflow_dispatch:
 
 concurrency: deploy-group # avoid overlapping deploys
@@ -10,7 +10,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0 # needed so git describe can find tags
       - uses: superfly/flyctl-actions/setup-flyctl@master
