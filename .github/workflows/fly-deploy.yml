@@ -1,7 +1,7 @@
 name: Fly Deploy
 on:
   push:
-    branches: [main]
+    branches: [ops/flyio-autodeploy]
   workflow_dispatch:
 
 concurrency: deploy-group # avoid overlapping deploys
