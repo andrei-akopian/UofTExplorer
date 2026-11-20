@@ -30,7 +30,6 @@ from typing import Optional
 import logging
 import bs4
 
-
 SCRAPE_FOLDER = "scraper/courses/raw_output"
 PARSING_TARGETS: dict[str, dict] = {
     "UTSG": {

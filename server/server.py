@@ -27,7 +27,7 @@ from core import sat
 from core.constructor import construct_container, construct_subgraph
 from core.algorithms import (
     get_course_suggestions,
-    get_filtered_graph,
+    get_graph,
     get_search_suggestions,
     traversers,
 )
@@ -325,20 +325,10 @@ def fetch_graph() -> ResponseReturnValue:
         # Get the search query
         query: str = str(request_data["query"]).strip()
 
-        # Get the chosen filters
-        filters = {
-            "cr_ncr": request_data["cr_ncr"],
-            "departments": request_data["departments"],
-            "breadth": request_data["breadth_requirements"],
-        }
-        print(
-            f"Processing Query for {query}, {filters['cr_ncr']}, {filters['departments']}, {filters['breadth']}"
-        )
-
         if not query:
             return jsonify({"error": "Query cannot be empty."}), 400
 
-        graph_data = graph_for_query(query, filters)
+        graph_data = graph_for_query(query)
         should_open_course_panel = graph_data["curr_query"]["type"] == "course"
         return (
             jsonify(
@@ -353,23 +343,16 @@ def fetch_graph() -> ResponseReturnValue:
         return jsonify({"error": f"Internal server error: {str(e)}"}), 500
 
 
-def graph_for_query(
-    query: str, filters: dict[str, Any] = None
-) -> dict[str, list | str]:
+def graph_for_query(query: str) -> dict[str, list | str]:
     """
-    Get graph data corresponding to a specific query, case-insensitive, given filters.
+    Get graph data corresponding to a specific query, case-insensitive.
     Graph data already contains curr_query and search fields.
 
     Preconditions:
         - query is already formatted (no further edits needed, other than query.upper() or query.lower())
     """
     print(COURSE_GRAPH_CONTAINER)
-    if filters is None:
-        filters = {"cr_ncr": [], "departments": [], "breadth": []}
-
-    filtered_graph = get_filtered_graph(COURSE_GRAPH_CONTAINER, query, filters)
-
-    return filtered_graph
+    return get_graph(COURSE_GRAPH_CONTAINER, query)
 
 
 @app.route("/api/departments", methods=["GET"])

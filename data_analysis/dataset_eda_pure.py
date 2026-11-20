@@ -16,7 +16,6 @@ from core.sat import solve_sat, solve_satz3
 from data_analysis.graph_generators import sat_graphs
 from data_analysis.graph_generators import req_graphs
 
-
 COURSES_FILE = "data/courses.json"
 BREADTH_NICKNAMES = [
     "Culture (1)",

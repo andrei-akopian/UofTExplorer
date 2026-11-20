@@ -3,7 +3,6 @@ from core.sat_solvers import z3wrapper
 from core.constructor import construct_container, construct_subgraph
 from core.algorithms import (
     get_course_suggestions,
-    get_filtered_graph,
     get_search_suggestions,
     traversers,
 )

@@ -3,7 +3,7 @@
  */
 
 import { useState, useCallback, useMemo } from "react";
-import type { GraphData, FilterOptions, DirectionNode } from "../types";
+import type { GraphData, DirectionNode } from "../types";
 import {
   fetchGraphData,
   searchAll,
@@ -16,7 +16,7 @@ interface UseFetchGraphReturn {
   data: GraphData | null;
   loading: boolean;
   error: string | null;
-  fetch: (query: string, filters?: Partial<FilterOptions>) => Promise<void>;
+  fetch: (query: string) => Promise<void>;
 }
 
 /**
@@ -27,25 +27,22 @@ export function useFetchGraph(): UseFetchGraphReturn {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const fetch = useCallback(
-    async (query: string, filters?: Partial<FilterOptions>) => {
-      if (!query.trim()) return;
+  const fetch = useCallback(async (query: string) => {
+    if (!query.trim()) return;
 
-      setLoading(true);
-      setError(null);
+    setLoading(true);
+    setError(null);
 
-      try {
-        const result = await fetchGraphData(query, filters);
-        setData(result);
-      } catch (err) {
-        const message = err instanceof Error ? err.message : "Unknown error";
-        setError(message);
-      } finally {
-        setLoading(false);
-      }
-    },
-    [],
-  );
+    try {
+      const result = await fetchGraphData(query);
+      setData(result);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Unknown error";
+      setError(message);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   return useMemo(
     () => ({ data, loading, error, fetch }),

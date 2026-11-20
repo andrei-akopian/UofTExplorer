@@ -12,6 +12,8 @@ export interface GraphNode {
   targetRadius?: number;
   size: number;
   color: string;
+  department?: string;
+  breadthRequirements?: string[];
   font?: { size: number };
   [key: string]: any;
 }

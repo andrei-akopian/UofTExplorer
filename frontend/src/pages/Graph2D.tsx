@@ -65,7 +65,6 @@ export default function Graph2D() {
         onStatsOpenChange={setStatsOpen}
       />
       <GraphQuery
-        data={graphData}
         setData={setGraphData}
         isLoading={loading}
         setIsLoading={setLoading}
