@@ -5,12 +5,15 @@ BUILDPLATFORM = linux/amd64
 
 help:
 	@echo "Please enter subcommand on what to make."
-	@echo "make docker-full\tbuild full docker image from ground up"
+	@echo "make docker-full\ttwo-stage docker build (npm only in build stage, no local npm needed)"
 	@echo "make docker-minimal\tpiggy back of local npm to build minimal docker image"
 	@echo "make zip\tsame as docker minimal, but a zip that might be easier to move around"
 
 docker-full:
-	docker build --platform $(BUILDPLATFORM) -f Dockerfile -t uoftexplorer .
+	docker build --platform $(BUILDPLATFORM) -f Dockerfile \
+		--build-arg COMMIT_HASH=$$(git rev-parse --short HEAD) \
+		--build-arg GIT_TAG=$$(git describe --tags --abbrev=0 2>/dev/null || echo untagged) \
+		--build-arg REPO_URL=$$(git remote get-url origin) -t uoftexplorer .
 	@echo "run using: docker run -p 80:80 uoftexplorer"
 	@echo "publish using"
 	@echo "docker tag uoftexplorer ghcr.io/andrei-akopian/uoftexplorer:full"

@@ -1,0 +1,32 @@
+# Fly.io config that builds the image from the repo's two-stage Dockerfile
+# (instead of pulling a prebuilt image like fly.toml does).
+#
+# Deploy from the repo root:
+#   fly deploy -c deploy_configs/fly-build.toml --build-arg COMMIT_HASH=$(git rev-parse --short HEAD)
+# (the build context is the directory you run the command from, so run it from the repo root)
+
+app = 'uoftexplorer'
+primary_region = 'yyz'
+
+[build]
+# paths here are relative to this file
+dockerfile = "../Dockerfile"
+ignorefile = "../.dockerignore"
+
+[build.args]
+# .git is not sent to the remote builder; these feed the footer version info.
+# Override at deploy time with --build-arg (see above).
+GIT_TAG = "untagged"
+REPO_URL = "https://github.com/andrei-akopian/UofTExplorer"
+
+[http_service]
+internal_port = 80
+force_https = true
+auto_stop_machines = 'stop'
+auto_start_machines = true
+min_machines_running = 0
+
+[[vm]]
+memory_mb = 512
+cpu_kind = 'shared'
+cpus = 1

@@ -1,0 +1,25 @@
+name: Fly Deploy
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency: deploy-group # avoid overlapping deploys
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0 # needed so git describe can find tags
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Deploy (image is built on Fly's remote builder)
+        run: >
+          flyctl deploy --remote-only
+          -c deploy_configs/fly-build.toml
+          --build-arg COMMIT_HASH=$(git rev-parse --short HEAD)
+          --build-arg GIT_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo untagged)
+          --build-arg REPO_URL=https://github.com/${{ github.repository }}
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
