@@ -2,7 +2,7 @@
 # for fly.io build with --platform linux/amd64
 
 # ---- Stage 1: compile frontend ----
-FROM node:20-alpine AS frontend-builder
+FROM node:24-alpine AS frontend-builder
 WORKDIR /frontend
 # install deps first so this layer is cached unless the lockfile changes
 COPY frontend/package.json frontend/package-lock.json ./
