@@ -4,6 +4,11 @@
 
 # Deployment Guide
 
+Deployment consists of:
+1. building a docker container
+2. deploying it to a hosting provider
+3. figuring out all the auth issues along the way
+
 ## Docker Build
 
 Install [Docker Desktop](https://docs.docker.com/get-started/introduction/get-docker-desktop/) or (macOS only) [Orbstack](https://orbstack.dev/). These have Docker backends (also UIs), but we will mostly use CLI.
@@ -26,7 +31,7 @@ or
 make docker-minimal
 ```
 
-should build everything automatically. 
+to build the images
 
 `docker-full` is a two-stage build: a Node stage compiles the frontend, and only the static `dist` output is copied into the final Python + nginx image (no Node/npm in the result). `docker-minimal` reuses a locally built `frontend/dist` instead. The resulting image should appear under Images in the Docker app.
 
@@ -64,6 +69,8 @@ TODO: add Windows build instructions. Same thing as Unix probably.
 
 ## Zip Build
 
+As an alternative to docker containers, one can create a zip file. This could be useful if we ever transition to a hacky deployment on a machine without docker. But generally this should not be used.
+
 You can create a minimal ~3MB package with a compiled React frontend and just the Python files necessary to run the server + minimal Python dependencies. This is useful for running small servers.
 
 ### Unix
@@ -81,6 +88,8 @@ sh start.sh
 This should install the minimal `flask` and `z3-solver` dependencies, and start the server.
 
 ## Production
+
+Unlike for development where a flask server is sufficient, production requires gunicorn server.
 
 ```bash
 pip3 install gunicorn
@@ -108,3 +117,19 @@ Lastly deploy via:
 ```bash
 fly deploy -c deploy_configs/fly.toml
 ```
+
+Alternatively:
+
+`fly-build.toml` builds the docker container. (And there are some problems associated with that concerning GIT_HASH variable passed to frontend to display the build number.)
+
+```bash
+fly deploy -c deploy_configs/fly-build.toml --build-arg COMMIT_HASH=$(git rev-parse --short HEAD)
+```
+
+#### Github Actions and Autodeploy
+
+`.github/workflows/fly-deploy.yml` contains a workflow that tells fly.io to build the container. Note that an env key in Settings > Secrets and Environmental Variables `FLY_API_TOKEN` must be set to `fly tokens create deploy -a uoftexplorer`.
+
+#### Domain Name
+
+If using cloudflare (like we are) in cloudflare DNS > Rules bind the fly.io machine IP to the domain. Then follow [this fly.io docs](https://docs.fly.io/networking/custom-domain) to make the domain certificate.
